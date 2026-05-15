@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.7 Module 7 · ESG Data, Fund Assessment, Databases and Software</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;--green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;--rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;--teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 48%,#eaf0f6 100%);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side,.card,.case-card,.map-board,.formula,.trap,.qcard,details{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main,.hero-side{box-shadow:var(--sh)}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(28px,4.7vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere;word-break:break-word}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:0;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:17.5px;font-weight:900;color:var(--dark);line-height:1.48;overflow-wrap:anywhere;word-break:break-word}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:0;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:500px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{padding:18px}h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:780px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch:nth-child(6){background:var(--teal-bg);border-color:var(--teal-bdr)}.branch-title{font-size:13.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:8px}.branch p{font-size:12.2px;color:var(--sub);line-height:1.55;margin:0 0 6px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm)}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:0}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(86px,.32fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}.eq-op{font-family:var(--mono);font-weight:950;color:#94a3b8;font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}.warnline{border-left:4px solid var(--rose);background:var(--rose-bg);border-radius:var(--r);padding:10px 12px;color:#881337;font-size:13px;line-height:1.68}
+.compare{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:table}.compare th,.compare td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}.compare th{background:var(--soft);color:var(--dark);font-weight:950}.compare tr:last-child td{border-bottom:0}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:10px}.metric{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--sh-sm)}.metric-num{font-family:var(--serif);font-size:27px;font-weight:950;line-height:1;color:var(--dark)}.metric-lab{font-size:12px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border-color:var(--rose-bdr);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--muted);font-weight:700}details[open] summary::after{content:"-"}details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.center-node,.branch-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1100px){.branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:1fr 1fr}.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.compare{display:block;overflow-x:auto}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:16.5px}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 7</span>
+        <span class="pill">Module 7</span>
+        <span class="pill">7.1.11-7.1.14</span>
+        <span class="pill">ESG Data</span>
+        <span class="pill">Databases and Software</span>
+      </div>
+      <h1>ESG Data, Fund Assessment,<br>Databases and Software</h1>
+      <p class="lead">本页把第 7 章最后一组内容整理成“数据流水线”：ESG 信息先从发行人、新闻、调研和第三方材料进入数据库，再被加工成评分、评级、筛选、指数、基金评级或管理人评估；最后投资者要判断这些工具的覆盖、方法、可比性和局限。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG 数据工具 == 原始信息来源 → 第三方加工/评分 → 指数/基金/管理人评估 → 投资使用 → 方法差异和可比性限制</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">7.1.11 描述 ESG 数据的一手和二手来源<br>7.1.12 解释 ESG 数据库和软件方法<br>7.1.13 识别筛选服务/工具提供商<br>7.1.14 描述数据库信息限制</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">85k+</div><div class="mini-lab">Morningstar 2022 覆盖基金</div></div>
+        <div class="mini-stat"><div class="mini-num">&lt;5%</div><div class="mini-lab">Mercer ESG=1 投资团队</div></div>
+      </div>
+      <div class="side-note">记忆抓手：一手数据像“原始凭证”，二手数据像“加工报表”。考试常问：谁提供、怎么加工、为什么不同机构结论不一致。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="fund">基金/管理人</button>
+    <button class="tab" data-tab="data">一手/二手数据</button>
+    <button class="tab" data-tab="providers">服务提供商</button>
+    <button class="tab" data-tab="ratings">评级方法</button>
+    <button class="tab" data-tab="limits">分歧与限制</button>
+    <button class="tab" data-tab="practice">题眼练习</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看总图：ESG 数据怎样从“原始材料”变成“投资工具”</h2>
+      </div>
+      <p class="head-desc">这部分的隐藏逻辑线是“来源、加工、产品、使用、限制”。</p>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG Data Pipeline<br>原始信息 → 加工评分 → 工具产品 → 投资使用 → 局限校验</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1. Primary Data</div><p>发行人调查、沟通、报告、官网、公开文件。</p><p>可能审计，也可能未审计。</p></div>
+        <div class="branch"><div class="branch-title">2. Indirect Data</div><p>新闻、第三方报告、经理调研、政府/监管/NGO。</p><p>Glassdoor 是员工调查例子。</p></div>
+        <div class="branch"><div class="branch-title">3. Secondary Data</div><p>把一手数据转换成分数、评估或评级。</p><p>可来自商业机构、监管、NGO。</p></div>
+        <div class="branch"><div class="branch-title">4. Products</div><p>数据、评级、筛选、投票建议、指数、新闻预警、研究、咨询。</p></div>
+        <div class="branch"><div class="branch-title">5. Users</div><p>基金评级、管理人评估、指数构建、投资筛选、估值决策。</p></div>
+        <div class="branch"><div class="branch-title">6. Limits</div><p>覆盖不全、方法不同、相关性低、历史比较困难、可比性弱。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>问来源</h3><p>数据来自公司，还是第三方加工？</p></div>
+        <div class="flow-step"><h3>问方法</h3><p>是原始数据、评分、评级、算法还是聚合？</p></div>
+        <div class="flow-step"><h3>问用途</h3><p>用于基金、指数、筛选、评级还是咨询？</p></div>
+        <div class="flow-step"><h3>问一致性</h3><p>不同机构方法和权重是否可比？</p></div>
+        <div class="flow-step"><h3>问限制</h3><p>是否滞后、未审计、覆盖不足或难以解释？</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>本模块覆盖清单</h2>
+      </div>
+      <p class="head-desc">按 PDF 第 7 章 7.1.11-7.1.14 顺序覆盖。</p>
+    </div>
+    <div class="coverage-grid">
+      <div class="coverage-item"><div class="check">✓</div><div class="text">Morningstar sustainability ratings：holdings-based approach、Sustainalytics 数据、85,000+ 基金覆盖、局限。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">Mercer point system：四分制、最高 ESG=1、少于 5% 团队获得最高评级、评估特征。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">基金/管理人评估的目标和限制：流程 vs 持仓、数据源、未审计数据、耗时、不透明和不可比。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">ESG index providers：FTSE Russell、MSCI、规则化指数、ESG ETF、thematic 和 tilt。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">Primary / secondary data：直接来源、间接来源、Bloomberg、CDP、GRI、UN Global Compact。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">提供商分类：大型营利、精品营利、非营利；服务产品分类：数据、评级、筛选、投票建议、指数、新闻预警、研究、咨询。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">发行人 ESG 评级方法：重大指标识别、数据收集、缺失估计、定性量化、权重打分、相对/绝对分数。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">评级分歧：0.3、0.54、0.38-0.71、低于信用评级 &gt;0.9 的相关性，以及三大后果。</div></div>
+    </div>
+  </section>
+
+  <section id="fund" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Fund and Manager Assessment</div>
+        <h2>基金和管理人评估：看“持仓结果”还是看“投资能力”</h2>
+      </div>
+      <p class="head-desc">Morningstar 更偏 holdings-based，Mercer 更偏管理人 ESG 能力和流程。</p>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Morningstar Sustainability Ratings</div><span class="tag tag-blue">Holdings-Based</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">截至 2022 年，Morningstar sustainability ratings 覆盖全球 85,000 多只基金，其中约 25,000 只为多资产和固定收益基金。</div></div>
+          <div class="case-row"><div class="case-lab">方法</div><div class="case-text">使用 Sustainalytics 的公司层面评级，采用 holdings-based approach，即把组合公司 ESG 分数做加权平均。</div></div>
+          <div class="case-row"><div class="case-lab">不计入</div><div class="case-text">不评价管理人在股东参与、公共倡导、复杂度、文化或投资策略方面的努力。</div></div>
+          <div class="case-row"><div class="case-lab">局限</div><div class="case-text">忽略有意图的 ESG 策略，且天然偏向 backward looking；由于 Sustainalytics 和 MSCI 相关性低且变动，Morningstar 只用 Sustainalytics 数据导致与其他评级可比性有限。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Morningstar</div><div class="eq-op">==</div><div class="eq-rhs">基金持仓公司 ESG 分数 × 权重 → 基金可持续性评级</div></div>
+            <div class="eq"><div class="eq-lhs">弱点</div><div class="eq-op">==</div><div class="eq-rhs">看持仓结果，不看管理人 ESG 意图、参与和策略能力</div></div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Mercer Point System</div><span class="tag tag-green">Manager Capability</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">Mercer 从投资顾问视角评估基金管理人和基金，常在基金策略层面打分；四分制中 ESG=1 是最高评级，少于 5% 投资团队获得，即 less than 5% of investment teams。</div></div>
+          <div class="case-row"><div class="case-lab">评估特征</div><div class="case-text">是否把 ESG 纳入决策流程和企业文化；是否将 ESG 建入估值指标；是否有长期视角和低换手；所有权政策是否监督充分、与投资决策整合且透明。</div></div>
+          <div class="case-row"><div class="case-lab">替代资产</div><div class="case-text">看是否追求透明度和评估最佳实践，并对投资组合公司和行业的 ESG 表现进行监测和改善。</div></div>
+          <div class="case-row"><div class="case-lab">组织层面</div><div class="case-text">看是否愿意与其他机构投资者合作，以及 ESG 整合承诺是否贯穿整个组织。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Mercer</div><div class="eq-op">==</div><div class="eq-rhs">流程 + 估值 + 长期性 + 所有权实践 + 替代资产监测 + 协作 + 组织承诺</div></div>
+            <div class="eq"><div class="eq-lhs">最高 ESG=1</div><div class="eq-op">→</div><div class="eq-rhs">less than 5% 团队，说明评估更强调能力深度</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>评估目标</h3>
+        <p class="small">这些评估的目标是形成对不同基金管理人和策略 ESG 整合实践与流程的看法，使零售和机构资产所有者找到最符合自身需要的产品。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">基金评估</div><div class="eq-op">==</div><div class="eq-rhs">帮资产所有者判断“这位管理人是否真的会整合 ESG”</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>评估限制</h3>
+        <div class="formula-list">
+          <div class="formula"><b>方法不同：</b>有的看投资流程，有的看组合持仓。</div>
+          <div class="formula"><b>数据不同：</b>数据源或评级提供商不同。</div>
+          <div class="formula"><b>数据质量：</b>数据有限且可能未经审计。</div>
+          <div class="formula"><b>比较成本：</b>做比较需要大量时间。</div>
+          <div class="formula"><b>透明度：</b>评估方式相对不透明、不可比。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="data" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Primary and Secondary Data</div>
+        <h2>一手数据和二手数据：先分清“原料”和“加工品”</h2>
+      </div>
+      <p class="head-desc">这是 7.1.11 的核心。考试看到 primary / secondary，要马上判断是否经过第三方评分或公式加工。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Primary ESG Data：原始信息</h3>
+        <table class="compare">
+          <thead><tr><th>来源</th><th>PDF 要点</th></tr></thead>
+          <tbody>
+            <tr><td>直接来自公司</td><td>调查问卷、公司沟通、公司报告、演示材料、公开文件、公司官网。</td></tr>
+            <tr><td>公共文件</td><td>可来自 UN Global Compact、GRI 等非营利组织，也可来自公司自己的网站。</td></tr>
+            <tr><td>审计状态</td><td>一手来源可能审计，也可能未审计；截至 2024 年，ESG performance indicators 越来越多被审计，以保证与可持续目标和实践一致。</td></tr>
+            <tr><td>间接来源</td><td>新闻、第三方报告和分析、分析师或组合经理 engagement findings、投资和咨询研究。</td></tr>
+            <tr><td>第三方直接调查</td><td>Glassdoor 员工满意度数据来自员工调查，是间接评估例子。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Secondary ESG Data：加工后的评估</h3>
+        <p class="small">很多 ESG 数据库提供的是二手 ESG 数据或评级：它们把一手数据通过评分流程或公式转换成新的分数、评估或评级。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Primary data</div><div class="eq-op">==</div><div class="eq-rhs">发行人/公共文件/调研/新闻等原始材料</div></div>
+          <div class="eq"><div class="eq-lhs">Secondary data</div><div class="eq-op">==</div><div class="eq-rhs">一手数据 → 评分/公式/模型转换 → 新分数、评估或评级</div></div>
+          <div class="eq"><div class="eq-lhs">Bloomberg 例子</div><div class="eq-op">==</div><div class="eq-rhs">整理公司报告一手数据 + 提供 ESG Disclosure score</div></div>
+          <div class="eq"><div class="eq-lhs">CDP carbon data</div><div class="eq-op">→</div><div class="eq-rhs">被 FTSE Russell、MSCI、Sustainalytics 等主要评级提供商作为输入</div></div>
+        </div>
+        <div class="memory"><b>记忆抓手：</b>一手数据像审计里的“原始凭证”，二手数据像“别人已经编好的分析表”。用二手数据时，要问它怎么加工。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="providers" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Providers and Services</div>
+        <h2>ESG 数据库和软件：按“机构类型”和“产品类型”两条线记</h2>
+      </div>
+      <p class="head-desc">PDF 给了两种分类法：business type 和 product/service type。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>按机构类型分类</h3>
+        <table class="compare">
+          <thead><tr><th>类型</th><th>例子</th><th>要点</th></tr></thead>
+          <tbody>
+            <tr><td>大型营利机构</td><td>Bloomberg、FactSet、Fitch、ISS、Moody's、Morningstar、MSCI、S&amp;P Global</td><td>同时提供多种 ESG 和非 ESG 产品服务。</td></tr>
+            <tr><td>精品营利机构</td><td>RepRisk、Urgentum、Truvalue Labs/FactSet、CICERO</td><td>提供专门 ESG 产品和服务。</td></tr>
+            <tr><td>非营利机构</td><td>CDP、IMF、World Bank ESG Data Portal、ASCOR Climate Change Indicators Dashboard、UNEP</td><td>很多服务免费并处于公共领域。</td></tr>
+          </tbody>
+        </table>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">提供商类型</div><div class="eq-op">==</div><div class="eq-rhs">大而全 + 小而专 + 公共/非营利</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>按产品/服务类型分类</h3>
+        <div class="coverage-grid">
+          <div class="coverage-item"><div class="check">1</div><div class="text">ESG data：环境、社会、经济、公司治理实践的定量或定性信息。</div></div>
+          <div class="coverage-item"><div class="check">2</div><div class="text">ESG ratings：对发行人或基金 ESG 方法、披露、战略或表现的观点，可为数字或字母。</div></div>
+          <div class="coverage-item"><div class="check">3</div><div class="text">ESG screening：按暴露、参与、因素、行业、产品或服务评估公司、国家和债券。</div></div>
+          <div class="coverage-item"><div class="check">4</div><div class="text">Voting and governance advice：代理投票建议、治理和薪酬/董事等投票指引。</div></div>
+          <div class="coverage-item"><div class="check">5</div><div class="text">ESG benchmarks and indexes：把 ESG 标准纳入证券选择的一篮子证券。</div></div>
+          <div class="coverage-item"><div class="check">6</div><div class="text">News and controversy alerts：提示公司或国家的声誉与商业风险/机会事件。</div></div>
+          <div class="coverage-item"><div class="check">7</div><div class="text">Integrated research：卖方研究中有数据支持、服务投资决策的分析观点。</div></div>
+          <div class="coverage-item"><div class="check">8</div><div class="text">Advisory services：战略、整合、流程、报告、公司建议，以及 SDGs、碳水分析、供应链、保证服务等。</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>ESG Index Providers and ETFs</h3>
+      <p class="small">FTSE Russell、MSCI 等提供 ESG index benchmarks。这类指数可以按机构投资者偏好定制，也有较标准化的商业版本。指数通常基于 ESG scores 或 metrics 的 rule-based criteria，通过公式提高/降低权重或剔除公司。它们可作为基金经理业绩基准，也可作为 beta/passive management 的模型基金，并发展成 ESG ETFs。</p>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">ESG index</div><div class="eq-op">==</div><div class="eq-rhs">ESG 分数/指标 + 规则公式 → 倾斜权重或剔除公司</div></div>
+        <div class="eq"><div class="eq-lhs">ESG ETF</div><div class="eq-op">==</div><div class="eq-rhs">跟踪 ESG 指数或篮子，可 thematic，也可按 ESG 分数 tilt</div></div>
+        <div class="eq"><div class="eq-lhs">数据形式</div><div class="eq-op">==</div><div class="eq-rhs">data-based + rating-based + mix of the two</div></div>
+      </div>
+      <div class="warnline"><b>考点提醒：</b>PDF 明确说，关于这些 ETF 是否真正捕捉潜在 ESG 因素，仍有争论。</div>
+    </div>
+  </section>
+
+  <section id="ratings" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Issuer ESG Ratings</div>
+        <h2>发行人 ESG 评级：从指标识别到加权评分</h2>
+      </div>
+      <p class="head-desc">MSCI 和 Sustainalytics 市占率大；但评级分散的根源在“选什么、怎么权重、怎么打分”。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>评级类型</h3>
+        <table class="compare">
+          <thead><tr><th>类型</th><th>关注内容</th></tr></thead>
+          <tbody>
+            <tr><td>Fundamental</td><td>风险、商业模式、政策和准备程度。</td></tr>
+            <tr><td>Operational</td><td>碳影响、水压力、人力资本管理。</td></tr>
+            <tr><td>Disclosure-based</td><td>基于披露情况进行评估。</td></tr>
+            <tr><td>Algorithm/news-based</td><td>算法、新闻和争议事件。</td></tr>
+          </tbody>
+        </table>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">评级类型</div><div class="eq-op">==</div><div class="eq-rhs">基本面 + 运营 + 披露 + 算法/新闻</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>典型评级流程</h3>
+        <div class="formula-list">
+          <div class="formula"><b>1. Identify indicators：</b>识别该行业最重大的 ESG 指标。</div>
+          <div class="formula"><b>2. Gather data：</b>从公开披露、问卷、非结构化公司数据或第三方数据收集数据点。</div>
+          <div class="formula"><b>3. Check and estimate：</b>评估一致性，有时估计缺失数据。</div>
+          <div class="formula"><b>4. Score qualitative and quantitative data：</b>用评分或排名方法量化定性数据，也评价定量数据。</div>
+          <div class="formula"><b>5. Weight and combine：</b>按预设权重合并，形成行业相对分数、绝对分数或两者。</div>
+        </div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG rating</div><div class="eq-op">==</div><div class="eq-rhs">行业重大指标 → 数据收集 → 一致性/缺失处理 → 定性定量评分 → 权重合并</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>历史数据与前瞻数据</h3>
+      <p class="small">ESG ratings 主要基于历史公司数据和替代数据来源，例如媒体来源。部分 ESG rating providers 正在开发 climate risk 指标，试图依据 Paris Agreement 和 TCFD 等框架评估更前瞻的风险。</p>
+      <div class="riskline"><b>投资影响：</b>评级不是事实本身，而是“材料 + 方法 + 权重 + 判断”的结果。使用评级时要回看底层数据和方法。</div>
+    </div>
+  </section>
+
+  <section id="limits" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Limitations and Divergence</div>
+        <h2>为什么 ESG 评级经常不一致</h2>
+      </div>
+      <p class="head-desc">7.1.14 的核心不是背几个数字，而是理解“不一致从哪里开始”。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>相关性数字</h3>
+        <div class="metric-row">
+          <div class="metric"><div class="metric-num">&gt;0.9</div><div class="metric-lab">三大信用评级机构之间的信用评级相关性，greater than 0.9</div></div>
+          <div class="metric"><div class="metric-num">0.3</div><div class="metric-lab">Chatterji et al. 2009 约略相关性，包含负相关</div></div>
+          <div class="metric"><div class="metric-num">0.54</div><div class="metric-lab">Berg et al. 2021 六家 ESG 评级平均相关性</div></div>
+          <div class="metric"><div class="metric-num">0.38-0.71</div><div class="metric-lab">Berg et al. 2021 相关性范围</div></div>
+        </div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">评级分歧</div><div class="eq-op">==</div><div class="eq-rhs">ESG 因素识别不同 + 数据不同 + 权重不同 + 评分不同</div></div>
+          <div class="eq"><div class="eq-lhs">低相关</div><div class="eq-op">→</div><div class="eq-rhs">同一家公司可能被一家评为中等风险，另一家评为行业前列</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Berg et al. 提到的三大后果</h3>
+        <div class="formula-list">
+          <div class="formula"><b>1. 价格反映更难：</b>投资者难以识别 ESG outperformers 和 laggards，评级分歧会分散 ESG 偏好对股票和债券价格的影响。</div>
+          <div class="formula"><b>2. 公司改善更难：</b>公司从评级机构收到混合信号，不知道哪些行动会被市场看重。</div>
+          <div class="formula"><b>3. 实证研究更难：</b>选择不同评级商可能改变研究结果和结论。</div>
+        </div>
+        <div class="memory"><b>记忆抓手：</b>评级分歧像“同一份底稿被不同复核人按不同标准打分”，结果会影响市场定价、公司改进方向和研究结论。</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>为什么历史比较困难</h3>
+        <p class="small">ESG 工具覆盖完整性差异很大，提供商方法持续演化。PDF 举例 Sustainalytics 在 2019 年经历 ESG rating system 重大变化，主要提供商流程也持续演进，因此历史比较和评级机构之间 like-for-like 比较都可能困难。</p>
+      </div>
+      <div class="card">
+        <h3>低相关到底好不好</h3>
+        <table class="compare">
+          <thead><tr><th>观点</th><th>理由</th></tr></thead>
+          <tbody>
+            <tr><td>低相关有益</td><td>避免 groupthink，促使更严格思考；也提醒投资者区分 ratings 和 raw data。</td></tr>
+            <tr><td>高相关有益</td><td>简化并提高 ESG 评级可信度，给公司更一致的市场信号。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>选择 ESG 数据提供商时看什么</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">1</div><div class="text">覆盖公司数量 number of companies covered。</div></div>
+        <div class="coverage-item"><div class="check">2</div><div class="text">数据历史长度 length of history of datasets。</div></div>
+        <div class="coverage-item"><div class="check">3</div><div class="text">语言覆盖 languages used。</div></div>
+        <div class="coverage-item"><div class="check">4</div><div class="text">方法稳定性 stability of methodology。</div></div>
+        <div class="coverage-item"><div class="check">5</div><div class="text">更新频率 regularity of updates。</div></div>
+        <div class="coverage-item"><div class="check">6</div><div class="text">资产类别覆盖 asset class coverage。</div></div>
+        <div class="coverage-item"><div class="check">7</div><div class="text">方法质量 quality of methodology。</div></div>
+        <div class="coverage-item"><div class="check">8</div><div class="text">数据集范围 range of datasets。</div></div>
+        <div class="coverage-item"><div class="check">9</div><div class="text">工具和服务范围 range of tools and services offered。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="practice" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Practice Hooks</div>
+        <h2>官方练习题题眼：先训练反推</h2>
+      </div>
+      <p class="head-desc">这里先做模块内题眼识别，正式三轮练习系统会完整整理英文原题、选项和解析。</p>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Practice Problem 15</div><span class="tag tag-blue">ESG Screening</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Tools used by fund managers to evaluate companies based on ESG-related exposure or ESG-specific factors.</div></div>
+          <div class="case-row"><div class="case-lab">答案方向</div><div class="case-text">ESG screening。它评估公司、国家和债券对特定因素、行业、产品或服务的暴露或参与。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">exposure / involvement-specific factors == screening，不是 raw data，也不是最终 rating。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Practice Problem 16</div><span class="tag tag-rose">Rating Divergence</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">The ratings provided by different ESG rating agencies are most likely to...</div></div>
+          <div class="case-row"><div class="case-lab">答案方向</div><div class="case-text">评级之间不是高度相关，而是会 disperse the effect of ESG performance preferences on asset prices。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">评级不一致 → 投资者偏好无法统一执行 → 对资产价格的影响被分散。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Practice Problem 19</div><span class="tag tag-violet">Methodology Difference</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">同一科技公司：一家给 ESG risk rating 24 medium risk，另一家给 ESG score 83，进入行业前 10。</div></div>
+          <div class="case-row"><div class="case-lab">答案方向</div><div class="case-text">方法差异会 hinder the ESG performance of the company from being reflected in the stock price。</div></div>
+          <div class="case-row"><div class="case-lab">易错提醒</div><div class="case-text">这不会给公司清晰改善信号，也不会降低实证研究差异，反而会增加困扰。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Practice Problem 17</div><span class="tag tag-green">Scorecard Data Quality</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">三家银行 GHG emission policy 和 Scope 1/2/3 披露完整性不同。</div></div>
+          <div class="case-row"><div class="case-lab">答案方向</div><div class="case-text">Bank C 最高，因为既有 GHG emission policy，又披露 total GHG emissions，并拆分 Scope 1、2、3。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">政策 + 总量 + 细分范围披露 == 更强 GHG 披露和实践。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Review</div>
+        <h2>考前压缩：模块 7 十条式子</h2>
+      </div>
+      <p class="head-desc">这一节机构名多，背的时候用“流水线”而不是名单。</p>
+    </div>
+    <div class="compress">
+      <div class="formula-list">
+        <div class="formula"><b>1. ESG 数据工具 ==</b> 原始信息 → 评分加工 → 工具产品 → 投资使用 → 局限校验。</div>
+        <div class="formula"><b>2. Morningstar ==</b> holdings-based weighted average + Sustainalytics 数据 → 忽略管理人意图和参与。</div>
+        <div class="formula"><b>3. Mercer ==</b> 管理人 ESG 能力评估：流程、估值、长期性、所有权、替代资产、协作、组织承诺。</div>
+        <div class="formula"><b>4. Primary data ==</b> 公司调查/沟通/报告/公开文件/官网 + 间接新闻/调研/政府 NGO 等。</div>
+        <div class="formula"><b>5. Secondary data ==</b> primary data 经评分、公式或模型变成分数、评估、评级。</div>
+      </div>
+      <div class="formula-list">
+        <div class="formula"><b>6. Provider types ==</b> 大型营利 + 精品营利 + 非营利。</div>
+        <div class="formula"><b>7. Product types ==</b> data + ratings + screening + voting advice + indexes + alerts + research + advisory。</div>
+        <div class="formula"><b>8. ESG rating ==</b> 选重大指标 → 收集数据 → 处理缺失 → 定性定量评分 → 权重合并。</div>
+        <div class="formula"><b>9. Rating divergence ==</b> 因素识别不同 + 权重不同 + 数据不同 + 评分方法不同。</div>
+        <div class="formula"><b>10. 三大后果 ==</b> 价格反映难 + 公司改善信号混乱 + 实证研究结论不稳定。</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="trap"><b>易错点 1：</b>ESG screening 是按暴露或参与特定因素进行筛选，不等于 ESG data 或 ESG rating。</div>
+      <div class="trap"><b>易错点 2：</b>ESG 评级低相关不一定只有坏处，PDF 同时提到可避免 groupthink，但也会削弱可信度和一致信号。</div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：看到题眼能不能反推数据逻辑</h2>
+      </div>
+      <p class="head-desc">先自己答，再点开答案。</p>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">01</div><div class="qtext">Primary ESG data 和 secondary ESG data 的核心区别是什么？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">Primary 是原始来源，如公司报告、调查、沟通、公开文件、新闻和调研；secondary 是把 primary data 经评分、公式或模型转换成分数、评估或评级。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">02</div><div class="qtext">Morningstar sustainability ratings 的核心方法和主要批评是什么？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">核心是 holdings-based weighted average，使用 Sustainalytics 公司层面评分。批评是忽略有意图的 ESG 策略、股东参与和管理人能力，且 backward looking。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">03</div><div class="qtext">Mercer ESG=1 代表什么，为什么重要？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">Mercer 四分制中 ESG=1 是最高评级，少于 5% 投资团队获得，强调管理人 ESG 整合能力和流程深度。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">04</div><div class="qtext">ESG screening 和 ESG rating 有什么区别？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">Screening 是按暴露、参与、因素、行业、产品或服务评估公司、国家、债券；rating 是对发行人或基金 ESG 方法、披露、战略或表现的综合观点。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">05</div><div class="qtext">ESG index 通常怎样构建？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">通常基于 ESG scores 或 metrics 的规则化标准，通过公式倾斜公司权重或剔除公司，可成为基准、被动模型基金或 ESG ETF。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">06</div><div class="qtext">发行人 ESG 评级的典型流程是什么？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">识别行业重大指标 → 收集披露/问卷/非结构化/第三方数据 → 检查一致性和估计缺失 → 量化定性和定量数据 → 按权重合并成行业相对或绝对分数。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">07</div><div class="qtext">为什么不同 ESG 评级机构之间相关性低？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">因为它们对重大因素的识别、数据来源、权重、评分方法和覆盖范围不同，分歧在选择 ESG 因素时就已经开始。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">08</div><div class="qtext">ESG 评级分歧会带来哪三大后果？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">ESG 表现更难反映进股票和债券价格；公司收到混合信号、难以判断应改善什么；实证研究会因选择不同评级商而得出不同结论。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">09</div><div class="qtext">选择 ESG 数据提供商时至少看哪几个维度？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">覆盖公司数量、数据历史长度、语言、方法稳定性、更新频率、资产类别覆盖、方法质量、数据集范围、工具和服务范围。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">10</div><div class="qtext">同一公司一家评级为 medium risk，另一家评为行业前 10，这类题最可能考什么？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">考 ESG rating methodology divergence。它会阻碍 ESG 表现反映进股价，也让公司和研究者面对混合信号。</div></div>
+    </div>
+  </section>
+
+  <div class="footer-note">依据：ch07/esg-07.pdf 第 7 章 7.1.11-7.1.14。ch04 页面仅作结构和排版参考。</div>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

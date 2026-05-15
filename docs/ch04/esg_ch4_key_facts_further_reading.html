@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.4 · Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:30px 16px 84px;overflow:hidden}
+.hero{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);padding:28px 30px;margin-bottom:18px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:860px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:440px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;overflow-wrap:anywhere}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;margin:0;overflow-wrap:anywhere}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-card h3{font-size:13px;margin:0 0 6px}.flow-card p{font-size:12px;color:var(--sub);line-height:1.55;margin:0}
+.facts-grid{display:flex;flex-direction:column;gap:10px}
+.fact-card{display:grid;grid-template-columns:54px minmax(0,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);overflow:hidden}
+.fact-num{display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:950;background:var(--accent,#1d4ed8)}
+.fact-body{padding:15px 17px}.fact-title{font-size:15px;font-weight:950;color:var(--dark);margin-bottom:5px}.fact-text{font-size:13.7px;color:var(--sub);line-height:1.72;margin:0}
+.f1{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.f2{--accent:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.f3{--accent:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.f4{--accent:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.f5{--accent:var(--amber);background:var(--amber-bg);border-color:var(--amber-bdr)}
+.f6{--accent:var(--rose);background:var(--rose-bg);border-color:var(--rose-bdr)}
+.f7{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.equations{display:flex;flex-direction:column;gap:8px}.eq{display:grid;grid-template-columns:minmax(88px,.32fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark);line-height:1.45}.eq-op{font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.reading-list{display:flex;flex-direction:column;gap:12px}.reading-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:17px 18px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px}
+.reading-icon{width:34px;height:34px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-weight:950;color:var(--dark)}
+.reading-title{font-size:14.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px}
+.reading-desc{font-size:13.2px;color:var(--sub);line-height:1.68;margin:0 0 8px}.reading-url{font-size:12px;color:var(--blue);font-weight:850;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero{padding:22px 18px}.flow{grid-template-columns:1fr}.fact-card{grid-template-columns:44px minmax(0,1fr)}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}h1{font-size:28px;line-height:1.12}.hero-title-line{display:block}.lead,.hero-eq{font-size:14px}.center-node{border-radius:var(--r);padding:12px 14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="pills">
+      <span class="pill">Chapter 4</span>
+      <span class="pill">Key Facts</span>
+      <span class="pill">Further Reading</span>
+      <span class="pill">Social Factors</span>
+    </div>
+    <h1><span class="hero-title-line">Key Facts &</span> <span class="hero-title-line">Further Reading</span></h1>
+    <p class="lead">这一页是第 4 章的收口页：把全章 7 条 Key Facts 压缩成一条主线，并把 Further Reading 变成“看什么、为了什么”的阅读地图。</p>
+    <div class="hero-eq"><b>整章总逻辑等式：</b>Social Factors == Social / Environmental megatrends + 内部社会因素 + 外部社会因素 + 国家/行业/公司重大性 + 管理质量 + 财务分析</div>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">总图</button>
+    <button class="tab" data-tab="facts">7条事实</button>
+    <button class="tab" data-tab="reading">延伸阅读</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Chapter Map</div>
+        <h2>第 4 章一条线：从社会变化到财务影响</h2>
+      </div>
+      <div class="head-desc">这张图把 4 个模块和 Key Facts 串起来，方便你最后复盘整章。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Social Factors<br>趋势影响企业，企业反过来影响人和社会</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 社会大趋势</h3><p>全球化、AI、数字化、不平等、工作、家庭、人口、城市、宗教。</p></div>
+        <div class="flow-card"><h3>2 Environmental megatrends</h3><p>公正转型、水资源、迁移、污染和自然资源退化。</p></div>
+        <div class="flow-card"><h3>3 内部因素</h3><p>人力资本、DEI、健康安全、人权、劳工权利、生活工资。</p></div>
+        <div class="flow-card"><h3>4 外部因素</h3><p>利益相关方、产品安全、社会机会、动物福利和耐药性。</p></div>
+        <div class="flow-card"><h3>5 重大性</h3><p>国家、行业、公司层面都不同，不能用同一张清单。</p></div>
+        <div class="flow-card"><h3>6 管理质量</h3><p>战略、政策、流程、指标、透明度、同业比较。</p></div>
+        <div class="flow-card"><h3>7 财务分析</h3><p>收入、成本、负债、折现率、可持续性。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">记忆线</span>
+        <h3>先外部趋势，再公司管理</h3>
+        <p class="small">社会趋势提供背景，内部/外部因素提供风险点，重大性分析决定哪些点真正进入投资判断。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">投资线</span>
+        <h3>风险和机会并存</h3>
+        <p class="small">社会问题可能带来罚款、诉讼、中断和抵制，也可能带来基本服务、药品可及性和趋势适应机会。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">模型线</span>
+        <h3>最后看财务影响</h3>
+        <p class="small">第 4 章最终落点是投资分析：管理质量、比率分析、财务建模和风险溢价。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>7 条 Key Facts：原文要点 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条都保留教材原意，并压成可回忆的等式。</div>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card f1"><div class="fact-num">1</div><div class="fact-body"><div class="fact-title">社会大趋势范围很广</div><p class="fact-text">Social megatrends 包括全球化、自动化和 AI、财富差距、数字创新、工作和教育变化、个人和家庭动态、人口变化、城市增长和宗教变化。<br><b>等式：</b>社会大趋势 == 经济连接 + 技术替代 + 财富分配 + 生活结构 + 人口空间 + 信仰。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">2</div><div class="fact-body"><div class="fact-title">Environmental megatrends 也有社会影响</div><p class="fact-text">环境大趋势包括气候变化和公正转型、水资源短缺、大规模迁移等。<br><b>等式：</b>Environmental megatrends 的社会影响 == 气候转型的公平 + 水资源压力 + 迁移挑战。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">3</div><div class="fact-body"><div class="fact-title">内部社会因素围绕组织和员工</div><p class="fact-text">关键内部因素包括人力资本和 DEI、健康安全、人权和劳工权利、结社自由和积极员工关系、消除强迫劳动、倡导生活工资。<br><b>等式：</b>内部因素 == 员工能力 + 员工安全 + 员工权利 + 员工尊严。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">4</div><div class="fact-body"><div class="fact-title">外部社会因素围绕客户、社区和公共健康</div><p class="fact-text">外部因素包括利益相关方关注、产品安全、社会机会、动物福利和抗微生物药物耐药性风险。<br><b>等式：</b>外部因素 == 社区许可 + 消费者安全 + 基本服务机会 + 动物/公共健康。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">5</div><div class="fact-body"><div class="fact-title">社会重大性因地、因行业、因公司而异</div><p class="fact-text">社会趋势和因素影响因地区、行业和公司不同而不同，分析需考虑具体运营背景，以及供应商、客户等关键利益相关方所在地。<br><b>等式：</b>重大性 == 地区背景 × 行业特征 × 公司暴露点。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">6</div><div class="fact-body"><div class="fact-title">评估管理质量要看一整套证据</div><p class="fact-text">评估公司社会因素管理，需要看战略 strategy、政策 policies、已实施流程、绩效指标 performance metrics、透明度，并与行业标准和同业表现比较，以判断当前状态和进步。<br><b>等式：</b>管理质量 == strategy + policies + 流程 + performance metrics + 披露 + 同业比较。</p></div></div>
+      <div class="fact-card f7"><div class="fact-num">7</div><div class="fact-body"><div class="fact-title">社会因素越来越进入财务分析</div><p class="fact-text">投资者越来越把社会因素纳入 financial analysis，以理解这些因素如何影响公司财务健康和可持续性。<br><b>等式：</b>社会因素入模 == financial analysis 中的收入 + 成本 + 负债 + 折现率 + 长期可持续性。</p></div></div>
+    </div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading</div>
+        <h2>延伸阅读：每份材料看什么</h2>
+      </div>
+      <div class="head-desc">这里不是让你全读，而是知道它们分别支持哪类考点。</div>
+    </div>
+    <div class="reading-list">
+      <div class="reading-card"><div class="reading-icon">1</div><div><div class="reading-title">Norges Bank Investment Management exclusion list</div><p class="reading-desc">用于理解资产所有者如何把排除清单作为责任投资和风险管理工具。</p><div class="reading-url">nbim.no · Observation and Exclusion of Companies</div></div></div>
+      <div class="reading-card"><div class="reading-icon">2</div><div><div class="reading-title">NYU Stern Center for Business and Human Rights · Putting the S in ESG</div><p class="reading-desc">用于理解投资者如何衡量人权表现，是“社会因素如何被指标化”的背景材料。</p><div class="reading-url">stern.nyu.edu · Measuring Human Rights Performance for Investors</div></div></div>
+      <div class="reading-card"><div class="reading-icon">3</div><div><div class="reading-title">Platform Living Wage Financials · 2018 Engagement Outcomes / Sector Takeaways</div><p class="reading-desc">用于复习生活工资、供应链参与、投资者如何推动被投公司改进。</p><div class="reading-url">livingwage.nl · Garment and Footwear engagement outcomes</div></div></div>
+      <div class="reading-card"><div class="reading-icon">4</div><div><div class="reading-title">PRI · Human Rights and Labor Standards / Social Issues</div><p class="reading-desc">用于补充人权、工作条件、现代奴役等社会议题的投资者参与框架。</p><div class="reading-url">unpri.org · Human Rights and Labour Standards</div></div></div>
+      <div class="reading-card"><div class="reading-icon">5</div><div><div class="reading-title">PRI · Why and How Investors Should Act on Human Rights</div><p class="reading-desc">用于理解投资者为什么需要对人权风险采取行动，以及如何通过投资组合和参与施加影响。</p><div class="reading-url">unpri.org · Why and how investors should act on human rights</div></div></div>
+      <div class="reading-card"><div class="reading-icon">6</div><div><div class="reading-title">World Economic Forum · Global Risks Report</div><p class="reading-desc">用于把社会因素放进更大的全球风险图景，不限于 ESG 的 S，也连接经济、环境、地缘风险。</p><div class="reading-url">weforum.org · The Global Risks Report 2019</div></div></div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组总式背完整章</h2>
+      </div>
+      <div class="head-desc">如果只能用 5 分钟复习第 4 章，先背这一页。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>整章逻辑等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">4.1.1-4.1.2</div><div class="eq-op">==</div><div class="eq-rhs">社会/环境大趋势如何改变企业风险和机会。</div></div>
+          <div class="eq"><div class="eq-lhs">4.1.3</div><div class="eq-op">==</div><div class="eq-rhs">关键社会因素分内部员工和外部利益相关方。</div></div>
+          <div class="eq"><div class="eq-lhs">4.1.4-4.1.5</div><div class="eq-op">==</div><div class="eq-rhs">重大性分析按国家、行业、公司三层过滤。</div></div>
+          <div class="eq"><div class="eq-lhs">4.1.6</div><div class="eq-op">==</div><div class="eq-rhs">重大社会因素进入风险评估、管理质量、比率分析和财务建模。</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Internal vs External</b>员工、人权、劳工、生活工资多为内部；产品、客户、社区、动物福利多为外部。</div>
+          <div class="trap"><b>Risk vs Opportunity</b>社会因素既可能导致罚款和抵制，也可能形成药品可及性、基本服务、趋势适应机会。</div>
+          <div class="trap"><b>Country vs Sector vs Company</b>国家看发展和法规，行业看固有风险，公司看具体暴露和管理能力。</div>
+          <div class="trap"><b>Double Materiality</b>Financial Materiality 看社会因素如何影响公司价值；Impact Materiality 看公司如何影响人和环境。</div>
+          <div class="trap"><b>Management vs Modeling</b>管理质量看证据和同业比较；模型分析看收入、成本、负债、折现率。</div>
+          <div class="trap"><b>PLWF vs FAIRR</b>PLWF 是生活工资；FAIRR 是动物福利、集约化畜牧和耐药性。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">第 4 章现在已经形成：4 个复习模块 + 1 个 Key Facts 汇总页。下一步最自然就是统一做第 4 章三轮练习系统。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.2 Module 3 · Asset Owners</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 34px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.93);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:42px;line-height:1.08;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:18.5px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:34px;line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}.card.dark h3{color:#fff}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:var(--r);text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);margin-bottom:12px}
+table{border-collapse:collapse;width:100%;min-width:780px}th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:30px;height:30px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}.grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px;width:auto;max-width:100%;margin:0}.hero-main{padding:22px 18px}.hero-side{padding:16px}.hero{display:block;width:100%;max-width:100%;overflow:hidden}.hero-main,.hero-side,.nav,.panel,.map-board,.card,.topic-card,.case-card{width:100%;min-width:0;max-width:100%;overflow:hidden}.pills,.topic-top,.case-head{min-width:0;max-width:100%}.pill,.tag{white-space:normal;max-width:100%;text-align:left}.hero-side{margin-top:18px}.lead,.hero-eq,.side-note,.side-big,.mini-lab,.small,.head-desc{width:100%;max-width:100%;word-break:break-word;overflow-wrap:anywhere}.side-big{font-size:16px;line-height:1.48}.side-mini{grid-template-columns:1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:30px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:22px;line-height:1.18;word-break:break-word;overflow-wrap:anywhere}h2{font-size:24px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:680px}}
+@media(max-width:640px){body{width:100%;max-width:100%;overflow-x:hidden}.wrap{width:100vw;max-width:100vw;overflow-x:hidden}.hero,.hero-main,.hero-side,.nav,.panel,.map-board,.card,.topic-card,.case-card,.footer-note{width:calc(100vw - 24px);max-width:calc(100vw - 24px)}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 2</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">LO 2.1.2 / 2.1.3</span>
+        <span class="pill">Asset Owners</span>
+      </div>
+      <h1>Asset Owners</h1>
+      <p class="lead">本页覆盖 PDF 第 71-78 页 Asset Owners。核心不是列举几类“有钱人”，而是理解资产所有者为什么能设定整条投资价值链的方向：他们拥有资产、做资产配置、通过 mandates 管理外部经理，并对 beneficiaries 或自身目标承担责任。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Asset owners == legal ownership + asset allocation + direct/outsource decision + mandates + fiduciary/beneficiary link + market multiplier。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">High Frequency Eyes</div>
+      <div class="side-big">Trustees 承担 pension fund ultimate fiduciary responsibility；insurance companies 是 asset owners；asset owners 的理解和做法会驱动 ESG investing 的数量和质量。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">56%</div><div class="mini-lab">前 100 大 asset owners 中 pension funds 占比</div></div>
+        <div class="mini-stat"><div class="mini-num">85%</div><div class="mini-lab">Morningstar 调查认为 ESG fairly/very material</div></div>
+      </div>
+      <div class="side-note"><b>题眼提醒：</b>看到 ultimate fiduciary responsibility 选 trustees；看到 double exposed to climate risks，想 liability side physical risk + asset side repricing。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="mechanism">核心机制</button>
+    <button class="tab" data-tab="pensions">养老金</button>
+    <button class="tab" data-tab="others">保险与其他</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="quiz">易错与自测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>Asset Owners 是 ESG 市场的上游方向盘</h2>
+      </div>
+      <div class="head-desc">逻辑等式心象术拆法：把“资产所有者”拆成“资产归谁、谁来决策、对谁负责、信号传给谁”。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Asset Owners<br>资产归谁 + 决策给谁 + 责任对谁 + 信号传给谁</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">资产归谁</div>
+          <p>Legal owners of investment assets。</p>
+          <p>例子包括 pension funds、insurers、banks、SWFs、foundations、endowments、family offices、individuals。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">谁来决策</div>
+          <p>做 asset allocation decisions。</p>
+          <p>可直接管理，也可外包给 external managers。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">对谁负责</div>
+          <p>可能为自有账户投资，也可能代表 beneficiaries 或 in trust for beneficiaries。</p>
+          <p>养老金 trustees 是高频受托责任考点。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">信号传给谁</div>
+          <p>通过 mandates、manager selection、RFP 和市场信号影响 consultants 与 managers。</p>
+          <p>number × AUM × implementation quality 形成 multiplier effect。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>1. Legal ownership</h3><p>拥有资产，才有配置权。</p></div>
+        <div class="flow-step"><h3>2. Allocation</h3><p>按投资目标、市场展望、监管和会计规则做配置。</p></div>
+        <div class="flow-step"><h3>3. Mandates</h3><p>外包管理时，把 ESG 和产品要求写进合同。</p></div>
+        <div class="flow-step"><h3>4. Beneficiaries</h3><p>受托责任和成员偏好会影响政策。</p></div>
+        <div class="flow-step"><h3>5. Multiplier</h3><p>规模和实施质量影响整条投资价值链。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">定义</span><h3>Asset owners</h3><p class="small">法律上拥有投资资产，并根据投资目标、资本市场展望、监管和会计规则做资产配置。</p></div>
+      <div class="card"><span class="tag tag-green">机制</span><h3>Set the tone</h3><p class="small">他们对 ESG 如何影响财务回报、资本如何影响 real economy 的理解，会驱动 ESG investing 的数量和质量。</p></div>
+      <div class="card"><span class="tag tag-amber">合同抓手</span><h3>Investment mandates</h3><p class="small">Institutional asset owners 与 asset managers 建立 mandates，用来定义产品预期以及经理流程和资源。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">覆盖 PDF 第 71-78 页的定义、机制、挑战、养老金、保险、其他资产所有者和案例。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Definition</span> 资产所有者定义和机制</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset owners 包括 pension funds、insurance companies、SWFs、family offices、foundations、endowments。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">他们通常投资资产，以在给定风险水平下取得回报；部分也从非财务回报驱动获得效用。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset owners 是 investment assets 的 legal owners，并做 asset allocation decisions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">许多 asset owners 可直接管理资产，也可外包全部或部分资产给 external managers。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">外包管理时，asset owners 会设 investment mandates。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset managers 是 clients 的 agent，不法律拥有 AUM，不是交易或衍生品 counterparty。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Intermediaries 提供资产配置和 manager selection 建议，并对 managers 和 products 做 due diligence。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset owners set the tone for the investment value chain。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">他们对 ESG 如何影响 financial returns 和 capital 如何影响 real economy 的理解，驱动 ESG investing 的 amount and quality。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资产所有者方法受 investor type 影响，特别是 direct vs external managers、own account vs beneficiaries。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有效性取决于实施 RI 的 asset owners 数量、这些资产总 AUM、跨资产类别实施质量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Individual asset owners 的有效实施会向市场发出负责投资优先级信号，形成 multiplier effect。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Data & Challenges</span> 调查数字和挑战</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Investment mandates 定义 investment product expectations，有时也定义 manager processes and resources。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Morningstar 2022 调查 500 家 institutional asset owners：85% 认为 ESG factors 对 total portfolio fairly/very material。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">70% 表示 ESG factors 在过去五年变得 more/much more material。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">只有 29% 表示 ESG applies to more than half of AUM，说明很多资产仍未纳入 ESG。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Organization AUM 越大，对 ESG concerns 的考虑通常越强。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">挑战 1：retail financial advisers 犹豫整合 ESG 或评估基金 ESG 特征，导致可选产品少。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">挑战 2：部分 asset owners 认为自己没有规模或能力影响 fund managers 的产品或 fiduciary duty interpretation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">挑战 3：一些 asset owners 不确定如何把 ESG 纳入 RFPs 或 mandates。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">挑战 4：小型 asset owners 资源有限，难以自行评估 managers 和 funds 的 ESG。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Pension Funds</span> 养老金和受托责任</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">前 100 大 asset owners 中，56% 是 pension funds。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">养老金规模大且投资长期，因此在影响 investment market 中作用关键。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Pension funds 管理 pension savings，并在 beneficiaries 退休时支付。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">长期负债使长期 ESG risks 对养老金投资尤其相关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">养老金三类内部参与者：executives、trustees、beneficiaries/members。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Executives 管理 fund day-to-day functioning。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Trustees 持有 ultimate fiduciary responsibility，独立于 employer，并为 beneficiaries 以 trust 形式持有 assets。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Beneficiaries/members 是缴费者或领取养老金的人。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Board of trustees 类似公司董事会，负责确保 scheme 正常运行和 members’ benefits 安全。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Beneficiaries 通常不了解投资细节，但可能质疑人权违规公司或要求 divest nuclear weapons。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">长负债 owners 理论上适合 long-term investing，但实践中可能奖励短期行为，制造 short-termism。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Pension funds 可把 long-termism 写入 investment belief statements，并用 mandates 要求 long-term metrics。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Fiduciary duty interpretation 会影响 trustees 认为自己 can/must/must not integrate ESG。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Climate change 导致的财务损失可能使 trustees 面临 fiduciary legal risks。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">超过 300 名机构投资者调查中，46% 引用 fiduciary duty and regulations 作为采用 ESG principles 的关键驱动。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Members 虽非投资专业人士，但作为 ultimate beneficiaries 可通过 ethical preferences 影响政策。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Insurance & Other Owners</span> 保险和其他资产所有者</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Insurance 分 Property and casualty、Life、Re-insurance 三类。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Many insurers 有内部 asset management business 投资保险 premiums。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Insurers 对 extreme weather events、physical/transition risks、demographic changes 敏感。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">监管者对 insurers 管理 systemic risks 的期待，支持其建设分析能力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Insurers double exposed to climate risks：liability side 面对 P&C physical risks；asset side 面对 portfolio repricing。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sovereign wealth funds 是 state-owned investment funds，2022 全球 AUM 约 USD11.4tn。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SWFs 目标可能包括 economic stabilization、future generations、strategic development。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SWF objectives can but do not necessarily align with ESG concerns。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Endowment funds 由大学、医院等机构设立在 foundation 中，用提款支持 ongoing operations。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Foundations/public charities 既有 investment ESG exposures，也有 charitable work 中的 ESG objectives。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Private foundations 通常来自一个 funder；public charities 来自 publicly collected funds。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Retail investors 的 ESG adoption generally slower than institutional investors。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">美国 2018 年仅 USD161bn of USD22.1tn assets 流向 referencing ESG considerations 的资产。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">美国 ESG funds：2021 Q1 inflow USD21.5bn，2022 net annual inflow USD3.1bn，2023 sustainable funds 首次年度 outflows USD13.0bn。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mechanism" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Core Mechanism</div>
+        <h2>资产所有者如何驱动整条链</h2>
+      </div>
+      <div class="head-desc">本节最重要的句子是：asset owners set the tone for the investment value chain。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Legal ownership</div><span class="tag tag-blue">定义</span></div>
+        <p class="small"><b>原文要点：</b>Asset owners are the legal owners of investment assets and make asset allocation decisions。</p>
+        <p class="small"><b>中文解释：</b>资产归谁，谁就有权决定资产配置，也就能把 ESG 写进投资目标和授权。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Asset owner</div><div class="eq-op">==</div><div class="eq-rhs">legal ownership + asset allocation power</div></div></div>
+        <div class="memory"><b>考点：</b>Insurance companies 是 asset owners，不是 intermediaries。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Direct or outsourced</div><span class="tag tag-green">路径</span></div>
+        <p class="small"><b>原文要点：</b>Many asset owners manage directly, while others outsource all or part to external managers。</p>
+        <p class="small"><b>中文解释：</b>自己投就直接体现政策；外包投就通过 mandates、manager selection 和 oversight 传导要求。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Management path</div><div class="eq-op">==</div><div class="eq-rhs">direct management + outsourced management through mandates</div></div></div>
+        <div class="memory"><b>考点：</b>Mandates define asset owners’ requirements with regard to ESG issues。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Multiplier effect</div><span class="tag tag-amber">传导</span></div>
+        <p class="small"><b>原文要点：</b>有效性取决于 asset owners 的数量、总 AUM 和跨资产类别实施质量；有效实施会形成 multiplier effect。</p>
+        <p class="small"><b>中文解释：</b>资产所有者的“明确需求”会让顾问和资管人更愿意发展 ESG 产品和建议。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Multiplier</div><div class="eq-op">==</div><div class="eq-rhs">number of owners × total AUM × quality across asset classes</div></div></div>
+        <div class="memory"><b>考点：</b>Practice Q10 选 effective implementation by individual asset owners。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Morningstar 2022</div><span class="tag tag-violet">数字</span></div>
+        <p class="small"><b>原文要点：</b>500 家 institutional asset owners 中，85% 认为 ESG fairly/very material，70% 认为过去五年更 material，但只有 29% 适用于超过一半 AUM。</p>
+        <p class="small"><b>中文解释：</b>认知已很高，但资产覆盖仍不充分。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Survey</div><div class="eq-op">==</div><div class="eq-rhs">85% material + 70% more material + only 29% over half AUM</div></div></div>
+        <div class="memory"><b>考点：</b>Q9 只问 significance to portfolio，选 fairly material to very material。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Asset owner challenges</div><span class="tag tag-rose">挑战</span></div>
+        <p class="small"><b>原文要点：</b>挑战包括 adviser hesitancy、缺乏规模/能力、不知道如何写进 RFPs/mandates、小型 owners 缺资源。</p>
+        <p class="small"><b>中文解释：</b>资产所有者是上游方向盘，但如果信号不清晰、能力不足，下游产品和整合就会慢。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Challenges</div><div class="eq-op">==</div><div class="eq-rhs">adviser hesitation + weak influence + RFP/mandate uncertainty + limited resources</div></div></div>
+        <div class="memory"><b>考点：</b>Q20 选 lack of clear signals from asset owners。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Mandates as ESG contract</div><span class="tag tag-teal">落地</span></div>
+        <p class="small"><b>原文要点：</b>Institutional asset owners establish contracts with asset managers, known as investment mandates。</p>
+        <p class="small"><b>中文解释：</b>Mandate 是 ESG 要求进入投资产品、经理流程、资源配置和报告要求的合同入口。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Mandate</div><div class="eq-op">==</div><div class="eq-rhs">product expectations + ESG requirements + manager process/resources</div></div></div>
+        <div class="memory"><b>考点：</b>不必然等于只要求报告 ESG ratings 或 financial performance impact。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="pensions" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Pension Funds</div>
+        <h2>养老金：长期负债、三类角色、受托责任</h2>
+      </div>
+      <div class="head-desc">养老金是本模块最重要的资产所有者类型，练习题集中考 trustees、beneficiaries、mandates 和 long-termism。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>项目</th><th>原文要点</th><th>中文解释</th><th>逻辑等式</th></tr></thead>
+        <tbody>
+          <tr><td>规模地位</td><td>Of the 100 largest asset owners, 56% are pension funds.</td><td>养老金在大资产所有者中占比高，市场影响大。</td><td>Pension influence == size + long-term nature</td></tr>
+          <tr><td>长期负债</td><td>Given the long-term nature of liabilities, ESG risks are particularly relevant.</td><td>养老金要多年后支付退休金，长期 ESG 风险更重要。</td><td>Long liabilities → long-term ESG relevance</td></tr>
+          <tr><td>Executives</td><td>Manage the fund’s day-to-day functioning.</td><td>负责日常运营，不是最终受托责任主体。</td><td>Executives == daily operations</td></tr>
+          <tr><td>Trustees</td><td>Hold the ultimate fiduciary responsibility and assets in trust for beneficiaries.</td><td>最终受托责任在 trustees，Q2 高频。</td><td>Trustees == ultimate fiduciary responsibility</td></tr>
+          <tr><td>Beneficiaries</td><td>Members pay into the fund or are pensioners benefiting from assets.</td><td>成员是最终受益人，可通过偏好和质疑影响政策。</td><td>Members == ultimate beneficiaries + ethical preferences</td></tr>
+          <tr><td>Long-termism</td><td>Pension funds can integrate long-termism into investment belief statements and mandates.</td><td>可用投资信念和 mandates 要求 long-term metrics。</td><td>Long-termism == beliefs + mandates + metrics</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Trustees：受托责任线</h3>
+        <p class="small">Trustees 作为 pension fund members 的 fiduciaries，必须为 beneficiaries 的 best interests 行事。Fiduciary duty 的解释，会影响他们认为自己是可以、必须，还是不能把 ESG 纳入基金政策和流程。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Trustees</div><div class="eq-op">==</div><div class="eq-rhs">best interests + fiduciary duty + climate legal risk</div></div></div>
+      </div>
+      <div class="card">
+        <h3>Members：偏好反馈线</h3>
+        <p class="small">Members 不是投资专业人士，但他们是 ultimate beneficiaries。在部分司法辖区，“acting in the interest” 不只局限于财务结果，也可能包括 ethical preferences。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Members</div><div class="eq-op">==</div><div class="eq-rhs">ultimate beneficiaries + ethical preferences + policy feedback</div></div></div>
+      </div>
+    </div>
+    <div class="riskline" style="margin-top:14px"><b>易错提醒：</b>Executives 管日常；trustees 承担 ultimate fiduciary responsibility；members/beneficiaries 影响政策但不是直接下投资指令。</div>
+  </section>
+
+  <section id="others" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Insurance & Other Asset Owners</div>
+        <h2>保险、主权财富、捐赠基金、基金会、零售投资者</h2>
+      </div>
+      <div class="head-desc">这些主体共同点是“拥有或控制资本”，差异在钱的来源、使命和 ESG 敏感点。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Insurance companies</div><span class="tag tag-blue">Q4 / Q17</span></div>
+        <p class="small"><b>原文要点：</b>Insurance 包括 P&C、Life、Re-insurance；许多 insurers 有内部资管业务，投资 insurance premiums。</p>
+        <p class="small"><b>中文解释：</b>保险公司拥有资产并做资产配置，所以是 asset owners。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Insurance</div><div class="eq-op">==</div><div class="eq-rhs">asset owner + internal asset management + ESG-sensitive underwriting</div></div><div class="eq"><div class="eq-lhs">Double exposed</div><div class="eq-op">==</div><div class="eq-rhs">liability side physical risks + asset side repricing</div></div></div>
+        <div class="memory"><b>考点：</b>Q17 选 property/casualty liability + re-pricing of assets。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Sovereign Wealth Funds</div><span class="tag tag-green">SWF</span></div>
+        <p class="small"><b>原文要点：</b>SWF 是 state-owned investment fund，2022 全球 AUM 约 USD11.4tn。</p>
+        <p class="small"><b>中文解释：</b>SWF 往往服务国家中长期目标，但这些目标不一定自动等同 ESG。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">SWF</div><div class="eq-op">==</div><div class="eq-rhs">state capital + stabilization + future generations + strategic development</div></div></div>
+        <div class="memory"><b>考点：</b>objectives can but do not necessarily align with ESG concerns。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Endowment Funds</div><span class="tag tag-amber">Endowment</span></div>
+        <p class="small"><b>原文要点：</b>由大学、医院等机构设立在 foundation 中，通过提款支持 ongoing operations。</p>
+        <p class="small"><b>中文解释：</b>因为常有社会目的，所以“运营资金如何与 divestment 等议题对齐”会引发争论。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Endowment</div><div class="eq-op">==</div><div class="eq-rhs">institutional fund + withdrawals for operations + mission alignment debate</div></div></div>
+        <div class="memory"><b>案例钩子：</b>2022 年 100 所英国大学承诺 divest fossil fuels，涉及 GBP18bn endowments。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Foundations and Public Charities</div><span class="tag tag-violet">Mission</span></div>
+        <p class="small"><b>原文要点：</b>Private foundations 通常来自一个 funder；public charities 来自 publicly collected funds。</p>
+        <p class="small"><b>中文解释：</b>它们一边有投资组合的 ESG exposures，一边有慈善工作中的 ESG objectives。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Foundations</div><div class="eq-op">==</div><div class="eq-rhs">private one funder / public collected funds + investment exposure + charitable ESG objective</div></div></div>
+        <div class="memory"><b>考点：</b>区别 private foundation 和 public charity 的资金来源。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Retail investors</div><span class="tag tag-rose">Q24</span></div>
+        <p class="small"><b>原文要点：</b>Retail ESG adoption generally slower than institutional investors。</p>
+        <p class="small"><b>中文解释：</b>零售投资者兴趣增长，但采用速度仍慢；美国 ESG funds 还出现净流入下降和 2023 年首次年度流出。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Retail</div><div class="eq-op">==</div><div class="eq-rhs">interest grows + adoption slower + flow volatility</div></div></div>
+        <div class="memory"><b>考点：</b>Q24 选 slower，不要被 retail interest growing 误导。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Insurance sensitivity</div><span class="tag tag-teal">ESG 风险</span></div>
+        <p class="small"><b>原文要点：</b>保险对 extreme weather events、long-term asset value 的 physical/transition risks、demographic changes 敏感。</p>
+        <p class="small"><b>中文解释：</b>保险既承保风险，又投资资产，所以气候和人口变化会同时影响负债端和资产端。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Sensitivity</div><div class="eq-op">==</div><div class="eq-rhs">extreme weather + asset value risk + demographics + regulation expectations</div></div></div>
+        <div class="memory"><b>投资影响：</b>气候诉讼也可能影响 liability and business insurance。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case Studies</div>
+        <h2>案例：把机制落到行动</h2>
+      </div>
+      <div class="head-desc">案例不是装饰，用来证明 asset owners 如何通过 divestment、ESG indexes、RFP、成员调查和法律风险推动 ESG。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">ABP Pension Fund</div><span class="tag tag-rose">Divestment</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2021 年宣布到 2023 年剥离 USD17bn fossil fuel producers；约 80家公司，占 ABP 总资产近 3%。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">Engagement 推动不足时，资产所有者可用 divestment 表达长期气候和法律风险判断。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">ABP 还曾警告银行：如果脱碳声明没有真实行动，可能 divest banking sector。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Government Pension Investment Fund</div><span class="tag tag-green">ESG indexes</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">GPIF 2017-2022 投资十个 ESG-themed indexes，目标是通过降低对环境和社会的负外部性改善整体资产长期回报。</div></div>
+          <div class="case-row"><div class="case-lab">标准</div><div class="case-text">强调 positive screening、基于公开信息并披露方法和结果、评价者和指数提供者治理良好且管理利益冲突。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">GPIF index selection == positive screening + public methodology + evaluator governance。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">UK Environment Agency Pension Fund</div><span class="tag tag-amber">RFP</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2014 年发起 RFP，寻找 sustainable global listed equities manager，强调长期合同和长期投资期限。</div></div>
+          <div class="case-row"><div class="case-lab">要求</div><div class="case-text">长期 sustainability approach、广泛整合 ESG、强承诺 non-financial research。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">Long-term mandate == long-term contract + long-term horizon + ESG integration。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Rest Litigation</div><span class="tag tag-violet">Legal risk</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">澳大利亚成员起诉 pension fund 未披露气候变化对投资的影响及应对；2020 年和解，承诺 2050 net zero。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">Climate risk 可变成 fiduciary legal risk。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">Trustees 不充分处理气候风险，可能面临 breach of fiduciary duties 的法律挑战。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Dutch Pension Fund Surveys</div><span class="tag tag-blue">Members</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">PGB</div><div class="case-text">3,500 respondents 中，90% 偏好 sustainable energy，14% 支持 arms，17% 支持 tobacco；之后排除 tobacco 和 civilian firearms。</div></div>
+          <div class="case-row"><div class="case-lab">Horeca</div><div class="case-text">9,500 members 和 526 employers 反馈后，排除违反 UN Global Compact Principles 的公司，并计划两年内组合碳排降 20%。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">Member survey == ethical preferences → policy fine-tuning。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">UK Universities Endowments</div><span class="tag tag-teal">Mission alignment</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2022 年学生压力促使 100 所英国大学承诺 divest fossil fuels，使 GBP18bn endowments 不再可用于 fossil fuel investments。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">Endowment 的社会目的和长期运营资金会引发 divestment debate。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">Endowment funds 不只是“大学的钱”，还涉及使命和投资一致性。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Traps & Self Test</div>
+        <h2>易错点和自测</h2>
+      </div>
+      <div class="head-desc">这一页直接对应正式题 Q2、Q4、Q8、Q9、Q10、Q17、Q18、Q19、Q20、Q24。</div>
+    </div>
+    <div class="trap-grid">
+      <div class="trap"><b>1. Trustee 不是 executive</b>Executives 管日常；ultimate fiduciary responsibility 在 trustees。</div>
+      <div class="trap"><b>2. Insurance 不是 intermediary</b>保险公司拥有投资资产并做资产配置，因此是 asset owners。</div>
+      <div class="trap"><b>3. 85% 不等于全部 AUM</b>85% 认为 ESG material，但只有 29% 表示 ESG 适用于超过一半 AUM。</div>
+      <div class="trap"><b>4. Mandate 不只是评级报告</b>Mandates 定义 asset owners 对产品和 ESG 的要求，不必然等于只报告 ESG rating。</div>
+      <div class="trap"><b>5. Member influence 不是直接命令</b>Beneficiaries 通过 ethical preferences 和反馈影响 policies，不是直接命令 executives。</div>
+      <div class="trap"><b>6. Long-term liabilities 不等于必然长期行为</b>理论上适合长期投资，实践中也可能奖励短期表现，反而制造 short-termism。</div>
+    </div>
+    <div class="quiz-list" style="margin-top:14px">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q2</div><div class="qtext">Which party holds the ultimate fiduciary responsibility for a pension fund?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>Trustees。<br><b>中文解析：</b>Trustees 独立于 employer，并为 beneficiaries 以 trust 形式持有资产。Executives 管日常，但不是 ultimate fiduciary responsibility。<br><b>逻辑等式：</b>Pension governance == executives daily + trustees fiduciary + beneficiaries benefit。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q4</div><div class="qtext">Insurance companies are best categorized as what?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>Asset owners。<br><b>中文解析：</b>保险公司法律上拥有资产并做资产配置，还常有内部 asset management business。<br><b>题眼钩子：</b>legal ownership + asset allocation。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q8</div><div class="qtext">What significantly drives the amount and quality of ESG investing in the investment value chain?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>The approach and understanding of ESG factors by asset owners。<br><b>中文解析：</b>资产所有者如何理解 ESG 对财务回报和实体经济的影响，会明显驱动 ESG investing 的数量和质量。<br><b>逻辑等式：</b>Amount/quality == asset owner understanding + approach。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q9</div><div class="qtext">What does the 2022 Morningstar survey indicate about ESG factors to institutional asset owners?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>ESG factors are fairly material to very material to their total portfolio。<br><b>中文解析：</b>500 家 institutional asset owners 中 85% 作出该判断。<br><b>易错提醒：</b>不要选 not material 或 slightly material。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q10</div><div class="qtext">What creates a multiplier effect throughout the investment market in terms of ESG investing?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>The effective implementation of responsible investment by individual asset owners。<br><b>中文解析：</b>这会向市场表明 responsible investment 是 asset owners 的优先事项，进而影响 consultants 和 managers。<br><b>逻辑等式：</b>Multiplier == owner implementation signal → consultant/manager response。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q17</div><div class="qtext">How are insurers double exposed to climate risks?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>Liability from property and casualty insurance and re-pricing of assets。<br><b>中文解析：</b>负债端 P&C insurers 面对 physical climate risks；资产端 insurers’ portfolios 会因 climate risks 被重新定价。<br><b>逻辑等式：</b>Double exposed == liability side physical risk + asset side repricing。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q18</div><div class="qtext">Why are investment mandates important for ESG investing?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>They define the requirements of asset owners with regard to ESG issues。<br><b>中文解析：</b>Mandates 定义产品预期，有时也定义 manager processes and resources。<br><b>易错提醒：</b>不必然等于要求报告 ESG ratings 或 ESG 对财务表现的影响。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q19</div><div class="qtext">How are pension fund beneficiaries most likely to influence responsible investment?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>Their ethical preferences may be taken into account within investment policies。<br><b>中文解析：</b>Members 作为 ultimate beneficiaries，可通过偏好和反馈影响 sustainable investment policies。<br><b>易错提醒：</b>不是说他们的投资指令必须被 executives 执行。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q20</div><div class="qtext">Which challenge is the greatest limiter in the development of ESG investing?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>Lack of clear signals from asset owners that they are interested in ESG investing。<br><b>中文解析：</b>资产所有者信号不清，会使 asset managers 较不愿整合 ESG factors。<br><b>逻辑等式：</b>Weak owner signal → weak manager incentive。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">Q24</div><div class="qtext">How has the adoption of ESG investing by retail investors compared to institutional investors?</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>It has been slower。<br><b>中文解析：</b>Retail ESG adoption generally slower than institutional investors；这和 retail interest growing 并不矛盾。<br><b>题眼钩子：</b>compared to institutional investors。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    const activePanel = document.getElementById(target);
+    if (activePanel) activePanel.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const shown = card.classList.toggle('show');
+    btn.textContent = shown ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

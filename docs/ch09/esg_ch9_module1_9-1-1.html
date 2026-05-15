@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESG Ch.9 Module 1 · 9.1.1</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#edf2f7;--paper:#fff;--soft:#f8fafc;--bg:#eef3f8;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 14px 38px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef3f8 52%,#e8eef5 100%);line-height:1.68;min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 78px;min-width:0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin-bottom:16px}
+.hero-main,.hero-side,.panel-card,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main{padding:28px 30px}.hero-side{padding:18px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.pill{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,54px);line-height:1.08;letter-spacing:0;margin:0 0 12px;color:var(--dark);word-break:break-word}
+.lead{font-size:15px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.76}.hero-eq b{color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.stat-num{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--dark);line-height:1}.stat-lab{font-size:12px;font-weight:850;color:var(--muted);margin-top:5px}
+.side-note{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:13px 14px;font-size:13px;line-height:1.72}.side-note b{color:#fff}
+.tabbar{position:sticky;top:10px;z-index:20;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px;overflow-x:auto;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}
+.tab-title{font-size:12px;font-weight:950;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;padding:0 7px;white-space:nowrap}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 12px;font-size:13px;font-weight:900;color:var(--muted);cursor:pointer;white-space:nowrap}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff}
+.panel{display:none;min-width:0}.panel.active{display:block}
+.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:950;letter-spacing:.10em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(24px,4vw,36px);line-height:1.16;letter-spacing:0;margin:0;color:var(--dark)}.sub{font-size:14px;color:var(--muted);line-height:1.76;margin:8px 0 0;max-width:820px}
+h3{font-size:16px;color:var(--dark);line-height:1.36;margin:0 0 8px}.small{font-size:12.8px;color:var(--muted);line-height:1.65}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px}.pad{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:950;line-height:1.25;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px;margin-bottom:14px;min-width:0;overflow:hidden}.center-node{max-width:640px;margin:0 auto 16px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45;word-break:break-word}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}.flow-card h3{font-size:14px;margin:0 0 6px}.flow-card p{font-size:12.5px;color:var(--sub);line-height:1.58;margin:0}
+.logic-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.logic-step{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.logic-step b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}.logic-step span{font-size:12.6px;color:var(--sub);line-height:1.58}
+.coverage-group{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.coverage-group h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.coverage-list{display:grid;gap:8px;margin-top:10px}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:9px}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:13px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.6}
+.knowledge-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.card-top{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.num{width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--accent,var(--blue));color:#fff;font-family:var(--serif);font-size:20px;font-weight:950;flex:0 0 auto}.card-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;margin:2px 0 4px}.row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;border-top:1px solid var(--line2);padding-top:10px;margin-top:10px}.row-lab{font-size:11px;font-weight:950;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}.row-val{font-size:13.2px;color:var(--sub);line-height:1.75}.row-val b{color:var(--dark)}
+.eq{background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:11px 12px;font-size:13px;line-height:1.72}.eq b{color:#fff}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);background:var(--soft)}.case-body{padding:16px}.case-body p{font-size:13.3px;color:var(--sub);line-height:1.78;margin:0 0 10px}.case-body p:last-child{margin-bottom:0}.mini-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;margin-top:10px}.mini-table th,.mini-table td{border-bottom:1px solid var(--line2);padding:10px;text-align:left;vertical-align:top;font-size:12.7px;line-height:1.58}.mini-table th{background:var(--soft);color:var(--dark);font-weight:950}.mini-table tr:last-child td{border-bottom:0}
+.trap{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent,var(--rose));border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px}.trap b{color:var(--dark)}.trap p{font-size:13.2px;color:var(--sub);line-height:1.72;margin:5px 0 0}
+.cheat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;min-width:0}.cheat-key{font-size:13px;font-weight:950;color:var(--dark);margin-bottom:5px}.cheat-val{font-size:13px;color:var(--sub);line-height:1.62}
+.quiz-list{display:flex;flex-direction:column;gap:12px}.q-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.q-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.q-num{font-size:12px;font-weight:950;color:var(--muted)}.q-text{font-size:14.5px;color:var(--dark);font-weight:760;line-height:1.7;margin-bottom:12px}.options{display:flex;flex-direction:column;gap:8px}.opt{width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);padding:10px 12px;font-size:13.6px;line-height:1.55;color:var(--ink);cursor:pointer}.opt:hover{border-color:var(--blue);background:var(--blue-bg)}.opt.correct{border-color:var(--green);background:var(--green-bg);color:#047857;font-weight:950}.opt.wrong{border-color:var(--rose);background:var(--rose-bg);color:#be123c}.exp{display:none;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:13px;margin-top:12px;font-size:13px;line-height:1.78;color:var(--sub)}.exp.show{display:block}.exp b{color:var(--dark)}
+.footer-note{margin-top:18px;background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.72}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.logic-line{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.section-head{display:block}}
+@media(max-width:640px){.wrap{padding:18px 12px 64px}.hero-main{padding:22px 18px}.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.pill{justify-content:center;text-align:center;white-space:normal}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow,.logic-line{grid-template-columns:1fr}.center-node{border-radius:var(--r)}.row{grid-template-columns:1fr;gap:4px}h1{font-size:30px;line-height:1.12}.tab{padding:8px 10px}.mini-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 9</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">9.1.1</span>
+        <span class="pill">Mandate Construction</span>
+      </div>
+      <h1>Clarifying Client Needs<br>定义 ESG 投资策略</h1>
+      <p class="lead">本模块只覆盖 PDF 第 9 章 9.1.1 及前导背景：为什么 ESG 投资不能只停留在理念，而必须写进客户 mandate，并通过 alignment 与 accountability 解决投资链条里的代理问题。</p>
+      <div class="hero-eq"><b>本模块总逻辑等式：</b>有效 ESG mandate == 客户目标和信念说清楚 + 基金经理激励和时间期限对齐 + ESG 被定义为风险管理或价值创造 + 重大 ESG 因素进入投资授权</div>
+    </div>
+    <aside class="hero-side">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">1</div><div class="stat-lab">Learning Outcome</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">知识卡片</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-lab">案例框</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>学习顺序：</b>先看知识地图，再按覆盖清单查漏；最后用“题眼 → 逻辑等式 → 选项”的方式做小测。</div>
+    </aside>
+  </section>
+
+  <nav class="tabbar" aria-label="module navigation">
+    <span class="tab-title">9.1.1 Review</span>
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="cards">逻辑等式卡片</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>第一屏先看一张图：从客户信念到投资授权</h2>
+        <p class="sub">第 9 章的核心不是再讲某个 ESG 因素，而是讲“怎样把 ESG 变成可执行、可监督、可报告的投资安排”。9.1.1 是起点：先把客户到底相信什么、想要什么说清楚。</p>
+      </div>
+    </div>
+
+    <div class="map-board">
+      <div class="center-node">Mandate Construction<br>把客户 ESG 信念翻译成基金经理必须执行的投资授权</div>
+      <div class="flow">
+        <div class="flow-card">
+          <h3>1 代理问题</h3>
+          <p>投资链条里，客户和基金经理也会目标不一致，类似公司治理中的代理问题。</p>
+        </div>
+        <div class="flow-card">
+          <h3>2 对齐与问责</h3>
+          <p>alignment 对齐时间期限和激励；accountability 要求回应客户意图并充分报告。</p>
+        </div>
+        <div class="flow-card">
+          <h3>3 客户信念</h3>
+          <p>客户先定义投资目标、ESG 投资信念，以及 ESG 如何影响长期价值。</p>
+        </div>
+        <div class="flow-card">
+          <h3>4 策略选择</h3>
+          <p>ESG 是风险管理，还是价值创造？答案决定排除、参与、超配等做法。</p>
+        </div>
+        <div class="flow-card">
+          <h3>5 写入 mandate</h3>
+          <p>信念进入投资授权，后续才能在 RFP、监督会议和报告中被检验。</p>
+        </div>
+      </div>
+      <div class="logic-line">
+        <div class="logic-step"><b>隐藏逻辑 1：谁的目标？</b><span>资产所有者承担长期目标，基金经理负责具体执行。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 2：怎么防偏？</b><span>用 mandate 让时间期限、考核和报告围绕客户目标。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 3：ESG 怎么进？</b><span>先判断 ESG 是防风险还是创价值，再确定投资工具。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 4：怎么考试？</b><span>看到 first step、beliefs、risk management、value creation 就回到本模块。</span></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="panel-card pad">
+        <span class="tag tag-blue">一句话</span>
+        <h3 style="margin-top:10px">mandate 是“翻译器”</h3>
+        <p class="small">客户有长期目标和 ESG 信念，但基金经理日常做的是组合管理。mandate 把信念翻译成投资范围、限制、考核和报告要求。</p>
+      </div>
+      <div class="panel-card pad">
+        <span class="tag tag-green">做题线索</span>
+        <h3 style="margin-top:10px">first step = clarify needs</h3>
+        <p class="small">题干问“effective design 的第一步”，不要选 RFP、tailoring 或 monitoring，先选客户明确需求并形成 ESG investment beliefs。</p>
+      </div>
+      <div class="panel-card pad">
+        <span class="tag tag-amber">投资影响</span>
+        <h3 style="margin-top:10px">同一 ESG 信念会改变组合</h3>
+        <p class="small">风险管理导向可能排除高风险行业；价值创造导向可能超配 ESG 表现强且能带来财务价值的公司或行业。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单：对照 PDF 查漏</h2>
+        <p class="sub">这一页只覆盖 9.1.1 及其前导背景。后面的 RFP、greenwashing、客户类型、报告衡量，会放到后续模块。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">背景</span> 第 9 章为什么从 mandate 开始</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">第 9 章把前面章节讨论的 ESG 投资内容落到真实场景：mandates、regulations、client expectations，以及基金经理如何向客户沟通 ESG 工作。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">投资链条中也存在代理问题：公司管理层与股东之间有代理问题，客户与资产管理人之间同样有代理问题。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">mandate 设计的关键，是把资产所有者通常追求的长期视角，变成基金经理可执行的投资流程。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">RFP、后续评估、组合分析和报告，是后续检验 mandate 是否被执行的工具。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">治理逻辑</span> Alignment 与 Accountability</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Alignment：基金经理的考核、薪酬和时间期限应尽量贴近客户实际经历的绩效和客户需要绩效兑现的时间期限。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Accountability：基金经理要回应客户清楚表达的意图，并按要求充分报告。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">设计良好的 client mandate 可以同时服务 alignment 和 accountability。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">holding managers to account 后续主要靠两类机制：客户与基金经理的 monitoring meetings，以及 ESG performance measurement/reporting。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-violet">9.1.1 主体</span> Clarifying Client Needs</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">有效设计 mandate 的第一步：客户明确自己的需求，并把这些需求写成清晰的 ESG investment beliefs。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">institutional clients 通常清楚自己的投资目标，例如风险调整后收益目标和时间期限，但不一定容易清楚表达 investment beliefs。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">investment beliefs 是关于“什么会驱动收益、如何创造价值”的投资哲学，也应帮助确定 ESG 投资方法。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">investment beliefs 可以通过 statement of investment principles 等文件表达，并用于框定与基金经理达成的 mandate。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-amber">PLSA</span> Stewardship Checklist 三个动作</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">动作一：清楚说明 stewardship 如何融入投资策略和政策，以及如何帮助达成投资目标。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">动作二：通过尽调和任命流程，确保基金经理和服务商有效整合长期 ESG 因素，且与客户策略、政策、目标和时间期限一致。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">动作三：与顾问一起评估 stewardship 资源、覆盖资产范围和组织结构，可内部建设，也可外包给资产管理人或 stewardship overlay provider。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">关键提醒：delegating stewardship activities does not absolve schemes of responsibility，外包不等于卸责。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-teal">目的与规则</span> 从 founding purpose 到 ESG policy</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">投资哲学往往由组织整体目的和 founding documents 塑造，ESG 因素应纳入这一目的。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">英国养老金自 2019 年 10 月起，需要在 SIP 中说明如何考虑财务重大 ESG 因素，以及 stewardship、engagement、voting 的政策。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">欧盟 Shareholder Rights Directive II 相关报告要求，以及许多市场的类似预期，都推动客户先明确 ESG 投资哲学。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">CPP Investments 和 AustralianSuper 示例都体现：长期收益、风险控制和责任投资要放在同一套投资信念里理解。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-rose">McKinsey</span> 两个核心问题</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">问题一：ESG factors 更重要的是 risk management，还是 value creation？</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">如果是 risk management，策略可能是排除 ESG 风险较高的公司、行业或地区，或与公司对话以缓释 ESG 风险。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">如果是 value creation，策略可能是超配 ESG 表现强、且被认为与价值创造相关的公司或行业。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">问题二：哪些 ESG factors 是 material？判断会受资产类别、地区、具体公司影响；private equity 下 governance 通常尤其重要。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：每个知识点都要能反推题目</h2>
+        <p class="sub">这里按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”四段整理。式子服务理解，不是关键词堆砌。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">1</div><div><div class="card-title">投资链条里的代理问题</div><span class="tag tag-blue">Agency Problem</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">第 9 章把公司治理中的代理问题延伸到投资链条：公司管理层是股东的代理人，资产管理人也是客户资金的代理人。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">客户想要长期、稳健、符合其 ESG 信念的结果；基金经理可能更受短期业绩、产品营销或内部激励影响。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>投资链代理问题 == 客户长期目标 ≠ 基金经理日常激励</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">看到 accountability、alignment、client mandate，先想到“用治理逻辑解决投资链条代理问题”。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">2</div><div><div class="card-title">Alignment 与 Accountability</div><span class="tag tag-green">治理双钥匙</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">Alignment 要让基金经理考核、薪酬和时间期限尽量反映客户真实绩效体验；accountability 要求基金经理回应客户明确意图并充分报告。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">对齐解决“动力偏不偏”，问责解决“做没做到、说没说清”。两者都可以通过设计良好的 mandate 落地。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>治理投资链 == alignment 防跑偏 + accountability 可追责</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">长期 ESG mandate 不能只看短期跑赢或跑输，还要看投资流程是否按客户长期信念执行。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#6d28d9">
+        <div class="card-top"><div class="num">3</div><div><div class="card-title">有效设计 mandate 的第一步</div><span class="tag tag-violet">Clarify Needs</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">客户应先明确自身需求，并形成清晰的 ESG investment beliefs；这要求定义投资目标和投资信念。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">还没搞清客户相信什么、想用 ESG 达成什么，就急着选经理、写 RFP 或挑产品，后面很容易执行走样。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>mandate 第一件事 == 客户需求清楚 + ESG 投资信念清楚</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题常问 first step，答案是 clarify client needs and state ESG investment beliefs，不是 RFP 或 tailoring。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#b45309">
+        <div class="card-top"><div class="num">4</div><div><div class="card-title">Investment Beliefs 的作用</div><span class="tag tag-amber">投资哲学</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">investment beliefs 是机构相信什么会驱动收益、在相关时间期限内创造价值的投资哲学，通常也包含 ESG 视角。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">投资目标回答“我要什么结果”；投资信念回答“我相信靠什么方法取得这个结果”。ESG 要进入第二个问题。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>investment beliefs == 收益来源判断 + 价值创造逻辑 + ESG 视角</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">信念会影响资产类别、投资风格、经理筛选标准，以及后续对短期表现的容忍度。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#0f766e">
+        <div class="card-top"><div class="num">5</div><div><div class="card-title">PLSA Stewardship Checklist</div><span class="tag tag-teal">三步闭环</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">PLSA checklist 要求投资者明确 stewardship 与策略/目标的关系，确保经理有效整合长期 ESG 因素，并评估 stewardship 资源与结构。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">这不是一份“做好事清单”，而是把 stewardship 变成投资治理流程：先定方向，再选能执行的人，再配资源并监督。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>有效 stewardship == 说清策略位置 + 选对执行经理 + 配足资源并保留责任</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">外包 stewardship 不等于资产所有者不用负责；责任仍在客户/受托人一侧。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#be123c">
+        <div class="card-top"><div class="num">6</div><div><div class="card-title">组织目的与监管要求</div><span class="tag tag-rose">Purpose & SIP</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">投资哲学常由组织目的和 founding documents 塑造。英国养老金需要在 SIP 中说明如何考虑财务重大 ESG 因素，以及 stewardship、engagement、voting 政策。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">ESG 信念不是空中楼阁，它要和机构存在目的、受托责任、监管披露要求一起看。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>ESG 投资哲学 == 组织目的 + 受托责任 + 财务重大 ESG + stewardship 政策</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">同样是 ESG，养老金、基金会、主权财富基金的出发点可能完全不同，后续策略也会不同。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">7</div><div><div class="card-title">ESG 是风险管理还是价值创造</div><span class="tag tag-blue">McKinsey Q1</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">McKinsey 提出第一个核心问题：ESG factors 对客户而言更重要的是 risk management，还是 value creation？</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">如果 ESG 是风险管理，重点是避雷或推动公司降低风险；如果 ESG 是价值创造，重点是找能因 ESG 表现获得长期优势的资产。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>ESG 策略方向 == 风险管理: 排除/缓释 + 价值创造: 超配/捕捉优势</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">题干写 risk management，多半指 exclude companies, sectors, or geographies，或 engagement to mitigate risks。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">8</div><div><div class="card-title">哪些 ESG 因素重大</div><span class="tag tag-green">McKinsey Q2</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">第二个核心问题是哪些 ESG factors 是 material。判断会受 sector、company、asset class、geography 等因素影响。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">重大性不是通用清单。比如 private equity 通常持股比例大、监管透明度有限，因此 governance 往往特别重要。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>ESG materiality == 行业 + 公司 + 资产类别 + 地区 + 投资组合暴露</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">mandate 里要说明哪些 ESG 因素真正影响风险收益，而不是把所有 ESG 议题平均用力。</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Cases</div>
+        <h2>案例区：把抽象 mandate 落到真实投资场景</h2>
+        <p class="sub">这些案例都来自本模块 PDF 内容，用来帮助你理解“信念如何变成策略”。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-teal">PLSA Checklist</span><h3 style="margin-top:8px">三件事：方向、执行、资源</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>PLSA 要求投资者明确 stewardship 如何服务投资策略和目标，确保基金经理整合长期 ESG 因素，并考虑 stewardship 的资源和组织结构。</p>
+          <p><b>中文解释：</b>这相当于事务所项目管理里的“目标、执行人、资源安排”三件套。目标不清，后面底稿再漂亮也难复核。</p>
+          <p><b>逻辑等式：</b>PLSA checklist == 定目标 + 选经理 + 配资源 + 不卸责</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-blue">CPP / AustralianSuper</span><h3 style="margin-top:8px">长期收益和责任投资不是两张皮</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>CPP 强调在不过度承担损失风险的情况下最大化回报，并考虑影响 CPP funding 的因素；AustralianSuper 强调长期提高成员回报，同时理解为实现目标需要承担的风险。</p>
+          <p><b>中文解释：</b>这两个例子都说明，ESG 信念不是脱离收益的道德宣言，而是嵌入长期收益和风险判断。</p>
+          <p><b>逻辑等式：</b>长期资产所有者 == 长期回报目标 + 风险控制 + 责任投资视角</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-amber">Risk vs Value</span><h3 style="margin-top:8px">同一 ESG 主题，两种 mandate 写法</h3></div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>客户信念</th><th>可能策略</th><th>做题题眼</th></tr></thead>
+            <tbody>
+              <tr><td>ESG 主要是风险管理</td><td>排除高 ESG 风险公司、行业或地区；参与对话以缓释风险</td><td>risk management, exclude, mitigate</td></tr>
+              <tr><td>ESG 主要是价值创造</td><td>超配 ESG 表现强、且被认为与价值创造相关的公司或行业</td><td>value creation, overweight, strong ESG performance</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:10px"><b>逻辑等式：</b>客户相信什么 ESG 作用 → mandate 选择什么投资动作。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-violet">Private Equity</span><h3 style="margin-top:8px">为什么治理因素尤其重要</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>McKinsey 说明，material ESG factors 的选择受资产类别影响；private equity 通常持股比例大、监管监督有限，因此 governance factors 往往尤其重要。</p>
+          <p><b>中文解释：</b>持股越集中、外部监管越少，投资者越需要依靠治理结构来保护长期价值。</p>
+          <p><b>逻辑等式：</b>Private equity governance materiality == 大比例控制 + 有限监管 → 治理质量直接影响风险收益</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：第 9 章很爱考“先后顺序”和“同词不同义”</h2>
+        <p class="sub">这一章不像环境或社会因素那样背概念，更像审计项目管理：先目标，再流程，再证据，再复核。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="trap" style="--accent:#be123c"><b>易错 1：把第一步选成 RFP</b><p>RFP 是后续筛选基金经理的工具；effective mandate design 的第一步，是客户先明确需求和 ESG investment beliefs。</p></div>
+      <div class="trap" style="--accent:#b45309"><b>易错 2：把 stewardship 外包理解成责任转移</b><p>可以外包执行，但资产所有者仍要 take ownership，理解并监督代表自己完成的 stewardship 工作。</p></div>
+      <div class="trap" style="--accent:#6d28d9"><b>易错 3：把 ESG policy 当成营销话术</b><p>本模块强调 ESG policy 和 investment beliefs 要能进入 mandate 和投资流程，否则后续难以问责。</p></div>
+      <div class="trap" style="--accent:#1d4ed8"><b>易错 4：risk management 与 value creation 混淆</b><p>risk management 对应排除、限制、缓释风险；value creation 对应超配或偏向 ESG 表现强且能创造价值的资产。</p></div>
+      <div class="trap" style="--accent:#047857"><b>易错 5：重大性当成统一清单</b><p>ESG materiality 要看资产类别、地区、行业和公司。private equity 的 governance 重要性就是典型考点。</p></div>
+      <div class="trap" style="--accent:#0f766e"><b>易错 6：只看短期业绩</b><p>9.1.1 的底层逻辑是长期 alignment。后面监督经理时，短期表现要结合是否遵守长期投资流程来看。</p></div>
+    </div>
+
+    <div class="panel-card pad" style="margin-top:14px">
+      <h3>考前压缩：一屏背完 Module 1</h3>
+      <div class="grid-auto">
+        <div class="cheat"><div class="cheat-key">总式</div><div class="cheat-val">ESG mandate == 客户信念 → 投资策略 → 经理执行 → 可监督可报告。</div></div>
+        <div class="cheat"><div class="cheat-key">first step</div><div class="cheat-val">Clarify client needs and set out ESG investment beliefs。</div></div>
+        <div class="cheat"><div class="cheat-key">agency problem</div><div class="cheat-val">客户长期目标可能与基金经理短期激励不一致。</div></div>
+        <div class="cheat"><div class="cheat-key">alignment</div><div class="cheat-val">考核、薪酬和时间期限贴近客户目标。</div></div>
+        <div class="cheat"><div class="cheat-key">accountability</div><div class="cheat-val">回应客户明确意图，并按要求充分报告。</div></div>
+        <div class="cheat"><div class="cheat-key">PLSA</div><div class="cheat-val">说清 stewardship 位置，确保经理整合 ESG，配置资源且不卸责。</div></div>
+        <div class="cheat"><div class="cheat-key">Risk management</div><div class="cheat-val">排除高风险公司/行业/地区，或 engagement 缓释风险。</div></div>
+        <div class="cheat"><div class="cheat-key">Value creation</div><div class="cheat-val">超配 ESG 表现强且与价值创造相关的公司或行业。</div></div>
+        <div class="cheat"><div class="cheat-key">Material factors</div><div class="cheat-val">受 sector、company、asset class、geography 影响；private equity 重 governance。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只测 Module 1</h2>
+        <p class="sub">点击选项后会显示答案。做题时先抓题眼，再回到逻辑等式。</p>
+      </div>
+    </div>
+
+    <div class="quiz-list">
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q1</span><span class="tag tag-blue">正式题改编</span></div>
+        <div class="q-text">What is the first step in the effective design of a client ESG investment mandate?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Tailor ESG investment approach to client expectations.</button>
+          <button class="opt" data-correct="false">B. Develop client-relevant ESG-aware investment mandates.</button>
+          <button class="opt" data-correct="true">C. Clarify client needs and set them out in a clear statement of ESG investment beliefs.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>题眼是 first step。先明确客户需求和 ESG investment beliefs，后续才谈 tailor、RFP 或具体 mandate。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q2</span><span class="tag tag-green">概念反推</span></div>
+        <div class="q-text">In the investment chain, alignment is most closely associated with:</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. Matching manager assessment, remuneration, and timeframes with the client’s experienced performance and horizon.</button>
+          <button class="opt" data-correct="false">B. Allowing the manager to select any ESG approach that is easiest to market.</button>
+          <button class="opt" data-correct="false">C. Replacing portfolio reporting with general ESG market commentary.</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>alignment 是让基金经理的激励和时间期限贴近客户目标；B 和 C 都无法解决代理问题。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q3</span><span class="tag tag-teal">PLSA</span></div>
+        <div class="q-text">According to the PLSA stewardship logic, delegating stewardship activities most likely means:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. The asset owner is no longer responsible for stewardship outcomes.</button>
+          <button class="opt" data-correct="true">B. The asset owner must still take ownership and understand the work carried out on its behalf.</button>
+          <button class="opt" data-correct="false">C. Stewardship should be excluded from manager selection and monitoring.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>外包是执行方式，不是责任转移。资产所有者仍要理解和监督代表自己开展的 stewardship 工作。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q4</span><span class="tag tag-amber">正式题改编</span></div>
+        <div class="q-text">An asset owner believes ESG factors are most important for risk management. To implement that belief, the asset manager will most likely suggest a strategy that:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Structures the portfolio to replicate an ESG benchmark fund.</button>
+          <button class="opt" data-correct="true">B. Excludes some companies, sectors, or geographies based on ESG-related factors.</button>
+          <button class="opt" data-correct="false">C. Overweights companies that exhibit strong performance on related ESG factors.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>risk management 的题眼对应 exclude/mitigate。C 更接近 value creation。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q5</span><span class="tag tag-blue">McKinsey Q1</span></div>
+        <div class="q-text">If value creation is the focus of ESG integration, the asset owner is most likely to prefer:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Avoiding all discussions of ESG materiality.</button>
+          <button class="opt" data-correct="false">B. Excluding every company with any ESG controversy, regardless of investment thesis.</button>
+          <button class="opt" data-correct="true">C. Overweighting companies or sectors with strong ESG performance believed to be linked to value creation.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>value creation 不是单纯避险，而是寻找 ESG 表现与长期价值创造之间的联系。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q6</span><span class="tag tag-green">正式题改编</span></div>
+        <div class="q-text">When determining the materiality of ESG factors in portfolio construction, governance factors tend to be especially important for which asset class?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Public equity.</button>
+          <button class="opt" data-correct="false">B. Fixed income.</button>
+          <button class="opt" data-correct="true">C. Private equity.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>private equity 通常持股比例大、监管监督有限，因此 governance 对风险收益尤其重要。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q7</span><span class="tag tag-violet">文件名称</span></div>
+        <div class="q-text">Investment beliefs may be expressed in a:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Short-term trading log only.</button>
+          <button class="opt" data-correct="true">B. Statement of investment principles.</button>
+          <button class="opt" data-correct="false">C. Marketing slogan with no mandate linkage.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>PDF 提到 investment beliefs 可以通过 statement of investment principles 表达，并用于框定 mandate。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q8</span><span class="tag tag-rose">正式题改编</span></div>
+        <div class="q-text">A document that sets out an asset owner’s risk-adjusted return target, time horizon, and ESG investment beliefs for a fund manager is best described as an investment:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Recommendation.</button>
+          <button class="opt" data-correct="true">B. Mandate.</button>
+          <button class="opt" data-correct="false">C. Approach.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>mandate 是客户目标、时间期限、ESG 信念与基金经理执行之间的正式连接。</div>
+      </div>
+    </div>
+
+    <div class="footer-note">复核问题：你能不能用一句话解释“为什么 ESG mandate 的第一步不是 RFP”？如果能，就说明本模块主线已经抓住了。</div>
+  </section>
+</main>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = document.getElementById(tab.dataset.tab);
+    if (panel) panel.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+document.querySelectorAll('.q-card').forEach(card => {
+  const opts = card.querySelectorAll('.opt');
+  const exp = card.querySelector('.exp');
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opts.forEach(o => {
+        o.classList.remove('correct', 'wrong');
+        o.disabled = true;
+        if (o.dataset.correct === 'true') o.classList.add('correct');
+      });
+      if (opt.dataset.correct !== 'true') opt.classList.add('wrong');
+      if (exp) exp.classList.add('show');
+    });
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

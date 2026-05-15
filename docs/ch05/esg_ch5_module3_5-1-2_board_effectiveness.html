@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 Module 3 · Board Structure, DEI, Effectiveness & Independence</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:810px;margin:0;line-height:1.86;overflow-wrap:anywhere}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}.card.dark h3{color:#fff}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:660px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(88px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.matrix{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:10px}.skill{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;box-shadow:var(--sh-sm);min-width:0}.skill-num{font-family:var(--serif);font-size:28px;font-weight:950;color:var(--dark);line-height:1}.skill-title{font-size:13.2px;font-weight:950;color:var(--dark);margin-top:5px}.skill-text{font-size:12.5px;color:var(--sub);line-height:1.55;margin-top:4px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}summary::-webkit-details-marker{display:none}summary::after{content:"＋";color:var(--muted);font-weight:700}details[open] summary::after{content:"－"}details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flowline{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-step:not(:last-child)::after{display:none}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr 1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:17px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 5</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">5.1.2</span>
+        <span class="pill">Board Effectiveness</span>
+      </div>
+      <h1>Board Structure, DEI & Independence</h1>
+      <p class="lead">本页把有效董事会拆成“合适的人、合适的技能、能挑战的文化、足够独立的判断”四条主线。治理的底层是人，但不是只看履历好不好，而是看这些人能否围绕公司长期风险和战略进行有效监督。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Effective board == right people + relevant skills + diversity of thought + effective chair + independent challenge + refreshment</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">5.1.2 董事会结构、DEI、有效性和独立性</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">UK Code sections</div></div>
+        <div class="mini-stat"><div class="mini-num">11</div><div class="mini-lab">BHP skills categories</div></div>
+      </div>
+      <div class="side-note">记忆抓手：董事会有效性不是“人越多越好”，而是关键议题至少有足够能力、视角和独立挑战。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="code">UK Code</button>
+    <button class="tab" data-tab="skills">技能矩阵</button>
+    <button class="tab" data-tab="dei">DEI 与有效性</button>
+    <button class="tab" data-tab="independence">独立性</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div><div class="eyebrow">Memory Map</div><h2>第一屏先看一张图：董事会有效性如何形成</h2></div>
+      <div class="head-desc">按逻辑等式心象术，先拆“董事会有效性”：结构给位置，技能给判断，多元给视角，主席让讨论发生，独立性让挑战成立。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Board Effectiveness<br>董事会不是名单，而是能否产生有效挑战</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">Code frame</div><p>UK 2024 Code 有五个板块。</p><p>主题可用于全球治理判断。</p></div>
+        <div class="branch"><div class="branch-title">Skills</div><p>战略、风险、财务、行业、技术、气候等。</p><p>重要议题通常不应只靠一个人。</p></div>
+        <div class="branch"><div class="branch-title">DEI</div><p>最重要是 diversity of thought。</p><p>性别、种族、年龄、文化、经验支持思想多元。</p></div>
+        <div class="branch"><div class="branch-title">Chair & appraisal</div><p>主席让每位董事贡献观点。</p><p>外部独立评估更可能暴露问题。</p></div>
+        <div class="branch"><div class="branch-title">Independence</div><p>独立于管理层和不当影响。</p><p>核心是 independence of thought。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>战略和风险变化</h3><p>公司所需监督能力随业务演进。</p></div>
+        <div class="flow-step"><h3>确定董事会需求</h3><p>哪些技能要常驻董事会，哪些可外聘专家。</p></div>
+        <div class="flow-step"><h3>构建技能矩阵</h3><p>关键议题最好不只依赖单一董事。</p></div>
+        <div class="flow-step"><h3>形成多元视角</h3><p>避免 groupthink，提高提问质量。</p></div>
+        <div class="flow-step"><h3>主席促成讨论</h3><p>让每位董事充分贡献。</p></div>
+        <div class="flow-step"><h3>独立挑战</h3><p>监督管理层并挑战既有决策。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">题眼</span><h3>right people</h3><p class="small">治理核心是人，有效治理需要相关技能、经验和能够参与讨论的董事会文化。</p></div>
+      <div class="card"><span class="tag tag-green">题眼</span><h3>diversity of thought</h3><p class="small">PDF 明确说最重要的是思想多元，性别、种族、年龄、文化、国籍、经济背景和经验都可支持它。</p></div>
+      <div class="card"><span class="tag tag-amber">题眼</span><h3>independence concern</h3><p class="small">曾任高管、近期顾问、额外薪酬、家族关系、交叉任职、重大股东代表、任期过长，都可能引发独立性质疑。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Coverage Checklist</div><h2>逐条覆盖清单</h2></div>
+      <div class="head-desc">对应 PDF 第 287-293 页；高管薪酬的详细结构放到模块 4。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">UK Code 2024</span> 治理代码和委员会有效性</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Corporate Governance Code 最新版本发布于 2024 年 1 月，包含 18 项原则、5 个板块。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">五个板块：board leadership and company purpose；division of responsibilities；composition, succession, and evaluation；audit, risk, and internal control；remuneration。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">这些主题与全球多数治理代码的核心主题一致，可用于全球治理有效性判断。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Audit 和 remuneration committees 预期完全由独立非执行董事组成；nominations committee 应由独立非执行董事占多数。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会主席在寻找继任者时不应领导 nominations committee。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Risk、sustainability、people、health and safety 等委员会可视公司情况设置，不是所有公司强制。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2024 Code Guidance 提供同样五个主题下的问题，帮助董事评估是否有效履职；其中 board leadership and company purpose 占较大篇幅。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Board effectiveness</span> 技能、气候能力和更新</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有效治理需要董事会桌边有合适的人、相关技能和经验，以及让每个人有效参与讨论的文化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">如果某议题对业务高度重要，通常期望不止一个人具备相关知识，因为董事会不应只依赖单一视角。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会可通过邀请专家提供建议来补充专业技能，但要判断哪些能力需要常驻董事会，哪些可偶尔外部获取。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">气候变化理解正逐渐成为每个董事会都需要具备的能力，不一定需要气候科学家，但要能处理商业复杂性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">缺乏气候能力可能导致资本开支投向未来碳约束世界中价值不足的资产。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事培训、技能更新和持续维护 skills matrix 很重要，因为战略和风险会变化。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">DEI & appraisal</span> 多元、主席和董事会评估</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会最重要的多元性是 diversity of thought；其他多元维度可帮助形成思想多元。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多元维度包括 gender、race、age、culture、nationality、economic background、experience。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多元的目的在于避免 groupthink，减少不提问、不挑战的风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">很多市场正走向至少 30% 公共公司董事为女性的期望；Norway 和 France 有女性董事配额。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Parker Review 要求 FTSE 100 到 2021 年、FTSE 250 到 2024 年至少有一名非白人董事；2023 更新显示 FTSE 100 中 96 家已达标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有效主席能让每位董事贡献观点；外部投资者可通过与主席和董事对话了解，但董事整体质量通常是更清晰信号。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会评估可帮助暴露问题，外部独立促进者比单纯内部评估更可能有效。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Independence</span> 独立性和任期</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会应独立于管理层，并以独立思维挑战管理层和公司既有决策。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ICGN 独立性质疑因素包括：曾任公司高管或顾问且间隔不足、收取激励薪酬或额外费用、近亲关系、交叉任职、重大股东或国家代表、任期过长。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">并非被质疑独立性的董事永远不能在董事会任职，他们可能提供有用技能和视角。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">每个董事会都需要足够数量明显独立的个人，避免偏见或不当影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">独立性是一种心理状态；有些人表面相关但能独立，有些人表面独立却只支持 CEO 或控制股东。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">任期过长可能削弱独立性，不同市场对最长任期的规则或解释标准不同；美国等市场并不总承认任期是独立性问题。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="code" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Logic Equations</div><h2>UK 2024 Code：有效董事会的五个入口</h2></div>
+      <div class="head-desc">这部分不需要死背 18 条原则，先把五个板块记成治理问题的目录。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 五个板块</div><span class="tag tag-blue">UK Code</span></div>
+        <p class="small"><b>原文要点：</b>2024 UK Corporate Governance Code 包含 18 个原则，分成五个部分。</p>
+        <p class="small"><b>中文解释：</b>五个部分像董事会体检表：目的、分工、人员、审计风险、薪酬。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">UK Code</div><div class="eq-op">==</div><div class="eq-rhs">purpose + responsibilities + composition/evaluation + audit/risk/control + remuneration</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>题目出现 latest iteration / January 2024 / five sections，先反推 UK Code 结构。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. 委员会成员独立性</div><span class="tag tag-green">Committees</span></div>
+        <p class="small"><b>原文要点：</b>Audit 和 remuneration committees 预期仅由独立非执行董事组成；nominations committee 应由独立非执行董事占多数。</p>
+        <p class="small"><b>中文解释：</b>审计和薪酬是最容易发生利益冲突的地方，所以独立性要求更强。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Committee independence</div><div class="eq-op">==</div><div class="eq-rhs">audit/remuneration all independent + nominations majority independent</div></div>
+        </div>
+        <div class="riskline"><b>易错提醒：</b>Nominations 可以包括非独立成员，但应以独立非执行董事为多数；chair 找继任者时不应领导该委员会。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. 额外委员会</div><span class="tag tag-amber">Optional</span></div>
+        <p class="small"><b>原文要点：</b>Risk committee 常见于金融服务企业；其他公司可能设 sustainability、people、health and safety 等委员会，但不强制。</p>
+        <p class="small"><b>中文解释：</b>额外委员会的目的，是帮董事会监督重大风险和处理监督工作量。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Extra committees</div><div class="eq-op">==</div><div class="eq-rhs">major exposure + oversight workload + company-specific judgment</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>不要把 risk committee 当成所有公司普遍必须设置的委员会。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Skills Matrix</div><h2>技能矩阵：董事会需要哪些“常驻能力”</h2></div>
+      <div class="head-desc">BHP 案例不是让你背每个数字，而是理解技能矩阵如何向投资者展示董事会监督能力。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>技能矩阵的判断逻辑</h3>
+        <p class="small"><b>原文要点：</b>重要议题通常期望不止一位董事具备相关知识，因为董事会很少愿意只依赖一个视角。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Skills matrix</div><div class="eq-op">==</div><div class="eq-rhs">strategy needs + risk profile + boardroom capability + future refreshment</div></div>
+          <div class="eq"><div class="eq-lhs">关键议题</div><div class="eq-op">==</div><div class="eq-rhs">不靠单点专家，而靠足够多的理解和挑战</div></div>
+        </div>
+        <div class="memory"><b>记忆线：</b>常驻能力用于高频、核心、战略性议题；偶发高度专业议题可以请独立专家。</div>
+      </div>
+      <div class="card">
+        <h3>气候能力为什么上升</h3>
+        <p class="small"><b>原文要点：</b>每个董事会都越来越需要理解气候变化带来的商业复杂性，以调整商业模式和投资方法。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Climate competence</div><div class="eq-op">==</div><div class="eq-rhs">carbon-constrained world + capex decisions + business model adjustment</div></div>
+        </div>
+        <div class="riskline"><b>投资影响/考点提醒：</b>缺乏气候能力可能导致资本开支投错方向，未来资产价值受损。</div>
+      </div>
+    </div>
+    <div class="map-board" style="margin-top:14px">
+      <div class="center-node">BHP Board Skills Example<br>12 名董事的技能披露</div>
+      <div class="matrix">
+        <div class="skill"><div class="skill-num">4</div><div class="skill-title">Mining</div><div class="skill-text">采矿运营、项目和 HSE 表现。</div></div>
+        <div class="skill"><div class="skill-num">2</div><div class="skill-title">Oil and gas</div><div class="skill-text">油气技术和生产运营。</div></div>
+        <div class="skill"><div class="skill-num">10</div><div class="skill-title">Global experience</div><div class="skill-text">多地区、宏观政治经济和全球市场。</div></div>
+        <div class="skill"><div class="skill-num">11</div><div class="skill-title">Strategy</div><div class="skill-text">长期周期行业战略和转型。</div></div>
+        <div class="skill"><div class="skill-num">12</div><div class="skill-title">Risk</div><div class="skill-text">系统性风险、框架和控制监督。</div></div>
+        <div class="skill"><div class="skill-num">8</div><div class="skill-title">Commodity value chain</div><div class="skill-text">消费者、需求和价值链。</div></div>
+        <div class="skill"><div class="skill-num">12</div><div class="skill-title">Financial expertise</div><div class="skill-text">财务报表、财务驱动因素和内控。</div></div>
+        <div class="skill"><div class="skill-num">5</div><div class="skill-title">Public policy / ESG</div><div class="skill-text">公共政策、气候、社区和经济议题。</div></div>
+        <div class="skill"><div class="skill-num">10</div><div class="skill-title">HSE & community</div><div class="skill-text">健康、安全、环境和社区风险。</div></div>
+        <div class="skill"><div class="skill-num">5</div><div class="skill-title">Technology</div><div class="skill-text">技术创新和数字化冲击。</div></div>
+        <div class="skill"><div class="skill-num">11</div><div class="skill-title">Capital allocation</div><div class="skill-text">资本配置、成本效率和现金流。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dei" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">DEI & Effectiveness</div><h2>DEI 与有效性：多元不是装饰，是为了避免 groupthink</h2></div>
+      <div class="head-desc">这部分容易被记成“性别比例”，但 PDF 更强调 diversity of thought。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Diversity of thought</div><span class="tag tag-violet">DEI</span></div>
+        <p class="small"><b>原文要点：</b>董事会成功所需的多元性有很多类型，但最重要的是思想多元。</p>
+        <p class="small"><b>中文解释：</b>多元不是为了凑标签，而是为了让董事会在重大问题上有人提出不同问题和不同解释。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Board DEI</div><div class="eq-op">==</div><div class="eq-rhs">gender/race/age/culture/nationality/background/experience → diversity of thought</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>看到 groupthink，反推缺少 diversity of thought 和挑战文化。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. 可见多元目标</div><span class="tag tag-blue">Targets</span></div>
+        <p class="small"><b>原文要点：</b>多数多元倡议关注性别和种族。很多市场走向至少 30% 女性董事的期望，Norway 和 France 有女性董事配额。</p>
+        <p class="small"><b>中文解释：</b>可见多元是通向思想多元的一个入口，但不能替代真正的提问和挑战。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Visible DEI</div><div class="eq-op">==</div><div class="eq-rhs">gender + race targets → broader board perspectives</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>30% 女性董事是多数市场期待，不等同于所有市场硬性规则。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Chair effectiveness</div><span class="tag tag-green">Chair</span></div>
+        <p class="small"><b>原文要点：</b>有效主席能带出每位董事的贡献，这是董事会有效性的关键，但外部不容易直接观察。</p>
+        <p class="small"><b>中文解释：</b>主席不是只主持会议，而是让不同观点真的进入讨论。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Effective chair</div><div class="eq-op">==</div><div class="eq-rhs">draw out each director + enable challenge + improve debate</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>评价主席有效性，董事会成员质量往往是最清晰的间接信号。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Board appraisal</div><span class="tag tag-amber">Assessment</span></div>
+        <p class="small"><b>原文要点：</b>许多治理代码要求董事会评估。它可帮助暴露问题，但弱董事会和弱主席可能限制其影响。</p>
+        <p class="small"><b>中文解释：</b>评估不是做完就有效，关键在于是否独立、是否公开、是否真的推动改变。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Board appraisal</div><div class="eq-op">==</div><div class="eq-rhs">surface problems + independent facilitation + disclosed insight</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>外部独立促进者的评估，比单纯内部自评更可能有效。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="independence" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Independence</div><h2>独立性：关键不是“看起来独立”，而是能否独立思考</h2></div>
+      <div class="head-desc">ICGN 列出的独立性质疑因素，是正式题最容易抽考的清单。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>独立性的正向定义</h3>
+        <p class="small"><b>原文要点：</b>董事会应独立于管理层，并以独立思维挑战管理层和公司过去决策。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Independence</div><div class="eq-op">==</div><div class="eq-rhs">independent from management + independence of thought + challenge ability</div></div>
+        </div>
+        <div class="memory"><b>记忆线：</b>独立性不是简历状态，而是心理状态和行为状态。</div>
+      </div>
+      <div class="card">
+        <h3>独立性的现实判断</h3>
+        <p class="small"><b>原文要点：</b>有些人即便有某些关联仍能独立判断；有些人表面独立却只支持 CEO 或控制股东。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Investor challenge</div><div class="eq-op">==</div><div class="eq-rhs">identify true independence behind formal appearances</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>PDF 更希望公司承认独立性瑕疵但解释价值，而不是硬说明显有问题的人仍完全独立。</div>
+      </div>
+    </div>
+    <div class="map-board" style="margin-top:14px">
+      <div class="center-node">ICGN Independence Red Flags<br>看到这些，独立性可能被质疑</div>
+      <div class="branch-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div class="branch"><div class="branch-title">曾在公司任职</div><p>曾任高管、子公司高管或顾问，且离任到入董间隔不合适。</p></div>
+        <div class="branch"><div class="branch-title">收取额外经济利益</div><p>收取或曾收取公司激励薪酬，或除董事费外的额外费用。</p></div>
+        <div class="branch"><div class="branch-title">亲属关系</div><p>与公司顾问、董事或高级管理层有密切家庭关系。</p></div>
+        <div class="branch"><div class="branch-title">交叉任职</div><p>与其他董事通过其他公司或组织存在重要联系。</p></div>
+        <div class="branch"><div class="branch-title">重大股东关系</div><p>本人是重大股东，或代表重大股东、国家或相关方。</p></div>
+        <div class="branch"><div class="branch-title">任期过长</div><p>担任董事时间过长，独立性可能被削弱。</p></div>
+      </div>
+    </div>
+    <div class="topic-card" style="margin-top:14px">
+      <div class="topic-top"><div class="topic-title">Tenure：任期为什么会影响独立性</div><span class="tag tag-amber">Tenure</span></div>
+      <p class="small"><b>原文要点：</b>各市场对任期多长会削弱独立性有不同标准；有些市场采用“explain”标准，即公司可解释为什么任期虽长仍独立。</p>
+      <p class="small"><b>中文解释：</b>任期越长，越可能与管理层、公司文化和既有决策绑定，挑战性下降。</p>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">Long tenure</div><div class="eq-op">==</div><div class="eq-rhs">familiarity risk + less challenge + possible compromised independence</div></div>
+      </div>
+      <div class="riskline"><b>易错提醒：</b>任期问题并非所有主要市场都同样承认，美国就是 PDF 特别提到的例外之一。</div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Audit-style Cases</div><h2>案例框：把董事会披露转成复核判断</h2></div>
+      <div class="head-desc">这部分用工作底稿思路看董事会：先看风险，再看证据，再落到投资判断。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 1：公司只有一名 ESG 专家</div><span class="tag tag-blue">Skills</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">如果 ESG 或气候议题对公司高度重要，仅一名董事具备相关能力可能不足。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">技能矩阵、董事培训记录、外部专家参与、委员会讨论记录。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">董事会可能无法充分挑战管理层的资本开支、转型计划和风险披露。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">high-importance issue == more than one informed voice。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 2：董事会很“整齐”但没人挑战</div><span class="tag tag-violet">DEI</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">董事背景高度相似，讨论顺畅但缺少不同视角，容易产生 groupthink。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">董事背景、会议纪要中的反对意见、外部评估报告、离任董事访谈。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">关键战略、风险和财务假设可能没有被充分挑战。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">similar backgrounds + weak chair process → low challenge quality。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 3：长期任职董事仍声称独立</div><span class="tag tag-amber">Independence</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">长期任职可能导致与管理层和既有决策过度熟悉，削弱独立挑战。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">任期、是否有解释、投票记录、重大事项中是否提出挑战、与管理层关系。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">投资者可能不接受其独立性，董事会整体独立权重下降。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">long tenure + no convincing explanation → independence concern。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Compressed Review</div><h2>考前压缩：一组式子背完模块 3</h2></div>
+      <div class="head-desc">这些式子后续会进入第 5 章总复盘和三轮练习压缩背诵。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>模块 3 主式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Effective board</b> == right people + relevant skills + right culture + independent challenge。</div>
+          <div class="formula"><b>UK Code 2024</b> == purpose + responsibilities + composition/evaluation + audit/risk/control + remuneration。</div>
+          <div class="formula"><b>Skills matrix</b> == strategy needs + risk profile + board capability + future refreshment。</div>
+          <div class="formula"><b>Climate competence</b> == carbon-constrained world + capex discipline + business model adjustment。</div>
+          <div class="formula"><b>DEI</b> == visible diversity → diversity of thought → less groupthink。</div>
+          <div class="formula"><b>Effective chair</b> == draw out each director + enable challenge。</div>
+          <div class="formula"><b>Independence</b> == independence from management + independence of thought。</div>
+          <div class="formula"><b>Long tenure</b> == familiarity risk + possible erosion of independence。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错点</h3>
+        <div class="formula-list">
+          <div class="trap"><b>易错 1：把 DEI 只记成性别比例。</b>PDF 的核心是 diversity of thought。</div>
+          <div class="trap"><b>易错 2：以为一名专家足够。</b>重要议题通常期望不止一位董事具备相关知识。</div>
+          <div class="trap"><b>易错 3：把外部专家等同于董事会能力。</b>专家可补充，但关键高频能力应在董事会桌边。</div>
+          <div class="trap"><b>易错 4：只看董事表面独立。</b>真正关键是能否独立思考并挑战管理层。</div>
+          <div class="trap"><b>易错 5：认为董事会评估一定有效。</b>弱董事会可能限制评估影响，外部独立促进者更可靠。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 3 边界提醒：高管薪酬、KPI、报告透明度、资本配置和商业伦理会在模块 4 继续展开。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Self Test</div><h2>自测题：先归类，再回答</h2></div>
+      <div class="head-desc">这些题训练模块 3 的题眼反推，正式 Practice Problems 之后统一进入三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">1</div><div class="qtext">UK 2024 Corporate Governance Code 的五个板块是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">board leadership and company purpose；division of responsibilities；composition, succession, and evaluation；audit, risk, and internal control；remuneration。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">2</div><div class="qtext">为什么关键业务议题通常不应只依赖一名董事的专业知识？</div><button class="qbtn">看答案</button></div><div class="qanswer">因为董事会很少愿意只依赖单一视角，且该董事不一定总能出席或充分参与。重要议题需要多个董事有足够理解，形成有效挑战。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">3</div><div class="qtext">董事会为什么需要气候变化能力？</div><button class="qbtn">看答案</button></div><div class="qanswer">董事会需要处理气候变化带来的商业复杂性，调整商业模式和投资方法；否则可能把资本开支投向未来碳约束世界中价值不足的资产。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">4</div><div class="qtext">董事会最重要的多元性是什么？其他多元维度有什么作用？</div><button class="qbtn">看答案</button></div><div class="qanswer">最重要的是 diversity of thought。性别、种族、年龄、文化、国籍、经济背景和经验等多元维度有助于形成思想多元，减少 groupthink。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">5</div><div class="qtext">外部投资者如何评价董事会主席是否有效？</div><button class="qbtn">看答案</button></div><div class="qanswer">可通过与主席和董事直接对话获得一些信息，但更清晰的间接信号通常是董事会成员整体质量；优秀董事不太会长期留在不让他们有效贡献的董事会。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">6</div><div class="qtext">列举三个 ICGN 认为可能引发董事独立性质疑的因素。</div><button class="qbtn">看答案</button></div><div class="qanswer">可包括：曾任公司高管或顾问且间隔不足；收取公司激励薪酬或额外费用；与公司顾问、董事或高管有近亲关系；交叉任职；代表重大股东或国家；任期过长。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">7</div><div class="qtext">董事会评估为什么不一定有效？什么情况下更可能有效？</div><button class="qbtn">看答案</button></div><div class="qanswer">弱董事会和弱主席可能限制评估影响，外部看不出问题是否被真正解决。若由外部独立促进者进行，并披露过程和发现，评估更可能有效。</div></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id=btn.dataset.tab;
+    tabs.forEach(t=>t.classList.toggle('active',t===btn));
+    panels.forEach(p=>p.classList.toggle('active',p.id===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

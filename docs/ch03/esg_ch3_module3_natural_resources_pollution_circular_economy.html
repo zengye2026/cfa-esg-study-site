@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 3：Natural Resources, Pollution, Waste and Circular Economy</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%}
+h1{font-family:var(--serif);font-size:clamp(27px,4.8vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:680px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.mini-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px;margin-top:10px}
+.mini-cell{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:12px}
+.mini-cell h3{font-size:14px;margin-bottom:6px}
+.mini-cell p{font-size:12.8px;color:var(--sub);line-height:1.62;margin:0}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qchoices{font-size:12.8px;color:var(--sub);line-height:1.7;margin-top:6px;font-weight:500}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">3.1.2</span>
+        <span class="pill">Natural Resources</span>
+      </div>
+      <h1>Natural Resources, Pollution, Waste and Circular Economy</h1>
+      <p class="lead">本页把第 3 章自然资源压力拆成一条投资主线：人口、寿命、经济增长和消费升级推高资源需求，资源压力通过自然资本、水、生物多样性、土地森林、海洋、污染和废弃物进入企业风险，循环经济则是从源头改变商业模式的应对路径。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Natural resource pressure == 增长与消费推高需求 + 自然资本被低估 + 水/生物多样性/森林/海洋承压 + 污染和废弃物外部化 + 循环经济降低原生资源依赖</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">3.1.2 解释 land and marine natural resource use、water、waste、pollution、biodiversity 和 circular economy。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">2.5%</div><div class="mini-lab">地球水量中淡水占比</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">循环经济原则</div></div>
+      </div>
+      <div class="side-note">记忆抓手：把企业想成一座工厂。它从自然资本仓库拿水、土地、矿产、森林和海洋资源，排出污染和废弃物；循环经济就是让物料尽量在厂内循环。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看主线：从自然资本到循环经济</h2>
+      </div>
+      <div class="head-desc">这一模块的隐藏线是“取用自然资源 → 产生外部影响 → 形成企业风险 → 用效率、定价和循环模型应对”。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Natural Resources and Circular Economy<br>自然资本不是免费仓库，而是企业赖以运转的资产底座</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">压力来源</div>
+          <p>人口增长、寿命延长、经济增长和消费增加。</p>
+          <p>资源稀缺推动企业提高资源效率。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">自然资本</div>
+          <p>地质、土壤、空气、水和所有生命。</p>
+          <p>提供 provisioning、regulating、cultural、supporting services。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">核心资源</div>
+          <p>fresh water、biodiversity、land use、forestry、marine resources。</p>
+          <p>还包括无法快速补充的非可再生资源。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">污染废弃物</div>
+          <p>空气污染、水污染、塑料污染、填埋和焚烧。</p>
+          <p>从健康、罚款、税费、声誉和搁浅资产影响企业。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">循环经济</div>
+          <p>design out waste and pollution。</p>
+          <p>keep materials in use。</p>
+          <p>regenerate natural systems。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>需求上升</h3><p>人口、收入、生活方式推高资源消耗。</p></div>
+        <div class="flow-step"><h3>自然资本消耗</h3><p>水、森林、海洋、生物多样性被压缩。</p></div>
+        <div class="flow-step"><h3>外部性显现</h3><p>污染、废弃物、健康损害和生态损失。</p></div>
+        <div class="flow-step"><h3>财务传导</h3><p>成本、罚款、供应中断、资产减值、声誉损害。</p></div>
+        <div class="flow-step"><h3>商业模式改变</h3><p>效率、回收、再利用、再生自然系统。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">拆题目</span><h3>Natural resources</h3><p class="small">拆成 natural + resources：自然系统提供企业生产和人类生活所需的水、土地、生物、森林、海洋和矿产等资源。</p></div>
+      <div class="card"><span class="tag tag-green">找隐藏线</span><h3>资源不是免费投入</h3><p class="small">自然资本如果被当作免费资源，会造成过度使用；一旦外部性被定价，企业成本和资产价值就会变化。</p></div>
+      <div class="card"><span class="tag tag-amber">考试提醒</span><h3>循环经济背 3 条</h3><p class="small">Design out waste and pollution；keep products and materials in use；regenerate natural systems。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">覆盖 PDF 第 129-139 页，截止循环经济与其对气候目标的贡献。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Natural Capital</span> 自然资源和自然资本</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">本节自然资源包括 fresh water、biodiversity loss、land use、forestry and marine resources。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">自然资源也包括无法快速补充的非可再生资源，例如 fossil fuels、minerals、metals。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Natural capital 是 geology、soil、air、water 和 all living things 的存量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Ecosystem services 包括 provisioning、regulating、cultural、supporting services。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">生态系统服务年度货币价值估计约 US$125-140 trillion，超过全球 GDP 的 1.5 倍。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Resource Pressure</span> 资源耗竭、脱钩和 Jevons paradox</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资源压力来自人口增长、寿命延长、经济增长，以及发达和新兴经济体消费增加。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">全球人口约 8.1 billion，预计 2050 年 9.7 billion，2100 年 10.7 billion。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">现代农业依赖 phosphate rock，当前储量可能在 50-100 年内耗竭，峰值产量预计约 2030。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2010-2022 年全球 GDP per capita 上升超过 20%，CO2 per capita 下降约 2%，但长期绝对脱钩案例仍少。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Jevons paradox：单位资源效率改善可能被产品消费总量增加抵消。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Dasgupta Review 提出应把自然资本纳入资产财富，而不只看 GDP 增长。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Water and Biodiversity</span> 水与生物多样性</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">地球约 70% 被水覆盖，但只有 2.5% 是淡水；全球淡水需求到 2030 年可能超过供给 40%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Water scarcity 是淡水资源不足以满足水需求，可能由经济因素或气候物理影响导致。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">超过 2 billion 人处于高水压力国家，约 4 billion 人每年至少一个月经历严重缺水。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Biodiversity 是物种内、物种间和生态系统层面的生命多样性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">全球尺度维持生物多样性和生态系统服务韧性，可能需要有效公平保护约 30%-50% 的陆地、淡水和海洋区域。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">WWF 指出野生动物种群自 1970 年以来下降 69%，主要驱动包括栖息地丧失、过度利用、农业和城市化。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Land, Forests and Oceans</span> 土地、森林和海洋</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">AFOLU 对 water、soil、nutrients、plants、animals 有重大影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">森林约覆盖全球陆地 30%，接近 4 billion hectares，是碳循环关键部分。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2001-2019 年全球树冠损失 386 million hectares，相当于 105 Gt CO2 emissions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">商品生产，尤其农业相关商品，是森林砍伐关键驱动；soy、palm oil、cattle、timber 是题眼。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">海洋储存的 CO2 是大气的 43 倍，是最大碳库，也是第二大 CO2 sink。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Blue economy 是可持续使用海洋资源以促进经济增长、生计和就业，同时保护海洋生态系统健康。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2015 年 33% 海洋鱼类种群被不可持续捕捞，60% 捕捞至最大容量，只有 7% 低于可持续捕捞水平。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-rose">Pollution, Waste and Circular Economy</span> 污染、废弃物与循环经济</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">空气污染影响环境、健康、生态系统、生物多样性和作物产量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">室内和室外空气污染每年造成超过 7 million 死亡；2019 年 99% 全球人口生活在未达到 WHO 空气质量指南的地区。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">污染是全球最大的环境性疾病和早死原因；2015 年约 9 million premature deaths 与污染相关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">水污染来源包括 untreated sewage、sanitation systems、industrial waste discharge、spills/leaks 和 plastic waste。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">塑料污染推动监管行动；各国代表承诺到 2024 年制定终止塑料污染的国际法律约束协议。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">欧洲塑料循环经济战略要求到 2030 年所有 plastic packaging 可重复使用或可回收。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">更严格回收政策可能使高达 US$400 billion 新石化设施投资成为 stranded assets。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">循环经济三原则：design out waste and pollution、keep products and materials in use、regenerate natural systems。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>核心逻辑卡片：资源压力如何进入投资判断</h2>
+      </div>
+      <div class="head-desc">每张卡片按“原文要点、中文解释、逻辑等式、投资影响/考点”整理。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Natural capital</div><span class="tag tag-blue">Definition</span></div>
+        <div class="source-point"><b>原文要点：</b>Natural capital is the world’s stock of natural assets: geology, soil, air, water, and all living things.</div>
+        <p class="small">中文解释：自然资本不是只指能卖钱的油气木材，而是所有支持人类生存和企业活动的自然资产存量。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Natural capital</div><div class="eq-op">==</div><div class="eq-rhs">地质 + 土壤 + 空气 + 水 + 所有生命</div></div>
+          <div class="eq"><div class="eq-lhs">价值来源</div><div class="eq-op">==</div><div class="eq-rhs">生态系统服务让人类生活和企业生产成为可能</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Practice Problem 中 natural capital 的正确答案是“stock of natural assets”，不是可出售盈利的自然资源。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Ecosystem services 四类</div><span class="tag tag-green">Services</span></div>
+        <div class="source-point"><b>原文要点：</b>Services include provisioning, regulating, cultural, and supporting services.</div>
+        <p class="small">中文解释：四类服务可以用“供给、调节、文化、支撑”来记：先给东西，再调环境，再给精神价值，最后支撑其他服务产生。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Ecosystem services</div><div class="eq-op">==</div><div class="eq-rhs">Provisioning + Regulating + Cultural + Supporting</div></div>
+          <div class="eq"><div class="eq-lhs">例子</div><div class="eq-op">==</div><div class="eq-rhs">水/食物/木材 + 空气/水净化/气候调节 + 精神/历史/休闲 + 其他服务的基础</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>生态系统服务价值约 US$125-140 trillion/year，说明自然资本长期被低估。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Resource pressure and scarcity</div><span class="tag tag-amber">Drivers</span></div>
+        <div class="source-point"><b>原文要点：</b>Pressure comes from population growth, longer lives, economic growth, and increased consumption.</div>
+        <p class="small">中文解释：资源压力不是单一人口问题，还来自中产消费、生活方式升级和非可再生资源耗竭。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">资源压力</div><div class="eq-op">==</div><div class="eq-rhs">人口 + 寿命 + 经济增长 + 消费升级</div></div>
+          <div class="eq"><div class="eq-lhs">企业反应</div><div class="eq-op">==</div><div class="eq-rhs">提高资源效率 + 管理成本 + 技术创新 + 保持竞争力</div></div>
+        </div>
+        <div class="memory"><b>题眼：</b>phosphorus mineral fertilizers、phosphate rock、50-100 years、peak around 2030。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Decoupling and Jevons paradox</div><span class="tag tag-violet">Efficiency</span></div>
+        <div class="source-point"><b>原文要点：</b>Relative efficiency gains may be offset by increased consumption; absolute long-term decoupling is rare.</div>
+        <p class="small">中文解释：单位消耗下降不等于总消耗下降。如果产品更便宜、更高效，消费者可能用得更多，抵消节约效果。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Jevons paradox</div><div class="eq-op">==</div><div class="eq-rhs">单位资源效率提高 → 产品消费增加 → 总资源节约被抵消</div></div>
+          <div class="eq"><div class="eq-lhs">脱钩判断</div><div class="eq-op">==</div><div class="eq-rhs">relative decoupling 常见；absolute long-term decoupling 少见</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Jevons paradox 不是“能否无砍伐养活人口”，而是效率改善可能被消费增长抵消。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Water scarcity</div><span class="tag tag-blue">Water</span></div>
+        <div class="source-point"><b>原文要点：</b>Only 2.5% of water is freshwater; freshwater demand may exceed supply by 40% by 2030.</div>
+        <p class="small">中文解释：水连接农业、工业、家庭能源、娱乐和环境保护。给一个部门多分水，就意味着其他用途可用水减少。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Water scarcity</div><div class="eq-op">==</div><div class="eq-rhs">淡水资源不足以满足水需求</div></div>
+          <div class="eq"><div class="eq-lhs">成因</div><div class="eq-op">==</div><div class="eq-rhs">投资不足等经济因素 + 气候变化等物理影响</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>水风险会影响矿业、工业冷却、农业和公共服务；SDG 6 是 2030 年水和卫生可持续管理。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Biodiversity</div><span class="tag tag-green">Nature</span></div>
+        <div class="source-point"><b>原文要点：</b>Biodiversity is variability among living organisms within species, between species, and of ecosystems.</div>
+        <p class="small">中文解释：生物多样性是自然资本的“网络结构”。失去它，粮食、药品、洪水防护、气候调节和水供给都会受影响。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Biodiversity</div><div class="eq-op">==</div><div class="eq-rhs">物种内 + 物种间 + 生态系统多样性</div></div>
+          <div class="eq"><div class="eq-lhs">服务</div><div class="eq-op">==</div><div class="eq-rhs">food + clean water + genetic resources + flood protection + nutrient cycling + climate regulation</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>约 75% 全球粮食作物类型直接依赖动物授粉；70% 癌症药物为有机或源于有机物质。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Land use and forestry</div><span class="tag tag-amber">AFOLU</span></div>
+        <div class="source-point"><b>原文要点：</b>AFOLU affects water, soil, nutrients, plants, and animals; forests are vital in the carbon cycle.</div>
+        <p class="small">中文解释：森林既是生物多样性载体，也是碳循环调节器。砍伐森林会同时打击碳汇、生态系统服务和供应链稳定性。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Forests</div><div class="eq-op">==</div><div class="eq-rhs">光合作用 + CO2 调节 + 氧气 + 生物多样性 + 生态系统服务</div></div>
+          <div class="eq"><div class="eq-lhs">Deforestation risk</div><div class="eq-op">==</div><div class="eq-rhs">供应中断 + 成本波动 + 声誉损害 + 信用/估值影响</div></div>
+        </div>
+        <div class="memory"><b>题眼：</b>soy、palm oil、cattle、timber；公众公司约 US$1 trillion turnover 依赖与砍伐相关商品。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">8. Marine resources and blue economy</div><span class="tag tag-teal">Ocean</span></div>
+        <div class="source-point"><b>原文要点：</b>The ocean is the largest carbon reservoir and a major economic resource; blue economy means sustainable ocean use.</div>
+        <p class="small">中文解释：海洋既是碳库、氧气来源、食物来源、运输通道，也是矿产和能源来源；但过度捕捞会损害长期经济价值。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Ocean</div><div class="eq-op">==</div><div class="eq-rhs">最大碳库 + 第二大 CO2 sink + 氧气来源 + 海洋经济</div></div>
+          <div class="eq"><div class="eq-lhs">Blue economy</div><div class="eq-op">==</div><div class="eq-rhs">海洋资源经济增长 + 生计就业 + 保护海洋生态健康</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Traceability 和 sustainability certifications 可降低召回、浪费和法律成本，改善海产品加工利润率。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">9. Air and water pollution</div><span class="tag tag-rose">Pollution</span></div>
+        <div class="source-point"><b>原文要点：</b>Air pollution harms health, ecosystems, biodiversity, and crops; water pollution is a serious environmental threat.</div>
+        <p class="small">中文解释：污染不是单纯公益问题。它会带来死亡、疾病、罚款、诉讼、治理成本、生产中断和声誉损害。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Air pollution</div><div class="eq-op">==</div><div class="eq-rhs">健康损害 + 生态破坏 + 生物多样性下降 + 作物减少</div></div>
+          <div class="eq"><div class="eq-lhs">Water pollution</div><div class="eq-op">==</div><div class="eq-rhs">污水/工业废水/泄漏/塑料进入自然水体</div></div>
+        </div>
+        <div class="memory"><b>数字钩子：</b>空气污染每年超过 7 million deaths；污染总体在 2015 年造成约 9 million premature deaths。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">10. Waste management and plastics</div><span class="tag tag-violet">Waste</span></div>
+        <div class="source-point"><b>原文要点：</b>Waste and waste management have become priorities as resource pressure and pollution opposition grow.</div>
+        <p class="small">中文解释：废弃物越多，填埋空间越紧，填埋税和监管越强。塑料污染推动企业承担更多责任，也冲击石化投资逻辑。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Waste risk</div><div class="eq-op">==</div><div class="eq-rhs">填埋压力 + 税费上升 + 监管趋严 + 塑料舆论 + 出口受限</div></div>
+          <div class="eq"><div class="eq-lhs">Investor impact</div><div class="eq-op">==</div><div class="eq-rhs">回收机会 + 废物管理机会 + 石化搁浅资产风险</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>欧盟塑料战略要求 2030 年所有塑料包装可重复使用或可回收；新石化设施可能有 US$400bn stranded risk。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">11. Circular economy</div><span class="tag tag-green">Three Principles</span></div>
+        <div class="source-point"><b>原文要点：</b>The circular economy aims to avoid waste and preserve resource value for as long as possible.</div>
+        <p class="small">中文解释：循环经济不是简单“回收”，而是从产品设计、材料使用、运营模式到自然系统修复的全流程改变。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Circular economy</div><div class="eq-op">==</div><div class="eq-rhs">避免废弃物 + 延长资源价值 + 替代 use-make-dispose</div></div>
+          <div class="eq"><div class="eq-lhs">三原则</div><div class="eq-op">==</div><div class="eq-rhs">design out waste and pollution + keep materials in use + regenerate natural systems</div></div>
+        </div>
+        <div class="memory"><b>Practice Problem：</b>问 circular economy principles，选这三条，不选“所有产品返还制造商”或“只供国内市场”。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">12. Circular economy and climate targets</div><span class="tag tag-blue">Climate Link</span></div>
+        <div class="source-point"><b>原文要点：</b>Circular economy is a fundamental step toward climate targets; material use accounts for a large share of production emissions.</div>
+        <p class="small">中文解释：能源转型只能处理商品生产排放的一部分。材料怎么设计、使用和循环，也会决定碳排放。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">商品排放</div><div class="eq-op">==</div><div class="eq-rhs">能源来源/使用 + 材料使用</div></div>
+          <div class="eq"><div class="eq-lhs">五大领域</div><div class="eq-op">==</div><div class="eq-rhs">cement + aluminum + steel + plastics + food</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>循环经济策略在五个关键领域可消除剩余材料相关排放近一半；到 2050 年累计影响相当于消除当前交通排放。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Exhibits</div>
+        <h2>案例框：把资源压力落到公司和投资</h2>
+      </div>
+      <div class="head-desc">这些案例帮助你看到题眼后反推知识点。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Phosphorus 和粮食压力</div><span class="tag tag-amber">Resource Depletion</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">现代农业依赖来自 phosphate rock 的磷肥，当前全球储量可能在 50-100 年内耗竭，峰值产量预计约 2030。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">粮食系统同时面临人口增长、非可再生投入耗竭和避免进一步砍伐森林的压力。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">phosphorus、phosphate rock、non-renewable、food access。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Decoupling and Jevons</div><span class="tag tag-violet">Exhibit 8</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2010-2022 年全球 GDP per capita 增长超过 20%，CO2 per capita 约下降 2%。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">CO2 维度可见脱钩迹象，但材料使用的长期绝对脱钩仍少见，且效率提升可能被消费增加抵消。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">relative decoupling、absolute decoupling、Jevons paradox。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Biodiversity 的隐含价值</div><span class="tag tag-green">Biodiversity</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">约 75% 全球粮食作物类型依赖动物授粉；美国农民 2017 年为人工授粉支付约 US$300 million。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">当自然授粉服务退化，原本“免费”的生态服务会变成企业和农户的显性成本。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">pollination、crop yields、ecosystem services。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Deforestation 供应链风险</div><span class="tag tag-rose">Forests</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">商品生产，特别是农业商品，可能负责高达约三分之二的森林砍伐；soy、palm oil、cattle、timber 是关键商品。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">砍伐风险会沿供应链传导到收入、资产估值、成本、债务信用和股权市值。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">supply disruption、cost volatility、reputational damage。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Marine fish stocks</div><span class="tag tag-teal">Ocean</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2015 年 33% 海洋鱼类种群被不可持续捕捞，60% 捕捞至最大容量，只有 7% 低于可持续水平。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">过度捕捞短期满足需求，长期损害海洋生态和海产品行业利润。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">overfishing、legal overfishing、illegal unreported unregulated catch。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Water-Related Fines</div><span class="tag tag-blue">Case Study</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">中国 2014 年六家公司因化学品排河被罚 160 million yuan；美国 2020 年 Clean Water Act 相关罚款接近 US$3 million。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">水污染处罚和公益诉讼上升，会把环境外部性变成企业现金流成本。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">public interest litigation、water pollution fines、cash-flow risk。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Plastic waste and stranded assets</div><span class="tag tag-amber">Waste</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">交通油品需求下降后，部分油气企业把石化和塑料视为增长来源；严格回收政策可能使高达 US$400 billion 新石化设施投资搁浅。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">塑料监管不是单纯环境政策，也会改变石油需求和资本配置。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">single-use plastics、recycling measures、petrochemical stranded assets。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Circular economy and climate</div><span class="tag tag-green">Exhibit 9</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">能源来源和使用改变可帮助商品生产排放减半；另一半来自材料使用。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">cement、aluminum、steel、plastics、food 五大领域的循环策略可消除剩余材料相关排放近一半。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">linear economy → reuse economy → circular economy。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：资源、污染和循环经济最容易混在哪里</h2>
+      </div>
+      <div class="head-desc">这些点会直接进入后续三轮练习的题眼训练。</div>
+    </div>
+    <div class="grid-2">
+      <div class="trap"><b>1. Natural capital 不是“可出售资源”</b>它是自然资产存量，包括 geology、soil、air、water 和 all living things；正确答案不要缩窄成油气木材。</div>
+      <div class="trap"><b>2. Ecosystem services 四类不要混</b>Provisioning 是拿产品，regulating 是调节环境，cultural 是精神历史休闲，supporting 是支撑其他服务。</div>
+      <div class="trap"><b>3. 70% 水覆盖不等于淡水多</b>地球约 70% 被水覆盖，但只有 2.5% 是淡水；水资源短缺是投资风险。</div>
+      <div class="trap"><b>4. Efficiency 不等于总量下降</b>Jevons paradox 指单位效率提升可能导致消费增加，抵消资源节约。</div>
+      <div class="trap"><b>5. Biodiversity 不只是保护动物</b>它影响授粉、粮食、药物、洪水防护、营养循环和气候调节，属于系统性经济风险。</div>
+      <div class="trap"><b>6. Deforestation 风险会沿供应链传导</b>不是只有砍树企业受影响，依赖 soy、palm oil、cattle、timber 的下游公司也会受影响。</div>
+      <div class="trap"><b>7. Ocean 是碳库也是经济资产</b>海洋储存 CO2 是大气 43 倍，也是 seafood、shipping、minerals、oil 和 blue economy 的基础。</div>
+      <div class="trap"><b>8. Air pollution 数字不要混</b>空气污染每年超过 7 million deaths；污染总体 2015 年约 9 million premature deaths。</div>
+      <div class="trap"><b>9. Waste management 不只是回收</b>填埋税、焚烧排放、塑料出口受限、国际协议和企业责任都会改变成本和机会。</div>
+      <div class="trap"><b>10. Circular economy 不是简单 recycling</b>三原则是设计掉废弃物和污染、让产品材料持续使用、再生自然系统。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">One Screen Review</div>
+        <h2>考前压缩版：一屏背完模块 3</h2>
+      </div>
+      <div class="head-desc">先背逻辑等式，再用数字题眼校准。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <span class="tag tag-blue">逻辑等式总表</span>
+        <div class="formula-list">
+          <div class="formula"><b>Natural resource pressure</b> == population + longevity + economic growth + consumption。</div>
+          <div class="formula"><b>Natural capital</b> == geology + soil + air + water + living things。</div>
+          <div class="formula"><b>Ecosystem services</b> == provisioning + regulating + cultural + supporting。</div>
+          <div class="formula"><b>Resource scarcity</b> == finite inputs + rising demand + efficiency pressure。</div>
+          <div class="formula"><b>Jevons paradox</b> == efficiency gain + consumption rebound = savings offset。</div>
+          <div class="formula"><b>Water scarcity</b> == freshwater resources insufficient for demand。</div>
+          <div class="formula"><b>Biodiversity</b> == diversity within species + between species + ecosystems。</div>
+          <div class="formula"><b>Deforestation risk</b> == supply disruption + cost volatility + reputational damage。</div>
+          <div class="formula"><b>Blue economy</b> == ocean resources for growth/jobs + preserve ecosystem health。</div>
+          <div class="formula"><b>Circular economy</b> == design out waste + keep materials in use + regenerate natural systems。</div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">关键数字和题眼</span>
+        <div class="formula-list">
+          <div class="formula"><b>US$125-140tn</b>：生态系统服务年度货币价值估计。</div>
+          <div class="formula"><b>8.1 / 9.7 / 10.7bn</b>：当前、2050、2100 年全球人口量级。</div>
+          <div class="formula"><b>50-100 years / around 2030</b>：phosphate rock 储量耗竭与磷产量峰值题眼。</div>
+          <div class="formula"><b>2.5% / 40%</b>：淡水占比；2030 年淡水需求可能超过供给的比例。</div>
+          <div class="formula"><b>69%</b>：1970 年以来野生动物种群下降幅度。</div>
+          <div class="formula"><b>75% / US$300mn</b>：依赖动物授粉的粮食作物类型；美国人工授粉成本例子。</div>
+          <div class="formula"><b>30% / 386mn ha / 105 Gt CO2</b>：森林覆盖陆地比例；树冠损失；对应排放。</div>
+          <div class="formula"><b>43 times / US$1.3tn</b>：海洋 CO2 储量相对大气；海洋产业增加值估计。</div>
+          <div class="formula"><b>7mn / 9mn / 99%</b>：空气污染死亡、污染总体早死、未达 WHO 空气质量指南人口比例。</div>
+          <div class="formula"><b>US$400bn</b>：严格回收政策下新石化设施搁浅资产风险估计。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块边界提醒：自然资本方法、TNFD、具体估值工具会在模块 7 详细展开；本页只讲 3.1.2 的概念基础和投资传导。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">训练“看到题眼，反推资源、污染或循环经济知识点”。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div class="qtext">Which best describes natural capital?<div class="qchoices">a. 可出售盈利的自然资源<br>b. 包括 geology、soil、air、water 和 all living things 的自然资产存量<br>c. 直接依赖自然的货币收益总和</div></div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">答案：b。Natural capital 是自然资产存量，不只是能卖钱的自然资源。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div class="qtext">Jevons paradox 的核心含义是什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">单位资源效率提升可能被消费量增加抵消。逻辑等式：efficiency gain → lower resource per unit → more consumption → total savings offset。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div class="qtext">全球水很多，为什么 water scarcity 仍是重大风险？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">因为地球约 70% 被水覆盖，但只有 2.5% 是淡水；水在农业、工业、能源、公共供水和环境保护之间存在分配竞争。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div class="qtext">根据 GRI 框架，哪项最可能对 biodiversity resources 产生 indirect impact？<div class="qchoices">a. 用地表水灌溉<br>b. 为林业运输修建道路<br>c. 处理场噪音和灯光干扰本地物种</div></div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">答案：b。道路本身可能带来工人迁入和道路沿线商业开发，进而间接影响生物多样性。a 和 c 更直接。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div class="qtext">Biodiversity 为什么会影响农业和医药行业？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">农业依赖授粉和生态系统服务；医药领域很多药物为有机或源于有机物质。生物多样性下降会提高显性成本并减少未来创新来源。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div class="qtext">企业供应链暴露于 deforestation 时，可能面对哪三类财务风险？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">Supply disruption、cost volatility、reputational damage。这些风险可影响收入、成本、资产估值和信用质量。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div class="qtext">Blue economy 的定义中，最容易被漏掉的限定是什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">最容易漏掉“while preserving the health of ocean ecosystem”。它不是任意开发海洋资源，而是可持续使用海洋资源促进增长、生计和就业。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div class="qtext">Which best describes the principles of a circular economy?<div class="qchoices">a. Designing out waste and pollution, keeping materials in use, and regenerating natural systems<br>b. 所有产品都必须返还制造商<br>c. 产品只供国内市场消费</div></div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">答案：a。循环经济三原则必须原样抓住：design out waste and pollution；keep materials in use；regenerate natural systems。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div class="qtext">为什么塑料监管会影响石油和石化行业投资？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">交通燃油需求随电动车转型下降时，部分油气公司把石化和塑料作为增长来源；如果回收和减塑政策趋严，新石化设施可能成为搁浅资产。</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <details>
+        <summary>反推训练：看到 “phosphate rock” 你要想到什么？</summary>
+        <div class="detail-body">想到非可再生资源、现代农业磷肥、50-100 年耗竭风险、2030 左右峰值产量，以及粮食系统资源压力。</div>
+      </details>
+      <details>
+        <summary>反推训练：看到 “single-use plastics” 你要想到什么？</summary>
+        <div class="detail-body">想到塑料污染、公众压力、监管加强、企业废弃物责任、2030 可重复使用/可回收包装目标，以及石化设施搁浅资产风险。</div>
+      </details>
+    </div>
+    <div class="footer-note">依据文件：ch03/esg-03.pdf，第 3 章 3.1.2 及对应 Practice Problems。为便于复习，本页对原文做了压缩和中文解释，不替代原 PDF。</div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

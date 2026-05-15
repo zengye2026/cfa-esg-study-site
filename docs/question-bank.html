@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>综合题库</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--line:#d8e0ea;--soft:#f5f7fb;--paper:#fff;
+  --blue:#1d4ed8;--green:#047857;--amber:#b45309;--rose:#be123c;--dark:#111827;
+  --blue-bg:#eff6ff;--green-bg:#f0fdf4;--amber-bg:#fffbeb;--rose-bg:#fff1f2;
+  --r:8px;--shadow:0 8px 22px rgba(15,23,42,.06);
+  --sans:Arial,"Microsoft YaHei","PingFang SC",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);background:var(--soft);color:var(--ink);line-height:1.62}
+button,input{font-family:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 16px 88px}
+.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:0;letter-spacing:0}
+.home{display:inline-flex;text-decoration:none;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:8px;padding:9px 12px;font-weight:850}
+.stats{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0 14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-weight:900}
+.stat small{display:block;color:var(--muted);font-weight:650;margin-top:2px}
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(245,247,251,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:12px;display:grid;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.search{flex:1;min-width:min(330px,100%);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14px;background:#fff;color:var(--ink)}
+.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 11px;font-weight:850;font-size:13px;color:var(--sub);cursor:pointer;line-height:1.2}
+.btn:hover{border-color:#9fb0c4}
+.btn.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.good{color:var(--green);border-color:#bbf7d0}
+.btn.warn{color:var(--rose);border-color:#fecdd3}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.countline{font-size:13px;color:var(--muted);font-weight:750}
+.copy-status{font-size:13px;color:var(--green);font-weight:850}
+.grid{display:grid;gap:12px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:16px;scroll-margin-top:128px}
+.qcard.correct{border-color:#86efac}.qcard.wrong{border-color:#fda4af}.qcard.flagged{border-color:#f59e0b}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:850;color:var(--sub)}
+.qno{background:var(--dark);border-color:var(--dark);color:#fff}
+.source-textbook{border-color:#bfdbfe;color:#1d4ed8;background:var(--blue-bg)}
+.source-p300{border-color:#bbf7d0;color:#047857;background:var(--green-bg)}
+.mode-self{border-color:#fde68a;color:#92400e;background:var(--amber-bg)}
+.mode-auto{border-color:#c7d2fe;color:#3730a3;background:#eef2ff}
+.stem{font-size:17px;font-weight:900;line-height:1.5;margin:0 0 12px;color:var(--ink);white-space:pre-wrap}
+.stem-zh{margin:-4px 0 12px;color:#334155;background:#f8fafc;border-left:4px solid #93c5fd;padding:8px 10px;border-radius:0 8px 8px 0;font-weight:750}
+.options{display:grid;gap:8px;margin:12px 0}
+.opt{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;padding:10px 12px;font-size:15px;line-height:1.5;cursor:pointer;display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:start}
+.opt b{color:var(--blue)}
+.opt:hover{border-color:#93c5fd}
+.opt.selected{border-color:var(--blue);background:var(--blue-bg)}
+.opt.answer{border-color:#86efac;background:var(--green-bg)}
+.opt.bad{border-color:#fda4af;background:var(--rose-bg)}
+.opt-text{display:grid;gap:4px}
+.opt-zh{color:#475569;font-size:14px;border-top:1px dashed #dbe4ef;padding-top:4px;margin-top:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.answerbox{border:1px solid var(--line);border-radius:8px;background:#fbfdff;margin-top:12px;overflow:hidden}
+.answer-head{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:900}
+.answer-body{display:grid;gap:10px;padding:12px;background:#fff}
+.block{border-top:1px solid #edf2f7;padding-top:10px}
+.block:first-child{border-top:0;padding-top:0}
+.block h3{font-size:13px;margin:0 0 6px;color:var(--muted);letter-spacing:0}
+.block p{margin:0;white-space:pre-wrap}
+.pair{display:grid;gap:8px}
+.pair .en{color:#111827;font-weight:750}
+.pair .zh{color:#334155;border-top:1px dashed #d8e0ea;padding-top:8px}
+.hook-list{display:flex;gap:6px;flex-wrap:wrap}
+.hook{display:inline-flex;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;line-height:1.25}
+.logic{display:inline-block;border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3;border-radius:8px;padding:7px 9px;font-weight:900}
+.ref-table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 8px;background:#fff}
+.ref-table th,.ref-table td{border:1px solid #d8e0ea;padding:7px 8px;text-align:left;vertical-align:top}
+.ref-table th{background:#f8fafc;color:#334155}
+.jump{display:inline-flex;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:8px;color:var(--sub);padding:8px 10px;font-weight:850;font-size:13px}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:22px;text-align:center;color:var(--muted);font-weight:850}
+.loadrow{display:flex;justify-content:center;margin-top:14px}
+.footerbar{position:fixed;right:16px;bottom:16px;display:flex;gap:8px}
+.float{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 13px;box-shadow:var(--shadow);font-weight:900;color:var(--sub);cursor:pointer;text-decoration:none}
+@media(max-width:720px){
+  .wrap{padding:16px 10px 78px}.qcard{padding:13px}.stem{font-size:16px}.opt{font-size:14px;grid-template-columns:28px 1fr}
+  .footerbar{right:10px;bottom:10px}.toolbar{position:static}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="topline">
+      <h1>综合题库</h1>
+      <a class="home" href="index.html">返回主页</a>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section class="toolbar">
+    <div class="panel">
+      <div class="row" id="chapterTabs"></div>
+      <div class="row" id="sourceTabs"></div>
+      <div class="row">
+        <input class="search" id="search" placeholder="搜索英文题干、中文、题眼、页码">
+        <button class="btn active" data-filter="all">全部</button>
+        <button class="btn" data-filter="todo">未做</button>
+        <button class="btn" data-filter="wrong">错题</button>
+        <button class="btn" data-filter="flagged">收藏</button>
+        <button class="btn primary" id="shuffle">随机顺序</button>
+        <button class="btn primary" id="copyWrong">&#22797;&#21046;&#38169;&#39064;</button>
+        <button class="btn warn" id="reset">清空记录</button>
+      </div>
+      <div class="row"><span class="countline" id="countLine"></span><span class="copy-status" id="copyStatus"></span></div>
+    </div>
+  </section>
+
+  <main class="grid" id="questionGrid"></main>
+  <div class="loadrow"><button class="btn primary" id="loadMore">加载更多</button></div>
+</div>
+<div class="footerbar">
+  <button class="float" id="toTop">回到顶部</button>
+  <a class="float" href="index.html">返回主页</a>
+</div>
+
+<script src="question-bank-data.js"></script>
+<script src="question-bank-runtime.js"></script>
+</body>
+</html>

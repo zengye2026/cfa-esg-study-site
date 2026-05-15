@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 Module 3 · 8.1.4-8.1.5 Screening and ESG Indexes</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:680px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:840px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}
+  .grid-2,.grid-3,.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}
+  .branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}
+  .eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 8</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">8.1.4-8.1.5</span>
+        <span class="pill">Screening & Indexes</span>
+      </div>
+      <h1>Screening and ESG<br>Indexes & Benchmarks</h1>
+      <p class="lead">本页覆盖第 8 章 7 节：exclusionary screening 的演变、四类 exclusion、筛选偏好由谁决定、不同资产类别的 stewardship 限制，以及 ESG 指数和基准的主要类型、优势和局限。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Screening == 偏好/规范 → 排除规则 → 可投资范围变化 → 跟踪误差/分散化/收益结构变化；ESG indexes == 规则化 ESG 暴露 + 方法差异 + 透明度和历史数据限制。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">8.1.4 explain screening approaches, benefits and limitations<br>8.1.5 explain ESG indexes and benchmarking approaches</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">排除类别</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">指数优势</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">指数局限</div></div>
+        <div class="mini-stat"><div class="mini-num">1</div><div class="mini-lab">核心权衡</div></div>
+      </div>
+      <div class="side-note">记忆抓手：筛选最容易“看起来简单”。但考试真正问的通常是它带来的组合后果：可投资范围变小、跟踪误差上升、分散化下降、收益和风格暴露变化。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="categories">四类排除</button>
+    <button class="tab" data-tab="application">应用影响</button>
+    <button class="tab" data-tab="stewardship">投后参与</button>
+    <button class="tab" data-tab="indexes">指数基准</button>
+    <button class="tab" data-tab="benefits">优缺点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看总图：筛选规则如何改变组合</h2>
+      </div>
+      <div class="head-desc">按逻辑等式心象术，先拆“exclusionary screening”：exclusion 是排除对象，screening 是规则动作，最后一定落到 portfolio consequences。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Exclusionary Screening and ESG Indexes<br>偏好变成规则，规则改变组合</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">1 演变</div>
+          <p>Screening 是最古老、最直接方法。</p>
+          <p>行业从 divestment 更多转向 engagement。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">2 四类排除</div>
+          <p>Universal、conduct-related、faith-based、idiosyncratic。</p>
+          <p>分类看“依据来源”。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">3 决策主体</div>
+          <p>偏好通常由 asset owners 指定。</p>
+          <p>Asset managers 通常不愿主动缩小范围。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">4 资产类别</div>
+          <p>上市股票有 proxy voting。</p>
+          <p>债券、衍生品、实物资产、指数渠道不同。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">5 指数基准</div>
+          <p>ESG index 可规则化暴露。</p>
+          <p>但方法、透明度、测量和历史数据有限。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>偏好来源</h3><p>全球规范、行为违规、宗教信仰、特殊法律或偏好。</p></div>
+        <div class="flow-step"><h3>形成规则</h3><p>把偏好写成 exclusion list 或 index methodology。</p></div>
+        <div class="flow-step"><h3>改变范围</h3><p>可投资 universe 缩小，行业和证券权重变化。</p></div>
+        <div class="flow-step"><h3>组合后果</h3><p>跟踪误差、集中度、风格、收益率和碳强度变化。</p></div>
+        <div class="flow-step"><h3>管理限制</h3><p>指数拆分、投后参与、透明度和回测历史限制。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">核心判断</span>
+        <h3>四类排除按“依据”分类</h3>
+        <p class="small">Universal 看全球规范；conduct-related 看行为违规；faith-based 看宗教偏好；idiosyncratic 看没有全球共识的特殊排除。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">投资影响</span>
+        <h3>排除会改变组合，不只是道德表态</h3>
+        <p class="small">排除规则可能降低某类风险，也可能降低分散化、提高 active share 和 tracking error，甚至改变收益率、周期性和行业因子。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考点提醒</span>
+        <h3>指数例子不用硬背名称</h3>
+        <p class="small">PDF 明确提示 Exhibit 10 的具体指数不需要背，但要知道 ESG 指数覆盖股票、固收、主权、绿色债、气候债和实物资产等类型。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-08.pdf` 第 452-457 页整理，覆盖 8.1.4 和 8.1.5 的正式内容。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Screening</span> 筛选方法的定位</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Screening 是 ESG investing 中最古老、最直接的方法。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Negative screening 基于伦理或其他偏好，对 portfolio investable universe 施加排除。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">GSIA 统计显示，stewardship and engagement 已成为主导可持续投资策略，体现从 divestment/exclusions 向 dialogue 和 escalation 转变。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">排除方法会随新信息演变，例如俄乌战争使投资者重新考虑对 fossil fuels 和 weapons 的 blanket exclusions。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Categories</span> 四类 exclusion</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Universal exclusions：由 UN、WHO 等全球规范和公约支持。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Conduct-related exclusions：通常针对公司或国家行为违规，不一定与业务性质本身有关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Faith-based exclusions：由宗教机构或个人投资者偏好决定，例如赌博、酒精、成人娱乐。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Idiosyncratic exclusions：没有全球共识支持，例如新西兰养老金排除鲸肉加工公司。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Application</span> 应用与组合后果</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Exclusionary preferences 通常由 asset owners 采用，而不是 asset managers 主动采用。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">原因是排除通常会缩小可投资范围，并可能影响 return generation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Norges Bank 的排除清单是全球资产所有者中较高可见度案例，并影响其他北欧资产所有者。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">筛选会影响 investable universe、expected alpha、tracking error、concentration risk、carbon intensity、yield profile 等。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Stewardship</span> 资产类别差异</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">只有上市股票在 AGM 上有 proxy voting rights。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">固定收益 stewardship 可以包括考虑债务资本成本影响或谈判债券 covenants。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多资产策略常因现金管理等原因投资指数，逐项拆解指数做筛选可能复杂且昂贵。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">流动性高、交易活跃的指数更容易拆解成成分和权重；冷门、交易少的指数相反。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">Indexes</span> ESG 指数和基准</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 指数例子覆盖 equity、fixed income credit、sovereign、green bonds、SDG sovereign、climate government bond、real assets。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 指数优势包括降低风险、对社会环境作正面贡献、潜在改善长期表现。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 指数挑战包括缺乏标准化方法、透明度有限、ESG 表现难测量、长期记录不足。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">E、S、G 彼此相互连接，也与公司基本面连接，因此 ESG 表现测量本身并不简单。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="categories" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Four Categories</div>
+        <h2>四类排除：看依据，不看名称长短</h2>
+      </div>
+      <div class="head-desc">四类 exclusion 的题眼很明确：全球规范、行为违规、宗教偏好、特殊个别要求。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Universal</span><div class="topic-title">Universal exclusions</div></div></div>
+        <p class="small">Universal exclusions represent exclusions supported by global norms and conventions, such as those from the UN and WHO。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Universal</div><div class="eq-op">==</div><div class="eq-rhs">全球规范/公约支持 + 广泛认可的排除</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>它不是某个投资者自己的偏好，而是有全球规范背书。PDF 用 tobacco exclusions 举例，WHO、UNGC、SDGs 都支持控制或排除烟草相关风险。</div>
+        <div class="riskline"><b>考点提醒：</b>controversial arms and munitions 通常也属于全球规范支持的 universal exclusions。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Conduct</span><div class="topic-title">Conduct-related exclusions</div></div></div>
+        <p class="small">Conduct-related exclusions generally are company or country specific and often are not related to the nature of the business。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Conduct-related</div><div class="eq-op">==</div><div class="eq-rhs">公司/国家具体行为违规 + 与业务性质未必直接相关</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>重点不是“这家公司做什么行业”，而是“它做事方式是否违规”。例如 ILO 原则违规、公司违反 UN Global Compact、主权国家 Freedom House Fails。</div>
+        <div class="riskline"><b>题眼钩子：</b>看到 labor infractions、ILO、UN Global Compact failures、Freedom House Fails，先想 conduct-related。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Faith</span><div class="topic-title">Faith-based exclusions</div></div></div>
+        <p class="small">Faith-based exclusions are specific to religious institutional or individual investors。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Faith-based</div><div class="eq-op">==</div><div class="eq-rhs">宗教机构/个人投资者信仰偏好 + 特定收入来源排除</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>它的依据是宗教信仰，不是全球统一规范。例如排除从 gambling、alcohol、adult entertainment 取得收入的公司。</div>
+        <div class="riskline"><b>易错提醒：</b>faith-based 不是所有道德排除的总称，必须和宗教投资者偏好有关。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Idiosyncratic</span><div class="topic-title">Idiosyncratic exclusions</div></div></div>
+        <p class="small">Idiosyncratic exclusions are exclusions that are not supported by global consensus。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Idiosyncratic</div><div class="eq-op">==</div><div class="eq-rhs">没有全球共识 + 特定国家/机构/法律的个别排除</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>PDF 例子是新西兰养老金按法律排除参与鲸肉加工的公司。它不是全球共识，所以归入 idiosyncratic。</div>
+        <div class="riskline"><b>题眼钩子：</b>看到 whale meat processing、New Zealand pension funds，直接反推 idiosyncratic exclusion。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="application" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Application</div>
+        <h2>排除偏好谁来定？定完会影响什么？</h2>
+      </div>
+      <div class="head-desc">这一节最像组合构建实务：规则一旦进入投资范围，后面每个风险收益指标都要重新看。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Asset Owners</span><div class="topic-title">排除偏好通常由资产所有者指定</div></div></div>
+        <p class="small">Exclusionary preferences are usually adopted by asset owners rather than asset managers，因为 exclusions 会缩小 investable universe，并可能影响 return generation。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Exclusion preference</div><div class="eq-op">==</div><div class="eq-rhs">asset owner values/mandate → asset manager execution</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>资产所有者像“委托方”，可以根据受益人价值观或授权设定边界；资产管理人像“执行方”，通常更希望保留更大的投资范围。</div>
+        <div class="riskline"><b>考点提醒：</b>问 exclusionary preferences generally specified by whom，答案是 asset owners，不是 asset managers。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Norges Bank</span><div class="topic-title">高可见度排除清单案例</div></div></div>
+        <p class="small">Norges Bank 通过挪威主权财富基金实施高可见度 exclusion list，该清单被其他挪威资产所有者采用，并影响北欧资产所有者构建排除清单。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Norges list</div><div class="eq-op">==</div><div class="eq-rhs">visible asset owner exclusion list → reference for other Nordic asset owners</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>它是资产所有者将价值偏好制度化、清单化并产生行业影响的案例。</div>
+      </article>
+    </div>
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr>
+            <th>排除后的问题</th>
+            <th>PDF 提醒</th>
+            <th>中文解释</th>
+            <th>逻辑等式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>可投资范围</b></td>
+            <td>How do choices change the size of investable universe?</td>
+            <td>排除越广，可选股票或债券越少。</td>
+            <td>Exclusion scope ↑ → investable universe ↓</td>
+          </tr>
+          <tr>
+            <td><b>Alpha 与跟踪误差</b></td>
+            <td>Expected alpha and tracking error may change.</td>
+            <td>排除后可能偏离基准，主动风险增加。</td>
+            <td>Sector/security exclusions → active share/tracking error ↑</td>
+          </tr>
+          <tr>
+            <td><b>集中风险</b></td>
+            <td>Portfolio exposure and concentration risk may change.</td>
+            <td>删掉某些行业后，剩余行业权重自然上升。</td>
+            <td>Universe removed → remaining sectors overweight</td>
+          </tr>
+          <tr>
+            <td><b>其他 ESG 指标</b></td>
+            <td>Excluding sectors may deteriorate other E, S, or G metrics.</td>
+            <td>减少一个风险，可能恶化另一个指标。</td>
+            <td>One ESG target improvement ≠ all ESG metrics improvement</td>
+          </tr>
+          <tr>
+            <td><b>周期性和防御性</b></td>
+            <td>Portfolio may become more pro-cyclical or defensive.</td>
+            <td>排除行业会改变风格和周期暴露。</td>
+            <td>Sector exclusion → factor/style exposure shift</td>
+          </tr>
+          <tr>
+            <td><b>收益率</b></td>
+            <td>Yield profile may change and need compensation.</td>
+            <td>排除高股息或高票息板块，组合收入可能下降。</td>
+            <td>High-yield sector exclusion → income/yield profile changes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="stewardship" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Stewardship</div>
+        <h2>不同资产类别的投后参与渠道不同</h2>
+      </div>
+      <div class="head-desc">筛选不是唯一工具。PDF 特别提醒：不同资产类别是否能 engagement，要看权利结构。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Listed Equities</span><div class="topic-title">上市股票有代理投票权</div></div></div>
+        <p class="small">Only listed equities benefit from proxy voting rights at annual general meetings (AGMs)。上市公司由董事会和管理层领导，他们可以改变 ESG risk factor exposures。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Listed equity</div><div class="eq-op">==</div><div class="eq-rhs">ownership rights + AGM proxy voting + influence on board/management</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>持有股票像股东，有投票和提案等治理渠道。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Other Assets</span><div class="topic-title">其他资产类别没有同样渠道</div></div></div>
+        <p class="small">Derivatives、fixed income、real assets 和 many indexes 不具备与上市股票相同的 proxy voting / AGM 机制。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Non-equity assets</div><div class="eq-op">==</div><div class="eq-rhs">no proxy voting channel + alternative stewardship tools</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>不是所有资产都能“投票改变公司”。债券投资者更多通过融资成本、契约条款和发行人沟通施加影响。</div>
+        <div class="riskline"><b>考点提醒：</b>固定收益 stewardship 可以包括 cost of debt capital 和 bond covenants。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Indexes</span><div class="topic-title">指数拆分有成本</div></div></div>
+        <p class="small">多资产策略常出于现金管理等原因投资指数。若从筛选角度频繁拆解指数，可能复杂且昂贵。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Index screening</div><div class="eq-op">==</div><div class="eq-rhs">constituent decomposition + weight look-through + cost/complexity</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>买指数像买一篮子资产，想逐个剔除成分，就要先知道篮子里每项和权重，流动性差的指数更麻烦。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Policy Exemption</span><div class="topic-title">排除政策可能豁免指数</div></div></div>
+        <p class="small">投资者可能维护 formal exclusion list，但也在 policy 中写明为了 efficient portfolio management 而豁免 indexes。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Index exemption</div><div class="eq-op">==</div><div class="eq-rhs">formal exclusion list + efficient portfolio management exception</div></div>
+        </div>
+        <div class="memory"><b>易错提醒：</b>有 exclusion list 不代表组合中任何指数都必须逐项拆开执行排除。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="indexes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Indexes and Benchmarks</div>
+        <h2>ESG 指数和基准：知道类型，不背清单</h2>
+      </div>
+      <div class="head-desc">Exhibit 10 的具体指数名称不考，但要知道 ESG index 可以覆盖哪些资产类别，以及方法差异会带来局限。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>类型</th>
+            <th>PDF 中的代表方向</th>
+            <th>中文解释</th>
+            <th>记忆等式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Equity ESG indexes</b></td>
+            <td>MSCI、Dow Jones Sustainability、FTSE、FTSE4Good、Sustainalytics 等。</td>
+            <td>股票 ESG 指数可基于筛选、SRI、ESG leaders、ESG focus、女性领导力等方法构建。</td>
+            <td>Equity ESG index == stock universe + ESG methodology</td>
+          </tr>
+          <tr>
+            <td><b>Fixed income credit indexes</b></td>
+            <td>MSCI fixed income ESG、Bloomberg MSCI、J.P. Morgan ESG corporate、Bloomberg SASB ESG 等。</td>
+            <td>信用债指数可用 ESG 权重、SRI、SASB 或 Paris-aligned 方法调整。</td>
+            <td>Credit ESG index == issuer credit universe + ESG weighting/screen</td>
+          </tr>
+          <tr>
+            <td><b>Sovereign bond indexes</b></td>
+            <td>FTSE ESG WGBI、FTSE ESG EMU Government Bond、J.P. Morgan JESG GBI-EM 等。</td>
+            <td>主权债 ESG 指数把国家层面的 ESG 或治理/可持续指标引入债券基准。</td>
+            <td>Sovereign ESG index == government bond universe + country ESG criteria</td>
+          </tr>
+          <tr>
+            <td><b>Thematic green bond indexes</b></td>
+            <td>Bloomberg MSCI Green Bonds、ICE BofA Green Index、Solactive Green Bond Indices。</td>
+            <td>绿色债指数聚焦绿色项目融资类债券。</td>
+            <td>Green bond index == labeled green bond universe + green methodology</td>
+          </tr>
+          <tr>
+            <td><b>SDG / Climate sovereign indexes</b></td>
+            <td>FTSE Sovereign SDG Index、FTSE Climate Risk-Adjusted Government Bond Indexes。</td>
+            <td>把 SDG 或气候风险调整纳入主权债组合。</td>
+            <td>Thematic sovereign index == country debt + SDG/climate lens</td>
+          </tr>
+          <tr>
+            <td><b>Real assets indexes</b></td>
+            <td>GRESB GLIO/GRESB ESG Index。</td>
+            <td>用于基础设施和房地产等实物资产 ESG 指数化。</td>
+            <td>Real assets ESG index == infrastructure/real estate universe + ESG assessment</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card">
+        <span class="tag tag-blue">方法提醒</span>
+        <h3>同名 ESG 指数不代表同一逻辑</h3>
+        <p class="small">不同提供商可能使用不同筛选条件、权重、ESG 数据和再平衡规则。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">考试提醒</span>
+        <h3>不背具体清单</h3>
+        <p class="small">PDF 明确写明 Exhibit 10 内容不作为考试记忆清单，只需知道类型和 methodology 概念。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">投资提醒</span>
+        <h3>基准会改变比较口径</h3>
+        <p class="small">选择 ESG benchmark 后，业绩比较、tracking error、行业偏离和 ESG 目标都可能随之改变。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Benefits and Limitations</div>
+        <h2>ESG 指数：三项优势，四项局限</h2>
+      </div>
+      <div class="head-desc">这部分适合直接做选择题：优点看风险和贡献，局限看方法、透明度、测量和历史。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <span class="tag tag-green">Advantages</span>
+        <h3>ESG indexes 的优势</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Reduced risk：</b>识别优先考虑 sustainability 的公司或国家，降低投资于对环境或社会有负面影响资产的风险。</div>
+          <div class="formula"><b>Positive contribution：</b>对社会和环境产生正面贡献。</div>
+          <div class="formula"><b>Potential performance：</b>通过投资更可持续的公司或国家，潜在改善长期表现。</div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag tag-rose">Challenges</span>
+        <h3>ESG indexes 的局限</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Lack of standardized methodology</b>不同指数提供商使用不同标准和权重。</div>
+          <div class="trap"><b>Limited transparency</b>精确方法披露可能有限。</div>
+          <div class="trap"><b>Difficulty measuring ESG performance</b>E、S、G 彼此相连，也与基本面相连。</div>
+          <div class="trap"><b>Lack of long-term track record</b>长期记录不足，难以跨多个市场周期回测。</div>
+        </div>
+      </div>
+    </div>
+    <div class="topic-card" style="margin-top:14px">
+      <div class="topic-top"><div><span class="tag tag-amber">逻辑等式</span><div class="topic-title">为什么 ESG 指数既有用又有局限？</div></div></div>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">ESG index value</div><div class="eq-op">==</div><div class="eq-rhs">rules-based ESG exposure + benchmark comparability + easier implementation</div></div>
+        <div class="eq"><div class="eq-lhs">ESG index risk</div><div class="eq-op">==</div><div class="eq-rhs">methodology divergence + opacity + measurement complexity + limited history</div></div>
+      </div>
+      <div class="memory"><b>中文解释：</b>ESG 指数像“标准化底稿模板”：效率高、可比较，但模板背后的判断和口径不同，结论就可能不同。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组等式背模块 3</h2>
+      </div>
+      <div class="head-desc">先背分类，再背组合后果，最后背指数优缺点。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Screening ==</b> oldest and most straightforward ESG investing approach。</div>
+          <div class="formula"><b>Negative screening ==</b> ethical/other preferences + exclusions on investable universe。</div>
+          <div class="formula"><b>Universal ==</b> UN/WHO/global norms；<b>Conduct ==</b> company/country behavior failures。</div>
+          <div class="formula"><b>Faith-based ==</b> religious investor preferences；<b>Idiosyncratic ==</b> no global consensus。</div>
+          <div class="formula"><b>Exclusion preference ==</b> asset owner specifies + asset manager executes。</div>
+          <div class="formula"><b>Exclusion impact ==</b> universe ↓ + tracking error ↑ + diversification ↓ + factor/yield shift。</div>
+          <div class="formula"><b>Listed equities ==</b> proxy voting rights；<b>fixed income stewardship ==</b> cost of debt/covenants。</div>
+          <div class="formula"><b>ESG index advantages ==</b> reduced risk + positive contribution + potential long-term performance。</div>
+          <div class="formula"><b>ESG index challenges ==</b> methodology not standardized + limited transparency + measurement difficulty + short track record。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Universal vs faith-based</b>Universal 靠全球规范；faith-based 靠宗教投资者偏好。</div>
+          <div class="trap"><b>Conduct vs business nature</b>Conduct-related 看行为违规，不一定看行业本身。</div>
+          <div class="trap"><b>Idiosyncratic</b>没有全球共识，典型题眼是 New Zealand + whale meat products。</div>
+          <div class="trap"><b>Asset owner vs manager</b>排除偏好通常由资产所有者指定，不是资产管理人。</div>
+          <div class="trap"><b>Exclusion is not free</b>排除可能降低某风险，但会带来 tracking error、集中度、收益率和风格变化。</div>
+          <div class="trap"><b>ESG index</b>不要把 ESG 指数当成天然客观，方法和透明度本身就是风险点。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 3 的一根线：筛选把价值偏好变成投资规则；投资规则会改变组合；ESG 指数把规则标准化，但标准化背后仍有方法差异和数据限制。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只覆盖模块 3</h2>
+      </div>
+      <div class="head-desc">正式 Practice Problems 会在全章完成后统一进入三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">Negative screening 的核心动作是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">基于伦理或其他偏好，对组合可投资范围施加排除。逻辑等式：preference → exclusion rule → investable universe changes。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">四类 exclusion 分别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Universal、conduct-related、faith-based、idiosyncratic exclusions。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">看到 ILO 原则违规、UN Global Compact 失败、Freedom House Fails，应归到哪类 exclusion？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Conduct-related exclusions，因为重点是公司或国家的行为违规，不一定与业务性质本身有关。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">新西兰养老金排除鲸肉加工公司属于哪类 exclusion？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Idiosyncratic exclusion，因为它没有全球共识支持，是特定法律或机构要求。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Exclusionary preferences 通常由谁指定？为什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">通常由 asset owners 指定，因为排除反映资产所有者或受益人的价值偏好，并且会缩小可投资范围、影响收益生成。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">为什么固定收益的 stewardship 不同于上市股票？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">上市股票有 AGM proxy voting rights；固定收益没有同样投票渠道，更多通过债务资本成本影响或谈判 bond covenants。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">ESG indexes 的三项优势是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Reduced risk、positive contributions to society and environment、potentially improved long-term performance。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">ESG indexes 的四项主要挑战是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Lack of standardized methodology、limited transparency、difficulty measuring ESG performance、lack of a long-term track record。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.3 · Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:30px 16px 84px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%;min-width:0}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:840px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:20px;font-weight:900;color:var(--dark);line-height:1.42}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(25px,3.2vw,36px);line-height:1.15;margin:0;color:var(--dark);letter-spacing:0;overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card,.fact-card,.reading-card,.map-board{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0}
+.small{font-size:13.2px;color:var(--sub);line-height:1.75}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:999px;border:1px solid var(--line);padding:3px 8px;font-size:11px;font-weight:950;line-height:1.2;white-space:normal}
+.tag-blue{color:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.tag-green{color:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.tag-amber{color:var(--amber);background:var(--amber-bg);border-color:var(--amber-bdr)}
+.tag-rose{color:var(--rose);background:var(--rose-bg);border-color:var(--rose-bdr)}
+.tag-violet{color:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.tag-teal{color:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.map-board{padding:22px;margin-bottom:16px}
+.center-node{max-width:760px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(4){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-weight:950;color:var(--dark);font-size:14px;margin-bottom:6px}
+.branch p{font-size:12.5px;color:var(--sub);line-height:1.62;margin:0}
+.flowline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fact-card{padding:0}
+.fact-head{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;padding:15px 16px;border-bottom:1px solid var(--line2);background:linear-gradient(180deg,#fff,#f8fafc)}
+.fact-no{width:30px;height:30px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--dark);color:#fff;font-size:12px;font-weight:950}
+.fact-title{font-size:16px;line-height:1.35;color:var(--dark);font-weight:950}
+.fact-body{padding:15px 16px 16px}
+.source-point{font-size:13px;color:var(--sub);background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;line-height:1.7;margin-bottom:10px}
+.explain{font-size:13.2px;color:var(--sub);line-height:1.75;margin-bottom:10px}
+.eq{display:grid;grid-template-columns:minmax(0,126px) 28px minmax(0,1fr);gap:8px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;min-width:0;box-shadow:var(--sh-sm);margin-bottom:10px}
+.eq-lhs{font-size:12.8px;font-weight:950;color:var(--dark);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:13px;text-align:center}
+.eq-rhs{font-size:12.8px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere;word-break:break-word}
+.fact-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.hook{font-size:12.5px;color:#7c2d12;background:#fffbeb;border:1px solid #fde68a;border-radius:999px;padding:4px 9px;font-weight:850}
+.reading-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.reading-card{display:flex;flex-direction:column;gap:10px}
+.reading-title{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.reading-desc{font-size:13px;color:var(--sub);line-height:1.7}
+.reading-use{font-size:12.5px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:9px 10px;line-height:1.6}
+.reading-url{font-size:12px;color:var(--muted);font-weight:850;border-top:1px solid var(--line2);padding-top:8px;margin-top:auto;line-height:1.45}
+.formula-list{display:grid;gap:9px}
+.formula,.trap{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;box-shadow:var(--sh-sm);overflow-wrap:anywhere}
+.formula b,.trap b{color:var(--dark);display:block;margin-bottom:2px}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:13px;line-height:1.7}
+.hero-main,.hero-side,.map-board,.card,.fact-card,.reading-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.fact-title,.reading-title,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.reading-desc,.reading-use{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.reading-grid{grid-template-columns:1fr 1fr}
+  .flowline{grid-template-columns:1fr 1fr}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .pills{display:grid;grid-template-columns:1fr 1fr}
+  .pill{justify-content:center;text-align:center}
+  .nav{display:grid;grid-template-columns:1fr 1fr;gap:7px;position:static;overflow:visible}
+  .tab{white-space:normal;min-height:38px;text-align:center}
+  .fact-grid,.reading-grid,.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .fact-head{grid-template-columns:30px minmax(0,1fr);padding:14px}
+  .fact-body{padding:14px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .center-node{border-radius:var(--r);padding:12px 14px;width:100%;max-width:100%}
+  h1{font-size:34px}
+  .lead,.hero-eq{font-size:14px}
+  .mini-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Key Facts</span>
+        <span class="pill">Further Reading</span>
+      </div>
+      <h1>Environmental Factors Key Facts and Further Reading</h1>
+      <p class="lead">本页把第 3 章 PDF 末尾的 12 条正式 Key Facts 做成考前汇总，并把 References 中最能支撑主线的阅读材料整理成“读什么、为什么读”。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b> Environmental Factors == Climate risk + Natural capital pressure + Pollution and circular economy + Policy/carbon pricing + Analysis/disclosure tools + Financial modeling/opportunities。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Chapter Lock</div>
+      <div class="side-big">第 3 章不是“环保常识”，而是“环境事实如何进入投资判断”。</div>
+      <div class="mini-grid">
+        <div class="mini-stat"><div class="mini-num">12</div><div class="mini-lab">正式 Key Facts</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">对应复习模块</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先问“环境因素是什么”，再问“它怎样变成风险、机会、披露、模型变量和投资产品”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">总图</button>
+    <button class="tab" data-tab="facts">12 条事实</button>
+    <button class="tab" data-tab="reading">延伸阅读</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第 3 章一条线：从地球系统到投资模型</h2>
+      </div>
+      <div class="head-desc">Key Facts 的隐藏线是“环境变化不是背景变量，而是会进入现金流、风险、估值和产品结构的投资变量”。</div>
+    </div>
+
+    <div class="map-board">
+      <div class="center-node">Environmental Factors<br>环境事实 → 重大性判断 → 风险和机会 → 投资分析</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Climate</div>
+          <p>GHG 推动气候变化；应对方式是 mitigation + adaptation；Paris 和 net zero 给出政策方向。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Natural Resources</div>
+          <p>水、生物多样性、土地/森林、海洋资源共同构成自然资本压力。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Pollution / Circular</div>
+          <p>污染、废弃物和资源消耗引出循环经济：少用、再用、回收、再生。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Policy / Carbon</div>
+          <p>碳税和 ETS 把排放成本显性化，披露政策把环境因素推入投资链条。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Analysis Tools</div>
+          <p>从 carbon footprinting 到 scenario analysis，再到 TCFD/TNFD 等框架。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Finance / Products</div>
+          <p>环境因素进入收入、成本、CapEx、风险；机会变成低碳技术、绿色产品和可持续债务。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">Step 1</span>
+        <h3>识别事实</h3>
+        <p class="small">气候、自然资源、污染、废弃物、循环经济和海洋经济不是并列背诵，而是环境系统的不同压力源。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">Step 2</span>
+        <h3>判断重大性</h3>
+        <p class="small">重大环境因素必须能影响 business model 和 value drivers，且不同 sector 的重大性不同。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Step 3</span>
+        <h3>落到投资</h3>
+        <p class="small">最后要能落到 physical/transition risk、模型变量、披露质量、清洁技术机会和绿色金融产品。</p>
+      </div>
+    </div>
+
+    <div class="footer-note">资料依据：本页内容依据 ch03/esg-03.pdf 的 Key Facts: Environmental Factors 和 References 整理；ch04 仅作为页面结构参考。</div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>12 条 Key Facts：原文要点 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条都压缩成“原文要点、中文解释、逻辑等式、回到模块”。</div>
+    </div>
+
+    <div class="fact-grid">
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">1</div><div class="fact-title">环境因素范围很广</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Material environmental factors include climate change, natural resources, pollution, waste, and circular economy.</div>
+          <p class="explain">第 3 章先把环境因素拆成三个大篮子：气候、自然资源、污染/废弃物/循环经济。后面所有分析都是从这三个篮子往投资影响延伸。</p>
+          <div class="eq"><div class="eq-lhs">Environmental factors</div><div class="eq-op">=</div><div class="eq-rhs">Climate + Natural resources + Pollution/Waste/Circular economy</div></div>
+          <div class="fact-foot"><span class="tag tag-blue">模块 1-4</span><span class="hook">题眼：broad and far reaching</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">2</div><div class="fact-title">GHG 推动气候变化，响应要双线并行</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>GHG emissions drive accelerating climate change, creating risks to health, economies, and ecosystems; responses combine mitigation and adaptation.</div>
+          <p class="explain">Mitigation 是减少问题来源，adaptation 是提高承受能力。考试常把二者混在一起，看到“reduce emissions”优先想到 mitigation，看到“adjust/resilience”优先想到 adaptation。</p>
+          <div class="eq"><div class="eq-lhs">Climate response</div><div class="eq-op">=</div><div class="eq-rhs">Mitigation 减排 + Adaptation 适应</div></div>
+          <div class="fact-foot"><span class="tag tag-green">模块 1-2</span><span class="hook">题眼：mitigation vs adaptation</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">3</div><div class="fact-title">Paris Agreement 给出全球目标</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>The 2015 Paris Agreement aims to keep global temperature rise well below 2°C and limit the increase to 1.5°C above pre-industrial levels.</div>
+          <p class="explain">巴黎协定不是逐家公司直接设定排放额度，而是建立全球气候目标和国家承诺更新机制，是后续净零、政策、披露和转型风险的上位背景。</p>
+          <div class="eq"><div class="eq-lhs">Paris goal</div><div class="eq-op">=</div><div class="eq-rhs">Well below 2°C + pursue 1.5°C</div></div>
+          <div class="fact-foot"><span class="tag tag-amber">模块 5</span><span class="hook">题眼：well below 2°C / 1.5°C</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">4</div><div class="fact-title">净零 2050 是把巴黎目标落地的共识</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>A global consensus has emerged that net-zero CO2 emissions around 2050 is required; net-zero targets cover about 80% of emissions and population and 90% of GDP.</div>
+          <p class="explain">Net zero 是“长期目标变成路径”的关键。它会推动企业目标、资产配置、转型计划、情景分析和监管披露要求。</p>
+          <div class="eq"><div class="eq-lhs">Paris into reality</div><div class="eq-op">→</div><div class="eq-rhs">Net-zero around 2050 + government/company/investor targets</div></div>
+          <div class="fact-foot"><span class="tag tag-amber">模块 5</span><span class="hook">题眼：around 2050</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">5</div><div class="fact-title">Carbon pricing 把排放变成经济信号</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Carbon pricing is seen by many economists as effective. Main forms are carbon taxes and ETSs: tax sets price per ton; ETS sets a cap and permits.</div>
+          <p class="explain">碳税是“价格先定”，ETS 是“总量先定”。二者都让排放成本进入企业决策和项目盈利能力分析。</p>
+          <div class="eq"><div class="eq-lhs">Carbon pricing</div><div class="eq-op">=</div><div class="eq-rhs">Carbon tax 价格/吨 + ETS 总量上限/许可证</div></div>
+          <div class="fact-foot"><span class="tag tag-violet">模块 6</span><span class="hook">题眼：price vs cap</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">6</div><div class="fact-title">气候风险分 physical 和 transition</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Policymakers and investors must navigate physical risks associated with climate inaction and transition risks associated with climate action.</div>
+          <p class="explain">不行动会有极端天气、海平面、水压力等 physical risk；行动会有政策、技术、市场、声誉等 transition risk。两类风险都可能进入估值。</p>
+          <div class="eq"><div class="eq-lhs">Climate risk</div><div class="eq-op">=</div><div class="eq-rhs">Inaction → physical risk + Action → transition risk</div></div>
+          <div class="fact-foot"><span class="tag tag-blue">模块 1 / 7</span><span class="hook">题眼：inaction vs action</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">7</div><div class="fact-title">资源退化和污染催生循环经济</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Water scarcity, deforestation, land/ocean degradation, unsustainable agriculture, waste, and pollution affect business and investment; circular economy helps through efficient use, reuse, recycling, and waste management.</div>
+          <p class="explain">这一条把自然资源、污染和循环经济连成因果链：资源压力越大，越需要提高使用效率，把废弃物重新拉回经济循环。</p>
+          <div class="eq"><div class="eq-lhs">Circular economy need</div><div class="eq-op">=</div><div class="eq-rhs">Resource pressure + Pollution/Waste → efficiency + reuse + recycling</div></div>
+          <div class="fact-foot"><span class="tag tag-green">模块 3 / 8</span><span class="hook">题眼：reuse / recycling / waste management</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">8</div><div class="fact-title">重大环境议题必须影响价值驱动因素</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Material environmental issues can have positive or negative impact on business model and value drivers, including OpEx, CapEx, revenue growth, margins, and risk; material factors differ by sector.</div>
+          <p class="explain">Materiality 不是“这个议题听起来重要”，而是它能否改变公司的商业模式和财务价值驱动因素。行业不同，重大因素也不同。</p>
+          <div class="eq"><div class="eq-lhs">Environmental materiality</div><div class="eq-op">=</div><div class="eq-rhs">Sector exposure × business model/value drivers</div></div>
+          <div class="fact-foot"><span class="tag tag-violet">模块 6</span><span class="hook">题眼：OpEx / CapEx / revenue / margins</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">9</div><div class="fact-title">环境风险可以进入投资分析工具</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Environmental risks can be integrated into company analysis and investment decision-making using tools and metrics from carbon footprinting to forward-looking scenario analysis; many risk-reduction solutions also bring economic benefits.</div>
+          <p class="explain">第 3 章的分析方法不是单一指标，而是根据资产类别、风险类型和暴露方式选择工具。效率提升、风电和太阳能等解决方案也可能降低生产成本。</p>
+          <div class="eq"><div class="eq-lhs">Analysis toolkit</div><div class="eq-op">=</div><div class="eq-rhs">Exposure → carbon metrics/scenarios → model and decision</div></div>
+          <div class="fact-foot"><span class="tag tag-blue">模块 7 / 8</span><span class="hook">题眼：carbon footprinting to scenario analysis</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">10</div><div class="fact-title">政策和披露正在覆盖整个投资链条</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Policy initiatives are increasing at country and regional levels; climate-related disclosure requirements are growing across the investment chain, from owners of capital to investee companies.</div>
+          <p class="explain">这一条连接政策、监管和披露。披露要求不是只压在上市公司，也会影响养老金、保险公司、资管机构等资本所有者和中介。</p>
+          <div class="eq"><div class="eq-lhs">Policy mainstreaming</div><div class="eq-op">=</div><div class="eq-rhs">Country/regional initiatives + disclosure across investment chain</div></div>
+          <div class="fact-foot"><span class="tag tag-teal">模块 5 / 7</span><span class="hook">题眼：owners of capital to investee companies</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">11</div><div class="fact-title">监管顺风和技术创新带来投资机会</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Regulatory tailwinds and technological innovation create opportunities in clean energy and mobility, sustainable buildings, and advanced materials; unsubsidized clean energy is the cheapest new electricity source for most of the world’s population.</div>
+          <p class="explain">环境机会不是泛泛的“绿色概念”，而是成本曲线、监管方向和技术成熟度共同推动的可投资现金流。</p>
+          <div class="eq"><div class="eq-lhs">Green opportunities</div><div class="eq-op">=</div><div class="eq-rhs">Regulatory tailwinds + technology innovation + better economics</div></div>
+          <div class="fact-foot"><span class="tag tag-green">模块 8</span><span class="hook">题眼：clean energy / mobility / buildings</span></div>
+        </div>
+      </article>
+
+      <article class="fact-card">
+        <div class="fact-head"><div class="fact-no">12</div><div class="fact-title">专门投资产品用于捕捉机会集</div></div>
+        <div class="fact-body">
+          <div class="source-point"><b>原文要点：</b>Specialized investment products are growing, including low-carbon active and index funds and sustainability-linked debt, to capture the environmental opportunity set.</div>
+          <p class="explain">最后落到金融产品：低碳基金、指数、绿色债券、绿色贷款、可持续挂钩债务等，把环境机会变成可配置资产。</p>
+          <div class="eq"><div class="eq-lhs">Green products</div><div class="eq-op">=</div><div class="eq-rhs">Low-carbon funds/indexes + green finance + sustainability-linked debt</div></div>
+          <div class="fact-foot"><span class="tag tag-rose">模块 8</span><span class="hook">题眼：low-carbon funds / sustainability-linked debt</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading</div>
+        <h2>延伸阅读：每份材料看什么</h2>
+      </div>
+      <div class="head-desc">以下从第 3 章 References 中选取，用来补强主线理解；不是额外背诵清单。</div>
+    </div>
+
+    <div class="reading-grid">
+      <article class="reading-card">
+        <span class="tag tag-blue">Climate Science</span>
+        <div class="reading-title">IPCC · AR6 reports</div>
+        <p class="reading-desc">用于理解气候变化的科学基础、影响、适应、脆弱性和减缓路径，是第 3 章 climate risk 的底层来源。</p>
+        <div class="reading-use"><b>看法：</b>把它放在模块 1-2 后读，只抓“风险是什么、如何减缓、如何适应”。</div>
+        <div class="reading-url">ipcc.ch · Sixth Assessment Report / WG2 / WG3</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-amber">Gap Reports</span>
+        <div class="reading-title">UNEP · Emissions Gap / Adaptation Gap</div>
+        <p class="reading-desc">用于理解现有承诺与 1.5°C/2°C 路径之间的差距，以及适应资金和行动不足的问题。</p>
+        <div class="reading-use"><b>看法：</b>对应“目标不等于实际达成”，帮助理解转型风险和适应需求。</div>
+        <div class="reading-url">unep.org · Emissions Gap Report 2022 / Adaptation Gap Report 2023</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-teal">Disclosure</span>
+        <div class="reading-title">TCFD · Recommendations and Guidance</div>
+        <p class="reading-desc">用于理解 climate-related disclosures 如何围绕 governance、strategy、risk management、metrics and targets 展开。</p>
+        <div class="reading-use"><b>看法：</b>对应模块 7，看到披露题先想“治理、战略、风险管理、指标目标”。</div>
+        <div class="reading-url">TCFD 2017 / 2021 / 2022 reports</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-green">Nature</span>
+        <div class="reading-title">TNFD · Nature-related framework</div>
+        <p class="reading-desc">用于理解自然相关风险和机会如何识别、管理和披露，连接 biodiversity、ecosystem services 和 business exposure。</p>
+        <div class="reading-use"><b>看法：</b>对应模块 7，重点抓 LEAP 思路和 nature realms，而不是把它误当成 TCFD。</div>
+        <div class="reading-url">tnfd.global · Nature-Related Risk and Opportunity Management and Disclosure Framework</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-violet">Scenario</span>
+        <div class="reading-title">NGFS · Climate Scenarios</div>
+        <p class="reading-desc">用于理解央行和监管机构如何使用气候情景，评估转型路径、物理风险和金融稳定影响。</p>
+        <div class="reading-use"><b>看法：</b>对应模块 7，重点区分 orderly、disorderly、hot house world 等情景逻辑。</div>
+        <div class="reading-url">ngfs.net · NGFS Climate Scenarios for Central Banks and Supervisors</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-blue">Portfolio Tool</span>
+        <div class="reading-title">2° Investing Initiative · PACTA</div>
+        <p class="reading-desc">用于理解投资组合如何做 climate scenario alignment，特别是高碳行业资产与气候路径的匹配程度。</p>
+        <div class="reading-use"><b>看法：</b>对应“从碳足迹到前瞻性情景分析”，帮助把模型工具串起来。</div>
+        <div class="reading-url">2degrees-investing.org · PACTA / Climate Scenario Analysis Program</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-green">Circular</span>
+        <div class="reading-title">Ellen MacArthur Foundation · Circular Economy</div>
+        <p class="reading-desc">用于理解循环经济如何通过设计、材料循环和再生系统降低资源压力，也连接 Practice Problem 的三原则。</p>
+        <div class="reading-use"><b>看法：</b>对应模块 3 和模块 8，重点记“design out、keep in use、regenerate”。</div>
+        <div class="reading-url">ellenmacarthurfoundation.org · Completing the Picture / Financing the Circular Economy</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-teal">Green Revenues</span>
+        <div class="reading-title">FTSE Russell · Investing in the Green Economy</div>
+        <p class="reading-desc">用于理解 green revenues 和 green economy 如何被识别和量化，第 3 章引用其 7.1% 市值估计。</p>
+        <div class="reading-use"><b>看法：</b>对应模块 8，把“绿色机会”从口号变成收入分类和指数构建问题。</div>
+        <div class="reading-url">FTSE Russell 2022 / Green Revenues 2.0 Data Model</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-amber">Investment Data</span>
+        <div class="reading-title">BloombergNEF · Energy Transition Investment Trends</div>
+        <p class="reading-desc">用于理解低碳转型投资规模、区域分布和技术赛道，如电气化交通、可再生能源、氢能、CCS、储能。</p>
+        <div class="reading-use"><b>看法：</b>对应模块 8，重点看数字背后的“资本流向哪里”。</div>
+        <div class="reading-url">BloombergNEF 2023 / 2024 · Energy Transition Investment Trends</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-violet">Green Bonds</span>
+        <div class="reading-title">CICERO · Shades of Green</div>
+        <p class="reading-desc">用于理解绿色债券第二方意见中 dark、medium、light、yellow、red 的判断层级。</p>
+        <div class="reading-use"><b>看法：</b>对应 Practice Problem，light green = 近期收益但不是长期气候韧性方案。</div>
+        <div class="reading-url">CICERO 2015 · CICERO Shades of Green</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-rose">Integrity</span>
+        <div class="reading-title">ICMA GBP / Climate Bonds Initiative</div>
+        <p class="reading-desc">用于理解绿色债券的资金用途、透明度、报告、外部审阅，以及 taxonomies 和 transition label 的完整性。</p>
+        <div class="reading-use"><b>看法：</b>对应绿色产品防漂绿，先问“钱投向哪里、如何证明、谁审阅”。</div>
+        <div class="reading-url">ICMA Green Bond Principles / Climate Bonds Taxonomy and Standards</div>
+      </article>
+
+      <article class="reading-card">
+        <span class="tag tag-blue">Ocean</span>
+        <div class="reading-title">World Bank / OECD · Blue Economy</div>
+        <p class="reading-desc">用于理解 blue economy 的定义、行业范围、海洋经济增长潜力和 OECD 提出的行动优先事项；PDF 提到 2030 年 ocean economy 增加值可能超过 US$3tn。</p>
+        <div class="reading-use"><b>看法：</b>对应模块 8，blue economy = 海洋相关可持续经济社会活动 + 生态健康。</div>
+        <div class="reading-url">World Bank 2017 / OECD 2016 · The Ocean Economy in 2030</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：用一组等式背第 3 章</h2>
+      </div>
+      <div class="head-desc">如果只有 5 分钟，先背这一页；如果还有时间，再回到 8 个模块细看。</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>12 条 Key Facts 压缩版</h3>
+        <div class="formula-list">
+          <div class="formula"><b>1 环境范围</b>Climate + natural resources + pollution/waste/circular economy。</div>
+          <div class="formula"><b>2 气候响应</b>GHG risk → mitigation + adaptation。</div>
+          <div class="formula"><b>3 巴黎目标</b>Well below 2°C + pursue 1.5°C。</div>
+          <div class="formula"><b>4 净零共识</b>Paris implementation → net zero around 2050。</div>
+          <div class="formula"><b>5 碳定价</b>Tax = price；ETS = cap and permits。</div>
+          <div class="formula"><b>6 气候风险</b>Physical risk = inaction；transition risk = action。</div>
+          <div class="formula"><b>7 循环经济</b>Resource pressure → efficiency + reuse + recycling。</div>
+          <div class="formula"><b>8 重大性</b>Material issue → business model + value drivers + sector difference。</div>
+          <div class="formula"><b>9 分析工具</b>Carbon footprinting → forward-looking scenario analysis。</div>
+          <div class="formula"><b>10 政策披露</b>Climate disclosure spreads across investment chain。</div>
+          <div class="formula"><b>11 环境机会</b>Regulation + technology + cost curve → clean solutions。</div>
+          <div class="formula"><b>12 投资产品</b>Low-carbon funds/indexes + sustainability-linked debt。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>最容易混的 8 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Mitigation vs Adaptation</b>减排是 mitigation；适应和韧性是 adaptation。</div>
+          <div class="trap"><b>Physical vs Transition</b>不行动带来 physical risk；采取气候行动带来 transition risk。</div>
+          <div class="trap"><b>Carbon Tax vs ETS</b>税定价格，ETS 定总量和许可证。</div>
+          <div class="trap"><b>Materiality vs Importance</b>重大性看 business model 和 value drivers，不是看议题是否热门。</div>
+          <div class="trap"><b>Footprint vs Scenario</b>footprint 偏当前排放，scenario 偏前瞻路径。</div>
+          <div class="trap"><b>TCFD vs TNFD</b>TCFD 偏 climate，TNFD 偏 nature。</div>
+          <div class="trap"><b>Green Bond vs SLB/SLL</b>green bond 看 use of proceeds；sustainability-linked debt 看 KPI 和条款。</div>
+          <div class="trap"><b>Blue Economy</b>不是水污染治理产品，而是海洋和沿海可持续经济社会活动。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>对应 8 个复习模块</h3>
+        <div class="flowline">
+          <div class="flow-step"><h3>1 气候基础</h3><p>GHG、温升、风险类型。</p></div>
+          <div class="flow-step"><h3>2 减缓适应</h3><p>Mitigation、adaptation、resilience。</p></div>
+          <div class="flow-step"><h3>3 资源污染</h3><p>自然资源、污染、废弃物、循环经济。</p></div>
+          <div class="flow-step"><h3>4 商业关系</h3><p>环境因素如何影响行业和企业活动。</p></div>
+          <div class="flow-step"><h3>5 政策协议</h3><p>Paris、net zero、政策和 just transition。</p></div>
+          <div class="flow-step"><h3>6 碳和重大性</h3><p>Carbon pricing、materiality。</p></div>
+          <div class="flow-step"><h3>7 分析披露</h3><p>Scenario analysis、TCFD、TNFD。</p></div>
+          <div class="flow-step"><h3>8 模型机会</h3><p>Financial modeling、green products、blue economy。</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>反推自检</h3>
+        <div class="formula-list">
+          <div class="formula"><b>看到 1.5°C / 2°C</b>反推 Paris Agreement。</div>
+          <div class="formula"><b>看到 price per ton / cap</b>反推 carbon tax / ETS。</div>
+          <div class="formula"><b>看到 OpEx、CapEx、margins、risk</b>反推 material environmental issues。</div>
+          <div class="formula"><b>看到 carbon footprinting / scenario</b>反推 environmental risk analysis tools。</div>
+          <div class="formula"><b>看到 low-carbon funds / sustainability-linked debt</b>反推 specialized investment products。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">第 3 章现在已经形成：8 个复习模块 + 1 个 Key Facts/Further Reading 汇总页。下一步按你的原计划制作第 3 章三轮练习系统。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

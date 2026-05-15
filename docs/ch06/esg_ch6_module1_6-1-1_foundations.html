@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.6 Module 1 · 6.1.1 Engagement and Stewardship Foundations</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.card.dark .small{color:#cbd5e1}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.concept-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.concept-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.concept-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;margin:10px 0}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(88px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.vote-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.vote-card{border:1px solid var(--line);border-radius:var(--r);background:var(--soft);padding:13px;min-width:0}
+.vote-num{font-family:var(--serif);font-size:28px;line-height:1;font-weight:950;color:var(--dark)}
+.vote-label{font-size:12px;font-weight:900;color:var(--muted);margin-top:4px}
+.vote-desc{font-size:12.5px;color:var(--sub);line-height:1.55;margin-top:6px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.concept-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.concept-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1080px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .flowline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow-step:not(:last-child)::after{display:none}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .vote-grid{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:25px;line-height:1.13}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 6</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">6.1.1</span>
+        <span class="pill">Engagement & Stewardship</span>
+      </div>
+      <h1>Engagement and Stewardship Foundations</h1>
+      <p class="lead">本页覆盖第 6 章 6.1.1：投资者参与和 stewardship 的目的。重点不是背定义，而是看清“受托长期所有者为什么要沟通、投票和影响被投方”。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Stewardship == 受托长期所有权责任；Engagement == 带目标的对话；Voting == 公开但二元的参与工具；Activism == 为推动改变而主动发起的专门策略。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Module Focus</div>
+      <div class="side-big">先把 4 个词分清：stewardship、engagement、voting、activism。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">核心概念</div></div>
+        <div class="mini-stat"><div class="mini-num">1</div><div class="mini-lab">Shell 案例</div></div>
+        <div class="mini-stat"><div class="mini-num">17</div><div class="mini-lab">覆盖点</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>考点提醒：</b>第 6 章不是“投票等于 stewardship”。投票只是其中一个工具，真正主线是长期价值、受托责任和有目标的影响。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑等式</button>
+    <button class="tab" data-tab="cases">Shell 案例</button>
+    <button class="tab" data-tab="mistakes">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>第 6 章开场：从所有权责任到影响被投方</h2>
+      </div>
+      <div class="head-desc">按照逻辑等式心象术，先拆题目：“Engagement and Stewardship” 一边是责任，一边是行动。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Engagement and Stewardship<br>投资者作为长期所有者，如何负责任地使用影响力</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1 Stewardship</div><p>作为 active owner 管理长期价值。</p><p>通过 voting 和 engagement 体现。</p></div>
+        <div class="branch"><div class="branch-title">2 Engagement</div><p>带着具体目标的 purposeful dialogue。</p><p>常用于改善 ESG 相关业务实践。</p></div>
+        <div class="branch"><div class="branch-title">3 Voting</div><p>公开、可见，但通常是 yes / no 的二元表达。</p><p>需要解释才有完整含义。</p></div>
+        <div class="branch"><div class="branch-title">4 Activism</div><p>一种更专门的参与形式。</p><p>投资时就带着推动改变和追求超额表现的目的。</p></div>
+        <div class="branch"><div class="branch-title">5 Fiduciary Duty</div><p>受托责任要求保护并提升客户和受益人的资产价值。</p><p>stewardship 是履行方式之一。</p></div>
+        <div class="branch"><div class="branch-title">6 ESG Issues</div><p>战略、风险、薪酬、治理、披露、游说等都可成为参与议题。</p><p>ESG 融入长期价值判断。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>受托责任</h3><p>投资者受托管理他人资产。</p></div>
+        <div class="flow-step"><h3>主动所有权</h3><p>用影响力维护长期价值。</p></div>
+        <div class="flow-step"><h3>具体行动</h3><p>沟通、投票、买卖资产。</p></div>
+        <div class="flow-step"><h3>改变实践</h3><p>推动公司改善战略、风险和 ESG 管理。</p></div>
+        <div class="flow-step"><h3>长期价值</h3><p>服务客户、受益人和共同经济社会环境资产。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">题目拆解</span>
+        <h3>Stewardship 是“为什么”</h3>
+        <p class="small">因为投资者是受托的长期所有者，所以不能只看短期收益，也要关注资产价值是否因忽视和管理不善而受损。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">行动拆解</span>
+        <h3>Engagement 是“怎么做”</h3>
+        <p class="small">engagement 不是闲聊，而是有目的、有对象、有改变目标的对话，通常围绕 ESG 和长期业务实践。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考试拆解</span>
+        <h3>Voting 是工具，不是全部</h3>
+        <p class="small">投票最公开，但表达最窄。题目问 stewardship 时，不要把答案缩成 proxy voting。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-06.pdf` 第 334-337 页及 Shell 案例整理，覆盖模块 1 的基础知识点。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Definitions</span> Stewardship / Engagement / Voting / Activism</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship 是投资者作为 active owners 对被投公司和其他资产采取的总体方法。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship 通常通过 voting 和 engagement 体现，也被称为 active ownership。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship 使用投资者影响力，目标是最大化总体长期价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">长期价值不仅包括单个资产价值，也包括共同依赖的经济、社会和环境资产价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement 是投资者落实 stewardship responsibilities 的方式之一。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement 通常是 purposeful dialogue with a specific objective，常见目的包括改善 ESG 管理和业务实践。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI Principle 2 的核心是：投资者应成为 active owners，并把 ESG 纳入所有权政策和实践。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Activism 是更专门的参与形式，投资者发起投资时就意图通过改变治理、资本配置或业务实践获得投资表现。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Purpose</span> 受托责任与长期价值</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship 有“资产守护”的历史含义，类似 fiduciary duty，要求为资产所有者利益行动。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship 旨在保护并提升资产长期价值，避免因忽视或管理不善导致价值恶化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship 可以包括买入和卖出资产，以维护基金价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement 是对具体资产的个别干预，常表现为与管理层、董事会或其他资产管理方对话。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">参与议题可包括 strategy、capital structure、operational performance、risk management、pay、corporate governance、ESG disclosure 和 lobbying。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 因素会影响战略、运营表现、风险、薪酬和治理，因此是长期价值分析的一部分。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Voting and Shell Case</span> 投票是参与的一种形式</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Voting 是 engagement 的一种具体形式，在上市公司 AGM 中最可见。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Voting 有限制，因为决议受法律限制，投资者通常只能作出 yes / no 的二元选择。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">环境和社会类股东提案比例上升：PDF 提到 2022 年占 58%，2018 年为 45%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Shell 2021 AGM 有两个气候相关决议：公司自己的能源转型策略，以及 Follow This 提出的更快、更符合巴黎协定目标的股东提案。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">许多投资者可以同时支持公司策略和股东提案，含义是认可已有进展，同时要求公司做得更多更快。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Shell 案例说明：投票如果不解释，公司很难理解投资者真正意图；engagement 才能表达更丰富的理由和细节。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：把定义变成判断线</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+
+    <div class="concept-grid">
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">1. Stewardship</div><span class="tag tag-blue">责任总称</span></div>
+        <p class="small"><b>原文要点：</b>Stewardship 是投资者作为 active owners 对公司和其他资产采取的方法，使用影响力维护总体长期价值。</p>
+        <div class="quote-box"><b>中文解释：</b>它像“受托看管资产”。投资者不是只买卖证券，还要防止资产因为短视、治理差、风险管理差而损失长期价值。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Stewardship</div><div class="eq-op">==</div><div class="eq-rhs">受托责任 + 主动所有权 + 长期价值保护</div></div>
+          <div class="eq"><div class="eq-lhs">长期价值</div><div class="eq-op">==</div><div class="eq-rhs">资产本身价值 + 共同经济/社会/环境资产价值</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 active ownership、fiduciary duty、long-term value，多半在问 stewardship，不要只选 voting。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">2. Engagement</div><span class="tag tag-green">行动方式</span></div>
+        <p class="small"><b>原文要点：</b>Engagement 是有特定目标的 purposeful dialogue，通常用于改善公司业务实践，尤其是 ESG 管理。</p>
+        <div class="quote-box"><b>中文解释：</b>engagement 不是“打个电话了解情况”，而是投资者带着清楚目标，与管理层、董事会或其他资产负责人沟通，推动改变。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Engagement</div><div class="eq-op">==</div><div class="eq-rhs">具体目标 + 双向对话 + 改变公司实践</div></div>
+          <div class="eq"><div class="eq-lhs">有效参与</div><div class="eq-op">==</div><div class="eq-rhs">表达投资者立场 + 解释原因 + 给出长期价值逻辑</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干若出现 specific objective、purposeful dialogue、improve ESG practices，答案通常指向 engagement。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">3. Voting</div><span class="tag tag-violet">工具之一</span></div>
+        <p class="small"><b>原文要点：</b>Voting 是 engagement 的一种形式，也是上市公司最公开可见的形式，但由于决议受限，回答通常是 yes / no。</p>
+        <div class="quote-box"><b>中文解释：</b>投票很重要，但表达能力窄。投资者若不解释为什么投赞成、反对或弃权，公司就可能看不懂投资者的真实信号。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Voting</div><div class="eq-op">==</div><div class="eq-rhs">公开信号 + 二元选择 + 需要沟通解释</div></div>
+          <div class="eq"><div class="eq-lhs">Voting 限制</div><div class="eq-op">==</div><div class="eq-rhs">决议范围受限 + 选项窄 + 意图容易被误读</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 proxy voting 或 AGM，记住它是 stewardship 的必要工具之一，不等于完整 stewardship。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">4. Activism</div><span class="tag tag-amber">专门策略</span></div>
+        <p class="small"><b>原文要点：</b>Activism 通常是更专门的 engagement 和 stewardship 形式，投资机构带着推动公司改变并获得投资超额表现的意图进行投资。</p>
+        <div class="quote-box"><b>中文解释：</b>普通 stewardship 是“因为我是所有者，所以我要负责”；activism 更像“我买入就是为了推动改变，从改变中获得表现”。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Activism</div><div class="eq-op">==</div><div class="eq-rhs">主动发起投资 + 推动改变 + 追求投资表现</div></div>
+          <div class="eq"><div class="eq-lhs">改变对象</div><div class="eq-op">==</div><div class="eq-rhs">治理 + 资本配置 + 业务实践</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>不要把 activism 和所有 engagement 混为一谈。所有 activism 属于参与范畴，但并非所有 engagement 都是 activism。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">5. Engagement Topics</div><span class="tag tag-teal">议题范围</span></div>
+        <p class="small"><b>原文要点：</b>参与可以覆盖影响长期价值的全范围议题，包括战略、资本结构、运营、风险、薪酬、治理、披露和游说。</p>
+        <div class="quote-box"><b>中文解释：</b>ESG 不是外加的“道德清单”，而是嵌在战略、运营、风险、治理和披露里，最终影响长期价值。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">议题范围</div><div class="eq-op">==</div><div class="eq-rhs">战略 + 资本结构 + 运营 + 风险 + 薪酬 + 治理 + 披露 + 游说</div></div>
+          <div class="eq"><div class="eq-lhs">ESG 作用</div><div class="eq-op">==</div><div class="eq-rhs">进入战略判断 + 运营评估 + 风险识别 + 治理监督</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题目问 engagement 可覆盖哪些事项时，不要只选环境或社会单点，它可以覆盖长期价值相关的全套经营治理议题。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">6. Investment Chain</div><span class="tag tag-rose">谁来做</span></div>
+        <p class="small"><b>原文要点：</b>受托链条中的多方都可能承担 stewardship，但实践中通常由拥有最大聚合规模的一方承担，往往是 fund manager。</p>
+        <div class="quote-box"><b>中文解释：</b>底层受益人、资产所有者、基金经理都在链条里。真正去做沟通和投票的，通常是有规模、有资源、有影响力的机构。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">受托链条</div><div class="eq-op">==</div><div class="eq-rhs">受益人 + 资产所有者 + 基金经理 + 资产管理责任人</div></div>
+          <div class="eq"><div class="eq-lhs">实践主体</div><div class="eq-op">==</div><div class="eq-rhs">规模最大、资源最多、影响力最强的一方</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题目若问谁通常承担 stewardship，优先想到 fund manager；最大资产所有者也可能直接参与。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case Study</div>
+        <h2>Shell 气候投票：为什么投票不等于完整沟通</h2>
+      </div>
+      <div class="head-desc">这个案例是模块 1 的关键：同一投资者可能同时支持公司方案和股东提案，表面矛盾，实质是更细的参与信号。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">背景：2021 年 Shell AGM 两个气候决议</div><span class="tag tag-blue">AGM</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">决议 20</div><div class="case-text">Shell 提出自己的 Energy Transition Strategy，属于 advisory resolution，目的是获得股东对公司转型计划的认可。</div></div>
+          <div class="case-row"><div class="case-lab">决议 21</div><div class="case-text">Follow This 提出股东提案，要求 Shell 设定与巴黎协定目标一致的目标，并制定和执行对应战略。</div></div>
+          <div class="case-row"><div class="case-lab">关键</div><div class="case-text">投资者并非只能在“支持公司”和“要求公司更进一步”之间二选一，很多人可能同时表达两层意思。</div></div>
+          <div class="vote-grid">
+            <div class="vote-card"><div class="vote-num">88.74%</div><div class="vote-label">Resolution 20 votes for</div><div class="vote-desc">公司能源转型策略获得高比例支持。</div></div>
+            <div class="vote-card"><div class="vote-num">30.47%</div><div class="vote-label">Resolution 21 votes for</div><div class="vote-desc">股东提案也获得相当比例支持，显示投资者要求更快行动。</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">公司困惑：为什么有人两个都支持</div><span class="tag tag-amber">Signal</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">含义 1</div><div class="case-text">支持公司主动提交转型策略，并认可其相对同行已有进展。</div></div>
+          <div class="case-row"><div class="case-lab">含义 2</div><div class="case-text">同时要求公司做得更多、更快，不满足于现有计划。</div></div>
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">如果投资者不解释投票理由，公司只能看到二元结果，看不到背后的判断。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">Voting 是信号，engagement 是解释信号并说服公司的过程。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">争议细节：排放强度不等于总排放</div><span class="tag tag-rose">Climate</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Follow This</div><div class="case-text">更关注与巴黎协定一致的总排放减少。</div></div>
+          <div class="case-row"><div class="case-lab">Shell</div><div class="case-text">方案更强调 carbon intensity，强度下降并不必然意味着总排放下降。</div></div>
+          <div class="case-row"><div class="case-lab">另一个点</div><div class="case-text">Shell 仍支持部分反对能源转型措施的游说团体，投资者需要把这些细节纳入沟通。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">看气候案例时，不要只看“有目标”，还要看目标口径和公司外部游说是否一致。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">案例总式：投票窄，参与宽</div><span class="tag tag-green">Logic</span></div>
+        <div class="case-body">
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Shell 投票</div><div class="eq-op">==</div><div class="eq-rhs">支持已有进展 + 要求更快转型 + 需要解释投票理由</div></div>
+            <div class="eq"><div class="eq-lhs">投票局限</div><div class="eq-op">==</div><div class="eq-rhs">二元表态不足以表达投资者完整观点</div></div>
+            <div class="eq"><div class="eq-lhs">参与价值</div><div class="eq-op">==</div><div class="eq-rhs">表达立场 + 说明依据 + 形成说服力 + 推动改变</div></div>
+          </div>
+          <p class="small">做题时看到 “AGM voting is visible but limited” 或 “engagement enables richer dialogue”，优先选 engagement 更宽、voting 更窄的表述。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mistakes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>易错点：把相近概念拆开</h2>
+      </div>
+      <div class="head-desc">模块 1 的题通常不难，难在词很像，容易把“责任、工具、策略、案例信号”混成一团。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Stewardship ==</b> active ownership + fiduciary duty + long-term value。</div>
+          <div class="formula"><b>Engagement ==</b> purposeful dialogue + specific objective + changed company practice。</div>
+          <div class="formula"><b>Voting ==</b> AGM/EGM public signal + binary response + needs explanation。</div>
+          <div class="formula"><b>Activism ==</b> investment initiated to drive change + seek investment outperformance。</div>
+          <div class="formula"><b>Shell case ==</b> voting signal needs engagement explanation。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Stewardship vs Engagement</b>Stewardship 是总责任，engagement 是具体对话行动。</div>
+          <div class="trap"><b>Engagement vs Voting</b>Voting 是 engagement 的一种形式，但 engagement 更宽、更有细节和说服力。</div>
+          <div class="trap"><b>Voting visible vs voting sufficient</b>投票最可见，不代表投票本身足以构成良好 stewardship。</div>
+          <div class="trap"><b>Engagement vs Activism</b>Activism 是更专门、更主动、更以改变和投资表现为目标的一类参与。</div>
+          <div class="trap"><b>Long-term value vs short-term profit</b>Stewardship 更强调长期价值保护，不是短期获利最大化。</div>
+          <div class="trap"><b>Carbon intensity vs total emissions</b>强度下降不一定代表总排放下降，Shell 案例里这是投资者关注的细节。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">记忆线：先问“这是责任、行动、工具还是专门策略？”再选答案。责任是 stewardship，行动是 engagement，工具是 voting，专门策略是 activism。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖模块 1</h2>
+      </div>
+      <div class="head-desc">点击“看答案”自测。这里不是正式 Practice Problems，正式 29 题会放到最后的三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">Stewardship 最核心的含义是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">投资者作为 active owner 使用影响力，代表客户和受益人保护并提升长期价值。逻辑等式：Stewardship == 受托责任 + 主动所有权 + 长期价值。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Engagement 为什么不是普通沟通？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为 engagement 是带有 specific objective 的 purposeful dialogue，目标通常是推动公司改变业务实践，尤其是 ESG 管理。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Voting 在 stewardship 中有什么地位和限制？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Voting 是 engagement 的一种形式，也是最公开的形式；限制是决议受法律限制，选项通常只有 yes / no，投资者意图需要额外解释。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Activism 与一般 engagement 的差别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Activism 是更专门的参与形式，投资机构发起投资时就意图推动治理、资本配置或业务实践变化，并通过变化获得投资表现。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">第 6 章为什么把 stewardship 与 fiduciary duty 联系起来？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为投资者受托管理他人资产，需要为客户和受益人利益行动。Stewardship 是把这种受托责任落到投资实践中的一种方式。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Engagement 可以覆盖哪些议题？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">包括 strategy、capital structure、operational performance and delivery、risk management、pay、corporate governance、disclosure including ESG、lobbying including industry groups。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Shell 案例中，投资者为什么可能同时支持公司气候策略和股东提案？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">这可以同时表达两层意思：认可公司主动提出转型策略和已有进展，同时要求公司在巴黎协定目标、总排放和转型速度上做得更多更快。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">Shell 案例给投票实践的最大提醒是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">投票本身表达有限。如果投资者不解释投票理由，公司很难理解真实意图；所以投票需要与 engagement 配合。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const open = card.classList.toggle('show');
+    btn.textContent = open ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

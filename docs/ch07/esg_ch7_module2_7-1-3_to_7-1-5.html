@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.7 Module 2 · 7.1.3-7.1.5 Listed Equities</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 48%,#eaf0f6 100%);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);min-width:0}
+.hero-main{padding:28px 30px;border-radius:var(--r)}
+.hero-side{padding:20px;border-radius:var(--r);display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere;word-break:break-word}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:0;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:18px;font-weight:900;color:var(--dark);line-height:1.48;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:0;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.trend-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.trend-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.trend-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.kv{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;margin:9px 0}
+.kv-lab{font-size:12px;font-weight:950;color:var(--muted);line-height:1.55}
+.kv-text{font-size:13px;color:var(--sub);line-height:1.65;overflow-wrap:anywhere}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(78px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.warnline{border-left:4px solid var(--rose);background:var(--rose-bg);border-radius:var(--r);padding:10px 12px;color:#881337;font-size:13px;line-height:1.68}
+.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:0}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compare{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:table}
+.compare th,.compare td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+.compare th{background:var(--soft);color:var(--dark);font-weight:950}
+.compare tr:last-child td{border-bottom:0}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.trend-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.trend-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .kv{grid-template-columns:1fr;gap:3px}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .compare{display:block;overflow-x:auto}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:16.5px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 7</span>
+        <span class="pill">Module 2</span>
+        <span class="pill">7.1.3-7.1.5</span>
+        <span class="pill">Listed Equities</span>
+      </div>
+      <h1>ESG Integration<br>in Listed Equities</h1>
+      <p class="lead">本页把第 7 章上市股票部分拆成一条投资流程线：先用筛选和主题生成投资想法，再在研究阶段判断重大 ESG 议题，随后用 Scorecard、披露解读和管理差距分析，把 ESG 信息变成可复核的投资判断。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>上市股票 ESG 整合 == 投资想法生成 → 重大性判断 → 风险能否管理 → Scorecard 量化 → 披露质量解读 → 后续估值与监控</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">7.1.3 描述识别和评估重大 ESG 议题的挑战<br>7.1.4 描述 Scorecard 和其他工具如何构建并评估 ESG 因素<br>7.1.5 解读公司特定 ESG 主题披露</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">投资流程节点</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">Scorecard 构建步骤</div></div>
+      </div>
+      <div class="side-note">记忆抓手：重大性不是“有没有 ESG 名词”，而是“这个议题对这家公司财务表现的可能性和影响程度有多大”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="process">投资流程</button>
+    <button class="tab" data-tab="materiality">重大性</button>
+    <button class="tab" data-tab="scorecard">Scorecard</button>
+    <button class="tab" data-tab="disclosure">披露解读</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看一张图：上市股票 ESG 整合路径</h2>
+      </div>
+      <div class="head-desc">按“逻辑等式心象术”，本模块的题目可拆成“上市股票”和“ESG 整合”：前者决定流程，后者决定哪些信息要进入判断。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Listed Equity ESG Integration<br>ESG 分析与传统财务分析并行</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">投资想法</div>
+          <p>筛选：positive、negative、momentum。</p>
+          <p>主题：clean water、renewable energy、行业/大趋势。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">重大性</div>
+          <p>行业和商业模式决定什么 ESG 议题可能影响财务表现。</p>
+          <p>用 likelihood 和 magnitude 判断。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">风险管理</div>
+          <p>风险可能可管理，也可能内生于商业模式。</p>
+          <p>management gap 是“能管但没管”。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Scorecard</div>
+          <p>把定性判断转成数字评分。</p>
+          <p>识别项目、拆指标、定评分、打分、汇总、对标。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">披露解读</div>
+          <p>看完整性、可比性、审计/鉴证、历史一致性和管理层解释。</p>
+          <p>缺披露不必然等于管理差，但可能是红旗。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>Idea Generation</h3><p>筛选或主题生成投资候选。</p></div>
+        <div class="flow-step"><h3>Materiality and Information</h3><p>研究阶段识别重大 ESG 议题。</p></div>
+        <div class="flow-step"><h3>Forecasting and Valuation</h3><p>把重大影响交给下一模块进入估值。</p></div>
+        <div class="flow-step"><h3>Investment Decision</h3><p>决定买入、回避、降权或继续研究。</p></div>
+        <div class="flow-step"><h3>Post-Monitoring</h3><p>持续跟踪披露、事件和管理改善。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">主线</span>
+        <h3>ESG 不是单独流程</h3>
+        <p class="small">PDF 强调，ESG integration runs alongside financial analysis。它不是另起炉灶，而是在投资流程各阶段并行进入判断。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">隐藏线</span>
+        <h3>重大性看“公司”</h3>
+        <p class="small">行业会给出起点，但同一行业、同一议题，到不同公司也可能有不同风险暴露。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考点</span>
+        <h3>披露要会追问</h3>
+        <p class="small">披露少时，分析师不能只下结论，要追问规模、同业、商业模式、历史承诺、鉴证和叙述质量。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-07.pdf` 第 391-397 页整理，重点是 7.1.3、7.1.4、7.1.5 三个学习目标。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">7.1.3</span> 重大 ESG 议题识别和评估</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 整合与财务分析并行，并可在投资流程不同阶段以不同形式出现。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资流程包括 idea generation、materiality assessments and information gathering、forecasting and valuation、investment decision and post-monitoring。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Idea generation 可通过基本面/技术筛选加入 ESG 标准：positive、negative、momentum。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 主题也可生成投资想法，例如改善清洁水获取、受益于可再生能源转型。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">内部或外部 checklist 可在此阶段作为 red flag，缩小可投资范围。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司治理阈值、不可接受的 ESG 评分或评级、碳强度高于指数基准太多，都可能影响纳入或排除。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">研究阶段，分析师进行重大性评估，识别可能影响财务表现、因此需要进一步研究的 ESG 议题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">重大 ESG 议题因行业和商业模式不同而变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">GHG emissions 对 utilities、airlines、auto manufacturers 较重大；对 consulting companies 通常较不重大，data security and privacy 反而更重要。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">重大性通常用 likelihood 和 magnitude of impact 衡量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">排除型策略可能考虑非财务重大因素，例如宗教投资者排除少量猪肉产品收入公司。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">重大性判断涉及判断，不是精确科学；SASB/ISSB 重大性地图提供指导，但投资专业人士常发展自己的观点。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Exhibit 2 展示不同行业的 ESG 重大因素示例，包括 business ethics and culture、ownership and control、board structure、product responsibility、resource management、customer privacy、human rights、regulatory threshold and compliance、climate change impact 等。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Health care 行业内，medical insurer 和 pharmaceutical company 也会有不同重大因素。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">同一行业内公司也可能有不同重大 ESG 风险，例如 pharmaceutical companies 的 fair marketing and advertising 风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Jazz Pharmaceuticals 案例说明：SASB 可作基线，但公司特殊业务会改变材料采购风险判断，并可能带来进入壁垒和现金流机会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">截至 2024 年，公司报告包含更多重大 ESG 因素的趋势仍在继续；监管者和交易所要求更多上市披露，但利益相关方仍不完全同意如何定义和报告重大性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">不是所有 ESG 风险都能管理；unmanaged risks 包括 unmanageable risks 和 management gap。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">7.1.4</span> Scorecard 和工具构建</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Scorecard 是评估重大 ESG 因素的常见形式，特别是在没有第三方研究或评分时。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Scorecard 将定性判断转化为数字分数。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Pharma fair marketing example：X 无政策且有违规历史得 0；Y 简短政策且无违规得 3；Z 详细政策且一次轻微违规得 4。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">低分可能意味着 ESG 投资者不青睐，也可能在低估值且管理层愿意改善时代表价值机会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">高分可能代表 ESG 表现强，但若估值已反映，也未必有超额表现空间。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Scorecard 可用于 public/private companies，也可适配 sovereign bonds、infrastructure、real estate。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Private company scorecard 的挑战是评级机构评分更少，公开信息也更少。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Scorecard 六步：识别项目、拆成指标、确定评分系统、给公司打分、计算汇总分、与行业或同业对标。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">7.1.5</span> 公司 ESG 披露解读</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">识别重大 ESG 因素和构建 Scorecard 需要公司 ESG 信息，但公司披露政策和实践差异较大。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">强制 ESG 披露并非所有司法辖区普遍适用；管理层对“影响财务的重大因素”有较大裁量权。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">非重大 ESG 信息过度披露也可能成为问题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 指标恶化时，有些公司可能停止披露或避免披露；但选择性不披露重大估值信息在许多市场可能有法律后果。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司不披露相关 ESG 数据，不必然说明其 ESG 风险或机会管理差。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">披露不足可能来自小公司资源约束、地区差异、管理层认为信息不重要或具有商业敏感性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">部分 ESG 信息可能向供应商、商业客户等其他利益相关方披露，但不向投资者公开。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">披露还可能未经审计、不完整或公司间不可比；披露效率低也可能给熟练投资者创造更好的风险调整收益机会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">水泥公司案例：只披露 Scope 1、缺 Scopes 2 and 3，需要分析公司规模、同业比较、商业模式重大性、披露历史、未来承诺、叙述和战略质量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">后续可询问缺失数据原因和管理层重大性观点，或用可比公司数据、第三方数据估计。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">某些情况下，缺乏披露本身足以成为红旗，例如新 CEO 长期激励计划细节不充分。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">新兴市场挑战：数据有限、潜在 ESG 风险更高、文化复杂性；但也可能有更大参与和改善机会。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Investment Process</div>
+        <h2>投资流程：ESG 从哪里进入上市股票分析</h2>
+      </div>
+      <div class="head-desc">这一部分先建立“流程感”：ESG 可以从投资想法生成阶段就进入，而不是等估值最后再补一句。</div>
+    </div>
+    <div class="grid-2">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. Idea Generation 投资想法生成</div><span class="tag tag-blue">Screen</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">投资者可从基本面或技术指标筛选开始，并把 ESG 因素作为筛选标准，例如 positive、negative 或 momentum。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">这一步像先建立“候选名单”：找高 G、避低 G、找改善中的 G，或排除恶化中的 G。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">ESG 筛选</div><div class="eq-op">==</div><div class="eq-rhs">positive seek high scores + negative avoid low scores + momentum seek improving / avoid declining</div></div></div>
+        <div class="riskline">考点提醒：positive/negative/momentum 是筛选方向，不是估值调整方法。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. Thematic Idea Generation 主题投资想法</div><span class="tag tag-green">Theme</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">投资者也可基于行业或大趋势生成想法，例如 cloud computing；ESG 大趋势本身也可以成为可投资主题，例如清洁水和可再生能源。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">主题不是简单“贴标签”，而是找公司是否正暴露于长期变化带来的机会。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">主题想法</div><div class="eq-op">==</div><div class="eq-rhs">行业/ESG 大趋势 → 公司正向暴露 → 潜在投资机会</div></div></div>
+        <div class="riskline">投资影响：clean water、renewable energy 这类主题可直接形成投资宇宙。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. Checklists and Red Flags 清单和红旗</div><span class="tag tag-rose">Narrow</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">内部或外部清单可标记红旗，用来缩小可投资范围；公司治理阈值或不可接受的 ESG 分数可导致纳入或排除。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">清单的作用是把“很多公司”变成“值得进一步研究的公司”。它是前置筛查，不是最终投资结论。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">清单红旗</div><div class="eq-op">==</div><div class="eq-rhs">候选公司 → 规则阈值/异常信号 → 缩小投资范围</div></div></div>
+        <div class="riskline">考点提醒：碳强度明显高于指数基准，也可以成为量化筛选条件。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. Materiality and Information 研究阶段</div><span class="tag tag-amber">Research</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">确定候选投资后，分析师进入尽调或研究阶段，收集和处理大量信息，并识别可能影响公司财务表现的 ESG 议题。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">重大性判断通常发生在研究阶段，而不是等估值最后才开始。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">研究阶段</div><div class="eq-op">==</div><div class="eq-rhs">信息收集 → 重大性判断 → 决定哪些 ESG 议题需要进一步研究</div></div></div>
+        <div class="riskline">考点提醒：后续 forecasting and valuation 是模块 3 的重点；本模块先把“哪些因素值得进模型”筛出来。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="materiality" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Materiality</div>
+        <h2>重大性：不是 ESG 名词，而是财务影响路径</h2>
+      </div>
+      <div class="head-desc">这一节的隐藏线：同一个 ESG 议题，换行业、换商业模式、换公司生命周期，重大性可能完全不同。</div>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. 定义：影响财务表现才需要深入研究</div><span class="tag tag-blue">Impact</span></div>
+        <p class="small"><b>原文要点：</b>重大性评估要识别 likely to have an impact on the company's financial performance 的 ESG 议题。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">重大 ESG</div><div class="eq-op">==</div><div class="eq-rhs">可能影响财务表现的 ESG 风险或机会</div></div></div>
+        <div class="memory"><b>记忆线：</b>不是“ESG 看起来重要”，而是“它会不会影响收入、成本、现金流、风险或估值”。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. 衡量：Likelihood and Magnitude</div><span class="tag tag-green">Measure</span></div>
+        <p class="small"><b>原文要点：</b>重大性通常按 impact 的可能性和程度衡量。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">重大性</div><div class="eq-op">==</div><div class="eq-rhs">发生可能性 likelihood × 影响程度 magnitude</div></div></div>
+        <div class="riskline">考点提醒：看到 likelihood 和 magnitude，直接反推 materiality assessment。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. 行业和商业模式决定议题</div><span class="tag tag-violet">Industry</span></div>
+        <p class="small"><b>原文要点：</b>GHG emissions 对 utilities、airlines、auto manufacturers 重大；对 consulting companies 较不重大，后者更关注 data security and privacy。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">行业重大性</div><div class="eq-op">==</div><div class="eq-rhs">行业暴露 + 商业模式 + 财务影响路径</div></div></div>
+        <div class="riskline">考点提醒：不要把一个 ESG 指标平均套到所有公司。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. 财务重大性与非财务排除</div><span class="tag tag-amber">Strategy</span></div>
+        <p class="small"><b>原文要点：</b>许多投资者关注财务重大因素；但排除型策略也可能考虑并非财务重大的因素，例如宗教投资者排除销售少量猪肉产品的公司。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">排除策略</div><div class="eq-op">==</div><div class="eq-rhs">投资限制/价值观 → 即使财务影响小，也可能排除</div></div></div>
+        <div class="warnline">易错提醒：不是所有 ESG 筛选都必须证明财务重大性，策略目标不同。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">5. SASB/ISSB 重大性地图：基线，不是答案</div><span class="tag tag-teal">Framework</span></div>
+        <p class="small"><b>原文要点：</b>SASB 重大性地图可提供指导，但重大性判断不是精确科学，投资专业人士常发展自己的观点。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">SASB 地图</div><div class="eq-op">==</div><div class="eq-rhs">标准化起点 + 专业判断 + 公司特定事实</div></div></div>
+        <div class="riskline">投资影响：框架能防漏，但不能替代分析师对公司业务的判断。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">6. 可管理风险与未管理风险</div><span class="tag tag-rose">Risk</span></div>
+        <p class="small"><b>原文要点：</b>不是所有风险都被管理，甚至有些风险不能被管理。Unmanaged ESG risks 包括 inherent unmanageable risks 和 management gap。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">未管理风险</div><div class="eq-op">==</div><div class="eq-rhs">商业模式内生且无法消除的风险 + 能管但没管的管理差距</div></div></div>
+        <div class="warnline">易错提醒：manageable 不等于 eliminated；可管理风险也不能完全消除。</div>
+      </article>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>Exhibit 2 怎么看：重大性地图不是让你背整张表</h3>
+      <p class="small">教材的重大性地图把多个行业和 ESG 因素放在一起，核心不是记住每个格子，而是理解“重大因素按行业分布”。常见因素包括 business ethics and culture、ownership and control、board structure、health and safety、regulatory threshold and compliance、product responsibility、resource management、customer privacy and protection、human rights、assessment and disclosure、climate change impact 等。</p>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">重大性地图</div><div class="eq-op">==</div><div class="eq-rhs">行业位置 + E/S/G 因素分布 → 给分析师一个起点，而非最终结论</div></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>同一行业也不等于同一公司：Pharma fair marketing 示例</h3>
+      <table class="compare">
+        <thead><tr><th>公司</th><th>PDF 情况</th><th>重大性判断</th></tr></thead>
+        <tbody>
+          <tr><td>Company A</td><td>政策和培训更新，无监管警告信。</td><td>该因素风险暴露低。</td></tr>
+          <tr><td>Company B</td><td>政策弱、培训少，并收到多次罚款和监管警告。</td><td>该因素风险高。</td></tr>
+          <tr><td>Company C</td><td>当前没有商业化销售产品，只有研发阶段产品。</td><td>行业层面重大，但公司短期风险有限甚至没有。</td></tr>
+        </tbody>
+      </table>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">公司重大性</div><div class="eq-op">==</div><div class="eq-rhs">行业因素 + 公司政策/记录 + 产品商业化阶段 + 当前暴露</div></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>航空碳排放：可改善，但难消除</h3>
+      <p class="small">航空公司可以通过新发动机、可持续航空燃料、提高载客率、安装 winglets、减少飞机在跑道上空转时间等方式管理部分碳排放问题，但无法消除全部排放。因此航空公司可能仍有 carbon emissions 的 unmanageable risk，并影响 E risk score。大型节能资本设备采购还可能带来资本开支和资产负债表影响，进而涉及信用评级机构关注。</p>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">航空碳风险</div><div class="eq-op">==</div><div class="eq-rhs">可缓解措施 + 仍无法消除的商业模式排放 + E 风险评分 + 资本开支/信用影响</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scorecard" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Scorecards</div>
+        <h2>Scorecard：把定性判断变成可比较分数</h2>
+      </div>
+      <div class="head-desc">这部分和底稿思路很像：先明确评价项，再拆指标、定规则、打分、汇总、对标。</div>
+    </div>
+    <div class="grid-2">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Scorecard 的作用</div><span class="tag tag-blue">Translate</span></div>
+        <p class="small"><b>原文要点：</b>Scorecard 是投资者评估重大 ESG 因素的常见形式，特别是在第三方研究或评分不可得时。它把定性判断转化为数字分数。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Scorecard</div><div class="eq-op">==</div><div class="eq-rhs">重大 ESG 议题 + 指标体系 + 打分规则 → 数字分数</div></div></div>
+        <div class="riskline">考点提醒：Scorecard 不是第三方评级的同义词，它也可以是投资者自建工具。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">分数怎么进入投资判断</div><span class="tag tag-green">Interpret</span></div>
+        <p class="small"><b>原文要点：</b>低分表面上可能不适合 ESG 投资者，但若估值低且管理层愿意改善，也可能是价值机会；高分若已反映在估值中，也可能缺少超额收益空间。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">分数价值</div><div class="eq-op">==</div><div class="eq-rhs">ESG 表现 + 估值水平 + 管理层改善意愿</div></div></div>
+        <div class="warnline">易错提醒：低分不必然等于不能投，高分也不必然等于会跑赢。</div>
+      </article>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>Scorecard 六步法</h3>
+      <div class="flowline">
+        <div class="flow-step"><h3>1 识别项目</h3><p>sector- or company-specific ESG items。</p></div>
+        <div class="flow-step"><h3>2 拆成指标</h3><p>policy、measures、disclosure 等。</p></div>
+        <div class="flow-step"><h3>3 定评分系统</h3><p>先定义 good/best practice。</p></div>
+        <div class="flow-step"><h3>4 公司打分</h3><p>根据证据给出分数。</p></div>
+        <div class="flow-step"><h3>5 汇总分数</h3><p>issuer、E/S/G dimension 或 total score。</p></div>
+      </div>
+      <div class="formula" style="margin-top:10px"><b>第 6 步：</b>Benchmark the company's performance against industry averages or its peer group，也就是和行业平均或同业对标。</div>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">六步法</div><div class="eq-op">==</div><div class="eq-rhs">项目 → 指标 → 标准 → 打分 → 汇总 → 对标</div></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>Pharma fair marketing 评分示例</h3>
+      <table class="compare">
+        <thead><tr><th>公司</th><th>PDF 情况</th><th>分数</th><th>逻辑</th></tr></thead>
+        <tbody>
+          <tr><td>Company X</td><td>无政策，并有营销违规历史。</td><td>0</td><td>控制缺失 + 负面记录。</td></tr>
+          <tr><td>Company Y</td><td>简短政策，无违规。</td><td>3</td><td>有基本政策，但深度有限。</td></tr>
+          <tr><td>Company Z</td><td>详细政策，一次轻微违规。</td><td>4</td><td>制度较强，但存在轻微瑕疵。</td></tr>
+        </tbody>
+      </table>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">营销评分</div><div class="eq-op">==</div><div class="eq-rhs">政策强弱 + 培训/执行 + 违规历史 + 严重程度</div></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Private company scorecard 私有公司挑战</div><span class="tag tag-amber">Data</span></div>
+        <p class="small">私有公司也可以用 Scorecard，但挑战是评级机构评分更少、公开信息更少。注意：不是不能识别公司特定 ESG 因素，也不是不能把定性因素转成分数。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">私有公司难点</div><div class="eq-op">==</div><div class="eq-rhs">少第三方评级 + 少公开信息</div></div></div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">其他资产也可适配</div><span class="tag tag-teal">Adapt</span></div>
+        <p class="small">Scorecard 可适配国家、基础设施、房地产等。例如基础设施可评估环境政策和净零承诺；国家可评估腐败水平。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Scorecard 适配</div><div class="eq-op">==</div><div class="eq-rhs">同一评分逻辑 + 不同资产类别的重大指标</div></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="disclosure" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Company Disclosures</div>
+        <h2>披露解读：看到“没披露”，先问为什么</h2>
+      </div>
+      <div class="head-desc">这一节最像审计复核：资料不完整时，不是直接下结论，而是看原因、同业、重大性、鉴证和管理层态度。</div>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. 披露差异与管理层裁量</div><span class="tag tag-blue">Variable</span></div>
+        <p class="small"><b>原文要点：</b>公司披露政策和实践不同，强制 ESG 披露并非所有司法辖区普遍适用；管理层对“影响财务的重大因素”有很大裁量权。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">披露差异</div><div class="eq-op">==</div><div class="eq-rhs">监管差异 + 公司政策 + 管理层裁量 + 信息成本</div></div></div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. 缺披露不必然等于管理差</div><span class="tag tag-green">Caution</span></div>
+        <p class="small"><b>原文要点：</b>公司不披露相关 ESG 数据，不必然说明其 ESG 风险或机会管理差。小公司可能有成本约束，信息也可能被认为不重要或具有商业敏感性。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">缺披露</div><div class="eq-op">==</div><div class="eq-rhs">可能是资源/地区/敏感性问题，也可能是风险信号</div></div></div>
+        <div class="warnline">易错提醒：不能机械地把“无披露”直接等同于“风险管理差”。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. 恶化指标与选择性不披露</div><span class="tag tag-rose">Red Flag</span></div>
+        <p class="small"><b>原文要点：</b>有些公司在指标差的时候停止披露或避免披露；在许多市场，选择性不披露影响估值的重大信息可能有法律后果。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">选择性不披露</div><div class="eq-op">==</div><div class="eq-rhs">指标变差 + 停止披露 → 红旗/法律风险</div></div></div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. 披露低效也可能带来机会</div><span class="tag tag-amber">Inefficiency</span></div>
+        <p class="small"><b>原文要点：</b>未经审计、不完整或不可比披露会降低市场效率，但这种相对低效也可能给熟练投资者带来更好的风险调整收益机会。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">披露低效</div><div class="eq-op">==</div><div class="eq-rhs">信息难处理 → 市场误判 → 熟练投资者机会</div></div></div>
+      </article>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>水泥公司 Scope 1 披露：五个追问</h3>
+      <div class="grid-auto">
+        <div class="formula"><b>1 公司规模</b>：员工、资源或市值较小的公司可能无法达到大公司披露标准；但重大风险因素可能仍不能被原谅。</div>
+        <div class="formula"><b>2 同业比较</b>：和不披露任何碳数据、披露三个范围数据的竞争者分别比较。</div>
+        <div class="formula"><b>3 商业模式重大性</b>：如果水泥生产本身产生大部分 GHG 排放，Scope 1 可能相对足够；第三方鉴证会增加披露权重。</div>
+        <div class="formula"><b>4 披露历史和承诺</b>：持续性和可靠性会影响 scorecard 评分或估值模型调整。</div>
+        <div class="formula"><b>5 叙述和战略</b>：有无减碳战略叙述，是否与最佳实践指引一致，例如 IASB 管理层评论实践声明。</div>
+      </div>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">披露解读</div><div class="eq-op">==</div><div class="eq-rhs">规模 + 同业 + 商业模式 + 鉴证 + 历史承诺 + 叙述质量</div></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">后续动作</div><span class="tag tag-teal">Follow-up</span></div>
+        <p class="small">分析师可要求公司解释数据缺失原因和重大性观点，并判断其沟通意愿或未来披露承诺；也可用可比公司数据或第三方数据估计缺失数据。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">缺失数据处理</div><div class="eq-op">==</div><div class="eq-rhs">问原因/重大性 → 看承诺 → 同业估计或第三方数据</div></div></div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">新兴市场挑战与机会</div><span class="tag tag-violet">EM</span></div>
+        <p class="small">新兴市场数据有限，披露和评级更少，国家和公司差异大；监管、治理和基础设施可能较弱，文化复杂性要求更细致方法。但投资者也可能通过资本配置和 active ownership 推动改善。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">新兴市场 ESG</div><div class="eq-op">==</div><div class="eq-rhs">有限数据 + 更高背景风险 + 文化复杂性 + 更大参与改善机会</div></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Examples and Cases</div>
+        <h2>案例区：把题眼落到判断路径</h2>
+      </div>
+      <div class="head-desc">案例不是为了背故事，而是训练“看到事实 → 判断重大性 → 知道下一步问什么”。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Jazz Pharmaceuticals：SASB 不是终点</div><span class="tag tag-blue">Materiality</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">cannabis-derived pharmaceutical，materials sourcing 在 SASB 框架中本不被视为 biopharma/pharma 的重大风险。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">公司特殊产品改变了重大性：种植 cannabis 更复杂，且涉及 drug regulator 和 pharmaceutical regulator 两个监管者。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">特殊业务 == 标准框架 + 公司事实修正 → 材料采购风险和潜在机会。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Jazz 的机会面</div><span class="tag tag-green">Opportunity</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">harvesting technology、knowledge protection、two regulators、barriers to entry、market exclusivity。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">同一事实既可能是风险，也可能是机会：技术和监管门槛可能延长市场独占期，支持现金流。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">监管复杂 + 技术保护 == 进入壁垒 → 更长现金流窗口。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Pharma fair marketing：行业重大，公司不同</div><span class="tag tag-violet">Company Specific</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">A</div><div class="case-text">政策和培训更新，无监管警告信，风险低。</div></div>
+          <div class="case-row"><div class="case-lab">B</div><div class="case-text">政策弱、培训少，多次罚款和警告，风险高。</div></div>
+          <div class="case-row"><div class="case-lab">C</div><div class="case-text">无商业化产品，短期风险有限或没有。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">水泥公司 Scope 1 披露</div><span class="tag tag-amber">Disclosure</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">披露碳减排战略，只披露 Scope 1，遗漏 Scopes 2 and 3；Scope 1 经过第三方鉴证。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">不能直接判差。要看 Scope 2/3 是否对商业模式重大、同业披露、公司规模、披露历史和战略叙述。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">缺 Scope 2/3 == 追问重大性 + 比同业 + 看鉴证 + 看承诺。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">CEO 长期激励计划不披露</div><span class="tag tag-rose">Red Flag</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">new CEO，company will not disclose sufficient detail of long-term incentive plans。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">在某些情况下，缺少披露本身足以完全 red flag 投资候选。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">关键治理信息拒绝披露 == 管理层激励不透明 → 强红旗。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">新兴市场 ESG</div><span class="tag tag-teal">EM</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">挑战</div><div class="case-text">数据少、评级少、国家和公司差异大；监管、治理和基础设施可能更弱。</div></div>
+          <div class="case-row"><div class="case-lab">机会</div><div class="case-text">投资者可能有更大空间通过参与、资本配置和 active ownership 推动 ESG 改善。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">新兴市场 == 更难对标 + 更需背景判断 + 更大改善空间。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩版：一屏背完整模块</h2>
+      </div>
+      <div class="head-desc">先背总式，再背易错点。所有式子都服务“反推题眼”。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>上市股票 ESG 整合</b> == 投资想法 → 重大性/信息收集 → 估值预测 → 投资决定 → 持续监控。</div>
+          <div class="formula"><b>Idea generation</b> == positive/negative/momentum 筛选 + ESG 主题 + checklist/red flag。</div>
+          <div class="formula"><b>Material ESG issue</b> == 行业/商业模式相关 + 可能影响财务表现。</div>
+          <div class="formula"><b>Materiality</b> == likelihood × magnitude。</div>
+          <div class="formula"><b>SASB/ISSB map</b> == 重大性基线 + 分析师自有判断 + 公司特定事实。</div>
+          <div class="formula"><b>Same sector, different company</b> == 行业因素 + 公司政策/记录 + 生命周期/产品阶段。</div>
+          <div class="formula"><b>Unmanaged risks</b> == unmanageable inherent risks + management gap。</div>
+          <div class="formula"><b>Scorecard</b> == 项目 → 指标 → 标准 → 打分 → 汇总 → 同业对标。</div>
+          <div class="formula"><b>Disclosure interpretation</b> == 规模 + 同业 + 商业模式 + 鉴证 + 历史承诺 + 叙述战略。</div>
+          <div class="formula"><b>Emerging markets</b> == 数据有限 + 风险背景复杂 + 方法需细化 + 参与改善机会。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 8 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>重大性阶段</b>重大性评估通常在研究/尽调阶段完成，不是估值最后才开始。</div>
+          <div class="trap"><b>行业重大不等于公司重大</b>Pharma 的 fair marketing 可能行业重大，但无商业化产品的公司短期风险可能很低。</div>
+          <div class="trap"><b>SASB 是起点，不是终点</b>Jazz Pharmaceuticals 说明公司特殊业务会改变材料采购风险判断。</div>
+          <div class="trap"><b>Manageable 不等于 eliminated</b>员工安全、数据安全可管理，但不能完全消除。</div>
+          <div class="trap"><b>Unmanageable vs Management gap</b>前者是商业模式内生无法解决，后者是能管但没管。</div>
+          <div class="trap"><b>低分不等于不能投</b>若估值低且管理层愿意改善，低分也可能是价值机会。</div>
+          <div class="trap"><b>私有公司 Scorecard 难点</b>难在评级和公开信息少，不是不能识别 ESG 项或不能量化。</div>
+          <div class="trap"><b>无披露不必然等于管理差</b>但关键治理信息拒绝披露，可能足以成为强红旗。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">复习顺序建议：先背“投资流程五步”，再背“重大性 = likelihood × magnitude”，最后用水泥 Scope 披露案例练习追问路径。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quick Check</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">这些题用于检查模块 2 是否真的理解。整章三轮练习系统会在后面统一制作。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">上市股票 ESG 整合最早可以在哪个投资流程阶段出现？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：Idea generation。</b>ESG 可以作为筛选标准或主题投资想法进入，不必等到估值阶段。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">重大性通常用哪两个维度衡量？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：Likelihood 和 magnitude of impact。</b>也就是发生可能性和影响程度。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">GHG emissions 对 consulting companies 通常为什么不如 data security and privacy 重大？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为 consulting 的商业模式通常不是碳密集型，数据安全和隐私泄露反而可能造成更大成本和财务影响。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">SASB/ISSB materiality map 在重大性判断中应如何使用？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：作为基线或指导。</b>它不能替代公司特定分析，投资专业人士仍要发展自己的重大性观点。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Unmanaged ESG risks 包括哪两类？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>一是 unmanageable risks，即商业模式内生且公司无法通过行动解决的风险；二是 management gap，即可以管理但公司没有管理的风险。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">创建 private company scorecard 的主要挑战是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>私有公司更少有评级机构评分，公开领域的信息也更少。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">水泥公司只披露 Scope 1，遗漏 Scopes 2 and 3，分析师应直接判定披露不足吗？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：不能直接判定。</b>要看 Scope 2/3 对其商业模式是否重大、同业披露、公司规模、Scope 1 是否经第三方鉴证、披露历史和未来承诺。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">新兴市场 ESG 整合相对发达市场的一个主要挑战是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>数据有限，披露和 ESG 评级更少，使 ESG 表现对标更困难；同时国家和公司之间差异更大。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>反推自测</h3>
+      <div class="grid-auto">
+        <details>
+          <summary>看到 “positive, negative, momentum” 反推什么？</summary>
+          <div class="detail-body">反推 idea generation 阶段的 ESG 筛选：seek high scores、avoid low scores、seek improving 或 avoid declining。</div>
+        </details>
+        <details>
+          <summary>看到 “no commercially marketed products” 反推什么？</summary>
+          <div class="detail-body">反推公司特定重大性：某 ESG 因素可能行业重大，但这家公司短期暴露有限或没有。</div>
+        </details>
+        <details>
+          <summary>看到 “new CEO but no LTIP detail” 反推什么？</summary>
+          <div class="detail-body">反推关键治理披露缺失，可能足以 red flag 一个投资候选。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

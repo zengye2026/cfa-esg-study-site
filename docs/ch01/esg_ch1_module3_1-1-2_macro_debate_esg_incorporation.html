@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Ch.1 Module 3 · 1.1.2 Macro-Level Debate on ESG Incorporation</title>
+<style>
+:root{
+  --ink:#172033;--sub:#40516b;--muted:#6b7a90;--faint:#9aa8ba;
+  --bg:#eef3f8;--paper:#ffffff;--soft:#f8fbfd;--line:#dce6f0;--line2:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#111827;--dark2:#1f2937;
+  --r:8px;--sh-sm:0 2px 12px rgba(17,24,39,.06);--sh:0 14px 38px rgba(17,24,39,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular",Consolas,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.68;background:var(--bg);overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fbfd 0%,#eef3f8 44%,#e8eef5 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 76px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,50px);line-height:1.08;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(17,24,39,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark)}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card,.map-board,.topic-card,.case-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.card{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{padding:22px;margin-bottom:16px;box-shadow:var(--sh)}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.4px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{padding:18px}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(106px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68;margin-top:10px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{width:100%;border-collapse:collapse;min-width:880px}
+th,td{border-bottom:1px solid var(--line2);padding:12px 13px;text-align:left;vertical-align:top;font-size:13px;line-height:1.62;color:var(--sub)}
+th{background:var(--soft);font-size:12px;color:var(--dark);text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:0}
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:1100px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{width:min(340px, calc(100vw - 48px));max-width:340px;padding:18px 0 68px;margin:0 auto}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini,.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+  table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 1</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">1.1.2</span>
+        <span class="pill">PDF p.10-14</span>
+      </div>
+      <h1>Macro-Level Debate<br>on ESG Incorporation</h1>
+      <p class="lead">本模块回答“为什么要把 ESG 纳入投资决策”。PDF 不是只给一个理由，而是从风险、受托责任、经济、影响与伦理、客户需求、监管六个角度说明 ESG 已经进入投资和金融系统稳定的核心议题。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG incorporation == 风险变长期且系统性 + 受托责任扩展到长期价值 + 负外部性拖累经济 + 投资可服务社会 + 客户要求透明 + 监管持续加强。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">1.1.2 描述纳入 ESG 的收益、挑战，以及 ESG 投资与金融系统稳定之间的关系</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">宏观争论视角</div></div>
+        <div class="mini-stat"><div class="mini-num">48/50</div><div class="mini-lab">大型经济体已有相关政策</div></div>
+      </div>
+      <div class="side-note">记忆抓手：六个视角都在回答同一件事：ESG 不只是公司层面风险，也会影响组合、市场和金融系统韧性。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" type="button" data-tab="map">知识地图</button>
+    <button class="tab" type="button" data-tab="coverage">覆盖清单</button>
+    <button class="tab" type="button" data-tab="six">六个视角</button>
+    <button class="tab" type="button" data-tab="cases">案例框</button>
+    <button class="tab" type="button" data-tab="system">系统稳定</button>
+    <button class="tab" type="button" data-tab="traps">易错点</button>
+    <button class="tab" type="button" data-tab="compress">考前压缩</button>
+    <button class="tab" type="button" data-tab="quiz">自测题</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>六个“为什么”：ESG 为什么必须进入投资决策</h2>
+      </div>
+      <div class="head-desc">把题目拆成六个视角，每个视角都能反推一组原文知识点。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Macro-Level Debate on ESG Incorporation<br>不是单一偏好，而是风险、责任、经济、影响、客户和监管共同推动</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Risk</div>
+          <p>气候和环境风险上升。</p>
+          <p>Tragedy of the horizon：风险发生时可能已经太晚。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Fiduciary Duty</div>
+          <p>过去被当作阻碍。</p>
+          <p>现代解释：忽视长期 ESG 价值驱动因素可能违反受托责任。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Economic</div>
+          <p>负面大趋势拖累经济繁荣。</p>
+          <p>Universal owners 的回报依赖整体经济健康。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Impact & Ethics</div>
+          <p>投资可服务社会并提供回报。</p>
+          <p>可追求正面影响，也可避免负面影响。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Client Demand</div>
+          <p>客户要求知道钱投到哪里。</p>
+          <p>关注公司价值、回报、声誉和社会环境影响。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Regulation</div>
+          <p>监管和政策干预增加。</p>
+          <p>硬法和软法都在推动长期价值驱动因素纳入投资。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>宏观趋势变化</h3><p>气候、资源、贫困、不平等等风险加重。</p></div>
+        <div class="flow-step"><h3>公司与组合受影响</h3><p>成本、收益、负债、声誉、外部性进入投资判断。</p></div>
+        <div class="flow-step"><h3>受托责任重估</h3><p>长期价值驱动因素不能被排除在外。</p></div>
+        <div class="flow-step"><h3>客户和监管施压</h3><p>透明度、政策、净零承诺持续增强。</p></div>
+        <div class="flow-step"><h3>系统稳定</h3><p>投资者开始关注金融系统韧性和整体市场回报。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">依据 `ch01/esg-01.pdf` 第 10-14 页整理，按六个视角归档。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Risk</span> 风险视角</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">WEF Global Risks Report 2024 多年来强调极端天气和未能应对气候变化的可能性与影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">环境相关风险的重要性显著上升，传统经济风险如资产泡沫、金融失败、财政危机退出 top five。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Mark Carney 将气候变化称为 horizon 问题：等其成为金融稳定核心问题时，可能已经太晚。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">纳入宏观 ESG 因素会直接影响 security selection。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">审慎投资者会要求公司披露当前排放，以及如何转型到未来净零世界。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">长期投资者希望识别快速变化风险环境中的赢家和输家，转化为 above-market performance。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Fiduciary Duty</span> 受托责任视角</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">过去多年，fiduciary duty 被认为是考虑 ESG 因素的障碍。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Fiduciaries 代表受益人和投资者管理资金或资产，必须为了受益人利益行事，而不是服务自己。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">误以为 ESG factors 不具财务重大性，导致一些投资者和监管者以受托责任为由不纳入 ESG。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Freshfields report 认为，将 ESG 纳入投资分析以更可靠预测财务表现，是允许的，并可被认为在各司法辖区都需要。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 2019 报告认为，不考虑包括 ESG 在内的长期投资价值驱动因素，是受托责任失败。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">现代 fiduciary duties 包括纳入财务重大 ESG、理解客户偏好、主动所有权、支持金融系统稳定和披露投资方法。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Economic</span> 经济视角</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">负面大趋势会拖累经济繁荣，例如水、能源、土地变得稀缺且昂贵。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">健康和收入不平等会增加国家内部以及全球南北之间的不稳定。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">FSB 已将气候变化识别为潜在系统性风险，其他环境大趋势也可能如此。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">环境问题包括气候变化、资源稀缺、生物多样性损失、森林砍伐；社会挑战包括贫困、收入不平等、人权。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Universal owners 高度分散，等于持有整个市场切片，因此回报取决于整体经济健康。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">将资本低效配置给高负外部性公司，可能损害其他组合公司盈利和整体市场回报。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Impact, Ethics, Client, Regulation</span> 其余推动力</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">一些投资者认为投资可以或应该在提供财务回报的同时服务社会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">正面影响投资者用资本和 stewardship 解决社会环境问题；负面影响规避者通过 negative screening 排除争议行业。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">客户越来越要求透明了解资金如何以及投向哪里。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">客户需求由两点驱动：认识到 ESG 影响 company value、returns、reputation；更关注被投公司的环境和社会影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2020 年部分 asset owners 发起 Net-Zero Asset Owner Alliance，承诺到 2050 年投资组合转向净零温室气体排放。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">自 1990 年代中期以来，responsible investment regulation 显著增加，2008 年金融危机后政策干预激增。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 发现全球 50 大经济体中有 48 个有某种政策帮助投资者考虑可持续风险、机会或结果。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">已有超过 730 项硬法和软法政策修订，鼓励或要求投资者考虑包括 ESG 在内的长期价值驱动因素。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="six" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Six Perspectives</div>
+        <h2>六个视角：每个视角一条逻辑等式</h2>
+      </div>
+      <div class="head-desc">用“原因 → 投资含义 → 考点提醒”的方式压缩 Section 4。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Risk Perspective 风险视角</div><span class="tag tag-blue">系统风险</span></div>
+        <p class="small"><b>原文要点：</b>全球风险结构变化，环境风险和气候风险上升。气候风险具有时间错位特征，等它成为金融稳定核心问题时可能已经太晚。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">风险视角</div><div class="eq-op">==</div><div class="eq-rhs">全球风险谱变化 → 气候/环境风险上升 → 证券选择需看排放和净零转型计划</div></div></div>
+        <div class="memory"><b>记忆线：</b>风险不是“以后再说”，而是“等看见时可能已经错过投资调整窗口”。</div>
+        <div class="riskline">考点提醒：Carney、FSB、financial stability、climate risk 这些词常连在一起。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Fiduciary Duty 受托责任视角</div><span class="tag tag-green">责任重估</span></div>
+        <p class="small"><b>原文要点：</b>过去 ESG 被误认为与财务无关，因而被排除在受托责任外；现代观点认为，忽视财务重大 ESG 和长期价值驱动因素，反而可能违反受托责任。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">受托责任</div><div class="eq-op">==</div><div class="eq-rhs">为受益人利益管理资产 → ESG 可财务重大 → 必须纳入长期投资判断</div></div></div>
+        <div class="memory"><b>记忆线：</b>受托责任从“不能碰 ESG”转成“不能忽视重要 ESG”。</div>
+        <div class="riskline">考点提醒：Freshfields report 与 PRI 2019 是本视角的关键抓手。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Economic Perspective 经济视角</div><span class="tag tag-violet">整体市场</span></div>
+        <p class="small"><b>原文要点：</b>负面大趋势会拖累经济繁荣并增加不稳定。Universal owners 高度分散，回报依赖整体经济健康，因此有动力减少系统性经济风险。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">经济视角</div><div class="eq-op">==</div><div class="eq-rhs">负面大趋势 → 经济被削弱 → universal owners 的长期市场回报受损</div></div></div>
+        <div class="memory"><b>记忆线：</b>大机构不是只持有几家公司，而是持有市场的一部分；市场变差，它也躲不开。</div>
+        <div class="riskline">投资影响：将负外部性价格纳入投资过程，能保护整体、长期财务表现。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Impact and Ethics 影响与伦理视角</div><span class="tag tag-amber">价值取向</span></div>
+        <p class="small"><b>原文要点：</b>一些投资者认为投资可以或应该在提供财务回报的同时服务社会。可以追求正面影响，也可以避免负面影响。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">影响伦理</div><div class="eq-op">==</div><div class="eq-rhs">投资可服务社会 + 财务回报 → 正面影响投资 / 负面筛选</div></div></div>
+        <div class="memory"><b>记忆线：</b>这不是只问“赚不赚钱”，还问“钱在帮助什么，或伤害什么”。</div>
+        <div class="riskline">考点提醒：正面影响靠 capital 和 stewardship；负面影响常排除 arms、gambling、alcohol、tobacco、pornography。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Client Demand 客户需求视角</div><span class="tag tag-teal">透明度</span></div>
+        <p class="small"><b>原文要点：</b>客户越来越要求透明了解资金如何及投向哪里，因为他们认识到 ESG 影响公司价值、回报和声誉，也更关注被投公司的环境和社会影响。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">客户需求</div><div class="eq-op">==</div><div class="eq-rhs">想知道钱投向哪里 → ESG 影响价值/回报/声誉 + 关注环境社会影响</div></div></div>
+        <div class="memory"><b>记忆线：</b>客户不是只问收益率，也开始问“我的钱去了哪里，造成什么影响”。</div>
+        <div class="riskline">考点提醒：Asset owners 是关键，因为他们决定资产如何管理。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Regulatory Perspective 监管视角</div><span class="tag tag-rose">政策推动</span></div>
+        <p class="small"><b>原文要点：</b>无论投资者本身是否认同，一些投资者正被要求越来越多考虑 ESG matters。监管者认识到金融部门可在气候、现代奴役、税务规避等全球挑战中发挥作用。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">监管视角</div><div class="eq-op">==</div><div class="eq-rhs">政策干预增加 → 硬法/软法推动 → ESG 和长期价值驱动因素进入投资要求</div></div></div>
+        <div class="memory"><b>记忆线：</b>即便不是自愿，规则也在把 ESG 推入投资流程。</div>
+        <div class="riskline">数字题眼：50 大经济体中 48 个有相关政策；超过 730 项 hard/soft law revisions。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case Study</div>
+        <h2>风险案例：ESG 风险怎样进入财务结果</h2>
+      </div>
+      <div class="head-desc">PDF 的三个案例都在说明：气候、水、社会冲突不是遥远背景，会直接影响 EBITDA、负债、资产价值和项目推进。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">PG&E 野火责任</div><span class="tag tag-rose">Climate hazard</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">PG&E 因野火责任进入破产程序；其设备在 2014-2017 年导致超过 1,500 起火灾。</div></div>
+          <div class="case-row"><div class="case-lab">传导</div><div class="case-text">气候变化加剧低湿度和强风，火灾风险上升，公用事业设备风险转化为重大财务责任。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Climate-driven hazards、liabilities、bankruptcy、utility。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">CBA 水危机与 EBITDA</div><span class="tag tag-blue">Water scarcity</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">CBA 估计 2021 年下半年水危机导致 EBITDA 减少 2,700 万至 3,300 万美元。</div></div>
+          <div class="case-row"><div class="case-lab">传导</div><div class="case-text">巴西水电占比较高，水资源短缺导致发电不足、能源短缺和价格上涨，公司需高价购电。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Water crisis、hydropower、energy shortage、EBITDA reduction。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">秘鲁矿业项目暂停</div><span class="tag tag-amber">Stranded assets</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">秘鲁因水供应中断相关社会冲突，自 2010 年以来无限期暂停 215 亿美元矿业项目。</div></div>
+          <div class="case-row"><div class="case-lab">传导</div><div class="case-text">环境和社区冲突可导致资产搁浅，即资产因监管、环境或市场约束变得过时或无法推进。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Social conflict、water supplies、mining projects、stranded assets。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>重大性判断提醒</h3>
+      <p class="small">PDF 特别提醒：ESG 因素如何影响财务结果，取决于 sector、company、culture、business model、supply chain、growth stage 和 geographic location。也就是说，不能只靠通用清单，要落到行业和公司具体情况。</p>
+    </div>
+  </section>
+
+  <section id="system" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Financial System Stability</div>
+        <h2>ESG 投资与金融系统稳定：为什么大机构更关心整体经济</h2>
+      </div>
+      <div class="head-desc">这是 1.1.2 的关键：ESG 不只是个股分析，也可能影响金融系统稳定和整体市场回报。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Universal owners 的逻辑</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Universal owners</div><div class="eq-op">==</div><div class="eq-rhs">大型机构投资者 + 跨资产/行业/地区高度分散 + 持有整体市场切片</div></div>
+          <div class="eq"><div class="eq-lhs">回报来源</div><div class="eq-op">==</div><div class="eq-rhs">不只靠少数公司，而依赖整体经济持续健康</div></div>
+          <div class="eq"><div class="eq-lhs">投资含义</div><div class="eq-op">==</div><div class="eq-rhs">高负外部性公司可能伤害其他组合公司和市场总回报</div></div>
+        </div>
+        <div class="memory"><b>一句话：</b>组合足够大、足够分散时，市场整体风险就是自己的风险。</div>
+      </div>
+      <div class="card">
+        <h3>现代受托责任的 5 项要求</h3>
+        <div class="formula-list">
+          <div class="formula"><b>1.</b> 将财务重大的 ESG factors 纳入投资决策，并匹配义务时间框架。</div>
+          <div class="formula"><b>2.</b> 理解并纳入受益人或客户的 sustainability preferences，即使这些偏好不具财务重大性。</div>
+          <div class="formula"><b>3.</b> 成为 active owners，推动被投公司或实体达到高 ESG performance 标准。</div>
+          <div class="formula"><b>4.</b> 支持金融系统的 stability and resilience。</div>
+          <div class="formula"><b>5.</b> 清晰、可理解地披露投资方法，包括偏好如何纳入投资方案。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>外部性价格化</h3>
+      <p class="small">经济视角下，投资者越来越主张把 externalities 的价格纳入投资过程，同时考虑投资对社会、环境和整体经济的更广泛影响。这就是为什么 SDGs 这类全球优先事项框架会被投资界欢迎。</p>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：题目换个说法就容易选错</h2>
+      </div>
+      <div class="head-desc">这一节的错误常来自把六个视角混在一起，或把“个股风险”和“系统风险”混为一谈。</div>
+    </div>
+    <div class="trap-grid">
+      <div class="trap"><b>受托责任不是 ESG 的永久障碍</b>旧观点认为 ESG 可能不符合受托责任；现代解释强调财务重大 ESG 和长期价值驱动因素必须考虑。</div>
+      <div class="trap"><b>Client demand 不只是“想赚钱”</b>客户要求透明，也关注钱投向哪里，以及被投公司的环境和社会影响。</div>
+      <div class="trap"><b>Risk perspective 不只看单家公司</b>气候风险被 FSB 视为潜在系统性风险，会进入金融稳定讨论。</div>
+      <div class="trap"><b>Universal owners 不是散户指数投资者</b>PDF 指大型机构投资者，因规模大而跨资产、行业和地区高度分散。</div>
+      <div class="trap"><b>Impact and ethics 有两条路</b>一条是追求正面影响，一条是通过负面筛选避免负面影响。</div>
+      <div class="trap"><b>Hard law 和 soft law 都重要</b>Hard laws 有法律约束力；soft laws 是准法律工具，约束力较弱，但未来可能变成 hard law。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩：六个视角一屏背完</h2>
+      </div>
+      <div class="head-desc">看到题目关键词时，用这组公式反推。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>整节逻辑等式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Risk</b> == 气候/环境风险上升 + horizon mismatch + 披露排放和净零转型计划。</div>
+          <div class="formula"><b>Fiduciary duty</b> == 为受益人利益管理资产 + ESG 可财务重大 + 忽视长期 ESG 价值驱动因素可能违反责任。</div>
+          <div class="formula"><b>Economic</b> == 负面大趋势拖累经济 + universal owners 依赖整体市场 + 负外部性伤害组合总回报。</div>
+          <div class="formula"><b>Impact & ethics</b> == 投资可服务社会 + 正面影响 / 负面筛选。</div>
+          <div class="formula"><b>Client demand</b> == 透明度要求 + ESG 影响 value/returns/reputation + 关注被投公司影响。</div>
+          <div class="formula"><b>Regulation</b> == 1990s 后增加 + 2008 后加速 + 48/50 经济体政策 + 730+ 硬软法修订。</div>
+          <div class="formula"><b>System stability</b> == 金融部门可帮助应对气候、现代奴役、税务规避等全球挑战。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>题眼钩子</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Tragedy of the horizon</b>想到 Carney、气候风险、金融稳定时间错配。</div>
+          <div class="trap"><b>Freshfields / PRI 2019</b>想到现代受托责任。</div>
+          <div class="trap"><b>Universal owners</b>想到大型机构、整体市场切片、经济健康。</div>
+          <div class="trap"><b>Externalities</b>想到高负外部性公司伤害其他组合公司和市场回报。</div>
+          <div class="trap"><b>Net-Zero Asset Owner Alliance</b>想到 asset owners 和客户需求推动净零组合。</div>
+          <div class="trap"><b>Hard / soft law</b>想到监管视角和政策干预增加。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>自测题：看到题眼反推六个视角</h2>
+      </div>
+      <div class="head-desc">正式三轮练习系统会在整章完成后统一制作；这里先练本模块核心反推。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">“Tragedy of the horizon” 最接近哪一个视角？为什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Risk perspective。它说明气候风险的严重影响可能超出多数行动者的传统时间视野，等成为金融稳定核心问题时可能已经太晚。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Freshfields report 和 PRI 2019 报告主要支持哪一个观点？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>现代 fiduciary duty 要求投资者考虑财务重大的 ESG factors 和长期投资价值驱动因素。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Universal owners 为什么关心负外部性？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为它们高度分散，回报依赖整体经济和整体市场。高负外部性公司可能损害其他组合公司的盈利和市场总回报。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Impact and ethics perspective 的两条投资路径是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>一是通过资本和 stewardship 追求正面影响；二是通过 negative screening 避免负面影响。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Client demand perspective 由哪两类认识推动？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>客户认识到 ESG factors 影响公司价值、回报和声誉；同时更关注被投公司的环境和社会影响。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">监管视角中，hard law 和 soft law 的区别是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Hard laws 是有约束力的法律工具和法律；soft laws 是准法律工具，没有法律约束力或约束力弱于传统法律，但可能逐步变成 hard law。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">PG&E、CBA、秘鲁矿业项目三个案例共同说明什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>气候、水资源和社会冲突等 ESG 风险可以直接影响财务结果，例如负债、EBITDA、资产搁浅和项目暂停。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">现代 fiduciary duties 中，与金融系统稳定直接相关的是哪一项？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Support the stability and resilience of the financial system。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">为什么 ESG 重大性不能只靠通用清单判断？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为公司面临的 ESG 挑战取决于行业、公司文化、商业模式、供应链、成长阶段和地理位置等因素。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">10</div><div class="qtext">PRI 对 50 大经济体政策的发现是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>50 大经济体中有 48 个有某种政策帮助投资者考虑可持续风险、机会或结果；这些经济体已有超过 730 项硬法和软法政策修订。</div>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach((item) => item.classList.toggle('active', item === tab));
+    panels.forEach((panel) => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESG Ch.9 Module 6 · 9.1.6</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#edf2f7;--paper:#fff;--soft:#f8fafc;--bg:#eef3f8;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 14px 38px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef3f8 52%,#e8eef5 100%);line-height:1.68;min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 78px;min-width:0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin-bottom:16px}
+.hero-main,.hero-side,.panel-card,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main{padding:28px 30px}.hero-side{padding:18px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.pill{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,54px);line-height:1.08;letter-spacing:0;margin:0 0 12px;color:var(--dark);word-break:break-word}
+.lead{font-size:15px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.76}.hero-eq b{color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.stat-num{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--dark);line-height:1}.stat-lab{font-size:12px;font-weight:850;color:var(--muted);margin-top:5px}
+.side-note{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:13px 14px;font-size:13px;line-height:1.72}.side-note b{color:#fff}
+.tabbar{position:sticky;top:10px;z-index:20;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px;overflow-x:auto;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}
+.tab-title{font-size:12px;font-weight:950;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;padding:0 7px;white-space:nowrap}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 12px;font-size:13px;font-weight:900;color:var(--muted);cursor:pointer;white-space:nowrap}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff}
+.panel{display:none;min-width:0}.panel.active{display:block}
+.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:950;letter-spacing:.10em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(24px,4vw,36px);line-height:1.16;letter-spacing:0;margin:0;color:var(--dark)}.sub{font-size:14px;color:var(--muted);line-height:1.76;margin:8px 0 0;max-width:820px}
+h3{font-size:16px;color:var(--dark);line-height:1.36;margin:0 0 8px}.small{font-size:12.8px;color:var(--muted);line-height:1.65}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px}.pad{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:950;line-height:1.25;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px;margin-bottom:14px;min-width:0;overflow:hidden}.center-node{max-width:700px;margin:0 auto 16px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45;word-break:break-word}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}.flow-card h3{font-size:14px;margin:0 0 6px}.flow-card p{font-size:12.5px;color:var(--sub);line-height:1.58;margin:0}
+.logic-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.logic-step{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.logic-step b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}.logic-step span{font-size:12.6px;color:var(--sub);line-height:1.58}
+.coverage-group{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.coverage-group h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.coverage-list{display:grid;gap:8px;margin-top:10px}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:9px}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:13px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.6}
+.knowledge-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.card-top{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.num{width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--accent,var(--blue));color:#fff;font-family:var(--serif);font-size:20px;font-weight:950;flex:0 0 auto}.card-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;margin:2px 0 4px}.row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;border-top:1px solid var(--line2);padding-top:10px;margin-top:10px}.row-lab{font-size:11px;font-weight:950;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}.row-val{font-size:13.2px;color:var(--sub);line-height:1.75}.row-val b{color:var(--dark)}
+.eq{background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:11px 12px;font-size:13px;line-height:1.72}.eq b{color:#fff}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);background:var(--soft)}.case-body{padding:16px}.case-body p{font-size:13.3px;color:var(--sub);line-height:1.78;margin:0 0 10px}.case-body p:last-child{margin-bottom:0}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;margin-top:10px}.mini-table th,.mini-table td{border-bottom:1px solid var(--line2);padding:10px;text-align:left;vertical-align:top;font-size:12.7px;line-height:1.58}.mini-table th{background:var(--soft);color:var(--dark);font-weight:950}.mini-table tr:last-child td{border-bottom:0}
+.qgroup{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px;min-width:0;border-left:5px solid var(--accent,var(--blue))}.qgroup h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.qgroup ul{margin:8px 0 0;padding-left:18px;color:var(--sub);font-size:13px;line-height:1.7}
+.trap{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent,var(--rose));border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px}.trap b{color:var(--dark)}.trap p{font-size:13.2px;color:var(--sub);line-height:1.72;margin:5px 0 0}
+.cheat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;min-width:0}.cheat-key{font-size:13px;font-weight:950;color:var(--dark);margin-bottom:5px}.cheat-val{font-size:13px;color:var(--sub);line-height:1.62}
+.quiz-list{display:flex;flex-direction:column;gap:12px}.q-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.q-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.q-num{font-size:12px;font-weight:950;color:var(--muted)}.q-text{font-size:14.5px;color:var(--dark);font-weight:760;line-height:1.7;margin-bottom:12px}.options{display:flex;flex-direction:column;gap:8px}.opt{width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);padding:10px 12px;font-size:13.6px;line-height:1.55;color:var(--ink);cursor:pointer}.opt:hover{border-color:var(--blue);background:var(--blue-bg)}.opt.correct{border-color:var(--green);background:var(--green-bg);color:#047857;font-weight:950}.opt.wrong{border-color:var(--rose);background:var(--rose-bg);color:#be123c}.exp{display:none;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:13px;margin-top:12px;font-size:13px;line-height:1.78;color:var(--sub)}.exp.show{display:block}.exp b{color:var(--dark)}
+.footer-note{margin-top:18px;background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.72}
+.lead,.hero-eq,.side-note,.eq,.row-val,.flow-card p,.logic-step span,.coverage-item .text,.case-body p,.qgroup,.trap,.cheat,.q-text,.opt,.exp,.mini-table th,.mini-table td{overflow-wrap:anywhere;word-break:break-word}.hero-eq,.side-note,.eq{max-width:100%}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.logic-line{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.section-head{display:block}}
+@media(max-width:640px){.wrap{padding:18px 12px 64px}.hero-main{padding:22px 18px}.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.pill{justify-content:center;text-align:center;white-space:normal}.lead{font-size:14px;line-height:1.78}.hero-eq,.side-note{font-size:12.8px;line-height:1.72}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow,.logic-line{grid-template-columns:1fr}.center-node{border-radius:var(--r)}.row{grid-template-columns:1fr;gap:4px}h1{font-size:30px;line-height:1.12}.tab{padding:8px 10px}.mini-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 9</span>
+        <span class="pill">Module 6</span>
+        <span class="pill">9.1.6</span>
+        <span class="pill">Monitoring Delivery</span>
+      </div>
+      <h1>Holding Managers to Account<br>Monitoring Delivery</h1>
+      <p class="lead">本模块覆盖 PDF 第 9 章 9.1.6：资产所有者如何通过绩效讨论、长期关注点、早期报告事项、行业穿透提问、engagement 目标和 portfolio-wide assessment，监督基金经理是否按 mandate 和客户目标交付。</p>
+      <div class="hero-eq"><b>本模块总逻辑等式：</b>Monitoring delivery == 定期对话 + 长期一致性判断 + 风格/文化/冲突预警 + 个案穿透提问 + 组合层面 ESG assessment + 后续复核</div>
+    </div>
+    <aside class="hero-side">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">1</div><div class="stat-lab">Learning Outcome</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">知识卡片</div></div>
+        <div class="stat"><div class="stat-num">7</div><div class="stat-lab">提问类别</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>记忆入口：</b>短期跑输不是自动报警；真正要看是否偏离投资原则、风格、限制、风险管理、组织稳定和 mandate 承诺。</div>
+    </aside>
+  </section>
+
+  <nav class="tabbar" aria-label="module navigation">
+    <span class="tab-title">9.1.6 Review</span>
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="cards">逻辑等式卡片</button>
+    <button class="tab" data-tab="questions">提问清单</button>
+    <button class="tab" data-tab="attribution">组合评估</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>第一屏先看一张图：监督不是盯短期收益，而是复核交付一致性</h2>
+        <p class="sub">9.1.6 的核心像项目复核：不是只问“结果好不好”，而是问“是否按约定方法做、偏差原因是否说得清、证据是否支持、下一步是否能追踪”。</p>
+      </div>
+    </div>
+
+    <div class="map-board">
+      <div class="center-node">Holding Managers to Account<br>持续验证经理是否按 mandate 和客户目标交付</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 定期对话</h3><p>通常年度绩效讨论；有担忧时更频繁，也可拉长周期强调长期。</p></div>
+        <div class="flow-card"><h3>2 长期焦点</h3><p>避免基金经理因被频繁评估而变得短期化。</p></div>
+        <div class="flow-card"><h3>3 预警事项</h3><p>Brunel 看原则、风格、学习、限制、风险和组织稳定。</p></div>
+        <div class="flow-card"><h3>4 穿透提问</h3><p>围绕团队文化、行业资产、engagement 目标和升级机制追问。</p></div>
+        <div class="flow-card"><h3>5 组合证据</h3><p>ESG tools、E/S/G scores、outliers、attribution 和后续回访。</p></div>
+      </div>
+      <div class="logic-line">
+        <div class="logic-step"><b>隐藏逻辑 1：频率</b><span>年度是常态，但频率服务监督目的，不是越频繁越好。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 2：偏差</b><span>短期业绩不是关键，风格漂移和解释缺失才是风险。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 3：证据</b><span>从政策说法穿透到行业问题、个案资产和组合评分。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 4：追踪</b><span>经理解释后，客户要过一段时间再看是否真的改变。</span></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="panel-card pad"><span class="tag tag-blue">一句话</span><h3 style="margin-top:10px">监督是“长期一致性复核”</h3><p class="small">核心不是短期收益，而是投资方法、风格、风险控制和 ESG integration 是否与 mandate 一致。</p></div>
+      <div class="panel-card pad"><span class="tag tag-green">做题线索</span><h3 style="margin-top:10px">Brunel：短期跑输不自动报警</h3><p class="small">真正担忧是长期原则不遵守、风格漂移、解释不清、不学习、违反限制或组织不稳。</p></div>
+      <div class="panel-card pad"><span class="tag tag-amber">做题线索</span><h3 style="margin-top:10px">第三方 ESG 工具是对话基础</h3><p class="small">MSCI、Sustainalytics 等工具有局限，但能提供 challenging yet meaningful conversation。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单：9.1.6 不漏点</h2>
+        <p class="sub">这一节围绕 regular meetings、Brunel Accord、ICGN early reporting、probing questions 和 portfolio-wide assessment 展开。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">监督频率</span> Annual discussions and long-term focus</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">基金经理任命后，通常会有 annual performance discussions。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">如果 financial 或其他 performance 引发担忧，一些客户会要求更频繁对话。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">也有客户会选择更久才讨论，以传递自己只关心 longer term 的信号。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">自由交易或定期估值资产的 performance 通常会被更频繁地看到或评估，客户要避免基金经理因此短期化。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">远离 market benchmarking 可改变绩效心态，例如关注 absolute returns 或 base rates 之上若干百分点，而非只看标准 equity benchmark。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">Brunel Accord</span> 什么才值得担忧</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">短期 underperformance 本身不太可能引起客户过度担忧。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">真正担忧包括：持续未遵守 Brunel investment principles 和 accord spirit。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">investment style 发生变化，或持有不符合 expected style 的投资。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">不能理解 underperformance 原因，或不愿从错误中学习；表现好后 complacency 也应避免。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">未遵守 investment restrictions 或未适当管理风险，包括 taking too little risk。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">organization instability 或 key personnel 流失。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-violet">ICGN</span> Early reporting matters</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">portfolio turnover，若超出 expected turnover range，需要解释。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">manager governance、ownership、structure、investment approach 或 risk appetite 的变化。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">针对 manager、key staff 或 fund 的 regulatory investigation 或 legal proceedings。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">员工在 fund、等同工具或 manager 本身的 ownership changes。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">regular financial accounts of the manager。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">conflicts of interest policy 的变化或豁免，以及 reporting period 内新增 conflicts。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-amber">核心判断</span> 是否与 mandate 和 due diligence 一致</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 因素方面，关键评估是投资方法是否与 mandate 中承诺的流程和 due diligence 中看到的流程一致。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">年度或其他绩效评估在实践中很像 due diligence：确认方法是否保持一致，或评估发生了什么变化。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">客户需要 guard against 短期化诱惑，尤其当经理对一般市场表现不佳时。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-teal">结构与文化提问</span> ESG analysis quality</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">如何确保不同 analysts 的 ESG analysis 质量一致。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">哪些 sectors 或 geographies 的分析可能较弱，如何补救。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">与 ESG team 和其他 investment teams 的互动在实践中如何发生，有哪些近期具体例子。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">特定持仓如何与 stated approach to stewardship and long-term investment 一致。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">长期 engagement 对投资决策和 portfolio weighting 有什么影响。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-rose">行业资产提问</span> 从故事追到模型</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Property / infrastructure：哪些持仓最能应对 climate change 和 physical disruptions，哪些最弱，对 portfolio positioning 有何影响。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Financial sector：银行煤炭融资承诺是否足够，是否理解 climate risk、stranded assets、非银贷款风险和更严监管。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Insurance company：是否讨论气候扰动风险、transition risk exposure，以及公司是否有能力管理风险。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Industrial：worker treatment 指控是否进入 fines、damage claims、dividend security、设施或工作方式成本、员工留任和招聘判断。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Governance / corruption：复杂结构、税务安排、弱治理、腐败、反洗钱和商业伙伴背景都可能是追问点。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Extractives / sovereign debt：stranded assets、能源转型、政治化投资、E&S downside、气候和水短缺对偿债能力的影响。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">Engagement</span> 目标、进展和升级</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">是否清楚披露 objectives 如何设定、进展如何 monitored。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">谁设定 engagement objectives，监督流程如何确保目标 robust、material 且组织内一致。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">如何评估和记录 progress，如何确信 material change 已交付。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">初步 engagement 无效时如何决定 escalation；如何在 collaborative engagement、public concerns、exit 等工具之间选择。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">要测试 objectives 的 quality、materiality 和 bespoke nature，并抽样查看实际 engagements。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">Portfolio-wide assessment</span> 组合层面验证</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">组合层面评估更偏 statistical basis，而不是只靠个案问答。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">MSCI、Morningstar Sustainalytics 等 ESG research firms 提供标准工具，帮助评估组合 ESG factors 和 ESG-linked performance attribution。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">这些工具受数据 quality 和 consistency 限制，基金经理可能认为不能公平反映自身组合和 ESG integration。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">经理应准备证明自己的 ESG exposure analysis 为什么比外部研究更准确。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">外部分析不是 perfect insight，但能形成 challenging yet meaningful conversation。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">客户通常看 individual E/S/G factors；若 E score 明显低于 benchmark，客户关注 E exposures 和 detractors。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">客户会用 bottom detractors 追问相关投资决策是否与 agreed mandate 一致，以及是否仍认可整体投资流程。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：把监督机制压成 8 条主线</h2>
+        <p class="sub">每张卡都按原文要点、中文解释、逻辑等式、投资影响/考点提醒整理。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">1</div><div><div class="card-title">监督频率服务长期目标</div><span class="tag tag-blue">Monitoring cadence</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">通常年度绩效讨论；有担忧可更频繁，也可更久讨论以强调长期。客户要防止经理因绩效被频繁看到而短期化。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">监督不是越频繁越好，而是看频率是否支持客户的长期目标和风险控制。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>监督频率 == 年度常规 + 异常加密 + 长期信号 + 防短期化</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">绩效可能经常被看到，但客户要防止基金经理因此短期行事。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">2</div><div><div class="card-title">Brunel：短期跑输不是自动警报</div><span class="tag tag-green">Concern triggers</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">短期 underperformance 本身不是主要担忧；原则背离、风格漂移、解释不清、不学习、违反限制、风险管理不当、组织不稳才是担忧。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">这像复核底稿：不是只看数字差，而是看差异是否有合理解释，流程是否还在轨道上。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Brunel concern == 原则失守 + 风格漂移 + 解释/学习缺失 + 风险限制失控 + 组织不稳</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题问 not in itself likely cause for concern，答案是 short-term underperformance。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#6d28d9">
+        <div class="card-top"><div class="num">3</div><div><div class="card-title">ICGN 早期报告事项</div><span class="tag tag-violet">Early reporting</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">ICGN 要求早期报告 turnover 异常、治理/所有权/结构/方法/风险偏好变化、监管或法律程序、员工持股变化、财务报表、利益冲突政策变化或新增冲突。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">这些都是“经理交付能力和对齐程度可能变了”的预警信号。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>ICGN early report == turnover + organization change + legal/regulatory + ownership + accounts + conflicts</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">这些事项未必立即影响收益，但会影响客户对经理执行 mandate 的信心。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#b45309">
+        <div class="card-top"><div class="num">4</div><div><div class="card-title">核心评估：是否保持一致</div><span class="tag tag-amber">Consistency</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">ESG 因素的关键评估，是投资方法是否与 mandate 承诺和 due diligence 中观察到的流程一致。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">年度评估本质上是一次持续尽调：看经理有没有按当初承诺的方法继续做。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>持续监督 == mandate promise + due diligence baseline + current practice comparison</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">题干出现 consistency、expected style、promised process，应回到本卡。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#0f766e">
+        <div class="card-top"><div class="num">5</div><div><div class="card-title">结构文化提问</div><span class="tag tag-teal">Structural questions</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">客户会问 ESG 分析质量如何在不同 analysts、sectors、geographies 间保持一致，团队互动如何发生，特定持仓如何符合 long-term stewardship。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">这是看 ESG 能力是不是组织能力，而不是某个明星分析师或宣传材料的能力。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>结构文化复核 == 质量一致性 + 弱点识别 + 团队协作 + 持仓一致性</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">若某些地区或行业 ESG 分析薄弱，组合暴露可能没有真正按 mandate 管理。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#be123c">
+        <div class="card-top"><div class="num">6</div><div><div class="card-title">行业资产提问要落到模型</div><span class="tag tag-rose">Sector probes</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">案例问题覆盖 property/infrastructure、financial、industrial、extractives、debt 等，重点追问气候、治理、员工、腐败、偿债、绿债和投资配置。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">客户不是听行业故事，而是问这些 ESG 风险如何进入估值、股息安全、风险管理、持仓权重和配置决策。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>行业穿透 == ESG 风险识别 → 财务/模型影响 → 组合定位</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">看到 worker treatment、weak governance、stranded assets、sovereign climate exposure，要想到具体追问路径。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">7</div><div><div class="card-title">Engagement 目标与升级</div><span class="tag tag-blue">Engagement discipline</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">客户会问 objectives 谁设、如何监督、如何记录 progress、如何确信 material change、何时 escalation、何时 exit。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">有效 engagement 不是“开了会”，而是有目标、有行动、有进展、有升级和退出标准。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>有效 engagement == 目标 + 行动 + 进展记录 + 重大变化证据 + 升级/退出</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">客户要抽样测试 objectives 的质量、重大性和 bespoke nature。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">8</div><div><div class="card-title">Portfolio-wide assessment</div><span class="tag tag-green">ESG attribution</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">组合评估工具可提供 E/S/G 分数、benchmark 比较、outliers 和 ESG-linked performance attribution，但受数据质量和一致性限制。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">第三方工具不是判决书，而是对话起点；真正要看经理能否解释差异和证明自己分析更准确。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>组合评估 == E/S/G scores + benchmark gap + detractors + manager explanation + follow-up</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题问使用 ESG research firm 的 least likely reason，答案不是“高质量数据”，因为数据本身有质量和一致性问题。</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="questions" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Question Bank</div>
+        <h2>提问清单：把 PDF 大量问题压成复核框架</h2>
+        <p class="sub">这些不是要逐字背，而是要知道每类问题想验证什么。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="qgroup" style="--accent:#1d4ed8">
+        <h3><span class="tag tag-blue">结构与文化</span></h3>
+        <ul>
+          <li>ESG analysis 在不同 analysts、sectors、geographies 间是否质量一致。</li>
+          <li>投资团队、ESG 团队和其他团队如何具体协作。</li>
+          <li>特定 holdings 如何符合 stewardship 和 long-term investment。</li>
+          <li>长期 engagement 如何影响 investment decision 和 portfolio weighting。</li>
+        </ul>
+      </div>
+
+      <div class="qgroup" style="--accent:#047857">
+        <h3><span class="tag tag-green">Property / Infrastructure</span></h3>
+        <ul>
+          <li>哪些持仓最能应对 climate change 和 physical disruptions。</li>
+          <li>哪些持仓因 geographical exposure 最弱。</li>
+          <li>上述分析如何影响 portfolio positioning。</li>
+        </ul>
+      </div>
+
+      <div class="qgroup" style="--accent:#6d28d9">
+        <h3><span class="tag tag-violet">Financial sector</span></h3>
+        <ul>
+          <li>银行煤炭融资承诺是否足够控制 carbon-intensive assets 风险。</li>
+          <li>持续油气贷款是否显示气候风险和 stranded assets 认识不足。</li>
+          <li>保险公司是否理解 physical disruption 和 transition risk。</li>
+          <li>公司是否有技能和机制管理这些风险。</li>
+        </ul>
+      </div>
+
+      <div class="qgroup" style="--accent:#b45309">
+        <h3><span class="tag tag-amber">Industrial / Governance / Corruption</span></h3>
+        <ul>
+          <li>worker treatment allegations 是否进入 fines、damage claims 和 dividend security 判断。</li>
+          <li>公司靠问题雇佣实践维持盈利是否 sustainable。</li>
+          <li>弱治理、复杂结构、税务安排是否导致信息流弱和董事会监督失效。</li>
+          <li>腐败、反洗钱和商业伙伴背景是否有足够管理结构。</li>
+        </ul>
+      </div>
+
+      <div class="qgroup" style="--accent:#0f766e">
+        <h3><span class="tag tag-teal">Extractives / Sovereign debt</span></h3>
+        <ul>
+          <li>油气企业如何面对 stranded assets 和 carbon-constrained world。</li>
+          <li>政治化国有资源公司投资是否商业化，还是服务地缘政治。</li>
+          <li>矿业企业谁最好管理 E&S risks，谁保留最大 downside exposure。</li>
+          <li>主权债国家能否应对气候、极端天气和水短缺，同时维持经济和偿债能力。</li>
+        </ul>
+      </div>
+
+      <div class="qgroup" style="--accent:#be123c">
+        <h3><span class="tag tag-rose">Engagement</span></h3>
+        <ul>
+          <li>objectives 如何设定、谁设定、谁监督、如何保持 robust and material。</li>
+          <li>progress 如何记录并用于 reporting。</li>
+          <li>如何证明 material change 已交付。</li>
+          <li>无效时如何 escalation，何时 collaborative engagement、公开关注或 exit。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="attribution" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Portfolio Assessment</div>
+        <h2>组合评估：从 E/S/G 分数到个案 detractors</h2>
+        <p class="sub">PDF 的 ESG Attribution case study 说明：组合层面数据是统计式起点，最后仍要回到个别公司和投资决策。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-blue">Portfolio New Deal</span><h3 style="margin-top:8px">先看整体 E/S/G 差距</h3></div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>Factor</th><th>Portfolio</th><th>Benchmark</th><th>Interpretation</th></tr></thead>
+            <tbody>
+              <tr><td>E score</td><td>79.2</td><td>83.4</td><td>低于 benchmark，客户会重点关注 E exposures。</td></tr>
+              <tr><td>S score</td><td>81.7</td><td>80.3</td><td>优于 benchmark。</td></tr>
+              <tr><td>G score</td><td>84.2</td><td>84.6</td><td>接近 benchmark。</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:10px"><b>逻辑等式：</b>整体评分 == 发现关注方向，不等于最终结论。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-green">Bottom E Detractors</span><h3 style="margin-top:8px">客户会追问为什么持有这些资产</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>客户通常会关注 detractors，尤其是它们为什么被纳入组合、是否与 agreed mandate 一致，以及这些决策揭示了怎样的 investment process。</p>
+          <p><b>中文解释：</b>低分公司不是自动不能持有，但经理必须解释：为什么持有、风险如何理解、是否正在 engagement、多久能看到变化。</p>
+          <p><b>逻辑等式：</b>Detractor review == low score + inclusion rationale + mandate consistency + future follow-up。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-amber">Manager Explanation</span><h3 style="margin-top:8px">历史数据和内部 engagement 解释要后续验证</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>基金经理可能解释外部评级基于历史数据，而自己的 engagement 显示公司已改变或正在改变。客户会继续问 engagement 做了什么、对公司方法的信心、变化多久会被外部看见。</p>
+          <p><b>中文解释：</b>解释可以接受，但不能停在解释。过一段时间要回看是否真的改变。</p>
+          <p><b>逻辑等式：</b>Manager explanation == historical data caveat + engagement evidence + confidence + time horizon + later review。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-violet">Carbon Intensity</span><h3 style="margin-top:8px">气候主题要看组合是否真的低碳</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>许多分析会比较组合公司 carbon intensity 与合适指数。如果基金经理声称关注 climate change，但组合并不低碳，客户会进一步追问。</p>
+          <p><b>中文解释：</b>气候宣称要在组合数据中有迹象。若经理说是时间差或外部数据问题，客户未来会议还要回看。</p>
+          <p><b>逻辑等式：</b>Climate monitoring == climate claim + carbon intensity comparison + explanation + future test。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：不要把“短期业绩”当成唯一判断</h2>
+        <p class="sub">这一节的干扰项常把短期收益、第三方数据和 engagement 次数包装成答案，但核心始终是 mandate alignment。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="trap" style="--accent:#be123c"><b>易错 1：短期 underperformance 自动引发担忧</b><p>Brunel 强调短期投资表现本身通常不是评估经理的主要担忧。</p></div>
+      <div class="trap" style="--accent:#b45309"><b>易错 2：只看收益，不看风格漂移</b><p>投资风格变化、投资不符合 expected style，才是重要预警。</p></div>
+      <div class="trap" style="--accent:#6d28d9"><b>易错 3：把第三方 ESG 数据当完美答案</b><p>外部工具受数据质量和一致性限制，只是对话基础，不是最终裁判。</p></div>
+      <div class="trap" style="--accent:#1d4ed8"><b>易错 4：只问 engagement 次数</b><p>关键是目标质量、重大性、进展记录、变化证据和升级机制。</p></div>
+      <div class="trap" style="--accent:#047857"><b>易错 5：只看整体 ESG 分数</b><p>客户往往会继续看 individual E/S/G factors 和 bottom detractors，追问个别公司。</p></div>
+      <div class="trap" style="--accent:#0f766e"><b>易错 6：经理解释一次就结束</b><p>若经理说公司正在改变，谨慎客户会过一段时间回看实际变化。</p></div>
+    </div>
+
+    <div class="panel-card pad" style="margin-top:14px">
+      <h3>考前压缩：一屏背完 Module 6</h3>
+      <div class="grid-auto">
+        <div class="cheat"><div class="cheat-key">总式</div><div class="cheat-val">Monitoring == meetings + consistency + warning signs + probing questions + portfolio evidence。</div></div>
+        <div class="cheat"><div class="cheat-key">频率</div><div class="cheat-val">年度常规；担忧时更频繁；也可拉长周期传递长期信号。</div></div>
+        <div class="cheat"><div class="cheat-key">Brunel</div><div class="cheat-val">短期跑输不自动担忧；看原则、风格、学习、限制、风险、组织稳定。</div></div>
+        <div class="cheat"><div class="cheat-key">ICGN</div><div class="cheat-val">turnover、组织变化、法律监管、员工持股、财务报表、冲突政策。</div></div>
+        <div class="cheat"><div class="cheat-key">核心判断</div><div class="cheat-val">当前实践是否与 mandate 和 due diligence baseline 一致。</div></div>
+        <div class="cheat"><div class="cheat-key">行业提问</div><div class="cheat-val">把 ESG 风险追到模型、股息、配置、偿债和持仓权重。</div></div>
+        <div class="cheat"><div class="cheat-key">Engagement</div><div class="cheat-val">目标、行动、进展、重大变化、升级、退出。</div></div>
+        <div class="cheat"><div class="cheat-key">Portfolio tools</div><div class="cheat-val">E/S/G scores、benchmark、detractors、attribution、数据局限和经理解释。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只测 Module 6</h2>
+        <p class="sub">点击选项后会显示答案。题眼训练重点：Brunel、ICGN、ESG research firm、questionable holdings、engagement objectives。</p>
+      </div>
+    </div>
+
+    <div class="quiz-list">
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q1</span><span class="tag tag-blue">正式题改编</span></div>
+        <div class="q-text">Which of the following, according to the Brunel Asset Management Accord, is not in itself a likely cause for concern?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. A change in the expected investment style.</button>
+          <button class="opt" data-correct="true">B. Short-term underperformance.</button>
+          <button class="opt" data-correct="false">C. Lack of understanding of reasons for underperformance.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>Brunel 强调短期 underperformance 本身通常不是担忧；风格变化和解释不清才是重要风险。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q2</span><span class="tag tag-green">正式题改编</span></div>
+        <div class="q-text">What is the least likely reason a fund manager will use an ESG research firm such as MSCI to evaluate portfolios?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. To test its own approach to ESG against a database.</button>
+          <button class="opt" data-correct="false">B. To prepare for clients’ questions about ESG integration.</button>
+          <button class="opt" data-correct="true">C. To have access to the high quality of data from the research firm.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>第三方 ESG 数据有质量和一致性问题，使用它们更多是测试自身方法和准备客户提问。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q3</span><span class="tag tag-amber">正式题改编</span></div>
+        <div class="q-text">An asset owner is concerned that Beta Company has weak governance. Which question is most appropriate?</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. What makes you comfortable that Beta is run and overseen effectively and is addressing ESG challenges?</button>
+          <button class="opt" data-correct="false">B. Do you believe Beta will retain staff and continue recruiting skilled individuals?</button>
+          <button class="opt" data-correct="false">C. Have you discussed with Beta its exposure to disruptions from climate change?</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>题眼是 weak governance，应问公司如何被 run and overseen effectively；B 偏社会议题，C 偏环境/气候。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q4</span><span class="tag tag-violet">ICGN</span></div>
+        <div class="q-text">Which item is an example of early reporting requested by the ICGN Model Mandate?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Only the portfolio’s one-month return ranking.</button>
+          <button class="opt" data-correct="true">B. Portfolio turnover outside the expected range, with an explanation.</button>
+          <button class="opt" data-correct="false">C. A statement that conflicts of interest never need to be reported.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>ICGN 要求报告 turnover 异常并解释，也关注组织变化、法律监管、员工持股、财务和冲突事项。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q5</span><span class="tag tag-teal">组合评估</span></div>
+        <div class="q-text">In an ESG attribution report, if a portfolio’s E score is materially below benchmark while S and G are near or above benchmark, client interest will most likely focus on:</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. E exposures and E detractors in the portfolio.</button>
+          <button class="opt" data-correct="false">B. Ignoring all ESG data because scores are never useful.</button>
+          <button class="opt" data-correct="false">C. Only the manager’s organization-level engagement statistics.</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>PDF case 中 E score 显著低于 benchmark，客户会重点关注 E exposures 和 bottom E detractors。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q6</span><span class="tag tag-rose">Engagement</span></div>
+        <div class="q-text">Which is the strongest way to assess the quality of engagement objectives?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Count only the number of meetings held by the manager.</button>
+          <button class="opt" data-correct="true">B. Test the quality, materiality, and bespoke nature of objectives for a sample of engagements.</button>
+          <button class="opt" data-correct="false">C. Assume public statements automatically translate into actions on the ground.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>PDF 明确建议测试 objectives 的 quality、materiality 和 bespoke nature；次数和公开声明都不足够。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q7</span><span class="tag tag-blue">监督逻辑</span></div>
+        <div class="q-text">The crucial assessment in terms of ESG factors is whether the investment approach has been consistent with:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. The manager’s latest marketing presentation only.</button>
+          <button class="opt" data-correct="true">B. The process promised in the mandate and witnessed through due diligence.</button>
+          <button class="opt" data-correct="false">C. The best-performing sector in the previous quarter.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>9.1.6 的主线就是持续验证 current practice 是否与 mandate 和 due diligence baseline 一致。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q8</span><span class="tag tag-green">经理解释</span></div>
+        <div class="q-text">If a fund manager says a poor external ESG rating is based on historical data and the company is changing due to engagement, the prudent client should next:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Accept the explanation permanently without follow-up.</button>
+          <button class="opt" data-correct="true">B. Explore the engagement carried out, confidence in the company’s approach, the time horizon for visible change, and revisit later.</button>
+          <button class="opt" data-correct="false">C. Ignore the holding because all external ratings are useless.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>客户会追问 engagement、信心和可见变化时间，并在适当时间后回看实际变化。</div>
+      </div>
+    </div>
+
+    <div class="footer-note">复核问题：如果某基金短期跑输，你能不能先问“是否风格漂移、是否违反限制、是否能解释并学习、是否组织稳定”，而不是直接判定经理失败？</div>
+  </section>
+</main>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = document.getElementById(tab.dataset.tab);
+    if (panel) panel.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+document.querySelectorAll('.q-card').forEach(card => {
+  const opts = card.querySelectorAll('.opt');
+  const exp = card.querySelector('.exp');
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opts.forEach(o => {
+        o.classList.remove('correct', 'wrong');
+        o.disabled = true;
+        if (o.dataset.correct === 'true') o.classList.add('correct');
+      });
+      if (opt.dataset.correct !== 'true') opt.classList.add('wrong');
+      if (exp) exp.classList.add('show');
+    });
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

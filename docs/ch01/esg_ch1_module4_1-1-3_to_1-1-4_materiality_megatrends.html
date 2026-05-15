@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Ch.1 Module 4 · 1.1.3-1.1.4 Materiality and Megatrends</title>
+<style>
+:root{
+  --ink:#172033;--sub:#40516b;--muted:#6b7a90;--faint:#9aa8ba;
+  --bg:#eef3f8;--paper:#ffffff;--soft:#f8fbfd;--line:#dce6f0;--line2:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#111827;--dark2:#1f2937;
+  --r:8px;--sh-sm:0 2px 12px rgba(17,24,39,.06);--sh:0 14px 38px rgba(17,24,39,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular",Consolas,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.68;background:var(--bg);overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fbfd 0%,#eef3f8 44%,#e8eef5 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 76px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,50px);line-height:1.08;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(17,24,39,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark)}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card,.map-board,.topic-card,.case-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.card{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{padding:22px;margin-bottom:16px;box-shadow:var(--sh)}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.4px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{padding:18px}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(108px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68;margin-top:10px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:94px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{width:100%;border-collapse:collapse;min-width:900px}
+th,td{border-bottom:1px solid var(--line2);padding:12px 13px;text-align:left;vertical-align:top;font-size:13px;line-height:1.62;color:var(--sub)}
+th{background:var(--soft);font-size:12px;color:var(--dark);text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:0}
+.materiality-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mat-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.mat-card:nth-child(1){border-top:5px solid var(--blue)}
+.mat-card:nth-child(2){border-top:5px solid var(--amber)}
+.mat-card:nth-child(3){border-top:5px solid var(--violet)}
+.mat-arrow{font-family:var(--mono);font-weight:950;color:var(--muted);margin:8px 0}
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:1100px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+  .materiality-board{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .wrap{width:min(340px, calc(100vw - 48px));max-width:340px;padding:18px 0 68px;margin:0 auto}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini,.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+  table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 1</span>
+        <span class="pill">Module 4</span>
+        <span class="pill">1.1.3-1.1.4</span>
+        <span class="pill">PDF p.15-23</span>
+      </div>
+      <h1>Financial Materiality<br>and Megatrends</h1>
+      <p class="lead">本模块说明 ESG 为什么会真正进入财务分析：它能降低风险、提高效率、改变罚款和监管暴露、推动外部性内部化，并通过大趋势改变行业和公司实践。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG financial materiality == 降成本/提效率 + 降罚款/干预风险 + 减少负外部性 + 抓住可持续大趋势；Materiality evolution == 财务重大性 → 动态重大性 → 双重重大性。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">1.1.3 解释 financial materiality、double materiality、dynamic materiality<br>1.1.4 解释 ESG megatrends 及其系统性影响</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">财务重大性路径</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">全球大趋势</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先问 ESG 怎样影响公司现金流和风险，再问这些重大议题会不会变，以及公司对外部世界的影响是否也要披露。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" type="button" data-tab="map">知识地图</button>
+    <button class="tab" type="button" data-tab="coverage">覆盖清单</button>
+    <button class="tab" type="button" data-tab="financial">财务重大性</button>
+    <button class="tab" type="button" data-tab="externalities">外部性</button>
+    <button class="tab" type="button" data-tab="megatrends">Megatrends</button>
+    <button class="tab" type="button" data-tab="materiality">重大性演进</button>
+    <button class="tab" type="button" data-tab="cases">案例易错</button>
+    <button class="tab" type="button" data-tab="compress">考前压缩</button>
+    <button class="tab" type="button" data-tab="quiz">自测题</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>一张图：ESG 怎样从“非财务议题”变成财务重大事项</h2>
+      </div>
+      <div class="head-desc">本模块的主线是“风险和机会进入财务结果”，再进一步扩展到“重大性会变化”和“双向影响”。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Financial Materiality of ESG Integration<br>额外风险 + 前瞻信息 → 降风险或增强回报</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">效率和生产率</div>
+          <p>节约资源、降低成本、提高生产率。</p>
+          <p>水、能源、废弃物管理进入利润。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">罚款和政府干预</div>
+          <p>环境法律增加，执行力度可能快速变化。</p>
+          <p>部分行业大量 EBITDA 暴露于监管和干预。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">负外部性</div>
+          <p>私人成本低于社会成本。</p>
+          <p>内部化会把外部成本推回公司账上。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">可持续大趋势</div>
+          <p>技术、人口、气候资源改变行业增长和盈利。</p>
+          <p>响应能力可能成为公司成功因素。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">动态重大性</div>
+          <p>重大议题会随事件、运动和监管快速变化。</p>
+          <p>投资者需要持续复核。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">双重重大性</div>
+          <p>不只看 ESG 对公司的影响。</p>
+          <p>还要看公司对气候和其他 ESG 因素的影响。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>ESG 议题出现</h3><p>环境、社会、治理变化进入经营环境。</p></div>
+        <div class="flow-step"><h3>成本和风险变化</h3><p>效率、罚款、监管和外部性改变财务结果。</p></div>
+        <div class="flow-step"><h3>大趋势重塑行业</h3><p>技术、人口、资源约束改变需求和盈利。</p></div>
+        <div class="flow-step"><h3>重大性变动</h3><p>新事件让过去不重大事项突然变重大。</p></div>
+        <div class="flow-step"><h3>报告和投资实践</h3><p>公司和投资者识别、监控、管理重大影响。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">依据 `ch01/esg-01.pdf` 第 15-23 页整理，Section 6 的挑战内容放到下一模块。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Financial Materiality</span> 四条财务重大性路径</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG integration 可通过额外风险和新的前瞻性洞察，降低风险或增强回报。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">路径 1：reduced cost and increased efficiency。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">路径 2：reduced risk of fines and state intervention。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">路径 3：reduced negative externalities。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">路径 4：improved ability to benefit from sustainability megatrends。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">效率来自 conserving resources、reducing costs、enhancing productivity。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资源效率可通过水、能源和废弃物管理降低成本，并与财务表现相关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">强 ESG proposition 可吸引和留住优质员工，提高员工动力和生产率。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Externalities</span> 外部性与内部化</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Externalities 是商品或服务生产/消费给交易外的人造成成本或收益，但价格没有反映。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">外部性可为 negative，也可为 positive。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">负外部性中，私人成本低于社会成本，可能导致市场失灵和过度生产。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Internalization 指所有让外部性反映在商业商品和服务价格中的公共或私人措施。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">交通行业内部化方式包括市场工具、监管和自愿协议。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">外部成本内部化可能显著影响公司产品和服务的成本、利润与风险。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Megatrends and Materiality</span> 大趋势和重大性演进</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">三大广泛认可的 megatrends：technological innovation、demographic changes and wealth inequality、climate change and resource scarcity。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">技术变化的新特点是速度加快；AI、社交媒体和智能设备改变公司风险、需求和权力结构。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">到 2030 年全球人口预计增加超过 10 亿，同时人口老龄化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">中国劳动力已在 2012 年达到峰值；全球约 60% 人口生活在生育率低于替代率的国家。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">气候变化和资源稀缺会放大影响：水需求预计增加 40%，能源需求预计增加 50%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Dynamic materiality：对公司财务重大的事项会变化，投资者需不断复核。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Double materiality：不仅看气候或 ESG 对公司的影响，也看公司对气候或其他 ESG 因素的影响。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="financial" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Financial Materiality</div>
+        <h2>四条路径：ESG 怎样影响风险和回报</h2>
+      </div>
+      <div class="head-desc">记忆时不要只背四个名词，要顺着“经营动作 → 财务科目或风险暴露”推下去。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 降低成本、提高效率</div><span class="tag tag-blue">Efficiency</span></div>
+        <p class="small"><b>原文要点：</b>可持续经营可通过节约资源、降低成本和提高生产率建立效率。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">效率路径</div><div class="eq-op">==</div><div class="eq-rhs">水/能源/废弃物管理更好 → 运营效率提高 → 成本下降和利润改善</div></div></div>
+        <div class="memory"><b>理解：</b>环保不一定是成本中心，也可能是效率项目。</div>
+        <div class="riskline">考点提醒：资源效率可影响 operating profits，并与公司财务表现相关。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. 降低罚款和政府干预风险</div><span class="tag tag-rose">Fines</span></div>
+        <p class="small"><b>原文要点：</b>环境法规增加，执行虽然有时较弱，但重大事件可带来大额罚款；监管执行力度也可能迅速变化。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">罚款路径</div><div class="eq-op">==</div><div class="eq-rhs">法规变化 + 重大事件 + 政府干预 → 罚款、补贴、定价、准入和利润暴露</div></div></div>
+        <div class="memory"><b>理解：</b>ESG 风险不只是声誉损失，可能直接变成罚款、赔偿和 EBITDA 暴露。</div>
+        <div class="riskline">数字题眼：环境法律自 1972 年以来增加 38 倍；通常约三分之一企业利润面临国家干预风险。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. 减少负外部性</div><span class="tag tag-green">Externalities</span></div>
+        <p class="small"><b>原文要点：</b>负外部性会使私人成本低于社会成本。随着监管和税收增加，外部成本可能被推回公司账上。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">外部性路径</div><div class="eq-op">==</div><div class="eq-rhs">污染/社会损害未计价 → 内部化 → 公司成本和利润被重新定价</div></div></div>
+        <div class="memory"><b>理解：</b>以前不进账的社会成本，未来可能通过税、许可证、标准或诉讼进入公司账。</div>
+        <div class="riskline">考点提醒：Internalization 不限于监管，也包括所有公共或私人措施。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. 抓住可持续大趋势</div><span class="tag tag-violet">Megatrends</span></div>
+        <p class="small"><b>原文要点：</b>能把大趋势响应整合进业务运营，可成为被投公司成功因素；投资者也可用大趋势进行组合构建。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">大趋势路径</div><div class="eq-op">==</div><div class="eq-rhs">社会/环境挑战 + 技术/人口/资源变化 → 行业需求和盈利重塑 → 风险与机会分化</div></div></div>
+        <div class="memory"><b>理解：</b>大趋势不是背景资料，而是行业增长和公司盈利的前置变量。</div>
+        <div class="riskline">考点提醒：可持续大趋势会与金融危机后果、老龄化、新兴经济体和技术变化相互作用，放大复杂性和影响。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>部分行业 EBITDA 暴露示例</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>行业</th><th>Estimated EBITDA at Stake</th><th>常见干预例子</th></tr></thead>
+          <tbody>
+            <tr><td>Automotive / aerospace / defense / technology</td><td>50% to 60%</td><td>政府补贴、可再生能源监管、碳排放监管</td></tr>
+            <tr><td>Transport / logistics / infrastructure</td><td>45% to 55%</td><td>定价监管、行业自由化</td></tr>
+            <tr><td>Telecom and media</td><td>40% to 50%</td><td>资费、互联互通、光纤、频谱、数据隐私</td></tr>
+            <tr><td>Energy and materials</td><td>35% to 45%</td><td>资费、可再生补贴、接入权</td></tr>
+            <tr><td>Resources</td><td>30% to 40%</td><td>资源民族主义、矿产税、土地准入、社区声誉</td></tr>
+            <tr><td>Consumer goods / pharmaceuticals / health care</td><td>25% to 30%</td><td>肥胖、可持续、食品安全、定价、临床试验等</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="externalities" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Externalities</div>
+        <h2>外部性：价格没有反映真实社会成本</h2>
+      </div>
+      <div class="head-desc">这部分是考试高频：定义、正负外部性、内部化、交通行业内部化工具。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>外部性的核心逻辑</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Externalities</div><div class="eq-op">==</div><div class="eq-rhs">生产/消费影响交易外的人 + 成本或收益未反映在价格中</div></div>
+          <div class="eq"><div class="eq-lhs">Negative</div><div class="eq-op">==</div><div class="eq-rhs">私人成本 < 社会成本 → 过度生产 → market failure</div></div>
+          <div class="eq"><div class="eq-lhs">Internalization</div><div class="eq-op">==</div><div class="eq-rhs">公共或私人措施 → 外部成本/收益进入商业价格</div></div>
+        </div>
+        <div class="memory"><b>记忆线：</b>谁受影响、谁没付钱，就是外部性题眼。</div>
+      </div>
+      <div class="card">
+        <h3>交通行业内部化方式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>市场工具：</b>charges、taxes、tradable permits。</div>
+          <div class="formula"><b>监管：</b>vehicle emission and safety standards、traffic restrictions。</div>
+          <div class="formula"><b>自愿协议：</b>例如与汽车行业约定降低新乘用车 CO2 排放。</div>
+        </div>
+        <div class="riskline">考点提醒：内部化不是“只能靠监管”。税收、交易许可、自愿协议都可能让外部成本进入价格。</div>
+      </div>
+    </div>
+    <div class="case-card" style="margin-top:14px">
+      <div class="case-head"><div class="case-name">航空旅行与碳排放</div><span class="tag tag-amber">Internalization</span></div>
+      <div class="case-body">
+        <div class="case-row"><div class="case-lab">背景</div><div class="case-text">疫情前航空约占全球 CO2 排放 2.5%，并被预计到 2050 年显著增长。</div></div>
+        <div class="case-row"><div class="case-lab">工具</div><div class="case-text">EU 将航空纳入 ETS；多国要求通过税费抵消飞机 CO2 排放。</div></div>
+        <div class="case-row"><div class="case-lab">影响</div><div class="case-text">税收可提高票价、降低需求和排放，并改变航空公司投资和运营选择。</div></div>
+        <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Ticket tax、fuel excise duty、ETS、eco-tax、以火车替代短途航班。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="megatrends" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Global Megatrends</div>
+        <h2>三大 Megatrends：系统性改变公司实践</h2>
+      </div>
+      <div class="head-desc">PDF 说这三类趋势影响 everyone，重点是它们会改变行为、需求、成本、增长潜力和政府财政。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Technological Innovation</div><span class="tag tag-blue">速度</span></div>
+        <p class="small"><b>原文要点：</b>技术一直能改变行为和预期，新变化是速度。电话进入一半美国家庭用了 76 年，智能手机不到十年，ChatGPT 两个月达到 1 亿用户。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">技术创新</div><div class="eq-op">==</div><div class="eq-rhs">采用速度加快 → 创新继续加速 → 社交媒体/AI 改变公司风险、服务和劳动市场</div></div></div>
+        <div class="memory"><b>题眼：</b>Social media 可影响 corporate risk management 和 geopolitics；AI 可用于医疗、客服、制造、智能电网、自动驾驶。</div>
+        <div class="riskline">投资影响：技术既能创造赢家，也会替代岗位、改变监管风险和社会权力结构。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Demographic Changes and Wealth Inequality</div><span class="tag tag-violet">人口和不平等</span></div>
+        <p class="small"><b>原文要点：</b>到 2030 年世界人口预计增加超过 10 亿，同时人口老龄化；财富集中和不平等加剧社会紧张，影响增长、犯罪和教育机会。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">人口不平等</div><div class="eq-op">==</div><div class="eq-rhs">人口增加 + 老龄化 + 劳动力变化 + 财富集中 → 生产率压力、财政压力、资源需求上升</div></div></div>
+        <div class="memory"><b>题眼：</b>中国劳动力 2012 年达到峰值；约 60% 全球人口生活在生育率低于替代率国家。</div>
+        <div class="riskline">投资影响：老龄护理、养老金、食品需求、社会稳定、教育和消费结构都可能改变。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Climate Change and Resource Scarcity</div><span class="tag tag-green">地球边界</span></div>
+        <p class="small"><b>原文要点：</b>人口、城市化和富裕程度上升会推高能源、食物和水需求，但地球自然资源有限。当前行动速度下，平均温度可能升高超过 1.5°C。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">气候资源</div><div class="eq-op">==</div><div class="eq-rhs">需求上升 + 资源有限 + 气候变化 → 农业、水、能源和商业模式承压</div></div></div>
+        <div class="memory"><b>题眼：</b>气候变化可能使非洲大部分地区农业生产率在未来 60 年下降最多三分之一；全球水需求 +40%，能源需求 +50%。</div>
+        <div class="riskline">核心结论：当前经济模式正在突破地球承受能力。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="materiality" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Materiality Evolution</div>
+        <h2>重大性演进：从财务重大性到动态重大性、双重重大性</h2>
+      </div>
+      <div class="head-desc">这是 1.1.3 的核心概念区。记住三个问题：谁受影响？会不会变？是否双向？</div>
+    </div>
+    <div class="materiality-board">
+      <article class="mat-card">
+        <h3>Financial Materiality</h3>
+        <p class="small"><b>问：</b>ESG 因素是否影响公司财务表现、风险、估值或披露？</p>
+        <div class="mat-arrow">ESG factor → Company financials</div>
+        <p class="small">如果合理投资者认为信息重要，就应披露。气候等 ESG 因素已被广泛接受为可能具有财务重大性。</p>
+      </article>
+      <article class="mat-card">
+        <h3>Dynamic Materiality</h3>
+        <p class="small"><b>问：</b>今天不重大的 ESG 议题，未来会不会突然变重大？</p>
+        <div class="mat-arrow">Events / movements / regulation → New financial risks</div>
+        <p class="small">#MeToo、Black Lives Matter、COVID-19 等运动和事件说明，优先议题可突然带来过去未考虑的风险。</p>
+      </article>
+      <article class="mat-card">
+        <h3>Double Materiality</h3>
+        <p class="small"><b>问：</b>不仅 ESG 如何影响公司，公司又如何影响气候或其他 ESG 因素？</p>
+        <div class="mat-arrow">ESG → Company + Company → ESG</div>
+        <p class="small">2019 年 European Commission 在可持续报告背景下正式描述该概念，用于获得公司影响的完整图景。</p>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>逻辑等式</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">财务重大性</div><div class="eq-op">==</div><div class="eq-rhs">外部 ESG 因素对公司财务结果、风险或披露的重要性</div></div>
+        <div class="eq"><div class="eq-lhs">动态重大性</div><div class="eq-op">==</div><div class="eq-rhs">财务重大事项会变化 → 投资者必须持续复核</div></div>
+        <div class="eq"><div class="eq-lhs">双重重大性</div><div class="eq-op">==</div><div class="eq-rhs">ESG 对公司重要 + 公司对 ESG 世界也重要</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Traps</div>
+        <h2>案例框和易错点</h2>
+      </div>
+      <div class="head-desc">案例的作用是把“重大性”落到金额、成本、罚款和经营决策。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Dow / GE / Nike 效率节约</div><span class="tag tag-blue">Efficiency</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Dow</div><div class="case-text">通过资源效率降低成本，仅原材料节约约 3,100 万美元。</div></div>
+          <div class="case-row"><div class="case-lab">GE</div><div class="case-text">GHG 排放和用水下降，带来约 3 亿美元节约。</div></div>
+          <div class="case-row"><div class="case-lab">Nike</div><div class="case-text">改进切割设备减少鞋类制造废料，节约约 1,200 万美元和大量材料。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">BP / Bank of America / Volkswagen</div><span class="tag tag-rose">Fines</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">BP</div><div class="case-text">Deepwater Horizon 后支付巨额罚款和赔偿，显示环境事故可转为重大财务负担。</div></div>
+          <div class="case-row"><div class="case-lab">BofA</div><div class="case-text">金融危机后，金融服务业受到严格审查并面临高额罚款。</div></div>
+          <div class="case-row"><div class="case-lab">VW</div><div class="case-text">排放作弊丑闻导致高额民事和刑事处罚，并影响柴油环保效率叙事。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">航空税与短途航班替代</div><span class="tag tag-amber">Externality</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">航空排放外部成本通过 ETS、税费和短途航班限制被逐步内部化。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">票价、需求、排放、航班数量、财政收入和公司机队投资都可能变化。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Eco-tax、carbon allowances、train substitute、fuel excise duty。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>高频易错点</h3>
+      <div class="trap-grid">
+        <div class="trap"><b>Positive externality 的成本方向</b>正外部性时，私人承担的成本高于社会成本；负外部性时，私人成本低于社会成本。</div>
+        <div class="trap"><b>Internalization 不只靠监管</b>市场工具、税、交易许可、监管、自愿协议都可能用于内部化。</div>
+        <div class="trap"><b>Dynamic materiality 不是 double materiality</b>动态重大性强调“会变化”；双重重大性强调“双向影响”。</div>
+        <div class="trap"><b>Double materiality 不是 triple bottom line</b>双重重大性是公司与 ESG 的双向影响，不是 people / planet / profit 三分法。</div>
+        <div class="trap"><b>Megatrends 不只是风险</b>能整合应对大趋势的公司，也可能获得增长机会和竞争优势。</div>
+        <div class="trap"><b>财务重大性不是只看短期利润</b>ESG 注入 forward-looking insights，很多影响是中长期和系统性的。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩：模块 4 一屏背完</h2>
+      </div>
+      <div class="head-desc">看到题眼后，用公式反推概念和案例。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>ESG financial materiality</b> == additional risks + forward-looking insights → reduced risk / enhanced returns。</div>
+          <div class="formula"><b>四条路径</b> == 效率成本 + 罚款干预 + 外部性内部化 + 可持续大趋势。</div>
+          <div class="formula"><b>Efficiency</b> == conserve resources + reduce costs + enhance productivity。</div>
+          <div class="formula"><b>Fines/state intervention</b> == 法规增加 + 执行可能变化 + 行业 EBITDA 暴露。</div>
+          <div class="formula"><b>Externalities</b> == 交易外影响未入价格；negative == private cost lower than societal cost。</div>
+          <div class="formula"><b>Internalization</b> == public/private measures make externalities reflected in prices。</div>
+          <div class="formula"><b>Megatrends</b> == technological innovation + demographic changes/wealth inequality + climate change/resource scarcity。</div>
+          <div class="formula"><b>Dynamic materiality</b> == financially material issues will change → constant review。</div>
+          <div class="formula"><b>Double materiality</b> == ESG impacts company + company impacts ESG。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>题眼钩子</h3>
+        <div class="formula-list">
+          <div class="trap"><b>38-fold environmental laws</b>想到罚款和政府干预风险。</div>
+          <div class="trap"><b>Operating profits / resource efficiency</b>想到成本效率路径。</div>
+          <div class="trap"><b>Private costs lower than societal costs</b>想到负外部性。</div>
+          <div class="trap"><b>Charges, taxes, tradable permits</b>想到内部化市场工具。</div>
+          <div class="trap"><b>China labor force peaked in 2012</b>想到人口变化和财富不平等。</div>
+          <div class="trap"><b>#MeToo / COVID-19 / BLM</b>想到 dynamic materiality。</div>
+          <div class="trap"><b>Company impact on climate</b>想到 double materiality。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>自测题：看到题眼反推概念</h2>
+      </div>
+      <div class="head-desc">正式三轮练习系统会在整章完成后统一制作；这里先练本模块反推。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">ESG integration 为什么可能降低风险或增强回报？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>它考虑额外风险，并向投资过程注入新的前瞻性洞察，可能通过降成本、减罚款、减少外部性和抓住大趋势来影响风险与回报。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">“私人成本低于社会成本”对应什么概念？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Negative externality。它会导致市场结果低效或市场失灵，通常表现为过度生产。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Internalization 是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>所有公共或私人措施，使外部性反映在商业商品和服务价格中。它不限于监管，也可包括税、收费、交易许可、自愿协议等。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">全球三大 widely recognized megatrends 是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Technological innovation、demographic changes and wealth inequality、climate change and resource scarcity。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Dynamic materiality 的核心是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>对公司财务重大的事项不仅可能变化，而且很可能会变化。投资者必须不断复核什么是重大事项。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Double materiality 比 financial materiality 多看了什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>它不仅看气候或其他 ESG 因素对公司的影响，也看公司对气候或其他 ESG 因素的影响。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">为什么航空税或 ETS 是外部性内部化案例？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>航空排放造成的外部成本原本未充分体现在票价中，税费或碳配额让排放成本进入价格和公司经营决策。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">环境法律增加 38 倍和三分之一企业利润面临干预风险，反映哪条财务重大性路径？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Reduced risk of fines and state intervention。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">中国劳动力 2012 年达峰、全球 60% 人口处在低生育率国家，这些题眼对应哪类 megatrend？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Demographic changes and wealth inequality。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">10</div><div class="qtext">为什么 double materiality 不是 triple bottom line？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Double materiality 是双向重大性：ESG 对公司重要，同时公司对 ESG 世界也重要；triple bottom line 是 people、planet、profit 三分框架。</div>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach((item) => item.classList.toggle('active', item === tab));
+    panels.forEach((panel) => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

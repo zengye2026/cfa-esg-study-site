@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 Module 2 · 8.1.2-8.1.3 Portfolio-Level ESG Integration</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:660px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(90px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:820px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.formula-box{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13px;line-height:1.78;overflow-wrap:anywhere}.formula-box b{color:#fff}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}
+  .grid-2,.grid-3,.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}
+  .branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}
+  .eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 8</span>
+        <span class="pill">Module 2</span>
+        <span class="pill">8.1.2-8.1.3</span>
+        <span class="pill">Portfolio-Level Framework</span>
+      </div>
+      <h1>Portfolio-Level ESG<br>Integration Framework</h1>
+      <p class="lead">本页覆盖第 8 章 4-6 节：把单只证券 ESG 分析扩展成组合层风险图谱。重点不是“再讲一次 ESG 数据”，而是看组合经理如何把 top-down analytics、底层 ESG 分析、外部研究、内部研究和组合指标合在一起。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>组合层 ESG 整合 == top-down 组合分析 + bottom-up 证券 ESG 分析 + 内外部研究 + 组合暴露指标 + 归因/压力测试。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">8.1.2 描述 ESG 进入组合管理流程的方法<br>8.1.3 说明内部和外部 ESG 研究如何支持投资决策</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">组合嵌入点</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">关键角色</div></div>
+        <div class="mini-stat"><div class="mini-num">10</div><div class="mini-lab">外部研究源</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">碳指标公式</div></div>
+      </div>
+      <div class="side-note">记忆抓手：分析师看“这只证券值不值得买”，组合经理看“这些证券放在一起，会不会形成集中暴露、相关性、事件风险和冲击敏感性”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="framework">组合框架</button>
+    <button class="tab" data-tab="roles">角色分工</button>
+    <button class="tab" data-tab="research">研究资源</button>
+    <button class="tab" data-tab="carbon">碳强度</button>
+    <button class="tab" data-tab="quant">量化研究</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看总图：从证券分析到组合图谱</h2>
+      </div>
+      <div class="head-desc">用逻辑等式心象术拆题：“portfolio-level framework”就是把每只证券的 ESG 信息，合成一个组合层面的暴露、风险、归因和压力测试框架。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Portfolio-Level ESG Integration<br>底层证券信息 → 组合暴露 → 风险管理 → 业绩归因</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">1 框架入口</div>
+          <p>最高层资产配置决策。</p>
+          <p>Portfolio exposure。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">2 风险管理</div>
+          <p>风险指标、冲击敏感性。</p>
+          <p>portfolio stress test。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">3 角色分工</div>
+          <p>Analyst 给证券建议。</p>
+          <p>PM 合成组合判断。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">4 研究来源</div>
+          <p>External research 补充。</p>
+          <p>Internal proprietary research 区分能力。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">5 量化指标</div>
+          <p>WACI、sovereign attributed emissions。</p>
+          <p>ESG factor attribution 的局限。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>单券分析</h3><p>内在价值、信用、风险、催化剂、现金流。</p></div>
+        <div class="flow-step"><h3>组合合成</h3><p>宏微观数据、财务/非财务暴露、冲击敏感性。</p></div>
+        <div class="flow-step"><h3>数据补充</h3><p>外部平台 + 内部研究，形成共识和专有视角。</p></div>
+        <div class="flow-step"><h3>指标落地</h3><p>WACI、争议分数、风险分布、碳税压力测试。</p></div>
+        <div class="flow-step"><h3>归因检验</h3><p>ESG 是否产生 alpha，需要组合层归因验证。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">核心判断</span>
+        <h3>组合层 ESG 需要不同解释力</h3>
+        <p class="small">单券 ESG 分析解释“这家公司为什么有风险或机会”；组合层 ESG 分析解释“组合整体暴露在哪里、风险如何集中、冲击会怎样传导”。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">投资影响</span>
+        <h3>ESG 要进入风险管理和归因</h3>
+        <p class="small">PDF 明确说组合管理中的 ESG 应嵌入 asset allocation decisions、portfolio exposure、risk management measures 和 performance attribution。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考点提醒</span>
+        <h3>不要把外部 ESG 平台神化</h3>
+        <p class="small">第三方平台能快速给组合画像，但有主观性、覆盖和方法差异。更成熟做法是外部数据与内部专有研究结合。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-08.pdf` 第 443-451 页整理，覆盖 8.1.2 和 8.1.3 的核心点。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">组合框架</span> Portfolio-level framework</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">组合层 ESG 整合的终点是 top-down analytics 与底层 ESG analysis 结合，形成更完整的 ESG exposure and risk 图像。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 应嵌入最高层资产配置决策、组合暴露、风险管理指标、业绩归因。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 整合进展因资产类别和投资策略类型而差异较大。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Mercer 示例显示，manager ESG integration progress 与 sustainability-themed strategies availability 并不完全相同。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">角色分工</span> Analysts vs Portfolio Managers</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Analysts 主要提出并论证证券投资建议，关注内在价值、信用、评级变化、风险、催化剂和现金流。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Portfolio managers 范围更广，需要把证券建议与宏微观数据、组合财务/非财务暴露、冲击敏感性和整体风险结合。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG framework 要展示从 micro 到 macro 的连续性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Discretionary ESG 策略通常偏 fundamental、集中持仓；systematic ESG 策略通常 rule-based、广泛持仓。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">研究资源</span> Internal and external research</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">外部研究包括卖方、学术、咨询、第三方 ESG 数据商、基金平台、白皮书、倡议、NGO、政府、央行、多边机构。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者需要用内部专有研究与外部 off-the-shelf 数据结合，避免过度依赖单一数据商。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SASB/ISSB Materiality Map 可覆盖发行人层面的重大性和组合层面的风险机会暴露，但不替投资者赋权重。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SICS 按资源强度、可持续风险和创新机会等属性组织公司，更贴近 ESG 重大性。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">平台与碳指标</span> Third-party platforms and carbon metrics</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">第三方平台可展示组合 ESG 得分分布、环境和碳暴露、争议或风险分数。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">更成熟的 ESG analytics platform 会聚合多个外部数据流，并加入内部 proprietary score。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">WACI 是组合层风险暴露指标，按持仓权重计算发行人的 Scope 1+2 排放强度。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PCAF 为 sovereign debt attributed emissions 提供方法，使用 PPP-adjusted GDP 连接真实经济影响。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">量化研究</span> ESG as a factor</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">单券案例能讲故事，但不能说明组合层 ESG performance attribution。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">要做组合层 ESG 归因，需要把 ESG 属性量化为独立 risk premium。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">许多 ESG 评级与 value、quality、size、momentum 等传统因子相关，难以证明 ESG 是独立因子。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 评级常有 size bias，大公司更有资源披露和建立 ESG 管理政策。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="framework" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Portfolio Framework</div>
+        <h2>组合层框架：ESG 要嵌入四个地方</h2>
+      </div>
+      <div class="head-desc">原文的隐藏线很清楚：组合层 ESG 不是单独做一张 ESG 表，而是进入组合管理的四个关键环节。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">原文要点</span><div class="topic-title">Top-down 与 bottom-up 合并</div></div></div>
+        <p class="small">组合层 ESG 整合的 endgame，是把 top-down analytics 和 underlying ESG analysis 合起来，在组合构建和管理层面形成更完整的 ESG exposure and risk 图像。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Portfolio ESG</div><div class="eq-op">==</div><div class="eq-rhs">top-down analytics + underlying ESG analysis → exposure/risk picture</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>底层分析告诉你“每个点”；组合分析告诉你“这些点连起来是什么形状”。</div>
+        <div class="riskline"><b>考点提醒：</b>题干问 portfolio-level framework，不是问单个 ESG 指标，而是问组合层暴露和风险。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">原文要点</span><div class="topic-title">四个嵌入点</div></div></div>
+        <p class="small">ESG considerations 应嵌入 highest-level asset allocation decisions、portfolio exposure、risk management measures、performance attribution。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">嵌入点</div><div class="eq-op">==</div><div class="eq-rhs">资产配置 + 组合暴露 + 风险管理 + 业绩归因</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>这像做审计底稿闭环：计划阶段考虑风险，执行阶段看暴露，复核阶段看控制，最后还要解释结果。</div>
+        <div class="riskline"><b>投资影响：</b>ESG 只有进入归因，才可能说明它到底是风险缓释、alpha 来源，还是只是改变了行业或风格暴露。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">原文要点</span><div class="topic-title">资产类别和策略差异很大</div></div></div>
+        <p class="small">Mercer 数据显示，ESG integration progress 和 sustainability-themed strategies availability 因 asset class 和 strategy type 高度不同。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">整合成熟度</div><div class="eq-op">==</div><div class="eq-rhs">asset class × strategy type × data availability × manager capability</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>不能假设股票、私募债、房地产、基础设施都有同样成熟的数据、产品和组合工具。</div>
+        <div class="riskline"><b>易错提醒：</b>availability of strategies 低，不等于 manager progress 一定低；两者是不同指标。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">原文要点</span><div class="topic-title">风险和机会都能成为组合目标</div></div></div>
+        <p class="small">ESG integration can focus on both risks and opportunities。偏向风险或机会会导致组合层不同 return profiles，重点可能从 downside protection 转为 upside participation。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG取向</div><div class="eq-op">==</div><div class="eq-rhs">risk focus → downside protection；opportunity focus → upside participation</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>同样叫 ESG，有的组合在“避雷”，有的组合在“找增长”。目标不同，收益和风险画像就不同。</div>
+      </article>
+    </div>
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr>
+            <th>资产类别</th>
+            <th>Manager Progress on ESG Integration</th>
+            <th>Availability of Sustainability-Themed Strategies</th>
+            <th>记忆提示</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Private equity</b></td><td>Medium</td><td>Low to medium</td><td>整合能力中等，但主题产品供给不算高。</td></tr>
+          <tr><td><b>Private debt</b></td><td>Low to medium</td><td>Low</td><td>数据和产品供给更弱。</td></tr>
+          <tr><td><b>Real estate</b></td><td>Medium to high</td><td>Low</td><td>管理进展较高，但主题策略供给低。</td></tr>
+          <tr><td><b>Infrastructure</b></td><td>High</td><td>Medium to high</td><td>整合和主题策略都相对突出。</td></tr>
+          <tr><td><b>Natural resources</b></td><td>Medium</td><td>Medium to high</td><td>主题策略不少，但需注意研究更新可能改变判断。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="roles" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Roles</div>
+        <h2>分析师与组合经理：一个看证券，一个看组合</h2>
+      </div>
+      <div class="head-desc">这一页是模块 2 的高频考点：portfolio manager 的角色比 analyst 更广。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Analysts</span><div class="topic-title">分析师提出并论证证券建议</div></div></div>
+        <p class="small">Analysts，尤其是 fundamental analysts，通常负责提出和论证证券投资建议。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Analyst</div><div class="eq-op">==</div><div class="eq-rhs">intrinsic value + credit analysis + re-rating/de-rating + risks + catalysts + earnings/credit/cash flow profile</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>分析师像做单项底稿，重点是这只证券本身的投资论点是否成立。</div>
+        <div class="riskline"><b>考点提醒：</b>题干说 develop an investment recommendation for a security，通常对应 fundamental analyst。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Portfolio Managers</span><div class="topic-title">组合经理把证券建议放进组合</div></div></div>
+        <p class="small">Portfolio managers 使用分析师建议，但还要形成自己的证券观点，并把证券因素与宏微观数据、组合暴露、冲击敏感性和整体风险结合。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">PM</div><div class="eq-op">==</div><div class="eq-rhs">analyst inputs + own view + macro/micro data + portfolio exposures + shock sensitivities + overall risk</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>组合经理像项目经理，不只看单项是否好，还要看全组合是否过度集中、相关性是否太高、遇到冲击是否扛得住。</div>
+        <div class="riskline"><b>考点提醒：</b>题干说 widen the focus of research 或 risk-adjusted returns in asset allocation，通常对应 portfolio manager。</div>
+      </article>
+    </div>
+    <div class="map-board" style="margin-top:14px">
+      <div class="center-node">Micro to Macro ESG Framework<br>从单个证券重大性，到混合资产组合风险</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">组织原则</div><p>ESG 分析的原则和方法。</p></div>
+        <div class="branch"><div class="branch-title">证券重大性</div><p>单只证券层面的财务和非财务重大性。</p></div>
+        <div class="branch"><div class="branch-title">组合画像</div><p>单个组合的风险和暴露合成。</p></div>
+        <div class="branch"><div class="branch-title">混合资产</div><p>多策略、多资产组合的 ESG 风险表达。</p></div>
+        <div class="branch"><div class="branch-title">决策反馈</div><p>进入资产配置和投资决策。</p></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Discretionary</span><div class="topic-title">自由裁量型：深度和集中</div></div></div>
+        <p class="small">Discretionary ESG investment strategies 最常见形式是 fundamental portfolio approach。组合经理把 bottom-up financial analysis 与 ESG factors 结合，强化持仓投资论点。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Discretionary</div><div class="eq-op">==</div><div class="eq-rhs">fundamental research + ESG factors + concentrated holdings + depth</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Systematic</span><div class="topic-title">系统化：规则和广度</div></div></div>
+        <p class="small">Systematic ESG investment strategies 通常是 rule-based，用金融或非金融因素的统计应用驱动选券，常用更大的持仓范围控制风险和波动调整收益。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Systematic</div><div class="eq-op">==</div><div class="eq-rhs">rules + statistical factors + broad holdings + lower active management costs</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="research" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Research Resources</div>
+        <h2>内部和外部研究：用外部数据起步，用内部方法形成差异</h2>
+      </div>
+      <div class="head-desc">外部资源越来越多，但第 8 章提醒：真正能区分投资者的是把外部数据和内部专有研究结合。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">External</span><div class="topic-title">外部研究来源</div></div></div>
+        <p class="small">外部研究一般所有资产所有者和管理人都可以获得，包括商业公司、学术、政府、非营利机构等。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">External research</div><div class="eq-op">==</div><div class="eq-rhs">sell-side + academic + consultants + ESG data providers + platforms + white papers + initiatives + NGO + governments/central banks + multilaterals</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>外部数据像通用资料清单，能提高起点，但大家都能买到，不能自动形成投资优势。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Internal</span><div class="topic-title">内部专有研究</div></div></div>
+        <p class="small">投资者用 internal proprietary ESG research 与外部 off-the-shelf data analytics 结合，降低对单一供应商依赖，并形成差异化分析。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Differentiation</div><div class="eq-op">==</div><div class="eq-rhs">external data + proprietary methodology + internal score + portfolio context</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>同样拿到原始凭证，会计师的判断、交叉验证和底稿组织能力才决定结论质量。</div>
+      </article>
+    </div>
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr>
+            <th>工具 / 资源</th>
+            <th>原文要点</th>
+            <th>中文解释</th>
+            <th>考点提醒</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Third-party ESG platforms</b></td>
+            <td>可上传组合，形成 ESG 分数、碳暴露、争议/风险分数等组合画像。</td>
+            <td>适合快速看组合哪里暴露高、哪里得分低。</td>
+            <td>不是所有客户都适用；还要考虑数据、隐私、客户需求和方法差异。</td>
+          </tr>
+          <tr>
+            <td><b>SASB / ISSB Materiality Map</b></td>
+            <td>覆盖 issuer-specific materiality 和 portfolio exposure，可评估 sustainability risks and opportunities。</td>
+            <td>能告诉你行业重大议题在哪里。</td>
+            <td>SASB 不给单家公司或行业赋权重，权重判断仍由投资者完成。</td>
+          </tr>
+          <tr>
+            <td><b>SICS</b></td>
+            <td>类似 GICS，但按 sustainability attributes 组织公司，包括 resource intensity、sustainability risks、innovation opportunities。</td>
+            <td>分类方式更贴近 ESG 重大性。</td>
+            <td>题干出现 sustainability attributes，可联想到 SICS。</td>
+          </tr>
+          <tr>
+            <td><b>ESG analytics platform</b></td>
+            <td>聚合多个 ESG 数据流，展示 consensus scores、variance、proprietary score 和 absolute environmental metrics。</td>
+            <td>比单一平台更像一套内部分析底稿。</td>
+            <td>核心价值是降低单一供应商依赖，增强组合风险讨论的上下文。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="case-grid" style="margin-top:14px">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">第三方平台能做什么</div><span class="tag tag-blue">Capabilities</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">得分分布</div><div class="case-text">显示组合在 low-, mid-, high-scoring companies 上的平均暴露和权重。</div></div>
+          <div class="case-row"><div class="case-lab">碳暴露</div><div class="case-text">给出相对意义上的环境和碳暴露，例如 weighted-average carbon intensity。</div></div>
+          <div class="case-row"><div class="case-lab">争议风险</div><div class="case-text">近似计算组合整体 controversy 或 risk score。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">平台之外还要做什么</div><span class="tag tag-amber">Limitations</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">主观性</div><div class="case-text">ESG rating providers 之间存在主观性和分歧。</div></div>
+          <div class="case-row"><div class="case-lab">专有判断</div><div class="case-text">内部 proprietary ESG data 可以补足外部数据不足。</div></div>
+          <div class="case-row"><div class="case-lab">压力测试</div><div class="case-text">组合工具可模拟碳价突然上升等 ESG 冲击，类似利率或油价冲击压力测试。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="carbon" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Carbon Metrics</div>
+        <h2>组合碳强度：把公司排放变成组合风险指标</h2>
+      </div>
+      <div class="head-desc">这一节公式不用死记复杂排版，抓住“持仓权重 × 排放强度”的逻辑即可。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">WACI</span><div class="topic-title">Weighted-Average Carbon Intensity</div></div></div>
+        <p class="small">WACI measures a portfolio's exposure to carbon-intensive companies on a position-weighted carbon exposure。它是组合层风险暴露指标，可用于将组合 tilt 或 overlay 到较低碳暴露。</p>
+        <div class="formula-box"><b>公式逻辑：</b>WACI == Σ（每项持仓市值 / 组合总市值 × 发行人 Scope 1+2 GHG emissions / 发行人 USD million revenue）</div>
+        <div class="memory" style="margin-top:11px"><b>中文解释：</b>不是简单平均每家公司排放，而是看你组合里投了多少，以及每家公司单位收入对应多少排放。</div>
+        <div class="riskline"><b>考点提醒：</b>WACI 是 portfolio-level risk exposure measure，不是单家公司碳足迹。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Sovereign Debt</span><div class="topic-title">主权债 attributed emissions</div></div></div>
+        <p class="small">PCAF 为 sovereign debt 提供 financed emissions 方法。主权债版本同样是组合层风险暴露指标，用 PPP-adjusted GDP 连接真实经济影响。</p>
+        <div class="formula-box"><b>公式逻辑：</b>主权债 attributed emissions == 主权债敞口 / PPP-adjusted GDP × Sovereign Scope 1 emissions</div>
+        <div class="memory" style="margin-top:11px"><b>中文解释：</b>公司债用收入做分母，主权债用按购买力平价调整的 GDP 做分母，因为它要连接国家层面的真实经济活动。</div>
+        <div class="riskline"><b>考点提醒：</b>PCAF + sovereign debt + PPP-adjusted GDP，是主权债排放归属的题眼。</div>
+      </article>
+    </div>
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr>
+            <th>事项</th>
+            <th>原文要点</th>
+            <th>中文解释</th>
+            <th>易错提醒</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>TCFD</b></td>
+            <td>原则导向框架，为评估 climate risk and exposure 提供建议。</td>
+            <td>提供方向，但不完全规定唯一算法。</td>
+            <td>因为不 prescriptive，不同碳强度测量方法会并存。</td>
+          </tr>
+          <tr>
+            <td><b>Scope 1/2/3</b></td>
+            <td>SFDR 包括 Scope 1、2、3；英国 TCFD 实践目前集中于 Scope 1 和 2。</td>
+            <td>Scope 3 是价值链间接排放，数据、透明度和披露难度更高。</td>
+            <td>Scope 3 难，不代表不重要；数据改善后预计会逐渐标准化覆盖。</td>
+          </tr>
+          <tr>
+            <td><b>Asset class limits</b></td>
+            <td>基于 enterprise value 的 carbon footprint 等指标主要限于 listed equities 和 corporate bonds。</td>
+            <td>不是所有资产类别都有成熟 TCFD 指标。</td>
+            <td>目前 securitized fixed income 和 municipals 没有可用指标。</td>
+          </tr>
+          <tr>
+            <td><b>FX volatility</b></td>
+            <td>固定货币报告时，汇率波动会影响碳强度解读。</td>
+            <td>跨国公司碳强度变化可能来自排放变化，也可能来自本币兑报告货币变动。</td>
+            <td>不要把所有碳强度变化都理解为运营排放改善或恶化。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="quant" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quant Research</div>
+        <h2>量化研究：ESG 能不能成为独立风险因子？</h2>
+      </div>
+      <div class="head-desc">这部分的核心是谨慎：ESG 可能有信号，但很多 ESG 评级混合了传统因子，不能轻易说 ESG 本身创造 alpha。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">原文要点</span><div class="topic-title">单券案例不能替代组合归因</div></div></div>
+        <p class="small">单券案例能提供有力的 engagement story，但其 anecdotal nature 不能描述组合层 ESG exposure 的 performance attribution。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Case study</div><div class="eq-op">!=</div><div class="eq-rhs">portfolio-level ESG performance attribution</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>一个案例讲得精彩，不代表整个组合的收益都来自 ESG。</div>
+        <div class="riskline"><b>考点提醒：</b>题干问 portfolio-level attribution，不能只用 single-security case study 回答。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">原文要点</span><div class="topic-title">ESG 要被量化成 risk premium</div></div></div>
+        <p class="small">要描述组合层 ESG performance attribution，需要把 ESG attributes 量化为独立 factor 或 risk premium。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG attribution</div><div class="eq-op">==</div><div class="eq-rhs">ESG attribute → independent factor/risk premium → portfolio return explanation</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>必须证明 ESG 不是借了别的因子的光，比如规模、质量、动量。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">原文要点</span><div class="topic-title">ESG 评级常与传统因子相关</div></div></div>
+        <p class="small">许多第三方 ESG ratings 与 value、quality、size、momentum 等现有因子存在显著 underlying correlation，因此难以说 ESG 是统计独立因子。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG rating</div><div class="eq-op">≈</div><div class="eq-rhs">size exposure + quality exposure + other factor exposure</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>如果高 ESG 公司同时也是大公司、质量高公司，那收益到底来自 ESG，还是来自 size/quality，就要拆开看。</div>
+        <div class="riskline"><b>易错提醒：</b>看到 ESG signal，不要马上等同于独立 ESG alpha。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">原文要点</span><div class="topic-title">Size bias 与 quality 逻辑</div></div></div>
+        <p class="small">一些实务人士认为 ESG ratings 是 size 和 quality 因子的混合。大公司更有资源披露信息并建立 ESG 管理政策；高 ESG 的治理也可能与更稳健资本配置和股东回报决策重叠。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Size bias</div><div class="eq-op">==</div><div class="eq-rhs">larger companies → more disclosure/resources → higher ESG ratings</div></div>
+          <div class="eq"><div class="eq-lhs">Quality link</div><div class="eq-op">==</div><div class="eq-rhs">better governance → stronger capital allocation/shareholder return decisions</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>组合经理做 ESG 因子分析时，要控制传统因子暴露，避免把“披露能力”误当成“ESG 真实优势”。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组总式背模块 2</h2>
+      </div>
+      <div class="head-desc">如果只复习 5 分钟，优先背这些题眼。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>组合层 ESG ==</b> top-down analytics + underlying ESG analysis + portfolio exposure/risk picture。</div>
+          <div class="formula"><b>ESG 嵌入点 ==</b> asset allocation decisions + portfolio exposure + risk management measures + performance attribution。</div>
+          <div class="formula"><b>Analyst ==</b> intrinsic value + credit + re/de-rating + risks + catalysts + earnings/cash flow profile。</div>
+          <div class="formula"><b>Portfolio manager ==</b> analyst inputs + own view + macro/micro data + exposures + shock sensitivities + overall risk。</div>
+          <div class="formula"><b>Discretionary ==</b> fundamental + depth + concentrated holdings；<b>Systematic ==</b> rule-based + breadth + larger holdings。</div>
+          <div class="formula"><b>Research differentiation ==</b> external data + internal proprietary ESG research。</div>
+          <div class="formula"><b>Third-party platform ==</b> ESG score distribution + carbon exposure + controversy/risk score。</div>
+          <div class="formula"><b>WACI ==</b> position weight × issuer Scope 1+2 emissions intensity。</div>
+          <div class="formula"><b>ESG factor problem ==</b> ESG ratings may correlate with value, quality, size, momentum。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>组合层 vs 证券层</b>证券层看单一投资论点；组合层看暴露、相关性、集中度、冲击和归因。</div>
+          <div class="trap"><b>Analyst vs PM</b>分析师给证券建议；组合经理把建议放进宏观、组合暴露和整体风险里权衡。</div>
+          <div class="trap"><b>External vs internal</b>外部研究人人可得，内部专有方法才可能形成差异。</div>
+          <div class="trap"><b>SASB Materiality Map</b>能识别重大议题，但不替投资者给权重。</div>
+          <div class="trap"><b>WACI</b>是组合层指标，不是单个公司的碳足迹。</div>
+          <div class="trap"><b>ESG alpha</b>必须做归因检验；不能把 ESG 评级与传统因子相关造成的收益误认为独立 ESG 因子。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 2 的一根线：把底层 ESG 信息合成组合层风险图谱，再用内外部研究、碳指标、压力测试和归因检验支持组合决策。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只覆盖模块 2</h2>
+      </div>
+      <div class="head-desc">正式 Practice Problems 会在全章完成后统一放进三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">组合层 ESG 整合最终要把哪两类分析结合起来？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Top-down analytics 和 underlying ESG analysis。目标是形成组合构建和管理层面的 ESG exposure and risk picture。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">ESG 在组合管理中应嵌入哪四个地方？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Highest-level asset allocation decisions、portfolio exposure、risk management measures、performance attribution。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">分析师和组合经理的核心区别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">分析师主要提出并论证单只证券投资建议；组合经理范围更广，要把证券建议与宏微观数据、组合暴露、冲击敏感性和整体风险结合。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Discretionary 和 systematic ESG 策略分别偏什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Discretionary 偏 fundamental approach、深度研究和集中持仓；systematic 偏 rule-based、统计因子、广泛持仓和成本控制。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">第三方 ESG 平台通常能给组合经理提供哪些组合画像？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">ESG 得分分布、环境和碳暴露，例如 WACI，以及 overall controversy or risk score。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">WACI 的核心公式逻辑是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">WACI == Σ（持仓权重 × 发行人 Scope 1+2 GHG emissions / 发行人收入）。它是组合层碳暴露指标。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">为什么不能轻易说 ESG 评级本身就是独立 alpha 来源？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为许多 ESG 评级与 value、quality、size、momentum 等传统因子显著相关，可能只是传统因子暴露带来的结果。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">ESG 评级中的 size bias 是什么意思？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">大公司通常更有资源披露信息并建立 ESG 管理政策，因此更容易获得较高 ESG 评级。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

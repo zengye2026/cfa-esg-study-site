@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.4 Module 1 · 4.1.1-4.1.2 Social and Environmental Megatrends</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.9);border:1px solid var(--line);box-shadow:var(--sh);min-width:0}
+.hero-main{padding:28px 30px;border-radius:var(--r)}
+.hero-side{padding:20px;border-radius:var(--r);display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:760px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:440px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:560px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.trend-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.trend-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.trend-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(78px,.36fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:78px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"－"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.trend-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.trend-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 4</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">4.1.1-4.1.2</span>
+        <span class="pill">Social Factors</span>
+      </div>
+      <h1>Social and Environmental Megatrends</h1>
+      <p class="lead">本页把第 4 章前两项学习目标拆成一条主线：社会因素不是抽象口号，而是人口、技术、工作、城市、信仰与环境压力共同改变企业经营条件，进而改变投资风险和机会。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>社会大趋势 == 人怎么流动 + 工作怎么重组 + 消费和数据怎么变化 + 城市和家庭怎么变化 + 信仰怎么约束投资 + 环境压力怎么反推社会风险</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">4.1.1 解释社会议题与商业活动的系统关系<br>4.1.2 评估环境大趋势对公司社会实践的影响</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">9</div><div class="mini-lab">社会大趋势</div></div>
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">环境社会影响</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先看“人和社会怎么变”，再看“环境压力怎么把风险推回企业”。考试常考趋势定义、投资影响和易混区别。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="social">社会趋势</button>
+    <button class="tab" data-tab="environment">环境影响</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看一张图：社会趋势如何进入投资判断</h2>
+      </div>
+      <div class="head-desc">按照 logic-equation-memory 的方法，题目拆成“社会”和“环境”两半，再让每个趋势领走自己的投资影响。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Social and Environmental Megatrends<br>长期社会变化 + 环境压力 = 企业风险与机会</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">全球连接</div>
+          <p>Globalization：贸易、资本、技术、人员跨境流动。</p>
+          <p>Digital disruption：数据、平台、电子设备改变商业模式。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">生产重组</div>
+          <p>Automation & AI：更快、更便宜，但替代岗位。</p>
+          <p>Work & education：工时下降、灵活办公、人才争夺。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">社会结构</div>
+          <p>Inequality：教育、流动性、购买力下降。</p>
+          <p>Family & rights：女性就业、工资差距、DEI。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">人口空间</div>
+          <p>Demographics：寿命变长、老龄化、养老金压力。</p>
+          <p>Urbanization：就业机会、热岛、健康、基础设施。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">信仰与环境</div>
+          <p>Religion：消费偏好、地区冲突、信仰投资。</p>
+          <p>Climate / water / migration / pollution：环境问题变成社会问题。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>趋势出现</h3><p>社会或环境发生长期变化。</p></div>
+        <div class="flow-step"><h3>经营条件改变</h3><p>成本、供应链、劳动力、客户偏好被重塑。</p></div>
+        <div class="flow-step"><h3>公司应对分化</h3><p>管理能力强弱拉开差距。</p></div>
+        <div class="flow-step"><h3>财务影响出现</h3><p>收入、利润、罚款、负债或估值变化。</p></div>
+        <div class="flow-step"><h3>投资判断</h3><p>识别风险，也识别可投资机会。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">拆题目</span>
+        <h3>Social Megatrends</h3>
+        <p class="small">长期、永久性地影响政府、社会和经济的社会变化。关键词是 long-term、permanent、governments/societies/economies。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">找隐藏线</span>
+        <h3>从“社会现象”到“公司财务”</h3>
+        <p class="small">不要只背趋势名称，要顺着“趋势 → 企业活动 → 风险/机会 → 投资分析”推下去。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考试提醒</span>
+        <h3>最容易混的是来源</h3>
+        <p class="small">失业可能来自 AI，产业消失可能来自 offshoring；水资源短缺和沙漠化会引出 environmental migrants。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-04.pdf` 第 232-239 页整理，目标是先保证不漏，再做成好记的结构。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">4.1.1</span> 社会大趋势与商业活动</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会大趋势定义：长期社会变化，永久影响政府、社会和经济。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Globalization：本地/国家经济融入全球市场，贸易、思想、文化交流增加。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Globalization 成因：货物、服务、技术、人员、资本跨境流动快速增加。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Globalization 双面性：效率提高、产品更便宜，但可能加剧社会结构性不平等。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Offshoring：服装等劳动密集生产转向低工资国家，西方相关产业消失。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Dependency：手机、电脑等 IT 产品由美国和亚洲公司主导，欧洲更依赖供应商。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Automation：以最少人工完成流程或程序。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Automation 优点：生产更快、劳动力成本更低、替代艰苦/体力/单调工作。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Automation 社会缺点：岗位被替代，技能或经验变得不再需要；AI 会放大趋势。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">AI 影响行业：医疗、汽车、金融服务与审计、安全/军事、创意行业。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Inequality：OECD 关注先进和新兴经济体不平等与贫困趋势。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">不平等驱动因素：全球化、技能偏向型技术变化、国家政策方法变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">OECD 数据：最富 10% 平均收入约为最穷 10% 的 9 倍，1990 年约为 7 倍。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">不平等影响：教育机会和社会流动性降低，社会技能/健康/购买力下降，经济增长受限。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">企业税务策略：激进税务优化受监管关注，罚款和更保守税策会影响利润。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Digital disruption：新数字技术和商业模式改变既有产品/服务价值主张。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Amazon、Uber、Airbnb：用数字化方式挑战既有商业模式，早期投资有机会但高风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Big data：个性化服务/产品/治疗机会，同时带来隐私、数据出售、监管和利润影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">电子设备普及：智能手机和平板普遍存在，带来社会和经济转型。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Work / leisure / education：工时下降、远程连接、工作生活边界模糊、压力疾病、教育水平提高、人才争夺。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Individual rights / family structures：家庭安全功能弱化，女性进入劳动力市场但仍面临失业、低质量岗位和工资差距。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Demographics：寿命增加、出生率下降、人口老龄化，影响税收、养老金和消费结构。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Urbanization：城市人口从 1950 年约 30% 上升，预计 2050 年约 68%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Religion：影响消费偏好、政治和冲突；区分 exercise of religion 与 faith-based investing。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">4.1.2</span> 环境大趋势的社会影响</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">环境大趋势也有重大社会影响，包括气候变化与转型风险、水资源短缺、大规模迁移。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Climate change and transition risk：低碳转型需要 just transition，公平分担社会和经济成本收益。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">转型涉及能源、煤炭、制造、农业、林业等雇佣大量工人的行业重组。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">不公正转型风险：普通工人承担成本，出现失业、贫困、排斥。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Water scarcity：气候变化降低淡水可得性，高用水企业可能威胁社区清洁、可负担用水。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">污水处理和减少地下水超采是方案，但资本密集、人口快速增长、维护成本和技能要求高。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Mass migration / geopolitical conflict：淡水短缺和沙漠化可能推动从发展中国家到发达国家的大规模迁移，并加剧社会和地缘政治压力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Environmental migrants：常见预测为到 2050 年可能达到 1.5 亿至 2 亿人。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Pollution / natural resources and ecosystem services degradation：污染、土地退化、自然资源和生态系统服务损失，可能导致利益相关方反对、社会动荡或迁移。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">结论：趋势同时带来风险和机会，分析师做投资决策时应纳入前瞻性判断。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="social" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">4.1.1 Social Megatrends</div>
+        <h2>9 个社会趋势：不要背名单，要背“传导路径”</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点 → 逻辑等式 → 投资影响”整理，适合复习和考前压缩。</div>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. Globalization 全球化</div><span class="tag tag-blue">跨境流动</span></div>
+        <p class="small"><b>原文要点：</b>本地和国家经济融入全球市场；货物、服务、技术、人员和资本跨境流动增加。结果可能是效率提高、产品更便宜，也可能加剧社会结构性不平等。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">全球化</div><div class="eq-op">==</div><div class="eq-rhs">跨境流动增加 → 效率和低价 + 产业迁移与依赖</div></div></div>
+        <div class="memory"><b>记忆线：</b>“全球”不是地理名词，是供应链、资本、技术和就业岗位重新排队。</div>
+        <div class="riskline">投资影响：看公司是否受益于全球效率，或暴露于供应商依赖、产业空心化、贸易和社会压力。</div>
+        <div class="source">例子：Offshoring 让服装生产转向越南、孟加拉、中国等低工资国家；IT 产品主导权导致欧洲对美亚供应商依赖。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. Automation and AI 自动化与人工智能</div><span class="tag tag-violet">岗位替代</span></div>
+        <p class="small"><b>原文要点：</b>自动化是用最少人工完成流程。优点是生产更快、人工成本更低、替代艰苦或单调工作；最大社会缺点是岗位被替代，AI 会加剧这一趋势。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">自动化/AI</div><div class="eq-op">==</div><div class="eq-rhs">效率上升 + 成本下降 + 危险/单调工作替代 → 技能失效与失业风险</div></div></div>
+        <div class="memory"><b>记忆线：</b>机器“帮人干活”的另一面，是某些人的经验突然不值钱。</div>
+        <div class="riskline">投资影响：有能力创新和培训员工的公司可能受益；不创新的传统企业可能被替代。</div>
+        <div class="source">重点行业：医疗、汽车、金融服务与审计、安全/军事、广告和游戏等创意行业。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. Inequality and Wealth Creation 不平等与财富创造</div><span class="tag tag-rose">购买力</span></div>
+        <p class="small"><b>原文要点：</b>OECD 关注不平等和贫困；不平等由全球化、技能偏向技术变化、政策变化等推动。最富 10% 收入约为最穷 10% 的 9 倍，高于 1990 年约 7 倍。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">不平等</div><div class="eq-op">==</div><div class="eq-rhs">机会变窄 → 流动性下降 → 技能/健康/购买力下降 → 增长受限</div></div></div>
+        <div class="memory"><b>记忆线：</b>穷不是只影响个人收入，它会一路影响教育、健康、消费和经济增长。</div>
+        <div class="riskline">投资影响：公司激进税务优化可能引发罚款、监管压力和利润下调。</div>
+        <div class="source">考点：income inequality 不是“有钱人多”，而是收入差距扩大且会拖累经济。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. Digital Disruption 数字颠覆、社交媒体与电子设备</div><span class="tag tag-teal">平台数据</span></div>
+        <p class="small"><b>原文要点：</b>新数字技术和商业模式改变既有商品和服务的价值主张。Amazon、Uber、Airbnb 用数字化方式进入既有市场。大数据带来个性化服务，也带来隐私、数据所有权和监管争议。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">数字颠覆</div><div class="eq-op">==</div><div class="eq-rhs">新技术/新模式 → 旧价值主张被改写 → 赢家扩张 + 输家承压 + 数据监管</div></div></div>
+        <div class="memory"><b>记忆线：</b>数字化不是“多一个 App”，而是把原行业的价值主张重新定价。</div>
+        <div class="riskline">投资影响：早期颠覆者有机会但风险高；数据隐私丑闻和监管会影响盈利能力。</div>
+        <div class="source">例子：Cambridge Analytica、Meta 数据隐私罚款和诉讼。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">5. Work, Leisure Time and Education 工作、休闲与教育</div><span class="tag tag-green">人力资本</span></div>
+        <p class="small"><b>原文要点：</b>发达国家平均工时显著下降，部分原因是自动化和兼职就业增加。远程连接带来灵活工作，也让休闲边界模糊并造成压力疾病。教育水平提高，但部分行业出现人才争夺。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">工作变化</div><div class="eq-op">==</div><div class="eq-rhs">工时下降 + 远程连接 + 教育提高 → 灵活性 + 压力 + war on talent</div></div></div>
+        <div class="memory"><b>记忆线：</b>工作变轻了吗？表面工时少了，实际连接更长、技能要求更高。</div>
+        <div class="riskline">投资影响：依赖员工的公司，要重点看人力资本管理和 DEI 策略。</div>
+        <div class="source">数字：英国年均实际工时从 1970 年 1,775 小时降至 2022 年 1,532 小时。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">6. Individual Rights and Family Structures 个人权利与家庭结构</div><span class="tag tag-amber">DEI</span></div>
+        <p class="small"><b>原文要点：</b>个人不再像过去那样依赖家庭结构获得经济和身体安全。劳动力更具多样性，更多女性进入劳动力市场并获得财务独立，但仍面临失业、低质量就业和工资差距。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">家庭/权利变化</div><div class="eq-op">==</div><div class="eq-rhs">家庭保障弱化 + 女性就业增加 → 独立性提升 + 平等议题更重要</div></div></div>
+        <div class="memory"><b>记忆线：</b>家庭结构变了，企业的人才池、薪酬公平和 DEI 表现就会变成投资议题。</div>
+        <div class="riskline">投资影响：多元劳动力有证据显示可能改善公司财务结果，部分基金会纳入选股和风险分析。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">7. Changing Demographics 人口变化、健康与长寿</div><span class="tag tag-blue">老龄化</span></div>
+        <p class="small"><b>原文要点：</b>医疗改善和生活方式变化使寿命增加；寿命延长叠加出生率下降导致老龄化。2021 年全球 65 岁以上人口约 10%，高于 1950 年 5%，预计 2050 年达到 17%。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">老龄化</div><div class="eq-op">==</div><div class="eq-rhs">寿命延长 + 出生率下降 → 劳动力比例下降 + 养老金压力 + 消费结构变化</div></div></div>
+        <div class="memory"><b>记忆线：</b>老龄化不是“老人更多”这么简单，是税、养老金、储蓄、消费和医疗同时变。</div>
+        <div class="riskline">投资影响：消费品行业可能承压；医疗等类别支出随年龄增长明显上升。</div>
+        <div class="source">2021 年全球预期寿命：男性 68.4 岁，女性 73.8 岁。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">8. Urbanization 城市化</div><span class="tag tag-violet">空间转移</span></div>
+        <p class="small"><b>原文要点：</b>人口从农村向城市转移。1950 年代全球约 30% 人口住在城市，预计 2050 年升至 68%。影响包括成本变化、热岛、生活方式疾病、贫困城市地区健康风险。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">城市化</div><div class="eq-op">==</div><div class="eq-rhs">人口进城 → 成本上升 + 热岛/污染 + 健康风险 + 基础设施需求</div></div></div>
+        <div class="memory"><b>记忆线：</b>人往城市走，钱和问题也往城市走：基建机会、污染和健康风险一起出现。</div>
+        <div class="riskline">投资影响：基础设施发展有机会，但企业也要处理污染、废弃物管理等社会和环境问题。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">9. Religion 宗教与信仰投资</div><span class="tag tag-green">价值约束</span></div>
+        <p class="small"><b>原文要点：</b>宗教格局变化会影响消费者偏好，宗教政治和冲突也会影响地方经济。要区分 exercise of religion 作为社会因素，与 faith-based investing 作为投资方式。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">宗教</div><div class="eq-op">==</div><div class="eq-rhs">消费偏好/地区冲突 + 信仰约束 → 排除行业 + 公司参与和股东提案</div></div></div>
+        <div class="memory"><b>记忆线：</b>宗教既可能改变客户买什么，也可能决定投资者不买什么。</div>
+        <div class="riskline">投资影响：Christian investors 可能排除与基督教价值不符的活动；Islamic investors 遵循 Sharia，通常排除酒、色情、赌博、猪肉、利息相关投资。</div>
+        <div class="source">许多早期 ESG 工具来自 norms-based exclusion，faith-based investors 在倡导和股东决议中仍有重要作用。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="environment" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">4.1.2 Environmental Megatrends</div>
+        <h2>环境问题怎样变成社会风险</h2>
+      </div>
+      <div class="head-desc">这部分最重要的隐藏线：环境压力不是只影响自然，也会影响就业、贫困、迁移、社区关系和公司社会实践。</div>
+    </div>
+    <div class="grid-2">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. Climate Change and Transition Risk 气候变化与转型风险</div><span class="tag tag-rose">Just Transition</span></div>
+        <p class="small"><b>原文要点：</b>低碳转型要做到 “just transition”，即社会和经济成本、收益得到较公平分担。能源、煤炭、制造、农业、林业等大量雇佣工人的行业必须重组。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">转型风险</div><div class="eq-op">==</div><div class="eq-rhs">低碳重组 → 工人受冲击 → 需要公平分担成本与收益</div></div></div>
+        <div class="riskline">投资影响：分析公司低碳转型时，不能只看减排，也要看员工安置、再培训、社区影响。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. Water Scarcity 水资源短缺</div><span class="tag tag-blue">社区用水</span></div>
+        <p class="small"><b>原文要点：</b>气候变化降低淡水可得性，高用水企业可能威胁社区获得清洁、可负担的水。污水处理和减少地下水超采是方案，但资本、人口、维护和技能都是限制。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">水短缺</div><div class="eq-op">==</div><div class="eq-rhs">淡水减少 + 企业高用水 → 社区压力 + 高资本解决方案</div></div></div>
+        <div class="riskline">投资影响：高耗水行业要看地区水压力、资本开支、社区关系和运营中断风险。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. Mass Migration and Geopolitical Conflict 大规模迁移与地缘冲突</div><span class="tag tag-amber">环境移民</span></div>
+        <p class="small"><b>原文要点：</b>淡水短缺和沙漠化被认为是从发展中国家向发达国家迁移的原因之一。常见预测认为，到 2050 年全球可能有 1.5 亿至 2 亿 environmental migrants；迁移压力也可能放大地缘政治冲突。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">环境迁移</div><div class="eq-op">==</div><div class="eq-rhs">缺水/沙漠化 → 生计受损 → 跨境或区域迁移 → 社会和地缘政治压力</div></div></div>
+        <div class="riskline">投资影响：迁移影响劳动力、需求、政治风险、基础设施压力、社会稳定和地区冲突风险。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. Pollution, Natural Resources and Ecosystem Services Degradation 污染、自然资源与生态系统服务退化</div><span class="tag tag-green">社会反弹</span></div>
+        <p class="small"><b>原文要点：</b>污染、土地退化、自然资源和生态系统服务损失或退化，可能导致利益相关方反对、社会动荡和迁移。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">生态退化</div><div class="eq-op">==</div><div class="eq-rhs">污染/资源退化/生态系统服务损失 → 社区反对 + 社会动荡 + 迁移</div></div></div>
+        <div class="riskline">投资影响：看许可、社区关系、声誉、罚款、项目停工和长期资源可用性。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>一条总式把 4.1.2 背下来</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">环境社会影响</div><div class="eq-op">==</div><div class="eq-rhs">气候转型的就业公平 + 水资源的社区公平 + 迁移和地缘冲突的社会稳定 + 污染/生态退化的利益相关方反对</div></div>
+      </div>
+      <p class="small">这条式子比死背五个名词更稳：所有环境项最后都要落到“人”的问题，所以本章把它们放在 Social Factors 里。</p>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Examples and Cases</div>
+        <h2>案例区：把趋势落到投资判断</h2>
+      </div>
+      <div class="head-desc">这些案例不是八卦，而是帮助你识别题目问的是哪个趋势、哪条风险传导链。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">自动驾驶与运输行业</div><span class="tag tag-violet">Automation & AI</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">出租车、公交、卡车司机岗位可能因自动驾驶消失。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">开发最佳自动驾驶技术的公司受益；不创新的传统 HGV 公司承压。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">解决方式可包括 upskilling staff，让员工转向 AI-enabled world。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Cambridge Analytica / Meta</div><span class="tag tag-teal">Big Data</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">社交媒体平台出售或使用数据引发政治营销、隐私和监管争议。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">大数据能带来个性化服务，也可能带来罚款、诉讼和监管成本。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">数字颠覆既是机会，也是高风险投资，不是单向利好。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">COVID-19 全球疫情</div><span class="tag tag-rose">Vulnerable Groups</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">疫情对贫困人口、老人、残障人士、青少年、无家可归者、难民、移民等脆弱群体伤害更大。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">教育损失、不平等加剧、心理健康问题、供应链回流、办公楼需求变化。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">疫情是健康危机，也是社会、经济、工作方式和供应链风险的综合案例。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">疫苗公平流通</div><span class="tag tag-green">Investor Initiative</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">投资者要求疫苗制造商提高全球疫苗可得性，并把可得性与管理层薪酬挂钩。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">投资者可通过股东提案和薪酬政策，推动公司承担社会问题解决责任。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">这是社会因素进入 stewardship / engagement 的典型路径。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">城市化</div><span class="tag tag-amber">Urbanization</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">城市化带来经济、环境和社会影响，包括成本上升、热岛、生活方式疾病、贫困城市地区健康风险。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">基础设施需求增加形成商业机会，但污染和废弃物管理也成为公司责任。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">热岛和非传染性疾病通常和城市生活方式相关，不是农村人口最典型问题。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Faith-based Investing</div><span class="tag tag-blue">Religion</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Christian</div><div class="case-text">追求投资原则与 Bible 对齐，可能排除不符合基督教价值的公司。</div></div>
+          <div class="case-row"><div class="case-lab">Islamic</div><div class="case-text">遵循 Sharia，排除酒、色情、赌博、猪肉、利息相关收入或投资。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">排除 pork producers 和 interest-paying instruments 更典型属于 Islamic investors；defense sector 常见于 Christian screening 题。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩版：一屏背完</h2>
+      </div>
+      <div class="head-desc">先背公式，再看易错点。公式不是口诀，是用来反推原文细节的线。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Social megatrends</b> == 长期社会变化，永久影响政府、社会、经济。</div>
+          <div class="formula"><b>Globalization</b> == 跨境流动 → 低价效率 + offshoring + dependency。</div>
+          <div class="formula"><b>Automation/AI</b> == 更快更便宜 → 替代艰苦单调工作 → 岗位消失。</div>
+          <div class="formula"><b>Inequality</b> == 差距扩大 → 教育/流动/健康/购买力下降 → 增长受限。</div>
+          <div class="formula"><b>Digital disruption</b> == 新数字模式改写旧价值主张 → 机会高，风险也高。</div>
+          <div class="formula"><b>Work & education</b> == 工时下降 + 远程连接 + 学历提升 → 压力与人才争夺。</div>
+          <div class="formula"><b>Family & rights</b> == 家庭保障弱化 + 女性就业增加 → DEI 和薪酬公平重要。</div>
+          <div class="formula"><b>Demographics</b> == 长寿 + 低出生率 → 老龄化 → 税收/养老金/消费/医疗变化。</div>
+          <div class="formula"><b>Urbanization</b> == 人进城 → 成本、热岛、疾病、基建、污染废弃物。</div>
+          <div class="formula"><b>Religion</b> == 消费偏好 + 地区冲突 + faith-based screening。</div>
+          <div class="formula"><b>Environmental social impact</b> == just transition + water scarcity + migration/geopolitical conflict + pollution/ecosystem services degradation。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Offshoring vs Automation</b>服装业从发达国家转向低工资国家，是 globalization/offshoring；出租车司机被自动驾驶替代，是 automation/AI。</div>
+          <div class="trap"><b>Exercise of religion vs Faith-based investing</b>前者是宗教作为社会因素影响消费和经济；后者是投资者按信仰筛选投资。</div>
+          <div class="trap"><b>Aging population</b>老年人通常储蓄更多、消费品支出更少；医疗支出上升；活跃劳动力比例下降，税收和养老金承压。</div>
+          <div class="trap"><b>Just transition</b>核心不是“符合巴黎协定”这类环境目标，而是低碳转型成本和收益公平分担，避免普通工人承受失业、贫困、排斥。</div>
+          <div class="trap"><b>Water scarcity</b>解决方案看似是污水处理和减少地下水超采，但考点在“资本密集、人口增长、维护成本和技能要求”。</div>
+          <div class="trap"><b>Digital disruption</b>不是所有颠覆者都低风险；早期投资机会大，但风险也高，且数据隐私监管可能伤利润。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">建议复习顺序：先读总式，再看 9 个社会趋势标题，最后用易错区分反推案例。能反推出来，就说明不是死背。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quick Check</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">这里是 Module 1 的自测题型预警，最终三轮练习等整章完成后再统一生成。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">哪一个趋势最接近 environmental trend 的社会影响：mass migration、digital disruption、increasing inequality？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：mass migration。</b>环境大趋势如气候变化、水资源短缺和沙漠化，会引出环境移民和大规模迁移。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">发达国家过去几十年最可能下降的是：平均年工作小时、兼职就业水平、高等教育员工比例？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：平均年工作小时。</b>兼职就业和高等教育比例反而上升。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">老龄化国家最可能出现什么：老年人储蓄更多、消费品支出更多、活跃劳动力比例更大？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：老年人储蓄更多。</b>但他们通常消费品支出更少，活跃劳动力比例下降。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">“公正转型”最核心的判断标准是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：公平分担低碳转型的社会和经济成本收益。</b>重点是避免普通工人在转型中承担失业、贫困、排斥等不成比例的成本。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">交通行业中 AI 最可能减少哪类岗位：mechanics、taxi drivers、bulldozer operators？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：taxi drivers。</b>自动驾驶更容易替代结构化、重复性驾驶任务。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Faith-based investors 中，排除 pork producers 和 interest-paying instruments 更典型对应哪类投资者？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：Islamic investors。</b>他们遵循 Sharia principles，通常排除猪肉和利息相关收入/投资。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Offshoring 指什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：将劳动密集型生产流程转移到低工资国家。</b>这是 globalization 的典型结果，不是气候迁移或海岸工程。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">收入不平等过去几十年的趋势及经济影响是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：收入不平等上升，并对经济产生负面影响。</b>它削弱教育机会、社会流动性、健康、购买力和总体经济增长。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>复核问题</h3>
+      <div class="grid-auto">
+        <details>
+          <summary>为什么社会因素也能变成投资机会？</summary>
+          <div class="detail-body">因为社会议题可能成为可投资主题，例如 gender equality funds；公司若在重大社会议题上优于同业，也可能形成 best-in-class 投资对象。</div>
+        </details>
+        <details>
+          <summary>为什么分析师要前瞻性看 digital society？</summary>
+          <div class="detail-body">数字颠覆会让一些公司胜出、另一些公司挣扎。仅用过去财务数据可能看不到商业模式被改写的风险。</div>
+        </details>
+        <details>
+          <summary>为什么城市化同时是机会和风险？</summary>
+          <div class="detail-body">城市化创造基础设施需求，但也带来成本上升、热岛、污染、废弃物管理和城市贫困健康风险。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

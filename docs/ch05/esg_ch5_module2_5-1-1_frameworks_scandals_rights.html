@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 Module 2 · Governance Codes, Scandals & Shareholder Rights</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:810px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}.card.dark h3{color:#fff}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:660px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(88px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px}.time-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:14px;min-width:0}.time-year{font-family:var(--serif);font-size:24px;font-weight:950;color:var(--dark);line-height:1}.time-title{font-size:13.5px;font-weight:950;color:var(--dark);margin:6px 0}.time-text{font-size:12.8px;color:var(--sub);line-height:1.58}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.rights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}.right-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--sh-sm);min-width:0}.right-card b{display:block;color:var(--dark);font-size:14.5px;margin-bottom:6px}.right-card span{display:block;color:var(--sub);font-size:13px;line-height:1.62}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}summary::-webkit-details-marker{display:none}summary::after{content:"＋";color:var(--muted);font-weight:700}details[open] summary::after{content:"－"}details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flowline{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-step:not(:last-child)::after{display:none}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr 1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:17px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 5</span>
+        <span class="pill">Module 2</span>
+        <span class="pill">5.1.1</span>
+        <span class="pill">Frameworks & Rights</span>
+      </div>
+      <h1>Codes, Scandals & Shareholder Rights</h1>
+      <p class="lead">本页把第 5 章治理框架的演进拆成三条线：先是公司失败和丑闻倒逼治理代码，再是重大案例暴露董事会、审计和文化缺陷，最后是股东参与和少数股东权利用来防止控制人侵害投资者。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Formalized governance == scandals reveal failures + codes set expectations + shareholder rights constrain control</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">5.1.1 治理框架演进：治理代码、系统流程、股东参与、少数股东权利</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">重大治理失败案例</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">股东权利工具</div></div>
+      </div>
+      <div class="side-note">记忆抓手：这页不是背丑闻故事，而是看“什么失败导致什么制度”。看到案例名，要能反推出治理缺陷和制度教训。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="codes">治理代码</button>
+    <button class="tab" data-tab="scandals">丑闻案例</button>
+    <button class="tab" data-tab="rights">股东权利</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看一张图：治理框架为什么会越来越正式</h2>
+      </div>
+      <div class="head-desc">按逻辑等式心象术拆题：formalized governance 不是自然长出来的，而是“失败 -> 损失 -> 压力 -> 制度”的结果。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Formalized Corporate Governance Frameworks<br>治理失败越痛，制度越具体</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Scandals</div>
+          <p>公司失败和投资者损失形成改革压力。</p>
+          <p>案例暴露董事会、审计、文化和控制权问题。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Codes</div>
+          <p>Cadbury 是世界首个正式治理代码。</p>
+          <p>核心从 accountability 和 alignment 延展。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Comply or explain</div>
+          <p>遵守原则，或认真解释为什么不遵守。</p>
+          <p>目的不是机械打勾。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Engagement</div>
+          <p>投资者与公司主动对话。</p>
+          <p>让董事会对行动负责，提高决策质量。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Minority rights</div>
+          <p>防止控制股东抽走利益或稀释持股。</p>
+          <p>工具包括投票、披露、pre-emption、sunset。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>失败暴露</h3><p>账目失真、舞弊、权力集中、审计失效。</p></div>
+        <div class="flow-step"><h3>投资者受损</h3><p>股东、债权人和利益相关方遭受损失。</p></div>
+        <div class="flow-step"><h3>市场要求改革</h3><p>监管、交易所、投资者要求提高标准。</p></div>
+        <div class="flow-step"><h3>治理代码形成</h3><p>原则、委员会、披露和独立性被明确化。</p></div>
+        <div class="flow-step"><h3>股东参与加强</h3><p>对话、投票、代理顾问和 stewardship 发展。</p></div>
+        <div class="flow-step"><h3>少数股东保护</h3><p>防止控制人利用关联交易、稀释和投票权结构。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">题眼</span><h3>Cadbury</h3><p class="small">世界首个正式公司治理代码，英国 1992 年；常考 comply or explain、审计委员会、分离 chair 与 CEO。</p></div>
+      <div class="card"><span class="tag tag-violet">题眼</span><h3>Sarbanes-Oxley</h3><p class="small">Enron 和 WorldCom 后的美国立法，提升财务报告完整性，并创建 PCAOB。</p></div>
+      <div class="card"><span class="tag tag-amber">题眼</span><h3>20% general mandate</h3><p class="small">香港一般授权可发行最高 20% 股本，可能折价且无优先认购，容易损害少数股东。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Coverage Checklist</div><h2>逐条覆盖清单</h2></div>
+      <div class="head-desc">对应 PDF 第 274-286 页。模块 3 才进入有效董事会结构、DEI、薪酬细节和独立性。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Frameworks</span> 治理代码与制度演进</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司失败和丑闻是治理正式化和代码发展的强大驱动力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">英国 1992 年 Cadbury Code 是世界首个正式公司治理代码，源于 Caparo、Polly Peck 等问题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Cadbury 的核心主题是不应让任何个人拥有不受约束的决策权，因此 chair 和 CEO 不应合并。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Cadbury 建议上市公司设立审计委员会并定期开会，这一做法后来成为全球常见最佳实践。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理代码由 accountability 和 alignment 两个基本概念发展而来，但会受国家文化、历史和公司法影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多数市场使用 comply or explain；荷兰偏 apply or explain；澳大利亚常用 if not, why not。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">美国是唯一没有正式公司治理代码的主要市场，主要因公司法由州层面制定。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Scandals</span> 丑闻推动标准升级</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Greenbury Report 由英国私有化公用事业高管薪酬争议推动，强调薪酬结构、KPI 和长期释放期透明度。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Enron 和 WorldCom 推动美国 2002 年 Sarbanes-Oxley Act，并创建 PCAOB。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Ahold 和 Parmalat 使欧洲重新审视治理标准、董事会独立性和审计独立性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2008 年金融危机推动对企业文化、高管薪酬和审计的关注，也推动 stewardship codes。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Dodd-Frank Act 2010 加强银行标准和监管监督。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Olympus 和 Toshiba 推动日本治理标准和 ESG 披露期望快速提升。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Rights</span> 股东参与和少数股东保护</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Shareholder engagement 是公司和投资者之间主动对话，投资者表达包括 ESG 在内的关注点。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">参与的目的之一是让董事对行动负责，并逐步提升决策质量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">少数股东，尤其机构投资者，关键风险是被控制股东或大股东剥削。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">关联交易通常需要更高披露，并可能要求无利益冲突股东批准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">英国上市规则中，超过 5% 的交易触发额外披露；超过 25% 的交易需要股东投票批准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Pre-emption rights 让现有股东有权按比例认购新股，避免被稀释。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司 AGM 可能寻求 5% 或 10% 的非优先认购发行授权；香港一般授权可高达 20%，且可能折价。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Dual-class shares 让创始人或特定群体拥有更高投票权，降低其对普通股东的问责。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sunset clause 要求双重股权在一段时间后合并，CII 主张最多七年后统一。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="codes" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Logic Equations</div><h2>治理代码：丑闻倒逼出来的制度语言</h2></div>
+      <div class="head-desc">这里按时间线记，不是为了背年份，而是记住“哪个问题推动哪个制度”。</div>
+    </div>
+    <div class="timeline">
+      <div class="time-card"><div class="time-year">1992</div><div class="time-title">Cadbury Code</div><div class="time-text">英国首个正式治理代码；Caparo、Polly Peck、Mirror Group、BCCI 等问题构成背景。</div></div>
+      <div class="time-card"><div class="time-year">1995</div><div class="time-title">Greenbury Report</div><div class="time-text">高管薪酬争议推动薪酬结构、KPI 和长期释放期披露透明。</div></div>
+      <div class="time-card"><div class="time-year">2002</div><div class="time-title">Sarbanes-Oxley</div><div class="time-text">Enron、WorldCom 后提高财务报告完整性，并创建 PCAOB。</div></div>
+      <div class="time-card"><div class="time-year">2003</div><div class="time-title">Ahold & Parmalat</div><div class="time-text">欧洲不能再把治理和审计失败看成美国个别问题。</div></div>
+      <div class="time-card"><div class="time-year">2008+</div><div class="time-title">Financial crisis</div><div class="time-text">重新关注企业文化、高管薪酬、审计和 stewardship codes。</div></div>
+      <div class="time-card"><div class="time-year">2011-15</div><div class="time-title">Japan scandals</div><div class="time-text">Olympus、Toshiba 推动日本治理标准和 ESG 披露期望提升。</div></div>
+    </div>
+    <div class="topic-grid" style="margin-top:14px">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 治理代码为什么出现</div><span class="tag tag-blue">Cause</span></div>
+        <p class="small"><b>原文要点：</b>公司失败和丑闻是治理代码正式化的重要驱动；当公司失败、投资者损失，市场会要求更好的制度。</p>
+        <p class="small"><b>中文解释：</b>治理制度不是为了漂亮，而是为了防止同类失败反复发生。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Governance codes</div><div class="eq-op">==</div><div class="eq-rhs">corporate failure + investor losses + reform pressure</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>看到 scandal / failure / investors lose money，要反推 governance standards development。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Cadbury 的核心</div><span class="tag tag-green">Cadbury</span></div>
+        <p class="small"><b>原文要点：</b>Cadbury 认为不应让任何个人拥有不受约束的决策权，并推动审计委员会、chair/CEO 分离等做法。</p>
+        <p class="small"><b>中文解释：</b>Cadbury 不是单纯讲“多设委员会”，它要解决权力集中和财务监督不足。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Cadbury</div><div class="eq-op">==</div><div class="eq-rhs">no unfettered power + audit committee + chair/CEO separation</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>Cadbury 题眼常见：first formal code、comply or explain、Caparo/Polly Peck、audit committee。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Comply or explain</div><span class="tag tag-amber">Model</span></div>
+        <p class="small"><b>原文要点：</b>大多数市场采用 comply or explain，荷兰 apply or explain，澳大利亚 if not, why not。</p>
+        <p class="small"><b>中文解释：</b>重点不是机械遵守每条规则，而是如果偏离，就要说明如何仍然满足底层原则。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Code model</div><div class="eq-op">==</div><div class="eq-rhs">adhere to standard or explain delivery of principle</div></div>
+        </div>
+        <div class="riskline"><b>易错提醒：</b>Proxy adviser 可能偏严格，但真正的投资者应结合公司情况作独立判断。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. 美国为什么特殊</div><span class="tag tag-violet">USA</span></div>
+        <p class="small"><b>原文要点：</b>自日本 2015 年采用治理代码后，美国成为唯一没有正式治理代码的主要市场，因为公司法由州而非联邦制定。</p>
+        <p class="small"><b>中文解释：</b>美国不是没有治理要求，而是没有一个全国统一的正式治理代码。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">USA no code</div><div class="eq-op">==</div><div class="eq-rhs">state-level corporate law + no federal corporate governance code</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>问唯一主要市场，答案是 USA，不是 Japan。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="scandals" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Major Scandals</div><h2>重大丑闻：从故事记成“失败类型”</h2></div>
+      <div class="head-desc">每个案例用一条逻辑等式压缩，避免陷入故事细节。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Enron, USA 2001</div><span class="tag tag-rose">Off-balance-sheet</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">利用表外工具和激进会计技术制造盈利假象，审计师 Arthur Andersen 崩解。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">董事会监督不足，允许 CFO 参与存在利益冲突的结构，未让外部审计、内审和举报机制有效运行。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">提高伦理标准、增强董事会独立性、强化内控和风险框架、限制审计师非审计服务。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Enron == weak oversight + conflicts + aggressive accounting + failed audit environment。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">WorldCom, USA 2002</div><span class="tag tag-violet">Capitalized expenses</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">把当期费用资本化，虚增利润和资产，用来掩盖增长下滑。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">董事会缺乏对业务和目标实现方式的理解，管理风格专断，内审虽发现问题但监督不够及时。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">建立稳健财务控制、适当董事会监督、独立且有伦理的审计师、合规和诚信文化。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">WorldCom == simple accounting deceit + autocratic culture + delayed control response。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Ahold, Netherlands 2002-03</div><span class="tag tag-blue">Aggressive growth</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">国际并购扩张，隐藏业绩恶化，涉及合资会计、隐藏成本和供应商返利。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">董事会技能和流程没有随业务扩张同步升级，监督国际业务不足；薪酬强调 earnings growth。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">监督董事会需独立、有能力、投入足够时间，并能指导战略、财报诚信和高管薪酬。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Ahold == acquisitive growth + weak international oversight + incentive misalignment。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Parmalat, Italy 2003</div><span class="tag tag-amber">Fictional cash</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">通过虚假会计掩盖亏损，最终账上数十亿欧元现金和等价物被发现不存在。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">控制股东兼任 chair 和 CEO，财务记录欺诈，举报风险被压制，审计未尽专业谨慎。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">委员会结构、独立董事占多数、chair/CEO 分离、独立审计和重新设计内控。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Parmalat == controlling shareholder power + false accounts + audit failure。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Satyam, India 2009</div><span class="tag tag-green">False invoices</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">创始人承认伪造账目，使用大量虚假发票虚增收入，审计未检查足以揭示问题的银行记录。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">董事会监督有限，未清晰区分董事、独立董事和管理层职责，未保护股东重大信息权。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">印度强化 accountability、transparency、responsibility、fairness，以及审计师、会计师和独立董事规范。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Satyam == founder fraud + weak board role clarity + audit miss + related-party warning。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Olympus, Japan 2011-12</div><span class="tag tag-teal">Hidden losses</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">长期隐藏亏损，通过高价收购和顾问费安排掩盖财务问题，CEO whistleblower 被免职。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">长期任职高管、任人唯亲文化、yes-men 董事会、法定审计人独立性不足。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">董事会多元化、问责、透明和包容决策文化，董事理解职责和治理技能。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Olympus == crony culture + hidden losses + weak challenge + whistleblower signal。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Volkswagen, Germany 2015</div><span class="tag tag-rose">Emissions</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">柴油排放测试作弊。表面是环境问题，底层是问责、投票权和监督结构问题。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">投票权集中于家族、地方政府和 Qatar；董事会缺少多元意见和专业监督；文化鼓励隐瞒问题。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">监督董事会要有相关经验、技能和独立性，并把技术创新人员纳入风险管理。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Volkswagen == concentrated voting power + insular culture + compliance failure。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Wirecard, Germany 2020</div><span class="tag tag-violet">Missing assets</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">长期财务造假和可疑会计，特别审计显示约 19 亿欧元资产缺失。</div></div>
+          <div class="case-row"><div class="case-lab">失败</div><div class="case-text">透明度、问责和监督不足；内控无效；监管和董事会未充分关注媒体调查和红旗。</div></div>
+          <div class="case-row"><div class="case-lab">教训</div><div class="case-text">董事会应建立伦理合规框架和适当委员会；审计师要验证财务报表存在、完整和准确。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Wirecard == fraud allegations ignored + weak controls + auditor/regulator failure。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rights" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Shareholder Rights</div><h2>股东参与和少数股东权利：防止控制人拿走方向盘</h2></div>
+      <div class="head-desc">这一部分考试常用数字和英文术语设干扰，尤其是 5%、25%、20%、pre-emption 和 sunset clause。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Shareholder engagement</div><span class="tag tag-green">Dialogue</span></div>
+        <p class="small"><b>原文要点：</b>股东参与是公司与投资者之间主动对话，投资者表达包括 ESG 在内的关注点。</p>
+        <p class="small"><b>中文解释：</b>它不是简单投反对票，而是通过持续沟通让董事会对行动负责。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Engagement</div><div class="eq-op">==</div><div class="eq-rhs">active dialogue + clear concerns + board accountability</div></div>
+        </div>
+        <div class="riskline"><b>投资影响/考点提醒：</b>Engagement 更详细会在第 6 章展开，本章只掌握其服务于 accountability。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Minority shareholder protection</div><span class="tag tag-blue">Protection</span></div>
+        <p class="small"><b>原文要点：</b>少数股东的关键问题是避免被控制股东剥削，保护通常来自公司法、上市规则和治理代码。</p>
+        <p class="small"><b>中文解释：</b>少数股东怕的不是“没有经营权”，而是控制人用关联交易、稀释、控制投票权把经济利益转走。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Minority rights</div><div class="eq-op">==</div><div class="eq-rhs">avoid exploitation by controlling shareholders</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>Institutional investors 通常属于 minority shareholders。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. UK class tests</div><span class="tag tag-amber">5% / 25%</span></div>
+        <p class="small"><b>原文要点：</b>交易影响资产、利润、价值或资本超过 5%，需要额外披露；超过 25%，需要股东投票批准。</p>
+        <p class="small"><b>中文解释：</b>影响越大，股东越需要信息和投票权，防止公司发生重大变化却不给投资者选择权。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">UK class tests</div><div class="eq-op">==</div><div class="eq-rhs">5% disclosure + 25% shareholder vote</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>5% 是披露，25% 是投票，不要倒置。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Pre-emption rights</div><span class="tag tag-violet">Dilution</span></div>
+        <p class="small"><b>原文要点：</b>优先认购权让现有股东有机会认购足够数量的新股，以维持其持股比例。</p>
+        <p class="small"><b>中文解释：</b>它保护的是“我的股份比例不要被别人绕过我稀释”。大型股权融资常被称为 rights issue。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Pre-emption</div><div class="eq-op">==</div><div class="eq-rhs">existing shareholders buy first → avoid dilution</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>美国并非许多市场那样把 pre-emption 作为公司法基本安排。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. General mandate in Hong Kong SAR</div><span class="tag tag-rose">20%</span></div>
+        <p class="small"><b>原文要点：</b>香港一般授权可让董事会发行最高 20% 股本，可能无优先认购且可折价。</p>
+        <p class="small"><b>中文解释：</b>这对少数股东不友好，因为既可能被稀释，又可能以低价让新投资者进入。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">HK mandate</div><div class="eq-op">==</div><div class="eq-rhs">up to 20% issue + potential discount + no pre-emption</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>正式题常直接问 Hong Kong SAR general mandate 的比例，答案是 20%。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Dual-class shares and sunset</div><span class="tag tag-teal">Votes</span></div>
+        <p class="small"><b>原文要点：</b>双重股权通常给创始人或特定群体更多投票权；CII 支持一定早期稳定性，但主张设置 sunset clause。</p>
+        <p class="small"><b>中文解释：</b>Dual-class 让经济利益和投票权分离，sunset clause 是给这种不平等投票权加“到期日”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sunset clause</div><div class="eq-op">==</div><div class="eq-rhs">dual-class shares unify after set period</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>Sunset clause 的作用是降低双重股权长期负面表现风险，不是给少数股东行权证。</div>
+      </article>
+    </div>
+    <div class="rights-grid" style="margin-top:14px">
+      <div class="right-card"><b>Related-party transactions</b><span>控制人可能把价值从公司转移出去，所以通常需要更高披露和无利益冲突股东批准。</span></div>
+      <div class="right-card"><b>Soft pre-emption</b><span>即使不是完全法定优先认购，也通常希望大型机构股东能按原比例获得分配。</span></div>
+      <div class="right-card"><b>Dual-class warning</b><span>投票权集中会降低管理层对普通股东的问责，Volkswagen 是欧洲例子。</span></div>
+      <div class="right-card"><b>Snap example</b><span>Snap 甚至发行无投票权股份，把 dual-class 的治理担忧推得更远。</span></div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Audit-style Cases</div><h2>案例框：用审计复核思路看治理问题</h2></div>
+      <div class="head-desc">把每个治理问题转成“风险点、证据、影响、程序”，后续做题会更稳。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 1：关联交易与少数股东</div><span class="tag tag-blue">RPT</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">控制股东可能通过关联交易把公司资源转移给自己。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">是否有完整披露、定价依据、独立董事意见、无利益冲突股东批准。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">少数股东经济利益被稀释或转移，治理折价上升。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">RPT risk == controlling shareholder benefit + minority shareholder loss。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 2：折价增发和优先认购</div><span class="tag tag-amber">Dilution</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">董事会绕开现有股东，以折价向新投资者发行大量股份。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">授权比例、发行价格、是否给予 pre-emption 或 soft pre-emption、是否有股东批准。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">现有股东持股比例和经济价值被稀释。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">dilution risk == new shares + no pre-emption + discount。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 3：治理丑闻如何倒逼代码</div><span class="tag tag-violet">Code</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">董事会、审计或文化失灵导致公司失败，投资者遭受重大损失。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">是否存在权力集中、非独立董事、内控薄弱、审计失效、激励错配。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">市场和监管要求提高治理标准，形成代码、法律或 stewardship 规则。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">scandal lesson == specific failure → formal governance response。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Compressed Review</div><h2>考前压缩：一组式子背完模块 2</h2></div>
+      <div class="head-desc">这部分之后会进入 Key Facts 汇总和三轮练习的压缩背诵区。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>模块 2 主式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Governance codes</b> == scandals + investor losses + reform pressure。</div>
+          <div class="formula"><b>Cadbury</b> == first formal code + comply or explain + audit committee + chair/CEO separation。</div>
+          <div class="formula"><b>SOX 2002</b> == Enron/WorldCom + financial reporting integrity + PCAOB。</div>
+          <div class="formula"><b>2008 crisis</b> == culture + executive pay + audit + stewardship codes。</div>
+          <div class="formula"><b>Shareholder engagement</b> == active dialogue + ESG concerns + board accountability。</div>
+          <div class="formula"><b>Minority protection</b> == related-party approval + pre-emption + vote on major change + sunset。</div>
+          <div class="formula"><b>UK class tests</b> == 5% disclosure + 25% shareholder vote。</div>
+          <div class="formula"><b>HK general mandate</b> == up to 20% additional shares without consent/pre-emption。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错点</h3>
+        <div class="formula-list">
+          <div class="trap"><b>易错 1：把 Cadbury 和 Enron 混在一起。</b>Cadbury 是英国 1992 年；Enron 是美国 2001 年，推动 SOX。</div>
+          <div class="trap"><b>易错 2：把 comply or explain 理解成必须完全遵守。</b>核心是遵守标准或解释如何实现底层原则。</div>
+          <div class="trap"><b>易错 3：把 pre-emption 当成普通投票权。</b>它保护的是现有股东在新股发行中的不被稀释权。</div>
+          <div class="trap"><b>易错 4：把 5%、25%、20% 混淆。</b>UK 5% 披露、25% 投票；香港一般授权最高 20%。</div>
+          <div class="trap"><b>易错 5：以为 dual-class 永远不可接受。</b>CII 承认早期稳定性，但要求 sunset clause 限制长期负面影响。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 2 边界提醒：董事会技能矩阵、DEI、董事独立性、薪酬结构细节会在模块 3 和模块 4 继续展开。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Self Test</div><h2>自测题：看到题眼，先反推知识点</h2></div>
+      <div class="head-desc">正式 Practice Problems 会在最后三轮练习系统中完整处理，这里先训练模块 2 的反推能力。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">1</div><div class="qtext">世界首个正式公司治理代码是什么？它最常见的遵循模式是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">Cadbury Code，英国 1992 年。常见模式是 comply or explain，即遵守建议或解释不遵守如何仍实现底层原则。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">2</div><div class="qtext">Enron 和 WorldCom 推动了美国哪项法律？该法律创建了什么机构？</div><button class="qbtn">看答案</button></div><div class="qanswer">推动 Sarbanes-Oxley Act 2002。该法律创建 PCAOB，作为美国审计标准制定和检查机构。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">3</div><div class="qtext">UK class tests 中 5% 和 25% 分别对应什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">交易影响资产、利润、价值或资本超过 5%，需要额外披露；超过 25%，需要股东投票批准。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">4</div><div class="qtext">Pre-emption rights 保护的核心是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">保护现有股东维持其持股比例的机会，防止公司发行新股时绕过现有股东造成稀释。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">5</div><div class="qtext">Hong Kong SAR general mandate 的题眼数字是多少？为什么对少数股东不友好？</div><button class="qbtn">看答案</button></div><div class="qanswer">题眼数字是 up to 20%。它可能允许董事会在没有既有股东同意和优先认购的情况下增发，且可能折价，导致少数股东被稀释。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">6</div><div class="qtext">Sunset clause 在 dual-class shares 中起什么作用？</div><button class="qbtn">看答案</button></div><div class="qanswer">Sunset clause 要求不同类别股份在设定期限后统一，消除创始人和普通股东之间投票权差异，降低双重股权长期负面表现风险。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">7</div><div class="qtext">为什么 Volkswagen 虽然是排放作弊，也属于治理案例？</div><button class="qbtn">看答案</button></div><div class="qanswer">因为底层问题包括投票权集中、董事会监督不足、内部控制和公司文化失灵，管理层在封闭且缺少外部挑战的环境中隐瞒问题。</div></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id=btn.dataset.tab;
+    tabs.forEach(t=>t.classList.toggle('active',t===btn));
+    panels.forEach(p=>p.classList.toggle('active',p.id===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

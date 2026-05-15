@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.6 Module 7 · 6.1.7 Engagement across Asset Classes</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.card.dark .small{color:#cbd5e1}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.concept-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.concept-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.concept-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;margin:10px 0}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.class-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.asset-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}
+.asset-title{font-size:16px;font-weight:950;color:var(--dark);line-height:1.35;margin:8px 0 8px}
+.asset-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;margin-bottom:8px}
+.asset-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.asset-text{font-size:13px;color:var(--sub);line-height:1.62;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.concept-card,.case-card,.center-node,.formula,.trap,.asset-card{max-width:100%}
+.center-node,.branch-title,.concept-title,.case-name,.qtext,.formula,.trap,.asset-title{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1080px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .flowline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow-step:not(:last-child)::after{display:none}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row,.asset-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:25px;line-height:1.13}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 6</span>
+        <span class="pill">Module 7</span>
+        <span class="pill">6.1.7</span>
+        <span class="pill">Asset Classes</span>
+      </div>
+      <h1>Engagement across Different Asset Classes</h1>
+      <p class="lead">本页覆盖第 6 章 6.1.7：engagement 如何应用到不同资产类别。核心不是照搬 public equity 的投票逻辑，而是识别每类资产中投资者实际掌握的影响杠杆。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Cross-asset engagement == stewardship principles + asset-specific levers；Public equity 有 vote，credit 有 issuance/pricing/covenants，private assets 有长期关系和管理人监督，sovereign debt 多用 screening / tilt。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Module Focus</div>
+      <div class="side-big">不同资产类别不是问“能不能参与”，而是问“你手里有什么影响工具”。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">资产类别</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">信用优先因素</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">基础设施机制</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>考点提醒：</b>Private equity 中直接 ESG engagement 通常由 GP 做，LP 通常 engage with the GP。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="assets">资产类别</button>
+    <button class="tab" data-tab="logic">逻辑等式</button>
+    <button class="tab" data-tab="cases">案例与重点</button>
+    <button class="tab" data-tab="mistakes">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>跨资产类别参与：原则相同，杠杆不同</h2>
+      </div>
+      <div class="head-desc">本节先抓总逻辑：多数 stewardship code 语言来自 public equity，但原则可以扩展到其他资产。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Engagement Across Asset Classes<br>同一套 stewardship mindset，要按资产结构和可用影响杠杆调整</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1 Corporate fixed income</div><p>关注 default、rating、spread。</p><p>发行前影响力更强。</p></div>
+        <div class="branch"><div class="branch-title">2 Sovereign debt</div><p>直接影响国家较难。</p><p>通常用 screening 或 ESG tilt。</p></div>
+        <div class="branch"><div class="branch-title">3 Private equity</div><p>GP 直接参与 portfolio companies。</p><p>LP 主要 engage with GP。</p></div>
+        <div class="branch"><div class="branch-title">4 Infrastructure</div><p>长期、必要服务、ESG 生命周期暴露。</p><p>通过尽调、目标和管理监督参与。</p></div>
+        <div class="branch"><div class="branch-title">5 Property</div><p>气候和物理风险重要。</p><p>间接要求管理人报告框架和指标。</p></div>
+        <div class="branch"><div class="branch-title">6 Fund investments</div><p>通常有 fund board。</p><p>投资者要监督管理人 stewardship。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>看结构</h3><p>直接持有还是通过管理人/基金。</p></div>
+        <div class="flow-step"><h3>看杠杆</h3><p>投票、融资、契约、未来投资或退出。</p></div>
+        <div class="flow-step"><h3>看对象</h3><p>公司、主权发行人、GP、manager 或 fund board。</p></div>
+        <div class="flow-step"><h3>看时点</h3><p>发行前、尽调、持有期、续投或退出。</p></div>
+        <div class="flow-step"><h3>看责任</h3><p>监督、报告、目标和重大事件响应。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">原则线</span>
+        <h3>准则语言偏 public equity</h3>
+        <p class="small">但 stewardship 原则可以用合理判断扩展到固定收益、私募、基础设施、房地产和基金投资。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">杠杆线</span>
+        <h3>没有投票权，不等于没有影响力</h3>
+        <p class="small">信用投资者可影响发行条件和定价；LP 可监督 GP；资产所有者可影响 manager 选择、任命和监控。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">边界线</span>
+        <h3>主权债最难直接 engagement</h3>
+        <p class="small">除最大投资者外，很难影响国家政策，因此通常更依赖 ESG screening 或 portfolio tilt。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-06.pdf` 第 367-372 页整理，覆盖 6.1.7 的所有资产类别。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">General Principle</span> 跨资产类别总原则</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多数 stewardship codes 声称适用于所有资产类别，但语言和方法明显源自 public equity。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">原则可以用 good sense and intelligence 应用于多种资产类别。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">不同资产结构中，投资者要根据可用 influence levers 调整 engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement 通常是影响而不是控制，因此不同正式结构下仍可能成功。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">在间接投资结构中，engagement 往往围绕 ESG policies and approaches，而不是直接具体单一资产。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">如果单一资产问题显示政策方法不符合预期，engagement 也可以非常具体。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">即使没有正式投票或制裁权，出售持仓或未来不再投资仍可能是强有力的制裁。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Corporate Fixed Income</span> 公司固定收益</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">固定收益投资者最终关心 default likelihood，但 ESG factors 也会影响 credit ratings 和 spreads。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">定期在债券市场融资的公司越来越意识到 ESG 会影响 debt pricing。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 建议固定收益 engagement 优先考虑：holding size、credit quality、duration、ESG transparency、markets/sectors、specific ESG themes。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">低 ESG score 的发行人有更大改善空间，低信用质量发行人更难吸收负面 ESG 影响，因此优先级更高。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">推动 ESG 条件和披露的最佳机会通常在债务发行前。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Private debt 通常比 public debt 更有 influence，因为资金供应不那么拥挤，关系更长期、更紧密。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司债投资者通常与 treasury departments 对话，议题包括战略、风险、财务结构、债务层级、covenants 和 protections。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">在 going concern 且 ESG 议题相关时，长期 equity 和 debt investors 利益通常高度一致；接近 default 时利益趋于对立。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Sovereign Debt</span> 主权债</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sovereign debt engagement 通常比 corporate debt 更有限。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">只有最大投资者才可能影响 nation-states，而且影响可能也很小。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">因此该资产类别通常更常用 ESG screening 或 ESG tilt，而不是 engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 2020 sovereign debt guide 承认该领域 engagement 仍处于 fledgling stage，重在学习如何参与。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">一个参与方向是教育主权发行人理解 green bonds 的价值和市场需求。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">另一个方向是 rule of law，因为它关系到长期经济增长和公平对待公民。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">巴西 Amazon 雨林案例中，29 家投资者向巴西政府表达毁林风险和主权债高风险担忧，但影响并不确定。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Private Equity and Infrastructure</span> 私募股权和基础设施</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Private equity 中，直接 ESG engagement 通常由 GP 做，而不是 LP。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">LP 可以与 GP engagement，关注 GP 如何监控并处理投资组合 ESG issues。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PE portfolio monitoring 本身具有 value protection and enhancement potential。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">基础设施长期、常涉及 essential services，并可支持 sustainability outcomes，因此与 responsible investment 特别兼容。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Infrastructure ESG 暴露贯穿资产经济生命周期，包括 health and safety、supply chains、environment、climate change、bribery and corruption、social license to operate。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Infrastructure engaged owner 机制包括 due diligence ESG assessment、post-acquisition plan、管理层参与、运营维护期待、asset-level policies、governance framework、performance targets、提供 ESG expertise。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">间接基础设施投资中，资产所有者通常不能决定具体投资，但能通过 selection、appointment、monitoring 外部管理人影响决策过程。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资产所有者可要求 periodic reports、material adverse ESG incidents 报告、严重/重大事件示例，并通过 LPACs 与 managers 沟通。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">Property and Fund Investments</span> 房地产和基金投资</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Real estate 中 ESG-focused policies 对回报的影响证据 mixed，有研究显示风险更低或回报更高，也有研究认为高 ESG score REITs 价值和经营现金流更低。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">房地产投资者应间接 engagement，要求 managers 报告监控 holdings 使用的 frameworks and metrics。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Property 是 climate change 的重要驱动因素，涉及 construction 和 operating phases。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Property 也暴露于 physical impacts of climate change，并形成 stranded asset risk。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">房地产利益相关方还可直接或间接 engagement on public policy、支持 ESG/climate risk research、支持 sector initiatives。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Fund of funds engagement 更复杂，但通常有代表投资者利益的 fund board，可成为 engagement 对象。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">基金投资中，投资者通常离底层资产更远，因此要 hold managers to account for investment and stewardship efforts。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Closing agency gap 在基金车辆中更难，需要更多努力，但仍有 engagement role。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="assets" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Asset Class Cards</div>
+        <h2>资产类别卡片：一类资产一条影响杠杆</h2>
+      </div>
+      <div class="head-desc">这页适合考前快速扫：看到资产类别，先反推出 engagement 对象和杠杆。</div>
+    </div>
+
+    <div class="class-grid">
+      <article class="asset-card">
+        <span class="tag tag-blue">Credit</span>
+        <div class="asset-title">Corporate Fixed Income</div>
+        <div class="asset-row"><div class="asset-lab">对象</div><div class="asset-text">发行人，常见沟通对象是 treasury department。</div></div>
+        <div class="asset-row"><div class="asset-lab">杠杆</div><div class="asset-text">发行前资金需求、定价、covenants、protections、ESG disclosure。</div></div>
+        <div class="asset-row"><div class="asset-lab">优先级</div><div class="asset-text">holding size、credit quality、duration、low ESG transparency、sector/theme。</div></div>
+        <div class="asset-row"><div class="asset-lab">题眼</div><div class="asset-text">低信用质量 + 低 ESG score = 更高 engagement priority。</div></div>
+      </article>
+
+      <article class="asset-card">
+        <span class="tag tag-amber">Sovereign</span>
+        <div class="asset-title">Sovereign Debt</div>
+        <div class="asset-row"><div class="asset-lab">对象</div><div class="asset-text">国家或主权发行人。</div></div>
+        <div class="asset-row"><div class="asset-lab">杠杆</div><div class="asset-text">非常有限，只有最大投资者可能影响政策。</div></div>
+        <div class="asset-row"><div class="asset-lab">常用</div><div class="asset-text">ESG screening 或 ESG tilt，而不是直接 engagement。</div></div>
+        <div class="asset-row"><div class="asset-lab">题眼</div><div class="asset-text">小投资者最不可能 exert influence on issuer。</div></div>
+      </article>
+
+      <article class="asset-card">
+        <span class="tag tag-violet">Private</span>
+        <div class="asset-title">Private Equity</div>
+        <div class="asset-row"><div class="asset-lab">对象</div><div class="asset-text">GP 直接 engage with portfolio companies；LP engage with GP。</div></div>
+        <div class="asset-row"><div class="asset-lab">杠杆</div><div class="asset-text">所有权、治理安排、监控、报告、退出价值。</div></div>
+        <div class="asset-row"><div class="asset-lab">重点</div><div class="asset-text">识别 material ESG issues、设目标、跟踪进展、强化 reporting practices。</div></div>
+        <div class="asset-row"><div class="asset-lab">题眼</div><div class="asset-text">LP 最可能 engage with GP，而不是直接找被投公司。</div></div>
+      </article>
+
+      <article class="asset-card">
+        <span class="tag tag-green">Real assets</span>
+        <div class="asset-title">Infrastructure</div>
+        <div class="asset-row"><div class="asset-lab">对象</div><div class="asset-text">项目公司、业务管理层、外部管理人或 GP。</div></div>
+        <div class="asset-row"><div class="asset-lab">杠杆</div><div class="asset-text">尽调、收购后计划、ESG policies、治理框架、绩效目标、LPACs。</div></div>
+        <div class="asset-row"><div class="asset-lab">暴露</div><div class="asset-text">健康安全、供应链、环境、气候、腐败、social license。</div></div>
+        <div class="asset-row"><div class="asset-lab">题眼</div><div class="asset-text">长期、必要服务、能源转型、全生命周期 ESG。</div></div>
+      </article>
+
+      <article class="asset-card">
+        <span class="tag tag-teal">Property</span>
+        <div class="asset-title">Property / Real Estate</div>
+        <div class="asset-row"><div class="asset-lab">对象</div><div class="asset-text">通常通过 managers 间接 engagement。</div></div>
+        <div class="asset-row"><div class="asset-lab">杠杆</div><div class="asset-text">要求管理人报告 frameworks、metrics、climate risk 管理。</div></div>
+        <div class="asset-row"><div class="asset-lab">暴露</div><div class="asset-text">建筑和运营阶段排放、物理气候风险、stranded asset risk。</div></div>
+        <div class="asset-row"><div class="asset-lab">题眼</div><div class="asset-text">ESG 与回报证据 mixed，不要绝对化。</div></div>
+      </article>
+
+      <article class="asset-card">
+        <span class="tag tag-rose">Funds</span>
+        <div class="asset-title">Fund Investments</div>
+        <div class="asset-row"><div class="asset-lab">对象</div><div class="asset-text">fund board 和 fund managers。</div></div>
+        <div class="asset-row"><div class="asset-lab">杠杆</div><div class="asset-text">监督管理人 investment and stewardship efforts。</div></div>
+        <div class="asset-row"><div class="asset-lab">难点</div><div class="asset-text">投资者离底层资产远，agency gap 更难关闭。</div></div>
+        <div class="asset-row"><div class="asset-lab">题眼</div><div class="asset-text">不是直接改底层资产，而是 hold managers to account。</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="logic" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：按资产找杠杆</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+
+    <div class="concept-grid">
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">1. 跨资产总式</div><span class="tag tag-blue">Principle</span></div>
+        <p class="small"><b>原文要点：</b>stewardship codes 多说适用于所有资产类别，虽然语言和实践最成熟的是 public equity。</p>
+        <div class="quote-box"><b>中文解释：</b>不要机械问“有没有股东投票”。没有投票权时，仍可通过融资、管理人选择、报告要求、退出和未来投资等方式影响。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Cross-asset engagement</div><div class="eq-op">==</div><div class="eq-rhs">同一 stewardship 原则 + 不同资产杠杆</div></div>
+          <div class="eq"><div class="eq-lhs">Influence</div><div class="eq-op">≠</div><div class="eq-rhs">control；多数 engagement 是影响而不是控制</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题目问 stewardship 是否只能在 public equity 做，答案是否定；但要按资产结构调整。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">2. Corporate fixed income</div><span class="tag tag-green">Credit</span></div>
+        <p class="small"><b>原文要点：</b>ESG factors 可影响 credit ratings 和 spreads；发行前是推动 ESG 条件和披露的好时点。</p>
+        <div class="quote-box"><b>中文解释：</b>债券投资者没有股东投票权，但公司融资时需要资金，投资者可以围绕价格、条款和披露提出要求。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">FI priority</div><div class="eq-op">==</div><div class="eq-rhs">holding size + lower credit quality + duration + low ESG transparency + sector/theme</div></div>
+          <div class="eq"><div class="eq-lhs">Best timing</div><div class="eq-op">==</div><div class="eq-rhs">before issuance；资金需求越强，投资者 leverage 越大</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Practice Problems 中 BBB+ 且 ESG score 2 的债券，比 AAA- 且 ESG score 2 更优先参与，因为信用质量更弱。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">3. Sovereign debt</div><span class="tag tag-amber">Sovereign</span></div>
+        <p class="small"><b>原文要点：</b>主权债 engagement 影响力更有限，通常只有最大投资者可能影响 nation-states。</p>
+        <div class="quote-box"><b>中文解释：</b>小投资者很难推动一个国家改变政策，所以更现实的 ESG 方法是筛选国家或倾斜配置，而不是直接施压。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sovereign debt ESG</div><div class="eq-op">==</div><div class="eq-rhs">mostly screening / tilt + limited engagement</div></div>
+          <div class="eq"><div class="eq-lhs">Small investor</div><div class="eq-op">≠</div><div class="eq-rhs">likely to exert influence on sovereign issuer</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>问 small investors in sovereign debt 最不可能采用什么，答案通常是 exerting influence on issuer。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">4. Private equity</div><span class="tag tag-violet">GP / LP</span></div>
+        <p class="small"><b>原文要点：</b>private equity 中 direct ESG engagement 通常由 GP 做；LP 可与 GP 沟通其如何监控和处理 ESG。</p>
+        <div class="quote-box"><b>中文解释：</b>LP 是资产所有者，不是每天管理 portfolio company 的人。它最自然的参与对象是 GP，要求 GP 建好 ESG 监控、目标和报告。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">PE engagement</div><div class="eq-op">==</div><div class="eq-rhs">GP → portfolio company；LP → GP</div></div>
+          <div class="eq"><div class="eq-lhs">Monitoring value</div><div class="eq-op">==</div><div class="eq-rhs">identify material ESG + set objectives + track progress + improve exit reporting</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 private equity investments and limited partners，优先选 engage with the GP。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">5. Infrastructure</div><span class="tag tag-teal">Long term</span></div>
+        <p class="small"><b>原文要点：</b>infrastructure 资产长期、常涉及 essential services，并在整个经济生命周期暴露于 ESG。</p>
+        <div class="quote-box"><b>中文解释：</b>基础设施投资不是买完就放着。ESG 要从尽调进入收购后计划、管理层沟通、资产级政策、绩效目标和董事会报告。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Infrastructure RI</div><div class="eq-op">==</div><div class="eq-rhs">long-term assets + essential services + sustainability outcomes</div></div>
+          <div class="eq"><div class="eq-lhs">Engaged owner</div><div class="eq-op">==</div><div class="eq-rhs">due diligence → post-acquisition plan → policies → targets → reports</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>间接基础设施投资中，资产所有者通过 selection、appointment、monitoring 外部管理人来影响。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">6. Property and funds</div><span class="tag tag-rose">Indirect</span></div>
+        <p class="small"><b>原文要点：</b>property 投资者常间接要求 managers 报告框架和指标；fund investments 要通过 fund board 和 managers 关闭 agency gap。</p>
+        <div class="quote-box"><b>中文解释：</b>房地产和基金投资常离底层资产更远，关键不是直接插手每个资产，而是让管理人说明它如何管 ESG、如何报告、如何回应重大事件。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Property engagement</div><div class="eq-op">==</div><div class="eq-rhs">manager frameworks + metrics + climate risk + public policy / research / sector initiatives</div></div>
+          <div class="eq"><div class="eq-lhs">Fund investment</div><div class="eq-op">==</div><div class="eq-rhs">fund board engagement + hold managers accountable + close agency gap</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 funds of funds，要想到 fund board 和 manager accountability，不是直接找底层资产投票。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Key Points</div>
+        <h2>案例与重点：把资产类别落到题眼</h2>
+      </div>
+      <div class="head-desc">这里专门整理 PDF 中容易做成选择题的细节。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">固定收益优先级：低 ESG + 低信用质量</div><span class="tag tag-blue">Priority</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">低 ESG score 表示改善空间更大；低信用质量表示更难吸收 ESG 负面冲击。</div></div>
+          <div class="case-row"><div class="case-lab">排序</div><div class="case-text">同样 ESG score 低时，BBB+ 比 AAA- 更优先参与，因为 balance sheet flexibility 更弱。</div></div>
+          <div class="case-row"><div class="case-lab">时点</div><div class="case-text">公司需要发行债务时，投资者对 disclosure、covenants 和 ESG 条件更有影响力。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">权益和债权：什么时候一致，什么时候对立</div><span class="tag tag-green">Equity / Credit</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">一致</div><div class="case-text">公司作为 going concern 且 ESG issue 会影响长期价值时，长期股东和债权人的利益通常一致。</div></div>
+          <div class="case-row"><div class="case-lab">分化</div><div class="case-text">在某些交易、资本结构调整、接近 insolvency 或 default 时，股权和债权投资者可能成为直接对手。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Investment grade 阶段重叠度高；default 阶段几乎没有共同利益。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Brazil Amazon：主权债 engagement 的难度</div><span class="tag tag-amber">Sovereign</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">背景</div><div class="case-text">29 家投资者、约 USD3.7 trillion 资产，敦促巴西政府限制 Amazon 雨林破坏。</div></div>
+          <div class="case-row"><div class="case-lab">信号</div><div class="case-text">投资者指出若毁林继续，巴西主权债可能被视为高风险。</div></div>
+          <div class="case-row"><div class="case-lab">结果</div><div class="case-text">影响并不清楚，说明主权债 engagement 的难度和不确定性。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Private equity：WeWork 提醒治理风险</div><span class="tag tag-violet">PE</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">PE 是股权所有权的一种，将 stewardship code 原则扩展到 PE 比较自然。</div></div>
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">一些通过 PE 体系出来的公司治理质量差，WeWork IPO 失败部分源于严重公司治理问题。</div></div>
+          <div class="case-row"><div class="case-lab">启示</div><div class="case-text">PE 投资者拥有较强杠杆，理应更早把 ESG 和治理要求嵌入投资和监控。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Infrastructure：间接投资也能影响 manager</div><span class="tag tag-teal">Infrastructure</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">限制</div><div class="case-text">资产所有者通常无法直接决定具体投资。</div></div>
+          <div class="case-row"><div class="case-lab">杠杆</div><div class="case-text">仍可通过受托责任和 RI policy 影响 manager decision-making process。</div></div>
+          <div class="case-row"><div class="case-lab">工具</div><div class="case-text">manager selection、appointment、monitoring；periodic reports；material adverse ESG incident reporting；LPACs。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Real estate：证据 mixed，气候风险明确</div><span class="tag tag-rose">Property</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">正向证据</div><div class="case-text">多个研究将 ESG-integrated real estate investments 与较低风险或较高回报联系起来。</div></div>
+          <div class="case-row"><div class="case-lab">反向证据</div><div class="case-text">2024 年研究发现高 ESG performance score 的 REITs 反而 firm value 和 operating cash flow 较低，可能过度投资 ESG。</div></div>
+          <div class="case-row"><div class="case-lab">确定性</div><div class="case-text">房地产对气候变化和物理气候风险暴露明确，因此仍是投资者 engagement 重点。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mistakes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>易错点：别把 public equity 逻辑硬套所有资产</h2>
+      </div>
+      <div class="head-desc">模块 7 的题常用“谁是 engagement 对象”和“哪种方法最现实”来设置干扰项。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Cross-asset stewardship ==</b> same principles + different levers。</div>
+          <div class="formula"><b>Corporate fixed income priority ==</b> weak ESG + lower credit quality + holding/duration/material theme。</div>
+          <div class="formula"><b>Private debt opportunity ==</b> less liquid + closer longer-term relationship。</div>
+          <div class="formula"><b>Sovereign debt ESG ==</b> screening / tilt more usual than engagement。</div>
+          <div class="formula"><b>Private equity ==</b> GP engages portfolio company；LP engages GP。</div>
+          <div class="formula"><b>Fund investments ==</b> engage fund board / hold managers accountable。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Public equity vs all assets</b>很多准则语言来自 public equity，但原则可扩展，不是所有资产都有投票权。</div>
+          <div class="trap"><b>Credit score vs ESG score</b>固定收益优先级不是只看 ESG 分低，还要看信用质量弱、持仓规模、期限等。</div>
+          <div class="trap"><b>Public debt vs Private debt</b>private debt 因流动性低、关系更长期，通常 engagement opportunity 更大。</div>
+          <div class="trap"><b>Sovereign engagement vs Screening</b>主权债小投资者最不现实的是直接影响发行国，screening / tilt 更常见。</div>
+          <div class="trap"><b>LP vs GP</b>LP 通常不直接找 portfolio company，而是要求 GP 监控并处理 ESG。</div>
+          <div class="trap"><b>Property return evidence</b>房地产 ESG 和回报关系证据 mixed，不能简单说一定更高或一定更低。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">记忆线：先问“资产结构是什么”，再问“投资者的杠杆是什么”，最后问“最现实的 engagement 对象是谁”。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖模块 7</h2>
+      </div>
+      <div class="head-desc">点击“看答案”自测。正式 Practice Problems 会放到最后的三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">为什么不能把 public equity 的 voting 逻辑直接套到所有资产类别？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为很多资产没有股东投票权或投资者不直接接触底层资产。跨资产类别 engagement 要按资产结构和可用 influence levers 调整。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">固定收益 engagement 的优先级通常看哪些因素？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">holding size、issuer credit quality、duration、ESG transparency quality、specific markets/sectors、specific ESG themes。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">为什么低信用质量 + 低 ESG score 的债券发行人优先级更高？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">低 ESG score 表示改善空间大；低信用质量表示更难吸收负面 ESG 影响，资产负债表弹性更弱。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">固定收益投资者推动 ESG 条件和披露的最佳时点通常是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">通常是债务发行前。公司需要资金时，更可能听取投资者对 ESG 条件、披露和债务保护条款的意见。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">小投资者在 sovereign debt 中最不可能采用哪种 stewardship approach？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">最不可能 exert influence on the issuer。主权债通常更常用 ESG screening 或 ESG tilt。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Private equity 中 LP 最可能如何开展 ESG engagement？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">LP 最可能 engage with the GP，关注 GP 如何监控并处理 portfolio companies 的 ESG issues。直接 ESG engagement 通常由 GP 做。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Infrastructure 为什么特别适合 responsible investment？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为它通常是长期资产、涉及 essential services，并能支持能源转型等 sustainability outcomes，同时全生命周期都暴露于 ESG 风险和机会。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">Fund investments 中 engagement 的关键对象和目标是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">关键对象通常是 fund board 和 fund managers；目标是监督 managers 的投资和 stewardship efforts，尽量关闭 agency gap。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const open = card.classList.toggle('show');
+    btn.textContent = open ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

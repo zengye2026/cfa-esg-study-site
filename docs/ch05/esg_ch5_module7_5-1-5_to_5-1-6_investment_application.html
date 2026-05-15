@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 Module 7 · Governance in Investment Decisions</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(28px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:820px;margin:0;line-height:1.86;overflow-wrap:anywhere}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:500px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}.card.dark h3{color:#fff}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:760px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch:nth-child(6){background:var(--teal-bg);border-color:var(--teal-bdr)}.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:10px}.stat-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:14px;min-width:0}.stat-num{font-family:var(--serif);font-size:34px;line-height:1;font-weight:950;color:var(--dark)}.stat-lab{font-size:12.3px;color:var(--sub);line-height:1.55;margin-top:7px}.stat-src{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px}
+.asset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}.asset-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.asset-head{padding:13px 15px;border-bottom:1px solid var(--line2);display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}.asset-name{font-size:16px;font-weight:950;color:var(--dark);line-height:1.25}.asset-body{padding:14px 15px}.asset-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px;margin-bottom:8px}.asset-lab{font-size:11.5px;font-weight:950;color:var(--muted);text-transform:uppercase}.asset-text{font-size:13px;color:var(--sub);line-height:1.62}
+.model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}.model-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.model-card h3{font-size:17px}.model-arrow{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:18px;margin:8px 0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.asset-card,.model-card,.center-node,.formula,.trap,.stat-card{max-width:100%}.center-node,.branch-title,.topic-title,.case-name,.asset-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1040px){.branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.flowline{grid-template-columns:repeat(3,minmax(0,1fr))}.flow-step:not(:last-child)::after{display:none}}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flowline{grid-template-columns:repeat(2,minmax(0,1fr))}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr 1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row,.asset-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:17px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 5</span>
+        <span class="pill">Module 7</span>
+        <span class="pill">5.1.5-5.1.6</span>
+        <span class="pill">Investment Application</span>
+      </div>
+      <h1>Corporate Governance in Investment Decisions</h1>
+      <p class="lead">本模块把第 5 章最后一段转成投资决策语言：治理不是“年报里的一段制度说明”，而是影响收益质量、风险溢价、估值倍数、投后沟通和资产安全边际的底层变量。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Governance investment analysis == quality of people + accountability/alignment + risk of value erosion + model adjustment + stewardship action + asset-class tailoring</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">5.1.5 评估治理问题对投资机会的重大影响；5.1.6 将治理因素用于模型、风险和管理质量判断</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">投资整合方式</div></div>
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">资产类别视角</div></div>
+      </div>
+      <div class="side-note">记忆抓手：治理差，先问“谁做决定、谁监督、谁承担后果”；再问“估值模型里调哪里”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="why">为什么重要</button>
+    <button class="tab" data-tab="assets">资产类别</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="model">模型应用</button>
+    <button class="tab" data-tab="stewardship">投后沟通</button>
+    <button class="tab" data-tab="sovereign">主权债</button>
+    <button class="tab" data-tab="compress">易错压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div><div class="eyebrow">Memory Map</div><h2>治理进入投资决策，是从“人”进入“数”</h2></div>
+      <div class="head-desc">PDF 的逻辑很清楚：治理先影响决策质量，再影响风险和现金流，最后进入估值和投票行动。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Governance in Investment Decisions<br>人和制度的质量，会变成估值里的风险、信心和行动</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">Why</div><p>治理在传统分析中最常被考虑。</p><p>与财务表现的联系最清晰。</p></div>
+        <div class="branch"><div class="branch-title">Risk</div><p>错误人员、错误激励、错误监督会导致 value erosion。</p></div>
+        <div class="branch"><div class="branch-title">Assets</div><p>治理适用于 public、private、infrastructure、property、fixed income。</p></div>
+        <div class="branch"><div class="branch-title">Models</div><p>可调 cost of capital、discount rate、earnings confidence、valuation range。</p></div>
+        <div class="branch"><div class="branch-title">Stewardship</div><p>AGM 投票天然推动 dialogue 和 engagement。</p></div>
+        <div class="branch"><div class="branch-title">Sovereign</div><p>主权债里的 G 是国家制度和法治，而非公司董事独立性。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>董事会质量</h3><p>技能、经验、视角和行为动态。</p></div>
+        <div class="flow-step"><h3>监督与激励</h3><p>accountability + alignment。</p></div>
+        <div class="flow-step"><h3>风险暴露</h3><p>忽视 E/S、关联交易、创始人支配。</p></div>
+        <div class="flow-step"><h3>财务后果</h3><p>罚款、诉讼、收入下降、利润下降。</p></div>
+        <div class="flow-step"><h3>估值反映</h3><p>风险溢价、折现率、倍数、区间信心。</p></div>
+        <div class="flow-step"><h3>投后行动</h3><p>沟通、投票、推动治理改善。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Coverage Checklist</div><h2>PDF 5.1.5-5.1.6 覆盖清单</h2></div>
+      <div class="head-desc">这一页确认第 5 章最后一部分没有遗漏。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">治理为什么进入投资分析</span></h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CFA Institute 2017 survey：67% 全球受访者在分析和投资决策中考虑治理，2014 年为 64%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">同一调查中，环境和社会因素均为 54%；EMEA 地区治理考虑比例为 74%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Friede、Busch、Bassen 2015 meta-study：62% governance studies 显示与公司财务表现正相关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">同一研究中，环境研究 58%、社会研究 55% 显示正相关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">某 UK investment manager 2016 年估计，治理良好或改善的公司在此前 7 年平均每月跑赢 30 bps。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">良好治理有助于长期股东价值和更广泛的社会/利益相关方繁荣。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">投资对象和风险后果</span></h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理失败会导致价值侵蚀、未能处理关键风险，包括环境和社会风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理问题同样适用于 private companies、private equity、infrastructure vehicles 和 public finance initiatives。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">私人股权或基础设施中投资者直接进入董事会可降低信息和反应风险，但不能消除治理风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">高负债投资 margin for error 小，治理失败可能快速压垮更灵活的治理结构。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理失败会带来罚款、额外负债、诉讼、信任受损、收入下降、利润下降和证券价值受损。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Theranos、Uber、WeWork 展示私营和创业企业中创始人支配、技能错配和关联交易风险。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">模型、投后和主权债</span></h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理可作为 threshold assessment：不满足最低治理标准则不投资。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Quality of management 不是只评 CEO/CFO，而是评整体团队和治理结构。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理可作为 risk assessment tool，影响未来盈利信心、估值倍数、估值区间或投资论点信心。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">弱治理可通过增加 risk premium、提高 cost of capital 或提高 discount rate 进入估值模型。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">弱治理也可被视为 engagement and investment opportunity，通过对话和投票改善治理。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">年度投票事项至少包括 report and accounts、board appointments、auditor appointment/fees、executive remuneration。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">主权债中的 G 指国家治理有效性、制度稳健性、rule of law 和商业环境，而不是董事会独立性。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Why It Matters</div><h2>治理为什么通常比 E 和 S 更早进入传统投资分析？</h2></div>
+      <div class="head-desc">PDF 给了三层证据：分析师使用率、学术研究相关性、投资管理人的实证观察。</div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">67%</div><div class="stat-lab">全球受访者将 governance 纳入分析和投资决策。</div><div class="stat-src">CFA Institute 2017 survey</div></div>
+      <div class="stat-card"><div class="stat-num">54%</div><div class="stat-lab">同一调查中，environmental 和 social 因素的比例均为 54%。</div><div class="stat-src">CFA Institute 2017 survey</div></div>
+      <div class="stat-card"><div class="stat-num">74%</div><div class="stat-lab">EMEA 地区受访者表示考虑 governance。</div><div class="stat-src">CFA Institute 2017 survey</div></div>
+      <div class="stat-card"><div class="stat-num">62%</div><div class="stat-lab">被审阅的 governance studies 显示与公司财务表现正相关。</div><div class="stat-src">Friede, Busch, Bassen 2015</div></div>
+      <div class="stat-card"><div class="stat-num">30bps</div><div class="stat-lab">治理良好或改善的公司，估计过去 7 年平均每月跑赢治理较差或恶化公司。</div><div class="stat-src">UK investment manager, 2016</div></div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">治理的底层逻辑</div><span class="tag tag-blue">因果线</span></div>
+        <p class="small"><b>原文要点：</b>良好治理是公司表现的基础，既关系长期股东价值，也关系社会和所有利益相关方的更广泛繁荣。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Good governance</div><div class="eq-op">==</div><div class="eq-rhs">long-term mindset + risk management + opportunity capture + shareholder/stakeholder prosperity</div></div>
+          <div class="eq"><div class="eq-lhs">Poor governance</div><div class="eq-op">==</div><div class="eq-rhs">wrong people/skills + weak challenge + misaligned interests → value erosion</div></div>
+        </div>
+        <div class="memory"><b>记忆：</b>治理不是“有没有章程”，而是决策桌上有没有合适的人、合适的信息、合适的激励和足够的挑战。</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">治理失败如何伤害证券价值</div><span class="tag tag-rose">结果线</span></div>
+        <p class="small"><b>原文要点：</b>治理失败会带来罚款、额外负债、诉讼及其他成本；信任受损后收入下降，客户抵制或转向竞争对手；为缓解未来风险还会增加成本，利润下降，最终伤害证券价值。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Value erosion</div><div class="eq-op">==</div><div class="eq-rhs">fines + liabilities + litigation + trust loss + revenue fall + higher mitigation costs + lower profit</div></div>
+        </div>
+        <div class="riskline"><b>投资影响：</b>治理分析应是 valuation practice 的核心组成部分，而不是投前尽调的附录。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="assets" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Asset-Class Tailoring</div><h2>治理不是公募股票专属，私募和基础设施更不能掉以轻心</h2></div>
+      <div class="head-desc">PDF 明确说，good/bad governance 不是 public companies 的专属，也不是 public equity investors 的专属。</div>
+    </div>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="asset-head"><div class="asset-name">Public companies</div><span class="tag tag-blue">公开市场</span></div>
+        <div class="asset-body">
+          <div class="asset-row"><div class="asset-lab">关注点</div><div class="asset-text">董事会技能、独立性、薪酬对齐、审计质量、披露透明度和 AGM 投票事项。</div></div>
+          <div class="asset-row"><div class="asset-lab">投资动作</div><div class="asset-text">纳入估值、投票、与非执行董事或管理层沟通。</div></div>
+          <div class="equations"><div class="eq"><div class="eq-lhs">Public equity G</div><div class="eq-op">==</div><div class="eq-rhs">board + pay + audit + disclosure + voting</div></div></div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-head"><div class="asset-name">Private equity</div><span class="tag tag-green">私募股权</span></div>
+        <div class="asset-body">
+          <div class="asset-row"><div class="asset-lab">误区</div><div class="asset-text">投资者直接进入董事会，并不等于治理风险消失。</div></div>
+          <div class="asset-row"><div class="asset-lab">风险</div><div class="asset-text">信息误导风险和反应迟缓风险会降低，但高负债、创始人支配、技能错配仍可能快速毁值。</div></div>
+          <div class="equations"><div class="eq"><div class="eq-lhs">PE governance</div><div class="eq-op">==</div><div class="eq-rhs">direct board access - not all risk + leverage amplifies failure</div></div></div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-head"><div class="asset-name">Infrastructure / PFI</div><span class="tag tag-amber">基础设施</span></div>
+        <div class="asset-body">
+          <div class="asset-row"><div class="asset-lab">范围</div><div class="asset-text">包括 infrastructure vehicles 和 public finance initiatives。</div></div>
+          <div class="asset-row"><div class="asset-lab">逻辑</div><div class="asset-text">治理失败同样会造成价值流失；长期项目还会放大合同、监管、社会影响和融资结构风险。</div></div>
+          <div class="equations"><div class="eq"><div class="eq-lhs">Infrastructure G</div><div class="eq-op">==</div><div class="eq-rhs">long-term asset + leverage/contracts + public impact + governance resilience</div></div></div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-head"><div class="asset-name">Fixed income / property</div><span class="tag tag-violet">跨资产</span></div>
+        <div class="asset-body">
+          <div class="asset-row"><div class="asset-lab">PDF 要点</div><div class="asset-text">许多资产类别以某种公司结构存在，因此 corporate governance concerns 对 fixed income、property、infrastructure 等仍相关。</div></div>
+          <div class="asset-row"><div class="asset-lab">投资动作</div><div class="asset-text">债权人关注现金流可靠性、控制质量、契约执行和负面事件导致的信用恶化。</div></div>
+          <div class="equations"><div class="eq"><div class="eq-lhs">Cross-asset G</div><div class="eq-op">==</div><div class="eq-rhs">company structure exists → governance still matters</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Case Boxes</div><h2>四个案例：治理风险怎样从董事会一路烧到估值</h2></div>
+      <div class="head-desc">案例不是为了背故事，而是训练“看到红旗 → 反推治理缺陷 → 判断估值风险”。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Enron</div><span class="tag tag-rose">oversight failure</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">市场价值从 2000 年 12 月的约 US$60 billion 跌至 2001 年 10 月的零。</div></div>
+          <div class="case-row"><div class="case-lab">红旗</div><div class="case-text">大额 CFO 关联交易、控制设计不足、执行不足、审计委员会审查粗略、董事会未充分理解信息意义，外部审计师也未充分提示内部控制问题。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">Enron failure == related-party transactions + weak control implementation + cursory audit committee review + information not acted on。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Theranos</div><span class="tag tag-amber">skill mismatch</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">血液检测技术公司拥有很多知名董事，但非执行董事多来自军事、外交或政治背景，缺少血液检测和科学技术经验。</div></div>
+          <div class="case-row"><div class="case-lab">红旗</div><div class="case-text">创始人兼 CEO 和 chair、dual-class structure 下创始人持 99% 投票权、董事会开会不频繁、部分董事出席率低。</div></div>
+          <div class="case-row"><div class="case-lab">后果</div><div class="case-text">约 US$700 million 投资损失，理论估值约 US$10 billion 消失。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Uber</div><span class="tag tag-blue">governance reset</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">背景</div><div class="case-text">一系列 damaging scandals 影响增长后，公司被迫改变治理实践。</div></div>
+          <div class="case-row"><div class="case-lab">变化</div><div class="case-text">创始 CEO 职责被重新分配，优先投票权调整，董事会独立性增强。</div></div>
+          <div class="case-row"><div class="case-lab">投资逻辑</div><div class="case-text">治理改善可以成为投资机会，但前提是缺陷可被识别、可被推动、且业务本身有修复价值。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">WeWork</div><span class="tag tag-violet">IPO blocked</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2019 年计划 IPO 被迫放弃，估值大幅下跌。</div></div>
+          <div class="case-row"><div class="case-lab">红旗</div><div class="case-text">创始 CEO 支配决策，即便去世后继任选择也有特殊安排；还存在与 CEO 相关的关联交易。</div></div>
+          <div class="case-row"><div class="case-lab">反推</div><div class="case-text">治理问题引发投资者对商业模式和清晰盈利路径的更大质疑。</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>Theranos 留给投资者的两个问题</h3>
+        <p class="small">1. 董事会是否具备足够且合适的技能和经验，能监督企业下一阶段发展？</p>
+        <p class="small">2. 董事会内部是否有正确的行为动态，让有技能的董事真正被听见？</p>
+      </div>
+      <div class="card">
+        <h3>多元化为什么不是装饰</h3>
+        <p class="small">PDF 提到学术研究显示，女性或少数族裔董事与企业价值存在正相关；董事背景多元也与较低股票回报波动、更稳定政策、更高平均盈利能力和估值相关。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="model" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Model Application</div><h2>把治理写进模型：不是只打备注，而是调风险、倍数和信心</h2></div>
+      <div class="head-desc">PDF 给了几种常见做法，从硬门槛到估值参数，再到 engagement opportunity。</div>
+    </div>
+    <div class="model-grid">
+      <div class="model-card">
+        <span class="tag tag-blue">1. Threshold assessment</span>
+        <h3>最低门槛</h3>
+        <p class="small">很多基金经理把治理作为 formal minimum criterion：如果治理不过线，不论价格多便宜，都不考虑投资。</p>
+        <div class="model-arrow">governance fails → no investment</div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Threshold</div><div class="eq-op">==</div><div class="eq-rhs">minimum governance quality before price discussion</div></div></div>
+      </div>
+      <div class="model-card">
+        <span class="tag tag-green">2. Quality of management</span>
+        <h3>管理质量</h3>
+        <p class="small">Quality of management 不是只评 CEO 和 CFO，而是评整体团队，以及他们监督并推动业务成功的治理结构。</p>
+        <div class="model-arrow">team + structure → confidence</div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">QoM</div><div class="eq-op">==</div><div class="eq-rhs">overall team + governance structure + ability to oversee success</div></div></div>
+      </div>
+      <div class="model-card">
+        <span class="tag tag-amber">3. Risk assessment</span>
+        <h3>盈利和倍数信心</h3>
+        <p class="small">治理也可作为风险评估工具，影响对未来盈利的信心，或影响放在这些盈利上的估值倍数。</p>
+        <div class="model-arrow">weak G → lower confidence / lower multiple</div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Risk tool</div><div class="eq-op">==</div><div class="eq-rhs">earnings confidence + valuation multiple + investment thesis confidence</div></div></div>
+      </div>
+      <div class="model-card">
+        <span class="tag tag-rose">4. Discount rate</span>
+        <h3>风险溢价和折现率</h3>
+        <p class="small">如果把治理明确建入估值模型，最常见方式是对负面治理特征增加 risk premium、提高 cost of capital 或提高 discount rate。</p>
+        <div class="model-arrow">negative G → risk premium ↑ → discount rate ↑</div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Model penalty</div><div class="eq-op">==</div><div class="eq-rhs">weak governance → higher cost of capital / discount rate</div></div></div>
+      </div>
+      <div class="model-card">
+        <span class="tag tag-violet">5. Valuation range</span>
+        <h3>估值区间信心</h3>
+        <p class="small">有些经理不把治理完全放入模型，而是反映在对估值范围或投资论点的信心水平中。</p>
+        <div class="model-arrow">uncertain G → wider range / lower conviction</div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Conviction</div><div class="eq-op">==</div><div class="eq-rhs">governance quality affects range confidence</div></div></div>
+      </div>
+      <div class="model-card">
+        <span class="tag tag-teal">6. Engagement opportunity</span>
+        <h3>改善机会</h3>
+        <p class="small">弱治理也可能是 engagement and investment opportunity：通过管理层对话和 proxy voting 改善治理，扭转过去低表现，提升估值。</p>
+        <div class="model-arrow">weak but fixable G → dialogue/vote → better performance expectation</div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Opportunity</div><div class="eq-op">==</div><div class="eq-rhs">governance improvement + active ownership + valuation re-rating</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stewardship" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Stewardship</div><h2>为什么治理天然适合投后沟通？因为每年都要投票</h2></div>
+      <div class="head-desc">PDF 说很多治理议题直接出现在 AGM agenda 中，投资者必须表态。</div>
+    </div>
+    <div class="grid-2">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">年度投票四件事</div><span class="tag tag-blue">AGM</span></div>
+        <p class="small">几乎每个市场，投资者至少每年会面对以下投票决定：</p>
+        <div class="formula-list">
+          <div class="formula"><b>1. Report and accounts</b>：是否接受报告和账目。</div>
+          <div class="formula"><b>2. Board appointments</b>：董事任命。</div>
+          <div class="formula"><b>3. Auditor</b>：审计师任命，可能还有审计费用。</div>
+          <div class="formula"><b>4. Executive remuneration</b>：高管薪酬。</div>
+        </div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Annual voting</div><div class="eq-op">==</div><div class="eq-rhs">accounts + directors + auditor/fees + executive pay</div></div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">为什么全年沟通，而不是 AGM 前临时抱佛脚？</div><span class="tag tag-green">Dialogue</span></div>
+        <p class="small"><b>原文要点：</b>投资者越来越希望避免把所有关键讨论都挤在 AGM season。北半球通常 4-6 月，日本 7 月，南半球 9-11 月。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Stewardship cycle</div><div class="eq-op">==</div><div class="eq-rhs">year-round dialogue → conclusions → voting decisions</div></div>
+        </div>
+        <div class="memory"><b>记忆：</b>投票是结果，不是开始。真正的治理改善来自全年对话后的投票表达。</div>
+      </div>
+    </div>
+    <div class="footer-note">PDF 提醒：治理比环境和社会问题拥有更长的投资历史，其中一个原因就是许多市场中主动考虑投票决定的义务已经建立多年。</div>
+  </section>
+
+  <section id="sovereign" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Sovereign Debt</div><h2>主权债里的 G：不是董事会，而是国家能不能可靠运转</h2></div>
+      <div class="head-desc">这是第 5 章最后的高频易错点：公司治理的“董事会独立性”不适用于主权债。</div>
+    </div>
+    <div class="grid-2">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">Sovereign G 的含义</div><span class="tag tag-violet">国家治理</span></div>
+        <p class="small"><b>原文要点：</b>在 sovereign debt arena，G 指国家治理有效性、国家及其机构的稳健性、rule of law 方法和一般商业环境，包括竞争和反腐。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sovereign G</div><div class="eq-op">==</div><div class="eq-rhs">state effectiveness + institutional robustness + rule of law + business environment + competition/anti-corruption</div></div>
+        </div>
+        <div class="riskline"><b>正式题提醒：</b>Independence of board members 属于公司董事会问题，不太可能是主权债投资者考虑的 G factor。</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">为什么主权债投资者关心这些？</div><span class="tag tag-green">偿债能力</span></div>
+        <p class="small"><b>原文要点：</b>核心是获得一种 assurance：经济能通过良好治理繁荣，从而继续覆盖 sovereign debt obligations。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sovereign repayment</div><div class="eq-op">==</div><div class="eq-rhs">good governance → economy can prosper → debt obligations can be covered</div></div>
+        </div>
+        <div class="memory"><b>记忆：</b>公司债看公司能否赚钱还钱；主权债看制度和经济是否稳得住还钱能力。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Exam Compression</div><h2>易错点和考前压缩</h2></div>
+      <div class="head-desc">最后一模块的题往往考“应用位置”：模型调哪里、资产类别怎么扩展、主权债 G 是什么。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>压缩背诵公式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>治理重要性</b> == 最常被传统分析考虑 + 与财务表现联系最清晰 + 可影响 E/S 风险管理。</div>
+          <div class="formula"><b>价值侵蚀</b> == 错的人/技能不足 + 弱监督 + 激励错配 → 关键风险失控 → 财务和估值受损。</div>
+          <div class="formula"><b>私募/基础设施治理</b> == 直接董事会席位可降低信息风险，但不能消除治理风险；高负债让错误空间更小。</div>
+          <div class="formula"><b>估值模型</b> == risk premium ↑ / cost of capital ↑ / discount rate ↑ / multiple ↓ / conviction ↓。</div>
+          <div class="formula"><b>治理改善机会</b> == active dialogue + proxy voting + market underperformance reversal + valuation enhancement。</div>
+          <div class="formula"><b>AGM 投票</b> == report/accounts + directors + auditor/fees + executive remuneration。</div>
+          <div class="formula"><b>Sovereign G</b> == state effectiveness + institutions + rule of law + business environment，不是 board independence。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>高频易错提醒</h3>
+        <div class="formula-list">
+          <div class="trap"><b>误区 1：治理只影响股票。</b>错。固定收益、私募、地产、基础设施等只要有公司结构，治理都相关。</div>
+          <div class="trap"><b>误区 2：私募有董事席位就没有治理风险。</b>错。信息和反应风险降低，但高负债、创始人控制、技能错配仍可能快速毁值。</div>
+          <div class="trap"><b>误区 3：quality of management 只看 CEO/CFO。</b>错。它评的是整体团队和治理结构。</div>
+          <div class="trap"><b>误区 4：弱治理一定只能回避。</b>不一定。它也可能是 engagement and investment opportunity，但前提是可改善。</div>
+          <div class="trap"><b>误区 5：主权债 G 看董事会独立性。</b>错。主权债看国家治理、机构、法治和商业环境。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Self Test</div><h2>自测：看到题眼，反推投资应用</h2></div>
+      <div class="head-desc">先自己答，再点“看答案”。重点是把治理词汇转成投资动作。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">1</div><div class="qtext">题眼：67%、54%、74%。这些数字说明什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">CFA Institute 2017 survey 显示治理是传统投资分析中最常被考虑的 ESG 因素：全球 67% 考虑治理，高于环境和社会的 54%；EMEA 为 74%。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">2</div><div class="qtext">治理失败为什么会伤害证券价值？按“事件 → 财务 → 估值”说一遍。</div><button class="qbtn">看答案</button></div><div class="qanswer">治理失败会导致罚款、负债、诉讼、信任受损和客户流失；收入下降、风险缓解成本上升、利润下降；最终证券价值受损。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">3</div><div class="qtext">为什么 private equity 和 infrastructure 里仍然要看治理？</div><button class="qbtn">看答案</button></div><div class="qanswer">投资者直接代表进入董事会只能降低信息误导和反应迟缓风险，不能消除治理风险。许多此类投资高负债，错误空间小，治理失败可能迅速造成价值损失。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">4</div><div class="qtext">Theranos 董事会最典型的治理红旗是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">董事会缺少与血液检测和科学技术相关的技能经验，非执行董事多为男性且主要来自军事、外交、政治背景；创始人持 99% 投票权，董事会会议和出席也存在问题。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">5</div><div class="qtext">把弱治理明确写进估值模型，PDF 说最常见怎么做？</div><button class="qbtn">看答案</button></div><div class="qanswer">对负面治理特征增加 risk premium、提高 cost of capital 或提高 discount rate。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">6</div><div class="qtext">Quality of management 为什么不是只看 CEO/CFO？</div><button class="qbtn">看答案</button></div><div class="qanswer">因为 PDF 说它实际上是评估整体团队和治理结构，也就是他们如何监督公司并推动业务成功。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">7</div><div class="qtext">AGM 至少会带来哪四类年度治理投票事项？</div><button class="qbtn">看答案</button></div><div class="qanswer">接受 report and accounts、board appointments、auditor appointment and perhaps auditor fees、executive remuneration。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">8</div><div class="qtext">弱治理何时可能是投资机会，而不是单纯回避信号？</div><button class="qbtn">看答案</button></div><div class="qanswer">当治理可通过 active dialogue with management 和 proxy voting 得到改善，过去低表现可被扭转，并通过更强表现和更积极预期提升估值时，弱治理可能是 engagement and investment opportunity。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">9</div><div class="qtext">主权债投资者看 G，最不可能看什么？为什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">最不可能看 corporate board independence。主权债的 G 是国家治理有效性、制度稳健性、rule of law 和商业环境，用来判断经济能否繁荣并覆盖债务义务。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">10</div><div class="qtext">Enron 案例用一句逻辑等式怎么压缩？</div><button class="qbtn">看答案</button></div><div class="qanswer">Enron failure == CFO related-party transactions + inadequate controls/implementation + cursory audit committee review + board failed to appreciate information + auditors did not identify/control alert adequately。</div></div>
+    </div>
+  </section>
+
+  <div class="footer-note">资料依据：ch05/esg-05.pdf 中 5.1.5 和 5.1.6 Corporate Governance and the Investment Decision-Making Process。前一章仅作为页面结构参考，本页未使用其他章节知识点。</div>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    const active = document.getElementById(target);
+    if (active) active.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

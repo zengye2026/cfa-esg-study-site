@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Ch.1 - Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:Georgia,"Times New Roman","Noto Serif SC","Songti SC",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 45%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:30px 16px 84px;overflow:hidden}
+.hero{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);padding:28px 30px;margin-bottom:18px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:900px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:430px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;overflow-wrap:anywhere}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;margin:0;overflow-wrap:anywhere}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-card h3{font-size:13px;margin:0 0 6px}
+.flow-card p{font-size:12px;color:var(--sub);line-height:1.55;margin:0}
+.facts-grid{display:flex;flex-direction:column;gap:10px}
+.fact-card{display:grid;grid-template-columns:54px minmax(0,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);overflow:hidden}
+.fact-num{display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:950;background:var(--accent,#1d4ed8)}
+.fact-body{padding:15px 17px}
+.fact-title{font-size:15px;font-weight:950;color:var(--dark);margin-bottom:5px}
+.fact-text{font-size:13.7px;color:var(--sub);line-height:1.72;margin:0}
+.f1{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.f2{--accent:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.f3{--accent:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.f4{--accent:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.f5{--accent:var(--amber);background:var(--amber-bg);border-color:var(--amber-bdr)}
+.f6{--accent:var(--rose);background:var(--rose-bg);border-color:var(--rose-bdr)}
+.equations{display:flex;flex-direction:column;gap:8px}
+.eq{display:grid;grid-template-columns:minmax(98px,.3fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark);line-height:1.45}
+.eq-op{font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.reading-list{display:flex;flex-direction:column;gap:12px}
+.reading-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:17px 18px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px}
+.reading-icon{width:34px;height:34px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-weight:950;color:var(--dark)}
+.reading-title{font-size:14.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px}
+.reading-desc{font-size:13.2px;color:var(--sub);line-height:1.68;margin:0 0 8px}
+.reading-url{font-size:12px;color:var(--blue);font-weight:850;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:grid;gap:12px}
+.qcard{background:#fff;border:1px solid var(--line);box-shadow:var(--sh-sm);border-radius:var(--r);padding:14px}
+.qtop{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:34px;height:34px;border-radius:8px;background:#e0f2fe;color:#075985;display:grid;place-items:center;font-weight:950}
+.qtext{font-weight:900;color:#0f172a;font-size:14px;line-height:1.55}
+.qbtn{border:1px solid var(--line);background:#f8fafc;border-radius:999px;padding:6px 10px;color:#53657d;font-weight:900;cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:#e8eef5;color:#0f172a}
+.qanswer{display:none;margin-top:10px;border-top:1px dashed var(--line);padding-top:10px;color:#40536b;font-size:13.5px;line-height:1.7}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{width:min(340px, calc(100vw - 48px));max-width:340px;padding:18px 0 70px}
+  .hero{padding:22px 18px}
+  .pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pill{justify-content:center;white-space:normal;text-align:center;line-height:1.25}
+  .flow{grid-template-columns:1fr}
+  .fact-card{grid-template-columns:44px minmax(0,1fr)}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  h1{font-size:28px;line-height:1.12}
+  h2{font-size:24px;line-height:1.15;word-break:break-word}
+  .head-desc{max-width:100%;width:100%;overflow-wrap:anywhere}
+  .lead,.hero-eq{font-size:14px}
+  .center-node{border-radius:var(--r);padding:12px 14px;font-size:13px;word-break:break-word}
+  .qtop{grid-template-columns:38px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="pills">
+      <span class="pill">Chapter 1</span>
+      <span class="pill">Key Facts</span>
+      <span class="pill">Further Reading</span>
+      <span class="pill">PDF p.36-38</span>
+    </div>
+    <h1>Key Facts & Further Reading</h1>
+    <p class="lead">这一页是第 1 章的收口页：把全章 15 条 Key Facts 压缩成一条主线，并把 Further Reading 变成“看什么、为了什么”的阅读地图。</p>
+    <div class="hero-eq"><b>整章总逻辑等式：</b>Introduction to ESG Investing == ESG 定义 + 责任投资谱系 + 财务重大性 + 宏观驱动 + 落地方式 + 关键倡议。</div>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" type="button" data-tab="map">总图</button>
+    <button class="tab" type="button" data-tab="facts">15条事实</button>
+    <button class="tab" type="button" data-tab="reading">延伸阅读</button>
+    <button class="tab" type="button" data-tab="compress">考前压缩</button>
+    <button class="tab" type="button" data-tab="quiz">自测题</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Chapter Map</div>
+        <h2>第 1 章一条线：从“什么是 ESG”到“如何落地”</h2>
+      </div>
+      <div class="head-desc">这张图把 7 个复习模块和 Key Facts 串起来，方便最后进入三轮练习。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG investing recognizes long-term sustainable returns depend on stable systems</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 定义</h3><p>ESG 是资产管理方法，也承认投资者作为所有者和债权人的角色。</p></div>
+        <div class="flow-card"><h3>2 投资类型</h3><p>责任投资多数连接组合构建，engagement 是例外。</p></div>
+        <div class="flow-card"><h3>3 财务重大性</h3><p>ESG 可通过降成本、降罚款、降外部性、适应 megatrends 影响价值。</p></div>
+        <div class="flow-card"><h3>4 宏观驱动</h3><p>受托责任、universal owners、SDGs、客户需求推动 ESG。</p></div>
+        <div class="flow-card"><h3>5 实践和倡议</h3><p>mandate、SAA、模型、机会识别，加上 PRI 等关键倡议。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">定义线</span>
+        <h3>ESG 是投资方法，不只是价值观标签</h3>
+        <p class="small">它把 E/S/G 因素纳入投资决策，也承认长期回报依赖稳定、运行良好的社会、环境和经济系统。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">财务线</span>
+        <h3>ESG 影响价值的核心是风险和回报</h3>
+        <p class="small">Key Facts 反复强调：ESG 能注入额外风险和前瞻性洞察，最终通过财务重大性进入投资分析。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">落地线</span>
+        <h3>从原则到流程，再到组织倡议</h3>
+        <p class="small">投资者通过 mandate、SAA、rating filter、financial model、opportunity identification 落地 ESG。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>15 条 Key Facts：原文要点 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条都保留 PDF 原意，并压成可回忆的等式。</div>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card f1"><div class="fact-num">1</div><div class="fact-body"><div class="fact-title">ESG investing 的核心定义</div><p class="fact-text">ESG investing 是一种管理资产的方法，投资者明确承认 ESG factors 对投资决策的相关性，也承认自己作为 owners and creditors 的角色；长期可持续回报依赖稳定、运行良好且治理良好的社会、环境和经济系统。<br><b>等式：</b>ESG investing == ESG factors 入决策 + owner/creditor 角色 + 长期回报依赖稳定系统。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">2</div><div class="fact-body"><div class="fact-title">ESG 与 corporate sustainability / CSR 的关系</div><p class="fact-text">ESG investing 与 investees’ corporate sustainability 紧密相关；CSR 是企业以 ethical way 经营业务的承诺。近几年 E/S/G 已超越 moral prism，越来越具有 strategic 意义。<br><b>等式：</b>Corporate sustainability == 公司可持续经营；CSR == 道德经营承诺；ESG strategic shift == 从道德到战略。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">3</div><div class="fact-body"><div class="fact-title">责任投资与组合构建</div><p class="fact-text">除 engagement 外，所有 responsible investment forms 最终都与 portfolio construction 相关。有些更关注通过财务重大 ESG 因素改善回报，有些兼顾稳健回报和社会/环境影响优化。Engagement 关注基金是否以及如何影响发行人的 ESG 行为。<br><b>等式：</b>Responsible investment == portfolio construction；例外 engagement == influence issuer behavior。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">4</div><div class="fact-body"><div class="fact-title">ESG integration 的主要原因：降风险或增回报</div><p class="fact-text">ESG 整合的主要理由之一是 responsible investment 能 reduce risk or enhance returns。财务重大性来源包括：reduced cost and increased efficiency、reduced risk of fines、reduced externalities、improved adaptability to sustainability megatrends。<br><b>等式：</b>Financial materiality == 降成本/提效率 + 降罚款风险 + 降外部性 + 适应 megatrends。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">5</div><div class="fact-body"><div class="fact-title">WEF Global Risks Report 证明 megatrends 风险</div><p class="fact-text">WEF 年度 Global Risks Report 多年来强调 extreme weather events 和 failure to address climate change 的可能性和影响不断增长，用来说明 ESG megatrends 的风险。<br><b>等式：</b>Megatrend risk evidence == 极端天气 + 应对气候变化失败。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">6</div><div class="fact-body"><div class="fact-title">受托责任的现代解释</div><p class="fact-text">过去 fiduciary duty 曾被视为考虑 ESG 的障碍；Freshfields report 推动的现代解释认为，不考虑包括 ESG issues 在内的长期投资价值驱动因素，反而是 failure of fiduciary duty。<br><b>等式：</b>Modern fiduciary duty == 必须考虑长期价值驱动因素，包括 ESG。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">7</div><div class="fact-body"><div class="fact-title">Universal owners 的逻辑</div><p class="fact-text">大型机构投资者作为 universal owners，持仓跨所有资产类别、行业和地区高度分散，其投资回报主要依赖整体经济。负面 megatrends 会拖累经济繁荣并增加不稳定，因此成为实施 ESG 的理由。<br><b>等式：</b>Universal owners == 超分散持仓 → 回报依赖整体经济 → 需要管理系统性负面趋势。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">8</div><div class="fact-body"><div class="fact-title">投资也可以服务社会</div><p class="fact-text">实践 responsible investment 的一个理由是：部分投资者相信投资可以，甚至应该，在提供财务回报的同时服务社会。SDGs 被部分投资界改造为管理和改善投资影响的框架。<br><b>等式：</b>Serve society + financial return == SDGs 作为 impact 管理框架。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">9</div><div class="fact-body"><div class="fact-title">Client demand 很关键</div><p class="fact-text">客户需求对 responsible investment 很关键，因为客户决定资产如何管理；整合 ESG considerations 的客户数量持续增长。<br><b>等式：</b>Client demand == 客户决定资产管理方式 → ESG 整合增长。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">10</div><div class="fact-body"><div class="fact-title">机构投资者反映 ESG 的流程</div><p class="fact-text">机构投资者通常通过以下流程反映 ESG：写入 investment mandates、纳入 strategic asset allocation、基于 ratings 应用 filter、把 ESG issues 纳入 financial models、用 ESG factors 识别投资机会。<br><b>等式：</b>ESG in process == mandates + SAA + rating filter + financial models + opportunities。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">11</div><div class="fact-body"><div class="fact-title">财务重大性的根本驱动</div><p class="fact-text">ESG factors 的财务重大性来自其 reduce risk or enhance returns 的能力，因为 ESG 考虑额外风险，并向投资过程注入新的、前瞻性的洞察。<br><b>等式：</b>Materiality driver == additional risks + forward-looking insights → risk/return effect。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">12</div><div class="fact-body"><div class="fact-title">响应 sustainability megatrends 可成为成功因素</div><p class="fact-text">被投公司将 sustainability megatrends 纳入业务运营的能力可能成为成功因素，例如帮助其 anticipate growth opportunities 或为原材料成本上涨寻找 alternatives。<br><b>等式：</b>Megatrend response == 预判增长机会 + 寻找成本替代方案。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">13</div><div class="fact-body"><div class="fact-title">ESG 发展快，但挑战仍在</div><p class="fact-text">ESG investing 发展迅速，但进一步增长仍有挑战。实施前挑战包括 performance perceptions、旧 fiduciary duty 解释、non-supportive advice；实施后挑战包括 lack of understanding、resource intensity、good quality data、marketing/commitment/delivery gap。<br><b>等式：</b>ESG challenges == 实施前认知/受托/建议 + 实施后理解/资源/数据/交付缺口。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">14</div><div class="fact-body"><div class="fact-title">ESG factors 影响财务表现的证据</div><p class="fact-text">金融业和学界越来越认可 ESG factors influence financial performance。多项研究表明，与公司就 ESG issues 进行 engagement 可通过更好的 ESG risk management 和更可持续实践，为投资者和公司创造价值；meta-studies 也显示 ESG integration 与公司层面 improved financial performance 相关。<br><b>等式：</b>ESG performance evidence == engagement value + risk management + sustainable practices + corporate-level performance link。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">15</div><div class="fact-body"><div class="fact-title">UN / PRI 等倡议推动 ESG 投资</div><p class="fact-text">UN 主办或赞助多项推动 sustainability 和 ESG investing 的倡议。PRI 尤其重要，它是投资者国际网络，帮助理解 ESG 对投资、所有权决策和实践的影响，并为投资价值链中的各类参与者提供 tools 和 best practice reports。<br><b>等式：</b>UN initiatives == sustainability driver；PRI == investor network + ESG implications + tools/reports。</p></div></div>
+    </div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading</div>
+        <h2>延伸阅读：每份材料看什么</h2>
+      </div>
+      <div class="head-desc">这里不是让你全读，而是知道它们分别支撑哪类考点。</div>
+    </div>
+    <div class="reading-list">
+      <div class="reading-card"><div class="reading-icon">1</div><div><div class="reading-title">Eccles, Ioannou, and Serafeim (2012) · The Impact of Corporate Sustainability on Organizational Processes and Performance</div><p class="reading-desc">用于支撑“corporate sustainability 不只是形象工程，而会影响组织流程和绩效”的理解，对应 Key Fact 2 和 Key Fact 14。</p><div class="reading-url">National Bureau of Economic Research Working Paper 17950</div></div></div>
+      <div class="reading-card"><div class="reading-icon">2</div><div><div class="reading-title">Law Commission (2014) · Fiduciary Duties of Investment Intermediaries</div><p class="reading-desc">用于理解 modern fiduciary duty：不考虑长期价值驱动因素，包括 ESG issues，可能反而违背受托责任。</p><div class="reading-url">lawcom.gov.uk · fiduciary duties of investment intermediaries</div></div></div>
+      <div class="reading-card"><div class="reading-icon">3</div><div><div class="reading-title">PRI (2016) · From Principles to Performance</div><p class="reading-desc">用于理解从 PRI principles 到实际投资表现和流程落地的连接，特别对应 Key Fact 10 和 Key Fact 15。</p><div class="reading-url">sustainabilityexchange.ac.uk · from principles to performance</div></div></div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组总式背完整章</h2>
+      </div>
+      <div class="head-desc">如果只能用 5 分钟复习第 1 章，先背这一页。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>整章逻辑等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG investing</div><div class="eq-op">==</div><div class="eq-rhs">ESG 入投资决策 + 所有者/债权人角色 + 长期可持续回报依赖稳定系统。</div></div>
+          <div class="eq"><div class="eq-lhs">RI types</div><div class="eq-op">==</div><div class="eq-rhs">多数影响 portfolio construction；engagement 影响 issuer behavior。</div></div>
+          <div class="eq"><div class="eq-lhs">Why ESG</div><div class="eq-op">==</div><div class="eq-rhs">降低风险/提高回报 + 现代受托责任 + universal owners + SDGs/impact + client demand。</div></div>
+          <div class="eq"><div class="eq-lhs">Materiality</div><div class="eq-op">==</div><div class="eq-rhs">降成本、提效率、降罚款、降外部性、适应 megatrends。</div></div>
+          <div class="eq"><div class="eq-lhs">Practice</div><div class="eq-op">==</div><div class="eq-rhs">mandates + SAA + rating filter + models + opportunities + corporate/policy engagement。</div></div>
+          <div class="eq"><div class="eq-lhs">Initiatives</div><div class="eq-op">==</div><div class="eq-rhs">UN / PRI / reporting / climate / impact / governance 工具推动 ESG 投资能力。</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>ESG vs CSR</b>ESG 是投资方法；CSR 是公司伦理经营承诺；ESG 已从 moral prism 走向 strategic。</div>
+          <div class="trap"><b>Portfolio construction vs engagement</b>SRI、thematic、best-in-class 等影响持仓；engagement 影响发行人行为。</div>
+          <div class="trap"><b>Financial materiality vs impact</b>财务重大性看 ESG 如何影响价值；impact 视角看投资如何影响社会和环境。</div>
+          <div class="trap"><b>Old vs modern fiduciary duty</b>旧理解认为 ESG 是障碍；现代理解认为忽视长期价值驱动因素才是问题。</div>
+          <div class="trap"><b>Company performance vs fund alpha</b>公司层面 ESG 与财务表现多为正相关；基金层面 alpha 不一定稳定转化。</div>
+          <div class="trap"><b>UNGC vs PRI vs SDGs</b>UNGC 是公司 10 原则；PRI 是投资者网络和六原则；SDGs 是全球目标框架。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">第 1 章现在已经形成：7 个复习模块 + 1 个 Key Facts / Further Reading 汇总页。下一步就是统一制作第 1 章三轮练习系统。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>自测题：用 Key Facts 反推全章</h2>
+      </div>
+      <div class="head-desc">这些题用于复盘汇总页，正式三轮练习系统会使用 PDF 后面的正式题目。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard"><div class="qtop"><div class="qno">01</div><div class="qtext">ESG investing 的定义中，除了 ESG factors 入决策，还强调投资者哪两个角色？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>Owners and creditors 的角色。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">02</div><div class="qtext">为什么 engagement 是 responsible investment forms 中的特殊项？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>其他形式最终多与 portfolio construction 相关；engagement 关注是否以及如何影响 issuer behavior。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">03</div><div class="qtext">ESG financial materiality 的四个来源是什么？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>Reduced cost and increased efficiency、reduced risk of fines、reduced externalities、improved adaptability to sustainability megatrends。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">04</div><div class="qtext">现代受托责任为什么支持 ESG 考量？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>现代解释认为，不考虑包括 ESG issues 在内的长期投资价值驱动因素，是 failure of fiduciary duty。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">05</div><div class="qtext">Universal owners 为什么关心 negative megatrends？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>它们持仓高度分散，回报依赖整体经济；负面 megatrends 会拖累经济繁荣并增加不稳定。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">06</div><div class="qtext">机构投资者通常通过哪些流程反映 ESG considerations？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>Investment mandates、SAA、rating filter、financial models、using ESG factors to identify investment opportunities。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">07</div><div class="qtext">ESG challenges 可以分成哪两个阶段？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>实施前：performance perceptions、旧 fiduciary duty 解释、non-supportive advice；实施后：lack of understanding、resource intensity、data quality、marketing/commitment/delivery gap。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">08</div><div class="qtext">第 1 章对 ESG 与财务表现的总体证据怎么表述？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>越来越多金融业和学界证据认可 ESG factors influence financial performance；engagement 可创造价值；meta-studies 显示公司层面 ESG integration 与 improved financial performance 相关。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">09</div><div class="qtext">Key Facts 中特别点名哪个 UN 相关投资者网络？它提供什么？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>PRI。它是投资者国际网络，提供工具和最佳实践报告，帮助理解 ESG 对投资和所有权决策/实践的影响。</div></article>
+      <article class="qcard"><div class="qtop"><div class="qno">10</div><div class="qtext">三条 Further Reading 分别支撑哪类考点？</div><button class="qbtn" type="button">显示答案</button></div><div class="qanswer"><b>答案：</b>Eccles et al. 支撑 corporate sustainability 与绩效；Law Commission 支撑 fiduciary duty；PRI From Principles to Performance 支撑原则到投资实践和绩效落地。</div></article>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach((item) => item.classList.toggle('active', item === tab));
+    panels.forEach((panel) => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

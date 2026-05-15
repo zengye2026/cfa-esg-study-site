@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 Module 6 · Corporate Governance and the Independent Audit Function</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(28px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:820px;margin:0;line-height:1.86;overflow-wrap:anywhere}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:500px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}.card.dark h3{color:#fff}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch:nth-child(6){background:var(--teal-bg);border-color:var(--teal-bdr)}.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{border-left:4px solid var(--blue);background:var(--blue-bg);border-radius:var(--r);padding:11px 12px;color:#1e3a8a;font-size:13px;line-height:1.72;margin:11px 0}.quote-box b{color:#172554}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.audit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}.audit-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.audit-head{padding:13px 15px;border-bottom:1px solid var(--line2);display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}.audit-name{font-size:16px;font-weight:950;color:var(--dark);line-height:1.25}.audit-body{padding:14px 15px}.audit-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:8px;margin-bottom:8px}.audit-lab{font-size:11.5px;font-weight:950;color:var(--muted);text-transform:uppercase}.audit-text{font-size:13px;color:var(--sub);line-height:1.62}
+.report-table{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.report-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.report-card h3{font-size:17px}.metric{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:8px 0}.metric strong{font-family:var(--serif);font-size:28px;color:var(--dark);line-height:1}.metric span{font-size:12px;color:var(--muted);font-weight:900}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.audit-card,.report-card,.center-node,.formula,.trap{max-width:100%}.center-node,.branch-title,.topic-title,.case-name,.audit-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1040px){.branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.report-table{grid-template-columns:1fr}.flowline{grid-template-columns:repeat(3,minmax(0,1fr))}.flow-step:not(:last-child)::after{display:none}}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flowline{grid-template-columns:repeat(2,minmax(0,1fr))}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr 1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row,.audit-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:17px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 5</span>
+        <span class="pill">Module 6</span>
+        <span class="pill">5.1.4</span>
+        <span class="pill">Audit Function</span>
+      </div>
+      <h1>Corporate Governance and the Independent Audit Function</h1>
+      <p class="lead">本模块把审计功能放回公司治理框架中理解：审计师不是管理层的附属，也不是保证每个数字绝对正确的“查错机器”；审计师是代表股东和资本提供者，用独立、怀疑和程序化证据，对报告是否公允表达提供保证。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Audit function == independent eyes + assurance not guarantee + skepticism + sampling/technology + enhanced reporting + liability boundary + internal audit link</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">5.1.4 解释审计师在公司治理中的角色，以及有效审计交付面临的挑战</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">挑战线索</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">增强审计报告要素</div></div>
+      </div>
+      <div class="side-note">记忆抓手：审计题先问两件事：这是 external audit 还是 internal audit？这是 assurance 还是 guarantee？</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="origin">角色起源</button>
+    <button class="tab" data-tab="assurance">ESG Assurance</button>
+    <button class="tab" data-tab="challenges">独立性/轮换/抽样</button>
+    <button class="tab" data-tab="reports">增强审计报告</button>
+    <button class="tab" data-tab="internal">责任与内审</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="compress">易错压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div><div class="eyebrow">Memory Map</div><h2>把审计想成一道“信任过滤器”</h2></div>
+      <div class="head-desc">管理层提供报告，审计师用独立视角和证据程序过滤，投资者读报告时要知道过滤器的范围、强度和局限。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Independent Audit Function<br>用独立保证降低报告信息风险，但不能消灭所有错误和舞弊风险</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">角色</div><p>Independent pair of eyes。</p><p>评价管理层编制的财务报告。</p></div>
+        <div class="branch"><div class="branch-title">边界</div><p>提供 assurance，不是 guarantee。</p><p>没有绝对保证数字正确，也不能保证无舞弊。</p></div>
+        <div class="branch"><div class="branch-title">方法</div><p>审计是 sampling process。</p><p>技术可能扩大到全量交易，但仍需判断异常。</p></div>
+        <div class="branch"><div class="branch-title">独立</div><p>非审计服务、管理层关系、人员流动和行为独立性都会制造冲突。</p></div>
+        <div class="branch"><div class="branch-title">报告</div><p>增强审计报告披露 scope、materiality、key audit matters。</p></div>
+        <div class="branch"><div class="branch-title">联动</div><p>外审依赖内部控制与内审质量，审计委员会协调 assurance。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>资本提供者出资</h3><p>外部资金需要管理层交代使用情况。</p></div>
+        <div class="flow-step"><h3>管理层编报告</h3><p>年度报告、财务报表和更广泛报告。</p></div>
+        <div class="flow-step"><h3>审计师抽证据</h3><p>用抽样、控制测试、程序和专业判断。</p></div>
+        <div class="flow-step"><h3>保持怀疑</h3><p>不能被关系、预算、时间表削弱挑战精神。</p></div>
+        <div class="flow-step"><h3>报告关键判断</h3><p>让投资者看到范围、重要性和关键审计事项。</p></div>
+        <div class="flow-step"><h3>投资者定信任权重</h3><p>看保证强度、控制质量和潜在冲突。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Coverage Checklist</div><h2>PDF 5.1.4 覆盖清单</h2></div>
+      <div class="head-desc">这页用于防遗漏：每一条都来自第 5 章审计功能段落。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">角色与历史</span></h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">现代审计概念来自历史上的财务丑闻和外部资本问责需求。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">17 世纪贸易企业和 VOC：完成贸易周期后要核算业绩、分配收益、再续授权。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">工业革命后，大型公司向外部资本融资，推动 annual reports、accounts 和 AGM。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">1840s UK railway boom 失败和欺诈后，法律要求独立方审计年度账目。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">审计师提供 independent pair of eyes，评价报告是否 fair representation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">审计提供 assurance，不提供绝对正确保证，也不能确认企业绝无舞弊。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">交付挑战</span></h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">审计是 sampling process，用来发现可追查的 anomalies。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Kingston Cotton Mill 判例中的比喻：auditors should be watchdogs, not bloodhounds。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG assurance 要看 scope、timeline、conduct 和 checks and balances。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG assurance 多数市场仍是 voluntary，且无单一全球监管标准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">IAASB 提出 ISSA 5000，PDF 中写到目标是在 2024 年底前 finalise。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">非审计服务、咨询费、税务服务、管理层关系和人员流动会影响独立性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">行为独立性要求审计团队保持 skepticism，并有足够时间和人员追问。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU MFR：原始最长 10 年；公开招标后可到 20 年；joint audit 可到 24 年。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">技术和 AI 可能减少抽样需求，但不能替代对异常和信息意义的智能判断。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">报告、责任与内审</span></h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">增强审计报告三要素：scope of the audit、materiality、key audit matters。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Performance materiality 约 75% 常见；50%-60% 可能提示对财务控制信心较低。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Key audit matters 可显示公司报告口径是 conservative、neutral 还是 aggressive。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">审计师责任边界：多数市场 unlimited liability；美国 SEC 不允许限制审计师责任。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Internal audit 与 external audit 不同，通常属于公司内部，并与审计委员会有 dotted line。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有效内审帮助管理层和非执行董事了解一线执行，保护资产、声誉和可持续性。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="origin" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Role Origin</div><h2>审计为什么是治理的一部分？因为资本要问责</h2></div>
+      <div class="head-desc">不要把审计只记成会计技术，它的根是“外部资本要求管理层交代”。</div>
+    </div>
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 从贸易周期到年度问责</div><span class="tag tag-blue">历史线</span></div>
+        <p class="small"><b>原文要点：</b>17 世纪贸易企业完成一次航程或固定期间后，要核算业绩并分享收益，之后才可能获得续期授权；这有时包含对账目的独立监督。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">外部授权</div><div class="eq-op">==</div><div class="eq-rhs">先交代业绩 + 再分配收益 + 才能续授权</div></div>
+        </div>
+        <div class="memory"><b>记忆：</b>先想“航程结束结账”。审计的原始功能不是神秘技术，而是投资人让经营者交代结果。</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. 工业革命把问责变成年度制度</div><span class="tag tag-green">资本线</span></div>
+        <p class="small"><b>原文要点：</b>工业革命带来大量向外部方融资的大型持续经营公司，资金提供者要求管理层至少每年说明资本使用情况，形成 annual reports、accounts 和 AGM。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">持续经营公司</div><div class="eq-op">==</div><div class="eq-rhs">外部资本 + 年度账目 + 股东大会 + 管理层问责</div></div>
+        </div>
+        <div class="riskline"><b>考点：</b>AGM、年度报告、年度账目与公司治理不是孤立概念，它们都服务于 capital accountability。</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. 1840s 铁路泡沫推动独立审计</div><span class="tag tag-amber">丑闻线</span></div>
+        <p class="small"><b>原文要点：</b>英国 1840s railway boom 中的失败和欺诈使少数股东遭受重大损失，法律因此要求年度账目由独立方审计，给股东关于数字 true and fair 的保证。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">丑闻反应</div><div class="eq-op">==</div><div class="eq-rhs">少数股东损失 → 法律回应 → independent audit → true and fair assurance</div></div>
+        </div>
+        <div class="memory"><b>逻辑：</b>公司治理标准常由丑闻推动，审计制度也是同一条“失败 → 投资者受损 → 规则强化”的路径。</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. 审计的核心概念并未改变</div><span class="tag tag-rose">边界线</span></div>
+        <p class="small"><b>原文要点：</b>审计师评估管理层编制的财务报告，并提供一定保证，说明报告是否公允反映企业业绩和财务状况；但没有绝对保证数字正确，也不能保证没有舞弊。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Audit</div><div class="eq-op">==</div><div class="eq-rhs">independent assessment of management reports + assurance of fair representation - absolute guarantee</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>看到 guarantee、every number、certainty that no fraud 这类绝对化表述，要警惕。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="assurance" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Wider Reporting</div><h2>财务报表之外：年度报告和 ESG 报告的保证边界</h2></div>
+      <div class="head-desc">PDF 特别强调：ESG assurance 正在发展，但多数市场仍是自愿，且报告范围必须细读。</div>
+    </div>
+    <div class="grid-2">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">Financial statements vs wider reporting</div><span class="tag tag-blue">核心区别</span></div>
+        <p class="small"><b>原文要点：</b>审计师独立检查并对财务报表提供第三方保证，确认详细信息不存在重大错报和不一致。利益相关方由此可评价并改善治理、风险管理和控制。</p>
+        <div class="quote-box"><b>关键限制：</b>审计主要聚焦财务报表；对随财务报表发布的其他材料，通常只是有限阅读并披露不一致。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">财报审计</div><div class="eq-op">==</div><div class="eq-rhs">material misstatement 检查 + inconsistencies 检查 + third-party assurance</div></div>
+          <div class="eq"><div class="eq-lhs">其他叙述报告</div><div class="eq-op">==</div><div class="eq-rhs">有限阅读 + 发现与财报不一致时披露</div></div>
+        </div>
+        <div class="riskline"><b>投资影响：</b>不要把“财报审计意见”自动外推为“整份年报所有叙述都被同等保证”。</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">ESG assurance 要读三件事</div><span class="tag tag-green">三问法</span></div>
+        <p class="small"><b>原文要点：</b>ESG assurance 可能由大型审计 firm 或专门 ESG assurance provider 完成；投资者要仔细阅读 assurer's report，理解实际达到的 ESG standards，并决定可给报告增加多少信任权重。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG assurance</div><div class="eq-op">==</div><div class="eq-rhs">scope + timeline + conduct/checks and balances</div></div>
+          <div class="eq"><div class="eq-lhs">信任权重</div><div class="eq-op">==</div><div class="eq-rhs">保证范围 × 保证期间 × 程序质量 × 标准清晰度</div></div>
+        </div>
+        <div class="memory"><b>记忆：</b>看到 ESG assurance，不先问“有没有保证”，而是问“保证了什么、保证哪段期间、怎么保证”。</div>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card">
+        <h3>Scope</h3>
+        <p class="small">覆盖 business strategy、policies、operations 中哪些内容？范围越窄，可依赖的结论越有限。</p>
+      </div>
+      <div class="card">
+        <h3>Timeline</h3>
+        <p class="small">评估在什么时候进行，覆盖哪些期间？跨期数据和目标承诺要特别注意。</p>
+      </div>
+      <div class="card">
+        <h3>Conduct</h3>
+        <p class="small">程序如何执行？有哪些 checks and balances 来尽可能保证准确性？</p>
+      </div>
+    </div>
+    <div class="footer-note">PDF 表述：ESG assurance 在几乎所有市场目前仍是 voluntary，且不同于财务审计，并没有基于一套全球普遍接受的监管标准；IAASB 提出 ISSA 5000，目标是建立可用于 sustainability assurance engagements 的通用要求。</div>
+  </section>
+
+  <section id="challenges" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Delivery Challenges</div><h2>有效审计交付的三组挑战：独立性、轮换、抽样</h2></div>
+      <div class="head-desc">把三组挑战连成一句话：审计师要独立地怀疑，但市场集中、客户关系、预算和抽样边界都会削弱这种能力。</div>
+    </div>
+    <div class="audit-grid">
+      <div class="audit-card">
+        <div class="audit-head"><div class="audit-name">Independence of audit firms</div><span class="tag tag-rose">冲突</span></div>
+        <div class="audit-body">
+          <div class="audit-row"><div class="audit-lab">原文要点</div><div class="audit-text">大型审计 firm 通常为审计客户提供咨询、税务等非审计服务，存在明显利益冲突风险。</div></div>
+          <div class="audit-row"><div class="audit-lab">中文解释</div><div class="audit-text">审计师一边收审计费检查客户，一边收咨询费服务客户，经济关系会让挑战管理层变难。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">独立性风险</div><div class="eq-op">==</div><div class="eq-rhs">非审计服务费 + 管理层关系 + 人员流动 + 行为趋同</div></div>
+          </div>
+          <div class="riskline"><b>投资影响：</b>投资者常看 audit fee vs consultancy fee，以及公司是否有限制冲突的政策。</div>
+        </div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-head"><div class="audit-name">Behavioral independence</div><span class="tag tag-violet">怀疑</span></div>
+        <div class="audit-body">
+          <div class="audit-row"><div class="audit-lab">原文要点</div><div class="audit-text">人天然倾向于寻求共识、避免冲突，这与审计师必须质疑和挑战信息的角色相反。</div></div>
+          <div class="audit-row"><div class="audit-lab">中文解释</div><div class="audit-text">审计不是只照流程打勾，关键是能不能顶住关系压力、预算压力和时间表压力继续追问。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Skepticism</div><div class="eq-op">==</div><div class="eq-rhs">question + challenge + enough time + enough staff</div></div>
+          </div>
+          <div class="riskline"><b>考点提醒：</b>Skepticism 是审计过程中的态度，不是增强审计报告三要素之一。</div>
+        </div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-head"><div class="audit-name">Auditor rotation</div><span class="tag tag-blue">EU MFR</span></div>
+        <div class="audit-body">
+          <div class="audit-row"><div class="audit-lab">原文要点</div><div class="audit-text">EU 强制审计师或审计 firm 轮换。原始最长 10 年；10 年后公开招标可延长至 20 年；joint audit 可延长至 24 年。</div></div>
+          <div class="audit-row"><div class="audit-lab">中文解释</div><div class="audit-text">轮换是为降低过度熟悉和依赖客户的风险，但审计市场集中会让竞争不足。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">MFR</div><div class="eq-op">==</div><div class="eq-rhs">10 years base + tender → 20 years + joint audit → 24 years</div></div>
+          </div>
+          <div class="riskline"><b>考点提醒：</b>Practice Problem 问 EU public company 审计 firm 可留任多久，答案抓“可延长至 20 年”，joint audit 另有 24 年特例。</div>
+        </div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-head"><div class="audit-name">Sampling and audit work</div><span class="tag tag-green">方法</span></div>
+        <div class="audit-body">
+          <div class="audit-row"><div class="audit-lab">原文要点</div><div class="audit-text">审计依赖抽样；抽样深度取决于审计师对公司系统和财务控制质量的评价。</div></div>
+          <div class="audit-row"><div class="audit-lab">中文解释</div><div class="audit-text">控制越可靠，抽样可能越少；控制越弱，投资者越希望看到更深程序。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">抽样深度</div><div class="eq-op">==</div><div class="eq-rhs">控制质量判断 + assurance 需求 - 预算/时间压力</div></div>
+          </div>
+          <div class="riskline"><b>投资影响：</b>如果预算决定工作量多于 assurance need，投资者对审计质量应更谨慎。</div>
+        </div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-head"><div class="audit-name">Technology and AI</div><span class="tag tag-teal">技术</span></div>
+        <div class="audit-body">
+          <div class="audit-row"><div class="audit-lab">原文要点</div><div class="audit-text">大数据和技术可能让审计师检查每一笔交易，而不是只抽样；独立软件 firm 也在开发相关工具。</div></div>
+          <div class="audit-row"><div class="audit-lab">中文解释</div><div class="audit-text">全量检查解决“看多少”的问题，但没有解决“看到异常后如何理解”的问题。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">AI audit</div><div class="eq-op">==</div><div class="eq-rhs">less sampling need + more anomaly data + still need intelligent judgment</div></div>
+          </div>
+          <div class="memory"><b>记忆：</b>技术可以让灯更亮，但还需要人判断阴影是不是问题。</div>
+        </div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-head"><div class="audit-name">Audit committee coordination</div><span class="tag tag-amber">联动</span></div>
+        <div class="audit-body">
+          <div class="audit-row"><div class="audit-lab">原文要点</div><div class="audit-text">外部审计会依赖内部审计对风险和报告质量的工作；优秀审计委员会会协调内外审，获得适当 assurance。</div></div>
+          <div class="audit-row"><div class="audit-lab">Brydon</div><div class="audit-text">2019 年 Brydon review 建议审计委员会每年制定 audit and assurance plan，并邀请股东参与。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">总保证</div><div class="eq-op">==</div><div class="eq-rhs">external audit + internal audit + audit committee plan + shareholder input</div></div>
+          </div>
+          <div class="riskline"><b>投资影响：</b>强审计委员会不是形式职位，它决定公司 assurance 拼图是否完整。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reports" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Enhanced Auditor Reports</div><h2>增强审计报告：投资者必须重新学会阅读的三件事</h2></div>
+      <div class="head-desc">过去审计报告只有 true and fair opinion；增强报告让投资者看到审计师做了什么、用多高门槛判断、重点挑战哪里。</div>
+    </div>
+    <div class="report-table">
+      <div class="report-card">
+        <span class="tag tag-blue">Element 1</span>
+        <h3>Scope of the audit</h3>
+        <p class="small"><b>原文要点：</b>说明审计覆盖了公司哪些部分、深度如何。通常最大 segments 会做 full audit，其他 segments 做 tailored procedures，有些 segments 可能完全不覆盖。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scope</div><div class="eq-op">==</div><div class="eq-rhs">covered segments + depth + ignored segments</div></div>
+        </div>
+        <div class="riskline"><b>考点：</b>范围不是“审了整个集团每一处”，而是要看哪些部分被 full audit。</div>
+      </div>
+      <div class="report-card">
+        <span class="tag tag-green">Element 2</span>
+        <h3>Materiality</h3>
+        <p class="small"><b>原文要点：</b>Materiality 是定性概念，但披露常聚焦数量门槛。大型公司的门槛可能很高，投资者更关心不同 segment 的 materiality 以及 performance materiality。</p>
+        <div class="metric"><strong>75%</strong><span>typical performance materiality</span></div>
+        <div class="metric"><strong>50%-60%</strong><span>可能提示对财务控制信心较低</span></div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Performance materiality</div><div class="eq-op">==</div><div class="eq-rhs">低于总 materiality 的程序门槛，用来防止汇总后出问题</div></div>
+        </div>
+      </div>
+      <div class="report-card">
+        <span class="tag tag-violet">Element 3</span>
+        <h3>Key audit matters</h3>
+        <p class="small"><b>原文要点：</b>涉及账目中少数关键判断区域。事项本身未必让投资者惊讶，但审计师如何讨论、强调什么，可以透露重要信息。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">KAM</div><div class="eq-op">==</div><div class="eq-rhs">key judgments + auditor discussion + conservative/neutral/aggressive tone</div></div>
+        </div>
+        <div class="riskline"><b>投资影响：</b>如果报告提示某项估计 aggressive，投资者要重新审视利润质量和估值假设。</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>为什么增强报告重要？</h3>
+        <p class="small">它升级了过去只看审计意见是否 negative 的旧做法。投资者过去习惯认为 auditor reports 不值得读；PDF 提醒这课现在要“unlearn”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">旧报告</div><div class="eq-op">==</div><div class="eq-rhs">true and fair opinion</div></div>
+          <div class="eq"><div class="eq-lhs">新报告</div><div class="eq-op">==</div><div class="eq-rhs">opinion + scope + materiality + KAM + control insight</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Brydon 的三个关键词</h3>
+        <p class="small">Brydon 独立审计质量和有效性评审强调审计师应为投资者和市场做更多信息传递，其最终报告标题使用了三个关键词：assess、assure and inform。</p>
+        <div class="memory"><b>记忆：</b>增强报告不是多写几页，而是把“审计师如何判断”变成投资者可读的治理信息。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="internal" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Liability and Internal Audit</div><h2>审计师为什么谨慎？内审为什么不能和外审混淆？</h2></div>
+      <div class="head-desc">责任解释了审计师不愿提供过多额外信息；内审解释了公司内部如何持续发现风险和执行偏差。</div>
+    </div>
+    <div class="grid-2">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">Auditor liability</div><span class="tag tag-rose">责任边界</span></div>
+        <p class="small"><b>原文要点：</b>多数市场审计师承担 unlimited liability。美国 SEC 规则要求受其管辖的公司不得以任何方式限制审计师责任，包括许多在美国上市股权或债务的外国公司。</p>
+        <p class="small"><b>中文解释：</b>审计师在企业失败后常被起诉，因为他们是少数有偿付能力的 deep-pocketed players；但很多案件庭前和解，所以实际责任风险大小并不完全清楚。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">审计谨慎</div><div class="eq-op">==</div><div class="eq-rhs">unlimited liability + deep pockets + lawsuit risk + settlement uncertainty</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>Liability 不是审计质量的替代品，它解释审计报告为什么常常保守、克制。</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">Internal audit</div><span class="tag tag-green">内部风险工具</span></div>
+        <p class="small"><b>原文要点：</b>Internal audit 不应与 external audit 混淆。内部审计通常属于公司内部，正式向 executive team 汇报，通常也以 dotted line 向 audit committee 汇报。</p>
+        <p class="small"><b>中文解释：</b>内审的重点是风险管理：确认公司程序和预期行为在实践中落地，并发现不当行为或有问题的管理。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Internal audit</div><div class="eq-op">==</div><div class="eq-rhs">risk management tool + procedure check + behavior check + misconduct detection</div></div>
+        </div>
+        <div class="memory"><b>记忆：</b>外审给外部资本看“报告是否可信”，内审帮董事会看“公司实际有没有照制度运转”。</div>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card">
+        <h3>内审地位不一</h3>
+        <p class="small">PDF 说明 internal audit 在不同企业中的地位差异很大，有些组织甚至没有内审。</p>
+      </div>
+      <div class="card">
+        <h3>有效内审让董事会贴近一线</h3>
+        <p class="small">对大型跨国公司而言，董事会离实际经营很远；内审可以帮助执行团队和非执行董事对 ground delivery 建立信心。</p>
+      </div>
+      <div class="card">
+        <h3>内审正在转型</h3>
+        <p class="small">PDF 提到内审正转向帮助董事会和高管保护 assets、reputation 和 sustainability，2020 Internal Audit Code of Practice 是这一变化的 pathfinder。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Case Boxes</div><h2>三个小案例，把抽象审计概念落地</h2></div>
+      <div class="head-desc">本模块的案例来自 PDF 5.1.4 审计段落中的判例、制度实践和评审建议。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Kingston Cotton Mill (1896)</div><span class="tag tag-amber">watchdog</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">背景</div><div class="case-text">审计师接受管理层关于存货的说法，之后发生公司失败。</div></div>
+          <div class="case-row"><div class="case-lab">PDF 句意</div><div class="case-text">审计师应是 watchdogs, not bloodhounds。即审计师要警觉，但传统上不被期待像猎犬一样主动追踪每个舞弊痕迹。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">现代争论在于：失败后，人们会问 watchdog 是否睡着了，以及是否应要求审计师更像 sniffer dog。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Scandinavian sustainability assurance</div><span class="tag tag-green">ESG</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">背景</div><div class="case-text">部分 Scandinavian countries 的股东现在每年投票批准 sustainability reporting assurer，就像批准年度审计 firm 一样。</div></div>
+          <div class="case-row"><div class="case-lab">意义</div><div class="case-text">ESG 报告保证开始接近财务审计的治理程序，但投资者仍要读清保证范围、标准和程序。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">ESG assurance 不是“天然同财务审计一样强”，多数市场仍自愿且标准仍在发展。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Brydon Review (2019)</div><span class="tag tag-blue">assurance plan</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">建议</div><div class="case-text">每个审计委员会每年制作 audit and assurance plan，披露其对公司报告整体保证的期待，包括内外部审计。</div></div>
+          <div class="case-row"><div class="case-lab">股东</div><div class="case-text">股东应被邀请参与该计划的发展。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">公司保证体系不只是外审报告，而是审计委员会、外审、内审和股东沟通共同构成。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Exam Compression</div><h2>易错点和考前压缩</h2></div>
+      <div class="head-desc">这一页适合考前 5 分钟快速扫：把绝对化表述、数字和三要素记牢。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>压缩背诵公式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>审计角色</b> == independent eyes + assurance of fair presentation - guarantee of every number/no fraud</div>
+          <div class="formula"><b>ESG assurance</b> == scope + timeline + conduct；多数市场 voluntary，标准仍在发展</div>
+          <div class="formula"><b>独立性风险</b> == non-audit services + close management relationship + staff later employed by audited companies + behavioral consensus</div>
+          <div class="formula"><b>EU MFR</b> == 10 years base + tender → 20 years + joint audit → 24 years</div>
+          <div class="formula"><b>Sampling</b> == anomaly detection process；AI 可全量看交易，但不能替代判断</div>
+          <div class="formula"><b>Enhanced report</b> == scope + materiality + key audit matters</div>
+          <div class="formula"><b>Performance materiality</b> == 75% typical；50%-60% 可能提示财务控制信心低</div>
+          <div class="formula"><b>Internal audit</b> == internal risk tool + procedure/behavior check + dotted line to audit committee</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>高频易错提醒</h3>
+        <div class="formula-list">
+          <div class="trap"><b>误区 1：审计师保证无舞弊。</b>错。审计提供保证但不是绝对保证，也不能确定企业没有舞弊。</div>
+          <div class="trap"><b>误区 2：增强审计报告三要素包括 skepticism。</b>错。三要素是 scope、materiality、key audit matters；skepticism 是审计态度。</div>
+          <div class="trap"><b>误区 3：ESG assurance 已和财务审计一样全球统一。</b>错。多数市场仍自愿，且没有单一普遍接受的监管标准。</div>
+          <div class="trap"><b>误区 4：技术能取消审计判断。</b>错。技术可能减少抽样，但不能替代对异常的智能判断。</div>
+          <div class="trap"><b>误区 5：内审就是外审的公司内部版本。</b>不准确。内审是公司风险管理工具，通常属于公司内部，服务执行团队和董事会。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Self Test</div><h2>自测：看到题眼，反推知识点</h2></div>
+      <div class="head-desc">先自己答，再点“看答案”。重点训练考点识别，而不是死记整段文字。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">1</div><div class="qtext">题眼：assurance but not certainty。审计师到底保证什么、不保证什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">审计师提供对财务报告是否公允反映企业业绩和财务状况的保证；不保证每个数字绝对正确，也不保证企业不存在舞弊。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">2</div><div class="qtext">题眼：watchdogs, not bloodhounds。这个比喻来自哪个判例？说明什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">来自 1896 年 UK Court of Appeal 的 Kingston Cotton Mill (No. 2)。说明传统观点下审计师要保持警觉，但不是主动追捕所有舞弊痕迹的猎犬。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">3</div><div class="qtext">题眼：ESG assurance report。投资者至少应看哪三项？</div><button class="qbtn">看答案</button></div><div class="qanswer">看 scope、timeline 和 conduct。也就是保证范围、覆盖期间、执行方法与 checks and balances。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">4</div><div class="qtext">题眼：audit fee vs consultancy fee。对应哪个审计挑战？</div><button class="qbtn">看答案</button></div><div class="qanswer">对应 audit firm independence and conflicts of interest。非审计服务费、咨询和税务服务可能削弱审计师挑战客户的独立性。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">5</div><div class="qtext">题眼：EU mandatory audit firm rotation。10、20、24 年分别怎么记？</div><button class="qbtn">看答案</button></div><div class="qanswer">原始最长审计任期 10 年；10 年后公开招标可延长到 20 年；如果 10 年后同时任命两个 auditor 做 joint audit，最高可到 24 年。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">6</div><div class="qtext">题眼：AI checks every transaction。为什么仍不能说审计判断被取代？</div><button class="qbtn">看答案</button></div><div class="qanswer">因为难点不只是数字加总，而是在大量数据中识别和解释 anomalies。技术可能减少抽样需求，但仍需要智能判断。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">7</div><div class="qtext">增强审计报告三大披露元素是什么？哪个常见干扰项不是元素？</div><button class="qbtn">看答案</button></div><div class="qanswer">三要素是 scope of the audit、materiality、key audit matters。Skepticism 不是披露元素，而是审计全过程应保持的态度。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">8</div><div class="qtext">题眼：performance materiality 50%-60%。投资者可以反推什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">可能提示审计师对公司财务控制信心较低，或公司组织高度分散、控制需要强化。75% 左右更常见。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">9</div><div class="qtext">Internal audit 的汇报线和主要功能是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">内审通常属于公司内部，正式向 executive team 汇报，通常以 dotted line 向 audit committee 汇报。它主要是风险管理工具，用于确认程序和行为落地，并发现不当行为或问题管理。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">10</div><div class="qtext">正式题眼：Which of the following is not one of the three key elements of disclosure in the new enhanced auditor reports? Scope / Skepticism / Key audit matters</div><button class="qbtn">看答案</button></div><div class="qanswer">答案是 Skepticism。Scope 和 Key audit matters 是增强审计报告披露元素；Materiality 也是元素。Skepticism 是审计态度，不是报告元素。</div></div>
+    </div>
+  </section>
+
+  <div class="footer-note">资料依据：ch05/esg-05.pdf 中 5.1.4 Corporate Governance and the Independent Audit Function。前一章仅作为页面结构参考，本页未使用其他章节知识点。</div>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    const active = document.getElementById(target);
+    if (active) active.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

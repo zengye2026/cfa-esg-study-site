@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 Module 1 · 8.1.1 Strategic Asset Allocation</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(86px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:840px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:94px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .grid-2,.grid-3,.compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}.hero-side{padding:16px}
+  .side-big{font-size:17px;line-height:1.5}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}
+  .eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 8</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">8.1.1</span>
+        <span class="pill">Strategic Asset Allocation</span>
+      </div>
+      <h1>ESG Integration in<br>Strategic Asset Allocation</h1>
+      <p class="lead">本页覆盖第 8 章开头到资产管理人选择。重点是：ESG 不是只在单只证券估值时处理，如果风险具有系统性、长期性或跨资产类别影响，就要进入战略资产配置、气候情景分析和管理人尽调。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>组合层 ESG 整合 == 判断风险层级 + 调整资产配置模型假设 + 用气候情景压力测试 + 选择能执行 ESG 的管理人。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">8.1.1 explain the impact of ESG factors on strategic asset allocation</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">SAA 模型</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">气候情景</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">尽调指标</div></div>
+        <div class="mini-stat"><div class="mini-num">1</div><div class="mini-lab">核心判断</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先问 ESG 风险在哪里。如果只影响单个发行人，偏证券选择；如果像气候风险一样同时影响资产类别、地区、行业和系统，就要上移到资产配置。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="why">为什么上移</button>
+    <button class="tab" data-tab="models">SAA模型</button>
+    <button class="tab" data-tab="climate">气候情景</button>
+    <button class="tab" data-tab="manager">管理人选择</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看总图：ESG 从证券层上移到资产配置层</h2>
+      </div>
+      <div class="head-desc">按照逻辑等式心象术，题目“Strategic Asset Allocation”拆成 strategy、asset、allocation 三个词：先定长期策略，再识别资产类别敏感性，最后把权重和管理人落地。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Integrated Portfolio Construction and Management<br>证券层 ESG → 组合层 ESG → 战略资产配置 ESG</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">1 风险层级</div>
+          <p>底层证券风险：放在 security selection。</p>
+          <p>系统性风险：放进 SAA。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">2 配置模型</div>
+          <p>MVO、factor risk、TPA、DAA、LDI、regime switching。</p>
+          <p>ESG 改的是假设、约束、风险预算。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">3 气候风险</div>
+          <p>气候风险既 systemic 又 local。</p>
+          <p>同时有 physical risk 和 transition risk。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">4 资产类别</div>
+          <p>股票、固收、另类对气候风险敏感点不同。</p>
+          <p>要看股权、债权和期限结构。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">5 管理人</div>
+          <p>资产所有者用 ESG 尽调和评分筛选管理人。</p>
+          <p>看政策、人员、流程、投后、报告。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>识别风险</h3><p>ESG 风险是底层证券风险，还是组合层系统风险。</p></div>
+        <div class="flow-step"><h3>选择入口</h3><p>底层风险进选券；系统风险进资产配置和 ALM。</p></div>
+        <div class="flow-step"><h3>改模型假设</h3><p>预期收益、波动、相关性、风险因子、负债假设。</p></div>
+        <div class="flow-step"><h3>做情景分析</h3><p>用 1.5°C、2°C、4°C 等情景压力测试组合。</p></div>
+        <div class="flow-step"><h3>筛管理人</h3><p>尽调管理人是否有能力真正执行 ESG 整合。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">核心判断</span>
+        <h3>ESG 风险在哪里，整合就放在哪里</h3>
+        <p class="small">如果 ESG 风险主要来自某个发行人，就在证券选择层处理；如果风险像气候变化一样影响整个市场和多类资产，就应进入资产配置层。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">投资影响</span>
+        <h3>ESG 会改变权重，不只是加一句披露</h3>
+        <p class="small">碳约束、净零目标、排除或增配可持续资产，都会影响可投资范围、收益来源、分散化、跟踪误差和收入收益率。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考点提醒</span>
+        <h3>第 8 章常考“层级”和“权衡”</h3>
+        <p class="small">看到 top-down、systemic、climate、asset allocation，答案通常不是个股选择；看到 divest high-carbon energy，要想到长期转型风险下降但短期收益率可能受影响。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-08.pdf` 第 436-443 页整理，覆盖引言、8.1.1 的资产配置模型和管理人选择。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">引言</span> 第 8 章从更高层级看 ESG 整合</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG integration 可以发生在投资流程不同层级，每一层都需要自己的实施框架。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">前面章节偏单只证券层；第 8 章转向 SAA、组合构建、跨资产类别和主动/指数型 ESG 策略。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">本章从风险评估视角讨论 ESG 投资方法，不以伦理或价值观筛选为主线。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">行业实践逐渐从简单 divestment 转向更复杂的整合和 engagement。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">SAA</span> 战略资产配置与 ESG 风险</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset allocation 是关键决策，SAA 政策差异可能解释投资者长期收益波动的大部分差异。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SAA 根据收益预期和客户特征设定资产类别敞口范围；ALM 负责资产现金流和负债现金流匹配。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">如果 ESG 风险主要在底层证券层，选券层整合是合理的；如果 ESG 风险是 top-down material risk，应该进入资产配置层。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 在 SAA 中的研究目前更集中于环境因素，尤其是 climate transition risk 和 physical climate risk。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">模型</span> 六类 SAA 模型</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">MVO 对基准假设高度敏感，ESG 会影响预期收益、波动率和相关性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Factor risk allocation 可以把 climate change 等 ESG 风险做成新的风险因子。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TPA 用风险预算和情景分析连接 top-down 与 bottom-up，更适合处理有判断成分的 ESG 议题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DAA、LDI、regime-switching 分别对应动态再平衡、负债驱动、突变环境捕捉。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">气候</span> 气候情景与资产类别敏感性</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Climate risk 是机构投资者资产配置中的关键 ESG 因素，因为它既系统性又本地化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Physical risk 包括极端天气等急性事件，也包括温度上升和海平面上升等慢性变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD 推荐气候情景分析；组合可用 1.5°C、2°C、4°C 等情景做压力测试。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">降低高碳能源敞口可降低长期转型风险，但可能牺牲组合收入收益率。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">管理人</span> ESG 尽调和评分</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">管理人选择中的 ESG 尽调结合定性和定量指标，用于评估业绩、流程和 ESG 整合严谨度。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 尽调指标包括政策、PRI、专职人员和委员会、投资流程整合、stewardship、客户报告。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">管理人尽调还会看公司层面的组织框架、监督机制、合规控制和 ESG/气候报告能力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资产所有者越来越使用正式评分框架，甚至把 ESG 能力作为管理人选择和资本配置权重。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Core Logic</div>
+        <h2>为什么 ESG 要进入战略资产配置？</h2>
+      </div>
+      <div class="head-desc">这一节最重要的不是背模型，而是先判断风险层级：bottom-up 还是 top-down。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">原文要点</span><div class="topic-title">ESG 整合有不同层级</div></div></div>
+        <p class="small">PDF 开头强调：ESG integration occurs at different levels of the investment process。第 8 章把视角从 underlying security level 提升到 higher levels，包括 SAA 和 portfolio construction。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">第8章视角</div><div class="eq-op">==</div><div class="eq-rhs">证券层分析 + 组合层风险 + 资产配置决策 + 跨资产类别执行</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>前面章节像是在看“单个项目底稿”，第 8 章像是在看“整个项目组合”。单个项目没问题，不代表组合整体的气候、行业、地区风险合理。</div>
+        <div class="riskline"><b>考点提醒：</b>题干出现 higher-level、portfolio construction、asset allocation，答案一般指组合层或资产配置层，不是单只证券估值细节。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">原文要点</span><div class="topic-title">SAA 与 ALM 的角色不同</div></div></div>
+        <p class="small">SAA 设定资产类别敞口范围，依据长期收益预期和客户特征；ALM 则把资产现金流与投资者负债现金流相匹配，例如养老金负债。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">SAA</div><div class="eq-op">==</div><div class="eq-rhs">长期目标 + 资产类别权重范围 + 收益/风险/相关性假设</div></div>
+          <div class="eq"><div class="eq-lhs">ALM</div><div class="eq-op">==</div><div class="eq-rhs">资产现金流 + 负债现金流 + 两者匹配</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>SAA 像“预算分配”，决定股票、债券、另类等大类资产比例；ALM 像“现金流排期”，确保未来该付的钱有资产现金流支持。</div>
+        <div class="riskline"><b>投资影响：</b>如果气候风险会影响通胀、利率、增长、信用和长期负债假设，就不能只在选券层处理。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">原文要点</span><div class="topic-title">判断 ESG 风险到底放在哪一层</div></div></div>
+        <p class="small">如果投资者认为 ESG risk 主要在 underlying security-selection level，证券层整合合理；如果 ESG risk 是 top-down material risk，特别是 climate change，就更适合进入 asset allocation level。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG入口</div><div class="eq-op">==</div><div class="eq-rhs">底层证券风险 → 选券层；系统性组合风险 → 资产配置层</div></div>
+        </div>
+        <div class="memory"><b>逻辑等式心象：</b>把投资流程想成楼层。个股风险在一楼，组合风险在二楼，SAA 在顶楼。气候变化不是某个房间漏水，而是整栋楼外部天气变了。</div>
+        <div class="riskline"><b>考点提醒：</b>题干出现 climate change、systemic and local、top-down risk factor，优先选 asset allocation level。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">原文要点</span><div class="topic-title">ESG 配置会带来权衡</div></div></div>
+        <p class="small">将 ESG 纳入资产配置会改变敞口和权重。碳约束可以降低 carbon pricing shock 风险，但也会改变组合的行业、区域、资产类别和收益结构。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG配置</div><div class="eq-op">==</div><div class="eq-rhs">降低特定风险 + 改变权重敞口 + 接受分散化/收益/跟踪误差权衡</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>ESG 不是“加标签”，而是会真的改变组合。比如降低高碳能源敞口，长期转型风险下降，但能源板块通常现金流和股息较高，组合收益率可能受影响。</div>
+        <div class="riskline"><b>投资影响：</b>考试常把“长期风险下降”和“短期收益/收入下降”放在一起考，不要只选单边好处。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="models" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">SAA Models</div>
+        <h2>六类战略资产配置模型：每个模型被 ESG 改了哪里</h2>
+      </div>
+      <div class="head-desc">这张表不是机械背诵。抓住一个问题：ESG 到底改模型的假设、因子、风险预算、再平衡、负债，还是状态突变？</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>模型</th>
+            <th>原文要点</th>
+            <th>中文解释</th>
+            <th>逻辑等式</th>
+            <th>投资影响 / 考点提醒</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Mean-variance optimization (MVO)</b></td>
+            <td>用预期收益、风险和相关性构建有效前沿；以历史数据为基准，对假设高度敏感。</td>
+            <td>它像 Excel 优化模型，输入一变，最优权重就变。</td>
+            <td>MVO == expected return + volatility + correlation → efficient frontier</td>
+            <td>ESG 会改变预期收益、波动率和相关性；波动率不擅长捕捉 fat-tail risk 和 large market swings。</td>
+          </tr>
+          <tr>
+            <td><b>Factor risk allocation</b></td>
+            <td>按风险来源构建组合，包括 GDP、利率、通胀、权益风险溢价、流动性、波动率等。</td>
+            <td>不是按资产名称分，而是按“风险来源”分。</td>
+            <td>Factor allocation == fundamental risks + market risks + ESG-related risk factors</td>
+            <td>可把 climate change 做成新的 ESG risk factor；宏观 ESG 链接较难从纯 top-down 角度精确量化。</td>
+          </tr>
+          <tr>
+            <td><b>Total portfolio analysis (TPA)</b></td>
+            <td>基于 agreed risk budget，把资本配置到预期风险敞口，不受传统资产类别桶过度约束。</td>
+            <td>先定总风险预算，再看哪些机会值得占用预算。</td>
+            <td>TPA == risk budget + future judgment + quantitative scenario analysis</td>
+            <td>适合结合判断和量化，捕捉 ESG 情景分析中的 winners and losers。</td>
+          </tr>
+          <tr>
+            <td><b>Dynamic asset allocation (DAA)</b></td>
+            <td>随风险承受能力、累计业绩、投资目标或期限变化进行动态调整。</td>
+            <td>它是更战术化的再平衡，不是长期静态配置。</td>
+            <td>DAA == changing risk tolerance + dynamic rebalancing</td>
+            <td>可反映不同期限假设变化，但动态再平衡会带来额外 estimation errors。</td>
+          </tr>
+          <tr>
+            <td><b>Liability-driven asset allocation (LDI)</b></td>
+            <td>以负债为核心寻找最有效资产组合，同时看资产收益、负债价值变化和二者互动。</td>
+            <td>养老金等投资者不能只看资产回报，还要看负债端如何变化。</td>
+            <td>LDI == asset returns + liability value + asset/liability interaction</td>
+            <td>ESG 可能影响通胀和负债假设；LDI 也对基准假设敏感。</td>
+          </tr>
+          <tr>
+            <td><b>Regime-switching models</b></td>
+            <td>建模由监管、政策和长期结构变化引发的 abrupt and persistent changes。</td>
+            <td>它专门用来处理市场环境突然换挡。</td>
+            <td>Regime switching == policy/regulation shift → fat tails + skewness + time-varying correlations</td>
+            <td>适合考虑 ESG 突变情形，但投资实务中尚未广泛使用。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card">
+        <span class="tag tag-blue">记忆线</span>
+        <h3>模型题先找“被 ESG 改的变量”</h3>
+        <p class="small">MVO 改收益/波动/相关性；factor allocation 加新因子；TPA 改风险预算；LDI 改负债假设；regime switching 捕捉突变。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">易错点</span>
+        <h3>DAA 不等于更适合 ESG</h3>
+        <p class="small">PDF 的 Key Facts 强调，SAA 只间歇性再平衡，通常比 DAA 更 aligned with ESG integration；DAA 的动态再平衡反而会增加估计误差。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-rose">考点提醒</span>
+        <h3>ESG 不是新资产类别本身</h3>
+        <p class="small">ESG 更常作为假设、约束、风险因子或目标进入模型；只有在某些情况下才扩展区域、资产类别或增加新的子资产类别。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="climate" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Climate Scenario</div>
+        <h2>气候风险：为什么它最容易进入 SAA</h2>
+      </div>
+      <div class="head-desc">PDF 把 climate risk 作为 ESG 进入资产配置的核心例子，因为它同时影响市场整体、地区、行业、公司和资产类别。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">原文要点</span><div class="topic-title">Climate risk is both systemic and local</div></div></div>
+        <p class="small">气候风险可能影响金融系统和所有发行人，也可能在特定地区、行业和公司层面表现为本地风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Climate risk</div><div class="eq-op">==</div><div class="eq-rhs">systemic financial risk + local region/sector/company risk</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>它不是“某家公司环保做不好”，而是宏观增长、物价、政策、能源转型、极端天气和资产价值一起变。</div>
+        <div class="riskline"><b>考点提醒：</b>问 strategic asset allocation 中最常被考虑的 ESG factor，答案通常是 environmental / climate risk。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">原文要点</span><div class="topic-title">Physical risk 分急性和慢性</div></div></div>
+        <p class="small">Physical risks 可能是 event-driven 的急性风险，例如 extreme weather；也可能是长期慢性变化，例如 elevated temperatures 和 rising sea levels。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Physical risk</div><div class="eq-op">==</div><div class="eq-rhs">acute events + chronic shifts</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>急性像突然暴雨导致资产受损，慢性像海平面上升逐年压低地产价值和保险可得性。</div>
+        <div class="riskline"><b>投资影响：</b>实物资产、房地产、基础设施和长期债券特别需要考虑时间期限内的气候影响。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">原文要点</span><div class="topic-title">TCFD 推荐气候情景分析</div></div></div>
+        <p class="small">资产配置者应基于不同升温情景优化或压力测试组合，包括以 Paris Agreement 推动的 1.5°C 情景作为基准之一。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scenario analysis</div><div class="eq-op">==</div><div class="eq-rhs">temperature assumption × regions × sectors × asset classes × time horizons</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>不是只算“现在碳排多少”，而是问不同未来下，股票、债券、另类资产分别会怎样受冲击。</div>
+        <div class="riskline"><b>考点提醒：</b>TCFD + scenario analysis + asset allocation，经常对应“整体组合压力测试”。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">原文要点</span><div class="topic-title">近端和远端权衡</div></div></div>
+        <p class="small">减少或退出高碳能源投资可降低长期转型风险，但能源板块通常具有高于市场的现金流和股息收益，若未找到类似收益替代，组合收入可能下降。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">High-carbon divestment</div><div class="eq-op">==</div><div class="eq-rhs">lower long-term transition risk + possible lower near-term income yield</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>这像审计里做风险应对：降低一个风险，可能引入另一个成本。投资组合也要看替代资产是否能补上收益和分散化。</div>
+        <div class="riskline"><b>易错提醒：</b>不要把 ESG 配置理解成“只会改善组合”。PDF 强调 trade-offs。</div>
+      </article>
+    </div>
+
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr>
+            <th>资产类别</th>
+            <th>子类型</th>
+            <th>SAA/ALM 含义</th>
+            <th>气候风险关注点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Equities</b></td>
+            <td>行业/板块、成长/价值、大中小盘、多空头寸。</td>
+            <td>可对冲由供给冲击和政府支出引发的通胀，也对增长和宏观表现敏感。</td>
+            <td>受气候对宏观表现的影响；高碳企业若缺少转型策略，股东处于资本结构劣后位置，冲击更明显。</td>
+          </tr>
+          <tr>
+            <td><b>Fixed income</b></td>
+            <td>主权、市政、公司债；投资级和高收益。</td>
+            <td>对利率敏感，通常波动较低。</td>
+            <td>受气候相关财政政策、发行人信用质量和长期债期限内气候影响约束。</td>
+          </tr>
+          <tr>
+            <td><b>Alternative investments</b></td>
+            <td>REITs、商品、货币、私募股权/债权/VC、衍生品、对冲基金。</td>
+            <td>用于分散化，可能与市场低相关或负相关，但风险收益特征差异大。</td>
+            <td>气候风险可能集中、透明度低、难以评估；但另类资产也可能提供气候风险对冲。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="case-grid" style="margin-top:14px">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Ortec Finance 气候路径案例</div><span class="tag tag-blue">Scenario</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">情景</div><div class="case-text">Paris orderly transition、Paris disorderly transition、Paris failed transition。</div></div>
+          <div class="case-row"><div class="case-lab">短期</div><div class="case-text">有序转型逐步计入较低盈利预期；无序转型会出现冲击和更高波动。</div></div>
+          <div class="case-row"><div class="case-lab">长期</div><div class="case-text">有序转型接近未纳入气候风险的基准；无序和失败转型预期收益更低。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">Climate pathway == transition speed + physical risk build-up + volatility shock。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Mercer 气候资产配置方法</div><span class="tag tag-green">SAA</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">重点</div><div class="case-text">将气候风险纳入长期战略资产配置方法，并把分析扩展到 2100。</div></div>
+          <div class="case-row"><div class="case-lab">资产</div><div class="case-text">不仅看股票，也扩展到 sustainability-themed equity、private equity、real assets、natural resources、infrastructure。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">气候 SAA 不应只盯 listed equities；跨资产类别才是第 8 章视角。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="manager" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Manager Selection</div>
+        <h2>管理人选择：资产所有者如何看 ESG 执行能力</h2>
+      </div>
+      <div class="head-desc">这部分仍属于 8.1.1：如果 SAA 要体现 ESG，资产所有者还要选能真正执行 ESG 的管理人。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG Manager Due Diligence<br>从“是否写政策”到“是否有能力执行和报告”</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">政策</div><p>是否有 ESG policy 和 stewardship policy。</p></div>
+        <div class="branch"><div class="branch-title">倡议</div><p>是否为 PRI 等倡议成员。</p></div>
+        <div class="branch"><div class="branch-title">责任</div><p>是否有 dedicated personnel 和 committee oversight。</p></div>
+        <div class="branch"><div class="branch-title">流程</div><p>ESG issues 如何以及多大程度进入投资流程。</p></div>
+        <div class="branch"><div class="branch-title">报告</div><p>ownership、stewardship 和 client reporting 能力。</p></div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">原文要点</span><div class="topic-title">尽调结合定性和定量</div></div></div>
+        <p class="small">Manager selection 的 due diligence 会评估管理人的业绩和投资流程。大型资产所有者可能跟踪上百名管理人，再从长名单缩到 watch list 和 final focus list。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Manager DD</div><div class="eq-op">==</div><div class="eq-rhs">qualitative metrics + quantitative metrics + performance + investment process</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>这很像事务所做供应商或专家尽调：不能只看结果，还要看流程、人员、复核、报告和合规控制。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">原文要点</span><div class="topic-title">ESG 整合严谨度是核心</div></div></div>
+        <p class="small">尽调不仅看有没有 ESG 数据或产品，还会审视 ESG integration 的 degree and rigor，以及管理人的整体投资方法。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG能力</div><div class="eq-op">==</div><div class="eq-rhs">policy + people + process + oversight + stewardship + reporting</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>有 ESG 文件不等于有 ESG 能力。考试会区分“表面政策”和“流程内嵌”。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">原文要点</span><div class="topic-title">还要看管理人自身运营风险</div></div></div>
+        <p class="small">尽调常见问题包括：管理人是否建立 ESG/stewardship policies；是否有合规措施确保 exclusion-oriented 或 ESG constraint-based mandates 被遵守。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Operational DD</div><div class="eq-op">==</div><div class="eq-rhs">firm-level framework + compliance controls + mandate constraint monitoring</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>如果管理人不能证明约束被遵守，资产所有者可能面临授权不一致、客户报告失真和监管声誉风险。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">原文要点</span><div class="topic-title">正式评分框架越来越常见</div></div></div>
+        <p class="small">资产所有者逐渐使用 formal scoring frameworks。有些框架只用于了解能力谱系，有些已经成为 manager selection 和 capital allocation 的正式 factor 或 weight。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scoring framework</div><div class="eq-op">==</div><div class="eq-rhs">capability spectrum → selection input → allocation weight</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>看到 formal factor or weight，说明 ESG 能力不只是附加说明，而会影响最终资金分配。</div>
+      </article>
+    </div>
+
+    <div class="case-grid" style="margin-top:14px">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">LGT Capital Partners</div><span class="tag tag-teal">Hedge Funds</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">作用</div><div class="case-text">长期跟踪 hedge fund partners 的 ESG ratings，用于观察管理人 ESG 能力随时间发展。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">Manager ESG rating == capability tracking + longitudinal monitoring。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Man Group 替代管理人评分</div><span class="tag tag-amber">Alternatives</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">维度</div><div class="case-text">同时评价 operational firm level 和 investment fund level。</div></div>
+          <div class="case-row"><div class="case-lab">策略</div><div class="case-text">覆盖 arbitrage、credit、long/short、macro 等不同策略类型。</div></div>
+          <div class="case-row"><div class="case-lab">调整</div><div class="case-text">会考虑 firm size，因为小型投资机构 ESG 合规、研究、数据和人员资源较少。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：用一组等式背模块 1</h2>
+      </div>
+      <div class="head-desc">这部分适合最后快速扫一遍，重点训练“看到题眼 → 反推知识点”。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>第 8 章开场 ==</b> ESG 从 underlying security level 上移到 SAA、portfolio construction、cross-asset management。</div>
+          <div class="formula"><b>ESG 整合入口 ==</b> 底层证券风险 → security selection；top-down/systemic risk → asset allocation。</div>
+          <div class="formula"><b>SAA ==</b> long-term asset-class exposure ranges；<b>ALM ==</b> asset cash flows match liabilities。</div>
+          <div class="formula"><b>MVO ==</b> expected return + volatility + correlation；ESG 改 baseline assumptions。</div>
+          <div class="formula"><b>Factor allocation ==</b> sources of risk + new ESG risk factors such as climate change。</div>
+          <div class="formula"><b>TPA ==</b> risk budget + top-down/bottom-up alignment + ESG scenario winners/losers。</div>
+          <div class="formula"><b>Climate risk ==</b> systemic + local；physical risk == acute events + chronic shifts。</div>
+          <div class="formula"><b>Climate scenario analysis ==</b> temperature assumptions × regions × sectors × time periods × asset classes。</div>
+          <div class="formula"><b>Manager DD ==</b> ESG policy + PRI + people/committee + integration process + stewardship + reporting。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>SAA vs security selection</b>题干说 top-down、systemic、climate、asset allocation，优先选 SAA；题干说 individual issuer，才偏证券选择。</div>
+          <div class="trap"><b>Strategic vs dynamic</b>SAA 是长期目标、间歇性再平衡；DAA 是相对长期目标的战术再平衡，可能增加估计误差。</div>
+          <div class="trap"><b>MVO vs regime-switching</b>MVO 依赖历史基准假设；regime-switching 更适合 abrupt shift，但实务中还不广泛。</div>
+          <div class="trap"><b>Physical vs transition</b>Physical 是天气和气候物理变化；transition 是政策、法律、技术、市场转型。</div>
+          <div class="trap"><b>Long-term risk vs near-term income</b>减少高碳能源敞口降低长期转型风险，但可能降低组合收入收益率。</div>
+          <div class="trap"><b>Policy vs capability</b>管理人有 ESG policy 不够，还要看人员、监督、流程、合规、投后参与和报告。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 1 的一根线：风险层级决定 ESG 整合入口。底层风险进选券，系统风险进资产配置；能不能执行，则看管理人尽调。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只覆盖模块 1</h2>
+      </div>
+      <div class="head-desc">这里不是正式 Practice Problems，正式三轮练习会在全章完成后统一制作。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">如果投资者认为气候风险是影响多数证券的 top-down material risk，ESG 应该放在哪一层整合？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">放在 asset allocation level。逻辑等式：top-down/systemic ESG risk → strategic asset allocation。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">MVO 为什么对 ESG 假设很敏感？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">MVO 依赖预期收益、波动率和相关性等基准假设；ESG 如果改变这些输入，最优权重就会改变。它还高度依赖历史数据，不擅长处理 fat-tail risk。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Factor risk allocation 如何纳入 ESG？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">它按风险来源配置，可加入新的 ESG-related risk factors，例如 climate change，用于改善风险分散。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">为什么 climate risk 是 SAA 中最典型的 ESG 因素？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为它既 systemic 又 local，可能影响金融系统和所有发行人，也可能影响特定地区、行业和公司。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">减少高碳能源敞口的主要权衡是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">长期转型风险下降，但若无法用类似收益资产替代，组合收入收益率可能下降，因为能源板块通常现金流和股息收益较高。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">管理人 ESG 尽调的六个核心指标是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">ESG policy、PRI 等倡议、专职人员和委员会监督、ESG 进入投资流程的方式和程度、ownership/stewardship activities、client reporting capabilities。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">管理人选择中的 formal scoring framework 为什么重要？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为它可以从能力评估工具，进一步变成管理人选择和资本配置中的正式 factor 或 weight。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

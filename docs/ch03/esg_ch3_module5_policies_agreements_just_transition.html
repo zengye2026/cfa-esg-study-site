@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 5：Policies, Agreements and Just Transition</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%}
+h1{font-family:var(--serif);font-size:clamp(27px,4.8vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.mini-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(245px,100%),1fr));gap:10px;margin-top:10px}
+.mini-cell{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:12px}
+.mini-cell h3{font-size:14px;margin-bottom:6px}
+.mini-cell p{font-size:12.8px;color:var(--sub);line-height:1.62;margin:0}
+.compact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:10px;margin-top:10px}
+.compact-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--sh-sm)}
+.compact-item b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}
+.compact-item span{display:block;color:var(--sub);font-size:12.8px;line-height:1.6}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qchoices{font-size:12.8px;color:var(--sub);line-height:1.7;margin-top:6px;font-weight:500}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .pills{display:grid;grid-template-columns:1fr 1fr}
+  .pill{justify-content:center;text-align:center;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+  .nav{position:static;flex-wrap:wrap;overflow:visible}
+  .tab{flex:1 1 calc(50% - 6px);white-space:normal;text-align:center;min-height:40px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px;width:100%;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px;overflow-wrap:anywhere;word-break:break-word}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 5</span>
+        <span class="pill">3.1.4</span>
+        <span class="pill">Policies & Just Transition</span>
+      </div>
+      <h1>Policies, Agreements and Just Transition</h1>
+      <p class="lead">本页把第 3 章的政策驱动主线讲清楚：环境问题跨国界，所以需要国际协议；国际协议进入区域和国家政策；政策再变成企业披露、资本流向、行业成本、就业结构和投资标准。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Environmental policy impact == 跨境环境问题 + 国际协议定方向 + 区域/国家政策定规则 + 披露框架提高透明度 + just transition 维持社会支持 + 投资者重新定价风险与机会</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">3.1.4 评估 environmental factors 与 megatrends、环境/气候政策、国际协议、地区和国家政策之间的系统关系，并识别符合 just transition 的投资标准。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">2,092</div><div class="mini-lab">2023 年 1 月全球气候法律和政策数量</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">TCFD 核心披露要素</div></div>
+      </div>
+      <div class="side-note">记忆抓手：政策不是“背年份清单”，而是一条传导链：协议定目标，监管定披露，资本市场定价格，just transition 决定转型能不能被社会接受。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看主线：从国际协议到投资判断</h2>
+      </div>
+      <div class="head-desc">本模块的隐藏线是“规则如何进入现金流”。环境政策不是外部背景，而是影响成本、收入、资产价值、融资和声誉的投资变量。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Policies, Agreements and Just Transition<br>协议给方向，监管给口径，披露给信息，投资者给价格，社会公平给转型可持续性</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">国际协议</div>
+          <p>跨境环境问题需要国际合作。</p>
+          <p>巴黎、蒙特利尔、UNFCCC、京都等塑造政策方向。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">EU 政策</div>
+          <p>Green Deal、Climate Law、SFDR、CSRD、Climate Benchmarks。</p>
+          <p>把目标变成披露和资金配置规则。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Just transition</div>
+          <p>转型要公平、包容、有就业安排。</p>
+          <p>社会支持不足会反过来削弱政策可执行性。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">国家监管</div>
+          <p>法国、英国、美国、中国、印度、日本、澳大利亚各有路径。</p>
+          <p>共同趋势是披露、压力测试、绿色金融和反漂绿。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">TCFD / NGFS</div>
+          <p>TCFD 给企业披露框架。</p>
+          <p>NGFS 推动监管者做情景和压力测试。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>1. 问题跨境</h3><p>气候变化、生物多样性损失不能只靠单一国家解决。</p></div>
+        <div class="flow-step"><h3>2. 协议定方向</h3><p>协议设目标、原则、承诺或执行机制。</p></div>
+        <div class="flow-step"><h3>3. 政策落地</h3><p>税收、边境调节、披露、基准、补贴、监管要求。</p></div>
+        <div class="flow-step"><h3>4. 企业响应</h3><p>资本开支、供应链、战略韧性、就业和社区方案。</p></div>
+        <div class="flow-step"><h3>5. 投资重估</h3><p>收入、成本、风险溢价、资产价值和资金成本改变。</p></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">政策增长</span>
+        <h3>政策数量快速增加</h3>
+        <p class="small">PDF 提到，2017 年全球约有 1,400 项气候相关法律；到 2023 年 1 月，气候法律和政策数量达到 2,092 项。考点不是死背数字，而是理解“政策风险会越来越常态化”。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">投资影响</span>
+        <h3>政策会改变估值假设</h3>
+        <p class="small">同一家公司，在不同国家、不同披露制度、不同碳政策下，资本开支、合规成本、收入机会和融资条件可能完全不同。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">边界提醒</span>
+        <h3>Carbon pricing 下页展开</h3>
+        <p class="small">本页只讲政策框架和披露/监管体系。碳税、ETS、合规市场、内部碳价等方法将在模块 6 单独制作。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>覆盖清单：按 PDF 顺序逐项扫过</h2>
+      </div>
+      <div class="head-desc">这一页用于检查有没有漏知识点。学习时先看左侧英文术语，再看中文含义和考点提醒。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">A</span> 国际政策与协议</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">1</span><div class="text">环境和气候政策在过去十多年大量增加，欧洲尤其活跃。</div></div>
+        <div class="coverage-item"><span class="check">2</span><div class="text">气候变化和生物多样性损失跨越国界，需要国际合作。</div></div>
+        <div class="coverage-item"><span class="check">3</span><div class="text">Ramsar Convention：湿地保护和可持续利用。</div></div>
+        <div class="coverage-item"><span class="check">4</span><div class="text">Vienna Convention 和 Montreal Protocol：臭氧层保护，后者是成功的环境协议代表。</div></div>
+        <div class="coverage-item"><span class="check">5</span><div class="text">Basel Convention：危险废弃物管理和处置。</div></div>
+        <div class="coverage-item"><span class="check">6</span><div class="text">Convention on Biological Diversity：保护生物多样性、可持续利用、公平分享利益。</div></div>
+        <div class="coverage-item"><span class="check">7</span><div class="text">UNFCCC：全球气候行动的基础，后续协议都建立在它之上。</div></div>
+        <div class="coverage-item"><span class="check">8</span><div class="text">Kyoto Protocol：第一个为主要 GHG 设定目标的国际公约，重点是发达国家约束性目标。</div></div>
+        <div class="coverage-item"><span class="check">9</span><div class="text">Paris Agreement / COP21：控制升温低于 2°C，并努力争取 1.5°C；NDC 每五年更新。</div></div>
+        <div class="coverage-item"><span class="check">10</span><div class="text">SDGs：17 个全球目标，环境相关重点包括 SDG 7、11、12、13、14、15。</div></div>
+        <div class="coverage-item"><span class="check">11</span><div class="text">Kigali Amendment：逐步减少 HFCs，因为替代臭氧破坏物质的气体也可能强烈增温。</div></div>
+        <div class="coverage-item"><span class="check">12</span><div class="text">IMO 2020：降低船舶燃油硫含量，减少空气污染和酸雨。</div></div>
+        <div class="coverage-item"><span class="check">13</span><div class="text">CORSIA：国际航空碳抵消和减排机制，2024 年开始运行，基准调整为 2019 年排放的 85%。</div></div>
+        <div class="coverage-item"><span class="check">14</span><div class="text">Kunming-Montreal Global Biodiversity Framework：2030 年保护 30% 地球和 30% 退化生态系统。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">B</span> EU sustainable finance 与 just transition</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">15</span><div class="text">European Green Deal：2050 年气候中和，并推动经济增长与自然资源使用脱钩。</div></div>
+        <div class="coverage-item"><span class="check">16</span><div class="text">European Climate Law：2030 年温室气体减排目标为 55%。</div></div>
+        <div class="coverage-item"><span class="check">17</span><div class="text">Green Deal 关键工具：CBAM、循环经济行动计划、能源税收指令修订、造林/森林保护。</div></div>
+        <div class="coverage-item"><span class="check">18</span><div class="text">InvestEU：2021-2027 年动员 3,720 亿美元，其中 30% 贡献于气候目标。</div></div>
+        <div class="coverage-item"><span class="check">19</span><div class="text">Just transition：公平、包容地绿化经济，创造体面工作机会，不让相关群体被落下。</div></div>
+        <div class="coverage-item"><span class="check">20</span><div class="text">Yellow vests 案例提示：脱碳政策若忽视社会成本，可能引发社会反弹。</div></div>
+        <div class="coverage-item"><span class="check">21</span><div class="text">转型同时创造和替代就业；PDF 引用估计显示到 2050 年可能净增加约 1,500 万岗位。</div></div>
+        <div class="coverage-item"><span class="check">22</span><div class="text">Capex-heavy, opex-light：低碳系统前期资本和专业劳动力需求高，后期维护劳动需求可能较低。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">C</span> 披露、基准与国家行动</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">23</span><div class="text">SFDR：资产管理人披露投资产品的可持续风险和影响。</div></div>
+        <div class="coverage-item"><span class="check">24</span><div class="text">Article 6 / 8 / 9：不宣传 ESG、促进环境/社会特征、以可持续投资为目标。</div></div>
+        <div class="coverage-item"><span class="check">25</span><div class="text">CSRD：大型和上市公司按欧盟标准披露、审计、数字化，并进入 European Single Access Point。</div></div>
+        <div class="coverage-item"><span class="check">26</span><div class="text">Double materiality：既看气候/环境如何影响公司，也看公司如何影响气候/环境和社会。</div></div>
+        <div class="coverage-item"><span class="check">27</span><div class="text">EU PAB：起始碳强度至少降 50%，green/brown 为 4:1，不投化石燃料。</div></div>
+        <div class="coverage-item"><span class="check">28</span><div class="text">EU CTB：起始碳强度至少降 30%，green/brown 至少 1:1，允许转型过程中的化石燃料投资。</div></div>
+        <div class="coverage-item"><span class="check">29</span><div class="text">法国：要求大型机构投资者披露气候风险和减缓努力。</div></div>
+        <div class="coverage-item"><span class="check">30</span><div class="text">英国：10-point plan、TCFD 强制披露路线图、气候压力测试、预防原则。</div></div>
+        <div class="coverage-item"><span class="check">31</span><div class="text">美国：ESG 监管存在政治拉扯；IRA、基础设施法案、SEC 披露提案是关键政策信号。</div></div>
+        <div class="coverage-item"><span class="check">32</span><div class="text">中国：低碳转型投资最高，同时绝对 GHG 排放也最高；2030 前碳达峰、2060 净零路线。</div></div>
+        <div class="coverage-item"><span class="check">33</span><div class="text">印度、日本、澳大利亚：披露强化、净零承诺、TCFD/ISSB 体系、反漂绿监管。</div></div>
+        <div class="coverage-item"><span class="check">34</span><div class="text">TCFD：governance、strategy、risk management、metrics and targets。</div></div>
+        <div class="coverage-item"><span class="check">35</span><div class="text">NGFS：中央银行和金融监管者网络，推动气候情景、监管指引和气候压力测试。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：把“政策清单”变成投资语言</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”组织。</div>
+    </div>
+
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">1. 政策增长本身就是风险因子</div>
+          <span class="tag tag-blue">Policy Growth</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>环境和气候政策数量在过去二十多年大幅增长，2023 年 1 月全球已有 2,092 项气候法律和政策。</div>
+        <p class="small"><b>中文解释：</b>政策从“少数国家试点”变成“全球常态变量”。对企业来说，未来监管空白越来越少；对投资者来说，政策风险不再是尾部事件。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">政策数量上升</div><div class="eq-op">=</div><div class="eq-rhs">合规边界扩大 + 信息披露增加 + 行业成本重估</div></div>
+          <div class="eq"><div class="eq-lhs">投资题眼</div><div class="eq-op">→</div><div class="eq-rhs">看到 climate laws/policies 增加，就反推 transition risk 常态化。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>不要把政策只当“宏观背景”。它会改变企业成本、资本开支、产品需求和资产价值。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">2. 国际协议：跨境问题需要共同规则</div>
+          <span class="tag tag-green">Agreements</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>气候变化和生物多样性损失跨越国界，因此需要国际合作。巴黎协定、蒙特利尔议定书、UNFCCC、京都议定书尤其重要。</div>
+        <p class="small"><b>中文解释：</b>国际协议通常不直接告诉你买卖哪家公司，而是形成未来政策的“方向盘”。方向盘一转，行业风险和机会会被重新分配。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">国际协议</div><div class="eq-op">=</div><div class="eq-rhs">跨境问题 + 共同目标 + 各国政策落地</div></div>
+          <div class="eq"><div class="eq-lhs">记忆线</div><div class="eq-op">→</div><div class="eq-rhs">臭氧看 Montreal，GHG 约束看 Kyoto，全球气候框架看 UNFCCC，温控目标看 Paris。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Kyoto 是第一个为主要 GHG 设目标的国际公约；Paris 的长期温控目标是低于 2°C，并努力限制在 1.5°C。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">3. Paris Agreement 与 NDC</div>
+          <span class="tag tag-amber">Paris</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Paris Agreement 旨在限制全球平均温度相对工业化前水平的上升，并通过各国自主贡献持续更新承诺。</div>
+        <p class="small"><b>中文解释：</b>它的核心不是“所有国家有同一个固定减排数”，而是每个国家提交、计划和报告自己的 NDC，并定期提高承诺。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Paris</div><div class="eq-op">=</div><div class="eq-rhs">全球温控目标 + NDC + 五年更新 + 广泛参与</div></div>
+          <div class="eq"><div class="eq-lhs">易混点</div><div class="eq-op">≠</div><div class="eq-rhs">不是“每个国家在国际法下都有同一套强制减排目标”。</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>Paris-aligned 政策会推动能源、交通、工业、金融披露和基准方法变化，形成 transition risk 和机会。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">4. SDGs、Kigali、IMO 2020、CORSIA</div>
+          <span class="tag tag-teal">Other Frameworks</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>PDF 还列出 SDGs、Kigali Amendment、IMO 2020、CORSIA、Kunming-Montreal GBF 等影响企业环境实践的框架。</div>
+        <p class="small"><b>中文解释：</b>这些框架分别对应能源和城市、HFCs、航运硫排放、国际航空排放、生物多样性保护等具体领域。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">框架识别</div><div class="eq-op">=</div><div class="eq-rhs">SDGs 看发展目标，Kigali 看 HFCs，IMO 2020 看船燃硫，CORSIA 看国际航空，GBF 看 30 by 30。</div></div>
+          <div class="eq"><div class="eq-lhs">题眼钩子</div><div class="eq-op">→</div><div class="eq-rhs">ship fuel sulphur = IMO 2020；international aviation offsetting = CORSIA。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>CORSIA 重要是因为国际航空不完全由 Paris Agreement 管，ICAO 提供单独机制。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">5. European Green Deal：目标变成政策包</div>
+          <span class="tag tag-green">EU Green Deal</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>EU Green Deal 目标是 2050 年气候中和，并推动经济增长不再依赖更多自然资源。European Climate Law 将 2030 年减排目标设为 55%。</div>
+        <p class="small"><b>中文解释：</b>Green Deal 不是单一法规，而是一组政策工具：边境碳调节、循环经济、能源税收、森林保护、投资计划等。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">EU Green Deal</div><div class="eq-op">=</div><div class="eq-rhs">2050 气候中和 + 2030 减排 55% + CBAM + 循环经济 + 能源税 + 森林计划</div></div>
+          <div class="eq"><div class="eq-lhs">CBAM</div><div class="eq-op">→</div><div class="eq-rhs">把进口高碳产品的碳成本纳入 EU 市场竞争。</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>出口到 EU 的高碳生产商可能面对更高成本；低碳工艺、绿色基础设施和可持续供应链更有竞争力。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">6. Just Transition：转型能否被社会接受</div>
+          <span class="tag tag-amber">Just Transition</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>just transition 是公平、包容地绿化经济，创造体面工作机会，不让相关群体被落下。</div>
+        <p class="small"><b>中文解释：</b>气候政策如果只讲减排、不管就业、地区差异和能源负担，就可能失去社会支持。法国 yellow vests 抗议是 PDF 的典型提醒。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Just transition</div><div class="eq-op">=</div><div class="eq-rhs">脱碳目标 + 就业再培训 + 地区支持 + 能源可负担 + 社会许可</div></div>
+          <div class="eq"><div class="eq-lhs">投资标准</div><div class="eq-op">→</div><div class="eq-rhs">看公司是否有员工再培训、社区沟通、供应链就业影响、低收入群体影响和转型资金安排。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>just transition 不是“放慢环保”，而是让环保政策更可执行、更稳定。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">7. SFDR：产品层面的可持续透明度</div>
+          <span class="tag tag-violet">SFDR</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>SFDR 于 2021 年 3 月生效，要求资产管理人披露投资产品的可持续风险和影响。</div>
+        <p class="small"><b>中文解释：</b>SFDR 的重点是让投资产品说清楚：有没有 ESG 目标、如何考虑风险、是否会对可持续因素造成负面影响。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">SFDR</div><div class="eq-op">=</div><div class="eq-rhs">产品披露 + 风险整合 + 负面影响 + ESG 标签透明</div></div>
+          <div class="eq"><div class="eq-lhs">Article 分类</div><div class="eq-op">=</div><div class="eq-rhs">6 非 ESG 宣传；8 促进环境/社会特征；9 以可持续投资为目标。</div></div>
+        </div>
+        <div class="memory"><b>易错提醒：</b>Article 8 不是等于“可持续投资目标”，它是 promoting characteristics；Article 9 才是 sustainable investment objective。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">8. CSRD 与 double materiality</div>
+          <span class="tag tag-blue">CSRD</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>CSRD 于 2023 年 1 月生效，分阶段实施，覆盖大型公司和 EU 受监管市场上市公司，并要求审计和数字化披露。</div>
+        <p class="small"><b>中文解释：</b>CSRD 把企业披露从“自愿讲故事”推向“按标准、可审计、可获取”的信息基础设施。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">CSRD</div><div class="eq-op">=</div><div class="eq-rhs">更广覆盖 + EU 标准 + 审计 + 数字格式 + Single Access Point</div></div>
+          <div class="eq"><div class="eq-lhs">Double materiality</div><div class="eq-op">=</div><div class="eq-rhs">环境影响公司 + 公司影响环境和社会</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>数据质量提高后，投资者更容易比较公司转型风险、真实影响和漂绿风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">9. EU Climate Benchmarks：从相对优秀到绝对路径</div>
+          <span class="tag tag-teal">Benchmarks</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>EU 设计气候基准，要求相对可投资范围先降低碳强度，并每年至少继续降低 7%，以贴近 1.5°C 路径。</div>
+        <p class="small"><b>中文解释：</b>普通指数多按规模或市场价值加权，不自动体现低碳路径；气候基准试图把“组合表现”和“真实减排路径”连起来。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">EU PAB</div><div class="eq-op">=</div><div class="eq-rhs">起始降碳 50% + green/brown 4:1 + 不投化石燃料</div></div>
+          <div class="eq"><div class="eq-lhs">EU CTB</div><div class="eq-op">=</div><div class="eq-rhs">起始降碳 30% + green/brown 至少 1:1 + 可纳入转型中的化石燃料</div></div>
+        </div>
+        <div class="memory"><b>易错提醒：</b>PAB 更严格；CTB 更像“允许高碳行业转型”。别把 50% 和 30% 记反。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">10. 国家政策：同一趋势，不同路径</div>
+          <span class="tag tag-rose">Country Actions</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>法国、英国、美国、中国、印度、日本、澳大利亚等通过披露、压力测试、绿色金融、补贴和反漂绿监管推进环境因素主流化。</div>
+        <p class="small"><b>中文解释：</b>国家政策是把国际目标变成公司约束的最后一公里。不同国家速度、政治环境和工具不同，所以企业地理暴露很重要。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">国家政策</div><div class="eq-op">=</div><div class="eq-rhs">披露规则 + 监管压力测试 + 绿色金融 + 产业补贴 + 反漂绿执法</div></div>
+          <div class="eq"><div class="eq-lhs">投资题眼</div><div class="eq-op">→</div><div class="eq-rhs">看公司资产、客户、供应链和上市地在哪些监管辖区。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>美国 ESG 政策拉扯本身也是 transition risk，因为政治反弹会影响资金流和资产管理人策略。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">11. Precautionary Principle：不等完全确定才行动</div>
+          <span class="tag tag-amber">Precaution</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>预防原则认为，在可能造成严重公共伤害时，不能因为科学证据还不完全就放任行动；气候损害一旦确认可能已太晚。</div>
+        <p class="small"><b>中文解释：</b>气候风险有 radical uncertainty。监管者和受托人不能只说“模型还不准”，还要考虑避免极端后果和建设系统韧性。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">预防原则</div><div class="eq-op">=</div><div class="eq-rhs">严重潜在伤害 + 科学不完全 + 先防止不可逆后果</div></div>
+          <div class="eq"><div class="eq-lhs">受托责任</div><div class="eq-op">→</div><div class="eq-rhs">ESG/气候不是个人伦理附加项，而可能是必须监控的财务风险。</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>养老基金、保险和银行监管会更重视情景分析、压力测试和高冲击风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">12. TCFD：披露框架的四根柱子</div>
+          <span class="tag tag-blue">TCFD</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>TCFD 于 2015 年成立，2017 年发布最终建议。虽然已解散，但其工作由 IFRS Foundation / ISSB 延续。</div>
+        <p class="small"><b>中文解释：</b>TCFD 的目的，是让投资者、贷款人、保险人等更好识别、衡量、管理气候风险和机会，并评估公司战略韧性。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">TCFD 四要素</div><div class="eq-op">=</div><div class="eq-rhs">Governance + Strategy + Risk Management + Metrics and Targets</div></div>
+          <div class="eq"><div class="eq-lhs">题眼钩子</div><div class="eq-op">→</div><div class="eq-rhs">Impact 不是 TCFD core element；metrics and targets 才是。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>TCFD 还推广 physical risk / transition risk 分类和 scenario analysis。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">13. NGFS：监管者的气候风险网络</div>
+          <span class="tag tag-violet">NGFS</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>NGFS 由 70 多家中央银行和金融监管者组成，目标是强化金融系统管理风险、动员绿色和低碳投资。</div>
+        <p class="small"><b>中文解释：</b>如果 TCFD 更偏公司披露，NGFS 更偏监管和金融系统层面的技术指引、气候情景和压力测试。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">NGFS</div><div class="eq-op">=</div><div class="eq-rhs">central banks + financial supervisors + climate scenarios + supervisory guidance</div></div>
+          <div class="eq"><div class="eq-lhs">考题反推</div><div class="eq-op">→</div><div class="eq-rhs">看到 central banks and supervisors，就选 NGFS。</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>监管压力测试会影响银行、保险和金融机构对高碳资产的资本、风险和信贷偏好。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Lists</div>
+        <h2>案例框：把政策工具放回场景里</h2>
+      </div>
+      <div class="head-desc">这些不是额外知识，而是 PDF 里的制度、案例和表格压缩。考前重点看“题眼钩子”。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Prominent climate and environmental agreements</div><span class="tag tag-blue">Exhibit 12</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">PDF 列出多个国际会议和协议，展示长期政策努力的广度和持续性。</div></div>
+          <div class="case-row"><div class="case-lab">压缩记忆</div><div class="case-text">湿地 Ramsar；臭氧 Vienna/Montreal；废弃物 Basel；生物多样性 CBD/Nagoya/GBF；气候 UNFCCC/Kyoto/Paris/COP；航运 IMO 2020；航空 CORSIA。</div></div>
+          <div class="case-row"><div class="case-lab">题眼钩子</div><div class="case-text">第一个主要 GHG 目标 = Kyoto；臭氧层成功案例 = Montreal；温控目标 = Paris；国际航空 = CORSIA。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">European Green Deal</div><span class="tag tag-green">EU</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">EU Green Deal 目标是 2050 年气候中和；EU Climate Law 进一步把 2030 年减排目标设为 55%。</div></div>
+          <div class="case-row"><div class="case-lab">政策工具</div><div class="case-text">CBAM、循环经济行动计划、能源税收指令修订、造林/森林恢复，以及 InvestEU。</div></div>
+          <div class="case-row"><div class="case-lab">投资影响</div><div class="case-text">高碳进口、化石燃料补贴、低碳基础设施和绿色产业都可能被重新定价。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">The “Just Transition”</div><span class="tag tag-amber">Social License</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">能源转型成功部分取决于能否维持广泛的社会和政治支持。</div></div>
+          <div class="case-row"><div class="case-lab">案例信号</div><div class="case-text">法国 yellow vests 抗议说明，燃油税等脱碳政策若忽视公众负担，可能引发社会反弹。</div></div>
+          <div class="case-row"><div class="case-lab">投资标准</div><div class="case-text">评估项目时看就业替代、再培训、社区影响、能源可负担性和地区补偿安排。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">SFDR articles</div><span class="tag tag-violet">Disclosure</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Article 6</b><span>不宣传自己纳入 ESG 因素或目标。</span></div>
+            <div class="compact-item"><b>Article 8</b><span>宣称促进环境或社会特征。</span></div>
+            <div class="compact-item"><b>Article 9</b><span>以可持续投资作为目标。</span></div>
+          </div>
+          <div class="case-row" style="margin-top:10px"><div class="case-lab">易错点</div><div class="case-text">Article 8 是“促进特征”，Article 9 才是“目标”。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">EU Climate Benchmarks</div><span class="tag tag-teal">PAB vs CTB</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>EU PAB</b><span>起始碳强度至少降 50%；green/brown 为 4:1；不投化石燃料。</span></div>
+            <div class="compact-item"><b>EU CTB</b><span>起始碳强度至少降 30%；green/brown 至少 1:1；允许转型中的化石燃料投资。</span></div>
+          </div>
+          <div class="case-row" style="margin-top:10px"><div class="case-lab">共同点</div><div class="case-text">之后每年至少降低 7%，以贴近 1.5°C 情景所需路径。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">France and UK</div><span class="tag tag-blue">Europe</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">法国</div><div class="case-text">2016 年 Energy Transition for Green Growth Law 要求大型机构投资者披露气候风险暴露和减缓努力。</div></div>
+          <div class="case-row"><div class="case-lab">英国</div><div class="case-text">10-point plan 推动低碳技术、基础设施、生物多样性保护和绿色金融；监管推动 TCFD 披露和压力测试。</div></div>
+          <div class="case-row"><div class="case-lab">预防原则</div><div class="case-text">面对潜在严重伤害，不应因科学不完全而拖延预防行动；金融监管也逐渐采用类似思路。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">United States</div><span class="tag tag-rose">Policy Pull</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">美国 ESG 披露和受托人规则存在政策摇摆和政治反弹，这本身也是 transition risk。</div></div>
+          <div class="case-row"><div class="case-lab">政策工具</div><div class="case-text">美联储气候委员会、SEC 气候披露提案、基础设施法案、IRA 税收抵免和补贴。</div></div>
+          <div class="case-row"><div class="case-lab">数据钩子</div><div class="case-text">IRA 通过后五个月，已宣布的美国电动车和电池制造投资从 130 亿美元升至 520 亿美元。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">China, India, Japan, Australia</div><span class="tag tag-green">Asia-Pacific</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">中国</div><div class="case-text">太阳能电池、锂电池、电动车制造领先；低碳转型投资最高，同时绝对 GHG 排放也最高；承诺 2030 前碳达峰、2060 净零。</div></div>
+          <div class="case-row"><div class="case-lab">印度</div><div class="case-text">SEBI 强化前 1,000 家上市公司披露；COP26 承诺 2070 净零；2023 年更新 NDC。</div></div>
+          <div class="case-row"><div class="case-lab">日本</div><div class="case-text">TSE 要求 Prime Market 公司按 TCFD 披露；FSA 要求年报设可持续信息部分。</div></div>
+          <div class="case-row"><div class="case-lab">澳大利亚</div><div class="case-text">ASIC 推动强制气候报告并关注 ESG/green 产品的 greenwashing。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">TCFD and NGFS</div><span class="tag tag-violet">Frameworks</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">TCFD</div><div class="case-text">企业披露框架：governance、strategy、risk management、metrics and targets；并引入 physical/transition risks 与 scenario analysis。</div></div>
+          <div class="case-row"><div class="case-lab">NGFS</div><div class="case-text">中央银行和金融监管者网络，推动气候情景、监管指引和气候压力测试。</div></div>
+          <div class="case-row"><div class="case-lab">考题钩子</div><div class="case-text">“central banks and financial supervisors” 对应 NGFS；“Impact” 不是 TCFD core element。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：考题常把“相似词”放在一起</h2>
+      </div>
+      <div class="head-desc">本模块名称很多，最怕把协议、披露框架、监管网络和产品分类混在一起。</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="trap"><b>1. Paris Agreement 不是每个国家同一套强制目标</b>它依赖各国 NDC，承诺更新节奏是五年。正式题目中，看到“legally binding local law / annual update”要谨慎。</div>
+      <div class="trap"><b>2. Kyoto 和 Paris 不要混</b>Kyoto 是第一个设定主要 GHG 目标的国际公约，重点在发达国家约束；Paris 是全球温控目标和广泛参与。</div>
+      <div class="trap"><b>3. Montreal 和 Kigali 不要混</b>Montreal 针对臭氧层破坏物质；Kigali 是在 Montreal 基础上处理 HFCs 的增温问题。</div>
+      <div class="trap"><b>4. Article 8 不等于 Article 9</b>Article 8 是促进环境/社会特征；Article 9 才是以可持续投资为目标。</div>
+      <div class="trap"><b>5. PAB 比 CTB 更严格</b>PAB 起始碳强度至少降 50%，不投化石燃料；CTB 起始降 30%，可容纳转型中的化石燃料。</div>
+      <div class="trap"><b>6. TCFD 的四要素没有 Impact</b>正确四项是 governance、strategy、risk management、metrics and targets。</div>
+      <div class="trap"><b>7. NGFS 不是资产管理人组织</b>NGFS 由中央银行和金融监管者组成，重点是监管、情景和压力测试。</div>
+      <div class="trap"><b>8. Just transition 不是“社会公益附录”</b>它关系到政策可执行性、社会稳定、就业替代和公司社会许可，会影响投资风险。</div>
+      <div class="trap"><b>9. 预防原则不是“没有证据也随便行动”</b>它强调严重潜在伤害和科学不确定并存时，应优先避免不可逆后果。</div>
+      <div class="trap"><b>10. 组合降碳不一定等于实体经济降碳</b>EU climate benchmarks 的争议之一，是过度排除高碳行业可能降低组合排放，却未必推动真实经济减排。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Recall</div>
+        <h2>考前压缩：用 12 条式子快速回忆</h2>
+      </div>
+      <div class="head-desc">先遮住右侧解释，只看粗体词能不能反推出完整知识点。</div>
+    </div>
+
+    <div class="compress">
+      <div class="card">
+        <h3>一页背诵线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>政策增长</b> = 气候法律增加 → transition risk 常态化 → 企业估值假设变化。</div>
+          <div class="formula"><b>国际协议</b> = 跨境问题 → 共同目标 → 国家政策落地。</div>
+          <div class="formula"><b>Kyoto</b> = 第一个主要 GHG 目标；<b>Paris</b> = 低于 2°C + 努力 1.5°C + NDC。</div>
+          <div class="formula"><b>Montreal</b> = 臭氧层成功案例；<b>Kigali</b> = HFCs；<b>IMO 2020</b> = 船燃硫；<b>CORSIA</b> = 国际航空。</div>
+          <div class="formula"><b>EU Green Deal</b> = 2050 气候中和 + 2030 减排 55% + CBAM/循环经济/能源税/森林。</div>
+          <div class="formula"><b>Just transition</b> = 脱碳 + 公平就业 + 再培训 + 社区/地区支持 + 社会许可。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>披露与监管线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>SFDR</b> = 产品层面披露：Article 6 非 ESG；Article 8 促进特征；Article 9 可持续目标。</div>
+          <div class="formula"><b>CSRD</b> = 公司层面披露：标准化 + 审计 + 数字化 + Single Access Point。</div>
+          <div class="formula"><b>Double materiality</b> = 气候/环境影响公司 + 公司影响气候/环境/社会。</div>
+          <div class="formula"><b>PAB vs CTB</b> = 50% + 不投化石燃料 vs 30% + 允许转型；共同点是每年继续降 7%。</div>
+          <div class="formula"><b>TCFD</b> = Governance + Strategy + Risk Management + Metrics and Targets。</div>
+          <div class="formula"><b>NGFS</b> = central banks + financial supervisors + climate scenarios + stress tests。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">模块边界：本页不展开碳税、ETS、shadow carbon pricing、materiality assessment 和 portfolio analysis，这些将进入后续模块。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：看到题眼，反推知识点</h2>
+      </div>
+      <div class="head-desc">优先使用 PDF Practice Problems 中属于本模块的正式题，并补充少量反推题。</div>
+    </div>
+
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div>
+            <div class="qtext">The Paris Agreement:</div>
+            <div class="qchoices">A. is legally binding under the local law of each signatory country.<br>B. requires every signatory to provide an annual update on its national emission commitments.<br>C. aims to limit the increase in global average temperature to below 2°C above pre-industrial levels by the end of the century.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：C。</b>中文解析：Paris Agreement 的长期目标是把升温控制在低于 2°C，并努力限制在 1.5°C。它不是每年更新承诺，NDC 是五年更新。<br><b>逻辑等式：</b>Paris = 温控目标 + NDC + 五年更新。<br><b>题眼钩子：</b>below 2°C。<br><b>易错提醒：</b>不要把 Paris 误解成各国本地法下的同一强制目标。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div>
+            <div class="qtext">The first international convention to set targets for emissions of the main greenhouse gases was the:</div>
+            <div class="qchoices">A. Kyoto Protocol.<br>B. Paris Agreement.<br>C. United Nations Sustainable Development Goals.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：Kyoto Protocol 是第一个为主要温室气体排放设定目标的国际公约。<br><b>逻辑等式：</b>Kyoto = first GHG targets；Paris = temperature goal。<br><b>题眼钩子：</b>first international convention + targets for main GHGs。<br><b>易错提醒：</b>Paris 更著名，但“第一个设目标”是 Kyoto。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div>
+            <div class="qtext">Which of the following countries has the highest level of investments in the low-carbon energy transition?</div>
+            <div class="qchoices">A. Japan<br>B. China<br>C. United States</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：PDF 明确指出，中国是低碳能源转型投资水平最高的国家，同时也是绝对 GHG 排放最高的国家。<br><b>逻辑等式：</b>China = highest transition investment + highest absolute GHG emissions。<br><b>题眼钩子：</b>highest level of investments。<br><b>易错提醒：</b>不要因为美国 IRA 金额大，就把“全球最高投资水平”选成美国。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div>
+            <div class="qtext">The Network for Greening the Financial System (NGFS) comprises:</div>
+            <div class="qchoices">A. multilateral institutions and agencies.<br>B. asset managers and investment banks.<br>C. central banks and financial supervisors.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：C。</b>中文解析：NGFS 是中央银行和金融监管者组成的网络，推动气候风险监管、情景和压力测试。<br><b>逻辑等式：</b>NGFS = central banks + financial supervisors。<br><b>题眼钩子：</b>financial system / supervisors / climate stress tests。<br><b>易错提醒：</b>它不是资产管理人联盟。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div>
+            <div class="qtext">Which of the following is not a Task Force on Climate-Related Financial Disclosures (TCFD) core element of climate-related disclosures?</div>
+            <div class="qchoices">A. Governance<br>B. Impact<br>C. Risk management</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：TCFD 的四个核心要素是 governance、strategy、risk management、metrics and targets。Impact 不是核心要素。<br><b>逻辑等式：</b>TCFD = G + S + RM + M&T。<br><b>题眼钩子：</b>not core element。<br><b>易错提醒：</b>Impact 在 ESG 语境很常见，但不是 TCFD 四要素之一。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div>
+            <div class="qtext">Which SFDR category is used for products that promote environmental or social characteristics but do not necessarily have sustainable investment as the objective?</div>
+            <div class="qchoices">A. Article 6<br>B. Article 8<br>C. Article 9</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：Article 8 是 promoting environmental and social characteristics；Article 9 是 sustainable investment as an objective。<br><b>逻辑等式：</b>SFDR 6/8/9 = 非 ESG / 促进特征 / 可持续目标。<br><b>题眼钩子：</b>promote characteristics。<br><b>易错提醒：</b>看到 objective 才更接近 Article 9。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div>
+            <div class="qtext">Which benchmark category is stricter by requiring at least a 50% starting reduction in carbon intensity and no fossil fuel investments?</div>
+            <div class="qchoices">A. EU Paris-Aligned Benchmark<br>B. EU Climate Transition Benchmark<br>C. A standard market-cap weighted benchmark</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：EU PAB 起始降碳至少 50%，green/brown 为 4:1，并排除化石燃料；EU CTB 起始降碳至少 30%，允许转型过程中的化石燃料投资。<br><b>逻辑等式：</b>PAB = 50% + 4:1 + no fossil fuels；CTB = 30% + 1:1 + transition。<br><b>题眼钩子：</b>50% + no fossil fuels。<br><b>易错提醒：</b>Paris-Aligned 比 Climate Transition 更严格。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div>
+            <div class="qtext">A policy package that aims for EU climate neutrality by 2050 and includes CBAM, circular economy measures, energy taxation revision, and afforestation is best described as:</div>
+            <div class="qchoices">A. European Green Deal<br>B. CORSIA<br>C. Basel Convention</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：European Green Deal 是 EU 的综合政策包，目标包括 2050 气候中和和自然资源使用脱钩。<br><b>逻辑等式：</b>Green Deal = 2050 climate neutral + CBAM + circular economy + energy tax + forests。<br><b>题眼钩子：</b>EU climate neutrality by 2050。<br><b>易错提醒：</b>CORSIA 是国际航空；Basel 是危险废弃物。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div>
+            <div class="qtext">The “just transition” concept is most closely linked to which investment concern?</div>
+            <div class="qchoices">A. Whether decarbonization policies are fair, inclusive, and socially sustainable.<br>B. Whether a fund mechanically excludes all high-carbon companies.<br>C. Whether carbon prices are set through taxes or trading systems.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：just transition 强调公平、包容、体面工作和不让相关群体被落下。<br><b>逻辑等式：</b>Just transition = decarbonization + fairness + jobs + community support。<br><b>题眼钩子：</b>fair and inclusive / no one behind。<br><b>易错提醒：</b>它不是简单排除高碳公司，也不是碳定价技术分类。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">10</div>
+          <div>
+            <div class="qtext">A framework that distinguishes transition risks, physical risks, opportunities, and their financial impact on revenues, expenditures, assets, liabilities, and capital financing is associated with:</div>
+            <div class="qchoices">A. TCFD<br>B. Ramsar Convention<br>C. Stockholm Convention</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：TCFD 框架将气候相关风险分为 transition risks 和 physical risks，并将风险/机会连接到财务影响。<br><b>逻辑等式：</b>TCFD = risks + opportunities + financial impact + disclosure pillars。<br><b>题眼钩子：</b>physical/transition risks + financial impact。<br><b>易错提醒：</b>Ramsar 是湿地，Stockholm 是持久性有机污染物。</div>
+      </article>
+    </div>
+  </section>
+
+  <div class="footer-note">资料依据：本页内容依据 ch03/esg-03.pdf 第 148-161 页及本章 Practice Problems 中相关题目整理；ch04 仅参考页面结构和交互风格。</div>
+</main>
+
+<script>
+const tabs=document.querySelectorAll('.tab');
+const panels=document.querySelectorAll('.panel');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const id=tab.dataset.tab;
+    tabs.forEach(t=>t.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel=document.getElementById(id);
+    if(panel){
+      panel.classList.add('active');
+      panel.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

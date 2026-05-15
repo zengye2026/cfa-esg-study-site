@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 4：Systemic Relationships Between Business and Environmental Issues</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%}
+h1{font-family:var(--serif);font-size:clamp(27px,4.8vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:690px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.mini-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(245px,100%),1fr));gap:10px;margin-top:10px}
+.mini-cell{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:12px}
+.mini-cell h3{font-size:14px;margin-bottom:6px}
+.mini-cell p{font-size:12.8px;color:var(--sub);line-height:1.62;margin:0}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qchoices{font-size:12.8px;color:var(--sub);line-height:1.7;margin-top:6px;font-weight:500}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 4</span>
+        <span class="pill">3.1.3</span>
+        <span class="pill">Business & Environment</span>
+      </div>
+      <h1>Systemic Relationships Between Business and Environmental Issues</h1>
+      <p class="lead">本页把第 3 章的“系统关系”讲清楚：企业活动影响自然资本，企业和金融活动又依赖自然资本；气候风险通过 physical risk、transition risk、供应链、保险、信用、资产价值和 Scope 3 排放不断传导。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Business-environment relationship == 企业影响自然资本 + 企业依赖生态服务 + Physical risk 由气候不行动触发 + Transition risk 由气候行动触发 + Supply chain/Scope 3 放大风险边界</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">3.1.3 解释 business activities 与 environmental issues 的系统关系，包括金融系统气候风险、physical/transition risks、自然资源依赖、运营资源管理、供应链透明度和 traceability。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">5x</div><div class="mini-lab">极端天气损失近几十年增幅</div></div>
+        <div class="mini-stat"><div class="mini-num">Scope 3</div><div class="mini-lab">供应商和客户排放</div></div>
+      </div>
+      <div class="side-note">记忆抓手：企业不是只在“厂门内”产生环境风险。真正的风险地图要从自身运营、上游供应商、下游客户和金融系统一起看。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看主线：企业和环境是双向系统</h2>
+      </div>
+      <div class="head-desc">本模块的隐藏线是“企业影响自然，环境反过来影响企业和金融系统”。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Business Activities and Environmental Issues<br>不是单点风险，而是跨资产、跨行业、跨供应链的系统关系</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">外部性未定价</div>
+          <p>自然资源难以计量，负外部性未完全进入企业成本。</p>
+          <p>一旦内生化，市场可能重新定价。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Physical risk</div>
+          <p>来自极端天气和渐进气候变化。</p>
+          <p>损害资产、供应链、保险负债和宏观经济。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Transition risk</div>
+          <p>来自政策、法律和技术转型。</p>
+          <p>改变资产价值、成本和行业竞争格局。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">运营与资源</div>
+          <p>企业需衡量、管理、披露直接运营影响。</p>
+          <p>双重重大性要求看 inside-out 和 outside-in。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">供应链边界</div>
+          <p>ESG 风险越过 factory gates。</p>
+          <p>Traceability、Scope 3、supplier policy 是重点。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>企业取用</h3><p>依赖自然资源和生态系统服务。</p></div>
+        <div class="flow-step"><h3>企业排放影响</h3><p>污染、砍伐、GHG、废弃物改变自然资本。</p></div>
+        <div class="flow-step"><h3>风险回流</h3><p>天气、政策、诉讼、技术和市场偏好冲击企业。</p></div>
+        <div class="flow-step"><h3>金融传导</h3><p>保险、信用、资产价格、市场和运营风险变化。</p></div>
+        <div class="flow-step"><h3>投资行动</h3><p>尽调、参与治理、披露、供应链追踪和风险定价。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">拆题目</span><h3>Systemic relationships</h3><p class="small">拆成 systemic + relationship：不是一个公司单独污染，而是企业、供应链、自然资本、金融机构和监管共同互动。</p></div>
+      <div class="card"><span class="tag tag-green">找隐藏线</span><h3>两条风险通道</h3><p class="small">Physical risk 主要来自气候不行动；transition risk 主要来自向低碳经济转型的行动和速度。</p></div>
+      <div class="card"><span class="tag tag-amber">考试提醒</span><h3>Scope 3 是价值链</h3><p class="small">Purchased electricity 是 Scope 2；purchased goods and services、供应商和客户排放属于 Scope 3。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">覆盖 PDF 第 139-147 页，即学习目标 3.1.3。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Systemic Relationship</span> 企业影响自然，也依赖自然</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">企业、消费和投资需求会对 natural capital stocks 造成负面影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">企业和金融活动也依赖自然资源和正常运转的 ecosystem services。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">自然资源难以估值和计量，导致负外部性没有完全进入企业成本。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">如果这些成本被企业或投资者完全内生化，可能带来重大市场扰动。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Physical and Transition Risks</span> 金融系统风险</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Physical risks 来自更频繁或更严重的 flooding、droughts、storms 等天气事件和渐进气候变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">近几十年极端天气事件通胀调整后损失增加约五倍。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2022 年自然灾害全球经济损失约 US$275bn，保险损失约 US$125bn。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">保险和再保险公司资产端、负债端都暴露于 physical risk。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Transition risks 来自向低碳经济转型过程中的政策、法律和技术变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">如果政策与 Paris Agreement 对齐，已知化石燃料储量中很大部分可能无法燃烧，影响煤、油、气以及高耗能行业资产价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Transition risks 包括 policy risks、legal risks、technology risks，且相互交织。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">BIS 警告气候变化可能引发下一次系统性金融危机。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Natural Resources and Business</span> 直接/间接影响与依赖</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">企业和投资活动以直接和间接方式 impact and depend on natural resources and ecosystem services。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Direct impacts 例子：土地转化、地表水灌溉、释放有毒物质、噪音和灯光干扰本地物种。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Indirect impacts 可来自供应链，也可来自企业运营触发的后续活动，例如林业运输道路带来迁入和开发。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">间接影响难以预测和管理，但可能和直接影响一样重大。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">依赖自然资源的行业包括 agriculture、aquaculture、fisheries、food production、extractives、infrastructure、FMCG、forestry、pharmaceuticals、tourism、utilities。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Operations and Resource Management</span> 运营影响、KPI 与双重重大性</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司需要 measure、manage、disclose 直接运营产生的正面和负面环境影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">直接运营影响包括 toxic waste、water pollution、biodiversity loss、deforestation、ecosystem damage、water scarcity、hazardous air、high GHG emissions、energy use。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">不处理这些问题会暴露企业于额外风险；提出解决方案也可能带来 climate-resilient business strategies。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">环境 KPI 用于捕捉 environmental performance 与 financial performance 的联系。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Double materiality 要求看 climate/environment 对公司活动的影响，也看公司活动对 climate/environment 的影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司应考虑 whole value chain，包括 upstream supply chain 和 downstream。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-rose">Supply Chain and Traceability</span> 供应链透明度与 Scope 3</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Supply chain sustainability 是管理 factory gates 之外的 ESG impacts and practices。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者应在 due diligence 和 active stewardship 中理解组合公司的供应链管理。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Traceability 是识别和追踪产品、部件和材料的历史、分布、位置和用途。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">供应链 GHG emissions 平均超过直接运营排放的五倍。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">主要供应链环境风险包括 toxicity、raw materials、recyclability/end-of-life、GHG、energy、水、air pollution、biodiversity、deforestation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Scope 1 是核心运营直接排放；Scope 2 是 purchased energy；Scope 3 是供应商和客户等价值链间接排放。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">企业需要供应商采购政策、supplier code of conduct、供应链风险评估和改进差实践的机制。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">全价值链透明度复杂且成本高，但有助于投资者准确理解被投公司风险。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>核心逻辑卡片：风险如何从环境传到财务</h2>
+      </div>
+      <div class="head-desc">每张卡片都按“原文要点、中文解释、逻辑等式、投资影响/考点”整理。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Externalities and dependency</div><span class="tag tag-blue">System</span></div>
+        <div class="source-point"><b>原文要点：</b>Businesses impact natural capital and also depend on natural resources and ecosystem services.</div>
+        <p class="small">中文解释：企业不是站在自然之外经营。它一方面消耗和影响自然资本，另一方面依赖自然资本提供水、空气、气候调节、原材料和生态系统服务。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">双向关系</div><div class="eq-op">==</div><div class="eq-rhs">企业 impact nature + 企业 depend on nature</div></div>
+          <div class="eq"><div class="eq-lhs">外部性风险</div><div class="eq-op">==</div><div class="eq-rhs">未定价损害 → 成本内生化 → 市场重估</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>自然资本成本一旦被监管、诉讼、税费或市场偏好内生化，会影响收入、成本、资产价值和信用质量。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Physical risk</div><span class="tag tag-green">Climate Inaction</span></div>
+        <div class="source-point"><b>原文要点：</b>Physical risks stem from more frequent or severe weather events and gradual climate changes.</div>
+        <p class="small">中文解释：physical risk 是“不行动或气候已变”带来的物理损害，既可能是急性灾害，也可能是慢性变化。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Physical risk</div><div class="eq-op">==</div><div class="eq-rhs">极端天气 + 渐进气候变化 + 资产/供应链/保险/宏观冲击</div></div>
+          <div class="eq"><div class="eq-lhs">金融传导</div><div class="eq-op">==</div><div class="eq-rhs">市场损失 + 信用损失 + 承保损失 + 运营风险</div></div>
+        </div>
+        <div class="memory"><b>题眼：</b>flooding、droughts、storms、asset destruction、business disruption、insurance claims。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Transition risk</div><span class="tag tag-amber">Climate Action</span></div>
+        <div class="source-point"><b>原文要点：</b>Transition risks arise as the world shifts toward a low-carbon economy.</div>
+        <p class="small">中文解释：transition risk 不是天气砸坏资产，而是政策、法律、技术和市场偏好改变后，高碳资产和商业模式被重新估值。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Transition risk</div><div class="eq-op">==</div><div class="eq-rhs">政策 + 法律 + 技术 + 市场偏好变化</div></div>
+          <div class="eq"><div class="eq-lhs">财务后果</div><div class="eq-op">==</div><div class="eq-rhs">成本上升 + stranded assets + 资产价值变化 + 行业替代</div></div>
+        </div>
+        <div class="memory"><b>Practice Problem：</b>鼓励低碳技术的政策变化是 transition risk；极端天气事件是 physical risk。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Exhibit 11 风险通道</div><span class="tag tag-violet">Financial Stability</span></div>
+        <div class="source-point"><b>原文要点：</b>Climate risks reach the economy through physical and transition channels with many impacts.</div>
+        <p class="small">中文解释：气候风险不是只影响一个利润表项目，而是穿透到迁移、能源价格、资产损毁、重建成本、搁浅资产、财富效应和金融条件。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Physical channel</div><div class="eq-op">==</div><div class="eq-rhs">灾害/气候变化 → 业务中断/资产损毁/迁移/重建</div></div>
+          <div class="eq"><div class="eq-lhs">Transition channel</div><div class="eq-op">==</div><div class="eq-rhs">政策/技术/偏好 → 能源价格/搁浅资产/低增长</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>同一气候因素可以同时影响 equity、bond、commodity、loan、underwriting 和 operational risk。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Direct vs indirect biodiversity impacts</div><span class="tag tag-teal">GRI</span></div>
+        <div class="source-point"><b>原文要点：</b>Business impacts and dependencies on biodiversity can be direct or indirect.</div>
+        <p class="small">中文解释：直接影响是企业活动本身立刻影响生态；间接影响可能来自供应链，也可能来自企业活动触发的后续开发。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Direct</div><div class="eq-op">==</div><div class="eq-rhs">土地转化 + 用水灌溉 + 有毒物释放 + 噪音灯光干扰</div></div>
+          <div class="eq"><div class="eq-lhs">Indirect</div><div class="eq-op">==</div><div class="eq-rhs">供应链影响 + 企业活动诱发迁入/开发</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>为林业运输修路可能引发工人迁入和新商业开发，是 indirect impact。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Material sectors</div><span class="tag tag-blue">Natural Dependency</span></div>
+        <div class="source-point"><b>原文要点：</b>Several sectors significantly rely on natural resources and ecosystem services.</div>
+        <p class="small">中文解释：风险不是平均分布。越依赖自然资源、生态系统服务或大规模建设，越需要分析依赖和影响。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">高依赖行业</div><div class="eq-op">==</div><div class="eq-rhs">农业水产渔业食品 + 采掘基建 + FMCG + 林业 + 医药 + 旅游酒店 + 公用事业</div></div>
+          <div class="eq"><div class="eq-lhs">分析重点</div><div class="eq-op">==</div><div class="eq-rhs">自然资源依赖 + 生物多样性影响 + 供应链暴露</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>行业暴露决定尽调深度；例如 hydropower 或 open-cycle power plants 也有水和热排放风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Operations and KPIs</div><span class="tag tag-green">Management</span></div>
+        <div class="source-point"><b>原文要点：</b>Companies need to measure, manage, and disclose environmental impacts from direct operations.</div>
+        <p class="small">中文解释：投资者要看公司是否知道自己直接运营的环境影响，以及是否用 KPI 把环境表现和财务表现连接起来。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Direct ops</div><div class="eq-op">==</div><div class="eq-rhs">测量 + 管理 + 披露 + KPI</div></div>
+          <div class="eq"><div class="eq-lhs">运营影响</div><div class="eq-op">==</div><div class="eq-rhs">toxic waste + water pollution + biodiversity loss + deforestation + GHG + energy use</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>未管理风险会增加成本和暴露；管理得好也可能形成气候韧性商业策略。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">8. Double materiality</div><span class="tag tag-violet">Two-Way</span></div>
+        <div class="source-point"><b>原文要点：</b>Double materiality asks companies to report climate impacts on the company and company impacts on climate and environment.</div>
+        <p class="small">中文解释：双重重大性就是双向看：环境怎么影响公司，以及公司怎么影响环境。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Double materiality</div><div class="eq-op">==</div><div class="eq-rhs">outside-in + inside-out</div></div>
+          <div class="eq"><div class="eq-lhs">Value chain</div><div class="eq-op">==</div><div class="eq-rhs">upstream supply chain + own operations + downstream customers</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Whole value chain 是关键，不止企业本部。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">9. Supply chain sustainability</div><span class="tag tag-amber">Factory Gates</span></div>
+        <div class="source-point"><b>原文要点：</b>Supply chain sustainability manages ESG impacts beyond the factory gates across the life cycle of goods and services.</div>
+        <p class="small">中文解释：供应链可把一个公司的环境风险放大。供应商、原材料、加工、运输、客户使用和最终处置都可能产生风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Supply chain</div><div class="eq-op">==</div><div class="eq-rhs">factory gates 之外 + 生命周期 + 原材料/部件/服务</div></div>
+          <div class="eq"><div class="eq-lhs">风险后果</div><div class="eq-op">==</div><div class="eq-rhs">声誉 + 运营 + 财务 + 监管 + 投资者参与治理</div></div>
+        </div>
+        <div class="memory"><b>题眼：</b>oil and gas、mining、agriculture、forestry、fisheries、leather production 是高复杂或高风险供应链例子。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">10. Traceability</div><span class="tag tag-teal">Evidence</span></div>
+        <div class="source-point"><b>原文要点：</b>Traceability identifies and traces the history, distribution, location, and application of products, parts, and materials.</div>
+        <p class="small">中文解释：traceability 的作用不是漂亮披露，而是让可持续性声明能被验证，防止供应链把风险藏起来。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Traceability</div><div class="eq-op">==</div><div class="eq-rhs">历史 + 分布 + 位置 + 用途可追踪</div></div>
+          <div class="eq"><div class="eq-lhs">可靠声明</div><div class="eq-op">==</div><div class="eq-rhs">人权 + 劳工安全 + 环境 + 反腐 声明有证据</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>完整价值链分析复杂且昂贵，但没有它，投资者可能看不清真实环境风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">11. Scope 1, 2, 3</div><span class="tag tag-rose">Emissions</span></div>
+        <div class="source-point"><b>原文要点：</b>Investor focus is expanding from Scope 1 and Scope 2 to Scope 3 value-chain emissions.</div>
+        <p class="small">中文解释：Scope 3 是很多行业真正大的排放来源。特别是化石燃料行业，主要排放往往来自客户使用产品。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scope 1</div><div class="eq-op">==</div><div class="eq-rhs">公司自身核心运营直接排放</div></div>
+          <div class="eq"><div class="eq-lhs">Scope 2</div><div class="eq-op">==</div><div class="eq-rhs">purchased energy</div></div>
+          <div class="eq"><div class="eq-lhs">Scope 3</div><div class="eq-op">==</div><div class="eq-rhs">suppliers + customers + whole value chain</div></div>
+        </div>
+        <div class="memory"><b>Practice Problem：</b>Purchased goods and services 是 Scope 3；purchased electricity 是 Scope 2。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">12. Investor due diligence</div><span class="tag tag-blue">Stewardship</span></div>
+        <div class="source-point"><b>原文要点：</b>Investors should assess supplier requirements, procurement policies, risk systems, and mechanisms to improve poor practices.</div>
+        <p class="small">中文解释：投资者不能只问公司是否有环保口号，而要看供应商准入、供应商行为准则、风险评估和整改机制。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">供应链尽调</div><div class="eq-op">==</div><div class="eq-rhs">采购政策 + supplier code + 风险评估 + 整改机制</div></div>
+          <div class="eq"><div class="eq-lhs">投资者动作</div><div class="eq-op">==</div><div class="eq-rhs">collaborate + demand transparency + active stewardship</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>供应商表现优秀可能提升长期竞争力；供应商政策落后会削弱公司的公开目标可信度。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Exhibits</div>
+        <h2>案例框：从灾害、矿山到 Scope 3</h2>
+      </div>
+      <div class="head-desc">这些案例对应 PDF 中的主要图表和案例。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">2022 自然灾害损失</div><span class="tag tag-green">Exhibit 10</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2022 年自然灾害全球经济损失约 US$275bn，保险损失约 US$125bn，保险损失同比增加约 13%。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">保险和再保险公司资产端可能受地产等投资资产影响，负债端可能受财产险和寿险索赔影响。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">insurers/reinsurers exposed on both sides of balance sheet。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Thai Floods</div><span class="tag tag-blue">Physical + Supply Chain</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2011 年泰国洪水造成约 US$45bn 经济损失和 US$12bn 保险索赔，超过 10,000 家工厂关闭。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">洪水不只影响当地资产，也会通过消费品、纺织和汽车供应链影响 Sony、Nikon、Honda 等全球企业。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">contingent business interruption、globalized supply chain。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">PG&E bankruptcy</div><span class="tag tag-rose">Physical Risk</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">PG&E 因 2017-2018 年加州山火相关责任，在 2019 年申请 Chapter 11 破产保护，估计面临约 US$30bn 责任。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">极端天气和气候相关灾害可能不仅造成利润损失，也可能导致企业破产。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">climate-change bankruptcy、liability exceeds insurance and assets。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Transition risk and fossil reserves</div><span class="tag tag-amber">Transition</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">若政策与 Paris Agreement 对齐，世界已知化石燃料储量中很大部分可能无法燃烧。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">能源公司、银行、保险公司以及高耗能行业的资产价值和业务成本可能因此重估。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">policy alignment、stranded assets、asset values。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Vale tailings dam disaster</div><span class="tag tag-violet">Operations</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2019 年 Vale 尾矿坝灾难造成 270 人死亡，市值蒸发 BRL71.34bn，信用和 ESG 评级被下调。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">运营环境和社会风险可以迅速转化为市值、信用、诉讼和投资者退出风险。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">tailings dams、transparency、global safety standard、operational impact。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Forest-risk commodities</div><span class="tag tag-green">Supply Chain</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">Beef、palm oil、soy、timber/pulp 是全球砍伐主要商品驱动；约 US$6tn 投资与砍伐相关。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">政府、民间组织和投资者借助卫星监测等数据提高审查压力，投资者可能威胁撤资。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">forest-risk commodities、satellite monitoring、divestment risk。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Scope 3 in the Spotlight</div><span class="tag tag-rose">Value Chain</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">化石燃料行业大部分排放不是开采和加工，而是客户在车辆、电厂和钢厂中使用产品时产生。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">即使公司运营排放很低，客户转向电动车或低碳替代品也可能让主要产品市场萎缩。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">outside factory gates、suppliers/customers、potential business risk。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Measurement frameworks and tools</div><span class="tag tag-teal">Tools</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">工具包括 Sustainability Consortium、WWF indicators、CDP/GRI、SASB/ISSB、EU Taxonomy、Climate Bonds Sector Criteria、Trase、ENCORE、Terra Carta。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">这些工具帮助投资者和公司追踪供应链热点、商品风险、可持续性影响和自然资本暴露。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">measurement frameworks help trace sustainability issues in supply chains。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：系统关系最容易错在边界</h2>
+      </div>
+      <div class="head-desc">这部分用来防止把风险类型、排放范围和供应链边界混淆。</div>
+    </div>
+    <div class="grid-2">
+      <div class="trap"><b>1. Physical risk 不是 transition risk</b>洪水、干旱、风暴、资产损毁是 physical；政策、法律、技术、低碳转型导致成本或资产价值变化是 transition。</div>
+      <div class="trap"><b>2. Transition risk 不等于“坏政策”</b>低碳政策可能有利于整体经济，但转型速度会影响特定行业和金融稳定。</div>
+      <div class="trap"><b>3. 保险公司两端都暴露</b>资产端投资资产会受灾害影响，负债端会受财产险、寿险索赔影响。</div>
+      <div class="trap"><b>4. Direct impact 和 indirect impact 不要混</b>用地表水、释放有毒物、噪音灯光是直接；修路引发迁入和商业开发是间接。</div>
+      <div class="trap"><b>5. Double materiality 是双向</b>不是只看环境对公司财务的影响，还要看公司活动对气候和环境的影响。</div>
+      <div class="trap"><b>6. Supply chain sustainability 超出厂门</b>不要只看企业本部，要看 raw materials、components、suppliers、customers 和 end-of-life。</div>
+      <div class="trap"><b>7. Scope 2 和 Scope 3 很容易错</b>Purchased electricity 是 Scope 2；purchased goods and services 是 Scope 3。</div>
+      <div class="trap"><b>8. Scope 3 不受完全控制，但仍是风险</b>企业不能完全控制供应商和客户排放，但这些排放会影响市场需求、政策风险和投资者压力。</div>
+      <div class="trap"><b>9. Transparency 不等于 traceability</b>披露是说出来，traceability 是能追踪历史、分布、位置和用途，让声明可验证。</div>
+      <div class="trap"><b>10. 供应链工具不是考试背名单</b>重点是知道这些工具帮助识别热点、计量风险、比较影响、追踪商品和自然资本暴露。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">One Screen Review</div>
+        <h2>考前压缩版：一屏背完模块 4</h2>
+      </div>
+      <div class="head-desc">先背系统总式，再用风险类型和 Scope 范围校准。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <span class="tag tag-blue">逻辑等式总表</span>
+        <div class="formula-list">
+          <div class="formula"><b>Business-environment system</b> == impact on nature + dependency on nature + financial feedback。</div>
+          <div class="formula"><b>Negative externalities</b> == unpriced environmental costs + future internalization risk。</div>
+          <div class="formula"><b>Physical risk</b> == extreme weather + gradual climate change + asset/supply chain/insurance losses。</div>
+          <div class="formula"><b>Transition risk</b> == policy + legal + technology + market preference changes。</div>
+          <div class="formula"><b>Direct biodiversity impact</b> == company activity directly affects biodiversity。</div>
+          <div class="formula"><b>Indirect biodiversity impact</b> == supply chain or triggered activities affect biodiversity。</div>
+          <div class="formula"><b>Double materiality</b> == environment affects company + company affects environment。</div>
+          <div class="formula"><b>Supply chain sustainability</b> == ESG impacts beyond factory gates。</div>
+          <div class="formula"><b>Traceability</b> == history + distribution + location + application of products/materials。</div>
+          <div class="formula"><b>Scope 3</b> == suppliers and customers across value chain。</div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">关键数字和题眼</span>
+        <div class="formula-list">
+          <div class="formula"><b>5x</b>：近几十年极端天气通胀调整后损失增加约五倍。</div>
+          <div class="formula"><b>US$275bn / US$125bn</b>：2022 年自然灾害经济损失和保险损失。</div>
+          <div class="formula"><b>US$45bn / US$12bn</b>：2011 年泰国洪水经济损失和保险索赔。</div>
+          <div class="formula"><b>US$30bn</b>：PG&E 山火相关责任估计量级。</div>
+          <div class="formula"><b>US$14.6bn</b>：Vale 灾难后市值蒸发美元量级。</div>
+          <div class="formula"><b>US$13tn</b>：呼吁尾矿坝安全调查和报告的投资者资产规模量级。</div>
+          <div class="formula"><b>5x+</b>：供应链 GHG 排放平均超过直接运营排放五倍。</div>
+          <div class="formula"><b>US$6tn</b>：与 deforestation 相关投资估计量级。</div>
+          <div class="formula"><b>40%</b>：Forest 500 中对暴露森林风险商品没有砍伐承诺的公司/金融机构比例。</div>
+          <div class="formula"><b>71% vs 27%</b>：CDP 伙伴公司零砍伐目标与供应商匹配政策比例差距。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块边界提醒：TCFD 四大披露要素、NGFS、政策协议和碳定价会在模块 5-6 继续展开；本页只讲系统风险和供应链边界。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">训练“看到题眼，反推风险通道、供应链边界和 Scope”。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div class="qtext">Which best describes a transition risk?<div class="qchoices">a. Policy change to encourage low-carbon technologies<br>b. Occurrence of extreme weather events</div></div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">答案：a。政策变化推动低碳技术会改变企业成本和资产价值，是 transition risk。极端天气事件是 physical risk。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div class="qtext">Which emission source is considered Scope 3 under the GHG Protocol Standards?<div class="qchoices">a. Company facilities<br>b. Purchased electricity<br>c. Purchased goods and services</div></div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">答案：c。Purchased goods and services 属于 Scope 3；company facilities 是 Scope 1；purchased electricity 是 Scope 2。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div class="qtext">为什么说 insurers and reinsurers 对 physical risk 是“两端暴露”？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">资产端：投资组合里的地产等资产可能受洪水和风暴影响。负债端：极端天气会提高财产险索赔，疾病和死亡也可能提高寿险索赔。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div class="qtext">Thai Floods 案例为什么是系统关系案例？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">因为它不只造成泰国本地损失，还让全球供应链中的工厂停产，影响 Sony、Nikon、Honda 等国际公司，并触发 contingent business interruption claims。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div class="qtext">Double materiality 的两个方向是什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">Outside-in：气候和环境如何影响公司活动。Inside-out：公司活动如何影响气候和环境。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div class="qtext">根据 GRI，修建林业运输道路为什么可能是 indirect biodiversity impact？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">因为道路可能刺激工人迁入未开发地区，并带动道路沿线商业开发，进而间接影响生物多样性。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div class="qtext">Traceability 要追踪哪四件事？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">产品、部件和材料的 history、distribution、location 和 application。逻辑等式：traceability == 历史 + 分布 + 位置 + 用途。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div class="qtext">供应链主要环境风险包括哪些？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">Material toxicity and chemicals、raw material use、recyclability/end-of-life、GHG emissions、energy use、water use and wastewater treatment、air pollution、biodiversity、deforestation。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div class="qtext">投资者评估供应链管理时，应看公司是否具备哪两类机制？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">第一，清楚说明供应商应满足的环境和社会要求，例如采购政策或 supplier code of conduct。第二，能评估供应链风险，并有机制改善 poor practices。</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <details>
+        <summary>反推训练：看到 “purchased electricity” 你要想到什么？</summary>
+        <div class="detail-body">想到 Scope 2，不是 Scope 3。它是购买能源产生的间接排放。</div>
+      </details>
+      <details>
+        <summary>反推训练：看到 “factory gates” 你要想到什么？</summary>
+        <div class="detail-body">想到供应链边界。很多环境风险和排放不在公司厂门内，而在供应商、客户和全生命周期里。</div>
+      </details>
+    </div>
+    <div class="footer-note">依据文件：ch03/esg-03.pdf，第 3 章 3.1.3 及对应 Practice Problems。为便于复习，本页对原文做了压缩和中文解释，不替代原 PDF。</div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

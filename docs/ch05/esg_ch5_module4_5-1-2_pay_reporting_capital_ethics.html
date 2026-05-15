@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 Module 4 · Pay, Reporting, Capital Allocation & Ethics</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:820px;margin:0;line-height:1.86;overflow-wrap:anywhere}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}.card.dark h3{color:#fff}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:690px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(88px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.mini-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:10px}.mini-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;box-shadow:var(--sh-sm);min-width:0}.mini-card b{display:block;color:var(--dark);font-size:14px;margin-bottom:5px}.mini-card span{font-size:12.7px;color:var(--sub);line-height:1.55}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.ethics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:10px}.ethic{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 13px;box-shadow:var(--sh-sm);min-width:0}.ethic b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}.ethic span{font-size:12.8px;color:var(--sub);line-height:1.55}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}summary::-webkit-details-marker{display:none}summary::after{content:"＋";color:var(--muted);font-weight:700}details[open] summary::after{content:"－"}details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flowline{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-step:not(:last-child)::after{display:none}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr 1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:17px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 5</span>
+        <span class="pill">Module 4</span>
+        <span class="pill">5.1.2</span>
+        <span class="pill">Pay · Reporting · Ethics</span>
+      </div>
+      <h1>Pay, Reporting, Capital & Ethics</h1>
+      <p class="lead">本页把有效治理继续落地：薪酬要让管理层为长期价值行动，报告要公平、平衡、可理解，资本配置要兼顾回报和韧性，商业伦理要超过最低法律合规，守住公司长期经营许可和声誉。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Effective governance in practice == aligned pay + transparent reporting + disciplined capital allocation + ethical culture</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">5.1.2 高管薪酬、KPI、报告透明度、财务诚信、资本配置和商业伦理</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">高管薪酬组成</div></div>
+        <div class="mini-stat"><div class="mini-num">9</div><div class="mini-lab">商业伦理关注点</div></div>
+      </div>
+      <div class="side-note">记忆抓手：这页的共同问题是“表面看起来合理，是否真的支持长期价值”。薪酬、APM、分红、负债和伦理都要追问这一点。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="pay">高管薪酬</button>
+    <button class="tab" data-tab="reporting">报告透明度</button>
+    <button class="tab" data-tab="capital">资本配置</button>
+    <button class="tab" data-tab="ethics">商业伦理</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div><div class="eyebrow">Memory Map</div><h2>第一屏先看一张图：有效治理如何落到经营动作</h2></div>
+      <div class="head-desc">按逻辑等式心象术，模块 4 可以拆成四个“落地点”：钱给谁、报告怎么写、资本怎么用、底线怎么守。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Governance Execution<br>从董事会原则落到薪酬、报告、资本和伦理</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">Executive pay</div><p>薪酬是管理层和股东冲突最明显处。</p><p>关注固定、福利、奖金、LTIP。</p></div>
+        <div class="branch"><div class="branch-title">Reporting</div><p>公平、平衡、可理解。</p><p>警惕 APM 和叙述与财报不一致。</p></div>
+        <div class="branch"><div class="branch-title">Sustainability disclosure</div><p>TCFD、ISSB、IFRS S1/S2。</p><p>气候叙述应反映到财务报告。</p></div>
+        <div class="branch"><div class="branch-title">Capital allocation</div><p>分配现金流：分红、回购、再投资。</p><p>资本结构要在收益和韧性之间平衡。</p></div>
+        <div class="branch"><div class="branch-title">Business ethics</div><p>不止守法，还要维护利益相关方关系。</p><p>极端情况下影响 license to operate。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>设定激励</h3><p>薪酬结构决定管理层行为方向。</p></div>
+        <div class="flow-step"><h3>披露结果</h3><p>报告让投资者看见管理质量。</p></div>
+        <div class="flow-step"><h3>验证一致性</h3><p>APM、气候叙述和财报要能对上。</p></div>
+        <div class="flow-step"><h3>配置资本</h3><p>选择投什么、不投什么、分多少。</p></div>
+        <div class="flow-step"><h3>守住伦理</h3><p>反腐、员工、客户、供应商、社区、税务和声誉。</p></div>
+        <div class="flow-step"><h3>形成长期价值</h3><p>降低治理折价，提高投资信心。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">题眼</span><h3>annual bonus</h3><p class="small">奖金通常基于年度 KPI，约 20% KPI 可能涉及个人表现或 ESG 等非财务指标。</p></div>
+      <div class="card"><span class="tag tag-violet">题眼</span><h3>APMs</h3><p class="small">Adjusted / underlying 等替代绩效指标可能粉饰表现；投资者尤其警惕期间口径变化和与财报不一致。</p></div>
+      <div class="card"><span class="tag tag-amber">题眼</span><h3>capital structure</h3><p class="small">没有债务可能低效，过多债务可能在利率上升或业务下行时导致偿债和破产风险。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Coverage Checklist</div><h2>逐条覆盖清单</h2></div>
+      <div class="head-desc">对应 PDF 第 293-299 页；后续模块 5 会进入不同国家和市场治理模式。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Executive remuneration</span> 高管薪酬与 KPI</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">薪酬是管理层和股东之间最清晰的利益冲突领域。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">高管薪酬通常包括 fixed salary、benefits including pension、annual bonus、share-linked incentive / LTIP 四类。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">关注重点多在 variable incentives，即 bonus 和 equity-linked portions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Annual bonus 通常基于年初设定的 KPI，年底以现金支付；部分奖金可能递延两三年，常转为股份。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Bonus KPI 以财务指标为主，但通常约 20% 涉及个人表现或 ESG 等非财务指标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">长期股权激励通常至少衡量三年，且股份需继续持有；目前期望的总期间通常至少五年。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">长期激励通常用 TSR 和 EPS 等宽口径财务指标衡量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">薪酬争议来自董事会和股东视角差异：董事会看公司内部表现和合约，股东看股价表现和市场整体薪酬攀升。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Pay ratio disclosures 比较 CEO 薪酬和平均员工薪酬，France、Netherlands、UK、USA 等市场已有要求。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Reporting</span> 报告透明度和 APM</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Code Principle N：董事会应呈现 fair, balanced and understandable 的公司状况和前景评估。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">报告由管理层先主导，审计委员会和整个董事会监督，审计师提供独立挑战。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者可从报告中看出管理层质量，尤其在公司试图掩盖业绩下滑时。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">APMs 是 adjusted 或 underlying 等对会计准则认可指标进行调整后的绩效指标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">APM 可能显示管理层想美化表现，而非承认无法创造更好业绩。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者尤其警惕 APM 计算期间变化、叙述披露数字与财务报表数字不一致。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">气候报告中的漂亮表述若未反映到财务报告，是机构投资者的重要担忧。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ISSB 将建立高质量可持续披露全球基线；IFRS S1 是整体框架，IFRS S2 基本重述 TCFD 建议。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESMA 2015 APM 指引要求一致性、不得比官方指标更突出、并完整调节。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">IFRS 18 于 2024 年 4 月发布，拟从 2027 年 1 月 1 日或之后开始的年度报告期间生效，允许管理层偏好绩效指标但需与标准指标并列并完整调节。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Capital allocation</span> 资本配置和资本结构</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资本配置是公司如何使用财务资源以长期创造最大价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">关键问题：多少现金流分给股东，多少再投资于现有或新业务。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资本配置不仅是选择做什么，也是选择不做什么。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司可能因历史原因保留 legacy business，即便整体机会已经转移。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Conglomerates 已不受欢迎，很多投资者偏好 focused businesses，由投资者自己在组合层面分散化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">无债务公司可能被认为低效，未充分提高 ROE；但过度举债会在利率上升或业务下行时带来破产风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">可持续资本结构是在短期 ROE 最大化和抵御下行之间取得平衡。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">回购、发股、分红都应纳入整体资本结构判断。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">超过现金流能力支付分红不可持续；但现金很多且分红率很低也可能引起股东担忧，日本公司相关争议较多。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Business ethics</span> 商业伦理和举报机制</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司必须遵守注册地法律，跨国集团还要遵守经营所在国法律。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">反贿赂和反腐败等领域很多司法辖区适用域外法，如美国 FCPA 和英国 Bribery Act。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">许多投资者期待公司不止守法，还要意识到商业伦理以及对利益相关方和社区的更广泛责任。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">伦理失败可能破坏与关键利益相关方关系，极端情况下导致失去市场或业务经营许可。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">商业伦理包括企业文化、员工公平、客户价值、反歧视、反垄断、反贿赂、供应商付款、社区关系、游说诚实、公平纳税、声誉保护。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">商业伦理通常由审计委员会在更广泛风险职责中监督，也可能由风险委员会或其他董事会层面小组监督。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">稳健伦理文化需要公开、可使用、能向适当资深且独立人员报告的 whistleblowing procedures。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">外部人士很难真实看清公司商业伦理和文化，这对非执行董事和股东都是挑战。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pay" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Executive Pay</div><h2>高管薪酬：最清晰的代理冲突现场</h2></div>
+      <div class="head-desc">薪酬题不要只看金额，要看结构是否让管理层为长期价值行动。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Executive Remuneration<br>用薪酬结构缓解代理问题</div>
+      <div class="branch-grid" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+        <div class="branch"><div class="branch-title">Fixed salary</div><p>通常每年增加。</p><p>固定基础薪酬。</p></div>
+        <div class="branch"><div class="branch-title">Benefits</div><p>包括 pension。</p><p>常按工资比例计算。</p></div>
+        <div class="branch"><div class="branch-title">Annual bonus</div><p>基于年度 KPI。</p><p>约 20% 可为个人表现或 ESG 等非财务指标。</p></div>
+        <div class="branch"><div class="branch-title">LTIP / shares</div><p>通常至少三年绩效期。</p><p>总持有期预期五年以上。</p></div>
+      </div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 薪酬结构</div><span class="tag tag-blue">Four parts</span></div>
+        <p class="small"><b>原文要点：</b>全球高管薪酬大体包括 fixed salary、benefits、annual bonus、share-linked incentive / LTIP。</p>
+        <p class="small"><b>中文解释：</b>固定部分解决“给多少”，可变部分解决“为了什么给”。投资者通常更关注可变激励。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Executive pay</div><div class="eq-op">==</div><div class="eq-rhs">salary + benefits + annual bonus + LTIP</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>正式题问 ESG metric 最可能出现在什么薪酬元素，答案通常是 annual bonus。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Bonus KPI</div><span class="tag tag-green">20%</span></div>
+        <p class="small"><b>原文要点：</b>奖金 KPI 以财务指标为主，但通常约 20% 涉及个人表现或非财务指标，包括 ESG。</p>
+        <p class="small"><b>中文解释：</b>ESG 指标进入奖金，是把可持续目标和管理层短期行为连接起来。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Annual bonus</div><div class="eq-op">==</div><div class="eq-rhs">annual KPIs + mostly financial + around 20% personal / non-financial / ESG</div></div>
+        </div>
+        <div class="riskline"><b>易错提醒：</b>ESG 指标不是最可能在 fixed salary 里，也不一定主要在 LTIP 里。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. LTIP</div><span class="tag tag-violet">Long term</span></div>
+        <p class="small"><b>原文要点：</b>长期股权奖励通常至少三年衡量绩效，股份还要持有一段时间；目前预期总期间含绩效和锁定至少五年。</p>
+        <p class="small"><b>中文解释：</b>长期激励不是马上兑现，而是让管理层把决策后果留在自己身上。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">LTIP</div><div class="eq-op">==</div><div class="eq-rhs">3-year performance + share payout + further holding + TSR / EPS</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>LTIP 常用 TSR 和 EPS，不要和年度奖金 KPI 混淆。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. 争议来源</div><span class="tag tag-amber">Mindset gap</span></div>
+        <p class="small"><b>原文要点：</b>董事会关注公司自身成功和合约义务，股东关注市场整体薪酬攀升、股价表现和组合视角。</p>
+        <p class="small"><b>中文解释：</b>同一薪酬方案，董事会可能认为是留住最佳候选人，股东可能认为推高全市场薪酬或与股价表现脱节。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Pay dispute</div><div class="eq-op">==</div><div class="eq-rhs">board company mindset vs shareholder portfolio / market mindset</div></div>
+        </div>
+        <div class="riskline"><b>例子提醒：</b>Apple 2022 AGM say-on-pay 有 34% 股东反对，说明即使公司表现强，薪酬 quantum 仍可能引发担忧。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="reporting" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Reporting & Transparency</div><h2>报告透明度：看管理层是否在“讲真话”</h2></div>
+      <div class="head-desc">报告不是宣传册。投资者从报告中判断管理层质量、审计委员会监督和审计师挑战是否有效。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Fair, balanced and understandable</div><span class="tag tag-blue">Principle N</span></div>
+        <p class="small"><b>原文要点：</b>UK Code Principle N 要求董事会呈现公平、平衡、可理解的公司状况和前景评估。</p>
+        <p class="small"><b>中文解释：</b>公平是不能只讲好消息，平衡是风险和机会都要讲，可理解是不能用复杂表述遮掩问题。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Good reporting</div><div class="eq-op">==</div><div class="eq-rhs">fair + balanced + understandable</div></div>
+        </div>
+        <div class="memory"><b>责任链：</b>management leads → audit committee and board oversee → auditor challenges independently。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. APMs</div><span class="tag tag-rose">Adjusted</span></div>
+        <p class="small"><b>原文要点：</b>APMs 是 adjusted 或 underlying 等调整后绩效指标，可能显示管理层试图美化表现。</p>
+        <p class="small"><b>中文解释：</b>APM 本身不一定错，风险在于调整是否客观、一致、和法定报表是否能对上。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">APM warning</div><div class="eq-op">==</div><div class="eq-rhs">adjusted performance + changing calculation + no reconciliation</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>ESMA 2015 要求 APM 一致、不得比官方指标更突出，并完整调节。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. 气候叙述与财务报告</div><span class="tag tag-green">Climate</span></div>
+        <p class="small"><b>原文要点：</b>气候叙述报告中的好话如果没有反映在相关财务报告中，是很多机构投资者关注的风险。</p>
+        <p class="small"><b>中文解释：</b>公司说转型、减排、资产受影响，但减值、寿命、成本假设不变，就可能是叙述和账目脱节。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Climate reporting</div><div class="eq-op">==</div><div class="eq-rhs">narrative commitments must connect to financial reporting</div></div>
+        </div>
+        <div class="riskline"><b>审计人视角：</b>气候重大事项应反映在财务报告中，审计委员会和审计师都要关注一致性。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. ISSB and IFRS 18</div><span class="tag tag-violet">Standards</span></div>
+        <p class="small"><b>原文要点：</b>ISSB 形成可持续披露全球基线；IFRS S1 是整体框架，IFRS S2 基本重述 TCFD。IFRS 18 允许管理层偏好绩效指标，但需与标准指标并列并调节。</p>
+        <p class="small"><b>中文解释：</b>披露标准化的方向是：让投资者能比较、能调节、能追踪。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Disclosure standards</div><div class="eq-op">==</div><div class="eq-rhs">ISSB baseline + IFRS S1/S2 + IFRS 18 reconciliation</div></div>
+        </div>
+        <div class="riskline"><b>时间提醒：</b>IFRS 18 于 2024 年 4 月发布，拟适用于 2027 年 1 月 1 日或之后开始的年度报告期间。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="capital" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Capital Allocation</div><h2>资本配置：董事会决定钱投向哪里，也决定不投哪里</h2></div>
+      <div class="head-desc">资本配置题要看“长期价值”和“财务韧性”的平衡，不要只看短期 ROE 或短期分红。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>资本配置的主问题</h3>
+        <p class="small"><b>原文要点：</b>资本配置是公司使用财务资源以长期创造价值的方式，关键是现金流分给股东还是再投资。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Capital allocation</div><div class="eq-op">==</div><div class="eq-rhs">distribute cash flow + reinvest in existing/new business + decide what not to do</div></div>
+        </div>
+        <div class="memory"><b>记忆线：</b>资本配置不是“有钱就投”，而是选择有限资源的优先级。</div>
+      </div>
+      <div class="card">
+        <h3>资本结构的平衡</h3>
+        <p class="small"><b>原文要点：</b>无债务可能低效，过多债务在利率上升或业务下行时可能导致破产风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Capital structure</div><div class="eq-op">==</div><div class="eq-rhs">some debt for efficiency + enough buffer for resilience</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>可持续资本结构是在短期 ROE 最大化和完全抗风险之间找平衡。</div>
+      </div>
+    </div>
+    <div class="map-board" style="margin-top:14px">
+      <div class="center-node">Capital Allocation Decision Path<br>现金流如何变成长期价值</div>
+      <div class="mini-flow">
+        <div class="mini-card"><b>1 分配 vs 再投</b><span>分红、回购，还是投入现有/新业务。</span></div>
+        <div class="mini-card"><b>2 做什么 vs 不做什么</b><span>资源有限，放弃项目也是治理判断。</span></div>
+        <div class="mini-card"><b>3 历史包袱</b><span>legacy business 可能拖住整体机会。</span></div>
+        <div class="mini-card"><b>4 聚焦业务</b><span>Conglomerates 不受欢迎，投资者可自行组合分散。</span></div>
+        <div class="mini-card"><b>5 杠杆水平</b><span>债务提高 ROE，也提高利率和下行风险。</span></div>
+        <div class="mini-card"><b>6 分红可持续</b><span>超过现金流分红不可持续，现金很多却低分红也会被质疑。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ethics" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Business Ethics</div><h2>商业伦理：不止“合法”，还要守住长期经营许可</h2></div>
+      <div class="head-desc">伦理题容易被误解为软问题，但 PDF 明确说伦理失败可能破坏关键利益相关方关系，极端时影响 license to operate。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 法律合规不是终点</div><span class="tag tag-blue">Beyond law</span></div>
+        <p class="small"><b>原文要点：</b>公司需遵守注册地和经营地法律，但投资者通常期待公司超越最低法律合规。</p>
+        <p class="small"><b>中文解释：</b>法律是底线，伦理是长期可持续经营的社会许可。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Business ethics</div><div class="eq-op">==</div><div class="eq-rhs">legal compliance + stakeholder responsibility + reputation protection</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>Anti-corruption 最可能涉及域外法；美国 FCPA 和英国 Bribery Act 是例子。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Whistleblowing</div><span class="tag tag-green">Culture</span></div>
+        <p class="small"><b>原文要点：</b>稳健伦理文化需要公开、可使用的举报程序，让员工及承包商、供应商等可向资深且独立人员报告问题。</p>
+        <p class="small"><b>中文解释：</b>举报机制的核心不是“有邮箱”，而是问题能被安全、独立、及时地听到和处理。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Whistleblowing</div><div class="eq-op">==</div><div class="eq-rhs">publicized access + independent escalation + prompt response</div></div>
+        </div>
+        <div class="riskline"><b>治理提醒：</b>通常由审计委员会监督，也可能由风险委员会或其他董事会小组监督。</div>
+      </article>
+    </div>
+    <div class="map-board" style="margin-top:14px">
+      <div class="center-node">Business Ethics Checklist<br>伦理不是单点事项，而是一组经营底线</div>
+      <div class="ethics-grid">
+        <div class="ethic"><b>Corporate culture</b><span>行为标准适用于全体员工，不容忍不当行为。</span></div>
+        <div class="ethic"><b>Employees</b><span>健康安全、人权、避免现代奴役。</span></div>
+        <div class="ethic"><b>Customers</b><span>提供价值，避免歧视、剥削、串通和反竞争行为。</span></div>
+        <div class="ethic"><b>Anti-bribery</b><span>避免贿赂、腐败和欺诈。</span></div>
+        <div class="ethic"><b>Suppliers</b><span>适当、及时付款，不利用强势地位谋取不公平利益。</span></div>
+        <div class="ethic"><b>Communities</b><span>与经营所在地社区建立适当关系，并愿意对话。</span></div>
+        <div class="ethic"><b>Lobbying</b><span>监管或政治游说应诚实，不与公开立场冲突。</span></div>
+        <div class="ethic"><b>Tax</b><span>合规纳税，并认识到避税不只是逃税才不当。</span></div>
+        <div class="ethic"><b>Reputation</b><span>声誉是有价值资产，会被不当行为损害。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Audit-style Cases</div><h2>案例框：把治理问题转成复核程序</h2></div>
+      <div class="head-desc">用审计和投资复核思路看：风险点是什么、证据在哪里、可能影响什么。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 1：ESG 指标进入奖金</div><span class="tag tag-blue">Pay</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">ESG KPI 可能设置得过软，不能真正驱动战略目标。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">KPI 权重、目标难度、是否可量化、是否与战略一致、是否披露达成情况。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">若指标软，薪酬看似对齐 ESG，实际可能只是增加奖金支付理由。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">ESG bonus quality == strategic relevance + measurable target + credible disclosure。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 2：Adjusted profit 每年变口径</div><span class="tag tag-violet">APM</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">公司通过调整项目变化粉饰经营下滑。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">APM 调整明细、与法定利润调节表、历年口径一致性、叙述与报表数字匹配。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">投资者可能高估盈利质量和管理层可信度。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">APM risk == adjusted metric + inconsistent method + weak reconciliation。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 3：高分红但现金流不足</div><span class="tag tag-amber">Dividend</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">公司为迎合短期股东，支付超过经营现金流能力的分红。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">自由现金流、债务水平、资本开支需求、分红政策和未来融资计划。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">短期股东满意，但长期资本韧性和再投资能力下降。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">unsustainable dividend == payout beyond cash flow + reduced resilience。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 4：举报热线没人敢用</div><span class="tag tag-green">Ethics</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">伦理制度形式存在，但员工不相信独立性和保护机制。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">举报渠道宣传、匿名保护、处理时效、审计委员会收到的报告、报复处理案例。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">问题无法早期暴露，可能演变为重大合规、财务或声誉风险。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">weak whistleblowing == low trust + no independent escalation + delayed detection。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Compressed Review</div><h2>考前压缩：一组式子背完模块 4</h2></div>
+      <div class="head-desc">这些式子后续会进入第 5 章 Key Facts 总结和三轮练习压缩背诵。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>模块 4 主式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Executive pay</b> == salary + benefits + annual bonus + LTIP。</div>
+          <div class="formula"><b>Annual bonus</b> == annual KPI + mostly financial + around 20% ESG/personal/non-financial。</div>
+          <div class="formula"><b>LTIP</b> == 3-year performance + further share holding + TSR/EPS。</div>
+          <div class="formula"><b>Good reporting</b> == fair + balanced + understandable。</div>
+          <div class="formula"><b>APM warning</b> == adjusted/underlying + changing calculation + no reconciliation。</div>
+          <div class="formula"><b>ISSB</b> == global sustainability baseline; IFRS S1 framework + IFRS S2 TCFD-based climate disclosure。</div>
+          <div class="formula"><b>Capital allocation</b> == distribute vs reinvest + decide what not to do。</div>
+          <div class="formula"><b>Capital structure</b> == some debt for efficiency + buffer for resilience。</div>
+          <div class="formula"><b>Business ethics</b> == legal compliance + stakeholder responsibility + reputation protection。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错点</h3>
+        <div class="formula-list">
+          <div class="trap"><b>易错 1：ESG 指标最可能在哪类薪酬？</b>通常是 annual bonus 的 KPI，而不是 fixed salary。</div>
+          <div class="trap"><b>易错 2：APM 不等于一定造假。</b>风险在于不一致、比官方指标突出、缺少完整调节。</div>
+          <div class="trap"><b>易错 3：气候报告只看叙述。</b>重大气候事项应和财务报告假设、减值、寿命、成本相互一致。</div>
+          <div class="trap"><b>易错 4：无债务一定好。</b>无债务可能低效；过度债务才是韧性风险。</div>
+          <div class="trap"><b>易错 5：商业伦理只等于守法。</b>投资者期待公司超越最低合规，维护利益相关方关系和声誉。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 4 边界提醒：不同国家市场的治理结构差异，如单层/双层董事会、各国特殊制度，会在模块 5 处理。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Self Test</div><h2>自测题：看到题眼，反推治理落点</h2></div>
+      <div class="head-desc">正式 Practice Problems 之后统一进入三轮练习系统；这里先训练模块 4 的核心判断。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">1</div><div class="qtext">高管薪酬通常分为哪四类？</div><button class="qbtn">看答案</button></div><div class="qanswer">Fixed salary、benefits including pension、annual bonus、share-linked incentive / LTIP。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">2</div><div class="qtext">ESG performance metric 最可能出现在高管薪酬的哪个部分？为什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">最可能出现在 annual bonus 的 KPI 中。奖金 KPI 以财务指标为主，但通常约 20% 涉及个人表现或非财务指标，包括 ESG。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">3</div><div class="qtext">APM 的两个主要红旗是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">一是 APM 计算口径在不同报告期变化；二是叙述披露中的数字与财务报表数字不能完全调节或不一致。还要看是否比官方指标更突出。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">4</div><div class="qtext">IFRS S1 和 IFRS S2 在 PDF 中分别对应什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">IFRS S1 是可持续报告整体方法和未来准则基础的框架文件；IFRS S2 基本重述 TCFD 建议，属于气候相关披露标准。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">5</div><div class="qtext">为什么“没有债务”不一定是最好的资本结构？</div><button class="qbtn">看答案</button></div><div class="qanswer">没有债务可能意味着资本结构低效，未充分提高股本回报；但过度债务会在利率上升或业务下行时带来破产风险。因此要在效率和韧性之间平衡。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">6</div><div class="qtext">为什么超过现金流能力支付分红会引发治理担忧？</div><button class="qbtn">看答案</button></div><div class="qanswer">因为这类分红不可持续，可能削弱公司再投资能力和财务韧性，虽然短期股东可能欢迎现金支付。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">7</div><div class="qtext">商业伦理为什么不只是遵守法律？</div><button class="qbtn">看答案</button></div><div class="qanswer">投资者期待公司意识到对利益相关方和社区的更广泛责任。伦理失败可能破坏关键关系、损害声誉，极端情况下导致失去市场或业务经营许可。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">8</div><div class="qtext">哪类商业伦理问题最可能受到域外法律约束？举两个例子。</div><button class="qbtn">看答案</button></div><div class="qanswer">反贿赂和反腐败最可能受到域外法律约束。例子包括美国 Foreign Corrupt Practices Act 和英国 Bribery Act。</div></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id=btn.dataset.tab;
+    tabs.forEach(t=>t.classList.toggle('active',t===btn));
+    panels.forEach(p=>p.classList.toggle('active',p.id===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

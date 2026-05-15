@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESG Ch.9 Module 4 · 9.1.4</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#edf2f7;--paper:#fff;--soft:#f8fafc;--bg:#eef3f8;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 14px 38px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef3f8 52%,#e8eef5 100%);line-height:1.68;min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 78px;min-width:0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin-bottom:16px}
+.hero-main,.hero-side,.panel-card,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main{padding:28px 30px}.hero-side{padding:18px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.pill{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,54px);line-height:1.08;letter-spacing:0;margin:0 0 12px;color:var(--dark);word-break:break-word}
+.lead{font-size:15px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.76}.hero-eq b{color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.stat-num{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--dark);line-height:1}.stat-lab{font-size:12px;font-weight:850;color:var(--muted);margin-top:5px}
+.side-note{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:13px 14px;font-size:13px;line-height:1.72}.side-note b{color:#fff}
+.tabbar{position:sticky;top:10px;z-index:20;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px;overflow-x:auto;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}
+.tab-title{font-size:12px;font-weight:950;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;padding:0 7px;white-space:nowrap}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 12px;font-size:13px;font-weight:900;color:var(--muted);cursor:pointer;white-space:nowrap}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff}
+.panel{display:none;min-width:0}.panel.active{display:block}
+.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:950;letter-spacing:.10em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(24px,4vw,36px);line-height:1.16;letter-spacing:0;margin:0;color:var(--dark)}.sub{font-size:14px;color:var(--muted);line-height:1.76;margin:8px 0 0;max-width:820px}
+h3{font-size:16px;color:var(--dark);line-height:1.36;margin:0 0 8px}.small{font-size:12.8px;color:var(--muted);line-height:1.65}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px}.pad{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:950;line-height:1.25;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px;margin-bottom:14px;min-width:0;overflow:hidden}.center-node{max-width:700px;margin:0 auto 16px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45;word-break:break-word}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}.flow-card h3{font-size:14px;margin:0 0 6px}.flow-card p{font-size:12.5px;color:var(--sub);line-height:1.58;margin:0}
+.logic-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.logic-step{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.logic-step b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}.logic-step span{font-size:12.6px;color:var(--sub);line-height:1.58}
+.coverage-group{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.coverage-group h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.coverage-list{display:grid;gap:8px;margin-top:10px}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:9px}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:13px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.6}
+.knowledge-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.card-top{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.num{width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--accent,var(--blue));color:#fff;font-family:var(--serif);font-size:20px;font-weight:950;flex:0 0 auto}.card-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;margin:2px 0 4px}.row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;border-top:1px solid var(--line2);padding-top:10px;margin-top:10px}.row-lab{font-size:11px;font-weight:950;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}.row-val{font-size:13.2px;color:var(--sub);line-height:1.75}.row-val b{color:var(--dark)}
+.eq{background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:11px 12px;font-size:13px;line-height:1.72}.eq b{color:#fff}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);background:var(--soft)}.case-body{padding:16px}.case-body p{font-size:13.3px;color:var(--sub);line-height:1.78;margin:0 0 10px}.case-body p:last-child{margin-bottom:0}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;margin-top:10px}.mini-table th,.mini-table td{border-bottom:1px solid var(--line2);padding:10px;text-align:left;vertical-align:top;font-size:12.7px;line-height:1.58}.mini-table th{background:var(--soft);color:var(--dark);font-weight:950}.mini-table tr:last-child td{border-bottom:0}
+.reg-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px;min-width:0}.reg-card h3{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.reg-list{display:grid;gap:8px;margin-top:10px}.reg-item{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:9px;font-size:12.8px;color:var(--sub);line-height:1.58}.reg-item b{color:var(--dark)}
+.trap{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent,var(--rose));border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px}.trap b{color:var(--dark)}.trap p{font-size:13.2px;color:var(--sub);line-height:1.72;margin:5px 0 0}
+.cheat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;min-width:0}.cheat-key{font-size:13px;font-weight:950;color:var(--dark);margin-bottom:5px}.cheat-val{font-size:13px;color:var(--sub);line-height:1.62}
+.quiz-list{display:flex;flex-direction:column;gap:12px}.q-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.q-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.q-num{font-size:12px;font-weight:950;color:var(--muted)}.q-text{font-size:14.5px;color:var(--dark);font-weight:760;line-height:1.7;margin-bottom:12px}.options{display:flex;flex-direction:column;gap:8px}.opt{width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);padding:10px 12px;font-size:13.6px;line-height:1.55;color:var(--ink);cursor:pointer}.opt:hover{border-color:var(--blue);background:var(--blue-bg)}.opt.correct{border-color:var(--green);background:var(--green-bg);color:#047857;font-weight:950}.opt.wrong{border-color:var(--rose);background:var(--rose-bg);color:#be123c}.exp{display:none;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:13px;margin-top:12px;font-size:13px;line-height:1.78;color:var(--sub)}.exp.show{display:block}.exp b{color:var(--dark)}
+.footer-note{margin-top:18px;background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.72}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.logic-line{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.section-head{display:block}}
+@media(max-width:640px){.wrap{padding:18px 12px 64px}.hero-main{padding:22px 18px}.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.pill{justify-content:center;text-align:center;white-space:normal}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow,.logic-line{grid-template-columns:1fr}.center-node{border-radius:var(--r)}.row{grid-template-columns:1fr;gap:4px}h1{font-size:30px;line-height:1.12}.tab{padding:8px 10px}.mini-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 9</span>
+        <span class="pill">Module 4</span>
+        <span class="pill">9.1.4</span>
+        <span class="pill">Greenwashing</span>
+      </div>
+      <h1>Greenwashing<br>and Its Consequence</h1>
+      <p class="lead">本模块覆盖 PDF 第 9 章 9.1.4：什么是 greenwashing，常见 misrepresentation 类型，为什么它会破坏信任、带来声誉和监管风险，以及监管机构和市场如何通过数据、披露、验证和处罚应对。</p>
+      <div class="hero-eq"><b>本模块总逻辑等式：</b>Greenwashing == ESG 表述与事实/证据/范围不一致 → 投资者和消费者误判 → 信任受损 + 诉讼罚款 + 声誉风险 + 监管介入</div>
+    </div>
+    <aside class="hero-side">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">1</div><div class="stat-lab">Learning Outcome</div></div>
+        <div class="stat"><div class="stat-num">10</div><div class="stat-lab">知识卡片</div></div>
+        <div class="stat"><div class="stat-num">7</div><div class="stat-lab">ESA 特征</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>实务提醒：</b>本页用于考试复习。监管规则和处罚口径会更新，实际工作中应以最新正式文件和专业判断为准。</div>
+    </aside>
+  </section>
+
+  <nav class="tabbar" aria-label="module navigation">
+    <span class="tab-title">9.1.4 Review</span>
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="cards">逻辑等式卡片</button>
+    <button class="tab" data-tab="types">类型区分</button>
+    <button class="tab" data-tab="regulation">监管地图</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>第一屏先看一张图：洗绿不是“说错话”，而是证据链断裂</h2>
+        <p class="sub">greenwashing 的核心不是绿色词汇本身，而是 claims、data、scope、methodology、actual practice 之间是否一致。考试常考定义、类型、ESA 核心特征和监管/案例。</p>
+      </div>
+    </div>
+
+    <div class="map-board">
+      <div class="center-node">Greenwashing<br>可持续表述没有被真实行动、完整范围和可靠证据支撑</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 Claim</h3><p>公司或产品对 ESG 实践、特征、目标、影响作出表述。</p></div>
+        <div class="flow-card"><h3>2 Gap</h3><p>表述与行动、范围、证据、数据或披露不一致。</p></div>
+        <div class="flow-card"><h3>3 Mislead</h3><p>消费者、投资者或客户据此形成错误判断。</p></div>
+        <div class="flow-card"><h3>4 Consequence</h3><p>信任受损、诉讼、罚款、品牌声誉下降、融资和人才受影响。</p></div>
+        <div class="flow-card"><h3>5 Response</h3><p>硬证据、透明数据、生命周期视角、第三方验证、监管处罚。</p></div>
+      </div>
+      <div class="logic-line">
+        <div class="logic-step"><b>隐藏逻辑 1：说了什么</b><span>commitment、product attribute、disclosure、label、advertising。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 2：少了什么</b><span>行动、范围、数据、方法、生命周期、供应链、重要信息。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 3：误导谁</b><span>消费者、投资者、客户、监管者和可持续金融市场。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 4：怎么防</b><span>可验证、可比较、可解释、及时更新、独立验证。</span></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="panel-card pad">
+        <span class="tag tag-blue">定义题</span>
+        <h3 style="margin-top:10px">false statements 是题眼</h3>
+        <p class="small">正式题问 greenwashing，核心是 false statements about ESG practices，用来吸引关注环境友好或可持续实践的客户。</p>
+      </div>
+      <div class="panel-card pad">
+        <span class="tag tag-green">类型题</span>
+        <h3 style="margin-top:10px">不是所有洗绿都故意</h3>
+        <p class="small">ESA 特征里明确包括 intentional 和 unintentional，过失或误解监管框架也可能造成 greenwashing。</p>
+      </div>
+      <div class="panel-card pad">
+        <span class="tag tag-amber">案例题</span>
+        <h3 style="margin-top:10px">看 claim 和 issue 的差距</h3>
+        <p class="small">HSBC、Nestle、Coca-Cola、Walmart、Volkswagen、Danish FSA 等案例都可按“说法 vs 事实/范围/证据”来拆。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单：9.1.4 不漏点</h2>
+        <p class="sub">这一节内容多，建议先按“定义、类型、影响、反制、监管、案例”六块复核。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">定义</span> Greenwashing 是什么</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">IOSCO 视角：资产管理人 misrepresent sustainability-related practices 或 investment products 的 sustainability-related features。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">范围可轻可重：从发行文件中不当使用可持续术语，到对实体可持续承诺的重大误述。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">更一般地，greenwashing 是公司对 ESG practices 作出 false statements，以吸引重视环境友好和可持续实践的客户。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">也可能是把金融产品营销成环保，但实际上基本环境标准未满足，从而获得不公平竞争优势。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">来源可能是故意欺骗，也可能是绿色雄心没有兑现、知识不足，或不清楚什么才算真实、准确、可识别的绿色资质。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">三类 Misrepresentation</span> PDF 明确列举</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Commitments without guarantees of action：高层次承诺或净零目标没有后续行动保证。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Product attributes：对产品或生产方法的环境属性作出不实或不完整表述。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Disclosures：披露中隐瞒或误述社会因素及相关重大财务风险，例如安全、坝体、排放等。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">正式题问“not an example of greenwashing”时，准确陈述环境收益的 regulatory filing 不是洗绿。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-violet">后果</span> 声誉、信任、财务与系统性风险</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">greenwashing 不只是小声誉问题，而是长期、系统性风险，会削弱公司、品牌和吸引客户、人才、资金、合作伙伴的能力。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">营销声明若不完全准确，可能引发 greenwashing litigation，带来时间成本、金钱成本和严重声誉损害。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">DWS 案例显示，greenwashing 指控可能带来监管调查、内部控制加强、法律费用和潜在罚款压力。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">InfluenceMap 研究被用于说明许多绿色或低碳基金存在夸大或达不到目标的情况，投资者和客户会惩罚误导性声明。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-amber">数据反制</span> 为什么只靠标签不够</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">当标签依赖单一、无法充分测试的元素时，greenwashing 风险上升。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 指标因行业而异，单一指标通常不足以进行有意义公司比较，也不足以全面反映 ESG practices。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">研究指出，一些 ESG scoring systems 权重和假设不透明，披露本身可能比真实环境绩效更能预测高分。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">ESG ratings and data providers 需要提高 reliability、comparability、interpretability。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">反制依靠 traceability、credibility、透明数据、准确计量、可靠方法、硬证据、供应链/第三方服务商纳入验证、第三方认证。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">沟通必须 comprehensible and adequate；网站、招股书和所有 sustainability claims 都要更新且适合目的。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-teal">直接与间接影响</span> 信任和真实 ESG 投资</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">最大影响是破坏 consumer trust，并可能损害公众对真实 ESG initiatives and products 的信任。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">投资者有权获得真实信息，这有助于维持对金融产品和可持续披露的信心。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">真正的 ESG 投资通常表现较好且波动较低，因为公司更有效管理环境、社会和治理风险。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">环境风险包括污染监管、水依赖、气候变化导致的业务中断。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">社会风险包括罢工、工厂停产、劳工诉讼、不安全或不公平劳动实践带来的负面公众观感。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">治理风险包括商业伦理、股东争议、领导层变化、会计不当、税务问题等。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">conscious quitting risk：可持续专业人员因雇主价值观不一致而离职。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-rose">三个近似概念</span> Greenhushing / Scopewashing / Competence</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Greenhushing：因担心被追责或误解，正在取得进展的企业反而不愿充分披露可持续计划。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Scopewashing：用正面行动掩盖其他负面影响，或只披露部分范围，例如只讲直接排放、不讲能源、运输和材料等间接排放。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Competence greenwashing：董事、高管或员工夸大自身可持续知识、技能和经验。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">应对 competence greenwashing：提升全员意识，建立真正 ESG 专家团队，不只看 ESG 自我标签或证书缩写，搭建跨 finance 和 natural science 的多元团队，小机构可与研究机构合作。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">Misleading Statements</span> 表述和标签风险</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">许多 greenwashing 来自 statements and language 的不当选择：宽泛、模糊、暗示可持续但未达到相应程度。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">绿色配色、图片和营销手法也可能制造比现实更环保的印象。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">European Commission 研究指出大量 environmental claims 模糊、误导、缺乏依据或完全未证实。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">绿色标签数量过多、透明度差、验证弱，会削弱消费者信心。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">具体细节、计量单位、同类产品比较和 like-for-like comparison，有助于降低误导风险。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">ESA 七个核心特征</span> 考试高频</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">可因 omission 误导，也可因提供 false/deceptive 信息误导。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">可发生在 entity、product 或 service level。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">可以 intentional，也可以 unintentional，例如过失或误解监管框架。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">可发生在金融产品/服务生命周期不同阶段，或投资价值链不同环节。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">可发生在 EU sustainable finance framework 的特定披露中，也可因违反 fair, clear and not misleading 等一般原则出现。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">可由 sustainability communication 所指实体、产品负责实体，或 ESG rating providers、third-party verifiers 等第三方触发。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">若不解决，即使未确认具体消费者/投资者损害或不公平竞争优势，也会削弱 sustainable finance markets and policies 的信任。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：把案例背后的结构抓出来</h2>
+        <p class="sub">greenwashing 不是背案例名，而是判断 claims 是否被行动、范围、数据、方法和披露支撑。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">1</div><div><div class="card-title">Greenwashing 定义</div><span class="tag tag-blue">Definition</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">greenwashing 是对 ESG practices 或可持续产品特征作出误导性表述，用以吸引关注环保或可持续实践的客户或投资者。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">关键不是企业用了绿色词语，而是这些词语是否真实、准确、完整、可验证。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Greenwashing == 可持续 claim - 真实行动/证据/完整范围</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题答案常落在 false statements about ESG practices to appeal to sustainability-minded customers。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">2</div><div><div class="card-title">三类误述</div><span class="tag tag-green">Misrepresentation</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">三类包括 commitments without action、product attributes misstatements、false or misleading disclosures。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">一个看“承诺有没有行动”，一个看“产品属性是否真实”，一个看“披露是否完整可靠”。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Misrepresentation == 空承诺 + 属性不实 + 披露误导</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">准确陈述环境收益不是洗绿；错误、夸大、遗漏、不可验证才是风险点。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#6d28d9">
+        <div class="card-top"><div class="num">3</div><div><div class="card-title">声誉和系统性后果</div><span class="tag tag-violet">Consequences</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">greenwashing 会损害公司、品牌和市场信任，影响客户、人才、资金和合作伙伴，也可能引发诉讼和监管罚款。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">它的危害不止“被骂”，还会增加融资、合规、法律、转型和人才管理成本。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Greenwashing 后果 == 信任下降 + 法律成本 + 品牌受损 + 市场信心受损</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">投资分析中，洗绿风险本身可转化为声誉风险、诉讼风险、监管风险和估值折价。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#b45309">
+        <div class="card-top"><div class="num">4</div><div><div class="card-title">数据反洗绿</div><span class="tag tag-amber">Data Quality</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">ESG ratings 和 data products 需要提高可靠性、可比性、可解释性；企业和投资者需要 traceable、credible、transparent、verified 的数据。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">披露多不等于表现好。真正有用的是能追溯、能验证、能解释的方法和数据。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>反洗绿数据 == 透明来源 + 清楚方法 + 完整范围 + 独立验证</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">单一指标和不透明评分系统都容易引发误导。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#0f766e">
+        <div class="card-top"><div class="num">5</div><div><div class="card-title">直接与间接影响</div><span class="tag tag-teal">Trust</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">greenwashing 直接伤害消费者信任，也间接损害公众对真实 ESG 产品和倡议的信任。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">如果假的绿色产品太多，真的绿色产品也会被怀疑，整个可持续金融市场都会受损。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Greenwashing 影响 == 单个品牌信任破裂 + 整体 ESG 市场信任折损</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">分析师应把信息真实性作为 ESG 投资质量的一部分，而不是只看企业 ESG 标签。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#be123c">
+        <div class="card-top"><div class="num">6</div><div><div class="card-title">Greenhushing</div><span class="tag tag-rose">Silence Risk</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">greenhushing 指企业因担心被追责或误解，选择少披露或不披露可持续进展。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">这是 greenwashing 的反向副作用：规则不清或处罚压力大时，真实进展也可能被压低披露。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Greenhushing == 真实进展 + 害怕误解/追责 → 少说或不说</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">不要把 greenhushing 误认为夸大，它是沉默或缩减披露。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">7</div><div><div class="card-title">Scopewashing</div><span class="tag tag-blue">Scope Gap</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">scopewashing 是用某个正面领域掩盖其他负面影响，或披露排放/影响范围不完整。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">只讲“我直接排放少”，不讲供应链、能源、运输、材料带来的间接影响，就是典型风险。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Scopewashing == 局部正面 + 范围遗漏 → 整体影响被美化</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">审查企业可持续声明时，要问边界：Scope 1/2/3、供应链、生命周期是否都覆盖。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">8</div><div><div class="card-title">Competence greenwashing</div><span class="tag tag-green">People Capability</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">competence greenwashing 指人员或组织夸大 ESG 知识、技能、经验和职位能力。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">有 ESG 头衔或证书缩写，不等于有足够实务能力。要看真实教育背景、经验和专业团队结构。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Competence risk == ESG 标签/头衔 > 实际知识/经验/团队能力</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">PDF 建议建立真正 ESG 专家团队，并让 finance 与 natural science 等背景互补。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#6d28d9">
+        <div class="card-top"><div class="num">9</div><div><div class="card-title">ESA 七特征</div><span class="tag tag-violet">Core Characteristics</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">ESA 认为 greenwashing 可因遗漏或虚假信息造成，可在实体/产品/服务层面发生，可故意或非故意，可由不同价值链主体触发，并会损害市场信任。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">ESA 的框架把 greenwashing 从“广告问题”扩展到整个金融产品生命周期和投资价值链。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>ESA greenwashing == 信息误导 + 层级广 + 主体广 + 阶段广 + 可故意/非故意 + 损害信任</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">“only triggered by third parties” 和 “must be intentional” 都是典型错误。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#b45309">
+        <div class="card-top"><div class="num">10</div><div><div class="card-title">监管应对</div><span class="tag tag-amber">Regulation</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">EU、UK、IOSCO、France、US、Japan 等都提出或实施反洗绿规则、披露要求、标签规则、验证要求或监管指南。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">监管重点从“能不能说绿色”转向“说之前有没有证据，是否完整披露，是否可验证，是否误导投资者/消费者”。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>反洗绿监管 == substantiation + clear disclosure + verification + penalties</b></div></div></div>
+        <div class="row"><div class="row-lab">实务提醒</div><div class="row-val">监管内容变化快，实务引用时要查最新正式文件。</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="types" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Type Distinctions</div>
+        <h2>类型区分：看到题眼先归类</h2>
+        <p class="sub">这张表适合做选择题时反推知识点。</p>
+      </div>
+    </div>
+
+    <div class="panel-card pad">
+      <table class="mini-table">
+        <thead><tr><th>类型</th><th>核心含义</th><th>题眼钩子</th><th>逻辑等式</th></tr></thead>
+        <tbody>
+          <tr><td>Greenwashing</td><td>可持续声明误导，和实践/证据/范围不一致。</td><td>false statements, misleading claims, ESG practices</td><td>claim - evidence</td></tr>
+          <tr><td>Commitment without action</td><td>承诺很大，但没有足够行动或保证。</td><td>net zero pledge, high-level ambition, no follow-through</td><td>target - delivery</td></tr>
+          <tr><td>Product attributes</td><td>产品或生产方法环保属性不真实或不完整。</td><td>environmentally friendly production, recyclable, organic content</td><td>attribute claim - actual attribute</td></tr>
+          <tr><td>Misleading disclosures</td><td>披露中遗漏或误述重大 ESG 风险。</td><td>dam safety, emissions, prospectus, KIID</td><td>disclosure - material fact</td></tr>
+          <tr><td>Greenhushing</td><td>因怕被质疑而减少披露真实可持续进展。</td><td>quietly scale back, unwilling to reveal, fear of retribution</td><td>progress + fear → silence</td></tr>
+          <tr><td>Scopewashing</td><td>只披露部分影响或用局部正面掩盖其他负面。</td><td>direct emissions only, ignores supply chain, carbon only</td><td>partial scope → beautified whole</td></tr>
+          <tr><td>Competence greenwashing</td><td>夸大 ESG 人才、知识、技能和经验。</td><td>ESG title, certificate acronyms, limited experience</td><td>ESG label > actual competence</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-3" style="margin-top:14px">
+      <div class="panel-card pad"><span class="tag tag-blue">看范围</span><h3 style="margin-top:10px">Scope 是最常见破口</h3><p class="small">只讲产品、工厂、直接排放，不讲供应链、生命周期和间接影响，往往就是 scope 问题。</p></div>
+      <div class="panel-card pad"><span class="tag tag-green">看证据</span><h3 style="margin-top:10px">Evidence 是判断底线</h3><p class="small">环保声明需要科学证据、计算方法、数据来源和可验证支持，不能只靠标签或颜色。</p></div>
+      <div class="panel-card pad"><span class="tag tag-amber">看比较</span><h3 style="margin-top:10px">Comparison 要同类可比</h3><p class="small">与竞争对手比较时，要做 like-for-like comparison，否则也可能误导。</p></div>
+    </div>
+  </section>
+
+  <section id="regulation" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Regulation Map</div>
+        <h2>监管地图：不同地区都在把“绿色声明”变成可验证事项</h2>
+        <p class="sub">考试只需掌握各监管方向的功能，不必背完整法规细节；实务中请查最新正式文件。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="reg-card">
+        <h3><span class="tag tag-blue">EU</span> Green Claims Directive / Ecolabel / Labeling</h3>
+        <div class="reg-list">
+          <div class="reg-item"><b>Green Claims Directive:</b> 要求明确环境声明可靠、可比、可验证；证据需可信、科学、考虑国际标准和生命周期分析，并在声明前由独立审计验证。</div>
+          <div class="reg-item"><b>Penalties:</b> 处罚需有效、相称、有威慑力，可能包括罚款、没收收入、暂时排除公共采购和公共资金。</div>
+          <div class="reg-item"><b>EU Ecolabel:</b> 官方自愿标签，强调第三方验证、低环境影响和全生命周期标准。</div>
+          <div class="reg-item"><b>Stricter labeling:</b> 限制新公共标签计划，私营计划需证明 added value； aggregated scores labels 不再允许，因为可能掩盖完整图景。</div>
+        </div>
+      </div>
+
+      <div class="reg-card">
+        <h3><span class="tag tag-green">UK</span> Green Claims Code / FCA</h3>
+        <div class="reg-list">
+          <div class="reg-item"><b>Green Claims Code:</b> CMA 六原则：truthful and accurate、clear and unambiguous、不遗漏重要信息、比较公平有意义、考虑 full life cycle、substantiated。</div>
+          <div class="reg-item"><b>CMA:</b> 可调查企业声明并要求更改；未配合可能进入诉讼，带来罚款和声誉损害风险。</div>
+          <div class="reg-item"><b>FCA:</b> 反洗绿规则和产品标签，限制 green/sustainable 等术语，防止夸大、误导或无依据 ESG credentials。</div>
+        </div>
+      </div>
+
+      <div class="reg-card">
+        <h3><span class="tag tag-violet">IOSCO</span> Asset Managers / Ratings Providers</h3>
+        <div class="reg-list">
+          <div class="reg-item"><b>Asset management:</b> 对资产管理人的 sustainability-related practices、policies、procedures、disclosure、terminology 和投资者教育提出建议。</div>
+          <div class="reg-item"><b>ESG ratings/data:</b> 关注 ESG ratings and data products providers 的治理、流程和方法透明度，因为许多地区尚无完整监管框架。</div>
+          <div class="reg-item"><b>目标:</b> 让可持续信息更一致、可比，防止 greenwashing，并增强投资者信心。</div>
+        </div>
+      </div>
+
+      <div class="reg-card">
+        <h3><span class="tag tag-amber">France / US / Japan</span> 其他监管方向</h3>
+        <div class="reg-list">
+          <div class="reg-item"><b>France:</b> 声称产品 carbon-neutral 时，需报告产品全生命周期温室气体排放。</div>
+          <div class="reg-item"><b>US:</b> SEC proposed Names Rule 和 ESG Disclosure Rule，关注基金名称和 ESG 策略表述，也涉及 GHG emissions 相关信息、数据、指标和策略。</div>
+          <div class="reg-item"><b>Japan:</b> FSA 指南定义 ESG Public Funds 范围，并关注 ESG Public Funds 的披露和管理 checkpoints。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Cases</div>
+        <h2>案例区：每个案例都按“claim vs issue”拆</h2>
+        <p class="sub">案例不用死背细节，重点看误导发生在哪里：范围、证据、生命周期、供应链、披露完整性或真实行动。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-blue">HSBC</span><h3 style="margin-top:8px">讲转型融资，却遗漏自身融资排放</h3></div>
+        <div class="case-body">
+          <p><b>Claim：</b>广告强调为客户净零转型提供融资、植树锁碳等正面行动。</p>
+          <p><b>Issue：</b>监管关注其未充分说明自身对排放行业融资的贡献，未来环境声明需要充分限定，不应遗漏重大信息。</p>
+          <p><b>逻辑等式：</b>HSBC 案例 == 正面转型 claim - financed emissions context。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-green">Nestle / Coca-Cola</span><h3 style="margin-top:8px">包装和塑料声明要看外部依赖和实际结果</h3></div>
+        <div class="case-body">
+          <p><b>Nestle：</b>可回收/可重复使用包装、减少原生塑料、净零路线图等声明，需要考虑政府回收设施、消费者行为、供应链排放和塑料污染现实。</p>
+          <p><b>Coca-Cola：</b>承诺回收每售出一个瓶罐对应一个瓶罐，但同时被批评为主要塑料污染者，recycled/ocean-bound plastic 声明也可能误导。</p>
+          <p><b>逻辑等式：</b>包装 claim == 可回收说法 + 外部回收条件 + 实际污染结果 + 供应链边界。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-amber">ExxonMobil / BP</span><h3 style="margin-top:8px">气候友好形象与资本支出方向不一致</h3></div>
+        <div class="case-body">
+          <p><b>ExxonMobil：</b>公开谈解决气候变化，但仍维持大量化石燃料资本支出，并面临污染罚款。</p>
+          <p><b>BP：</b>品牌转向绿色形象、宣传低碳能源产品，但被批评其大部分年度支出仍在油气方向。</p>
+          <p><b>逻辑等式：</b>能源公司洗绿风险 == 气候友好 claim - fossil fuel spending reality。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-violet">Walmart / Volkswagen</span><h3 style="margin-top:8px">供应链和技术作弊都能变成监管处罚</h3></div>
+        <div class="case-body">
+          <p><b>Walmart：</b>低碳运营模式可能忽视供应链排放；纺织品 bamboo/eco-friendly 声明被指实际涉及 rayon 生产和有害污染。</p>
+          <p><b>Volkswagen：</b>营销低排放环保车辆，但通过软件识别测试并暂时降低排放，正常驾驶排放远高于限制，后续罚款和和解金额巨大。</p>
+          <p><b>逻辑等式：</b>监管处罚案例 == claim 与实际生产/技术行为冲突。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-teal">Fast Fashion</span><h3 style="margin-top:8px">绿色形象不能遮住高周转污染模式</h3></div>
+        <div class="case-body">
+          <p><b>Claim：</b>服装企业可能使用环保材料、绿色形象或可持续标签。</p>
+          <p><b>Issue：</b>快时尚模式鼓励高频周转，合成纤维和石油基产品最终进入填埋或焚烧；具体计量和同类比较能降低误导风险。</p>
+          <p><b>逻辑等式：</b>Fast fashion 风险 == 单品绿色 claim - 商业模式整体环境影响。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-rose">Danish FSA</span><h3 style="margin-top:8px">基金披露不清、不一致、不完整</h3></div>
+        <div class="case-body">
+          <p><b>Claim：</b>八只基金以 sustainable investments 为目标。</p>
+          <p><b>Issue：</b>prospectuses 和 KIIDs 中 sustainability disclosures 过于泛化，部分关键信息不清楚、不一致或不完整，KIID 还缺少目标描述。</p>
+          <p><b>Outcome：</b>缺陷涉及重大问题，违反 SFDR 和 EU Taxonomy 要求，Danish FSA 使用监管命令等工具；ESMA 也确认 SFDR 违规可采取 enforcement action。</p>
+          <p><b>逻辑等式：</b>基金洗绿风险 == 产品实际投资/目标 - pre-contractual disclosure。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：这节最爱考“绝对化选项”</h2>
+        <p class="sub">看到 only、must、always 这类词，尤其要小心。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="trap" style="--accent:#be123c"><b>易错 1：以为 greenwashing 必须故意</b><p>ESA 明确包括 intentional 和 unintentional，过失或误解监管框架也可能造成洗绿。</p></div>
+      <div class="trap" style="--accent:#b45309"><b>易错 2：以为只能由第三方评级机构触发</b><p>可以由被表述实体、产品负责实体，也可以由 ESG rating providers 或第三方验证者触发。</p></div>
+      <div class="trap" style="--accent:#6d28d9"><b>易错 3：只要没有明确损害就不算严重</b><p>ESA 强调即便未确认即时损害或不公平竞争优势，greenwashing 也会削弱可持续金融市场和政策信任。</p></div>
+      <div class="trap" style="--accent:#1d4ed8"><b>易错 4：把 greenhushing 当成 greenwashing</b><p>greenhushing 是担心争议而少披露或沉默；greenwashing 是误导性表述。</p></div>
+      <div class="trap" style="--accent:#047857"><b>易错 5：只看直接排放</b><p>Scopewashing 常见于只披露直接排放，不披露能源、运输、材料或供应链等间接影响。</p></div>
+      <div class="trap" style="--accent:#0f766e"><b>易错 6：把 ESG 分数高等同于 ESG 表现好</b><p>PDF 提醒一些评分系统可能更奖励披露，而非真实环境表现；要看方法、权重和实际绩效。</p></div>
+    </div>
+
+    <div class="panel-card pad" style="margin-top:14px">
+      <h3>考前压缩：一屏背完 Module 4</h3>
+      <div class="grid-auto">
+        <div class="cheat"><div class="cheat-key">总式</div><div class="cheat-val">Greenwashing == claim 与 evidence/action/scope 不一致。</div></div>
+        <div class="cheat"><div class="cheat-key">定义</div><div class="cheat-val">false statements about ESG practices to attract sustainability-minded customers。</div></div>
+        <div class="cheat"><div class="cheat-key">三类误述</div><div class="cheat-val">空承诺、产品属性误述、误导性披露。</div></div>
+        <div class="cheat"><div class="cheat-key">核心后果</div><div class="cheat-val">信任、声誉、诉讼、罚款、融资、人才和市场信心受损。</div></div>
+        <div class="cheat"><div class="cheat-key">数据反制</div><div class="cheat-val">透明来源、清楚方法、完整范围、供应链纳入、第三方验证。</div></div>
+        <div class="cheat"><div class="cheat-key">Greenhushing</div><div class="cheat-val">怕被质疑而减少披露。</div></div>
+        <div class="cheat"><div class="cheat-key">Scopewashing</div><div class="cheat-val">用局部正面或部分范围美化整体。</div></div>
+        <div class="cheat"><div class="cheat-key">Competence</div><div class="cheat-val">ESG 头衔/证书/自我标签大于真实能力。</div></div>
+        <div class="cheat"><div class="cheat-key">ESA</div><div class="cheat-val">可遗漏或虚假、可多层级、多主体、多阶段、可故意或非故意、最终损害信任。</div></div>
+        <div class="cheat"><div class="cheat-key">Danish FSA</div><div class="cheat-val">基金披露不清、不一致、不完整，可违反 SFDR 和 EU Taxonomy。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只测 Module 4</h2>
+        <p class="sub">点击选项后会显示答案。题眼训练重点：定义、ESA 特征、not example、scopewashing、regulatory consequences。</p>
+      </div>
+    </div>
+
+    <div class="quiz-list">
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q1</span><span class="tag tag-blue">正式题改编</span></div>
+        <div class="q-text">Greenwashing refers to companies:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Hiding harmful practices behind more positive ones.</button>
+          <button class="opt" data-correct="false">B. Engaging constructively with policymakers on responsible investment.</button>
+          <button class="opt" data-correct="true">C. Making false statements about ESG practices to appeal to customers interested in environmentally friendly and sustainable practices.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>A 更接近 scopewashing；B 是正常的 responsible investment policy engagement，不是 greenwashing 定义。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q2</span><span class="tag tag-green">正式题改编</span></div>
+        <div class="q-text">Which of the following is a core greenwashing characteristic set out by the European Supervisory Agencies?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Greenwashing can only be triggered by third party ESG rating providers.</button>
+          <button class="opt" data-correct="false">B. Greenwashing must be an intentional misinterpretation of sustainable finance regulation.</button>
+          <button class="opt" data-correct="true">C. Greenwashing will undermine trust in sustainable finance markets and policies, even without ascertained immediate damage or unfair competitive advantage.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>ESA 特征强调损害市场信任；A 和 B 都过于绝对。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q3</span><span class="tag tag-amber">正式题改编</span></div>
+        <div class="q-text">Which of the following is not an example of greenwashing?</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. A company makes accurate representations of the environmental benefits of its production methods in regulatory filings.</button>
+          <button class="opt" data-correct="false">B. A company claims environmentally friendly techniques while suppliers produce high volumes of wastewater.</button>
+          <button class="opt" data-correct="false">C. A bank advertises net-zero transition finance while omitting material information about continued financing of high-emission industries.</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>题眼是 not。准确陈述不是 greenwashing；B 和 C 都有 claim 与事实/范围不一致的问题。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q4</span><span class="tag tag-violet">类型区分</span></div>
+        <div class="q-text">A company highlights direct factory emissions but omits emissions from energy, transport, materials, and supply chains. This is closest to:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Greenhushing.</button>
+          <button class="opt" data-correct="true">B. Scopewashing.</button>
+          <button class="opt" data-correct="false">C. Competence greenwashing.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>只披露部分范围、遗漏间接影响，是 scopewashing 的典型题眼。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q5</span><span class="tag tag-teal">类型区分</span></div>
+        <div class="q-text">A firm with real sustainability progress chooses to communicate less because it fears backlash or misinterpretation. This is closest to:</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. Greenhushing.</button>
+          <button class="opt" data-correct="false">B. Misstating product attributes.</button>
+          <button class="opt" data-correct="false">C. Scopewashing.</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>greenhushing 是少说或不说，不是夸大。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q6</span><span class="tag tag-rose">数据反制</span></div>
+        <div class="q-text">Which practice best helps combat greenwashing?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Relying on one broad label without methodology or verification.</button>
+          <button class="opt" data-correct="true">B. Providing transparent data sources, clear calculation methodology, complete scope, and independent verification.</button>
+          <button class="opt" data-correct="false">C. Using green colors and images without substantiating claims.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>反制核心是可追溯、可信、透明、可验证，而不是标签或绿色视觉。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q7</span><span class="tag tag-blue">监管</span></div>
+        <div class="q-text">The UK CMA Green Claims Code requires environmental claims to be all of the following except:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Truthful, accurate, clear, and unambiguous.</button>
+          <button class="opt" data-correct="false">B. Substantiated and considering the full life cycle.</button>
+          <button class="opt" data-correct="true">C. Based only on selective positive impacts while hiding important information.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>Green Claims Code 要求不遗漏重要信息，比较公平有意义，并考虑 full life cycle。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q8</span><span class="tag tag-green">Danish FSA</span></div>
+        <div class="q-text">The Danish FSA review of sustainable funds most directly highlights which greenwashing risk?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Companies cannot disclose sustainable objectives in prospectuses.</button>
+          <button class="opt" data-correct="true">B. Sustainability disclosures may be too generic, unclear, inconsistent, or incomplete relative to fund objectives.</button>
+          <button class="opt" data-correct="false">C. Voting disclosures alone always satisfy all sustainability disclosure obligations.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>Danish FSA 案例的题眼是 prospectus/KIID 中披露不清、不一致、不完整，并可能违反 SFDR 和 EU Taxonomy。</div>
+      </div>
+    </div>
+
+    <div class="footer-note">复核问题：看到一个绿色声明，你能不能追问“证据是什么、范围到哪里、方法是否透明、供应链是否覆盖、是否经过验证”？能，就抓住了 Module 4。</div>
+  </section>
+</main>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = document.getElementById(tab.dataset.tab);
+    if (panel) panel.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+document.querySelectorAll('.q-card').forEach(card => {
+  const opts = card.querySelectorAll('.opt');
+  const exp = card.querySelector('.exp');
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opts.forEach(o => {
+        o.classList.remove('correct', 'wrong');
+        o.disabled = true;
+        if (o.dataset.correct === 'true') o.classList.add('correct');
+      });
+      if (opt.dataset.correct !== 'true') opt.classList.add('wrong');
+      if (exp) exp.classList.add('show');
+    });
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

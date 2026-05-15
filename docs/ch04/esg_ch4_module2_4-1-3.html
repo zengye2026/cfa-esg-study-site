@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.4 Module 2 · 4.1.3 Key Social Issues and Business Activities</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 45%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}.card.dark h3{color:#fff}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:590px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(78px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}table{border-collapse:collapse;width:100%;min-width:680px}th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center;overflow-wrap:anywhere}summary::-webkit-details-marker{display:none}summary::after{content:"＋";color:var(--muted);font-weight:700}details[open] summary::after{content:"－"}details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:620px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 4</span>
+        <span class="pill">Module 2</span>
+        <span class="pill">4.1.3</span>
+        <span class="pill">Key Social Issues</span>
+      </div>
+      <h1>Key Social Issues and<br>Business Activities</h1>
+      <p class="lead">本页覆盖第 4 章 4.1.3：社会因素如何落到企业经营活动。核心不是背一堆名词，而是先分清“内部员工”和“外部客户/社区/社会”，再看公司管理得好不好。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>关键社会议题 == 内部员工议题 + 外部利益相关方议题；投资分析 == 行业重大性 → 公司暴露程度 → 管理能力 → 供应链穿透</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">4.1.3 解释关键社会概念：human capital、product liability / consumer protection、access to knowledge、health and nutrition、animal welfare。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">内部社会因素</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">外部社会因素</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先问“影响谁”。影响员工，多半是 internal；影响客户、社区、供应链和动物/公共健康，多半是 external。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="internal">内部因素</button>
+    <button class="tab" data-tab="external">外部因素</button>
+    <button class="tab" data-tab="standards">准则倡议</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先分“内部”和“外部”，再背细节</h2>
+      </div>
+      <div class="head-desc">这节知识点很多，最稳的方法是让“利益相关方”领走对应答案：员工领内部，客户和社区领外部。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">4.1.3 Key Social Issues<br>企业社会因素 = 内部员工 + 外部客户/社区/供应链</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">内部：人力资本</div>
+          <p>识别技能需求、补足能力缺口。</p>
+          <p>吸引、培养、留住人才。</p>
+          <p>用培训、敬业度、流失率等指标衡量。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">内部：工作与权利</div>
+          <p>健康安全、职业健康、心理健康。</p>
+          <p>人权、劳工权利、结社自由。</p>
+          <p>现代奴役、强迫劳动、生活工资。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">外部：社区与客户</div>
+          <p>社区反对、争议采购、FPIC。</p>
+          <p>产品责任、消费者保护、召回和诉讼。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">外部：社会机会与公共健康</div>
+          <p>基本服务可及性：健康、水、教育、能源、住房、金融包容。</p>
+          <p>动物福利和抗微生物药物耐药性。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>先看行业</h3><p>哪些社会因素最具争议或财务重大性。</p></div>
+        <div class="flow-step"><h3>再看公司暴露</h3><p>商业模式、经营地区、供应链位置决定风险。</p></div>
+        <div class="flow-step"><h3>再看管理</h3><p>政策、流程、指标、透明度和同业比较。</p></div>
+        <div class="flow-step"><h3>最后穿透供应链</h3><p>重大社会问题常藏在二级及更深层供应商。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">起点</span>
+        <h3>投资者从哪里开始？</h3>
+        <p class="small">先确定每个行业最具争议或财务重大性的社会因素，再评估公司暴露和管理能力，必要时穿透供应链。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">材料性</span>
+        <h3>SASB 的作用</h3>
+        <p class="small">SASB framework 给出行业内财务重大可持续主题的指引，适合用来启动社会因素筛选。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">易错</span>
+        <h3>内部外部不要混</h3>
+        <p class="small">Labor rights 是内部因素；product liability、social opportunities、animal welfare 是外部因素。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-04.pdf` 第 239-249 页整理，覆盖 4.1.3 的内部、外部、准则和案例。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">投资者起点</span> 从重大性到供应链</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">先确定每个行业最具争议或财务重大性的社会因素。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">再评估公司对行业特定社会因素的暴露，以及公司是否、如何管理这些风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">暴露程度取决于商业模式、业务性质、地理位置、供应商和客户所在地。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">必要时评估供应链中的关键社会因素。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SASB framework 指引行业内财务重大主题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会因素可分为影响内部利益相关方和影响外部利益相关方两类。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">内部社会因素</span> 员工与供应链劳工</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Human capital development：长期战略应考虑员工队伍发展，确保有能力履责、符合最新标准法规、保持动力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">人力资本分析问题：识别所需技能和缺口；提出吸引人才的价值主张；培养内部员工能力；监控培训、辅导、敬业度、流失率和内部补缺能力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Working conditions, health, and safety：保护员工免受事故和死亡，职业健康关注职业病和伤害风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">健康安全指标应覆盖正式员工和承包商，尤其是油气、采掘等大量使用承包工的行业。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">工作条件概念扩大到员工福祉、人体工学、弹性工作、心理健康、医疗检查、健身、营养培训和 financial wellness。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Human rights：人人固有权利，不因种族、性别、国籍、民族、语言、宗教或其他身份而不同。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">人权例子：生命和自由权、免于奴役和酷刑、意见和表达自由、工作和教育权。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UDHR：1948 年联合国大会通过，是国际人权的重要基础。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">人权侵犯通常发生在供应链深处，客户和政府仍期望公司对供应链活动负责。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UNGPs 三大支柱：国家保护人权义务、企业尊重人权责任、受害者获得救济。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">OECD Guidelines for MNEs：政府支持的负责任商业行为建议，推动可持续发展和社会进步。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">OECD 指南强调投资造成的社会影响和 double / dual materiality，而不只看财务重大性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CHRB：公开企业人权表现基准，既看政策流程实践，也看对严重指控的回应。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Human Rights 100+：PRI 发起的协作 stewardship 平台，关注严重人权风险并可升级参与。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Labor rights：ILO 标准推动自由、公平、安全、有尊严的体面和生产性工作。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ILO 八项基本公约：结社自由、组织权、强迫劳动、废除强迫劳动、最低年龄、最恶劣形式童工、同工同酬、就业职业歧视。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Freedom of association：员工可成立或加入协会/工会，帮助降低流失、缺勤和罢工成本。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Modern slavery：无法因威胁、暴力、胁迫、欺骗或权力滥用而拒绝或离开的剥削状态。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Forced labor：在惩罚威胁下被迫提供且非自愿的工作或服务；全球估计不少于 2,500 万人处于强迫劳动。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">强迫劳动常隐藏在二级及更深供应链；扣押身份文件、债务束缚、举报移民身份威胁也可能构成强迫。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Living wage：足以覆盖食物、衣服、住房、医疗和教育等基本生活开支。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PLWF：金融机构联盟，鼓励和监督被投公司解决全球供应链生活工资未支付问题。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">外部社会因素</span> 社区、客户、可及性与公共健康</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Opposition by interested parties：公司应与当地社区等利益相关方保持良好关系，避免政治干预、非正式抗议和运营中断。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">FPIC：Free, Prior, and Informed Consent，适用于原住民祖传土地或资源开发。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Controversial sourcing：供应商低成本实践曝光后可能引发伦理争议，冲突矿产和血钻是典型例子。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Consumer protection：通过产品安全、消费者信息、防止欺骗营销保护消费者健康安全权利。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Product liability：企业对制造或销售缺陷产品承担法律责任，可能导致诉讼、赔偿、召回和股价影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">三类产品责任：设计缺陷、制造缺陷、未警示可能危险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Social opportunities：发展中国家基本需求和服务可及性，包括健康/水、教育、能源、住房、金融包容。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">广泛且可负担的基本产品和服务可同时带来财务回报和社会回报。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Access to Medicine Index：分析 20 家大型药企如何在 108 个中低收入国家处理 81 种疾病、状况和病原体的药品可及性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Animal welfare and antimicrobial resistance：集约化养殖不只是伦理问题，也会因耐药性影响人类健康。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">FAIRR：关注集约化畜牧生产相关风险和机会，尤其是抗微生物药物耐药性和抗生素管理不善。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="internal" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Internal Social Factors</div>
+        <h2>内部社会因素：员工是资产，也是风险来源</h2>
+      </div>
+      <div class="head-desc">内部因素的共同点：先影响员工，再影响文化、生产率、事故、罢工、供应链责任和企业声誉。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Human Capital Development 人力资本发展</div><span class="tag tag-blue">人才能力</span></div>
+        <p class="small"><b>原文要点：</b>公司长期战略应考虑员工发展，使员工有能力履行职责、符合最新标准和法规，并保持动力。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">人力资本</div><div class="eq-op">==</div><div class="eq-rhs">战略需要的人 + 技能缺口 + 吸引/培养/留住 + KPI 衡量</div></div></div>
+        <div class="memory"><b>记忆线：</b>把员工当成“长期资产”看，就要问：缺什么能力、怎么培养、怎么留住、怎么衡量回报。</div>
+        <div class="riskline">投资判断：看技能识别、人才价值主张、培训投入、员工敬业度、流失率和内部填补空缺能力。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Working Conditions, Health and Safety 工作条件、健康与安全</div><span class="tag tag-rose">事故风险</span></div>
+        <p class="small"><b>原文要点：</b>健康安全保护员工免受事故和死亡；职业健康关注职业病和职业伤害，如矽肺或 vibration white finger。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">健康安全</div><div class="eq-op">==</div><div class="eq-rhs">事故死亡控制 + 职业病预防 + 承包商纳入 + 福祉扩展</div></div></div>
+        <div class="memory"><b>记忆线：</b>不能只看正式员工。采掘、油气等行业的承包商事故也是真风险。</div>
+        <div class="riskline">投资判断：重大安全事故可能带来罚款、停工、赔偿、诉讼、负债和声誉损失。</div>
+        <div class="source">概念扩展：人体工学、弹性工作、心理健康、burnout、医疗检查、健身、营养培训、financial wellness。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Human Rights 人权</div><span class="tag tag-violet">供应链深处</span></div>
+        <p class="small"><b>原文要点：</b>人权是人人固有的权利，不受种族、性别、国籍、民族、语言、宗教或其他身份影响。包括生命和自由、免于奴役和酷刑、表达自由、工作和教育。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">人权风险</div><div class="eq-op">==</div><div class="eq-rhs">普遍权利 + 供应链深处违规 + 公司仍需负责</div></div></div>
+        <div class="memory"><b>记忆线：</b>直接持有的是品牌公司，风险可能藏在二级、三级供应商。</div>
+        <div class="riskline">投资判断：客户和政府期待公司对供应链人权负责，不能只看一线门店或一级供应商。</div>
+        <div class="source">国际基础：UDHR，1948 年联合国大会通过。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Labor Rights 劳工权利</div><span class="tag tag-green">体面工作</span></div>
+        <p class="small"><b>原文要点：</b>ILO 国际劳工标准旨在促进女性和男性获得自由、公平、安全、有尊严的体面和生产性工作。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">劳工权利</div><div class="eq-op">==</div><div class="eq-rhs">结社/谈判 + 禁强迫劳动 + 禁童工 + 同酬 + 反歧视</div></div></div>
+        <div class="memory"><b>记忆线：</b>劳工权利不是福利清单，而是保护员工能“自由、安全、有尊严地工作”。</div>
+        <div class="riskline">投资判断：劳工权利能反映企业文化和员工满意度，也会影响流失、缺勤、罢工和供应链风险。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Freedom of Association and Employee Relations 结社自由与员工关系</div><span class="tag tag-amber">工会</span></div>
+        <p class="small"><b>原文要点：</b>员工应有自由成立或加入协会/工会，为员工利益发声。建立结社自由后，强迫劳动、童工和歧视等其他劳工权利也更容易被保护。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">结社自由</div><div class="eq-op">==</div><div class="eq-rhs">员工有组织发声 → 关系更稳 → 降低流失/缺勤/罢工</div></div></div>
+        <div class="memory"><b>记忆线：</b>员工不能发声，问题就更容易藏起来；能发声，其他劳工风险也更容易暴露。</div>
+        <div class="riskline">投资判断：投资者可通过 engagement 推动被投公司改善特定行业或国家的劳资关系。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Modern Slavery and Forced Labor 现代奴役与强迫劳动</div><span class="tag tag-rose">隐藏风险</span></div>
+        <p class="small"><b>原文要点：</b>现代奴役是人因威胁、暴力、胁迫、欺骗或权力滥用而无法拒绝或离开的剥削状态；强迫劳动是在惩罚威胁下非自愿提供的工作或服务。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">强迫劳动</div><div class="eq-op">==</div><div class="eq-rhs">非自愿 + 惩罚威胁；不一定要有身体暴力</div></div></div>
+        <div class="memory"><b>记忆线：</b>扣身份文件、债务束缚、威胁举报移民身份，也能“迫使”劳动。</div>
+        <div class="riskline">投资判断：只查一级供应商远远不够，风险常在二级及更深层供应链。</div>
+        <div class="source">数字：全球估计不少于 2,500 万人处于强迫劳动。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Living Wage 生活工资</div><span class="tag tag-teal">基本生活</span></div>
+        <p class="small"><b>原文要点：</b>服装鞋履、食品饮料、消费电子、零售等大量依赖手工劳动行业，工资往往不足以覆盖基本生活开支。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">生活工资</div><div class="eq-op">==</div><div class="eq-rhs">工资足以覆盖食物/衣服/住房/医疗/教育 → 减少贫困和过度加班</div></div></div>
+        <div class="memory"><b>记忆线：</b>生活工资不是“多发钱”，而是让员工不用靠过度加班才能维持基本生活。</div>
+        <div class="riskline">投资判断：生活工资推进也会支持儿童教育、供应链稳定和多项基本人权。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="external" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">External Social Factors</div>
+        <h2>外部社会因素：客户、社区、供应链和公共健康</h2>
+      </div>
+      <div class="head-desc">外部因素的共同点：公司不只对员工负责，也要面对消费者、社区、原住民、病患、动物福利和社会公众。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Opposition by Interested Parties and Controversial Sourcing 利益相关方反对与争议采购</div><span class="tag tag-amber">社区许可</span></div>
+        <p class="small"><b>原文要点：</b>公司应与包括当地社区在内的利益相关方保持良好关系，以避免政治干预、非正式抗议和运营中断。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">社区关系</div><div class="eq-op">==</div><div class="eq-rhs">理解需求和担忧 + 参与过程 + FPIC → 降低反对和中断</div></div></div>
+        <div class="memory"><b>记忆线：</b>项目能不能继续，不只看许可证，也看社区是否接受。</div>
+        <div class="riskline">投资判断：争议采购、冲突矿产、血钻会变成业务和声誉风险。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Product Liability and Consumer Protection 产品责任与消费者保护</div><span class="tag tag-rose">召回诉讼</span></div>
+        <p class="small"><b>原文要点：</b>消费者保护是保护消费者权利的法律和监管，基于消费者有基本健康和安全权利。产品责任是企业因制造或销售缺陷产品承担法律责任。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">产品责任</div><div class="eq-op">==</div><div class="eq-rhs">设计缺陷 + 制造缺陷 + 未警示危险 → 诉讼/赔偿/召回/声誉</div></div></div>
+        <div class="memory"><b>记忆线：</b>产品出了事，消费者信息不对称，所以责任更多落在制造商和销售商。</div>
+        <div class="riskline">投资判断：反复召回或诉讼会影响股价；社交媒体和抵制会放大声誉风险。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Social Opportunities 社会机会</div><span class="tag tag-green">可及性</span></div>
+        <p class="small"><b>原文要点：</b>缺乏社会机会，尤其在发展中国家，是重要社会议题。与 SDGs 紧密相关的领域包括健康含水、教育、能源、住房和金融包容。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">社会机会</div><div class="eq-op">==</div><div class="eq-rhs">基本服务可及性不足 → 影响投资/业务机会 → 财务回报 + 社会回报</div></div></div>
+        <div class="memory"><b>记忆线：</b>可负担、可获得的基本服务，既是社会问题，也可能是好商业模式。</div>
+        <div class="riskline">投资判断：microfinance、impact funds、Access to Medicine 等都属于“机会型”社会议题。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Animal Welfare and Antimicrobial Resistance 动物福利与抗微生物药物耐药性</div><span class="tag tag-violet">公共健康</span></div>
+        <p class="small"><b>原文要点：</b>动物福利不仅是伦理问题，也涉及集约化养殖对人类健康的负面影响。抗微生物药物耐药性会使标准治疗越来越无效，感染持续并扩散。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">动物福利</div><div class="eq-op">==</div><div class="eq-rhs">集约养殖 + 抗生素管理不善 → 耐药性 + 诉讼/监管/转型压力</div></div></div>
+        <div class="memory"><b>记忆线：</b>动物福利题，最后常落到人类健康和企业实践改变压力。</div>
+        <div class="riskline">投资判断：FAIRR 关注集约化畜牧生产的风险和机会，特别是耐药性风险。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>内部/外部速查表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>内部社会因素</th><th>外部社会因素</th><th>记忆判断</th></tr></thead>
+          <tbody>
+            <tr><td>Human capital development</td><td>Stakeholder opposition and controversial sourcing</td><td>员工能力 vs 社区许可</td></tr>
+            <tr><td>Working conditions, health, and safety</td><td>Product liability and consumer protection</td><td>员工安全 vs 客户安全</td></tr>
+            <tr><td>Human rights</td><td>Social opportunities</td><td>供应链人权 vs 基本服务可及性</td></tr>
+            <tr><td>Employment standards and labor rights</td><td>Animal welfare and antimicrobial resistance</td><td>劳动标准 vs 动物和公共健康</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="standards" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Standards and Initiatives</div>
+        <h2>准则和倡议：谁管什么，一次分清</h2>
+      </div>
+      <div class="head-desc">考试常把 UNGPs、OECD、ILO、CHRB、PLWF、FAIRR、Access to Medicine 混在一起问。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>UNGPs：Protect, Respect and Remedy</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">UNGPs</div><div class="eq-op">==</div><div class="eq-rhs">State duty to protect + Corporate responsibility to respect + Access to remedy</div></div>
+        </div>
+        <p class="small">这是商业与人权领域的国际认可框架，第一套全球标准用于预防和处理与商业活动相关的人权负面影响。</p>
+      </div>
+      <div class="card">
+        <h3>OECD Guidelines for MNEs</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">OECD</div><div class="eq-op">==</div><div class="eq-rhs">政府支持的负责任商业行为建议 + 投资者尽职调查 + 双重重大性</div></div>
+        </div>
+        <p class="small">覆盖就业和劳资关系、人权、环境、信息披露、反贿赂、消费者利益、科学技术、竞争和税务。</p>
+      </div>
+      <div class="card">
+        <h3>ILO fundamental conventions</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ILO 八项</div><div class="eq-op">==</div><div class="eq-rhs">结社 + 谈判 + 禁强迫劳动 + 废强迫劳动 + 最低年龄 + 最恶劣童工 + 同酬 + 反歧视</div></div>
+        </div>
+        <p class="small">目标是让女性和男性获得 decent and productive work，关键词是 freedom、equity、security、dignity。</p>
+      </div>
+      <div class="card">
+        <h3>Corporate Human Rights Benchmark (CHRB) and Human Rights 100+</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">CHRB</div><div class="eq-op">==</div><div class="eq-rhs">人权政策/流程/实践 + 严重指控回应</div></div>
+          <div class="eq"><div class="eq-lhs">HR100+</div><div class="eq-op">==</div><div class="eq-rhs">PRI 协作 stewardship + 严重人权风险 + 可升级参与</div></div>
+        </div>
+        <p class="small">CHRB 初始关注 agricultural products、apparel、extractives 三类行业；Human Rights 100+ 是投资者协作参与平台。</p>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card">
+        <span class="tag tag-teal">PLWF</span>
+        <h3>生活工资</h3>
+        <p class="small">主要由荷兰金融机构组成的联盟，鼓励和监督被投公司解决全球供应链不支付生活工资问题。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Access to Medicine Index</span>
+        <h3>药品可及性</h3>
+        <p class="small">分析 20 家大型药企在 108 个中低收入国家、81 种疾病/状况/病原体上的药品可及性表现。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-violet">FAIRR</span>
+        <h3>集约化畜牧与耐药性</h3>
+        <p class="small">关注 intensive livestock production 的风险和机会，尤其是抗微生物药物耐药性和抗生素管理不善。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases</div>
+        <h2>案例区：把概念落到企业风险</h2>
+      </div>
+      <div class="head-desc">这节案例多，重点不是记故事，而是看每个案例对应哪类社会因素。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Rana Plaza Disaster</div><span class="tag tag-rose">Health & Safety</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2013 年 4 月 24 日，孟加拉 Dhaka 八层 Rana Plaza 倒塌，1,134 人死亡，约 2,500 人获救。</div></div>
+          <div class="case-row"><div class="case-lab">原因</div><div class="case-text">建筑裂缝警告被忽视，工人被要求次日返回；快时尚和低成本压力被认为加剧监督不足。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">175+ 品牌签署 Bangladesh Accord；投资者联盟推动公司参与并提高消防、健康和安全标准。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Free, Prior and Informed Consent</div><span class="tag tag-amber">FPIC</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Free</div><div class="case-text">没有操纵或胁迫，流程由受项目影响者自主进行。</div></div>
+          <div class="case-row"><div class="case-lab">Prior</div><div class="case-text">在活动开始或批准前足够早征求同意，并保证咨询时间。</div></div>
+          <div class="case-row"><div class="case-lab">Informed</div><div class="case-text">提供项目性质、规模、速度、可逆性、范围、理由、期限，以及经济/环境/文化影响报告，并用原住民能理解的语言。</div></div>
+          <div class="case-row"><div class="case-lab">Consent</div><div class="case-text">以参与和咨询为核心支柱的同意过程。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Conflict Minerals and Blood Diamonds</div><span class="tag tag-violet">Controversial Sourcing</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">定义</div><div class="case-text">在冲突地区开采并出售，用于延续战斗的自然资源。</div></div>
+          <div class="case-row"><div class="case-lab">例子</div><div class="case-text">刚果民主共和国东部省份的采矿活动中，军队、反叛组织和外部组织可能从中获利并加剧暴力和剥削。</div></div>
+          <div class="case-row"><div class="case-lab">风险</div><div class="case-text">争议采购或反对团体立场可能转化为业务风险和声誉风险。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Platform Living Wage Financials</div><span class="tag tag-teal">Living Wage</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">对象</div><div class="case-text">主要由荷兰金融机构组成的联盟，关注全球供应链生活工资未支付问题。</div></div>
+          <div class="case-row"><div class="case-lab">做法</div><div class="case-text">衡量生活工资表现、讨论评估结果、支持创新试点。</div></div>
+          <div class="case-row"><div class="case-lab">结果</div><div class="case-text">成员可根据进展或缺乏进展，结合自身政策偏好作出可持续投资决策。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Access to Medicine Index</div><span class="tag tag-green">Social Opportunity</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">对象</div><div class="case-text">20 家全球大型药企。</div></div>
+          <div class="case-row"><div class="case-lab">范围</div><div class="case-text">108 个中低收入国家，81 种疾病、状况和病原体。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">评估药企在 R&D 和定价等有最大潜力和责任领域如何改善药品可及性。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">FAIRR Initiative</div><span class="tag tag-rose">AMR</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">全称</div><div class="case-text">Farm Animal Investment Risk and Return。</div></div>
+          <div class="case-row"><div class="case-lab">关注</div><div class="case-text">集约化畜牧生产相关风险和机会，尤其是抗微生物药物耐药性。</div></div>
+          <div class="case-row"><div class="case-lab">风险</div><div class="case-text">相关公司更可能面临诉讼和改变实践的压力。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩版：一屏背完</h2>
+      </div>
+      <div class="head-desc">先背内外部框架，再背准则倡议。能用“影响谁”来判断，就不容易混。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>4.1.3 总式</b> == 内部员工议题 + 外部客户/社区/社会议题。</div>
+          <div class="formula"><b>投资者起点</b> == 行业重大性 → 公司暴露 → 管理能力 → 供应链关键风险。</div>
+          <div class="formula"><b>Human capital</b> == 技能需求 + 能力缺口 + 人才吸引/培养/留任 + KPI。</div>
+          <div class="formula"><b>Health & safety</b> == 员工和承包商事故/死亡/职业病 + 更广泛员工福祉。</div>
+          <div class="formula"><b>Human rights</b> == 普遍权利 + UDHR + 供应链深处 + UNGPs/OECD。</div>
+          <div class="formula"><b>Labor rights</b> == ILO 八项基本公约 + 结社自由 + 禁强迫劳动/童工 + 同酬反歧视。</div>
+          <div class="formula"><b>Living wage</b> == 覆盖基本生活开支 → 减少贫困、过度加班和童工风险。</div>
+          <div class="formula"><b>Product liability</b> == 设计缺陷 + 制造缺陷 + 未警示危险。</div>
+          <div class="formula"><b>Social opportunities</b> == 基本服务可及性 + SDGs + 财务回报和社会回报。</div>
+          <div class="formula"><b>Animal welfare / AMR</b> == 集约养殖实践 → 耐药性 → 公共健康和法律压力。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>SASB vs ILO</b>SASB 指引行业财务重大主题；ILO 是劳工标准，不是行业财务重大性框架。</div>
+          <div class="trap"><b>UNGPs 三支柱</b>国家保护人权、企业尊重人权、受害者获得救济。Equal remuneration 和 freedom of association 是 ILO 相关。</div>
+          <div class="trap"><b>OECD Guidelines</b>政府支持的负责任商业行为建议，不是企业自愿联盟；强调 double materiality。</div>
+          <div class="trap"><b>CHRB</b>既看企业人权政策/流程/实践，也看如何回应严重人权指控。</div>
+          <div class="trap"><b>FPIC</b>最典型用于原住民祖传土地或资源开发，不是产品责任免责。</div>
+          <div class="trap"><b>PLWF vs FAIRR</b>PLWF 盯生活工资；FAIRR 盯集约化畜牧、动物福利和抗微生物药物耐药性。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quick Check</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">这些题对应第 4 章练习题中与 4.1.3 最相关的考点。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">食品加工公司供应链哪一环最可能发现 forced labor：原材料生产者、旺季临时工、采购代理？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：原材料生产者。</b>强迫劳动常隐藏在供应链二级及更深层，原材料农业生产者通常更深。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">哪个标准给出行业内财务重大主题指引：SASB、GRI、ILO？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：SASB。</b>SASB standards 指引行业特定的财务重大可持续主题和指标。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">UNGPs 的支柱之一是什么：equal remuneration、access to remedy、freedom of association？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：access to remedy。</b>UNGPs 三支柱是国家保护、企业尊重、受害者获得救济。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">下面哪组是 internal 和 external social factor 的正确搭配：labor rights / social opportunities，还是 animal welfare / employee relations？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：internal: labor rights；external: social opportunities。</b>劳动权利影响内部员工，社会机会影响外部社会和基本服务可及性。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">FAIRR initiative 关注什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：抗微生物药物耐药性等集约化畜牧生产风险和机会。</b>不是公正转型联盟，也不是公平贸易倡议。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">OECD Guidelines for Multinational Enterprises 最准确的描述是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：政府支持的负责任商业行为综合建议。</b>它不是企业自愿组成的社会绩效改进协议。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">哪种情形最适合 FPIC？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：在原住民拥有的祖传土地上开发项目或使用资源。</b>FPIC 是 Free, Prior and Informed Consent。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">Access to Medicine Index 分析什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：大型药企如何处理中低收入国家药品可及性。</b>关注 R&D、定价等药企最有潜力和责任产生改变的领域。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">CHRB 考虑什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：既看企业系统化人权政策、流程、实践，也看企业如何回应严重人权指控。</b></div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">10</div><div class="qtext">PLWF 是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：投资者平台，鼓励被投公司要求其供应链支付生活工资。</b></div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">11</div><div class="qtext">ILO 基本公约中哪一组更准确：废除强迫劳动、同工同酬、最恶劣形式童工？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：这组准确。</b>Collective labor agreements、health care、retirement plans 不是 ILO 八项基本公约的列举。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>复核问题</h3>
+      <div class="grid-auto">
+        <details>
+          <summary>为什么产品责任通常由企业承担更多责任？</summary>
+          <div class="detail-body">因为制造商和销售商比消费者更了解产品，因此即使消费者有一定过错，企业仍可能承担缺陷产品导致损害的法律责任。</div>
+        </details>
+        <details>
+          <summary>为什么生活工资能推进其他人权？</summary>
+          <div class="detail-body">员工能覆盖基本生活后，更少依赖过度加班，子女更可能上学而不是工作，也更容易脱离贫困。</div>
+        </details>
+        <details>
+          <summary>为什么社会机会也是投资机会？</summary>
+          <div class="detail-body">可负担、可获得的健康、教育、能源、住房和金融服务可形成商业模式，既带来财务回报，也带来社会回报。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

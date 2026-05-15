@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 Module 6 · 8.1.7-8.1.8 Screening and Optimization</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:760px;margin:0 auto 18px;background:#ecfeff;border:2px solid #0f766e;color:#134e4a;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(100px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:850px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:1fr 1fr}.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}
+  .grid-2,.grid-3,.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}
+  .branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}
+  .eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 8</span>
+        <span class="pill">Module 6</span>
+        <span class="pill">8.1.7-8.1.8</span>
+        <span class="pill">Screening · Optimization · Risk Return</span>
+      </div>
+      <h1>ESG Screening and<br>Portfolio Optimization</h1>
+      <p class="lead">本页覆盖第 8 章 14-15 节：单个上市/非上市公司与集合投资基金的 ESG 筛选，绝对口径与同业相对口径的区别，以及 ESG 约束如何通过组合优化改变 tracking error、active risk 和 risk-return trade-off。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG 筛选与优化 == 先选筛选对象 + 再选筛选口径 + 落到组合影响复核 + 用约束优化 ESG 目标 + 接受 benchmark 偏离成本。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">8.1.7 distinguish screening basis<br>8.1.8 explain risk-return optimization impact</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">screening approaches</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">PRI implementation steps</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">absolute vs relative</div></div>
+        <div class="mini-stat"><div class="mini-num">TE</div><div class="mini-lab">优化代价主线</div></div>
+      </div>
+      <div class="side-note">记忆抓手：筛选像“用尺量人”，优化像“带着目标排座位”。尺子不同，结果不同；约束越紧，离原 benchmark 越远。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="methods">三类筛选</button>
+    <button class="tab" data-tab="process">六步流程</button>
+    <button class="tab" data-tab="basis">绝对/相对</button>
+    <button class="tab" data-tab="funds">基金评级</button>
+    <button class="tab" data-tab="unlisted">非上市</button>
+    <button class="tab" data-tab="optimization">组合优化</button>
+    <button class="tab" data-tab="tradeoff">约束代价</button>
+    <button class="tab" data-tab="compress">压缩背诵</button>
+    <button class="tab" data-tab="quiz">自测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>模块 6 的一根线：从“筛谁”到“偏离多少”</h2>
+      </div>
+      <div class="head-desc">第 14 节是筛选规则，第 15 节是把规则放进组合优化后产生的风险收益结果。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG Screening & Optimization == 筛选尺子 × 组合目标 × benchmark 偏离承受度</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">1. 筛选对象</div>
+          <p>sectors, regions, issuers, business activities/practices, products/services, security types。</p>
+          <p>题眼：筛选不只筛公司，也可筛行业、地区、证券类型。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">2. 筛选方法</div>
+          <p>Negative, positive, norms-based 三类。</p>
+          <p>题眼：avoid worst、select best、apply global minimum standards。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">3. 口径选择</div>
+          <p>Absolute basis 容易惩罚高排放行业；relative/peer basis 更能保留行业语境和分散化。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">4. 基金筛选</div>
+          <p>ESG fund label、sustainability rating、star rating 可能不一致。</p>
+          <p>题眼：标签不等于真实整合。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">5. 组合优化</div>
+          <p>ESG 不是必然损害风险收益，而是另一个 factor；约束越紧，tracking error/active risk 越可能上升。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>Client priority</h3><p>先定义客户筛选目标。</p></div>
+        <div class="flow-step"><h3>Criteria</h3><p>披露清楚筛选标准。</p></div>
+        <div class="flow-step"><h3>Oversight</h3><p>建立内控/合规复核。</p></div>
+        <div class="flow-step"><h3>Process</h3><p>嵌入投资流程。</p></div>
+        <div class="flow-step"><h3>Implication</h3><p>复核波动、TE、风险因子。</p></div>
+        <div class="flow-step"><h3>Audit</h3><p>监控、报告和保证。</p></div>
+      </div>
+    </div>
+    <div class="footer-note">本模块不要把 screening 和 optimization 混成一个动作：screening 是先定规则，optimization 是把规则变成组合层面的约束和权衡。</div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>覆盖清单：PDF 第 14-15 节</h2>
+      </div>
+      <div class="head-desc">按 Learning Outcome 拆解，方便核对是否遗漏。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">8.1.7</span> ESG screening of companies and funds</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG funds 搜索结果取决于 methodology；市场上“ESG fund”投资方法差异很大，必须看 ESG characteristics。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 三类 screening：negative screening、positive screening、norms-based screening。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Negative screening 可以作用于 sectors、regions、individual issuers、business activities/practices、products/services、security types。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Norms-based screening 参考 UN Global Compact、UN Human Rights Declaration、ILO declaration、Kyoto Protocol、OECD Guidelines 等。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 六步实施：client priorities、clear criteria、oversight、adapt process、review implications、monitor/report/audit。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Absolute basis 易让高排放/资产重行业分数偏低，利于识别碳价格等冲击风险，但可能牺牲 benchmark 语境和分散化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Relative/peer-group basis 提供行业语境，可减少对 mining 等行业的整体排除，降低 diversification 损失和 active risk。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">筛选的局限：reductive quantitative approach，难以体现 stewardship 和 engagement 的软性 ESG 行动。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">基金标签、sustainability rating、star rating 可能不一致；低碳暴露可能只是巧合，不一定代表 ESG policy 或 systematic process。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Unlisted/private markets 也可 screening，但 data availability and quality 更弱，难与行业/同业横向比较。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">8.1.8</span> ESG integration and portfolio optimization</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG integration 不应被视为损害 risk-return dynamic，而是可能提升 risk and return profile 的另一个 factor。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">影响取决于投资者给 ESG 因素相对其他因素的权重。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Optimization 需要定义变量的 upper/lower bound，并按 absolute 或 benchmark-relative basis 应用。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG optimization via constraints 不同于 exclusionary screening：不是对某证券做固定决定，而是在组合层面解 ESG 目标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Carbon constraint 越严格，和无碳约束最优组合的 overlap 越低。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Index-based strategies 可在目标 tracking error 下优化一定程度 ESG improvement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">主观、sector-relative ESG 数据可能引入更高 active risk，尤其与 absolute carbon data 同时优化时。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">前 100 bps tracking error 内，ESG score 提升和 emissions 降低可能同时出现；之后边际效果递减。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="methods" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Screening Approaches</div>
+        <h2>三类筛选：避开最差、挑出最好、守住底线</h2>
+      </div>
+      <div class="head-desc">考题常用动词区分：avoid、invest in best、apply recognized minimum standards。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-rose">Negative</span><div class="topic-title">Negative screening</div></div></div>
+        <p class="small">代表 avoidance of the worst performers。投资者可以排除行业、地区、发行人、商业活动和实践、产品和服务，甚至某些证券类型。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Negative screen</div><div class="eq-op">==</div><div class="eq-rhs">avoid worst performers across sector/region/issuer/activity/product/security type</div></div>
+          <div class="eq"><div class="eq-lhs">中文解释</div><div class="eq-op">==</div><div class="eq-rhs">先列“不能碰”的范围，再从投资宇宙中剔除。</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>不要只把 negative screening 理解为排除公司；PDF 明确包括 sectors、regions 和 security types。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Positive</span><div class="topic-title">Positive screening</div></div></div>
+        <p class="small">投资于相对行业同业的 best ESG performers。它是“择优”，不是“只要不差就买”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Positive screen</div><div class="eq-op">==</div><div class="eq-rhs">best ESG performers relative to industry peers</div></div>
+          <div class="eq"><div class="eq-lhs">题眼</div><div class="eq-op">==</div><div class="eq-rhs">best / top / superior ESG performers + relative to peers</div></div>
+        </div>
+        <div class="memory"><b>逻辑心象：</b>Negative 是关门，Positive 是排队挑前几名；两者都可以影响组合行业暴露。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Norms</span><div class="topic-title">Norms-based screening</div></div></div>
+        <p class="small">使用全球认可的最低商业实践标准筛选发行人，例如 UN Global Compact、UN Human Rights Declaration、ILO declaration、Kyoto Protocol、OECD Guidelines。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Norms-based</div><div class="eq-op">==</div><div class="eq-rhs">issuer behavior measured against treaties/protocols/declarations/conventions</div></div>
+          <div class="eq"><div class="eq-lhs">中文解释</div><div class="eq-op">==</div><div class="eq-rhs">不是和同行比高低，而是看是否踩破国际通行底线。</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>看到 minimum standards、internationally recognized frameworks，优先想到 norms-based screening。</div>
+      </article>
+    </div>
+    <div class="footer-note">三类筛选的核心区别：Negative 看“不能要谁”，Positive 看“谁最好”，Norms-based 看“有没有低于国际底线”。</div>
+  </section>
+
+  <section id="process" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">PRI Sequence</div>
+        <h2>六步流程：从客户目标到可审计记录</h2>
+      </div>
+      <div class="head-desc">这部分容易出顺序题或“哪个步骤缺失”型题。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>步骤</th>
+            <th>英文要点</th>
+            <th>中文解释</th>
+            <th>逻辑等式 / 考点提醒</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Identify client priorities</td>
+            <td>在基金文件中清楚披露 screening objectives。</td>
+            <td>目标 == 客户偏好先定清楚；没有目标就无法判断筛选是否合规。</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Publicize clear screening criteria</td>
+            <td>在 investment management agreement 等合同中披露筛选方法。</td>
+            <td>标准 == 写进合同/文件；考点是 clear 和 contractual。</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Introduce oversight</td>
+            <td>建立 internal control 或 compliance function，监督筛选、复核、考虑筛选标准变化。</td>
+            <td>监督 == oversee + review + criteria changes。</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Adapt the investment process</td>
+            <td>可用更精细或更灵活的方法，把筛选嵌入投资流程；可选 absolute、threshold 或 relative exclusion methodologies。</td>
+            <td>流程 == 把筛选变成投资动作，而不是只写在政策里。</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Review portfolio implications</td>
+            <td>定期评估 screening 对组合的影响，包括 volatility、tracking error 和 common risk factors。</td>
+            <td>影响 == volatility + TE + common risk factors。</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Monitor, report, and audit</td>
+            <td>建立 process and data assurance control functions，可内部或外部第三方保证。</td>
+            <td>闭环 == monitor + report + audit/assurance。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>记忆等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">PRI six steps</div><div class="eq-op">==</div><div class="eq-rhs">client priority → criteria → oversight → process → portfolio implications → monitor/report/audit</div></div>
+        </div>
+        <p class="small">这条线是“先对客户负责，再对流程负责，最后对结果负责”。</p>
+      </div>
+      <div class="card">
+        <h3>投资影响</h3>
+        <p class="small">第 5 步是考试常考点：screening 不只是价值观表达，必须复核组合后果，例如更高 tracking error、波动、共同风险因子暴露。</p>
+        <div class="riskline"><b>易错：</b>“筛掉不喜欢的证券”不是流程终点；还要有 oversight、portfolio implication review 和 assurance。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="basis" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Absolute vs Relative</div>
+        <h2>绝对口径 vs 同业相对口径</h2>
+      </div>
+      <div class="head-desc">本节最核心的区分：绝对口径看“总暴露”，相对口径看“行业内表现”。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Absolute basis</div><span class="tag tag-amber">总量尺</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">某些行业和部门会因标准不同自动获得低分，资产重和碳排放密集行业通常环境指标较差。</div></div>
+          <div class="case-row"><div class="case-lab">中文解释</div><div class="case-text">绝对口径不太照顾行业属性，直接看碳排放等绝对暴露，因此有利于识别高 GHG 风险。</div></div>
+          <div class="case-row"><div class="case-lab">投资影响</div><div class="case-text">可对碳价格冲击做 sensitivity analysis，例如 EU ETS 碳价上涨会冲击依赖燃煤发电的 utilities。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Absolute screen</div><div class="eq-op">==</div><div class="eq-rhs">high absolute exposure → low ESG score → shock sensitivity visible</div></div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Relative / peer-group basis</div><span class="tag tag-green">同业尺</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">相对同业数据为构建和维持平衡、分散化组合提供更好的 context。</div></div>
+          <div class="case-row"><div class="case-lab">中文解释</div><div class="case-text">同业口径承认行业有差异，在 mining、oil and gas 等行业内部比较谁更好。</div></div>
+          <div class="case-row"><div class="case-lab">投资影响</div><div class="case-text">避免 wholesale exclusions，减少 diversification 降低和 active risk 上升。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Relative screen</div><div class="eq-op">==</div><div class="eq-rhs">sector context + peer comparison → lower wholesale exclusion risk</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="topic-grid" style="margin-top:14px">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Trade-off</span><div class="topic-title">绝对口径的代价</div></div></div>
+        <p class="small">绝对口径利于揭示碳价格、监管冲击和高排放暴露，但可能牺牲相对市场或 benchmark 的平衡语境。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Absolute downside</div><div class="eq-op">==</div><div class="eq-rhs">better risk shock visibility - less benchmark context/diversification</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Reductive</span><div class="topic-title">量化筛选的局限</div></div></div>
+        <p class="small">无论绝对还是相对，screening 都可能过度简化。量化评分难以反映 stewardship、engagement 和长期改善机会。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Screening criticism</div><div class="eq-op">==</div><div class="eq-rhs">quant score may miss stewardship/engagement/improvement path</div></div>
+        </div>
+        <div class="riskline"><b>易错：</b>低 ESG 评分公司不一定只能卖掉；如果投资策略重视长期 stewardship，低评分也可能是 engagement opportunity。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="funds" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Fund Screening</div>
+        <h2>基金筛选：标签、评级和真实流程不一定一致</h2>
+      </div>
+      <div class="head-desc">Morningstar 示例的考点不是记表格数字，而是理解三种信号可能错位。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">ESG Fund Search</span><div class="topic-title">ESG funds 需要看方法论</div></div></div>
+        <p class="small">资产所有者或顾问搜索“ESG funds”等词会得到不同结果，因为 ESG 基金的投资方法差异很大。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG fund label</div><div class="eq-op">==</div><div class="eq-rhs">marketing category，需要穿透 methodology 和 ESG characteristics</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>名字叫 ESG fund 只是入口，不能替代对投资流程、持仓暴露和评级口径的分析。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Morningstar</span><div class="topic-title">Sustainability rating vs star rating</div></div></div>
+        <p class="small">Morningstar 的 sustainability ratings 基于 Sustainalytics 公司层面 ESG risk metrics；star ratings 则衡量基金相对同业的 risk-adjusted return。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sustainability rating</div><div class="eq-op">==</div><div class="eq-rhs">ESG risk score derived from company-level data</div></div>
+          <div class="eq"><div class="eq-lhs">Star rating</div><div class="eq-op">==</div><div class="eq-rhs">risk-adjusted return against peer group</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>高 star rating 不等于高 sustainability rating；高 sustainability rating 也不等于基金一定有系统 ESG integration。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Misalignment</span><div class="topic-title">高可持续评级可能只是巧合</div></div></div>
+        <p class="small">基金可能没有 ESG policy 或 systematic process，却因组合恰好低碳行业暴露较低、或持有高 ESG 评级公司而获得高 sustainability rating。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Rating misalignment</div><div class="eq-op">==</div><div class="eq-rhs">high sustainability score by coincidence + no embedded ESG process</div></div>
+        </div>
+        <div class="memory"><b>不是 greenwashing：</b>PDF 强调这不一定是故意夸大 ESG 资质，因此不是 greenwashing；但可能 mischaracterize 并混淆投资者。</div>
+      </article>
+    </div>
+    <div class="footer-note">基金筛选的记忆线：label 是“自称”，sustainability rating 是“持仓 ESG 风险”，star rating 是“风险调整后收益”；三者可能一致，也可能完全错位。</div>
+  </section>
+
+  <section id="unlisted" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Unlisted Markets</div>
+        <h2>非上市公司和私募基金：原则相同，数据更难</h2>
+      </div>
+      <div class="head-desc">这部分是 8.1.7 的收尾：screening 可用于私募市场，但可比数据更弱。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>原文要点</h3>
+        <p class="small">Screening 在 listed markets 使用广泛，也可用于 unlisted or private markets，许多原则和方法相同。</p>
+        <p class="small">但 private markets and companies 有独特挑战，最主要是 data availability and quality。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Unlisted screening</div><div class="eq-op">==</div><div class="eq-rhs">same principles + weaker disclosure/reporting + less robust peer comparison</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>中文解释与考点</h3>
+        <p class="small">非上市公司披露和报告程度低，因此很难把被投企业和 cross-sectional competitors、industry data 或 sector data 做稳定比较。</p>
+        <div class="riskline"><b>考点提醒：</b>题干若问 private markets screening 的 unique challenge，优先选 data availability and quality，而不是“screening 原理完全不同”。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="optimization" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Portfolio Optimization</div>
+        <h2>ESG 优化：不是固定排除，而是在组合层面解目标</h2>
+      </div>
+      <div class="head-desc">8.1.8 的中心句：ESG integration 是另一个可能改善风险收益的 factor。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Factor</span><div class="topic-title">ESG 不必然损害 risk-return</div></div></div>
+        <p class="small">ESG integration should not be seen as detrimental to portfolio optimization。它应被理解为可能增强 risk and return profile 的另一个 factor。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG integration</div><div class="eq-op">==</div><div class="eq-rhs">another factor, not automatic performance penalty</div></div>
+          <div class="eq"><div class="eq-lhs">Portfolio outcome</div><div class="eq-op">==</div><div class="eq-rhs">ESG weight relative to other factors</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>ESG 的影响取决于权重，不是“加 ESG 就收益差”或“加 ESG 就收益好”的单向判断。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Bounds</span><div class="topic-title">优化需要上下限</div></div></div>
+        <p class="small">Portfolio optimization requires defining an upper and lower bound for a given variable, then applying it on an absolute or benchmark-relative basis。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Optimization</div><div class="eq-op">==</div><div class="eq-rhs">upper/lower bound + absolute or benchmark-relative basis</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>看到 lower carbon than benchmark、target ESG score、tracking error limit，本质都是把 ESG 目标变成优化约束。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Not Exclusion</span><div class="topic-title">约束优化不同于排除筛选</div></div></div>
+        <p class="small">ESG optimization via constraints 不对特定证券作固定决定，而是按每个证券 ESG profile 排列，求解组合层面的 ESG 目标。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Constraint optimization</div><div class="eq-op">==</div><div class="eq-rhs">portfolio-level ESG solution, not fixed security-level yes/no</div></div>
+        </div>
+        <div class="memory"><b>逻辑心象：</b>Exclusion 是把人赶出房间；optimization 是在房间里重新排座位，让全班平均指标达标。</div>
+      </article>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>Carbon constraint 示例</h3>
+        <p class="small">环境数据因绝对性和报告指标更标准化，通常更容易用于组合优化。作为 linear constraint，碳约束越严格，和无碳限制的最优组合 overlap 越低。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Stricter carbon constraint</div><div class="eq-op">==</div><div class="eq-rhs">lower emissions target + lower overlap with unconstrained optimal portfolio</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Index-based optimization</h3>
+        <p class="small">指数型策略越来越常见：在相对核心 benchmark 的目标 tracking error 下，优化某个程度的 ESG improvement。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG index optimization</div><div class="eq-op">==</div><div class="eq-rhs">target ESG improvement + solve for target tracking error vs core benchmark</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tradeoff" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Risk-Return Trade-off</div>
+        <h2>约束越紧，偏离成本越需要解释</h2>
+      </div>
+      <div class="head-desc">本页最后一组考点：主观 ESG 评级、绝对碳数据、多目标优化和 tracking error。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Sector-relative ESG rating 的陷阱</div><span class="tag tag-amber">同业高分 ≠ 绝对低碳</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">例子</div><div class="case-text">Oil and gas 公司可能因碳排放强度低于同业而获得高环境评级。</div></div>
+          <div class="case-row"><div class="case-lab">矛盾</div><div class="case-text">但从整体市场看，它仍可能给组合带来更大的绝对碳暴露。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Sector-relative score</div><div class="eq-op">==</div><div class="eq-rhs">good within dirty sector, not necessarily low absolute carbon risk</div></div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">低 ESG 评分也可能低绝对碳</div><span class="tag tag-blue">轻资产反例</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">例子</div><div class="case-text">金融服务等 asset-light 公司可能在本行业 ESG rating 较差。</div></div>
+          <div class="case-row"><div class="case-lab">矛盾</div><div class="case-text">但在市场整体语境下，它可能拥有较低 absolute carbon intensity。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Poor sector ESG score</div><div class="eq-op">==</div><div class="eq-rhs">may still be low absolute carbon intensity in market context</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="topic-grid" style="margin-top:14px">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-rose">Multiple Targets</span><div class="topic-title">多目标优化通常带来更高 active risk</div></div></div>
+        <p class="small">同时优化 absolute data 和 subjective rankings 时，为了同时达到最高 ESG 评级和降低碳排放，组合可能必须接受更高 active risk。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Multi-factor ESG target</div><div class="eq-op">==</div><div class="eq-rhs">absolute carbon target + subjective ESG ranking → higher active risk/tracking error</div></div>
+        </div>
+        <div class="riskline"><b>数字提示：</b>PDF 示例提到，降低碳排放 100-150 bps 并达到高 MSCI ESG ratings，可能伴随 220-300 bps tracking error；更保守方案可目标 150-200 bps tracking error。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Diminishing Benefits</span><div class="topic-title">前期效果明显，后期边际递减</div></div></div>
+        <p class="small">ESG-optimized portfolio 在最初约 100 bps tracking error 内，可能同时提高 ESG scores、降低 emissions；之后当组合已经低配低 ESG 高排放公司后，相关性逐渐减弱。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Early TE budget</div><div class="eq-op">==</div><div class="eq-rhs">higher ESG score + lower emissions; after tail underweight, marginal benefit diminishes</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>一开始删掉“最差尾部”很有效，后来继续优化要付出更大偏离成本。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组等式背模块 6</h2>
+      </div>
+      <div class="head-desc">先背筛选三分法，再背绝对/相对，最后背优化约束。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>ESG fund screening ==</b> fund label + methodology + ESG characteristics，不只看名字。</div>
+          <div class="formula"><b>Negative screening ==</b> avoid worst performers across sectors/regions/issuers/activities/products/security types。</div>
+          <div class="formula"><b>Positive screening ==</b> invest in best ESG performers relative to industry peers。</div>
+          <div class="formula"><b>Norms-based screening ==</b> issuer behavior against international minimum standards。</div>
+          <div class="formula"><b>PRI process ==</b> client priorities → criteria → oversight → adapt process → review implications → monitor/report/audit。</div>
+          <div class="formula"><b>Absolute basis ==</b> total ESG/carbon exposure visible + less benchmark context。</div>
+          <div class="formula"><b>Relative basis ==</b> peer context + better diversification + lower wholesale exclusion risk。</div>
+          <div class="formula"><b>Fund rating mismatch ==</b> ESG label / sustainability rating / star rating may diverge。</div>
+          <div class="formula"><b>ESG optimization ==</b> upper/lower bounds + absolute or benchmark-relative basis。</div>
+          <div class="formula"><b>Constraint cost ==</b> stronger ESG target → lower overlap + higher active risk/tracking error。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Negative screening</b>不是只排除公司，也可排除行业、地区、商业活动、产品服务和证券类型。</div>
+          <div class="trap"><b>Positive screening</b>关键词是 best performers relative to peers，不是简单“没有争议”。</div>
+          <div class="trap"><b>Absolute ESG score</b>容易惩罚高排放行业，但更能揭示碳价格冲击。</div>
+          <div class="trap"><b>Relative score</b>有行业语境，但同业高分公司仍可能有较高绝对碳暴露。</div>
+          <div class="trap"><b>High sustainability rating</b>不必然代表基金有 ESG policy 或 systematic process。</div>
+          <div class="trap"><b>ESG optimization</b>不是逐只证券 yes/no，而是组合层面的约束求解。</div>
+          <div class="trap"><b>Tracking error</b>不是副话题，而是 ESG 目标进入组合后的核心代价。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 6 的一根线：筛选先定“尺子”，优化再定“座位”；尺子越严、目标越多，组合离原 benchmark 越远。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只覆盖模块 6</h2>
+      </div>
+      <div class="head-desc">正式 Practice Problems 会在全章完成后统一进入三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">PRI 认可的三类 screening approach 分别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Negative screening、positive screening、norms-based screening。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Norms-based screening 的题眼是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">使用国际认可的最低商业实践标准，例如 UN Global Compact、UN Human Rights Declaration、ILO declaration、Kyoto Protocol、OECD Guidelines。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">PRI 六步 screening implementation sequence 是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Identify client priorities → publicize clear screening criteria → introduce oversight → adapt investment process → review portfolio implications → monitor, report, and audit。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Absolute ESG screening 的优点和代价分别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">优点是更直接识别高 GHG、碳价格等绝对风险暴露；代价是可能缺少行业/benchmark 语境，降低组合分散化并提高 active risk。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Relative / peer-group ESG screening 为什么有助于维持分散化？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">它在行业内部比较 ESG 表现，避免因为绝对分数低而 wholesale exclusion 整个行业，从而减少 diversification 损失和 active risk。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">为什么高 sustainability rating 的基金未必真正进行了 ESG integration？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">基金可能没有 ESG policy 或 systematic process，只是持仓恰好低碳行业暴露较低或高 ESG 评级公司较多，因此被评级系统打高分。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">ESG optimization via constraints 与 exclusionary screening 的关键区别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Exclusionary screening 对特定证券作固定 yes/no 决定；constraint optimization 按证券 ESG profile 组织组合，在整体组合层面求解 ESG 目标。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">为什么同时优化主观 ESG rating 和绝对 carbon emissions 可能提高 active risk？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为 sector-relative ESG rating 和 absolute carbon exposure 可能给出不同信号；同时满足多个目标会让组合更偏离 benchmark，从而提高 active risk/tracking error。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

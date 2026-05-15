@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.4 Module 3 · 4.1.4-4.1.5 Identifying Material Social Factors</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}.card.dark h3{color:#fff}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:620px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(82px,.35fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}table{border-collapse:collapse;width:100%;min-width:720px}th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:650px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 4</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">4.1.4-4.1.5</span>
+        <span class="pill">Materiality</span>
+        <span class="pill">Country-Specific Social Factors</span>
+      </div>
+      <h1>Identifying Material<br>Social Factors</h1>
+      <p class="lead">本页覆盖第 4 章 4.1.4-4.1.5：社会因素很多，但不是对所有国家、行业、公司都一样重要。投资者要做的是把“泛泛的社会趋势”筛成“具体投资对象的重大风险和机会”。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>社会因素重大性 == 地理/国家背景 + 行业固有风险 + 公司具体暴露；公司暴露 == 行业 + 经营国家/地区 + 供应商/工厂/客户/主要税务辖区</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">4.1.4 评估社会议题对投资机会的重大影响和忽视风险。<br>4.1.5 识别国家、行业、公司层面的社会分析方法。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">分析层次</div></div>
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">公司暴露点</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先问“在哪里”，再问“什么行业”，最后问“这家公司怎么经营”。不要把社会因素当成所有公司通用的一张清单。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="country">国家层面</button>
+    <button class="tab" data-tab="sector">行业层面</button>
+    <button class="tab" data-tab="company">公司层面</button>
+    <button class="tab" data-tab="regulation">监管案例</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>重大性判断：从地图到行业，再到公司</h2>
+      </div>
+      <div class="head-desc">4.1.4 和 4.1.5 的隐藏线很清楚：同一个社会因素，换国家、换行业、换公司，重大性就会变。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Identifying Material Social Factors<br>投资重大性 = 国家背景 × 行业风险 × 公司暴露</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Country / Region</div>
+          <p>经济发展水平。</p>
+          <p>本地法规是否符合 ILO 等原则。</p>
+          <p>文化、历史、城乡差异。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Sector</div>
+          <p>行业固有社会风险。</p>
+          <p>社会趋势对行业影响不同。</p>
+          <p>技术也可能帮助解决不公。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Company</div>
+          <p>文化、系统、运营、治理。</p>
+          <p>供应商、工厂、客户、税务辖区。</p>
+          <p>底线、劳动力、责任与消费者期待。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>趋势池</h3><p>人口、数字化、权利、家庭、教育、宗教、不平等、全球化。</p></div>
+        <div class="flow-step"><h3>国家筛</h3><p>发展阶段、法规、文化历史决定背景重要性。</p></div>
+        <div class="flow-step"><h3>行业筛</h3><p>矿业、服装、运输、医疗等行业风险不同。</p></div>
+        <div class="flow-step"><h3>公司筛</h3><p>看具体商业模式、地区和供应链位置。</p></div>
+        <div class="flow-step"><h3>投资判断</h3><p>识别风险，也识别提前适应趋势的机会。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">4.1.4</span>
+        <h3>为什么会重大？</h3>
+        <p class="small">社会议题可能影响投资风险和机会；忽视这些因素，可能低估成本、诉讼、运营中断、需求变化或商业模式被颠覆。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">4.1.5</span>
+        <h3>怎么分析？</h3>
+        <p class="small">先在地理和行业层面理解重大性，再确定公司层面的暴露：行业、国家/地区、供应商、工厂、客户和主要税务辖区。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考点</span>
+        <h3>不是 tick-box</h3>
+        <p class="small">社会重大性评估重要，不是因为它是标准流程，而是因为国家、行业和公司受社会因素影响并不相同。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-04.pdf` 第 249-251 页整理，范围止于 4.1.5，公司层面之后的 4.1.6 留给下一模块。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">总原则</span> 社会因素不是平均影响所有投资对象</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会趋势和因素会影响投资组合中的风险和机会，投资者应予以考虑。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">这些因素并不是对每个国家、行业或公司都有相同影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资角度分析社会主题重大性，应先理解地理层面和行业层面的重大性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">之后确定公司层面暴露：公司所在行业、主要经营国家/地区、关键供应商、工厂、客户和主要税务辖区所在地。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">4.1.4 涉及的人口变化、数字化、个人权利与责任、家庭结构与角色、教育和工作、faith-based ESG investing 与 exercise of religion、不平等、全球化，都要放到具体背景下评估。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Country-specific</span> 国家/地区层面</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">某一社会议题的重要性取决于地区或国家背景。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">国家背景包括经济发展水平、监管框架、文化因素和历史因素。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">例子：当地劳动法不完全符合 ILO 原则时，劳工风险更重要。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">人口老龄化在发达国家是重要问题，但在新兴市场没有那么迫切。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">新兴市场城乡差异通常大于发达市场。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">政府立法作用增强，公司检查供应链条件的法律责任在某些司法辖区逐渐强制化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">法律例子：UK Modern Slavery Act、French Corporate Duty of Vigilance Law、EU Conflict Minerals Regulation、Dutch Child Labour Due Diligence Law。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者应关注不同经营国家中社会因素和趋势如何影响被投公司。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Sector and company</span> 行业与公司层面</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sector Social Factors：需要确定每个行业最重大的社会因素和趋势。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有些行业有更深的固有社会风险，例如服装/棉花供应链 child labor，或 mining 因业务性质产生的风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会趋势对行业影响不同：AI 对 transport 的影响与对车辆 maintenance / servicing 的影响很不一样。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">人口变化会特别影响 health care 行业。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">技术也可帮助处理行业不公，例如 satellite imagery 帮助识别 illegal deforestation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Company-Level Social Factors：同一行业内的公司对社会趋势和因素的暴露并不相同。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司暴露取决于 culture, systems, operations, and governance，即公司文化、系统、运营和治理。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">老牌公司可能有更好供应链社会风险管理系统，但可能更难回应颠覆性商业模式进入市场。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会议题可能影响公司 bottom line、增加员工/供应链问题，并影响企业责任和消费者期待。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Local regulatory framework</span> 当地监管框架案例</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU taxonomy 设定经济活动绩效阈值，活动需对六个环境目标之一作出实质贡献。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">六个目标：气候变化减缓、气候变化适应、水和海洋资源可持续使用与保护、循环经济转型、污染防治、生物多样性和生态系统保护与恢复。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Taxonomy-aligned：对一个目标实质贡献，同时对其他五个目标不造成重大损害，并符合最低保障措施。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">最低保障措施包括 OECD Guidelines for MNEs、UNGPs、ILO Declaration、八项 ILO 核心公约和 International Bill of Human Rights。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Modern Slavery Act 要求中大型公司每年提供 slavery and human trafficking statement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">现代奴役声明说明公司为确保业务和供应链不存在现代奴役而采取的步骤，可包含高风险供应商审计数量、纠正行动计划数量等数据。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">IOSCO 连接全球监管者并提供全球框架，支持全球标准化，各国监管者可据此制定自身监管。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="country" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Country-Specific Factors</div>
+        <h2>国家层面：同一个社会因素，换国家就变重</h2>
+      </div>
+      <div class="head-desc">国家层面看的是“土壤”：经济阶段、法律制度、文化历史，决定社会因素在当地是否会变成重大投资风险。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Economic development 经济发展水平</div><span class="tag tag-blue">发展阶段</span></div>
+        <p class="small"><b>原文要点：</b>人口老龄化在发达国家是重要问题，但在新兴市场不那么迫切；新兴市场的城乡差异通常更大。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">发展阶段</div><div class="eq-op">==</div><div class="eq-rhs">发达国家更看老龄化；新兴市场更看城乡差异、基本服务和供应链条件</div></div></div>
+        <div class="memory"><b>记忆线：</b>先看国家“长到哪一步”，再判断社会风险的轻重。</div>
+        <div class="riskline">投资判断：同一个行业，放在不同发展阶段的国家，劳动力、消费、监管和社区风险都可能不同。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Regulatory framework 监管框架</div><span class="tag tag-green">法律责任</span></div>
+        <p class="small"><b>原文要点：</b>当当地劳动法不完全符合 ILO 原则时，社会因素重要性会上升。公司检查供应链条件的法律责任在某些司法辖区逐渐强制化。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">监管框架</div><div class="eq-op">==</div><div class="eq-rhs">本地法律强弱 + 强制供应链尽调 → 公司合规成本和披露责任</div></div></div>
+        <div class="memory"><b>记忆线：</b>法规越要求公司“看见供应链”，供应链社会风险越可能变成公司层面的投资风险。</div>
+        <div class="riskline">投资判断：关注公司所在国家是否有现代奴役、儿童劳工、冲突矿产、警觉义务等法律。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Cultural and historical factors 文化与历史因素</div><span class="tag tag-amber">本地背景</span></div>
+        <p class="small"><b>原文要点：</b>社会议题的重要性也取决于文化或历史因素。教材没有展开例子，但逻辑是投资者不能把一个地区的社会假设直接搬到另一个地区。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">文化历史</div><div class="eq-op">==</div><div class="eq-rhs">本地价值观/历史关系 → 社区、劳工、宗教、消费者议题重大性不同</div></div></div>
+        <div class="memory"><b>记忆线：</b>社会因素不是全球统一模板，必须落回当地人群和制度背景。</div>
+        <div class="riskline">投资判断：跨国公司在不同地区经营时，不能只用总部所在地标准判断社会风险。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>国家层面速记</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">Country analysis</div><div class="eq-op">==</div><div class="eq-rhs">经济发展水平 + 监管框架 + 文化历史因素 + 供应链强制尽调趋势</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sector" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Sector Social Factors</div>
+        <h2>行业层面：风险不是平均分布，而是行业自带</h2>
+      </div>
+      <div class="head-desc">行业层面看的是“业务属性”：这个行业天然更容易出现什么社会问题，哪些趋势会放大或削弱风险。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Inherent social risks 行业固有风险</div><span class="tag tag-rose">业务属性</span></div>
+        <p class="small"><b>原文要点：</b>有些行业因为供应链或业务性质，社会风险更深。例如服装/棉花供应链的童工风险，矿业因业务性质带来的社会风险。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">行业风险</div><div class="eq-op">==</div><div class="eq-rhs">供应链结构 + 业务性质 → 童工、人权、健康安全、社区冲突等固有风险</div></div></div>
+        <div class="memory"><b>记忆线：</b>先看行业“靠什么赚钱”，就能推断它容易踩什么社会风险。</div>
+        <div class="riskline">投资判断：服装看供应链劳工，矿业看人权、健康安全和社区关系。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Social trends affect sectors differently 社会趋势对行业影响不同</div><span class="tag tag-violet">差异影响</span></div>
+        <p class="small"><b>原文要点：</b>自动化和 AI 对运输业影响很大，例如自动驾驶；但对车辆维护/服务的自动化难度更高。人口变化会特别影响医疗行业。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">趋势差异</div><div class="eq-op">==</div><div class="eq-rhs">同一趋势 + 不同行业任务特征 → 不同风险和机会</div></div></div>
+        <div class="memory"><b>记忆线：</b>AI 不是平均替代所有岗位，越结构化、重复、可标准化，越容易被影响。</div>
+        <div class="riskline">投资判断：不要只问“AI 会不会影响公司”，要问“这个行业的核心任务是否容易自动化”。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Technology can address injustices 技术也能解决不公</div><span class="tag tag-teal">解决工具</span></div>
+        <p class="small"><b>原文要点：</b>技术发展也可帮助处理某些行业不公，例如卫星图像帮助识别非法毁林。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">技术应用</div><div class="eq-op">==</div><div class="eq-rhs">更强监测能力 → 发现非法行为 → 降低供应链和环境社会风险</div></div></div>
+        <div class="memory"><b>记忆线：</b>技术不只制造颠覆，也可以成为社会风险治理工具。</div>
+        <div class="riskline">投资判断：采用监测、追踪和透明化技术的公司，可能更能管理供应链和声誉风险。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>行业层面速查表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>行业/主题</th><th>重大社会因素</th><th>记忆点</th></tr></thead>
+          <tbody>
+            <tr><td>Clothing / cotton</td><td>Child labor in supply chain</td><td>供应链越长越深，劳工风险越容易藏起来。</td></tr>
+            <tr><td>Mining</td><td>Human rights, health and safety, community issues</td><td>业务性质本身带来高社会风险。</td></tr>
+            <tr><td>Transport</td><td>Automation and AI</td><td>自动驾驶影响运输岗位。</td></tr>
+            <tr><td>Vehicle maintenance / servicing</td><td>Automation harder to apply</td><td>维修服务更难完全自动化。</td></tr>
+            <tr><td>Health care</td><td>Demographic change</td><td>老龄化会特别影响医疗需求。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="company" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Company-Level Factors</div>
+        <h2>公司层面：同一行业里，公司也不一样</h2>
+      </div>
+      <div class="head-desc">公司层面看的是“具体执行”：文化、系统、运营和治理决定公司是否真正暴露、是否能应对。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Culture, systems, operations, governance 公司内部能力</div><span class="tag tag-blue">管理底盘</span></div>
+        <p class="small"><b>原文要点：</b>同一行业内的公司对社会趋势和因素暴露并不相同，很多取决于公司文化、系统、运营和治理。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">公司能力</div><div class="eq-op">==</div><div class="eq-rhs">文化 + 系统 + 运营 + 治理 → 风险识别和应对能力</div></div></div>
+        <div class="memory"><b>记忆线：</b>行业决定“可能有什么风险”，公司管理决定“风险会不会爆”。</div>
+        <div class="riskline">投资判断：看公司是否有制度、流程、数据和治理能力管理社会因素。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Established company vs disruptor 老牌公司与颠覆者</div><span class="tag tag-amber">双面性</span></div>
+        <p class="small"><b>原文要点：</b>老牌公司可能有更好的系统管理供应链社会风险，但也可能更难回应颠覆性商业模式进入市场。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">老牌公司</div><div class="eq-op">==</div><div class="eq-rhs">系统成熟 + 供应链管理较强；但商业模式响应可能较慢</div></div></div>
+        <div class="memory"><b>记忆线：</b>成熟不是单向好事：风控可能强，转身可能慢。</div>
+        <div class="riskline">投资判断：既看社会风险管理成熟度，也看公司能否适应数字化和商业模式变化。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Financial and stakeholder impact 财务和利益相关方影响</div><span class="tag tag-green">投资后果</span></div>
+        <p class="small"><b>原文要点：</b>多数社会议题可能影响公司利润，增加员工和供应链问题，并降低企业责任表现及消费者期待满足程度。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">社会议题后果</div><div class="eq-op">==</div><div class="eq-rhs">bottom line + workforce / supply chain issues + corporate responsibility + consumer expectations</div></div></div>
+        <div class="memory"><b>记忆线：</b>社会因素最后会回到财务、员工、供应链、责任和客户期待五个落点。</div>
+        <div class="riskline">投资判断：不能把社会风险看成“非财务、所以不重要”；它可能通过多个路径进入财务表现。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>公司暴露五点定位</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">Company exposure</div><div class="eq-op">==</div><div class="eq-rhs">sector + countries/regions + key suppliers + plants + customers + main tax jurisdictions</div></div>
+      </div>
+      <p class="small">这个式子特别适合做题：题干只要给了供应商、工厂、客户、税务辖区所在地，就不是纯行业题，而是公司层面暴露题。</p>
+    </div>
+  </section>
+
+  <section id="regulation" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Local Regulatory Framework Examples</div>
+        <h2>监管案例：EU taxonomy、UK Modern Slavery Act、IOSCO</h2>
+      </div>
+      <div class="head-desc">这部分虽然看起来像环境和法规，但教材把它放在国家层面社会因素，因为监管会改变企业供应链责任。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">EU Taxonomy for Sustainable Activities</div><span class="tag tag-green">DNSH</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">条件</div><div class="case-text">经济活动要 taxonomy-aligned，需对六个环境目标之一作出实质贡献。</div></div>
+          <div class="case-row"><div class="case-lab">同时</div><div class="case-text">不能对其他五个目标造成重大损害，即 do no significant harm。</div></div>
+          <div class="case-row"><div class="case-lab">保障</div><div class="case-text">还需符合最低社会保障措施，例如 OECD Guidelines、UNGPs、ILO 基本权利原则、八项 ILO 核心公约和 International Bill of Human Rights。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Six Environmental Objectives</div><span class="tag tag-blue">6 个目标</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">1-2</div><div class="case-text">climate change mitigation；climate change adaptation。</div></div>
+          <div class="case-row"><div class="case-lab">3-4</div><div class="case-text">Sustainable use and protection of water and marine resources；transition to a circular economy。</div></div>
+          <div class="case-row"><div class="case-lab">5-6</div><div class="case-text">Pollution prevention and control；protection and restoration of biodiversity and ecosystems。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">UK Modern Slavery Act</div><span class="tag tag-rose">年度声明</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">要求</div><div class="case-text">中大型公司每年提供 slavery and human trafficking statement。</div></div>
+          <div class="case-row"><div class="case-lab">内容</div><div class="case-text">说明为确保业务或供应链不存在现代奴役而采取的步骤。</div></div>
+          <div class="case-row"><div class="case-lab">数据</div><div class="case-text">可能披露高风险供应商审计数量、建立纠正行动计划的供应商数量，帮助投资者评估重大性。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">IOSCO</div><span class="tag tag-violet">监管标准化</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">作用</div><div class="case-text">International Organization of Securities Commissions 连接全球监管者。</div></div>
+          <div class="case-row"><div class="case-lab">目的</div><div class="case-text">提供全球框架支持全球标准化，各国监管者可将其作为本国监管基础。</div></div>
+          <div class="case-row"><div class="case-lab">记忆</div><div class="case-text">IOSCO 不是公司披露表，而是监管者之间的全球框架连接器。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>EU taxonomy 题眼</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">Taxonomy-aligned</div><div class="eq-op">==</div><div class="eq-rhs">Substantial contribution to one objective + Do no significant harm to others + Minimum safeguards</div></div>
+      </div>
+      <p class="small">如果题目给三家公司总分都增加，要选没有负面伤害其他目标、并对某一目标有实质贡献的公司。</p>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩版：一屏背完</h2>
+      </div>
+      <div class="head-desc">这节最适合用三层漏斗记忆：国家先筛一遍，行业再筛一遍，公司最后落地。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>4.1.4-4.1.5 总式</b> == 社会因素重大性不是平均的，而是国家 × 行业 × 公司。</div>
+          <div class="formula"><b>Materiality start</b> == geographical level + industry level → company-level exposure。</div>
+          <div class="formula"><b>Company exposure</b> == sector + countries/regions + suppliers + plants + customers + tax jurisdictions。</div>
+          <div class="formula"><b>Country analysis</b> == economic development + regulatory framework + cultural / historical factors。</div>
+          <div class="formula"><b>Sector analysis</b> == inherent social risks + trend-specific impacts + technology-enabled monitoring。</div>
+          <div class="formula"><b>Company analysis</b> == culture + systems + operations + governance。</div>
+          <div class="formula"><b>EU taxonomy</b> == substantial contribution + DNSH + minimum safeguards。</div>
+          <div class="formula"><b>UK Modern Slavery Act</b> == annual slavery and human trafficking statement + supplier audit/corrective action data。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>重大性评估不是打勾</b>重要原因是不同国家、行业、公司受到社会因素影响不同，而不是因为它是标准程序。</div>
+          <div class="trap"><b>老龄化不是全球同等迫切</b>发达国家更重要，新兴市场相对没那么立即；新兴市场城乡差异通常更大。</div>
+          <div class="trap"><b>AI 影响行业不同</b>运输业自动驾驶风险高；车辆维护/服务更难自动化。</div>
+          <div class="trap"><b>EU taxonomy 不是只看总分</b>要对一个目标实质贡献，同时不重大伤害其他目标，并符合最低保障。</div>
+          <div class="trap"><b>UK Modern Slavery Act</b>看年度声明和供应链尽调数据，不只是泛泛承诺。</div>
+          <div class="trap"><b>公司层面不是只看行业</b>还要看具体经营国家、供应商、工厂、客户和税务辖区。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quick Check</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">这些题对应第 4 章练习题中与 4.1.4-4.1.5 最相关的考点。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">为什么社会重大性评估重要？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为不同国家、行业和公司受社会大趋势与社会因素影响并不相同。不是因为它是 tick-box 程序。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">EU taxonomy 下，某公司对一个目标贡献 +7，对其他目标没有负面变化；另一家公司总分也 +7 但某目标 -2，谁更符合？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>对一个目标实质贡献且不重大伤害其他目标的公司更符合。关键是 substantial contribution + do no significant harm。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">国家层面分析社会因素，要看哪三类背景？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>经济发展水平、监管框架、文化或历史因素。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">人口老龄化在发达市场和新兴市场的重要性是否一样？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>不一样。老龄化是发达国家重要问题，但在新兴市场没有那么迫切。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">服装/棉花供应链和矿业分别体现什么行业层面的社会风险？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>服装/棉花供应链体现童工等供应链劳工风险；矿业因业务性质有更深的人权、健康安全和社区风险。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">公司层面暴露通常从哪些位置确定？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>公司所在行业、经营国家/地区、关键供应商、工厂、客户和主要税务辖区所在地。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">老牌公司在社会风险管理上一定更好吗？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>不一定。老牌公司可能有更成熟的供应链风险管理系统，但也可能更难应对颠覆性商业模式进入市场。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">UK Modern Slavery Act 对中大型公司要求什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>每年提供 slavery and human trafficking statement，说明为确保业务和供应链不存在现代奴役而采取的步骤。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">IOSCO 在这一节中的作用是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>连接全球监管者，并提供支持全球标准化的框架，各国监管者可作为本国监管基础。</div>
+      </article>
+    </div>
+    <div class="footer-note">复习时先闭眼说出：国家、行业、公司。再分别说出每层看什么。能说出来，这一模块基本就稳了。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

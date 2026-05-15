@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.7 Module 6 · Case Studies in ESG Integration</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;--green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;--rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;--teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 48%,#eaf0f6 100%);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side,.card,.case-card,.map-board,.formula,.trap,.qcard,details{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main,.hero-side{box-shadow:var(--sh)}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(28px,4.7vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere;word-break:break-word}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:0;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:18px;font-weight:900;color:var(--dark);line-height:1.48;overflow-wrap:anywhere;word-break:break-word}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:0;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:500px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{padding:18px}h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:760px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;background:var(--soft)}.branch:nth-child(1),.branch:nth-child(6){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2),.branch:nth-child(7){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch-title{font-size:13.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:8px}.branch p{font-size:12.2px;color:var(--sub);line-height:1.55;margin:0 0 6px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm)}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:14px}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:0}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(86px,.32fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}.eq-op{font-family:var(--mono);font-weight:950;color:#94a3b8;font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}.warnline{border-left:4px solid var(--rose);background:var(--rose-bg);border-radius:var(--r);padding:10px 12px;color:#881337;font-size:13px;line-height:1.68}
+.compare{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:table}.compare th,.compare td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}.compare th{background:var(--soft);color:var(--dark);font-weight:950}.compare tr:last-child td{border-bottom:0}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border-color:var(--rose-bdr);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--muted);font-weight:700}details[open] summary::after{content:"-"}details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.center-node,.branch-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1100px){.branch-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:1fr 1fr}.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.compare{display:block;overflow-x:auto}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:16.5px}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 7</span>
+        <span class="pill">Module 6</span>
+        <span class="pill">7.1.9</span>
+        <span class="pill">Case Studies</span>
+        <span class="pill">Equity + Credit + Sovereign</span>
+      </div>
+      <h1>Case Studies in<br>ESG Integration</h1>
+      <p class="lead">本页把 PDF 中 7 个 ESG 整合案例整理成“题眼反推”训练：看到客户目标、估值溢价、DCF 情景、信用评级或主权利差时，能快速判断 ESG 信息应该进入筛选、预测、估值、评级还是仓位管理。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>案例题 ESG 整合 == 题干情境 → 重大 ESG 因素 → 进入模型的位置 → 投资动作</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">7.1.9 将 ESG 分析和整合方法应用于不同资产类别</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">7</div><div class="mini-lab">PDF 案例数量</div></div>
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">DCF 案例强项维度</div></div>
+      </div>
+      <div class="side-note">记忆抓手：案例不是背故事，而是找“ESG 被放进哪里”。放进筛选就是量化倾斜；放进财务预测就是基本面整合；放进评级就是信用整合；放进 FSS 就是主权债分析。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="case12">案例1-2</button>
+    <button class="tab" data-tab="case34">案例3-4</button>
+    <button class="tab" data-tab="case56">案例5-6</button>
+    <button class="tab" data-tab="case7">案例7</button>
+    <button class="tab" data-tab="hooks">题眼反推</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>7 个案例其实在问同一件事：ESG 进模型的入口在哪里</h2>
+      </div>
+      <p class="head-desc">按逻辑等式心象术，本页把案例拆成“场景、变量、模型入口、投资动作”四步。</p>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Case Studies in ESG Integration<br>题干情境 → ESG 变量 → 模型入口 → 投资动作</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1. Quant Tilt</div><p>环保使命基金。</p><p>多评分、阈值、剔除、再平衡。</p></div>
+        <div class="branch"><div class="branch-title">2. Fundamental</div><p>化工趋势。</p><p>销售增长、DCF、P/E 溢价。</p></div>
+        <div class="branch"><div class="branch-title">3. Premium P/E</div><p>半导体设备。</p><p>人才、商业模式、资产效率支持估值溢价。</p></div>
+        <div class="branch"><div class="branch-title">4. DCF Scenario</div><p>医疗数据。</p><p>隐私风险和数据分析机会进情景模型。</p></div>
+        <div class="branch"><div class="branch-title">5. Credit Rating</div><p>饮料公司。</p><p>水、GHG、人权、治理进入内部信用评级。</p></div>
+        <div class="branch"><div class="branch-title">6. QESG Practice</div><p>国有油企债券。</p><p>安全、泄漏、排放改善影响加仓。</p></div>
+        <div class="branch"><div class="branch-title">7. Sovereign</div><p>国家 A。</p><p>治理和社会弱项惩罚 FSS，仓位随估值调整。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>本模块覆盖清单</h2>
+      </div>
+      <p class="head-desc">覆盖 PDF 第 7 章 Case Studies in ESG Integration 全部 7 个案例和案例题。</p>
+    </div>
+    <div class="coverage-grid">
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例 1：环保倾斜的全球股票量化系统策略，含第三方评分、自有评分、E 分阈值、bottom 20% 剔除、季度再平衡和 stewardship。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例 2：基本面 ESG 整合，化工行业趋势、Company A、DCF 和 P/E 交叉验证。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例 3：Company Z 半导体设备公司，用 E/S 数据支持更高 P/E 溢价。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例 4：医疗健康公司 DCF 情景分析，隐私泄露风险与数据分析机会。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例 5：饮料公司信用分析，水效率、GHG、包装废弃物、人权、董事会监督和内部评级。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例 6：国有油企债券 QESG 实务，ESG 分数从 4 升到 3 后增加债券仓位。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例 7：主权债 FSS，治理、腐败、技能错配、青年失业等 ESG 因素影响国家债券仓位。</div></div>
+      <div class="coverage-item"><div class="check">✓</div><div class="text">案例题：饮料公司 material environmental factors 正确选项为 water efficiency and GHG emissions。</div></div>
+    </div>
+  </section>
+
+  <section id="case12" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case 1-2</div>
+        <h2>从“规则筛选”到“基本面预测”</h2>
+      </div>
+      <p class="head-desc">案例 1 是量化系统规则，案例 2 是分析师把 ESG 趋势落入收入、利润、DCF 和 P/E。</p>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Case 1 · Quantitative Systematic Environmental Tilt</div><span class="tag tag-blue">Screening + Tilt</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">基金会捐赠基金支持气候科学，想把部分资金投向环保特征更好的全球股票系统策略。</div></div>
+          <div class="case-row"><div class="case-lab">规则</div><div class="case-text">至少两个第三方 ESG 评分、自有评分、被投公司需有公开环境管理政策、平均 E 分达到最低标准、季度再平衡。</div></div>
+          <div class="case-row"><div class="case-lab">组合构建</div><div class="case-text">管理人把第三方 E 分转换成自有公式，标记没有环境政策的公司，用 scorecard 评估重大环境风险机会；综合评分低于阈值的 bottom 20% 不合格。</div></div>
+          <div class="case-row"><div class="case-lab">风险控制</div><div class="case-text">剩余公司权重尽量匹配全球基准的 momentum、quality、volatility 等因素，同时控制 tracking error 和 market beta。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">量化环保倾斜</div><div class="eq-op">==</div><div class="eq-rhs">客户使命 → 多评分系统 → E 分阈值 → bottom 20% 剔除 → 风格/风险匹配 → 季度再平衡</div></div>
+            <div class="eq"><div class="eq-lhs">题眼</div><div class="eq-op">→</div><div class="eq-rhs">systematic、rules、third-party score、threshold、tracking error</div></div>
+          </div>
+          <div class="riskline"><b>投资影响：</b>ESG 倾斜不是随意偏好，而是用规则把客户使命、ESG 数据和传统风险因子同时放进组合构建。</div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Case 2 · Fundamental ESG Integration</div><span class="tag tag-green">Forecast + Valuation</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">基金经理根据重大 ESG 因素调整收入、利润/资本回报、资本和运营支出、现金流，也调整目标倍数、折现率或溢价/折价。</div></div>
+          <div class="case-row"><div class="case-lab">趋势</div><div class="case-text">化工行业关注老龄化带来的健康产品需求、可降解/生物基塑料监管趋势、消费者绿色敏感度提升。</div></div>
+          <div class="case-row"><div class="case-lab">Company A</div><div class="case-text">可再生原料 specialty chemicals 供应商，约三分之二原料来自天然来源，并建成植物基原料的新工厂。</div></div>
+          <div class="case-row"><div class="case-lab">估值</div><div class="case-text">预期未来 10 年销售增长高于行业均值 2 个百分点，即 2 percentage points above industry average，嵌入 DCF；再用 P/E 交叉验证，认为可支付 50% 溢价，而当前仅 10% 溢价，DCF 指向 35% target price upside。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">基本面整合</div><div class="eq-op">==</div><div class="eq-rhs">ESG 趋势 → 收入/利润/现金流假设 → DCF → P/E 交叉验证 → 纳入组合</div></div>
+            <div class="eq"><div class="eq-lhs">Company A</div><div class="eq-op">==</div><div class="eq-rhs">绿色原料 + 价值链扩张 + 溢价定价能力 → 更高增长</div></div>
+          </div>
+          <div class="memory"><b>记忆抓手：</b>案例 2 的核心不是“公司很绿色”，而是“绿色趋势能转成销量、价格、增长和估值”。</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="case34" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case 3-4</div>
+        <h2>从“估值溢价证据”到“DCF 情景分析”</h2>
+      </div>
+      <p class="head-desc">案例 3 支持高 P/E；案例 4 把 ESG 风险和机会拆成 DCF 上行、下行情景。</p>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Case 3 · ESG Supports Premium P/E</div><span class="tag tag-violet">Premium Ratio</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">情境</div><div class="case-text">Company Z 是半导体设备制造商，表现良好，P/E 比行业高 50%。投资者需要确认它能长期维持产品领先和盈利能力。</div></div>
+          <div class="case-row"><div class="case-lab">风险</div><div class="case-text">关键风险包括能否持续吸引 PhD 科学家和工程师、制造设施与技术投入，以及制造延误或产品缺陷对声誉和份额的影响。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">第三方 E/S 数据显示公司处于 top 10%。三类强项支撑更高 P/E：人才吸引与留存、可持续商业模式、资产质量与效率。</div></div>
+          <div class="case-row"><div class="case-lab">细节</div><div class="case-text">较高员工工资和低流失支持创新；产品帮助电子设备更小、更快、更节能；售后增强和翻新提升客户资本效率；水/能源强度、水和废弃物回收、碳强度均优于同业。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">高 P/E 合理性</div><div class="eq-op">==</div><div class="eq-rhs">人才留存 + 可持续商业模式 + 资产效率 → 维持领先和利润</div></div>
+            <div class="eq"><div class="eq-lhs">题眼</div><div class="eq-op">→</div><div class="eq-rhs">premium P/E、top talent、innovation、water/energy intensity</div></div>
+          </div>
+          <div class="riskline"><b>考点提醒：</b>估值溢价题不是问 ESG 高分本身，而是问 ESG 证据能不能解释长期竞争优势。</div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Case 4 · DCF Scenario Analysis</div><span class="tag tag-amber">Scenario DCF</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">流程</div><div class="case-text">投资团队由组合经理直接做 ESG 整合，先做基本面分析识别正负重大 ESG 因素，再嵌入竞争地位、业务可持续性和估值模型。</div></div>
+          <div class="case-row"><div class="case-lab">五项强项</div><div class="case-text">只投资至少在 business model、market share opportunity、end-market growth、management、ESG performance 五方面表现强的公司。</div></div>
+          <div class="case-row"><div class="case-lab">风险</div><div class="case-text">医疗健康公司持有大量个人和医疗数据，数据泄露可能带来监管、政治和社会契约损害，团队因此建立 DCF 下行情景。</div></div>
+          <div class="case-row"><div class="case-lab">机会</div><div class="case-text">数据分析业务可创造更便宜、更好的医疗方案，形成竞争优势和 ESG contingent asset；案例包括糖尿病服药管理和哮喘聚集区识别。</div></div>
+          <div class="case-row"><div class="case-lab">模型</div><div class="case-text">团队偏好在 DCF 中明确调整 sales、margins、asset turns，而不是简单调折现率或终值；还做同业复核、压力测试和情景敏感性。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">DCF 情景</div><div class="eq-op">==</div><div class="eq-rhs">隐私风险下行情景 + 数据分析机会上行情景 + sales/margins/asset turns 明确建模</div></div>
+            <div class="eq"><div class="eq-lhs">题眼</div><div class="eq-op">→</div><div class="eq-rhs">privacy breach、contingent liabilities/assets、scenario、peer review、stress test</div></div>
+          </div>
+          <div class="memory"><b>记忆抓手：</b>案例 4 像“左右两扇门”：左边是数据泄露风险，右边是数据分析机会，最后都进 DCF 情景。</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="case56" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case 5-6</div>
+        <h2>信用案例：ESG 最终要回到偿债能力和仓位</h2>
+      </div>
+      <p class="head-desc">案例 5 是内部信用评级，案例 6 是 QESG 分数变化如何影响债券加仓。</p>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Case 5 · Credit Analysis Integrating ESG Factors</div><span class="tag tag-teal">Internal Rating</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">流程</div><div class="case-text">公司债分析先看业务、市场地位、竞争格局、利润率、杠杆和现金流，再评估管理层和行业重大 ESG 指标，如碳排放、工伤率、董事会构成。</div></div>
+          <div class="case-row"><div class="case-lab">方法</div><div class="case-text">ESG 分析包括定量分数和定性研究。定量分数来自自有框架，汇总 ESG 研究商和其他第三方指标；定性研究看政策、目标、报告、官网和 engagement call。</div></div>
+          <div class="case-row"><div class="case-lab">饮料公司</div><div class="case-text">水是关键投入，所以确保稳定供水既是 ESG strength，也是 credit strength。缺水会影响农作物产量、价格和当地社区用水。</div></div>
+          <div class="case-row"><div class="case-lab">E/S/G</div><div class="case-text">E 强项是高风险地区供应商水效率改善 15%、GHG 目标与 science-based target 对齐；弱项是包装废弃物披露弱。S 有人权和供应商行为准则强项，但人才和含糖饮料产品组合有弱点。G 有反贿赂、董事会监督和利益相关方参与。</div></div>
+          <div class="case-row"><div class="case-lab">案例题</div><div class="case-text">material environmental factors 的正确选项是 water efficiency and GHG emissions。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">信用 ESG</div><div class="eq-op">==</div><div class="eq-rhs">行业重大因素 + 定量分数 + 定性研究 → sustainability rating → internal credit rating</div></div>
+            <div class="eq"><div class="eq-lhs">饮料公司 E</div><div class="eq-op">==</div><div class="eq-rhs">water efficiency + GHG emissions</div></div>
+          </div>
+          <div class="riskline"><b>易错提醒：</b>talent retention 是 S，不是 E；supplier code of conduct 主要偏 S/G；题问 environmental factors 时要选水效率和 GHG。</div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Case 6 · Credit ESG Integration Practice</div><span class="tag tag-rose">QESG Score</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">流程</div><div class="case-text">信用团队使用多项输入，并咨询中央 ESG/responsibility 团队；公司层面看自有 QESG score，这代表公司 ESG 表现快照。</div></div>
+          <div class="case-row"><div class="case-lab">前瞻性</div><div class="case-text">QESG 还由 steward/engagement 团队信息支持，用于判断潜在 forward trajectory。</div></div>
+          <div class="case-row"><div class="case-lab">初始判断</div><div class="case-text">国有油企劳动安全低于行业平均，过去频繁漏油和泄漏，可能导致罚款、停产并损害现金流。评分为 4，低于平均，已持有债券保留，但不再增加敞口。</div></div>
+          <div class="case-row"><div class="case-lab">改善</div><div class="case-text">之后评分从 4 升至 3：工伤频率同比下降 35%，水回用同比增加 66%，硫氧化物排放同比下降 45%。投资者因此增加债券仓位。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">QESG 实务</div><div class="eq-op">==</div><div class="eq-rhs">当前分数 + 投后/尽责信息 + 改善轨迹 → 是否增加信用敞口</div></div>
+            <div class="eq"><div class="eq-lhs">4 → 3</div><div class="eq-op">==</div><div class="eq-rhs">安全改善 + 水回用改善 + 排放下降 → 加仓债券</div></div>
+          </div>
+          <div class="memory"><b>记忆抓手：</b>信用投资看“能不能还钱”，所以 ESG 分数不是装饰，改善轨迹能改变债券仓位。</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="case7" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case 7</div>
+        <h2>Sovereign Debt Analysis：ESG 可以惩罚看似不错的财务位置</h2>
+      </div>
+      <p class="head-desc">本案例的核心是 FSS：财政、债务、国际收支和 ESG 因素共同决定国家是否进入机会集和仓位大小。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>原文要点：FSS 怎么用</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">FSS</div><div class="eq-op">==</div><div class="eq-rhs">政府预算强度 + 公共债务 + 国际收支 + ESG 因素</div></div>
+          <div class="eq"><div class="eq-lhs">机会集</div><div class="eq-op">==</div><div class="eq-rhs">+4 到 -4；低于 -4 的国家和货币被排除</div></div>
+          <div class="eq"><div class="eq-lhs">ESG 惩罚</div><div class="eq-op">→</div><div class="eq-rhs">即使主权财务位置强，也可能因 ESG 弱项被显著下调</div></div>
+        </div>
+        <div class="riskline"><b>投资影响：</b>主权债 ESG 不是单独评分展示，而是进入国家财务稳定框架，影响相对收益率判断和仓位。</div>
+      </div>
+      <div class="card">
+        <h3>Country A 的弱项链条</h3>
+        <div class="formula-list">
+          <div class="formula"><b>政治不稳定：</b>阻碍持久结构性改革，限制增长潜力。</div>
+          <div class="formula"><b>治理弱：</b>助长逃税、腐败和资源配置低效，拖累生产率，扩大影子经济。</div>
+          <div class="formula"><b>制度低效：</b>官僚体系低效、法律系统复杂缓慢，提高交易成本并抑制经济活动。</div>
+          <div class="formula"><b>社会因素：</b>低技能工人技能错配影响工资和生产率，青年失业率高，辍学率高于同业。</div>
+          <div class="formula"><b>结论：</b>高政府债务、结构僵化、政府不稳定、治理和社会因素弱，使 FSS 处于较低端，约为 -3。</div>
+        </div>
+      </div>
+    </div>
+    <div class="map-board" style="margin-top:14px">
+      <div class="flowline">
+        <div class="flow-step"><h3>吸引力</h3><p>Country A 债券相对 Country B 有吸引人的 spread。</p></div>
+        <div class="flow-step"><h3>ESG 审查</h3><p>治理和社会弱项长期存在，压低 FSS。</p></div>
+        <div class="flow-step"><h3>仓位 1</h3><p>金融危机前，风险管理后保持 underweight。</p></div>
+        <div class="flow-step"><h3>仓位 2</h3><p>2012 年估值更有吸引力后，逐步 overweight。</p></div>
+        <div class="flow-step"><h3>仓位 3</h3><p>相对收益率下降后，减少敞口。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hooks" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Reverse Hooks</div>
+        <h2>题眼反推：看到这些词，往哪个案例靠</h2>
+      </div>
+      <p class="head-desc">这是后续三轮练习系统的预训练：先把题眼和知识点绑定。</p>
+    </div>
+    <table class="compare">
+      <thead><tr><th>题眼</th><th>反推知识点</th><th>正确动作</th></tr></thead>
+      <tbody>
+        <tr><td>third-party ESG scores、proprietary score、bottom 20%、quarterly rebalance</td><td>案例 1 量化系统环保倾斜</td><td>规则筛选、阈值剔除、基准风险控制。</td></tr>
+        <tr><td>biodegradable plastics、consumer green sensitivity、2 percentage points above industry</td><td>案例 2 基本面 ESG 整合</td><td>把 ESG 趋势转成销售增长、DCF 和 P/E 溢价。</td></tr>
+        <tr><td>50% P/E premium、PhD scientists、low turnover、water/energy intensity</td><td>案例 3 ESG 支持估值溢价</td><td>用人才、商业模式和资产效率验证竞争优势。</td></tr>
+        <tr><td>privacy data breach、contingent asset、sales/margins/asset turns、stress test</td><td>案例 4 DCF 情景分析</td><td>把 ESG 风险和机会分别放入上行/下行情景。</td></tr>
+        <tr><td>water is a key input、science-based GHG、internal credit rating</td><td>案例 5 信用 ESG 分析</td><td>把重大 ESG 信息转成 sustainability rating 和信用评级。</td></tr>
+        <tr><td>QESG score 4 to 3、injury frequency -35%、water reuse +66%</td><td>案例 6 信用 ESG 实务</td><td>根据 ESG 改善轨迹调整债券敞口。</td></tr>
+        <tr><td>FSS、tax evasion、corruption、youth unemployment、underweight/overweight</td><td>案例 7 主权债分析</td><td>治理和社会因素惩罚 FSS，仓位随估值和风险调整。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Review</div>
+        <h2>考前压缩：7 个案例 7 条式子</h2>
+      </div>
+      <p class="head-desc">闭眼复述时，先说“ESG 进入哪里”，再说“投资动作是什么”。</p>
+    </div>
+    <div class="compress">
+      <div class="formula-list">
+        <div class="formula"><b>1. Quant Tilt ==</b> 客户环保使命 → 多评分 + 阈值 + bottom 20% 剔除 → 风险因子匹配 → 季度再平衡。</div>
+        <div class="formula"><b>2. Fundamental Integration ==</b> ESG 趋势 → 财务预测 → DCF/P/E → 买入。</div>
+        <div class="formula"><b>3. Premium P/E ==</b> 人才 + 可持续商业模式 + 资产效率 → 证明高估值有质量。</div>
+        <div class="formula"><b>4. Scenario DCF ==</b> 隐私风险下行 + 数据分析机会上行 → sales/margins/asset turns 建模。</div>
+      </div>
+      <div class="formula-list">
+        <div class="formula"><b>5. Credit Rating ==</b> 行业重大 ESG + 量化分 + 定性研究 → sustainability rating → internal rating。</div>
+        <div class="formula"><b>6. QESG Practice ==</b> 安全/泄漏/排放风险 → ESG 分数 → 不加仓；改善后 → 加仓。</div>
+        <div class="formula"><b>7. Sovereign FSS ==</b> 财政债务收支 + ESG → FSS → 机会集/仓位。</div>
+        <div class="formula"><b>总式子 ==</b> ESG 信息只有进入筛选、预测、估值、评级或仓位，才算整合。</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="trap"><b>易错点 1：</b>案例 1 的重点是量化规则和组合构建，不是主动选股故事。</div>
+      <div class="trap"><b>易错点 2：</b>案例 5 的案例题问 environmental factors，正确抓水效率和 GHG，不要被人才、供应商准则、产品组合干扰。</div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：从题眼反推案例</h2>
+      </div>
+      <p class="head-desc">每题先自己说“这是哪个案例、ESG 进哪里”，再点开答案。</p>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">01</div><div class="qtext">客户要求至少两个第三方 ESG 评分、自有评分和季度再平衡，这是哪个案例？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">案例 1，量化系统环保倾斜。ESG 进入组合规则：评分、阈值、剔除、风格风险匹配和再平衡。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">02</div><div class="qtext">Company A 因植物基原料和绿色消费趋势，预计销售增长高于行业 2 个百分点，这属于哪种整合？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">案例 2，基本面 ESG 整合。ESG 趋势进入收入增长、DCF 和 P/E 估值。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">03</div><div class="qtext">一个公司 P/E 比行业高 50%，分析师用人才留存、商业模式和资源效率支持估值，这是什么逻辑？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">案例 3。逻辑是 ESG 证据支持长期竞争优势，因此支持更高估值溢价。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">04</div><div class="qtext">隐私数据泄露被建成下行情景，数据分析业务被视作 ESG contingent asset，这是哪个案例？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">案例 4，DCF Scenario Analysis。ESG 风险和机会进入 sales、margins、asset turns 等明确情景假设。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">05</div><div class="qtext">饮料公司案例中，material environmental factors 应选什么？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">water efficiency and GHG emissions。人才留存是 S，供应商行为准则也不是本题问的 environmental factors。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">06</div><div class="qtext">QESG 从 4 升到 3，工伤频率下降 35%、水回用增加 66%、硫氧化物下降 45%，投资动作是什么？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">案例 6，投资者增加债券仓位。逻辑：ESG 风险管理改善 → 信用风险轨迹改善 → 增加敞口。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">07</div><div class="qtext">主权债中 FSS 包括哪些大类？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">政府预算强度、公共债务、国际收支和 ESG 因素。ESG 弱项可以显著惩罚强财务位置。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">08</div><div class="qtext">Country A 的治理弱项为什么会影响主权信用和仓位？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">弱治理会助长逃税、腐败、资源错配、生产率低和影子经济，还会提高交易成本，最终压低 FSS 并影响 underweight/overweight 决策。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">09</div><div class="qtext">案例 4 为什么偏好 DCF 明确情景，而不是简单调折现率或终值？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">因为公司特定 ESG 风险和机会更适合映射到 sales、margins、asset turns 等具体经营变量，便于同业复核和压力测试。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">10</div><div class="qtext">7 个案例的共同主线是什么？</div><button class="qbtn" type="button">看答案</button></div><div class="qanswer">共同主线是：题干情境 → 重大 ESG 因素 → 进入模型的位置 → 投资动作。ESG 要进入筛选、预测、估值、评级或仓位，才是整合。</div></div>
+    </div>
+  </section>
+
+  <div class="footer-note">依据：ch07/esg-07.pdf 第 7 章 7.1.9 Case Studies in ESG Integration。ch04 页面仅作结构和排版参考。</div>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESG Ch.9 Module 7 · 9.1.7</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#edf2f7;--paper:#fff;--soft:#f8fafc;--bg:#eef3f8;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 14px 38px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef3f8 54%,#e8eef5 100%);line-height:1.68;min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}.wrap{width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 78px;min-width:0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin-bottom:16px}
+.hero-main,.hero-side,.panel-card,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main{padding:28px 30px}.hero-side{padding:18px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.pill{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,54px);line-height:1.08;letter-spacing:0;margin:0 0 12px;color:var(--dark);word-break:break-word}
+.lead{font-size:15px;color:var(--sub);max-width:805px;margin:0;line-height:1.86}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.76}.hero-eq b{color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.stat-num{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--dark);line-height:1}.stat-lab{font-size:12px;font-weight:850;color:var(--muted);margin-top:5px}
+.side-note{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:13px 14px;font-size:13px;line-height:1.72}.side-note b{color:#fff}
+.tabbar{position:sticky;top:10px;z-index:20;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px;overflow-x:auto;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}
+.tab-title{font-size:12px;font-weight:950;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;padding:0 7px;white-space:nowrap}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 12px;font-size:13px;font-weight:900;color:var(--muted);cursor:pointer;white-space:nowrap}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff}
+.panel{display:none;min-width:0}.panel.active{display:block}.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:950;letter-spacing:.10em;color:var(--muted);text-transform:uppercase;margin-bottom:7px}.section-head h2{font-family:var(--serif);font-size:clamp(24px,3.1vw,36px);line-height:1.18;color:var(--dark);margin:0}.section-head p{max-width:720px;color:var(--muted);font-size:13.5px;margin:8px 0 0}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px}.pad{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:950;line-height:1.25;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px;overflow:hidden}.center-node{max-width:760px;margin:0 auto 16px;background:#e0f2fe;border:2px solid #0369a1;color:#0c4a6e;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}.flow-card h3{font-size:14px;margin:0 0 6px}.flow-card p{font-size:12.5px;color:var(--sub);line-height:1.58;margin:0}
+.logic-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.logic-step{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.logic-step b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}.logic-step span{font-size:12.6px;color:var(--sub);line-height:1.58}
+.coverage-group{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.coverage-group h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0}.coverage-list{display:grid;gap:8px;margin-top:10px}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:9px}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:13px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.6}
+.knowledge-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.card-top{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.num{width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--accent,var(--blue));color:#fff;font-family:var(--serif);font-size:20px;font-weight:950;flex:0 0 auto}.card-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}.row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;border-top:1px solid var(--line2);padding-top:10px;margin-top:10px}.row-lab{font-size:11px;font-weight:950;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}.row-val{font-size:13.2px;color:var(--sub);line-height:1.75}.row-val b{color:var(--dark)}.eq{background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:11px 12px;font-size:13px;line-height:1.72}.eq b{color:#fff}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);background:var(--soft)}.case-head h3{margin:6px 0 0;color:var(--dark);font-size:17px}.case-body{padding:16px}.case-body p{font-size:13.3px;color:var(--sub);line-height:1.78;margin:0 0 10px}.case-body p:last-child{margin-bottom:0}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;margin-top:10px}.mini-table th,.mini-table td{border-bottom:1px solid var(--line2);padding:10px;text-align:left;vertical-align:top;font-size:12.7px;line-height:1.58}.mini-table th{background:var(--soft);color:var(--dark);font-weight:950}.mini-table tr:last-child td{border-bottom:0}
+.trap{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent,var(--rose));border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px}.trap b{color:var(--dark)}.trap p{font-size:13.2px;color:var(--sub);line-height:1.72;margin:5px 0 0}.cheat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;min-width:0}.cheat-key{font-size:13px;font-weight:950;color:var(--dark);margin-bottom:5px}.cheat-val{font-size:13px;color:var(--sub);line-height:1.62}
+.quiz-list{display:flex;flex-direction:column;gap:12px}.q-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.q-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.q-num{font-size:12px;font-weight:950;color:var(--muted)}.q-text{font-size:14.5px;color:var(--dark);font-weight:760;line-height:1.7;margin-bottom:12px}.options{display:flex;flex-direction:column;gap:8px}.opt{width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);padding:10px 12px;font-size:13.6px;line-height:1.55;color:var(--ink);cursor:pointer}.opt:hover{border-color:var(--blue);background:var(--blue-bg)}.opt.correct{border-color:var(--green);background:var(--green-bg);color:#047857;font-weight:950}.opt.wrong{border-color:var(--rose);background:var(--rose-bg);color:#be123c}.exp{display:none;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:13px;margin-top:12px;font-size:13px;line-height:1.78;color:var(--sub)}.exp.show{display:block}.exp b{color:var(--dark)}
+.footer-note{margin-top:18px;background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.72}.lead,.hero-eq,.side-note,.eq,.row-val,.flow-card p,.logic-step span,.coverage-item .text,.case-body p,.trap,.cheat,.q-text,.opt,.exp,.mini-table th,.mini-table td{overflow-wrap:anywhere;word-break:break-word}.hero-eq,.side-note,.eq{max-width:100%}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.logic-line{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.section-head{display:block}}
+@media(max-width:640px){.wrap{padding:18px 12px 64px}.hero-main{padding:22px 18px}.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.pill{justify-content:center;text-align:center;white-space:normal}.lead{font-size:14px;line-height:1.78}.hero-eq,.side-note{font-size:12.8px;line-height:1.72}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow,.logic-line{grid-template-columns:1fr}.center-node{border-radius:var(--r)}.row{grid-template-columns:1fr;gap:4px}h1{font-size:30px;line-height:1.12}.tab{padding:8px 10px}.mini-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 9</span>
+        <span class="pill">Module 7</span>
+        <span class="pill">9.1.7</span>
+        <span class="pill">Measurement & Reporting</span>
+      </div>
+      <h1>Measurement and Reporting<br>Investment Reviews</h1>
+      <p class="lead">本模块覆盖 PDF 第 9 章 9.1.7：基金经理如何做 integrated ESG reporting / investment reviews，以及为什么 ESG 相关投资表现的衡量、报告和归因在不同策略与资产类别下很难。</p>
+      <div class="hero-eq"><b>本模块总逻辑等式：</b>ESG reporting == 真实交付 + 组合证据 + 基准比较 + impact 解释 + 绩效归因 + 披露复核</div>
+    </div>
+    <aside class="hero-side">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">1</div><div class="stat-lab">Learning Outcome</div></div>
+        <div class="stat"><div class="stat-num">9</div><div class="stat-lab">知识卡片</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-lab">报告工具</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>记忆入口：</b>报告不是“讲 ESG 很重要”，而是证明经理确实按 mandate 把 ESG 做进流程、组合、engagement 和结果里。</div>
+    </aside>
+  </section>
+
+  <nav class="tabbar" aria-label="Module navigation">
+    <span class="tab-title">9.1.7 Review</span>
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="cards">逻辑等式卡片</button>
+    <button class="tab" data-tab="tools">报告工具</button>
+    <button class="tab" data-tab="disclosure">披露框架</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>第一屏先看一张图：从“讲故事”走向“可验证交付”</h2>
+        <p>9.1.7 的主线很清楚：ESG 报告质量越高，越能从笼统主题，推进到组合、归因、风险、engagement 和 outcome 的证据链。</p>
+      </div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Holding Managers to Account: Measurement and Reporting<br>持续验证 ESG 是否真的被交付</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 报告光谱</h3><p>从泛泛主题和愿景，到具体工作，再到 portfolio shape 与 engagement 变化。</p></div>
+        <div class="flow-card"><h3>2 Outcome 焦点</h3><p>UK Stewardship Code 推动从“做了什么”转向“交付了什么结果”。</p></div>
+        <div class="flow-card"><h3>3 年报 / PRI</h3><p>披露流程、主题、案例、PRI Transparency Report 和评分。</p></div>
+        <div class="flow-card"><h3>4 基准比较</h3><p>用 ESG 数据叠加现有 benchmark，或使用定制 ESG index。</p></div>
+        <div class="flow-card"><h3>5 Impact 表达</h3><p>用树木、车辆等等价物连接真实世界，但依赖假设。</p></div>
+        <div class="flow-card"><h3>6 归因与复核</h3><p>排除行业较易归因；engagement 和深度 integrated ESG 更难拆分。</p></div>
+      </div>
+      <div class="logic-line">
+        <div class="logic-step"><b>隐藏逻辑 1：质量</b><span>报告越具体，越能支持客户问责。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 2：证据</b><span>组合数据、基准、案例、outlier 共同构成证据链。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 3：难度</b><span>ESG 越融入投资过程，越难把单独收益拆出来。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 4：复核</b><span>披露不是终点，客户要用问题、outliers 和后续会议检验。</span></div>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card pad"><span class="tag tag-blue">一句话</span><h3>好报告等于“可追问”</h3><p class="row-val">真正有用的 ESG reporting，应让客户能问：哪个风险、哪个持仓、哪个 engagement、哪个 KPI、哪个结果。</p></div>
+      <div class="card pad"><span class="tag tag-green">做题线索</span><h3>看到 attribution 想“难拆分”</h3><p class="row-val">排除 tobacco 这类 sector exclusion 最容易归因；active engagement 和 fully integrated ESG 最难归因。</p></div>
+      <div class="card pad"><span class="tag tag-amber">考点口令</span><h3>Voting 不是 engagement</h3><p class="row-val">ICGN 要求 stewardship engagement 和 voting activity 分别详细披露，单独披露投票不够。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>覆盖清单：这些点 PDF 都讲到了</h2>
+        <p>复习时可以逐项打勾：9.1.7 不是单纯“报告格式”，而是 ESG 投资交付的证据体系。</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">Reporting quality</span>报告质量光谱</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><span class="check">✓</span><span class="text">ESG reporting 很普遍，但 disclosure quality 差异很大。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">低质量：current debates、themes、aspirations、assertions，且和经理实际工作没有清晰 linkage。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">高质量：具体说明 fund managers actually did and delivered in practice。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">更具体：展示 portfolio shape，以及通过 engagement 带来的 change。</span></div>
+        </div>
+      </div>
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">Outcome focus</span>结果导向</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><span class="check">✓</span><span class="text">UK Stewardship Code 要求更多报告 stewardship / ESG activity 的 outcomes。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">重点从 broader events、policies、activities，转向 concretely delivered to clients。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">这会减少 generalized reporting，增加 concrete activity 的披露。</span></div>
+        </div>
+      </div>
+      <div class="coverage-group">
+        <h3><span class="tag tag-amber">Annual / PRI</span>年度报告与 PRI</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><span class="check">✓</span><span class="text">Investment firms 通常产出 annual，有时 quarterly reports。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">报告内容包括 investment processes、worked themes、ESG investing / stewardship case studies。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">PRI signatories 要提交 PRI Transparency Report。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">PRI 报告过程可帮助评估进展、获得反馈、同业比较、看市场全貌、强化内部流程和 ESG capacity，并向相关方总结活动。</span></div>
+        </div>
+      </div>
+      <div class="coverage-group">
+        <h3><span class="tag tag-violet">Tools / Benchmarks</span>工具与基准</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><span class="check">✓</span><span class="text">工具可以展示 portfolio ESG characteristics，并与 relevant benchmarks 比较。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">PLSA：可以把 ESG data 应用到 existing standard benchmarks，如 MSCI World。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">如果组合排除了 fossil fuel stocks，可能需要定制的 ESG index 更有效比较。</span></div>
+        </div>
+      </div>
+      <div class="coverage-group">
+        <h3><span class="tag tag-teal">Impact / Attribution</span>影响与归因</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><span class="check">✓</span><span class="text">Real-world impacts 或 equivalent impacts 可以把投资过程连接到真实世界。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">树木、车辆等转换表达有吸引力，尤其对 retail investors，但理论性强、依赖假设。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">Performance attribution provider 可拆分 return drivers、top contributors/detractors、factor analysis、risk exposures。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">ESG attribution 难点：ESG approaches 范围大、engagement 时间长、fully integrated ESG 难从整体投资决策中拆出来。</span></div>
+        </div>
+      </div>
+      <div class="coverage-group">
+        <h3><span class="tag tag-rose">Disclosure</span>披露要求</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><span class="check">✓</span><span class="text">PLSA 要求 ESG integration 披露分为 identification of ESG risk 和 management / monitoring of ESG risks and opportunities。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">ICGN 要求 portfolio embedded ESG risks assessment，以及 stewardship engagement 和 voting activity 的详细披露。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">Engagement disclosure 无固定统一格式，但应 fund-specific，不能只给 organization-level statistics。</span></div>
+          <div class="coverage-item"><span class="check">✓</span><span class="text">Milestones / KPIs 有助于披露 engagement progress，但模型专有且可能有偏，需要客户检验。</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：把 9.1.7 压成 9 条主线</h2>
+        <p>每张卡都按“原文要点 → 中文解释 → 逻辑等式 → 投资影响/考点提醒”整理。</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <article class="knowledge-card" style="--accent:var(--blue)">
+        <div class="card-top"><div class="num">1</div><div class="card-title">报告质量：从泛泛主题到具体交付</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">ESG reporting 普遍，但质量不同：有的只是 debates/themes/aspirations，有的具体说明经理实际做了什么、交付了什么，以及组合和 engagement 的变化。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">好报告不是 ESG 宣传册，而是“工作底稿”：能把 ESG 活动和组合结果连起来。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>高质量 ESG reporting</b> == actual work + delivered practice + portfolio shape + engagement change</div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">题目若问“哪种报告质量更高”，选有 concrete work / delivered in practice / portfolio evidence 的描述。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--green)">
+        <div class="card-top"><div class="num">2</div><div class="card-title">Outcome：Stewardship 报告看结果</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">UK Stewardship Code 推动更多 reporting on outcomes from stewardship and ESG activity，而不是只讨论 broader events、policies 或 activities。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">客户真正关心的不是“我们开了几次会”，而是“这些活动给客户带来了什么具体交付”。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Outcome reporting</b> == activities/policies ↓ + concrete client benefit ↑</div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">资产所有者可以用 outcome 报告降低空泛叙述，逼近实际 stewardship 质量。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--amber)">
+        <div class="card-top"><div class="num">3</div><div class="card-title">Annual Reports / PRI Transparency Report</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">投资公司通常披露 annual 或 quarterly reports，说明 investment processes、worked themes、ESG investing / stewardship case studies；PRI signatories 还需提交 PRI Transparency Report。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">PRI 报告像年度体检：评估责任投资进展、获得反馈、同业 benchmark、看市场全貌、强化内部流程与 ESG 能力，并向员工、客户、股东、监管者总结活动。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>PRI reporting process</b> == progress check + feedback tools + peer benchmark + market picture + capacity building + stakeholder summary</div></div>
+        <div class="row"><div class="row-lab">易错提醒</div><div class="row-val">PRI headline scores 有参考价值，但不等于每只基金、每个资产类别都高质量整合 ESG。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--violet)">
+        <div class="card-top"><div class="num">4</div><div class="card-title">Benchmark：ESG 数据要和相关基准比</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">PLSA 指出，可以把 ESG data 应用到 existing standard benchmarks，例如继续用 MSCI World 但加入 ESG data set；也可选择 customized ESG indices。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">基准不能随便选。若原组合已排除 fossil fuel，拿普通市场指数直接比 ESG 表现可能不够合适。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>ESG benchmark comparison</b> == standard benchmark + ESG dataset；特殊 mandate == customized ESG index</div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">题目看到 fossil fuel exclusion / ESG-optimized index，要想到“定制基准可能更有效”。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--teal)">
+        <div class="card-top"><div class="num">5</div><div class="card-title">Real-world impacts：有传播力，但依赖假设</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">一些经理报告 real-world impacts 或 equivalent impacts，例如 carbon-tilted fund 等于种了多少树、减少多少车上路。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">这类表达把投资结果翻译成生活语言，对 retail investors 尤其有吸引力，但仍处早期阶段，需要 assurance 和 consistency。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Impact equivalents</b> == real-world linkage + retail appeal - assumptions risk</div></div>
+        <div class="row"><div class="row-lab">易错提醒</div><div class="row-val">不要把“等价影响”当成精确事实，它往往 theoretical 且依赖多重假设。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--rose)">
+        <div class="card-top"><div class="num">6</div><div class="card-title">Performance attribution：ESG 收益最难拆</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">归因服务商可拆分 investment performance drivers；但 ESG return attribution 因 ESG approaches 范围广而困难。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">排除 tobacco 这类行业，绩效拖累或增益相对容易看；engagement 需要较长时间；ESG 越深度融入，越难把某个 ESG driver 从整体投资决策中拆出。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>ESG attribution difficulty</b> == approach breadth + engagement lag + integration depth</div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">“最容易评价绩效影响”通常是 sector exclusion；“最难证明价值”通常是 engagement / fully integrated ESG。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--blue)">
+        <div class="card-top"><div class="num">7</div><div class="card-title">PLSA：ESG integration 披露分两层</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">PLSA disclosure guide 要求经理分别披露：identification of ESG risk；management and monitoring of ESG risks and opportunities。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">先证明你看见了风险/机会，再证明你如何管理、监控并反映到组合里。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>PLSA ESG integration disclosure</b> == identify ESG risk/opportunity + manage/monitor ESG risk/opportunity</div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">“直接把收益归因给 ESG 因素”不是 PLSA 用来证明 identification 的典型方式。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--green)">
+        <div class="card-top"><div class="num">8</div><div class="card-title">ICGN：组合内 ESG 风险 + Engagement/Voting</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">ICGN Model Mandate 要求两类 ESG-specific disclosure：经理对 embedded ESG risks 的 assessment；以及 stewardship engagement 和 voting activity 的详细披露。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">第一类回答“组合里有什么 ESG 风险、如何识别监控管理”；第二类回答“你如何通过 stewardship 施加影响”。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>ICGN disclosure</b> == embedded ESG risk assessment + detailed engagement + detailed voting</div></div>
+        <div class="row"><div class="row-lab">易错提醒</div><div class="row-val">Voting disclosure 不能替代 engagement disclosure，二者必须分开。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:var(--amber)">
+        <div class="card-top"><div class="num">9</div><div class="card-title">Outliers：防止经理只挑好案例</div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">因为经理可能选择最能展示自己的案例，客户会寻找 outliers，检验 ESG integration 是否在整个组合中一致交付。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">不要只听经理讲“漂亮故事”，要看异常持仓、低评分持仓、争议持仓能否被同一套方法解释。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Outlier testing</b> == anti-cherry-picking + portfolio-wide consistency check</div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">资产所有者要问三件事：是否符合经理投资风格、是否实际交付、是否符合自己的 needs and beliefs。</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="tools" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Reporting Tools</div>
+        <h2>报告工具：每种工具回答一个不同问题</h2>
+        <p>不要把所有报告都看成一类。PDF 实际列出了几种不同的证据来源。</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-blue">Tool 1</span><h3>Annual / Quarterly Report</h3></div>
+        <div class="case-body">
+          <p><b>回答问题：</b>经理的投资流程、当期主题、ESG investing / stewardship 案例是什么？</p>
+          <p><b>复核重点：</b>案例是否和基金本身有关，是否只是组织层面的宣传材料。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-green">Tool 2</span><h3>PRI Transparency Report</h3></div>
+        <div class="case-body">
+          <p><b>回答问题：</b>签署方如何评估自身 responsible investment 进展，并与行业框架和 peers 比较？</p>
+          <p><b>复核重点：</b>高分可能被经理宣传，客户仍要看具体资产类别和具体基金交付。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-violet">Tool 3</span><h3>ESG Benchmark Overlay</h3></div>
+        <div class="case-body">
+          <p><b>回答问题：</b>组合 ESG score / ESG characteristics 相对相关 benchmark 怎样？</p>
+          <p><b>复核重点：</b>普通 benchmark 还是 customized ESG index，取决于 mandate 和投资限制。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-teal">Tool 4</span><h3>Real-world Impact Equivalent</h3></div>
+        <div class="case-body">
+          <p><b>回答问题：</b>投资组合的 ESG 特征如何翻译成真实世界语言？</p>
+          <p><b>复核重点：</b>转换公式依赖假设，仍需 consistency 和 assurance。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-rose">Tool 5</span><h3>Performance Attribution</h3></div>
+        <div class="case-body">
+          <p><b>回答问题：</b>收益来自哪些股票、行业、风格因子和风险暴露？ESG 是否能解释一部分？</p>
+          <p><b>复核重点：</b>ESG 越深度 integrated，越难单独拆分。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-amber">Tool 6</span><h3>Engagement Milestones / KPIs</h3></div>
+        <div class="case-body">
+          <p><b>回答问题：</b>本期 engagement 做到了哪个里程碑，距离目标还有多远？</p>
+          <p><b>复核重点：</b>模型通常是 proprietary，可能有 bias，但至少提供可追问的透明度。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card" style="margin-top:14px">
+      <div class="case-head"><span class="tag tag-dark">Attribution ladder</span><h3>归因难度阶梯：越“融入”，越难单独证明</h3></div>
+      <div class="case-body">
+        <table class="mini-table">
+          <thead><tr><th>ESG approach</th><th>归因难度</th><th>为什么</th><th>考点钩子</th></tr></thead>
+          <tbody>
+            <tr><td>Sector exclusion，例如 tobacco</td><td>低</td><td>排除清单清楚，可比较 performance drag / enhancement。</td><td>看到 easiest to evaluate impact，优先想到 exclusion。</td></tr>
+            <tr><td>Supply-chain screening</td><td>中高</td><td>数据可得性和供应链穿透难，监控范围大。</td><td>不要把 screening 自动看成容易归因。</td></tr>
+            <tr><td>Active engagement</td><td>高</td><td>正面结果需要时间，且结果可能由多方因素共同造成。</td><td>看到 engagement，想到 time lag。</td></tr>
+            <tr><td>Fully integrated ESG</td><td>最高</td><td>ESG 已成为整体投资判断的一部分，很难从 broader decision 中拆出一个单独 driver。</td><td>看到 integration depth，想到 disaggregate difficulty。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="disclosure" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Disclosure Framework</div>
+        <h2>披露框架：PLSA 看整合，ICGN 看风险与 stewardship</h2>
+        <p>这一节是 9.1.7 的高频考点：两套披露框架容易被混淆。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-blue">PLSA</span><h3>ESG integration disclosure</h3></div>
+        <div class="case-body">
+          <p><b>第一层：Identification of ESG risk and opportunity</b></p>
+          <table class="mini-table">
+            <tbody>
+              <tr><td>1</td><td>说明经理在哪里、为什么愿意承担 stock or sector ESG risks，或看到 opportunity。</td></tr>
+              <tr><td>2</td><td>给出 fundamental analysis / stock valuation 中识别 material ESG factors 的定量或定性例子。</td></tr>
+              <tr><td>3</td><td>识别 long-term ESG secular trends / themes，并说明它们如何影响 portfolio construction。</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px"><b>第二层：Management and monitoring</b></p>
+          <table class="mini-table">
+            <tbody>
+              <tr><td>1</td><td>对 reporting period 中 top risk / performance detractors and contributors 做 stock-level ESG analysis。</td></tr>
+              <tr><td>2</td><td>说明 portfolio companies 的 material ESG performance changes。</td></tr>
+              <tr><td>3</td><td>举例说明经理对 ESG risk / opportunity 的看法何时不同于 market / rating agencies。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-head"><span class="tag tag-green">ICGN</span><h3>Model Mandate disclosures</h3></div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>Disclosure area</th><th>需要回答什么</th></tr></thead>
+            <tbody>
+              <tr><td>Portfolio embedded ESG risks</td><td>组合内有哪些 ESG risks？经理做了什么来 identify、monitor、manage？可与外部工具或 ESG factor analysis 比较。</td></tr>
+              <tr><td>Stewardship engagement</td><td>详细披露 engagement activity，不能只用投票记录替代。</td></tr>
+              <tr><td>Voting activity</td><td>详细披露 voting activity；但 voting 和 engagement 是两个 separate disclosures。</td></tr>
+            </tbody>
+          </table>
+          <p><b>核心判断：</b>这两类披露是经理证明 genuine ESG investment credentials 的重要证据。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card" style="margin-top:14px">
+      <div class="case-head"><span class="tag tag-amber">Engagement disclosure</span><h3>没有统一格式，但不能停在组织层面</h3></div>
+      <div class="case-body">
+        <div class="grid-3">
+          <div class="cheat"><div class="cheat-key">1 Fund-specific</div><div class="cheat-val">PDF 明确指出，只提供 organization-level statistics 已不再足够，必须和具体基金相关。</div></div>
+          <div class="cheat"><div class="cheat-key">2 Written samples</div><div class="cheat-val">典型披露包括 individual engagement meetings 的 written descriptions，且样本应与基金相关。</div></div>
+          <div class="cheat"><div class="cheat-key">3 Home bias</div><div class="cheat-val">如果报告大量偏向 home market / region，可能暴露经理 engagement 实际重心。</div></div>
+          <div class="cheat"><div class="cheat-key">4 Milestones / KPIs</div><div class="cheat-val">常用里程碑或 KPI 评估 progress，但模型专有，难免有分析偏差。</div></div>
+          <div class="cheat"><div class="cheat-key">5 Transparency</div><div class="cheat-val">即便有偏，披露至少给客户提供了检验 deliverables from engagement 的入口。</div></div>
+          <div class="cheat"><div class="cheat-key">6 Outlier test</div><div class="cheat-val">客户可挑异常持仓检验整合方法是否在组合层面一致交付，而非只挑好案例。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：这章最后一节最容易“把报告当宣传”</h2>
+        <p>下面这些是做题时最容易踩的点。</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="trap" style="--accent:var(--rose)"><b>易错 1：把 general ESG themes 当成高质量报告。</b><p>PDF 明确区分：泛泛讨论 debates/themes/aspirations 和具体交付不是一个质量层级。</p></div>
+      <div class="trap" style="--accent:var(--rose)"><b>易错 2：认为投票披露可以替代 engagement 披露。</b><p>ICGN 要求 detailed stewardship engagement and voting activity，且二者是 separate disclosures。</p></div>
+      <div class="trap" style="--accent:var(--amber)"><b>易错 3：把 impact equivalent 当成精确影响。</b><p>树木、车辆等表达依赖多重假设，仍处早期阶段，需要 assurance 和 consistency。</p></div>
+      <div class="trap" style="--accent:var(--amber)"><b>易错 4：认为 ESG attribution 总是容易。</b><p>排除一个行业较容易，engagement 与 fully integrated ESG 很难证明单独贡献。</p></div>
+      <div class="trap" style="--accent:var(--violet)"><b>易错 5：用普通 benchmark 评价所有 ESG mandate。</b><p>如果组合有 fossil fuel exclusion 等限制，customized ESG index 可能更有效。</p></div>
+      <div class="trap" style="--accent:var(--violet)"><b>易错 6：只看经理挑出来的最佳案例。</b><p>客户应主动找 outliers，检验 ESG integration 是否在整个组合中一致交付。</p></div>
+      <div class="trap" style="--accent:var(--teal)"><b>易错 7：organization-level engagement stats 就够了。</b><p>PDF 明确指出，不再接受不针对具体基金的组织层面统计。</p></div>
+      <div class="trap" style="--accent:var(--teal)"><b>易错 8：PRI 高分等于具体基金无须复核。</b><p>PRI public scores 有参考性，但资产所有者仍要看具体基金、具体资产类别、具体交付。</p></div>
+    </div>
+    <div class="footer-note"><b>压缩背诵：</b>好报告 = 具体工作 + 组合证据 + 基准比较 + 影响说明 + 归因分析 + PLSA/ICGN 披露 + engagement 进展 + outlier 复核。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：看到题眼，反推知识点</h2>
+        <p>优先覆盖 PDF 正式 Practice Problems 中与 9.1.7 直接相关的考点，再补充报告质量与披露判断。</p>
+      </div>
+    </div>
+    <div class="quiz-list">
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q1</span><span class="tag tag-dark">Practice Problem 19</span></div>
+        <div class="q-text">For which ESG activity would it be easiest to evaluate the impact on a portfolio's performance?</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. Excluding an industrial sector, such as tobacco</button>
+          <button class="opt">B. Implementing a program of active engagement</button>
+          <button class="opt">C. Screening companies for exploitative labor practices in supply chains</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>中文解析：sector exclusion 的投资范围变化清楚，较容易比较 performance drag / enhancement。逻辑等式：easiest attribution == clean exclusion boundary + comparable benchmark。题眼钩子：看到 easiest evaluate impact，反推 exclusion。易错提醒：engagement 通常有 time lag。</div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q2</span><span class="tag tag-dark">Practice Problem 20</span></div>
+        <div class="q-text">Which statement about reporting engagement activities by fund managers is most accurate?</div>
+        <div class="options">
+          <button class="opt">A. There is an agreed format for disclosing engagement activities.</button>
+          <button class="opt">B. Voting activity alone satisfies engagement reporting.</button>
+          <button class="opt" data-correct="true">C. Typical disclosures include written examples of individual engagement meetings.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>中文解析：engagement disclosure 没有统一格式，且 voting 不能替代 engagement。逻辑等式：engagement disclosure == fund-specific statistics + written meeting samples + progress evidence。题眼钩子：看到 agreed format / voting alone，通常是错项。</div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q3</span><span class="tag tag-dark">Practice Problem 26</span></div>
+        <div class="q-text">Which is least likely a PLSA way to demonstrate identification of ESG risk and opportunity?</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. Evaluate how much financial return is directly attributable to ESG factors.</button>
+          <button class="opt">B. Provide examples of material ESG factors in fundamental analysis and valuation.</button>
+          <button class="opt">C. Identify long-term ESG secular trends and their influence on portfolio construction.</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>中文解析：PLSA 的 identification 关注“如何识别风险/机会”，不是直接计算多少收益来自 ESG。逻辑等式：PLSA identify == stock/sector ESG risk/opportunity + material ESG factors + secular trends。题眼钩子：least likely + direct attribution，反推错项。</div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q4</span><span class="tag tag-dark">Practice Problem 28</span></div>
+        <div class="q-text">Which two ESG-specific areas of disclosure are requested by the ICGN Model Mandate?</div>
+        <div class="options">
+          <button class="opt">A. Return breakdown for each stakeholder group and hedging details for every ESG risk.</button>
+          <button class="opt">B. A materiality map for all investments and voting records of all directors.</button>
+          <button class="opt" data-correct="true">C. Stewardship engagement and voting activity, plus the manager's assessment of ESG risks embedded in the portfolio.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>中文解析：ICGN 两大披露是 embedded ESG risk assessment，以及 detailed stewardship engagement and voting activity。逻辑等式：ICGN == embedded risk assessment + engagement + voting。易错提醒：不是只要 voting，也不是所有 stakeholder return breakdown。</div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q5</span><span class="tag tag-blue">Reporting quality</span></div>
+        <div class="q-text">Which ESG report would be strongest evidence that a manager is delivering ESG integration in practice?</div>
+        <div class="options">
+          <button class="opt">A. A general discussion of market ESG debates and broad sustainability ambitions.</button>
+          <button class="opt" data-correct="true">B. A fund-specific report showing actual work, portfolio characteristics, engagement progress, and changes over time.</button>
+          <button class="opt">C. A public statement that ESG is important to the manager's brand.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>中文解析：PDF 把报告质量从泛泛主题到具体交付区分开。逻辑等式：strong report == concrete work + fund-specific portfolio evidence + engagement change。题眼钩子：actual work / delivered in practice / portfolio shape。</div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q6</span><span class="tag tag-green">PRI</span></div>
+        <div class="q-text">A PRI Transparency Report is most likely useful because it helps signatories do which of the following?</div>
+        <div class="options">
+          <button class="opt">A. Guarantee that every portfolio holding has superior ESG performance.</button>
+          <button class="opt" data-correct="true">B. Evaluate responsible investment progress, benchmark against peers, receive feedback, and strengthen internal ESG capacity.</button>
+          <button class="opt">C. Replace fund-specific reporting to clients.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>中文解析：PRI 报告是评估、反馈、同业比较、看市场全貌和能力建设工具。逻辑等式：PRI report == progress + feedback + peer benchmark + capacity building。易错提醒：PRI 不能替代具体基金报告。</div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q7</span><span class="tag tag-teal">Impact reporting</span></div>
+        <div class="q-text">What is the key caveat when a fund reports real-world impact equivalents, such as trees planted or cars taken off the road?</div>
+        <div class="options">
+          <button class="opt">A. Such measures are never useful to any investor.</button>
+          <button class="opt" data-correct="true">B. They can be powerful, especially for retail investors, but are theoretical and rely on assumptions.</button>
+          <button class="opt">C. They eliminate the need for portfolio-level ESG disclosure.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>中文解析：impact equivalents 有沟通价值，但仍处早期，依赖假设，需要更多 assurance 和 consistency。逻辑等式：impact equivalent == real-world communication + assumption risk。题眼钩子：trees / cars / equivalent，想到 theoretical assumptions。</div>
+      </article>
+
+      <article class="q-card">
+        <div class="q-meta"><span class="q-num">Q8</span><span class="tag tag-amber">Outlier testing</span></div>
+        <div class="q-text">How can an asset owner reduce the risk that a manager is only selecting ESG case studies that present the manager in the best light?</div>
+        <div class="options">
+          <button class="opt">A. Ask only for the manager's highest-scoring ESG holdings.</button>
+          <button class="opt">B. Rely on organization-wide engagement statistics without fund-level detail.</button>
+          <button class="opt" data-correct="true">C. Identify outliers in the portfolio and test whether the stated ESG integration method is delivered consistently.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>中文解析：PDF 明确提到客户会寻找 outliers，检验 ESG integration 是否在整个组合一致交付。逻辑等式：outlier test == anti-cherry-picking + consistency check。题眼钩子：best light / selected cases，反推 outlier。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.q-card').forEach(card=>{
+  const opts=[...card.querySelectorAll('.opt')];
+  const exp=card.querySelector('.exp');
+  opts.forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      opts.forEach(o=>o.disabled=true);
+      const correct=opts.find(o=>o.dataset.correct==='true');
+      if(opt.dataset.correct==='true'){opt.classList.add('correct')}else{opt.classList.add('wrong');correct.classList.add('correct')}
+      exp.classList.add('show');
+    });
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

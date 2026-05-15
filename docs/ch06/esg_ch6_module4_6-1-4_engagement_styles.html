@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.6 Module 4 · 6.1.4 Engagement Styles</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.card.dark .small{color:#cbd5e1}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:700px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.concept-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.concept-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.concept-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;margin:10px 0}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.compare-card{border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);overflow:hidden}
+.compare-head{padding:13px 15px;background:var(--soft);border-bottom:1px solid var(--line2);font-weight:950;color:var(--dark)}
+.compare-body{padding:14px 15px}
+.compare-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.compare-label{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.compare-text{font-size:13px;color:var(--sub);line-height:1.62;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.concept-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.concept-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1080px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .flowline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow-step:not(:last-child)::after{display:none}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid-2,.grid-3,.compare{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row,.compare-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:25px;line-height:1.13}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 6</span>
+        <span class="pill">Module 4</span>
+        <span class="pill">6.1.4</span>
+        <span class="pill">Engagement Styles</span>
+      </div>
+      <h1>Engagement Styles in Practice</h1>
+      <p class="lead">本页覆盖第 6 章 6.1.4：投资者如何在实践中实现 engagement，包括由谁来做、借助哪些服务商、不同团队传统带来的目标、风格和语气差异。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Engagement style == 执行主体 + 服务支持 + 团队传统 + 投资组合结构；Governance heritage == board first / top-down；E&S heritage == issue or sector first / often bottom-up escalation。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Module Focus</div>
+      <div class="side-big">做题时先问：是谁在参与？从董事会开始，还是从议题和行业开始？</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">执行主体</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">服务商类型</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">风格对比</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>考点提醒：</b>Governance-led engagement 通常从 chair / board 开始；environmental and social heritage 更常从 investor relations 或 sustainability teams 开始。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑等式</button>
+    <button class="tab" data-tab="compare">风格对比</button>
+    <button class="tab" data-tab="mistakes">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>实践地图：谁来参与，先找谁，从哪里切入</h2>
+      </div>
+      <div class="head-desc">本节用“人、工具、路径、组合”四个维度记忆，避免把服务商、参与风格和投资策略混在一起。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Engagement Styles<br>同样是参与，执行主体和进入路径不同，语气、目标和节奏也会不同</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1 Asset owner</div><p>有些资产所有者直接参与。</p><p>通常需要内部团队作为 steward。</p></div>
+        <div class="branch"><div class="branch-title">2 Fund manager</div><p>外部基金经理常承担实际参与。</p><p>可由组合经理、stewardship specialists 或两者共同完成。</p></div>
+        <div class="branch"><div class="branch-title">3 Proxy adviser</div><p>提供投票分析和建议。</p><p>帮助处理大量投票。</p></div>
+        <div class="branch"><div class="branch-title">4 Overlay provider</div><p>替客户进行投票建议和直接参与。</p><p>客户不一定把资金交给它投资。</p></div>
+        <div class="branch"><div class="branch-title">5 Governance-led</div><p>通常从 chair / board 开始。</p><p>更偏 top-down。</p></div>
+        <div class="branch"><div class="branch-title">6 E&S-led</div><p>通常按行业或议题组织。</p><p>常从 IR / sustainability 开始，再向上升级。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>先定主体</h3><p>资产所有者、基金经理或外部服务商。</p></div>
+        <div class="flow-step"><h3>再定支持</h3><p>proxy adviser 或 overlay / collective provider。</p></div>
+        <div class="flow-step"><h3>看团队传统</h3><p>治理传统还是环境社会传统。</p></div>
+        <div class="flow-step"><h3>匹配组合</h3><p>主动集中组合或被动广泛组合。</p></div>
+        <div class="flow-step"><h3>选择风格</h3><p>company-focused 或 issue-based。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">执行线</span>
+        <h3>参与可自做，也可委托</h3>
+        <p class="small">资产所有者、基金经理、组合经理、stewardship specialists 和外部服务商都可能参与，关键看谁有资源、规模和责任。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">风格线</span>
+        <h3>治理和 E/S 的起手式不同</h3>
+        <p class="small">治理问题常从董事会和主席切入；环境社会问题常从具体议题、行业和可持续发展团队切入。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">组合线</span>
+        <h3>投资方式影响参与方式</h3>
+        <p class="small">集中主动组合更适合公司定制式参与；广泛分散或被动组合更自然采用议题式、行业式参与。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-06.pdf` 第 349-351 页整理，覆盖 6.1.4 的执行主体、服务商和风格差异。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Who Engages</span> 谁来执行 engagement</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有些 asset owners 会通过内部团队直接与公司 engagement，作为投资组合的 steward。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有些 asset owners 期望外部 fund managers 交付 stewardship 工作。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Fund managers 内部可以由 portfolio managers 负责 stewardship，也可以由 stewardship specialists 负责，或二者结合。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement activities 也可以完全外包给 specialist stewardship service providers。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">几乎所有机构投资者至少部分依赖 proxy voting advisory firms。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Proxy advisers 提供上市公司分析和投票建议，并帮助机构建立投票决策框架。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">其他 stewardship service providers 会代表投资者进行不同程度的 engagement，相当于 stepping into the shoes of the investor。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">服务商通过聚合客户利益形成规模，使公司管理层和董事会更重视对话。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Governance vs E&S Heritage</span> 团队传统影响风格</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement styles 与 stewardship teams 的历史背景有关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有 governance-led engagement 历史的团队，思维和方法与长期做 environmental and social issues 的团队不同。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">E 和 S 的重大议题来自公司业务活动性质，因此相关团队往往按 sector 组织。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">G 更多由国家法律和代码决定，因此治理团队通常按 geography 划分。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">E/S heritage 团队倾向于关注单个环境或社会议题，并在行业或市场范围内大力推进。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">E/S 风格对话通常从 investor relations 或 sustainability teams 开始，再向 senior management 和 board 升级。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Governance heritage 团队往往先关注单个公司，从 chair 开始，常借助 company secretary，再通过 board 向 management 延伸。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Top-Down / Bottom-Up</span> 自上而下与自下而上</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PDF 用 top-down 和 bottom-up 描述这些不同路径，但提醒这只是一般化概括。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多数 investment houses 会混合使用两种方式。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Company-focused、bottom-up engagement 更自然适合 active investment approaches，尤其是 concentrated portfolios。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Issue-based、top-down engagement 更适合 passive 或 broadly diversified portfolios。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Active investors 通常从具体公司及其业务问题出发，形成跨多个议题的定制参与方案。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Passive investors 或广泛分散投资者通常先识别一个议题，再与受该议题影响的一组公司参与。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Issue-Based / Company-Focused</span> 议题式与公司式</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Issue-based engagement 通常从新闻、宏观分析、筛查或研究服务商识别出的议题开始。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Issue-based engagement 可能覆盖整个行业或更广泛市场，通常先向所有相关公司发信，再跟进对话。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Larry Fink 给 CEO 的年度信是 BlackRock 作为被动投资者采取 issue-based approach 的例子。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2019 年 BlackRock engagement priorities 包括治理、董事会多样性、战略和资本配置、长期薪酬、环境风险机会、人力资本管理。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Issue-based approach 常伴随 best practice examples，可通过推动同行采用最佳实践来推动行业进步。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Company-focused engagement 旨在改善单个公司多个相关 ESG 议题的实践，同时提升 ESG 和投资表现。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Company-focused 对象常来自投资表现不佳公司，或触发特定财务/ESG 指标的公司。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Company-focused 起点通常是直接与 senior management 对话，然后到 board。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：从主体到风格</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+
+    <div class="concept-grid">
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">1. 执行主体</div><span class="tag tag-blue">Who</span></div>
+        <p class="small"><b>原文要点：</b>Asset owners 可直接参与，也可要求外部 fund managers 做；fund managers 内部可由 portfolio managers、stewardship specialists 或两者结合完成。</p>
+        <div class="quote-box"><b>中文解释：</b>参与不是只有一种组织方式。谁最有规模、资源和接近公司的渠道，谁更可能承担实际对话工作。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">执行主体</div><div class="eq-op">==</div><div class="eq-rhs">asset owner 直接做 + fund manager 做 + specialist provider 外包做</div></div>
+          <div class="eq"><div class="eq-lhs">基金经理内部</div><div class="eq-op">==</div><div class="eq-rhs">portfolio manager + stewardship specialist + 两者协作</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到“who delivers engagement”时，不要只选 asset owner；很多情况下外部 fund manager 或服务商才是执行方。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">2. Proxy advisers vs Overlay providers</div><span class="tag tag-green">Service</span></div>
+        <p class="small"><b>原文要点：</b>Proxy advisers 主要提供投票分析和建议；overlay service providers 可代表客户进行投票建议和直接 engagement，客户不一定把资金交给其管理。</p>
+        <div class="quote-box"><b>中文解释：</b>proxy adviser 更像“投票顾问和处理工具”；overlay provider 更像“替客户穿上投资者外衣去做 stewardship”。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Proxy adviser</div><div class="eq-op">==</div><div class="eq-rhs">投票分析 + 投票建议 + vote processing support</div></div>
+          <div class="eq"><div class="eq-lhs">Overlay provider</div><div class="eq-op">==</div><div class="eq-rhs">投票建议 + 直接参与 + 聚合客户影响力</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干若说“advances clients' engagement activities even if not investing clients' funds”，对应 overlay service provider。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">3. Governance-led 风格</div><span class="tag tag-violet">G</span></div>
+        <p class="small"><b>原文要点：</b>Governance heritage 团队通常先关注单个公司，从 chair 开始，常通过 company secretary 协助，再通过 board 向 management 延伸。</p>
+        <div class="quote-box"><b>中文解释：</b>治理问题常由董事会结构、审计、薪酬、法律和治理代码驱动，所以进入点往往是董事会层面。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Governance-led</div><div class="eq-op">==</div><div class="eq-rhs">company first + chair / board first + geography split</div></div>
+          <div class="eq"><div class="eq-lhs">路径</div><div class="eq-op">==</div><div class="eq-rhs">chair → board → senior management → investor relations</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Practice Problems 会考：有 governance-led history 的投资者最可能先与 board of directors / chair 对话。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">4. E&S-led 风格</div><span class="tag tag-teal">E/S</span></div>
+        <p class="small"><b>原文要点：</b>Environmental and social teams 往往按 sector 组织，围绕具体 E/S 议题在行业或市场范围内推进。</p>
+        <div class="quote-box"><b>中文解释：</b>E/S 风险来自公司业务活动性质，例如气候、水、供应链、人权，因此常按行业找共性问题，再推动一组公司改善。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">E&S-led</div><div class="eq-op">==</div><div class="eq-rhs">issue first + sector organization + IR / sustainability start</div></div>
+          <div class="eq"><div class="eq-lhs">路径</div><div class="eq-op">==</div><div class="eq-rhs">investor relations / sustainability → senior management → board</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 climate、water、human capital 这类横跨行业议题，常对应 issue-based / top-down 风格。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">5. 投资组合决定参与方式</div><span class="tag tag-amber">Portfolio</span></div>
+        <p class="small"><b>原文要点：</b>Company-focused bottom-up engagement 更适合 active、concentrated portfolios；issue-based top-down engagement 更适合 passive 或 broadly diversified portfolios。</p>
+        <div class="quote-box"><b>中文解释：</b>持仓越集中，越有动力深入某家公司；持仓越分散，越适合找一个重大议题，对一批公司一起推动。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Active / concentrated</div><div class="eq-op">==</div><div class="eq-rhs">company-focused + bottom-up + tailored engagement</div></div>
+          <div class="eq"><div class="eq-lhs">Passive / diversified</div><div class="eq-op">==</div><div class="eq-rhs">issue-based + top-down + sector or market-wide engagement</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 passive investor、broad portfolio、annual CEO letter，优先想 issue-based approach。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compare" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Style Comparison</div>
+        <h2>风格对比：看到题眼就能归类</h2>
+      </div>
+      <div class="head-desc">这页专门训练“看到题干描述 → 反推出风格”。</div>
+    </div>
+
+    <div class="compare">
+      <article class="compare-card">
+        <div class="compare-head">Governance-led vs E&S-led</div>
+        <div class="compare-body">
+          <div class="compare-row"><div class="compare-label">Governance</div><div class="compare-text">由国家法律和治理代码影响更大，团队常按 geography 划分。</div></div>
+          <div class="compare-row"><div class="compare-label">起点</div><div class="compare-text">通常从 chair、board、company secretary 开始。</div></div>
+          <div class="compare-row"><div class="compare-label">E&S</div><div class="compare-text">重大议题来自业务活动性质，团队常按 sector 划分。</div></div>
+          <div class="compare-row"><div class="compare-label">起点</div><div class="compare-text">通常从 investor relations 或 sustainability teams 开始，再向 senior management 和 board 升级。</div></div>
+        </div>
+      </article>
+
+      <article class="compare-card">
+        <div class="compare-head">Top-down vs Bottom-up</div>
+        <div class="compare-body">
+          <div class="compare-row"><div class="compare-label">Top-down</div><div class="compare-text">从某个议题、行业或市场视角出发，推动一组公司改变。</div></div>
+          <div class="compare-row"><div class="compare-label">适合</div><div class="compare-text">Passive 或 broadly diversified portfolios。</div></div>
+          <div class="compare-row"><div class="compare-label">Bottom-up</div><div class="compare-text">从单个公司业务和投资问题出发，定制参与目标。</div></div>
+          <div class="compare-row"><div class="compare-label">适合</div><div class="compare-text">Active investment approaches，尤其是 concentrated portfolios。</div></div>
+        </div>
+      </article>
+
+      <article class="compare-card">
+        <div class="compare-head">Issue-based vs Company-focused</div>
+        <div class="compare-body">
+          <div class="compare-row"><div class="compare-label">Issue</div><div class="compare-text">先由新闻、宏观分析、筛查或研究服务商识别议题，再对相关公司发信和跟进。</div></div>
+          <div class="compare-row"><div class="compare-label">例子</div><div class="compare-text">BlackRock CEO annual letter：董事会多样性、长期薪酬、环境风险、人力资本等年度重点。</div></div>
+          <div class="compare-row"><div class="compare-label">Company</div><div class="compare-text">先选某家公司，围绕多个相关 ESG 和业务问题制定参与方案。</div></div>
+          <div class="compare-row"><div class="compare-label">对象</div><div class="compare-text">常是投资表现不佳或触发财务/ESG 指标的公司。</div></div>
+        </div>
+      </article>
+
+      <article class="compare-card">
+        <div class="compare-head">Proxy adviser vs Overlay provider</div>
+        <div class="compare-body">
+          <div class="compare-row"><div class="compare-label">Proxy</div><div class="compare-text">提供投票分析、投票建议和投票处理支持，核心在 proxy voting。</div></div>
+          <div class="compare-row"><div class="compare-label">Overlay</div><div class="compare-text">代表客户进行 stewardship overlay，可能包括投票建议和直接 engagement。</div></div>
+          <div class="compare-row"><div class="compare-label">关键差别</div><div class="compare-text">Overlay provider 可以推进客户 engagement，即使它没有替客户管理投资资金。</div></div>
+          <div class="compare-row"><div class="compare-label">考点</div><div class="compare-text">看到 ISS、Glass Lewis 多想 proxy adviser；看到 Columbia Threadneedle REO、Hermes EOS、Robeco、Sustainalytics 多想 overlay 或 engagement service。</div></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="footer-note">反推训练：题干说 “history of governance-led engagement” → board/chair；题干说 “passive investor broad holdings” → issue-based/top-down；题干说 “clients' engagement even not investing funds” → overlay provider。</div>
+  </section>
+
+  <section id="mistakes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>易错点：服务商、风格、组合别混</h2>
+      </div>
+      <div class="head-desc">这一节考试常用“谁做、从哪里开始、哪类组合适合”来设置干扰项。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Who engages ==</b> asset owner direct + fund manager + portfolio manager + specialist team + external provider。</div>
+          <div class="formula"><b>Proxy adviser ==</b> analysis + voting recommendations + processing support。</div>
+          <div class="formula"><b>Overlay provider ==</b> stewardship service + voting advice + direct engagement on behalf of clients。</div>
+          <div class="formula"><b>Governance-led ==</b> geography split + chair / board first。</div>
+          <div class="formula"><b>E&S-led ==</b> sector split + issue first + IR / sustainability first。</div>
+          <div class="formula"><b>Portfolio fit ==</b> active concentrated → company-focused；passive diversified → issue-based。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Proxy adviser vs Overlay provider</b>Proxy adviser 不直接代表客户推动 engagement；overlay provider 可以。</div>
+          <div class="trap"><b>Governance vs E/S</b>Governance 从董事会/主席切入；E/S 多从 IR 或 sustainability 团队切入。</div>
+          <div class="trap"><b>Sector vs Geography</b>E/S 团队常按 sector；G 团队常按 geography。</div>
+          <div class="trap"><b>Active vs Passive</b>Active 集中组合更适合公司式、定制式参与；passive 分散组合更适合议题式、批量式参与。</div>
+          <div class="trap"><b>Issue-based vs Company-focused</b>Issue-based 先找议题再找公司；company-focused 先找公司再展开多个议题。</div>
+          <div class="trap"><b>一般规律 vs 绝对规则</b>PDF 明确说这些是 generalizations，多数机构会混合使用。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">记忆线：主体看“谁做”；服务商看“投票建议还是直接参与”；风格看“从董事会还是议题开始”；组合看“集中主动还是广泛被动”。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖模块 4</h2>
+      </div>
+      <div class="head-desc">点击“看答案”自测。正式 Practice Problems 会放到最后的三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">Engagement 在实践中可以由哪些主体完成？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">可以由 asset owners 直接完成，也可以由 external fund managers、portfolio managers、stewardship specialists 或 specialist stewardship service providers 完成。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Proxy advisers 的主要作用是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">提供上市公司分析和投票建议，并帮助机构投资者处理和执行投票决策。核心是 proxy voting support，不是直接代表客户推动 engagement。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Overlay service provider 与 proxy adviser 的关键差别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Overlay service provider 可代表客户提供 stewardship overlay，包括投票建议和直接 engagement，即使它不替客户投资资金；proxy adviser 主要提供投票分析和建议。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">有 governance-led engagement 历史的投资者最可能先找谁对话？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">通常先找 chair / board of directors，并可能借助 company secretary，再向 senior management 和 investor relations 延伸。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Environmental and social heritage 的团队通常如何组织、从哪里开始对话？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">通常按 sector 组织，围绕具体环境或社会议题推进；对话常从 investor relations 或 sustainability teams 开始，再向 senior management 和 board 升级。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Company-focused bottom-up engagement 更适合哪类投资方式？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">更适合 active investment approaches，尤其是 concentrated portfolios，因为投资者更有动力深入某家公司并做定制参与。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Issue-based top-down engagement 更适合哪类组合？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">更适合 passive 或 broadly diversified portfolios，因为这些投资者持有公司多，通常先识别一个重大议题，再对相关行业或市场中的公司批量参与。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">BlackRock CEO annual letter 是哪类 engagement approach 的例子？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">是 passive investors 采取 issue-based approach 的例子。它从年度重点议题出发，如治理、董事会多样性、战略和资本配置、长期薪酬、环境风险和人力资本管理。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const open = card.classList.toggle('show');
+    btn.textContent = open ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

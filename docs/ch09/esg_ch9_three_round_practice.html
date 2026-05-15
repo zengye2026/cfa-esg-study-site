@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESG Ch.9 · Three Round Practice</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#edf2f7;--soft:#f8fafc;--paper:#fff;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 14px 38px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef3f8 56%,#e8eef5 100%);line-height:1.66;min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button,input{font-family:inherit}.wrap{width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 84px;min-width:0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin-bottom:18px}.hero-main,.hero-side,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main{padding:28px 30px}.hero-side{padding:18px;display:flex;flex-direction:column;gap:12px}.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.pill{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,54px);line-height:1.06;letter-spacing:0;margin:0 0 12px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}.lead{font-size:15px;color:var(--sub);max-width:780px;margin:0;line-height:1.84}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.75}.hero-eq b{color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.stat-num{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--dark);line-height:1}.stat-lab{font-size:12px;font-weight:850;color:var(--muted);margin-top:5px}.side-note{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:13px 14px;font-size:13px;line-height:1.72}.side-note b{color:#fff}
+.modebar{position:sticky;top:10px;z-index:20;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px;overflow-x:auto;scrollbar-width:none}.modebar::-webkit-scrollbar{display:none}.mode-title{font-size:12px;font-weight:950;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;padding:0 7px;white-space:nowrap}.mode-btn{border:0;background:transparent;border-radius:var(--r);padding:9px 12px;font-size:13px;font-weight:900;color:var(--muted);cursor:pointer;white-space:nowrap}.mode-btn:hover{background:var(--line2);color:var(--ink)}.mode-btn.active{background:var(--dark);color:#fff}
+.screen{display:none;min-width:0}.screen.active{display:block}.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:950;letter-spacing:.10em;color:var(--muted);text-transform:uppercase;margin-bottom:7px}.section-head h2{font-family:var(--serif);font-size:clamp(24px,3.1vw,36px);line-height:1.18;color:var(--dark);margin:0}.sub{max-width:730px;color:var(--muted);font-size:13.5px;margin:8px 0 0}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 14px}.search{flex:1 1 260px;min-width:0;border:1px solid var(--line);background:#fff;border-radius:var(--r);padding:12px 13px;font-size:14px;color:var(--ink);box-shadow:var(--sh-sm)}.small-btn,.primary,.secondary,.danger{border-radius:var(--r);padding:10px 14px;font-size:13px;font-weight:950;cursor:pointer}.small-btn,.secondary{background:#fff;color:var(--dark);border:1px solid var(--line)}.primary{background:var(--dark);color:#fff;border:0}.danger{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.primary:hover{background:var(--dark2)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px}.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:950;line-height:1.25;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px;overflow:hidden}.center-node{max-width:790px;margin:0 auto 16px;background:#ecfdf5;border:2px solid #047857;color:#064e3b;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45}.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}.flow-card h3{font-size:14px;margin:0 0 6px}.flow-card p{font-size:12.5px;color:var(--sub);line-height:1.58;margin:0}.room{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.room h3{margin:0 0 8px;color:var(--dark)}.room p{font-size:13px;color:var(--sub);line-height:1.7;margin:0}
+.group-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.group-head{padding:14px 16px;border-bottom:1px solid var(--line2);background:var(--soft);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.group-head h3{margin:0;color:var(--dark);font-size:17px}.group-body{padding:16px}.group-body p{margin:0 0 12px;color:var(--sub);font-size:13px;line-height:1.7}
+.question-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;margin-bottom:12px}.q-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap}.q-id{font-size:12px;font-weight:950;color:var(--muted)}.q-topic{display:flex;gap:7px;flex-wrap:wrap}.block{border-top:1px solid var(--line2);padding-top:10px;margin-top:10px}.label{font-size:11px;font-weight:950;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}.q-en{font-size:15px;font-weight:820;color:var(--dark);line-height:1.68}.q-zh,.opt-zh,.answer-box,.solution-zh,.reverse,.trap{font-size:13.2px;color:var(--sub);line-height:1.72}.options{display:grid;gap:8px;margin-top:10px}.opt{width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);padding:10px 12px;cursor:pointer;color:var(--ink)}.opt:hover{border-color:var(--blue);background:var(--blue-bg)}.opt-letter{font-weight:950;color:var(--dark);margin-right:5px}.opt-en{font-size:13.5px;line-height:1.55}.opt-zh{margin-top:3px;color:var(--muted)}.opt.correct{border-color:var(--green);background:var(--green-bg)}.opt.wrong{border-color:var(--rose);background:var(--rose-bg)}.opt:disabled{cursor:default}.reveal{display:none;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:14px;margin-top:12px}.reveal.show{display:block}.pdf-solution{font-size:13.2px;line-height:1.78;color:var(--dark);white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px}.answer-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-weight:950;color:var(--green)}.eye{font-size:13px;line-height:1.7;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}.eye b{color:var(--dark)}.trap{background:#fff7ed;border-left:4px solid var(--rose);border-radius:0 var(--r) var(--r) 0;padding:10px 12px}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.exam-start{max-width:620px;margin:0 auto}.start-card{text-align:center;padding:26px}.start-title{font-size:20px;font-weight:950;color:var(--dark);margin-bottom:8px}.start-list{font-size:14px;color:var(--sub);line-height:1.8;margin:0 0 20px}.exam-header{display:grid;grid-template-columns:110px minmax(0,1fr) 90px;gap:12px;align-items:center;margin-bottom:12px}.timer,.exam-status,.exam-label{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:13px}.timer{text-align:center}.timer-num{font-family:var(--serif);font-size:28px;font-weight:950;color:var(--dark);line-height:1}.timer-lab{font-size:11px;font-weight:950;color:var(--muted)}.progress{height:9px;background:var(--line2);border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--green);width:0}.exam-label{text-align:center;font-weight:950;color:var(--dark)}.result-card{padding:22px;text-align:center}.score{font-family:var(--serif);font-size:48px;font-weight:950;color:var(--dark);line-height:1}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff}.mini-table th,.mini-table td{border-bottom:1px solid var(--line2);padding:10px;text-align:left;vertical-align:top;font-size:12.8px;line-height:1.6}.mini-table th{background:var(--soft);color:var(--dark);font-weight:950}.mini-table tr:last-child td{border-bottom:0}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:14px;font-size:13.2px;color:var(--sub);line-height:1.72}.formula b{color:var(--dark)}
+.lead,.hero-eq,.side-note,.flow-card p,.room p,.q-en,.q-zh,.opt-en,.opt-zh,.answer-box,.pdf-solution,.solution-zh,.reverse,.trap,.eye,.mini-table th,.mini-table td,.formula{overflow-wrap:anywhere;word-break:break-word}.hero-eq,.side-note{max-width:100%}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.grid-2,.grid-3{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{display:block}.exam-header{grid-template-columns:1fr}}
+@media(max-width:640px){.wrap{padding:18px 12px 64px}.hero-main{padding:22px 18px}.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.pill{justify-content:center;text-align:center;white-space:normal}.lead{font-size:14px;line-height:1.78}.hero-eq,.side-note{font-size:12.8px;line-height:1.72}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow{grid-template-columns:1fr}.center-node{border-radius:var(--r)}h1{font-size:30px;line-height:1.12}.mode-btn{padding:8px 10px}.mini-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 9</span>
+        <span class="pill">30 Practice Problems</span>
+        <span class="pill">PDF Solutions Checked</span>
+        <span class="pill">Three Round Practice</span>
+      </div>
+      <h1>Investment Mandates,<br>Portfolio Analytics,<br>Client Reporting</h1>
+      <p class="lead">本页用于考前刷英文客观题：作答前只看英文原题和英文选项；作答后再展开中文翻译、正确答案、PDF 原版解析、解析中文翻译、英文题眼、中文反推和易错提醒。</p>
+      <div class="hero-eq"><b>刷题总逻辑：</b>题眼 → 反推知识点 → 排除干扰项 → 对照 PDF Solutions 原文复盘。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">30</div><div class="stat-lab">PDF 原题</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-lab">分组练习</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-lab">刷题轮次</div></div>
+        <div class="stat"><div class="stat-num" id="wrongCountHero">0</div><div class="stat-lab">错题本</div></div>
+      </div>
+      <div class="side-note"><b>页面字段：</b>只保留刷题所需内容：英文原题、中文翻译、选项、正确答案、PDF 原版解析、解析翻译、题眼反推和易错提醒。</div>
+    </aside>
+  </section>
+
+  <nav class="modebar" aria-label="practice modes">
+    <span class="mode-title">Ch.9 Practice</span>
+    <button class="mode-btn active" data-screen="coverage">覆盖地图</button>
+    <button class="mode-btn" data-screen="structure">结构图</button>
+    <button class="mode-btn" data-screen="memory">记忆房间</button>
+    <button class="mode-btn" data-screen="reverse">反推自测</button>
+    <button class="mode-btn" data-screen="grouped">第一轮·分组</button>
+    <button class="mode-btn" data-screen="exam">第二轮·模考</button>
+    <button class="mode-btn" data-screen="review">第三轮·错题</button>
+    <button class="mode-btn" data-screen="compressed">压缩背诵</button>
+  </nav>
+
+  <section class="screen active" id="screen-coverage">
+    <div class="section-head"><div><div class="eyebrow">Coverage Map</div><h2>覆盖地图：30 题覆盖第 9 章完整主线</h2><p class="sub">先防遗漏：每组题都对应一个知识块。做错题时，不要只记答案，要回到题眼和 PDF Solutions 的原文逻辑。</p></div></div>
+    <div class="map-board">
+      <div class="center-node">Chapter 9 Objective Questions<br>从客户信念到 mandate，再到监督、报告和防 greenwashing</div>
+      <div class="flow" id="coverageFlow"></div>
+    </div>
+    <div class="grid-auto" id="coverageGrid" style="margin-top:14px"></div>
+  </section>
+
+  <section class="screen" id="screen-structure">
+    <div class="section-head"><div><div class="eyebrow">Structure Map</div><h2>结构图：看到题眼，先给题目归位</h2><p class="sub">这张表把 30 题拆成 6 个常见出题入口。考试时先判断属于哪一组，再看选项是否贴合同一条逻辑。</p></div></div>
+    <table class="mini-table" id="structureTable"></table>
+  </section>
+
+  <section class="screen" id="screen-memory">
+    <div class="section-head"><div><div class="eyebrow">Memory Room</div><h2>记忆房间：6 个房间放 30 道题</h2><p class="sub">用“客户会议室”的场景记忆：先问客户，再写 mandate，筛经理，防洗绿，监督交付，最后看报告。</p></div></div>
+    <div class="grid-3" id="memoryRooms"></div>
+  </section>
+
+  <section class="screen" id="screen-reverse">
+    <div class="section-head"><div><div class="eyebrow">Reverse Drill</div><h2>反推自测：只看题眼，先想答案</h2><p class="sub">训练“看到关键词 → 反推知识点 → 找到正确选项”。点击卡片后可打开完整题目。</p></div></div>
+    <div class="toolbar"><input class="search" id="reverseSearch" placeholder="搜索题眼、中文反推、题号，例如 greenwashing / fiduciary / Q17"/></div>
+    <div class="grid-auto" id="reverseGrid"></div>
+  </section>
+
+  <section class="screen" id="screen-grouped">
+    <div class="section-head"><div><div class="eyebrow">Round 1</div><h2>第一轮·分组练习</h2><p class="sub">按知识块刷。点击选项后才展开答案和 PDF 原版解析，适合考前快速复盘。</p></div></div>
+    <div class="toolbar"><input class="search" id="groupSearch" placeholder="搜索英文题干、中文翻译、选项、题眼或题号"/><button class="secondary" id="resetAnswers">重置本页作答状态</button></div>
+    <div id="groupedPractice"></div>
+  </section>
+
+  <section class="screen" id="screen-exam">
+    <div class="section-head"><div><div class="eyebrow">Round 2</div><h2>第二轮·模考</h2><p class="sub">30 题连续作答。提交后自动统计正确率，并把错题加入第三轮错题本。</p></div></div>
+    <div id="examBox"></div>
+  </section>
+
+  <section class="screen" id="screen-review">
+    <div class="section-head"><div><div class="eyebrow">Round 3</div><h2>第三轮·错题本</h2><p class="sub">错题保存在本机浏览器中。这里保留完整英文原题、中文翻译、PDF 原版解析和题眼反推。</p></div></div>
+    <div class="toolbar"><button class="danger" id="clearWrong">清空错题本</button><button class="secondary" id="renderWrong">刷新错题本</button></div>
+    <div id="wrongList"></div>
+  </section>
+
+  <section class="screen" id="screen-compressed">
+    <div class="section-head"><div><div class="eyebrow">Compressed Review</div><h2>压缩背诵：30 题题眼一页扫完</h2><p class="sub">临考前只看这一页：英文题眼 + 中文反推。</p></div></div>
+    <div class="grid-auto" id="compressedGrid"></div>
+  </section>
+</main>
+
+<script>
+const GROUPS = [
+  {id:'mandate', title:'客户需求与 Mandate', color:'blue', qids:[1,2,13,23,29,30], hook:'clarify needs → ESG policy / strategy → mandate / tilt'},
+  {id:'clients', title:'客户类型与 ESG 驱动', color:'green', qids:[4,5,6,24,25,27], hook:'client type → driver → preferred ESG approach'},
+  {id:'selection', title:'经理筛选与资产类别', color:'amber', qids:[3,14,15,16,22], hook:'RFP / asset class / integration method / horizon'},
+  {id:'greenwashing', title:'Greenwashing', color:'rose', qids:[10,11,12], hook:'false statement / trust / misrepresentation'},
+  {id:'monitoring', title:'监督交付', color:'teal', qids:[7,17,18,21], hook:'Brunel / hard questions / ESG research firm'},
+  {id:'reporting', title:'报告、披露与归因', color:'violet', qids:[8,9,19,20,26,28], hook:'PLSA / ICGN / attribution / engagement disclosure'}
+];
+
+const QUESTIONS = [
+{id:1, group:'mandate', answer:'C',
+q:`What is the first step in the effective design of a client ESG investment mandate?`,
+qZh:`有效设计客户 ESG 投资授权的第一步是什么？`,
+opts:[
+[`Tailor ESG investment approach to client expectations.`,`根据客户期望定制 ESG 投资方法。`],
+[`Develop client-relevant ESG-aware investment mandates.`,`制定与客户相关、具备 ESG 意识的投资授权。`],
+[`Clarify client needs and set them out in a clear statement of ESG investment beliefs.`,`明确客户需求，并在清晰的 ESG 投资信念声明中列明。`]
+],
+solution:`C is correct. The first step in the effective design of a mandate is that clients should be clear about their needs and set them out in a clear statement of ESG investment beliefs. Doing so will require them to define their investment goals and beliefs, which will help them define how they plan to create value and how they will orient their investment approach. The investment beliefs—which might be expressed in a statement of investment principles—ought to guide the overall approach toward ESG investment (and investment more generally) and will help frame any mandate agreed with an investment manager.`,
+solutionZh:`C 正确。有效设计授权的第一步是客户应明确自己的需求，并在清晰的 ESG 投资信念声明中列明。这样做需要客户定义其投资目标和信念，这将帮助他们界定计划如何创造价值，以及如何确定投资方法的方向。投资信念可以体现在投资原则声明中，应指导 ESG 投资以及更广泛投资的整体方法，并帮助框定与投资经理达成的任何授权。`,
+eye:`first step + effective design + client ESG investment mandate → clarify client needs`,
+reverse:`看到 first step 和 client ESG investment mandate，先选“明确客户需求并形成 ESG investment beliefs”。`,
+trap:`不要先选 develop mandate 或 tailor approach；这些都发生在客户需求和投资信念明确之后。`},
+{id:2, group:'mandate', answer:'B',
+q:`An ESG policy of a fund management firm needs to address the manner in which the portfolio manager establishes:`,
+qZh:`基金管理公司的 ESG 政策需要说明投资组合经理如何建立什么？`,
+opts:[
+[`engagement with companies and issuers on ESG issues.`,`就 ESG 问题与公司和发行人进行互动。`],
+[`rationale and methodology for ESG portfolio-level assessment.`,`ESG 组合层面评估的依据和方法。`],
+[`engagement with policymakers on responsible investment and ESG-related issues.`,`就负责任投资和 ESG 相关问题与政策制定者互动。`]
+],
+solution:`B is correct. An ESG policy should formally outline the investment approach and degree of ESG integration in a firm. An ESG policy needs to address the manner in which the portfolio manager\n► addresses ESG issues at portfolio reviews,\n► establishes the rationale and methodology for ESG portfolio-level assessment,\n► assesses exposure to ESG risk in the risk management function,\n► determines ESG impacts to the portfolio,\n► responds in the investment decision-making process to ESG implications,\nand\n► discloses ESG exposure to the fund’s investors.`,
+solutionZh:`B 正确。ESG 政策应正式概述公司的投资方法和 ESG 整合程度。ESG 政策需要说明投资组合经理如何：在组合复核中处理 ESG 问题；建立 ESG 组合层面评估的依据和方法；在风险管理职能中评估 ESG 风险敞口；确定 ESG 对组合的影响；在投资决策过程中回应 ESG 含义；并向基金投资者披露 ESG 敞口。`,
+eye:`ESG policy + portfolio manager establishes → rationale and methodology`,
+reverse:`看到 ESG policy 和 establishes，反推政策要写清组合层面 ESG assessment 的逻辑与方法。`,
+trap:`A 和 C 是 engagement 相关干扰项；本题问 ESG policy 内部要素。`},
+{id:3, group:'selection', answer:'A',
+q:`To incorporate ESG factors in index tracking, managers can exert influence on companies through:`,
+qZh:`为了在指数跟踪中纳入 ESG 因素，经理可以通过什么方式对公司施加影响？`,
+opts:[
+[`engagement and voting.`,`互动和投票。`],
+[`governance arrangements.`,`治理安排。`],
+[`representation on board seats.`,`董事会席位代表。`]
+],
+solution:`A is correct. There are major ESG considerations for a pension fund or other asset owner when seeking to allocate a new mandate across the full range of potential asset classes. The elements to ensure that ESG issues are appropriately delivered by the relevant mandate include mandate choice, investment integration, and engagement. In the case of passive/index tracking, managers can exert influence on companies through engagement and voting. There is also scope for influence on market- and system-wide issues.`,
+solutionZh:`A 正确。养老金基金或其他资产所有者在寻求把新授权配置到全范围潜在资产类别时，会有重要的 ESG 考量。确保相关授权适当交付 ESG 问题的要素包括授权选择、投资整合和互动。在被动/指数跟踪的情况下，经理可以通过互动和投票对公司施加影响。也有可能对市场层面和系统层面的问题施加影响。`,
+eye:`index tracking + exert influence → engagement and voting`,
+reverse:`看到 passive/index tracking，反推经理不能选股控股，主要靠 engagement and voting。`,
+trap:`不要选 board seats；指数跟踪经理通常不是通过董事席位影响公司。`},
+{id:4, group:'clients', answer:'B',
+q:`Which of the following is the most likely primary driver of ESG investment for a sovereign wealth fund?`,
+qZh:`以下哪一项最可能是主权财富基金进行 ESG 投资的主要驱动因素？`,
+opts:[
+[`Fiduciary duty`,`受托责任`],
+[`Reputational risk`,`声誉风险`],
+[`Awareness of financial impacts of climate change`,`对气候变化财务影响的认识`]
+],
+solution:`B is correct. Different client types (institutional, retail, or private) have different investment objectives, risk/return profiles, and drivers. These will influence the type of ESG investing strategies they will consider most attractive. In the case of a sovereign wealth fund, the primary driver for ESG investment is reputational risk.`,
+solutionZh:`B 正确。不同客户类型（机构、零售或私人）有不同的投资目标、风险/收益特征和驱动因素。这些会影响他们认为最具吸引力的 ESG 投资策略类型。对于主权财富基金，ESG 投资的主要驱动因素是声誉风险。`,
+eye:`sovereign wealth fund + primary driver → reputational risk`,
+reverse:`看到 sovereign wealth fund，反推主要 ESG driver 是 reputational risk。`,
+trap:`fiduciary duty 更常用于 pension fund；不要把所有机构客户都套成受托责任。`},
+{id:5, group:'clients', answer:'A',
+q:`Which of the following describes the risk mindset of a general insurer?`,
+qZh:`以下哪一项描述了一般保险公司的风险心态？`,
+opts:[
+[`Loss aversion`,`损失厌恶`],
+[`High risk tolerance`,`高风险容忍度`],
+[`High tolerance for illiquidity`,`对非流动性高度容忍`]
+],
+solution:`A is correct. Different client types (institutional, retail, or private) have different investment objectives, risk/return profiles, and drivers. The risk mindset of a general insurer is loss aversion, compared to a defined benefit pension scheme, which has a higher risk tolerance, and a sovereign wealth fund, which has high tolerance for illiquidity.`,
+solutionZh:`A 正确。不同客户类型（机构、零售或私人）有不同的投资目标、风险/收益特征和驱动因素。一般保险公司的风险心态是损失厌恶；相比之下，固定收益养老金计划有更高的风险容忍度，主权财富基金对非流动性有较高容忍度。`,
+eye:`general insurer + risk mindset → loss aversion`,
+reverse:`看到 general insurer，反推保险资金更重视损失控制，所以选 loss aversion。`,
+trap:`high tolerance for illiquidity 是 sovereign wealth fund 的特征，不是 general insurer。`},
+{id:6, group:'clients', answer:'B',
+q:`Exclusions is the most likely implied favored ESG approach of a:`,
+qZh:`排除法最可能是哪类客户隐含偏好的 ESG 方法？`,
+opts:[
+[`general insurer.`,`一般保险公司。`],
+[`charitable foundation.`,`慈善基金会。`],
+[`defined benefit pension scheme.`,`固定收益养老金计划。`]
+],
+solution:`B is correct. Different client types (institutional, retail, or private) have different investment objectives, risk/return profiles, and drivers. These will influence the type of ESG investing strategies they will consider most attractive. The most likely implied favored ESG approach of a charitable foundation is exclusions, to ensure investment is consistent with founding or charitable aims.`,
+solutionZh:`B 正确。不同客户类型（机构、零售或私人）有不同的投资目标、风险/收益特征和驱动因素。这些会影响他们认为最具吸引力的 ESG 投资策略类型。慈善基金会最可能隐含偏好的 ESG 方法是排除法，以确保投资与创立宗旨或慈善目标一致。`,
+eye:`exclusions + favored ESG approach → charitable foundation`,
+reverse:`看到 exclusions 和 founding/charitable aims，反推 charitable foundation。`,
+trap:`不要把 exclusions 直接套到所有风险厌恶客户；这里强调使命一致性。`},
+{id:7, group:'monitoring', answer:'A',
+q:`The Brunel Asset Management Accord:`,
+qZh:`Brunel Asset Management Accord 是什么？`,
+opts:[
+[`emphasizes that short-term underperformance is not in itself likely to give rise to undue concern.`,`强调短期表现不佳本身不太可能引起过度担忧。`],
+[`provides a helpful framework and proposes best practices for ESG-aware investment mandates.`,`为具备 ESG 意识的投资授权提供有用框架并提出最佳实践。`],
+[`produces a Stewardship Checklist for asset owners to ensure an effective and meaningful stewardship strategy.`,`为资产所有者制定 Stewardship Checklist，以确保有效且有意义的 stewardship 策略。`]
+],
+solution:`A is correct. The Brunel Asset Management Accord sets out a pension manager’s approach to long-term investment and ESG factors. It emphasizes that short-term underperformance is not in itself likely to give rise to undue concern for the client: “Investment performance, particularly in the short term, will be of limited significance in evaluating the manager.”`,
+solutionZh:`A 正确。Brunel Asset Management Accord 阐明了一位养老金经理对长期投资和 ESG 因素的方法。它强调，短期表现不佳本身不太可能使客户产生过度担忧：“投资表现，尤其是短期投资表现，在评价经理时意义有限。”`,
+eye:`Brunel Accord + short-term underperformance → not undue concern`,
+reverse:`看到 Brunel 和 short-term underperformance，反推短期表现不佳本身不是警报。`,
+trap:`不要看到 underperformance 就自动选“担忧”；Brunel 强调长期承诺。`},
+{id:8, group:'reporting', answer:'C',
+q:`The PLSA’s guide on ESG integration requires disclosure on:`,
+qZh:`PLSA 关于 ESG 整合的指南要求披露什么？`,
+opts:[
+[`elimination of ESG risks.`,`消除 ESG 风险。`],
+[`short-term ESG secular trends.`,`短期 ESG 长期趋势。`],
+[`management and monitoring of ESG risks and opportunities.`,`ESG 风险和机会的管理与监控。`]
+],
+solution:`C is correct. The PLSA published a disclosure guide for public equities developed by a group of pension schemes, setting out some pared-down expectations for manager reporting on both ESG integration and stewardship activities. The disclosure on ESG integration asks for separate disclosure on both identification of ESG risk and the management and monitoring of ESG risks and opportunities.`,
+solutionZh:`C 正确。PLSA 发布了一份由一组养老金计划制定的上市股票披露指南，列明了对经理在 ESG 整合和 stewardship 活动方面报告的一些简化预期。关于 ESG 整合的披露要求分别披露 ESG 风险识别，以及 ESG 风险和机会的管理与监控。`,
+eye:`PLSA guide + ESG integration disclosure → management and monitoring`,
+reverse:`看到 PLSA ESG integration，反推两层披露：识别 ESG 风险；管理和监控 ESG 风险与机会。`,
+trap:`题目说 disclosure，不是 eliminate risks；也不是 short-term secular trends。`},
+{id:9, group:'reporting', answer:'C',
+q:`The ICGN Model Mandate requires ESG-specific disclosure on:`,
+qZh:`ICGN Model Mandate 要求对哪一项进行 ESG 专项披露？`,
+opts:[
+[`an ESG risk materiality map.`,`ESG 风险重大性图谱。`],
+[`ESG-aware investment mandates.`,`具备 ESG 意识的投资授权。`],
+[`stewardship engagement and voting activity.`,`stewardship 互动和投票活动。`]
+],
+solution:`C is correct. The ICGN Model Mandate requests two areas of disclosure that are ESG specific:\nThe manager’s assessment of ESG risks that are embedded in the portfolio\nA detailed disclosure of stewardship engagement and voting activity`,
+solutionZh:`C 正确。ICGN Model Mandate 要求两个 ESG 专项披露领域：经理对组合中嵌入的 ESG 风险的评估；以及 stewardship 互动和投票活动的详细披露。`,
+eye:`ICGN Model Mandate + ESG-specific disclosure → engagement and voting`,
+reverse:`看到 ICGN Model Mandate，反推两类 ESG 披露：组合嵌入风险评估 + stewardship engagement and voting。`,
+trap:`materiality map 听起来像 ESG，但不是 PDF Solutions 给出的 ICGN 两项披露。`},
+{id:10, group:'greenwashing', answer:'C',
+q:`Greenwashing refers to companies:`,
+qZh:`Greenwashing 指公司做什么？`,
+opts:[
+[`hiding their harmful practices behind more positive ones.`,`用更积极的做法掩盖有害做法。`],
+[`engaging constructively and proactively with policymakers on responsible investment and ESG-related issues.`,`就负责任投资和 ESG 相关问题与政策制定者进行建设性、主动的互动。`],
+[`making false statements about its ESG practices to appeal to customers interested in environmentally friendly and sustainable practices.`,`对其 ESG 实践作出虚假陈述，以吸引关注环保和可持续实践的客户。`]
+],
+solution:`C is correct. Greenwashing describes where a company makes false statements about its ESG practices to appeal to customers interested in environmentally friendly and sustainable practices. Scopewashing refers to companies hiding their harmful practices behind more positive ones.`,
+solutionZh:`C 正确。Greenwashing 描述的是公司对其 ESG 实践作出虚假陈述，以吸引关注环保和可持续实践的客户。Scopewashing 指公司用更积极的做法掩盖其有害做法。`,
+eye:`greenwashing refers to + false statements → ESG practices`,
+reverse:`看到 greenwashing 定义，反推 false statements about ESG practices。`,
+trap:`A 是 scopewashing，不是 greenwashing。`},
+{id:11, group:'greenwashing', answer:'C',
+q:`Which of the following is a core greenwashing characteristic set out by the European Supervisory Agencies?`,
+qZh:`以下哪一项是欧洲监管机构提出的 greenwashing 核心特征？`,
+opts:[
+[`Greenwashing can only be triggered by third party ESG rating providers.`,`Greenwashing 只能由第三方 ESG 评级提供商触发。`],
+[`Greenwashing must be an intentional misinterpretation of the sustainable finance regulatory framework requirement.`,`Greenwashing 必须是对可持续金融监管框架要求的故意误读。`],
+[`Greenwashing will undermine trust in sustainable finance markets and policies, regardless of whether immediate damage to individual consumers or investors or the gain of an unfair competitive advantage has been ascertained.`,`无论是否已经确认对个别消费者或投资者造成即时损害，或获得不公平竞争优势，Greenwashing 都会削弱对可持续金融市场和政策的信任。`]
+],
+solution:`C is correct. Greenwashing will undermine trust in sustainable finance markets and policies, regardless of whether immediate damage to individual consumers or investors (in particular through mis-selling) or the gain of an unfair competitive advantage has been ascertained. Greenwashing can be either intentional or unintentional. Greenwashing can be triggered by the entity to which the sustainability communications relate or by the entity responsible for the product, or it can be triggered by third parties (e.g., ESG rating providers or third-party verifiers).`,
+solutionZh:`C 正确。无论是否已经确认对个别消费者或投资者造成即时损害（尤其是通过误售），或获得不公平竞争优势，Greenwashing 都会削弱对可持续金融市场和政策的信任。Greenwashing 可以是故意的，也可以是非故意的。Greenwashing 可以由可持续性沟通所涉及的实体触发，也可以由负责产品的实体触发，或由第三方触发，例如 ESG 评级提供商或第三方验证者。`,
+eye:`European Supervisory Agencies + undermine trust → regardless of immediate damage`,
+reverse:`看到 ESA core characteristic，反推“削弱可持续金融市场和政策信任”这条。`,
+trap:`不要选 only third party 或 must be intentional；PDF 明确说可故意也可非故意，触发主体也不止第三方。`},
+{id:12, group:'greenwashing', answer:'A',
+q:`Which of the following is not an example of greenwashing?`,
+qZh:`以下哪一项不是 greenwashing 的例子？`,
+opts:[
+[`A company makes accurate representations of the environmental benefits of its production methods in its regulatory filings.`,`公司在监管申报中准确陈述其生产方法的环境收益。`],
+[`A company represented that its techniques were environmentally friendly and utilized suppliers that produced high volumes of wastewater.`,`公司声称其技术环保，但使用会产生大量废水的供应商。`],
+[`A bank advertised its global financing extended to help its clients transition to net zero and continued to significantly finance investments in businesses and industries that emitted notable levels of carbon dioxide and other greenhouse gases.`,`银行宣传其全球融资用于帮助客户向净零转型，但仍继续大规模融资给排放大量二氧化碳和其他温室气体的企业和行业。`]
+],
+solution:`A is correct. The possible categories of misrepresentation include commitments without any guarantees of action, misstatements on product attributes, or misleading disclosures.\nMisstatements on product attributes: A securities class action was filed against a food and beverage company, whereby shareholders claimed that the company had misrepresented the environmental benefits of its production methods in its regulatory filings. The company claimed that its techniques were environmentally friendly, but the claimants argued that, in actual fact, the company’s production processes exhibited almost equivalent greenhouse gas emissions, required similar land usage, and utilized suppliers that produced dangerously high volumes of wastewater.\nMisleading disclosures: The UK advertising watchdog banned the series of HSBC adverts on the grounds of “misleading advertising and environmental claims,” citing HSBC’s failure to acknowledge its own contribution to emissions and said any future campaigns must disclose the bank’s contribution to the climate crisis. Despite the initiatives highlighted in the adverts, HSBC was continuing to significantly finance investments in businesses and industries that emitted notable levels of carbon dioxide and other greenhouse gases.`,
+solutionZh:`A 正确。可能的误述类别包括没有任何行动保证的承诺、产品属性误述或误导性披露。产品属性误述：针对一家食品饮料公司提起证券集体诉讼，股东声称该公司在监管申报中误述了其生产方法的环境收益。该公司声称其技术环保，但索赔人认为，事实上，该公司的生产过程产生的温室气体排放几乎相当，需要类似的土地使用，并使用产生危险高量废水的供应商。误导性披露：英国广告监管机构以“误导性广告和环境声明”为由禁止了一系列 HSBC 广告，理由是 HSBC 未承认自身对排放的贡献，并表示未来任何宣传活动都必须披露该银行对气候危机的贡献。尽管广告中强调了一些举措，HSBC 仍继续大规模融资给排放显著水平二氧化碳和其他温室气体的企业和行业。`,
+eye:`not an example + accurate representations → not greenwashing`,
+reverse:`看到 not an example，反推“准确陈述”不是 greenwashing。`,
+trap:`B 和 C 都是 PDF 解析中的误述/误导性披露案例。`},
+{id:13, group:'mandate', answer:'B',
+q:`An asset owner seeking to hire an investment manager believes that ESG factors are most important for risk management. To implement that belief, the asset manager will most likely suggest a strategy that:`,
+qZh:`资产所有者准备聘请投资经理，并认为 ESG 因素对风险管理最重要。为落实这一信念，资产管理人最可能建议什么策略？`,
+opts:[
+[`structures the portfolio to replicate an ESG benchmark fund.`,`构建组合以复制 ESG 基准基金。`],
+[`excludes some companies, sectors, or geographies based on ESG-related factors.`,`基于 ESG 相关因素排除某些公司、行业或地区。`],
+[`overweights the portfolio with companies that exhibit strong performance on related ESG factors.`,`增配在相关 ESG 因素上表现强劲的公司。`]
+],
+solution:`B is correct. If an ESG mandate is to focus on risk management, then a possible strategy would be to exclude companies, sectors, or geographies that the investor sees as particularly risky with respect to ESG factors. If value creation were the focus, then the manager might overweight the portfolio with companies or sectors that exhibit strong performance on ESG-related factors they believe are linked to value creation. (Although companies that have good corporate governance often have good ratings for E and S factors as well, that is not always the case, so focusing on only one of the ESG factors would not necessarily reduce the portfolio’s risk.)`,
+solutionZh:`B 正确。如果 ESG 授权聚焦风险管理，一个可能的策略是排除投资者认为在 ESG 因素方面特别有风险的公司、行业或地区。如果重点是价值创造，经理可能会增配那些在其认为与价值创造相关的 ESG 因素上表现强劲的公司或行业。（尽管公司治理良好的公司通常在 E 和 S 因素上也有较好评级，但并不总是如此，因此只关注某一个 ESG 因素不一定会降低组合风险。）`,
+eye:`ESG factors most important for risk management → excludes risky companies/sectors/geographies`,
+reverse:`看到 risk management，反推用 exclusions 排除 ESG 风险较高的公司、行业或地区。`,
+trap:`overweight strong ESG performers 更像 value creation，不是本题 risk management。`},
+{id:14, group:'selection', answer:'C',
+q:`When determining the materiality of ESG factors in portfolio construction, the consideration of governance factors tends to be especially important for which asset class?`,
+qZh:`在确定 ESG 因素对组合构建的重大性时，治理因素通常对哪类资产尤其重要？`,
+opts:[
+[`Public equity`,`上市股票`],
+[`Fixed income`,`固定收益`],
+[`Private equity`,`私募股权`]
+],
+solution:`C is correct. Governance factors tend to be especially important for private investments, since they are typically characterized by large ownership shares and limited regulatory oversight.`,
+solutionZh:`C 正确。治理因素通常对私募投资尤其重要，因为私募投资通常具有较大的所有权份额，并且监管监督有限。`,
+eye:`governance factors + especially important + asset class → private equity`,
+reverse:`看到 governance factors 和 especially important，反推 private equity。`,
+trap:`不要看到 governance 就自动选 public equity；PDF 解析强调私募投资的大股权和监管有限。`},
+{id:15, group:'selection', answer:'B',
+q:`The most important information that a client would like to understand when reviewing request for proposals to hire an asset manager is:`,
+qZh:`客户在审阅聘请资产管理人的 RFP 时，最想了解的最重要信息是什么？`,
+opts:[
+[`the source of ESG data the manager uses in their investment process.`,`经理在投资过程中使用的 ESG 数据来源。`],
+[`that the manager can deliver in practice what is set out in the policy documents.`,`经理能够在实践中交付政策文件中列明的内容。`],
+[`the number of engagement activities the manger has undertaken and the outcomes of those activities.`,`经理开展的互动活动数量以及这些活动的结果。`]
+],
+solution:`B is correct. The most important information a client wants to understand from the RFP is that the manager actually delivers in practice what is set out as the approach in policy documents. The source of ESG data and the results of engagement activities are things a client might be seeking to understand, but they are not the most important as in isolation they will not provide information on if the manager can deliver what the client is seeking.`,
+solutionZh:`B 正确。客户希望从 RFP 中了解的最重要信息是，经理是否确实在实践中交付了政策文件中作为方法列明的内容。ESG 数据来源和互动活动结果是客户可能希望了解的事项，但它们不是最重要的，因为孤立来看，它们不能提供经理是否能够交付客户所寻求内容的信息。`,
+eye:`reviewing RFP + most important information → deliver in practice`,
+reverse:`看到 RFP 和 most important，反推“能否实践交付政策文件中的方法”。`,
+trap:`数据来源和 engagement 数量都是次要证据，不能单独证明经理能交付。`},
+{id:16, group:'selection', answer:'C',
+q:`When seeking to implement ESG factors into an investment mandate, which of the following statements regarding the investment time horizon is most accurate?`,
+qZh:`在寻求将 ESG 因素纳入投资授权时，关于投资时间跨度，下列哪项最准确？`,
+opts:[
+[`Asset owners and asset managers have similar time horizons.`,`资产所有者和资产管理人的时间跨度相似。`],
+[`Asset managers have a longer time horizon than asset owners.`,`资产管理人的时间跨度比资产所有者更长。`],
+[`Asset owners have a longer time horizon than asset managers.`,`资产所有者的时间跨度比资产管理人更长。`]
+],
+solution:`C is correct. Per the ICGN Model Mandate, “The time horizon of most asset owners is considerably longer than that of fund managers.” The different horizons make it important for the asset owner to ensure ESG integration of the factors that concerned them.`,
+solutionZh:`C 正确。根据 ICGN Model Mandate，“大多数资产所有者的时间跨度明显长于基金经理。”不同的时间跨度使资产所有者有必要确保其关注因素得到 ESG 整合。`,
+eye:`time horizon + asset owners vs fund managers → owners longer`,
+reverse:`看到 time horizon，反推 asset owners 通常比 fund managers 更长期。`,
+trap:`不要选 similar；第 9 章反复强调时间跨度错位是代理问题的一部分。`},
+{id:17, group:'monitoring', answer:'A',
+q:`An asset owner is having a regular meeting with their fund manager about the fund’s performance and the integration of the asset owner’s ESG beliefs. The asset owner notes that the fund has a significant holding in Beta Company (Beta) and is concerned that the governance of Beta is weak. Which is the most appropriate question the asset owner could ask the fund manager about their concern?`,
+qZh:`资产所有者正在与基金经理就基金表现及资产所有者 ESG 信念的整合进行定期会议。资产所有者注意到基金大量持有 Beta Company，并担心 Beta 的治理较弱。资产所有者就该担忧最适合问基金经理哪一个问题？`,
+opts:[
+[`What makes you comfortable that Beta is run and overseen effectively and is addressing ESG challenges?`,`是什么让你确信 Beta 得到有效经营和监督，并正在应对 ESG 挑战？`],
+[`Do you believe Beta will retain staff and continue to be able to recruit appropriately skilled individuals?`,`你是否认为 Beta 将留住员工，并继续能够招聘具备适当技能的人员？`],
+[`Have you discussed with Beta its approach to the risk of exposure to disruptions arising from climate change?`,`你是否与 Beta 讨论过其应对气候变化导致中断风险敞口的方法？`]
+],
+solution:`A is correct. If the asset owner is concerned about weak governance at Beta, the question about how Beta is run and overseen would be the most appropriate question. The question about recruiting staff would be more useful in assessing social issues and not directly weak governance. The question about disruption arising from climate change addresses environmental issues, not necessarily weak governance.`,
+solutionZh:`A 正确。如果资产所有者担心 Beta 治理较弱，关于 Beta 如何被经营和监督的问题最合适。关于招聘员工的问题更适合评估社会问题，而不是直接评估弱治理。关于气候变化导致中断的问题涉及环境问题，不一定涉及弱治理。`,
+eye:`weak governance + Beta → run and overseen effectively`,
+reverse:`看到 weak governance，反推问题要问公司如何被经营和监督。`,
+trap:`员工招聘是 S，气候中断是 E；题眼是 G。`},
+{id:18, group:'monitoring', answer:'C',
+q:`What is the least likely reason a fund manager will use an ESG research firm, such as MSCI, to evaluate the portfolios it manages?`,
+qZh:`基金经理使用 MSCI 等 ESG 研究公司来评估其管理组合，最不可能的原因是什么？`,
+opts:[
+[`To test its own approach to ESG against a database`,`用数据库测试自身 ESG 方法。`],
+[`To prepare for clients’ questions about their ESG integration`,`为客户关于 ESG 整合的问题做准备。`],
+[`To have access to the high quality of data from the research firm`,`获得研究公司的高质量数据。`]
+],
+solution:`C is correct. The least likely reason to use an ESG research firm is to have access to high-quality data. The data in a research firm’s database are subject to issues arising from the quality and consistency of the data. Fund managers may not believe the outside data are a fair representation of the firm’s portfolios and ESG integration. A fund manager might choose to use a service like MSCI to test its own approach to ESG integration and to prepare for client questioning.`,
+solutionZh:`C 正确。使用 ESG 研究公司最不可能的原因是获得高质量数据。研究公司数据库中的数据会受到数据质量和一致性问题的影响。基金经理可能不认为外部数据能公平代表公司的组合和 ESG 整合。基金经理可能会选择使用 MSCI 这类服务来测试自身 ESG 整合方法，并为客户提问做准备。`,
+eye:`least likely reason + ESG research firm + MSCI → high-quality data`,
+reverse:`看到 least likely 和 MSCI，反推不是因为数据一定高质量，而是为了测试方法、准备客户提问。`,
+trap:`不要把第三方 ESG 数据默认视为高质量；PDF 强调 quality and consistency issues。`},
+{id:19, group:'reporting', answer:'A',
+q:`For which type of ESG activity would it be easiest to evaluate the impact on a portfolio’s performance?`,
+qZh:`哪类 ESG 活动最容易评估其对组合表现的影响？`,
+opts:[
+[`Excluding an industrial sector (e.g., tobacco)`,`排除某个行业，例如烟草。`],
+[`Implementing a program of active engagement`,`实施主动互动计划。`],
+[`Screening of companies for exploitive labor practices in their supply chain`,`筛查公司供应链中的剥削性劳动实践。`]
+],
+solution:`A is correct. It is relatively easy to assess the performance drag or enhancement that comes from excluding an industrial sector. There may even be benchmarks available reflecting the same restrictions. It is more difficult to demonstrate the value added by a program of engagement. It would be difficult to monitor the labor practices in the supply chains of all companies in a benchmark.`,
+solutionZh:`A 正确。评估排除某个行业带来的表现拖累或提升相对容易。甚至可能有反映相同限制的基准。证明互动计划增加的价值更困难。监控基准中所有公司的供应链劳动实践会很困难。`,
+eye:`easiest to evaluate impact + portfolio performance → excluding sector`,
+reverse:`看到 easiest evaluate impact，反推边界清楚的 sector exclusion。`,
+trap:`engagement 和 supply-chain screening 都更难归因或监控。`},
+{id:20, group:'reporting', answer:'C',
+q:`Which of the following statements concerning the reporting of engagement activities by fund managers is most accurate?`,
+qZh:`关于基金经理报告互动活动，下列哪项最准确？`,
+opts:[
+[`There is an agreed format for disclosing engagement activities.`,`互动活动披露有统一约定格式。`],
+[`Disclosing voting activities satisfies the reporting requirement for engagement activities.`,`披露投票活动即可满足互动活动的报告要求。`],
+[`Typical disclosures include a sample of written descriptions of individual engagement meetings.`,`典型披露包括个别互动会议书面描述的样本。`]
+],
+solution:`C is correct. Typical disclosures include a sample of written descriptions of individual engagement meetings. For engagement activities, it is not sufficient to disclose only voting activities; a detailed disclosure of stewardship engagement is also required under the ICGN Model Mandate. There is no agreed format for disclosing engagement activities.`,
+solutionZh:`C 正确。典型披露包括个别互动会议书面描述的样本。对于互动活动，仅披露投票活动是不够的；ICGN Model Mandate 还要求详细披露 stewardship 互动。互动活动披露没有统一约定格式。`,
+eye:`reporting engagement activities + most accurate → written descriptions`,
+reverse:`看到 engagement reporting，反推 typical disclosures 包括 individual engagement meetings 的书面样本。`,
+trap:`voting disclosure 不能替代 engagement disclosure；也没有 agreed format。`},
+{id:21, group:'monitoring', answer:'B',
+q:`Which of the following, according to the Brunel Asset Management Accord, is not in itself a likely cause for concern?`,
+qZh:`根据 Brunel Asset Management Accord，下列哪项本身不太可能构成担忧原因？`,
+opts:[
+[`A change in the expected investment style`,`预期投资风格发生变化`],
+[`Short-term underperformance`,`短期表现不佳`],
+[`Lack of understanding of reasons for underperformance`,`不了解表现不佳的原因`]
+],
+solution:`B is correct. The Brunel Asset Management Accord emphasizes a long-term commitment to the agreed investment process and specifically states that short-term investment performance will be of limited significance in evaluating the asset manager.`,
+solutionZh:`B 正确。Brunel Asset Management Accord 强调对约定投资流程的长期承诺，并明确指出短期投资表现对于评价资产管理人的意义有限。`,
+eye:`Brunel + not in itself a likely cause for concern → short-term underperformance`,
+reverse:`看到 Brunel 和 not in itself concern，反推 short-term underperformance。`,
+trap:`风格变化和不了解表现不佳原因才更值得警惕。`},
+{id:22, group:'selection', answer:'C',
+q:`Which of the following is not a typical way in which asset managers integrate ESG factors?`,
+qZh:`以下哪一项不是资产管理人整合 ESG 因素的典型方式？`,
+opts:[
+[`Use ESG as a threshold requirement before investment can be considered.`,`在考虑投资前，把 ESG 作为门槛要求。`],
+[`Use ESG as a risk assessment that offers a level of confidence in the valuation.`,`把 ESG 作为风险评估，为估值提供一定信心。`],
+[`Use ESG as a basis for explaining investment holdings to clients.`,`把 ESG 作为向客户解释投资持仓的依据。`]
+],
+solution:`C is correct. Explaining investment holdings to clients is not a way of integrating ESG factors. The explanation may be provided after the ESG factor integration process has enabled the construction of the portfolio.`,
+solutionZh:`C 正确。向客户解释投资持仓不是整合 ESG 因素的一种方式。解释可以在 ESG 因素整合过程促成组合构建之后提供。`,
+eye:`not typical way + integrate ESG factors → explaining holdings`,
+reverse:`看到 not typical integration method，反推“向客户解释持仓”是事后说明，不是整合方法。`,
+trap:`threshold 和 risk assessment 都是典型整合方式。`},
+{id:23, group:'mandate', answer:'B',
+q:`Which of the following is not one of McKinsey’s proposed dimensions of investing for the purposes of applying sustainable investing practices?`,
+qZh:`以下哪一项不是 McKinsey 为应用可持续投资实践而提出的投资维度之一？`,
+opts:[
+[`Investment beliefs and strategy`,`投资信念和策略`],
+[`Regulatory and policy environment`,`监管和政策环境`],
+[`Performance management`,`绩效管理`]
+],
+solution:`B is correct. McKinsey’s proposed dimensions include the investment mandate, investment beliefs and strategy, and investment operations enablers, including performance management. The regulatory and policy environment is not included among the dimensions.`,
+solutionZh:`B 正确。McKinsey 提出的维度包括投资授权、投资信念和策略，以及投资运营赋能因素，其中包括绩效管理。监管和政策环境不包括在这些维度中。`,
+eye:`McKinsey dimensions + not one → regulatory and policy environment`,
+reverse:`看到 McKinsey proposed dimensions 和 not，反推 regulatory and policy environment 不是其中之一。`,
+trap:`performance management 是 investment operations enablers 的一部分，不是错项。`},
+{id:24, group:'clients', answer:'B',
+q:`Which of these forms of asset owner is most likely to apply an exclusion policy barring investment in all assets exposed to a particular business area?`,
+qZh:`以下哪类资产所有者最可能采用排除政策，禁止投资所有暴露于特定业务领域的资产？`,
+opts:[
+[`Defined benefit pension scheme`,`固定收益养老金计划`],
+[`Charitable foundation`,`慈善基金会`],
+[`Sovereign wealth fund`,`主权财富基金`]
+],
+solution:`B is correct. Charitable foundations are most likely to favor an exclusion policy to ensure the investments are consistent with its founding or charitable aims.`,
+solutionZh:`B 正确。慈善基金会最可能偏好排除政策，以确保投资符合其创立宗旨或慈善目标。`,
+eye:`exclusion policy + particular business area → charitable foundation`,
+reverse:`看到 exclusion policy 和 charitable aims，反推 charitable foundation。`,
+trap:`DB pension 更常见 driver 是 fiduciary duty；SWF 更常见 driver 是 reputational risk。`},
+{id:25, group:'clients', answer:'C',
+q:`Which of the following is least likely a driver for clients to seek ESG investment?`,
+qZh:`以下哪一项最不可能是客户寻求 ESG 投资的驱动因素？`,
+opts:[
+[`Fiduciary duty`,`受托责任`],
+[`Reputational risk`,`声誉风险`],
+[`A belief that social issues are unimportant`,`认为社会议题不重要`]
+],
+solution:`C is correct. A belief that social issues are unimportant is at least partly inconsistent with ESG investing. Common drivers of ESG investing include fiduciary duty (e.g., for pension funds) and reputational risk (e.g., for sovereign wealth funds and foundations).`,
+solutionZh:`C 正确。认为社会议题不重要至少在一定程度上与 ESG 投资不一致。ESG 投资的常见驱动因素包括受托责任，例如养老金基金，以及声誉风险，例如主权财富基金和基金会。`,
+eye:`least likely driver + ESG investment → social issues are unimportant`,
+reverse:`看到 least likely driver，反推“认为社会议题不重要”不符合 ESG 投资。`,
+trap:`fiduciary duty 和 reputational risk 都是 PDF 明确提到的常见驱动因素。`},
+{id:26, group:'reporting', answer:'A',
+q:`Which of the following is least likely a way for a fund manager to demonstrate identification of ESG risk and opportunity, according to the Pensions and Lifetime Savings Association (PLSA)?`,
+qZh:`根据 PLSA，以下哪一项最不可能是基金经理证明其识别 ESG 风险和机会的方式？`,
+opts:[
+[`Evaluation of how much financial return is directly attributable to ESG factors`,`评估有多少财务回报可直接归因于 ESG 因素。`],
+[`Quantitative or qualitative examples of material ESG factors identified in fundamental analysis and stock valuation`,`在基本面分析和股票估值中识别重大 ESG 因素的定量或定性例子。`],
+[`Identification of long-term ESG secular trends and themes and the extent to which they have influenced portfolio construction decisions`,`识别长期 ESG 结构性趋势和主题，以及它们影响组合构建决策的程度。`]
+],
+solution:`A is correct. Attribution of the financial return to ESG factors provides information on the consequences of the manager’s portfolio construction decisions. The other options describe more direct ways to demonstrate identification of ESG risk and opportunity.`,
+solutionZh:`A 正确。将财务回报归因于 ESG 因素，提供的是经理组合构建决策后果的信息。其他选项更直接地描述了证明识别 ESG 风险和机会的方式。`,
+eye:`PLSA + least likely + identification of ESG risk/opportunity → direct financial return attribution`,
+reverse:`看到 PLSA identification 和 least likely，反推“直接归因财务回报”不是识别风险/机会的直接方式。`,
+trap:`B 和 C 是 PDF 中 PLSA 提供的直接示例。`},
+{id:27, group:'clients', answer:'B',
+q:`Which of the following is likely to be a primary ESG driver for a defined benefit pension scheme?`,
+qZh:`以下哪一项可能是固定收益养老金计划的主要 ESG 驱动因素？`,
+opts:[
+[`Reputational risk`,`声誉风险`],
+[`Fiduciary duty`,`受托责任`],
+[`Personal ethics`,`个人伦理`]
+],
+solution:`B is correct. The most likely primary driver for ESG investing by a defined benefit pension scheme is fiduciary duty.`,
+solutionZh:`B 正确。固定收益养老金计划进行 ESG 投资最可能的主要驱动因素是受托责任。`,
+eye:`defined benefit pension scheme + primary ESG driver → fiduciary duty`,
+reverse:`看到 defined benefit pension scheme，反推 primary driver 是 fiduciary duty。`,
+trap:`personal ethics 更像个人投资者；reputational risk 更像 SWF 或 foundation。`},
+{id:28, group:'reporting', answer:'C',
+q:`Which two ESG-specific areas of disclosure are requested by the International Corporate Governance Network (ICGN) Model Mandate?`,
+qZh:`International Corporate Governance Network (ICGN) Model Mandate 要求披露哪两个 ESG 专项领域？`,
+opts:[
+[`A breakdown of the return on investment for each stakeholder group and details of how each form of ESG risk has been hedged by the portfolio manager`,`按每个利益相关方群体分解投资回报，并详细说明组合经理如何对冲每种 ESG 风险。`],
+[`A materiality map identifying the ESG impact of all investments and a detailed disclosure of the voting record of all executive and non-executive directors`,`识别所有投资 ESG 影响的重大性图谱，以及所有执行董事和非执行董事投票记录的详细披露。`],
+[`A detailed disclosure of stewardship engagement and voting activity and the manager’s assessment of ESG risks embedded in the portfolio.`,`详细披露 stewardship 互动和投票活动，以及经理对组合中嵌入 ESG 风险的评估。`]
+],
+solution:`C is correct. The ICGN Model Mandate requests ESG-specific disclosures on stewardship engagement and voting activity and on the manager’s assessment of ESG risks embedded in the portfolio.`,
+solutionZh:`C 正确。ICGN Model Mandate 要求对 stewardship 互动和投票活动，以及经理对组合中嵌入 ESG 风险的评估进行 ESG 专项披露。`,
+eye:`ICGN Model Mandate + two ESG-specific areas → engagement/voting + embedded ESG risks`,
+reverse:`看到 ICGN two areas，反推 stewardship engagement and voting activity + embedded ESG risk assessment。`,
+trap:`不要选“所有董事投票记录”；ICGN 说的是经理的 stewardship engagement 和 voting activity。`},
+{id:29, group:'mandate', answer:'B',
+q:`A document that sets out an asset owner’s risk-adjusted return target, time horizon, and ESG investment beliefs for a fund manager is best described as an investment:`,
+qZh:`一份为基金经理列明资产所有者风险调整后收益目标、时间跨度和 ESG 投资信念的文件，最适合被描述为哪种投资文件？`,
+opts:[
+[`recommendation.`,`建议。`],
+[`mandate.`,`授权。`],
+[`approach.`,`方法。`]
+],
+solution:`B is correct. A document that sets out an asset owner’s investment goals and beliefs for use by a fund manager in understanding the asset owner’s needs is called an investment mandate. Using the investment mandate, fund managers develop suitable investment approaches. Investment recommendations are usually developed by analysts to explain why a particular security is suitable for a portfolio.`,
+solutionZh:`B 正确。一份列明资产所有者投资目标和信念，供基金经理用于理解资产所有者需求的文件，称为投资授权。基金经理使用投资授权制定合适的投资方法。投资建议通常由分析师提出，用来解释为什么某一特定证券适合组合。`,
+eye:`document sets out return target + time horizon + ESG beliefs → investment mandate`,
+reverse:`看到文件列明目标、时间跨度、ESG beliefs，反推 investment mandate。`,
+trap:`recommendation 是分析师解释个券适合性的文件，不是客户授权文件。`},
+{id:30, group:'mandate', answer:'C',
+q:`In responding to a request for proposal, a fund manager proposes selecting the least carbon-intensive of the acceptable investments in each sector. The asset owner’s investment mandate is most likely aligned with integrating ESG factors:`,
+qZh:`在回应 RFP 时，基金经理建议在每个行业中选择可接受投资里碳强度最低的标的。资产所有者的投资授权最可能与哪种 ESG 整合方式一致？`,
+opts:[
+[`as a threshold requirement.`,`作为门槛要求。`],
+[`as a basis for stewardship engagement.`,`作为 stewardship 互动的基础。`],
+[`by applying a tilt to the portfolio’s exposures.`,`通过对组合敞口应用倾斜。`]
+],
+solution:`C is correct. The approach describes a quantitative basis for adjusting or “tilting” the exposures to be more climate-sensitive than they otherwise would be.`,
+solutionZh:`C 正确。该方法描述了一种定量基础，用于调整或“倾斜”敞口，使其比原本更具气候敏感性。`,
+eye:`least carbon-intensive in each sector → tilt portfolio exposures`,
+reverse:`看到 each sector 里选 least carbon-intensive，反推是对组合敞口做 tilt。`,
+trap:`threshold 是先设门槛再决定是否可投；本题是在可接受投资中做碳强度倾斜。`}
+];
+
+let answered = new Map();
+let exam = {active:false, order:[], idx:0, correct:0, answers:{}, start:0, timer:null};
+const wrongKey = 'esg_ch9_wrong_ids_v2';
+const letters = ['A','B','C'];
+const lowerLetters = ['a','b','c'];
+const colorClass = g => ({blue:'tag-blue',green:'tag-green',amber:'tag-amber',rose:'tag-rose',teal:'tag-teal',violet:'tag-violet'}[g] || 'tag-dark');
+const getGroup = id => GROUPS.find(g => g.id === id);
+const byId = id => QUESTIONS.find(q => q.id === id);
+const correctIndex = q => letters.indexOf(q.answer);
+const wrongIds = () => JSON.parse(localStorage.getItem(wrongKey) || '[]');
+const setWrongIds = ids => {localStorage.setItem(wrongKey, JSON.stringify([...new Set(ids)].sort((a,b)=>a-b))); updateWrongCount();};
+const addWrong = id => setWrongIds([...wrongIds(), id]);
+const removeWrong = id => setWrongIds(wrongIds().filter(x => x !== id));
+function updateWrongCount(){document.getElementById('wrongCountHero').textContent = wrongIds().length;}
+function matchQuery(q, query){
+  if(!query) return true;
+  const bag = [q.id, q.q, q.qZh, q.answer, q.solution, q.solutionZh, q.eye, q.reverse, q.trap, ...q.opts.flat()].join(' ').toLowerCase();
+  return bag.includes(query.toLowerCase().trim());
+}
+function renderQuestion(q, opts={}){
+  const group = getGroup(q.group);
+  const key = `${opts.prefix||'q'}-${q.id}`;
+  const revealed = answered.get(key);
+  const chosen = revealed?.choice;
+  const cls = colorClass(group.color);
+  const correctOpt = q.opts[correctIndex(q)][0];
+  const englishOpts = q.opts.map((o,i)=>`<button class="opt ${revealed ? (i===correctIndex(q)?'correct':(i===chosen?'wrong':'')) : ''}" data-choice="${i}" ${revealed?'disabled':''}>
+        <div class="opt-en"><span class="opt-letter">${lowerLetters[i]}.</span>${esc(o[0])}</div>
+      </button>`).join('');
+  const chineseOpts = q.opts.map((o,i)=>`<div class="opt" style="cursor:default">
+        <div class="opt-zh"><span class="opt-letter">${lowerLetters[i]}.</span>${esc(o[1])}</div>
+      </div>`).join('');
+  return `<article class="question-card" data-qid="${q.id}" data-key="${key}">
+    <div class="q-top">
+      <div><div class="q-id">Q${q.id}</div><div class="q-topic"><span class="tag ${cls}">${group.title}</span>${revealed?`<span class="tag tag-dark">Answer ${q.answer}</span>`:''}</div></div>
+      <button class="small-btn" data-mark-wrong="${q.id}">加入错题本</button>
+    </div>
+    <div class="block"><div class="label">英文原题</div><div class="q-en">${esc(q.q)}</div></div>
+    ${revealed?`<div class="block"><div class="label">中文翻译</div><div class="q-zh">${esc(q.qZh)}</div></div>`:''}
+    <div class="block"><div class="label">英文选项</div><div class="options">${englishOpts}</div></div>
+    <div class="reveal ${revealed?'show':''}">
+      <div class="block"><div class="label">中文选项翻译</div><div class="options">${chineseOpts}</div></div>
+      <div class="block"><div class="label">正确答案</div><div class="answer-box">${q.answer}. ${esc(correctOpt)}</div></div>
+      <div class="block"><div class="label">PDF原版解析</div><div class="pdf-solution">${esc(q.solution)}</div></div>
+      <div class="block"><div class="label">解析中文翻译</div><div class="solution-zh">${esc(q.solutionZh)}</div></div>
+      <div class="block"><div class="label">英文题眼</div><div class="eye"><b>${esc(q.eye)}</b></div></div>
+      <div class="block"><div class="label">中文反推</div><div class="reverse">${esc(q.reverse)}</div></div>
+      <div class="block"><div class="label">易错提醒</div><div class="trap">${esc(q.trap)}</div></div>
+      <div class="actions"><button class="secondary" data-hide="${key}">收起解析</button><button class="secondary" data-remove-wrong="${q.id}">从错题本移除</button></div>
+    </div>
+  </article>`;
+}
+function esc(s){return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function attachQuestionHandlers(root=document){
+  root.querySelectorAll('.question-card').forEach(card=>{
+    const q = byId(Number(card.dataset.qid)); const key = card.dataset.key;
+    card.querySelectorAll('.opt[data-choice]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const choice = Number(btn.dataset.choice);
+        answered.set(key,{choice});
+        if(letters[choice] !== q.answer) addWrong(q.id); else removeWrong(q.id);
+        rerenderCurrent();
+      });
+    });
+  });
+  root.querySelectorAll('[data-mark-wrong]').forEach(b=>b.addEventListener('click',()=>addWrong(Number(b.dataset.markWrong))));
+  root.querySelectorAll('[data-remove-wrong]').forEach(b=>b.addEventListener('click',()=>{removeWrong(Number(b.dataset.removeWrong)); rerenderCurrent();}));
+  root.querySelectorAll('[data-hide]').forEach(b=>b.addEventListener('click',()=>{answered.delete(b.dataset.hide); rerenderCurrent();}));
+}
+function renderCoverage(){
+  document.getElementById('coverageFlow').innerHTML = GROUPS.map(g=>`<div class="flow-card"><h3>${esc(g.title)}</h3><p>${esc(g.hook)}<br>题目：${g.qids.map(id=>'Q'+id).join('、')}</p></div>`).join('');
+  document.getElementById('coverageGrid').innerHTML = GROUPS.map(g=>`<div class="group-card"><div class="group-head"><h3>${esc(g.title)}</h3><span class="tag ${colorClass(g.color)}">${g.qids.length} 题</span></div><div class="group-body"><p>${esc(g.hook)}</p><p>${g.qids.map(id=>`Q${id}`).join(' · ')}</p></div></div>`).join('');
+}
+function renderStructure(){
+  document.getElementById('structureTable').innerHTML = `<thead><tr><th>分组</th><th>题号</th><th>题眼反推</th></tr></thead><tbody>${GROUPS.map(g=>`<tr><td>${esc(g.title)}</td><td>${g.qids.map(id=>'Q'+id).join('、')}</td><td>${esc(g.hook)}</td></tr>`).join('')}</tbody>`;
+}
+function renderMemory(){
+  const rooms = [
+    ['接待室','先让客户说清需求：Q1、Q29。没有 client needs 和 investment beliefs，就没有 mandate。'],
+    ['设计室','把 ESG 写进政策和授权：Q2、Q13、Q23、Q30。风险管理用排除，气候敏感用 tilt。'],
+    ['客户画像室','识别不同客户 driver：Q4、Q5、Q6、Q24、Q25、Q27。'],
+    ['筛选室','RFP 与资产类别：Q3、Q14、Q15、Q16、Q22。核心是能否实践交付。'],
+    ['警报室','Greenwashing：Q10、Q11、Q12。假陈述、信任受损、误导性披露。'],
+    ['复核室','监督与报告：Q7、Q8、Q9、Q17、Q18、Q19、Q20、Q21、Q26、Q28。']
+  ];
+  document.getElementById('memoryRooms').innerHTML = rooms.map(([h,p],i)=>`<div class="room"><span class="tag tag-dark">Room ${i+1}</span><h3>${h}</h3><p>${p}</p></div>`).join('');
+}
+function renderReverse(){
+  const q = document.getElementById('reverseSearch').value;
+  document.getElementById('reverseGrid').innerHTML = QUESTIONS.filter(x=>matchQuery(x,q)).map(x=>`<details class="formula"><summary><span class="tag ${colorClass(getGroup(x.group).color)}">Q${x.id}</span> <b>英文题眼：</b>${esc(x.eye)}</summary><p><b>中文反推：</b>${esc(x.reverse)}</p><p><b>易错提醒：</b>${esc(x.trap)}</p><button class="secondary" data-open-q="${x.id}">打开完整题目</button></details>`).join('');
+  document.querySelectorAll('[data-open-q]').forEach(b=>b.addEventListener('click',()=>{showScreen('grouped'); document.getElementById('groupSearch').value='Q'+b.dataset.openQ; renderGrouped();}));
+}
+function renderGrouped(){
+  const query = document.getElementById('groupSearch').value;
+  document.getElementById('groupedPractice').innerHTML = GROUPS.map(g=>{
+    const qs = g.qids.map(byId).filter(x=>matchQuery(x,query) || ('Q'+x.id).toLowerCase() === query.toLowerCase().trim());
+    if(!qs.length) return '';
+    return `<section class="group-card"><div class="group-head"><h3>${esc(g.title)}</h3><span class="tag ${colorClass(g.color)}">${qs.length} 题</span></div><div class="group-body"><p>${esc(g.hook)}</p>${qs.map(q=>renderQuestion(q,{prefix:'group'})).join('')}</div></section>`;
+  }).join('');
+  attachQuestionHandlers(document.getElementById('groupedPractice'));
+}
+function renderExamStart(){
+  clearInterval(exam.timer);
+  document.getElementById('examBox').innerHTML = `<div class="exam-start"><div class="card start-card"><div class="start-title">第二轮·30 题模考</div><p class="start-list">点击开始后按顺序作答。每题作答后立即显示解析，并自动记录错题。</p><button class="primary" id="startExam">开始模考</button></div></div>`;
+  document.getElementById('startExam').addEventListener('click',startExam);
+}
+function startExam(){
+  exam = {active:true, order:QUESTIONS.map(q=>q.id), idx:0, correct:0, answers:{}, start:Date.now(), timer:null};
+  exam.timer = setInterval(updateExamHeader,1000);
+  renderExamQuestion();
+}
+function updateExamHeader(){
+  const el = document.getElementById('examTime'); if(!el) return;
+  const sec = Math.floor((Date.now()-exam.start)/1000);
+  el.textContent = `${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`;
+}
+function renderExamQuestion(){
+  const q = byId(exam.order[exam.idx]);
+  const done = exam.answers[q.id] !== undefined;
+  const key = `exam-${q.id}`;
+  if(done) answered.set(key,{choice:exam.answers[q.id]}); else answered.delete(key);
+  document.getElementById('examBox').innerHTML = `<div class="exam-header"><div class="timer"><div class="timer-num" id="examTime">00:00</div><div class="timer-lab">用时</div></div><div class="exam-status"><div class="timer-lab">进度 ${exam.idx+1}/${exam.order.length}</div><div class="progress"><div class="bar" style="width:${((exam.idx)/exam.order.length)*100}%"></div></div></div><div class="exam-label">Q${q.id}</div></div>${renderQuestion(q,{prefix:'exam'})}<div class="actions"><button class="secondary" id="prevExam" ${exam.idx===0?'disabled':''}>上一题</button><button class="primary" id="nextExam">${exam.idx===exam.order.length-1?'提交模考':'下一题'}</button></div>`;
+  updateExamHeader();
+  const box = document.getElementById('examBox');
+  box.querySelectorAll('.opt[data-choice]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const choice = Number(btn.dataset.choice);
+      if(exam.answers[q.id] === undefined && letters[choice] === q.answer) exam.correct++;
+      exam.answers[q.id]=choice;
+      if(letters[choice] !== q.answer) addWrong(q.id); else removeWrong(q.id);
+      renderExamQuestion();
+    });
+  });
+  box.querySelector('#prevExam').addEventListener('click',()=>{if(exam.idx>0){exam.idx--; renderExamQuestion();}});
+  box.querySelector('#nextExam').addEventListener('click',()=>{if(exam.idx<exam.order.length-1){exam.idx++; renderExamQuestion();}else finishExam();});
+}
+function finishExam(){
+  clearInterval(exam.timer);
+  const answeredCount = Object.keys(exam.answers).length;
+  const score = Object.entries(exam.answers).filter(([id,choice])=>letters[choice]===byId(Number(id)).answer).length;
+  document.getElementById('examBox').innerHTML = `<div class="card result-card"><div class="score">${score}/${QUESTIONS.length}</div><p class="q-zh">已作答 ${answeredCount} 题，正确率 ${Math.round(score/QUESTIONS.length*100)}%。未答题按错误处理，建议进入第三轮错题本复盘。</p><button class="primary" id="restartExam">重新模考</button><button class="secondary" id="goWrong">查看错题本</button></div>`;
+  document.getElementById('restartExam').addEventListener('click',renderExamStart);
+  document.getElementById('goWrong').addEventListener('click',()=>showScreen('review'));
+}
+function renderWrong(){
+  const ids = wrongIds();
+  document.getElementById('wrongList').innerHTML = ids.length ? ids.map(id=>renderQuestion(byId(id),{prefix:'wrong'})).join('') : `<div class="card" style="padding:20px"><b>错题本为空。</b><p class="q-zh">第一轮或第二轮答错的题会自动加入这里。</p></div>`;
+  attachQuestionHandlers(document.getElementById('wrongList'));
+}
+function renderCompressed(){
+  document.getElementById('compressedGrid').innerHTML = QUESTIONS.map(q=>`<div class="formula"><span class="tag ${colorClass(getGroup(q.group).color)}">Q${q.id} · ${q.answer}</span><p><b>英文题眼：</b>${esc(q.eye)}</p><p><b>中文反推：</b>${esc(q.reverse)}</p><p><b>易错：</b>${esc(q.trap)}</p></div>`).join('');
+}
+function showScreen(id){
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active', b.dataset.screen===id));
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active', s.id===`screen-${id}`));
+  if(id==='review') renderWrong();
+  if(id==='exam' && !exam.active) renderExamStart();
+  document.querySelector('.modebar').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function rerenderCurrent(){
+  const active = document.querySelector('.mode-btn.active').dataset.screen;
+  if(active==='grouped') renderGrouped();
+  if(active==='reverse') renderReverse();
+  if(active==='review') renderWrong();
+  if(active==='exam' && exam.active) renderExamQuestion();
+}
+document.querySelectorAll('.mode-btn').forEach(btn=>btn.addEventListener('click',()=>showScreen(btn.dataset.screen)));
+document.getElementById('groupSearch').addEventListener('input',renderGrouped);
+document.getElementById('reverseSearch').addEventListener('input',renderReverse);
+document.getElementById('resetAnswers').addEventListener('click',()=>{answered.clear(); renderGrouped();});
+document.getElementById('clearWrong').addEventListener('click',()=>{setWrongIds([]); renderWrong();});
+document.getElementById('renderWrong').addEventListener('click',renderWrong);
+renderCoverage();renderStructure();renderMemory();renderReverse();renderGrouped();renderExamStart();renderWrong();renderCompressed();updateWrongCount();
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

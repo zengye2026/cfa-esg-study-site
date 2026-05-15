@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Chapter 1 Module 7 - Key ESG Initiatives and Organizations</title>
+<style>
+:root{
+  --bg:#eef3f8;
+  --panel:#ffffff;
+  --ink:#121826;
+  --muted:#52657d;
+  --line:#d7e1ec;
+  --line2:#e8eef5;
+  --navy:#101827;
+  --blue:#2563eb;
+  --teal:#0f766e;
+  --green:#15803d;
+  --amber:#b45309;
+  --red:#b91c1c;
+  --violet:#6d28d9;
+  --shadow:0 14px 34px rgba(15,23,42,.10);
+  --serif:Georgia,"Times New Roman","Noto Serif SC","Songti SC",serif;
+  --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.68;background:var(--bg);overflow-x:hidden}
+.page{width:min(1148px, calc(100% - 40px));margin:28px auto 60px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;margin-bottom:18px}
+.hero-main,.hero-side,.nav,.panel-card,.case-box,.topic-card,.qcard,.mini-card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+.hero-main{border-radius:8px;padding:30px}
+.hero-side{border-radius:8px;padding:22px}
+.kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-weight:800;font-size:12px;color:#63748c;background:#fbfdff}
+h1{font-family:var(--serif);font-size:50px;line-height:.98;margin:0 0 16px;letter-spacing:0;color:#0f172a}
+.lead{font-size:16px;color:#344961;margin:0;max-width:860px}
+.hero-eq{margin-top:20px;background:var(--navy);color:#fff;border-radius:6px;padding:16px 18px;font-size:14px}
+.hero-eq b{color:#fff}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:#71829a;font-weight:900;font-size:12px}
+.side-title{font-family:var(--serif);font-size:22px;line-height:1.3;margin:12px 0 14px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.stat{border:1px solid var(--line);background:#f8fbff;border-radius:8px;padding:12px}
+.stat-num{font-size:28px;line-height:1;font-weight:900;color:#101827}
+.stat-lab{font-size:12px;color:var(--muted);font-weight:700;margin-top:4px}
+.memory{background:#ecfdf5;border:1px solid #86efac;border-radius:6px;padding:12px;color:#14532d;font-size:14px;margin-top:12px}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;border-radius:8px;padding:7px;margin:18px 0 24px}
+.tab{appearance:none;border:0;background:transparent;color:#61738c;border-radius:7px;padding:10px 13px;font-weight:900;white-space:nowrap;cursor:pointer}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--navy);color:#fff}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:end;margin:0 0 16px}
+.panel-head h2{font-family:var(--serif);font-size:34px;line-height:1.16;margin:4px 0 0;letter-spacing:0}
+.head-desc{color:var(--muted);font-size:14px}
+.panel-card{border-radius:8px;padding:22px;margin-bottom:16px}
+.map-card{border-radius:8px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:22px}
+.map-center{width:min(760px,100%);margin:0 auto 18px;border:2px solid #c2410c;background:#ffedd5;color:#7c2d12;border-radius:999px;padding:12px;text-align:center;font-weight:900}
+.branch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.branch{border:1px solid var(--line);border-radius:7px;padding:14px;min-height:170px}
+.branch h3{margin:0 0 8px;font-size:16px}
+.branch p{margin:5px 0;color:#354a62;font-size:14px}
+.b-blue{background:#eff6ff;border-color:#bfdbfe}
+.b-green{background:#ecfdf5;border-color:#bbf7d0}
+.b-amber{background:#fffbeb;border-color:#fde68a}
+.b-violet{background:#f5f3ff;border-color:#ddd6fe}
+.coverage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.coverage-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:13px;border:1px solid var(--line);border-radius:7px;background:#fbfdff}
+.check{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#dcfce7;color:#166534;font-weight:900}
+.text b{color:#0f172a}
+.text{color:#40536b;font-size:14px}
+.topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.topic-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.topic-card{border-radius:8px;padding:18px;min-height:235px}
+.topic-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+.topic-title{font-weight:950;font-size:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;white-space:nowrap}
+.tag-blue{background:#dbeafe;color:#1d4ed8}
+.tag-green{background:#dcfce7;color:#15803d}
+.tag-amber{background:#fef3c7;color:#92400e}
+.tag-red{background:#fee2e2;color:#991b1b}
+.tag-violet{background:#ede9fe;color:#5b21b6}
+.tag-teal{background:#ccfbf1;color:#0f766e}
+.small{font-size:14px;color:#455970;margin:8px 0}
+.equations{display:grid;gap:8px;margin-top:12px}
+.eq{display:grid;grid-template-columns:132px 34px minmax(0,1fr);gap:8px;align-items:center;background:#f8fafc;border:1px solid var(--line);border-radius:7px;padding:11px}
+.eq-lhs{font-weight:950;color:#0f172a}
+.eq-op{text-align:center;font-weight:950;color:#c2410c}
+.eq-rhs{color:#31445c}
+.riskline{margin-top:10px;padding:10px 12px;border-left:4px solid var(--amber);background:#fff7ed;color:#7c2d12;border-radius:4px;font-size:14px}
+.mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mini-card{border-radius:8px;padding:15px}
+.mini-card h3{margin:0 0 8px;font-size:15px}
+.mini-card p{margin:5px 0;color:#40536b;font-size:13px}
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.case-box{border-radius:8px;overflow:hidden}
+.case-head{padding:13px 16px;background:#0f172a;color:#fff;font-weight:950}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;border-top:1px solid var(--line2);padding:10px 0}
+.case-row:first-child{border-top:0;padding-top:0}
+.case-lab{font-weight:950;color:#0f172a}
+.case-text{color:#40536b;font-size:14px}
+.trap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.trap{background:#fff7ed;border:1px solid #fed7aa;border-radius:7px;padding:14px;color:#7c2d12}
+.formula{font-family:"Consolas","Microsoft YaHei",monospace;background:#0f172a;color:#fff;border-radius:6px;padding:12px;margin:8px 0;font-size:14px;white-space:normal;overflow-wrap:anywhere}
+.quiz-list{display:grid;gap:12px}
+.qcard{border-radius:8px;padding:14px}
+.qtop{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:start}
+.qno{width:36px;height:36px;border-radius:8px;background:#e0f2fe;color:#075985;display:grid;place-items:center;font-weight:950}
+.qtext{font-weight:900;color:#0f172a}
+.qbtn{border:1px solid var(--line);background:#f8fafc;border-radius:999px;padding:6px 10px;color:#53657d;font-weight:900;cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:#e8eef5;color:#0f172a}
+.qanswer{display:none;margin-top:10px;border-top:1px dashed var(--line);padding-top:10px;color:#40536b;font-size:14px}
+.qcard.show .qanswer{display:block}
+@media(max-width:1100px){
+  .hero,.panel-head{grid-template-columns:1fr}
+  .hero-side{order:2}
+  .branch-grid,.topic-grid,.topic-grid.two,.mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .page{width:min(340px, calc(100vw - 48px));max-width:340px;margin:18px auto 42px}
+  .hero-main,.hero-side,.panel-card,.map-card{padding:18px}
+  h1{font-size:29px;line-height:1.04}
+  .lead{font-size:14px}
+  .hero-eq{font-size:13px}
+  .panel-head h2{font-size:25px}
+  .coverage,.case-grid,.trap-grid,.branch-grid,.topic-grid,.topic-grid.two,.mini-grid{grid-template-columns:1fr}
+  .eq{grid-template-columns:1fr}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:4px}
+  .qtop{grid-template-columns:38px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  .stat-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <section class="hero-main">
+      <div class="kicker">
+        <span class="pill">Chapter 1</span>
+        <span class="pill">Module 7</span>
+        <span class="pill">1.1.6</span>
+        <span class="pill">PDF p.29-36</span>
+      </div>
+      <h1>Key ESG Initiatives and Organizations</h1>
+      <p class="lead">本模块把第 1 章最容易混淆的一组缩写整理成“谁发起、管什么、进展如何、考试怎么识别”。核心不是死背缩写，而是知道每个组织在 ESG 投资生态里解决哪一类问题。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Key ESG initiatives == 提升意识 + 建立原则 + 推动披露 + 应对气候 + 支持影响投资/治理/产品披露。</div>
+    </section>
+    <aside class="hero-side">
+      <div class="eyebrow">Learning Outcome</div>
+      <div class="side-title">1.1.6 explain the aims of key supranational ESG initiatives and organizations and the progress achieved to date</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">4</div><div class="stat-lab">倡议大类</div></div>
+        <div class="stat"><div class="stat-num">14</div><div class="stat-lab">重点缩写/组织</div></div>
+      </div>
+      <div class="memory"><b>记忆抓手：</b>先按“原则、披露、气候、行业工具”分箱，再把缩写放进箱子里。</div>
+    </aside>
+  </header>
+
+  <nav class="nav" aria-label="module navigation">
+    <button class="tab active" type="button" data-tab="map">知识地图</button>
+    <button class="tab" type="button" data-tab="coverage">覆盖清单</button>
+    <button class="tab" type="button" data-tab="un">UN 系列</button>
+    <button class="tab" type="button" data-tab="pri">PRI 深挖</button>
+    <button class="tab" type="button" data-tab="reporting">报告与披露</button>
+    <button class="tab" type="button" data-tab="climate">气候与净零</button>
+    <button class="tab" type="button" data-tab="others">其他组织</button>
+    <button class="tab" type="button" data-tab="traps">易错点</button>
+    <button class="tab" type="button" data-tab="quiz">自测题</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>一张图：把缩写放进四个箱子</h2>
+      </div>
+      <div class="head-desc">组织太多时，不要按出现顺序硬背；按功能归类更稳。</div>
+    </div>
+    <div class="map-card">
+      <div class="map-center">ESG initiatives improve awareness, capacity, disclosure, climate alignment and market practice</div>
+      <div class="branch-grid">
+        <div class="branch b-blue">
+          <h3>1. UN / principles</h3>
+          <p>UNGC：公司可持续 10 原则。</p>
+          <p>UNEP FI：金融部门可持续发展。</p>
+          <p>PRI：投资者责任投资原则。</p>
+        </div>
+        <div class="branch b-green">
+          <h3>2. Reporting / disclosure</h3>
+          <p>GRI：多利益相关方披露。</p>
+          <p>ISSB：资本市场全球基线。</p>
+          <p>CFA standards：投资产品 ESG 披露。</p>
+        </div>
+        <div class="branch b-amber">
+          <h3>3. Climate / net zero</h3>
+          <p>UNFCCC：稳定 GHG 浓度。</p>
+          <p>TCFD：气候披露四支柱。</p>
+          <p>GFANZ / Race to Zero / AIGCC：净零和低碳协作。</p>
+        </div>
+        <div class="branch b-violet">
+          <h3>4. Industry tools</h3>
+          <p>GIIN：影响投资基础设施。</p>
+          <p>GSIA：区域可持续投资论坛联盟。</p>
+          <p>ICGN：公司治理与 stewardship。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>PDF 覆盖清单：1.1.6 逐项对照</h2>
+      </div>
+      <div class="head-desc">依据 `ch01/esg-01.pdf` 第 29-36 页；第 36 页后 Key Facts 另做汇总页。</div>
+    </div>
+    <div class="panel-card">
+      <div class="coverage">
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>总目标：</b>提高投资行业对 ESG issues 的认识，并增强 ESG 整合能力和容量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>UNGC：</b>2000 年启动，超过 8,000 家公司签署，10 principles 覆盖 human rights、labor、environment、anti-corruption。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>UNEP FI：</b>UNEP 与全球金融部门合作，动员私人部门资金服务 sustainable development。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>UNEP FI 框架：</b>PRI、PSI、PRB；PRB 截至 2024 年 4 月超过 330 家银行签署。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>PRI：</b>UN-supported investor network，理解 ESG 对投资决策、所有权决策和 ownership practices 的影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>PRI 六原则：</b>分析决策、主动所有权、要求披露、推广原则、共同合作、报告进展。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>PRI 2018 最低要求：</b>政策覆盖 &gt;50% AUM、人员责任、senior-level commitment/accountability。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>UNFCCC：</b>1992 年里约峰会启动，目标是稳定 GHG concentrations，重要 COP 包括京都和巴黎。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>SDGs：</b>2015 年所有 UN members 同意，17 个目标相互关联，主要面向政府，但也成为企业和投资者框架。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>GFANZ / Race to Zero：</b>金融部门净零联盟与 UN-backed global campaign，推动 2030 减半 GHG，并要求透明行动计划和近期目标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>GRI / ISSB / TCFD：</b>分别对应多利益相关方披露、资本市场全球基线、气候披露四支柱；ISSB 吸收 TCFD 并发布 IFRS S1/S2。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>AIGCC / GIIN / GSIA / ICGN / CFA standards：</b>分别对应亚洲气候投资者、影响投资、全球可持续投资论坛、治理 stewardship、投资产品 ESG 披露。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="un" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">United Nations Initiatives</div>
+        <h2>UN 系列：从公司原则到金融体系</h2>
+      </div>
+      <div class="head-desc">UN 线索的逻辑是：公司行为要有原则，金融体系要有框架，气候和发展目标要有共同语言。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">UN Global Compact</div><span class="tag tag-blue">UNGC</span></div>
+        <p class="small"><b>原文要点：</b>2000 年由 UN 与领先公司合作启动，是全球最大的 corporate sustainability initiative，超过 8,000 家公司签署。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">UNGC</div><div class="eq-op">==</div><div class="eq-rhs">公司签署 10 principles → 人权、劳工、环境、反腐败 → 投资者评估和 engagement 的原则框架</div></div></div>
+        <div class="riskline">考点提醒：UN Global Compact 的标准由 GRI framework 支持；10 principles 不是 17 个 SDGs。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">UNEP Finance Initiative</div><span class="tag tag-green">UNEP FI</span></div>
+        <p class="small"><b>原文要点：</b>UNEP 与全球金融部门的 partnership，用私人部门金融推动 sustainable development。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">UNEP FI</div><div class="eq-op">==</div><div class="eq-rhs">金融部门 + sustainable development → 共创 PRI / PSI / PRB 三类原则</div></div></div>
+        <div class="riskline">进展：PRI 覆盖超过半数全球机构投资者 AUM；PSI 约覆盖四分之一保险公司和 25% 世界保费；PRB 超过 330 家银行。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Sustainable Development Goals</div><span class="tag tag-amber">SDGs</span></div>
+        <p class="small"><b>原文要点：</b>2015 年所有 UN members 同意的蓝图，解决贫困、不平等、气候、环境退化、和平和正义等全球挑战。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">SDGs</div><div class="eq-op">==</div><div class="eq-rhs">17 个相互关联目标 + 主要面向政府 + 被企业/投资者用作 impact 框架</div></div></div>
+        <div class="riskline">考点提醒：SDGs 本身不直接适用于企业和投资者，但已成为强有力框架；Paris Agreement 虽然平行谈判，也成为 SDGs 的一个目标。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="pri" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">PRI Deep Dive</div>
+        <h2>PRI 深挖：最容易出题的组织</h2>
+      </div>
+      <div class="head-desc">PRI 最低要求很适合出选择题；这里必须把“支持内容、六原则、最低要求”拆开。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">PRI 是什么</div><span class="tag tag-blue">Network</span></div>
+        <p class="small"><b>原文要点：</b>PRI 是 UN-supported international network of investors，目标是理解 ESG factors 对 investment and ownership decisions/practices 的影响。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">PRI 定位</div><div class="eq-op">==</div><div class="eq-rhs">投资者网络 + ESG implications + investment decisions + ownership practices</div></div></div>
+        <div class="riskline">进展：截至 2023 年 12 月 31 日，全球超过 5,300 个签署方。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">四类支持</div><span class="tag tag-green">Support</span></div>
+        <p class="small"><b>原文要点：</b>PRI 为资产所有者、资产管理人、顾问和数据供应商提供工具、平台、政策支持和研究。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">PRI 支持</div><div class="eq-op">==</div><div class="eq-rhs">tools/reports + collaborative engagement platform + policy consultations/map + PRI Academy research</div></div></div>
+        <div class="riskline">考点提醒：PRI 既支持投资实践，也支持 engagement 和政策沟通。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2018 最低要求</div><span class="tag tag-red">Minimum</span></div>
+        <p class="small"><b>原文要点：</b>由于曾被批评“缴费即可加入”，PRI 在 2018 年实施最低要求。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">最低要求</div><div class="eq-op">==</div><div class="eq-rhs">responsible investment policy 覆盖 &gt;50% AUM + 人员责任 + 高层承诺和问责机制</div></div></div>
+        <div class="riskline">考点提醒：高级别承诺是最低要求之一；“必须主动所有权”是六原则，不是最低要求本身。</div>
+      </article>
+    </div>
+    <div class="panel-card">
+      <h3>PRI 六原则：按“做、管、要、推、合、报”记</h3>
+      <div class="mini-grid">
+        <div class="mini-card"><h3>1 做分析</h3><p>将 ESG issues 纳入 investment analysis and decision-making processes。</p></div>
+        <div class="mini-card"><h3>2 管所有权</h3><p>做 active owners，将 ESG 纳入 ownership policies and practices。</p></div>
+        <div class="mini-card"><h3>3 要披露</h3><p>向被投实体 seek appropriate disclosure on ESG issues。</p></div>
+        <div class="mini-card"><h3>4 推行业</h3><p>promote acceptance and implementation within the investment industry。</p></div>
+        <div class="mini-card"><h3>5 合作</h3><p>work together，提高实施原则的 effectiveness。</p></div>
+        <div class="mini-card"><h3>6 报告</h3><p>report on activities and progress。</p></div>
+      </div>
+      <div class="formula">PRI six principles == 做分析 + 管所有权 + 要披露 + 推行业 + 合作 + 报告。</div>
+    </div>
+  </section>
+
+  <section id="reporting" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Reporting and Disclosure</div>
+        <h2>报告与披露：解决 ESG 数据完整性问题</h2>
+      </div>
+      <div class="head-desc">PDF 先说问题：可持续报告缺乏标准化，框架和方法竞争，影响 ESG data integrity。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Global Reporting Initiative</div><span class="tag tag-blue">GRI</span></div>
+        <p class="small"><b>原文要点：</b>GRI Standards 指导 environmental、social、economic factors 披露，面向所有 stakeholders，包括 investors。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">GRI</div><div class="eq-op">==</div><div class="eq-rhs">多利益相关方 + ESG/economic 披露 + UNGC 标准 + 覆盖最多 sustainability categories</div></div></div>
+        <div class="riskline">考点提醒：GRI 比多数投资者导向框架更宽，且是 UN Global Compact 的 standard。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">International Sustainability Standards Board</div><span class="tag tag-green">ISSB</span></div>
+        <p class="small"><b>原文要点：</b>IFRS Foundation Trustees 于 2021 年宣布创建 ISSB，目标是建立 sustainability-related disclosure global baseline。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">ISSB</div><div class="eq-op">==</div><div class="eq-rhs">资本市场参与者 + sustainability risks/opportunities + informed decisions + IFRS S1/S2</div></div></div>
+        <div class="riskline">进展：ISSB 标准 2024 年 1 月 1 日生效；其 proposals build on CDSB、IASB、VRF（Integrated Reporting 和 SASB）、TCFD、WEF 等工作。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">CFA Institute Standards</div><span class="tag tag-violet">Product</span></div>
+        <p class="small"><b>原文要点：</b>2021 年 CFA Institute 发布 Global ESG Disclosure Standards for Investment Products。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">CFA 标准</div><div class="eq-op">==</div><div class="eq-rhs">投资产品如何在 objectives、investment process、stewardship activities 中考虑 ESG</div></div></div>
+        <div class="riskline">考点提醒：这是投资产品披露，不是公司可持续披露。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="climate" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Climate and Net Zero</div>
+        <h2>气候与净零：从国家协议到企业披露</h2>
+      </div>
+      <div class="head-desc">看到 GHG、COP、1.5°C、2°C、scenario planning，基本都在气候箱子里。</div>
+    </div>
+    <div class="topic-grid two">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">UNFCCC</div><span class="tag tag-amber">COP</span></div>
+        <p class="small"><b>原文要点：</b>1992 年 Rio Earth Summit 启动，目标是 stabilize GHG concentrations，以限制人为气候变化。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">UNFCCC</div><div class="eq-op">==</div><div class="eq-rhs">年度 COP + 国家自愿协议 + 京都议定书 + 巴黎协定</div></div></div>
+        <div class="riskline">COP3 京都：工业化国家按目标限制和减少 GHG；COP21 巴黎：本世纪升温 well below 2°C，并推动投资者研究如何与 Paris Agreement 对齐。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">TCFD</div><span class="tag tag-blue">4 pillars</span></div>
+        <p class="small"><b>原文要点：</b>FSB 的 TCFD 把 Paris target operationalize for the business world，建议在 mainstream financial filings 中披露。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">TCFD</div><div class="eq-op">==</div><div class="eq-rhs">Governance + Strategy + Risk management + Metrics and targets</div></div></div>
+        <div class="riskline">贡献：把气候变化推到 board-level issue，推动 mainstream financial filings、scenario planning 和 physical impacts 透明化；独立组织虽已 sunset，但建议整合进 IFRS S1/S2。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">GFANZ / Race to Zero</div><span class="tag tag-green">Net zero</span></div>
+        <p class="small"><b>原文要点：</b>GFANZ 把银行、保险、资产管理中的净零金融倡议放入 sector-wide coalition。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">GFANZ</div><div class="eq-op">==</div><div class="eq-rhs">金融部门联盟 + 50 多个国家数百成员 + 加速 net-zero global economy transition</div></div></div>
+        <div class="riskline">Race to Zero：UN-backed campaign，动员非国家主体，到 2030 年将全球 GHG emissions 减半；成员承诺 across all scopes、transparent action plans 和 robust near-term targets。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">AIGCC</div><span class="tag tag-teal">Asia</span></div>
+        <p class="small"><b>原文要点：</b>AIGCC 在亚洲资产所有者和金融机构中提高对 climate risks/opportunities 与 low-carbon investing 的认识。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">AIGCC</div><div class="eq-op">==</div><div class="eq-rhs">亚洲投资者 + climate awareness + best practices + investment/credit/risk/engagement/policy collaboration</div></div></div>
+        <div class="riskline">考点提醒：AIGCC 的关键词是 Asia、climate change、low-carbon investing。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="others" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Other Initiatives</div>
+        <h2>其他组织：影响投资、可持续投资联盟、治理和产品披露</h2>
+      </div>
+      <div class="head-desc">这些组织的识别点很明确：GIIN 看 impact，GSIA 看全球论坛，ICGN 看治理 stewardship。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-box">
+        <div class="case-head">Global Impact Investing Network (GIIN)</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">目标</div><div class="case-text">减少 impact investment barriers，建设 critical infrastructure。</div></div>
+          <div class="case-row"><div class="case-lab">行动</div><div class="case-text">knowledge exchange、innovative approaches、evidence base、tools and resources。</div></div>
+          <div class="case-row"><div class="case-lab">工具</div><div class="case-text">IRIS+ 用于 impact metrics；ImpactBase 是 impact investing funds 数据库。</div></div>
+        </div>
+      </article>
+      <article class="case-box">
+        <div class="case-head">Global Sustainable Investment Alliance (GSIA)</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">定位</div><div class="case-text">各国 national forum for responsible investment 的国际合作。</div></div>
+          <div class="case-row"><div class="case-lab">目标</div><div class="case-text">推动 ESG investing across all regions and asset classes。</div></div>
+          <div class="case-row"><div class="case-lab">成员</div><div class="case-text">核心成员来自欧洲、美国、加拿大、日本、澳大利亚和新西兰的区域论坛。</div></div>
+        </div>
+      </article>
+      <article class="case-box">
+        <div class="case-head">International Corporate Governance Network (ICGN)</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">建立</div><div class="case-text">1995 年成立的 investor-led organization。</div></div>
+          <div class="case-row"><div class="case-lab">目标</div><div class="case-text">促进有效公司治理标准和 investor stewardship，以推进 efficient markets。</div></div>
+          <div class="case-row"><div class="case-lab">文件</div><div class="case-text">为投资者开发 stewardship 和 investment mandates 两份关键 guidance。</div></div>
+        </div>
+      </article>
+      <article class="case-box">
+        <div class="case-head">CFA Institute Global ESG Disclosure Standards</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">发布</div><div class="case-text">2021 年发布。</div></div>
+          <div class="case-row"><div class="case-lab">特点</div><div class="case-text">首个全球自愿标准，用于披露投资产品如何考虑 ESG issues。</div></div>
+          <div class="case-row"><div class="case-lab">范围</div><div class="case-text">objectives、investment process、stewardship activities。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：缩写相似，功能不同</h2>
+      </div>
+      <div class="head-desc">看到缩写先问：它管公司、投资者、披露、气候，还是产品？</div>
+    </div>
+    <div class="trap-grid">
+      <div class="trap"><b>UNGC vs SDGs：</b>UNGC 是公司可持续 10 原则；SDGs 是 17 个全球发展目标，主要面向政府。</div>
+      <div class="trap"><b>GRI vs ISSB：</b>GRI 面向所有 stakeholders；ISSB 面向资本市场信息需求，提供全球基线。</div>
+      <div class="trap"><b>PRI principles vs minimum requirements：</b>主动所有权是六原则；2018 最低要求是政策覆盖 &gt;50% AUM、人员责任、高层承诺与问责。</div>
+      <div class="trap"><b>TCFD vs ISSB：</b>TCFD 独立组织已 sunset，但框架仍通过 ISSB 的 IFRS S1/S2 延续影响。</div>
+      <div class="trap"><b>GFANZ vs Race to Zero：</b>GFANZ 是金融部门净零联盟；Race to Zero 是 UN-backed campaign，覆盖公司、城市、地区、金融和教育机构等非国家主体。</div>
+      <div class="trap"><b>GIIN vs GSIA：</b>GIIN 关键词是 impact investing；GSIA 关键词是 sustainable investment organizations 的国际联盟。</div>
+      <div class="trap"><b>ICGN：</b>看见 corporate governance、investor stewardship、investment mandates，优先想到 ICGN。</div>
+      <div class="trap"><b>CFA Standards：</b>不是公司 ESG 披露，而是 investment product ESG disclosure。</div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>自测题：缩写反推功能</h2>
+      </div>
+      <div class="head-desc">正式三轮练习会在整章完成后统一制作；这里先练本模块识别。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">第 1 章说这些倡议整体上对投资行业有什么作用？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>提高投资行业对 ESG issues 的 awareness，并增强其将 ESG factors 整合进投资过程的 ability and capacity。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">UN Global Compact 的 10 principles 覆盖哪四类？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Human rights、labor、environment、anti-corruption。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">UNEP FI 共创或建立了哪三个重要原则框架？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Principles for Responsible Investment (PRI)、Principles for Sustainable Insurance (PSI)、Principles for Responsible Banking (PRB)。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">PRI 四类支持可以压缩成哪四项？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>工具和最佳实践报告；协作 engagement 平台；政策咨询、policy map 和监管沟通；PRI Academy 汇总和传播学术研究。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">PRI 2018 年最低要求是哪三项？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Responsible investment policy 覆盖超过 50% AUM；有内部或外部人员负责实施；有 senior-level commitment 和 accountability mechanisms。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">UNFCCC 中 COP3 和 COP21 分别对应什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>COP3 Kyoto 1997 形成 Kyoto Protocol；COP21 Paris 2015 形成 Paris Agreement，将本世纪升温控制在工业化前水平以上 well below 2°C。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">TCFD 四个披露支柱是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Governance、Strategy、Risk management、Metrics and targets。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">GRI 与 ISSB 的核心区别是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>GRI 面向所有 stakeholders，披露 environmental、social、economic factors；ISSB 面向资本市场参与者，提供 sustainability-related disclosure global baseline。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">GFANZ 与 Race to Zero 分别抓什么题眼？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>GFANZ 抓 banking、insurance、asset management 的 net-zero finance coalition；Race to Zero 抓 UN-backed campaign、non-state actors、2030 年 GHG emissions 减半。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">10</div><div class="qtext">GIIN 的两个数据库是什么，各自用于什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>IRIS+ 是 measuring and managing impact 的指标数据库；ImpactBase 是 impact investing funds 数据库。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">11</div><div class="qtext">看到 stewardship 和 investment mandates 两份 guidance，应想到哪个组织？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>International Corporate Governance Network (ICGN)。它是 1995 年成立的 investor-led organization，促进公司治理和 investor stewardship。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">12</div><div class="qtext">CFA Institute Global ESG Disclosure Standards for Investment Products 披露的是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>披露一个投资产品如何在 objectives、investment process 和 stewardship activities 中考虑 ESG issues。</div>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach((item) => item.classList.toggle('active', item === tab));
+    panels.forEach((panel) => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

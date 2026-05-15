@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 8：Financial Modeling and Environmental Opportunities</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%;min-width:0}
+h1{font-family:var(--serif);font-size:clamp(27px,4.8vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:760px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.compact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px;margin-top:10px}
+.compact-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--sh-sm)}
+.compact-item b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}
+.compact-item span{display:block;color:var(--sub);font-size:12.8px;line-height:1.6}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qchoices{font-size:12.8px;color:var(--sub);line-height:1.7;margin-top:6px;font-weight:500}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .pills{display:grid;grid-template-columns:1fr 1fr}
+  .pill{justify-content:center;text-align:center;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+  .nav{position:static;flex-wrap:wrap;overflow:visible}
+  .tab{flex:1 1 calc(50% - 6px);white-space:normal;text-align:center;min-height:40px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px;width:100%;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px;overflow-wrap:anywhere;word-break:break-word}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 8</span>
+        <span class="pill">3.1.10 / 3.1.11</span>
+        <span class="pill">Financial Modeling & Opportunities</span>
+      </div>
+      <h1>Financial Modeling and Environmental Opportunities</h1>
+      <p class="lead">本页完成第 3 章复习模块的收尾：先把环境因素落到收入、成本、资本开支、税费、拨备、融资成本和资产减值；再看企业和投资行业如何从循环经济、清洁技术、绿色金融产品和蓝色经济中获得机会。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Environmental opportunity analysis == 环境因素进入财务模型 + 风险路径改变 ratios 和 valuation + 低碳转型创造新需求 + 绿色产品把资金导向环境解决方案 + 蓝色经济把海洋资源变成可持续增长空间</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">3.1.10 将重大环境因素应用于 financial modeling、ratio analysis 和 risk assessment；3.1.11 解释企业和投资行业如何从 climate/environment opportunities 中受益。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">$90tn</div><div class="mini-lab">未来 15 年全球基础设施投资需求估计</div></div>
+        <div class="mini-stat"><div class="mini-num">$3tn</div><div class="mini-lab">2024 年绿色债券累计发行超过规模</div></div>
+      </div>
+      <div class="side-note">记忆抓手：风险页问“会损失什么”；机会页问“谁来提供解决方案、谁来融资、谁能把绿色收入变成现金流”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看主线：从财务模型到绿色机会</h2>
+      </div>
+      <div class="head-desc">本模块的隐藏线是“环境因素如何变成财务变量，又如何变成投资机会”。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Financial Modeling + Environmental Opportunities<br>风险进入模型，机会进入收入，绿色产品把资本导向转型</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">财务模型</div>
+          <p>收入、OpEx、CapEx、税费、拨备、资产减值、融资成本。</p>
+          <p>环境因素最终要落到 DCF 和比率。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">循环经济</div>
+          <p>设计出 waste and pollution。</p>
+          <p>保持材料使用，再生自然系统。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">清洁技术</div>
+          <p>低碳电力、热泵、绿氢、工业电气化、EV、食品创新。</p>
+          <p>技术潜力不等于实际部署。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">绿色金融产品</div>
+          <p>Green bonds/loans、GSS+、sustainability-linked debt。</p>
+          <p>关键是透明度、用途和反漂绿。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">蓝色经济</div>
+          <p>海洋和沿海资源的可持续经济社会活动。</p>
+          <p>增长、就业、创新与生态健康并重。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>1. 识别因素</h3><p>污染、GHG、水、废弃物、供应链、生物多样性、物理风险。</p></div>
+        <div class="flow-step"><h3>2. 映射变量</h3><p>收入、成本、税、CapEx、拨备、资产价值、融资成本。</p></div>
+        <div class="flow-step"><h3>3. 评估机会</h3><p>低碳基础设施、资源效率、循环模式、绿色收入。</p></div>
+        <div class="flow-step"><h3>4. 选择产品</h3><p>绿色债券、绿色贷款、GSS+、基金和 ETF。</p></div>
+        <div class="flow-step"><h3>5. 防漂绿</h3><p>看 eligibility、use of proceeds、impact reporting、issuer strategy。</p></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">Model Link</span>
+        <h3>环境因素要进模型</h3>
+        <p class="small">PDF 的基础设施案例强调，环境尽调结果要进入预测收入、运营成本、资本开支等模型输入，而不是停留在 ESG 描述。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Opportunity</span>
+        <h3>转型规模很大</h3>
+        <p class="small">全球未来 15 年预计约有 90 万亿美元基础设施投资需求，低碳和高能效项目会成为巨大资本配置方向。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">Greenwashing</span>
+        <h3>绿色产品要看质量</h3>
+        <p class="small">绿色产品增长越快，越需要透明、可核验的数据和清晰框架，否则容易出现绿色标签和真实影响不一致。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>覆盖清单：最后一个模块的知识点</h2>
+      </div>
+      <div class="head-desc">本页覆盖 PDF 第 189-207 页，Key Facts 后续单独做汇总页。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">A</span> Financial modeling, ratio analysis and risk assessment</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">1</span><div class="text">综合 ESG assessment 的结果可作为 financial model 的关键 ratios 和 variables 输入。</div></div>
+        <div class="coverage-item"><span class="check">2</span><div class="text">基础模型变量包括 forecasted revenues、operating costs、capital expenditures，是 DCF 的基础。</div></div>
+        <div class="coverage-item"><span class="check">3</span><div class="text">环境影响有双向性：外部环境影响资产运营和盈利；资产自身外部性也会通过反馈回路影响财务表现。</div></div>
+        <div class="coverage-item"><span class="check">4</span><div class="text">基础设施项目环境因素因资产类型、行业、规模、地理位置和生命周期阶段不同而不同。</div></div>
+        <div class="coverage-item"><span class="check">5</span><div class="text">PDF 的两步流程：先从 longlist 缩到 infrastructure 环境评估 shortlist；再由资产特定 ESG due diligence 判断是否重大。</div></div>
+        <div class="coverage-item"><span class="check">6</span><div class="text">可量化因素包括 degradation and pollution、air/water pollution、GHG/resource efficiency、energy、water、solid waste、raw materials/supply chain。</div></div>
+        <div class="coverage-item"><span class="check">7</span><div class="text">较难量化因素包括 biodiversity and habitat、physical climate change impacts。</div></div>
+        <div class="coverage-item"><span class="check">8</span><div class="text">污染监管收紧可能导致资产减值/提前退役、CapEx、拨备、OpEx、税费、披露成本、声誉损失和融资成本上升。</div></div>
+        <div class="coverage-item"><span class="check">9</span><div class="text">GHG 相关风险可能导致高碳收入下降、OpEx/tax/CapEx 上升、客户转向低碳产品。</div></div>
+        <div class="coverage-item"><span class="check">10</span><div class="text">能源风险：温度上升可能影响设备运行，增加燃料消耗或降低性能。</div></div>
+        <div class="coverage-item"><span class="check">11</span><div class="text">水风险：水稀缺可能导致水依赖资产收入下降、运营成本上升、社区冲突、项目延误、罚款和额外参与成本。</div></div>
+        <div class="coverage-item"><span class="check">12</span><div class="text">生物多样性和栖息地风险可能导致运营限制、结构改造、监控报告成本上升。</div></div>
+        <div class="coverage-item"><span class="check">13</span><div class="text">极端天气可导致停机、资产毁损、收入损失、维修重建 CapEx/OpEx、保险费上升。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">B</span> Circular economy and clean technology</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">14</span><div class="text">低碳转型机会规模巨大，未来 15 年全球基础设施投资预计约 90 万亿美元。</div></div>
+        <div class="coverage-item"><span class="check">15</span><div class="text">FTSE Russell 2022 估计，绿色经济市值约等于全球上市股票市场总市值的 7.1%。</div></div>
+        <div class="coverage-item"><span class="check">16</span><div class="text">机会领域包括 circular economy、clean and technological innovation、green and ESG-related products、blue economy。</div></div>
+        <div class="coverage-item"><span class="check">17</span><div class="text">循环经济核心：修理、再使用、再循环，让一个工业流程的 waste 成为另一个流程的 input。</div></div>
+        <div class="coverage-item"><span class="check">18</span><div class="text">循环经济是 EU 2050 长期战略和中国五年规划的核心组成部分之一。</div></div>
+        <div class="coverage-item"><span class="check">19</span><div class="text">案例包括 Jurong Island、Heineken、Schneider Electric、Stora Enso、Close the Loop。</div></div>
+        <div class="coverage-item"><span class="check">20</span><div class="text">Cleantech 包括 clean energy、environmental、sustainable/green products and services。</div></div>
+        <div class="coverage-item"><span class="check">21</span><div class="text">政策支持和有利监管环境推动风能、太阳能等早期成长；成熟后无补贴 solar/wind 在多数地区成为最便宜新电力来源，2020 年新建风光已比运营全球 60% 既有煤电更便宜。</div></div>
+        <div class="coverage-item"><span class="check">22</span><div class="text">2022 年关键低碳能源技术投资首次超过 1 万亿美元；2023 年低碳转型总投资约 US$1.77tn，中国 38%、欧盟 20%、美国 17%。</div></div>
+        <div class="coverage-item"><span class="check">23</span><div class="text">2023 年 electrified transport 投资约 US$634bn、renewable energy 约 US$623bn；hydrogen 同比约三倍、CCS 近翻倍、energy storage 增长 76%。</div></div>
+        <div class="coverage-item"><span class="check">24</span><div class="text">低碳电力来源包括太阳能、陆上/海上风电、水电、核能、潮汐、地热；biofuels 是否低碳取决于来源可持续性，木材生物能可能带来高 CO2 和颗粒物/黑碳。</div></div>
+        <div class="coverage-item"><span class="check">25</span><div class="text">建筑环境贡献最高约 40% 总 GHG，涉及 embodied carbon、建材、施工和运营能耗；水泥可通过替代 clinker 和 CCS 减排。</div></div>
+        <div class="coverage-item"><span class="check">26</span><div class="text">交通领域：2021 年全球 BEV 销量超过翻倍至 650 万辆，约一半在中国、美国约 53.5 万辆，Norway/挪威 BEV 占汽车销量约 65%；重型运输仍在比较电池、氨、氢燃料电池和生物燃料。</div></div>
+        <div class="coverage-item"><span class="check">27</span><div class="text">食品行业机会包括 alternative proteins、藻类、lab-grown meat、precision/regenerative agriculture、低毒害虫管理、低 N2O 氮肥。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">C</span> Green products and blue economy</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">28</span><div class="text">绿色和 ESG 相关产品包括绿色/可持续/ESG 指数、green bonds/loans、sustainability funds/ETFs、VC/private credit、存款储蓄、众筹。</div></div>
+        <div class="coverage-item"><span class="check">29</span><div class="text">首只 green bond 由 EIB 于 2007 年发行，用于气候相关项目；绿色债券累计发行 2024 年超过 US$3tn。</div></div>
+        <div class="coverage-item"><span class="check">30</span><div class="text">Green bonds 用于 positive environmental or climate benefits，多数是 use-of-proceeds 或 asset-linked bonds。</div></div>
+        <div class="coverage-item"><span class="check">31</span><div class="text">绿色债券资金主要投向清洁能源、低碳建筑；低碳交通增长显著，ICT 和制造业也进入市场。</div></div>
+        <div class="coverage-item"><span class="check">32</span><div class="text">GSS+ 债务融资条款可与环境、社会或转型绩效指标挂钩，如未达目标则 coupon 上调。</div></div>
+        <div class="coverage-item"><span class="check">33</span><div class="text">2022 年 sustainable debt 首次放缓，原因包括整体借款成本上升、绿色标签怀疑增加、反漂绿监管趋严。</div></div>
+        <div class="coverage-item"><span class="check">34</span><div class="text">CICERO Shades of Green：dark、medium、light、yellow、red。Light green 是近期开减排但非长期气候韧性解决方案。</div></div>
+        <div class="coverage-item"><span class="check">35</span><div class="text">Climate Bonds Taxonomy 和 sector criteria 以 Paris Agreement 目标为基础，持续扩展并纳入 transition sectors；Standard v4 扩展到公司和 SLB KPI。</div></div>
+        <div class="coverage-item"><span class="check">36</span><div class="text">评估绿色资产时看 eligibility、use of proceeds、transparency/reporting/impact measures、issuer/borrower sustainability strategy。</div></div>
+        <div class="coverage-item"><span class="check">37</span><div class="text">Green Bond Principles 由 ICMA 发布，为绿色债券市场完整性提供透明、披露和报告的自愿指引，常配合 external review/second-party opinion。</div></div>
+        <div class="coverage-item"><span class="check">38</span><div class="text">Green Loan Principles 四支柱：清晰绿色资金用途、项目目标评估沟通、资金严格管理、严格报告；2019 年 Sustainability-Linked Loan Principles 推出。</div></div>
+        <div class="coverage-item"><span class="check">39</span><div class="text">Blue economy 是海洋资源的可持续利用，以促进经济增长、改善生计和就业，同时保护海洋生态系统健康。</div></div>
+        <div class="coverage-item"><span class="check">40</span><div class="text">蓝色经济行业包括 aquaculture、fisheries、ports、ship building、coastal tourism、marine extraction、maritime transport、desalination、blue biotechnology、offshore wind、ocean energy、deep water source cooling 等。</div></div>
+        <div class="coverage-item"><span class="check">41</span><div class="text">OECD 建议追求 ocean business 与环境双赢、建设 ocean-economy innovation networks，并用 satellite accounts 改进计量；到 2030 年 ocean economy 全球增加值可能翻倍至超过 US$3tn。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：把风险和机会都落到现金流</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”组织。</div>
+    </div>
+
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 环境因素进入财务模型</div><span class="tag tag-blue">Model</span></div>
+        <div class="source-point"><b>原文要点：</b>ESG assessment 可作为关键财务 ratios 和模型变量的输入，如 revenues、operating costs、capital expenditures。</div>
+        <p class="small"><b>中文解释：</b>真正的投资分析不是“公司环保表现好/坏”，而是这些环境因素会不会改变 DCF 的分子、分母和风险假设。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Model impact</div><div class="eq-op">=</div><div class="eq-rhs">Revenues + OpEx + CapEx + Tax + Provisions + Financing cost + Asset value</div></div>
+          <div class="eq"><div class="eq-lhs">估值逻辑</div><div class="eq-op">→</div><div class="eq-rhs">环境尽调结果 → 模型输入改变 → 比率/DCF/信用判断改变</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>环境因素既可能降低价值，也可能通过效率提升和绿色收入提升价值。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. 双向环境影响</div><span class="tag tag-green">Two-Way</span></div>
+        <div class="source-point"><b>原文要点：</b>部分环境问题来自资产外部并影响资产运营；部分由资产自身造成并影响周边环境和社区，之后通过反馈回路影响财务表现。</div>
+        <p class="small"><b>中文解释：</b>既要看“环境打到资产”，也要看“资产打到环境”。后者常通过社区抗议、诉讼、监管罚款、许可延误反过来进入财务模型。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Two-way impact</div><div class="eq-op">=</div><div class="eq-rhs">Environment → Asset + Asset → Environment → Financial feedback</div></div>
+          <div class="eq"><div class="eq-lhs">题眼钩子</div><div class="eq-op">→</div><div class="eq-rhs">temperature rise/water scarcity 是外部冲击；water effluence/community quality of life 是外部性。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>这也是 double materiality 思路在项目层面的体现。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. 污染和监管如何进模型</div><span class="tag tag-amber">Pathway</span></div>
+        <div class="source-point"><b>原文要点：</b>空气或水污染监管收紧可能导致资产 write-off、CapEx、provisions、OpEx、tax、披露成本、收入损失和融资成本上升。</div>
+        <p class="small"><b>中文解释：</b>监管收紧不是一句宏观风险，它可以拆到很多模型行项目：资产减值、合规投资、罚款拨备、许可成本、税负和利率。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Pollution risk</div><div class="eq-op">→</div><div class="eq-rhs">Regulation + permits + tax + disclosure + reputation + financing</div></div>
+          <div class="eq"><div class="eq-lhs">财务科目</div><div class="eq-op">=</div><div class="eq-rhs">Write-off/impairment + CapEx + provisions + OpEx + tax + revenues + interest</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>模型里要明确是一次性减值、持续性成本、还是资金成本上升，三者估值含义不同。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. GHG、水和物理风险路径</div><span class="tag tag-violet">Risk Inputs</span></div>
+        <div class="source-point"><b>原文要点：</b>GHG、energy、water、solid waste、raw materials、biodiversity、climate impacts 都可通过不同路径影响财务表现。</div>
+        <p class="small"><b>中文解释：</b>GHG 常影响收入、税和 CapEx；水风险影响产量、价格和社区关系；极端天气影响收入、资产价值、重建成本和保险费。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">GHG risk</div><div class="eq-op">=</div><div class="eq-rhs">低碳客户需求 + 碳价/税 + 能源补贴变化 + 技术投资</div></div>
+          <div class="eq"><div class="eq-lhs">Water/physical</div><div class="eq-op">=</div><div class="eq-rhs">水供给不足/社区冲突/极端天气 → revenues + OpEx + CapEx + insurance</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>环境因素不是统一进“风险溢价”，也可能直接进收入和成本预测。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. 环境机会的四大篮子</div><span class="tag tag-green">Opportunities</span></div>
+        <div class="source-point"><b>原文要点：</b>环境机会包括 circular economy、clean and technological innovation、green and ESG-related products、blue economy。</div>
+        <p class="small"><b>中文解释：</b>这些机会不是“环保概念股”，而是低碳转型需要的解决方案、技术、产品和资金渠道。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Opportunities</div><div class="eq-op">=</div><div class="eq-rhs">Circular economy + Cleantech + Green/ESG products + Blue economy</div></div>
+          <div class="eq"><div class="eq-lhs">投资逻辑</div><div class="eq-op">→</div><div class="eq-rhs">问题越大 → 解决方案需求越大 → 可投资现金流越多</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>机会评估仍要看技术成熟度、成本曲线、政策支持、市场接受和竞争格局。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Circular economy 三原则</div><span class="tag tag-teal">Circular</span></div>
+        <div class="source-point"><b>原文要点：</b>循环经济中，产品和材料被修理、再使用、再循环，而不是丢弃；一个流程的废弃物成为另一个流程的投入。</div>
+        <p class="small"><b>中文解释：</b>循环经济不是“产品必须全部退回厂家”，而是系统性减少 waste and pollution，让材料尽量留在经济循环中。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Circular economy</div><div class="eq-op">=</div><div class="eq-rhs">Design out waste/pollution + Keep materials in use + Regenerate natural systems</div></div>
+          <div class="eq"><div class="eq-lhs">商业模式</div><div class="eq-op">→</div><div class="eq-rhs">repair + reuse + recycle + leasing + pay-per-use + take-back</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Practice Problem 的正确答案就是三原则：设计出废弃和污染、保持材料使用、再生自然系统。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Clean technology：技术潜力不等于部署</div><span class="tag tag-blue">Cleantech</span></div>
+        <div class="source-point"><b>原文要点：</b>Cleantech 包括清洁能源、环境、可持续或绿色产品服务。政策支持曾推动风能和太阳能早期成长，成熟后成本显著下降；2023 年低碳转型投资约 US$1.77tn。</div>
+        <p class="small"><b>中文解释：</b>投资清洁技术要区分“技术上能减碳”和“经济上会部署”。部署取决于成本、替代品、社会偏好、基础设施和政策支持，而不是只看技术名称。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Cleantech deployment</div><div class="eq-op">=</div><div class="eq-rhs">Technical potential + Economics + Alternatives + Policy + Social preference</div></div>
+          <div class="eq"><div class="eq-lhs">机会领域</div><div class="eq-op">=</div><div class="eq-rhs">低碳电力 + 热/冷 + 工业 + 建筑 + 交通 + 食品</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>PDF 提醒，技术潜力不能保证实际部署，投资时要看成本曲线和替代方案。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">8. Hydrogen：hope or hype</div><span class="tag tag-amber">Hydrogen</span></div>
+        <div class="source-point"><b>原文要点：</b>氢具有清洁燃烧特征，可用于工业高温过程、长途运输、住宅供热等，但也面临体积密度、钢管脆化、能量转换效率等障碍。</div>
+        <p class="small"><b>中文解释：</b>氢不是万能解。Hydrogen ladder 的意思是：优先用于没有真实替代方案的领域，不要把它硬塞到电池或电气化已经更有优势的用途里。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Hydrogen value</div><div class="eq-op">=</div><div class="eq-rhs">No real alternative + hard-to-abate use case + supportive infrastructure</div></div>
+          <div class="eq"><div class="eq-lhs">Hydrogen risk</div><div class="eq-op">=</div><div class="eq-rhs">density + embrittlement + conversion efficiency + competing alternatives</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>绿氢成本可能受气价、税收抵免和可再生电力激励显著影响。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">9. Green bonds and GSS+</div><span class="tag tag-green">Products</span></div>
+        <div class="source-point"><b>原文要点：</b>Green bonds 为有正面环境或气候收益的项目融资，多数是 use-of-proceeds 或 asset-linked bonds。GSS+ 债务可把融资条款与 ESG 或转型绩效指标挂钩，未达标时 coupon 可能上调。</div>
+        <p class="small"><b>中文解释：</b>Green bond 看资金用途；sustainability-linked debt 看发行人是否达到约定指标，没达到可能提高 coupon。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Green bond</div><div class="eq-op">=</div><div class="eq-rhs">Use of proceeds → eligible green projects</div></div>
+          <div class="eq"><div class="eq-lhs">SLB/SLL</div><div class="eq-op">=</div><div class="eq-rhs">General financing + KPI/target performance → coupon or loan terms</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>绿色标签本身不够，要看用途、指标、报告和外部审阅。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">10. CICERO shades of green</div><span class="tag tag-violet">CICERO</span></div>
+        <div class="source-point"><b>原文要点：</b>CICERO 的 shades of green 用于第二方意见，判断绿色或可持续债券与低碳、气候韧性未来的对齐程度。</div>
+        <p class="small"><b>中文解释：</b>深绿是长期低碳韧性解决方案；浅绿是近期有环境收益但未达到长期韧性方案；红色是高排放、锁定排放和 stranded asset 风险高。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Shades</div><div class="eq-op">=</div><div class="eq-rhs">Dark green → Medium → Light → Yellow → Red</div></div>
+          <div class="eq"><div class="eq-lhs">Light green</div><div class="eq-op">=</div><div class="eq-rhs">near-term emission reduction + not long-term climate resilient solution</div></div>
+        </div>
+        <div class="memory"><b>题眼钩子：</b>Practice Problem 中“near term reduce emissions but not climate resilient long-term solution”选 light green。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">11. Greenwashing 防线</div><span class="tag tag-rose">Integrity</span></div>
+        <div class="source-point"><b>原文要点：</b>绿色金融产品会继续增长，但为避免 greenwashing，环境和气候数据质量、透明度、披露、外部审阅和 second-party opinion 需要改善。</div>
+        <p class="small"><b>中文解释：</b>投资者不能只看产品名字里有没有 green/sustainable，要有自己的框架判断这些资产是否真正符合目标。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Green product check</div><div class="eq-op">=</div><div class="eq-rhs">Eligibility + Use of proceeds + Reporting/impact metrics + Issuer strategy</div></div>
+          <div class="eq"><div class="eq-lhs">Integrity tools</div><div class="eq-op">=</div><div class="eq-rhs">GBP + GLP + external review + taxonomy + disclosure</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>绿色产品供给增加时，筛选框架决定能否避开标签漂绿。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">12. Blue economy</div><span class="tag tag-teal">Ocean</span></div>
+        <div class="source-point"><b>原文要点：</b>World Bank 将 blue economy 定义为可持续使用海洋资源，促进经济增长、改善生计和就业，同时维护海洋生态系统健康。</div>
+        <p class="small"><b>中文解释：</b>蓝色经济不是“污染海洋的产业”或“清理水污染产品”，而是围绕海洋和沿海区域的可持续经济社会活动。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Blue economy</div><div class="eq-op">=</div><div class="eq-rhs">Ocean resources + economic growth/jobs + ecosystem health</div></div>
+          <div class="eq"><div class="eq-lhs">机会领域</div><div class="eq-op">=</div><div class="eq-rhs">fisheries + ports + tourism + desalination + offshore wind + ocean energy + biotechnology</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Practice Problem 的正确答案是 sustainable economic and social activity related to oceans and coastal areas。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Product Map</div>
+        <h2>案例框：把机会和产品放回场景</h2>
+      </div>
+      <div class="head-desc">这些案例来自 PDF 正文和图表，用于记忆“什么因素影响什么财务变量”。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Infrastructure financial model pathways</div><span class="tag tag-blue">Exhibit 27</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Pollution regulation</b><span>Write-off、CapEx、provisions、OpEx、tax、disclosure cost。</span></div>
+            <div class="compact-item"><b>GHG transition</b><span>Revenues 下滑、OpEx/tax 上升、减排技术 CapEx 增加。</span></div>
+            <div class="compact-item"><b>Water scarcity</b><span>Revenue 损失、OpEx 上升、社区冲突、项目延误。</span></div>
+            <div class="compact-item"><b>Extreme weather</b><span>停机、资产减值、重建投资、保险费上升。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Circular economy examples</div><span class="tag tag-green">Cases</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Jurong</div><div class="case-text">产业近距离形成生态系统，一家公司产品可成为另一家公司原料；废弃物燃烧产蒸汽，废水回收再用于工业。</div></div>
+          <div class="case-row"><div class="case-lab">Heineken</div><div class="case-text">102 个生产单元实现零废弃物进填埋场，废弃物转为动物饲料、材料循环、堆肥或能源回收。</div></div>
+          <div class="case-row"><div class="case-lab">Schneider</div><div class="case-text">使用再生和可回收材料，延长产品寿命，引入租赁、按使用付费和回收机制；循环活动占 12% 收入。</div></div>
+          <div class="case-row"><div class="case-lab">Stora Enso</div><div class="case-text">以可再生材料替代化石基材料，体现循环经济中的材料替代和产品再设计机会。</div></div>
+          <div class="case-row"><div class="case-lab">Close the Loop</div><div class="case-text">用旧打印墨盒、软塑料、沥青和再生玻璃铺路，道路表面估计比传统沥青耐用最高 65%。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Clean technology sectors</div><span class="tag tag-teal">Opportunity</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Energy</b><span>太阳能、风电、水电、核能、潮汐、地热；bioenergy 要看来源是否可持续。</span></div>
+            <div class="compact-item"><b>Heat/cooling</b><span>heat pumps、CHP、district heating；高温工业热减碳更难。</span></div>
+            <div class="compact-item"><b>Industry</b><span>电弧炉、钢铁回收、green hydrogen、替代还原剂、CO2 capture/CCS。</span></div>
+            <div class="compact-item"><b>Buildings</b><span>低碳水泥、替代 clinker、建筑全生命周期碳，必要时配合 CCS。</span></div>
+            <div class="compact-item"><b>Transport</b><span>BEV、氨、氢燃料电池、生物燃料。</span></div>
+            <div class="compact-item"><b>Food</b><span>alternative proteins、algae、lab-grown meat、precision/regenerative agriculture。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">EV coal-powered life-cycle question</div><span class="tag tag-amber">LCA</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">EV 没有尾气排放，但需要考虑制造和充电排放。生命周期口径下，即使用高碳电网充电，EV 碳强度约为燃油车一半。</div></div>
+          <div class="case-row"><div class="case-lab">投资含义</div><div class="case-text">低碳技术分析要看全生命周期，而不是只看使用阶段；电力系统脱碳会继续扩大 EV 优势。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">Low-carbon tech value = manufacturing emissions + operation emissions + grid trajectory。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Real estate performance gap</div><span class="tag tag-blue">Standards</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">案例</div><div class="case-text">UK Better Buildings Partnership 承诺 2050 净零，并认为既有能效标准过度关注设计意图，而非实际使用表现。</div></div>
+          <div class="case-row"><div class="case-lab">方法</div><div class="case-text">Design for Performance 借鉴 NABERS，关注目标评级、结果和透明度。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">performance gap = 设计意图和实际运营表现之间的差距。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Examples of sustainable financing transactions</div><span class="tag tag-violet">Exhibit 35</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Louisiana green bond</b><span>沿海洪水防御。</span></div>
+            <div class="compact-item"><b>Dutch sovereign green bond</b><span>Delta Program 下的防洪保护。</span></div>
+            <div class="compact-item"><b>EBRD resilience bond</b><span>东欧和北非气候韧性基础设施。</span></div>
+            <div class="compact-item"><b>Chile sovereign green bond</b><span>低碳交通、低碳建筑升级、水基础设施。</span></div>
+            <div class="compact-item"><b>Enel SDG-linked bond</b><span>一般用途资金，但 coupon 与环境和社会指标挂钩。</span></div>
+            <div class="compact-item"><b>RCBC ASEAN sustainability bond</b><span>绿色和社会项目融资。</span></div>
+            <div class="compact-item"><b>Mexico SDG-linked sovereign</b><span>主权融资与 SDG 相关目标挂钩。</span></div>
+            <div class="compact-item"><b>Seychelles blue bond</b><span>支持可持续渔业和海洋保护。</span></div>
+            <div class="compact-item"><b>Starbucks sustainability bond</b><span>供应链和可持续采购相关融资。</span></div>
+            <div class="compact-item"><b>Thames Water RCF</b><span>sustainability-linked revolving credit facility。</span></div>
+            <div class="compact-item"><b>Solvay SLL</b><span>sustainability-linked loan。</span></div>
+            <div class="compact-item"><b>Luxembourg framework</b><span>sustainability bond framework。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">CICERO shades of green</div><span class="tag tag-green">Second Opinion</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Dark green</b><span>对应长期低碳和气候韧性未来。</span></div>
+            <div class="compact-item"><b>Medium green</b><span>朝长期愿景迈出重要一步，但还未完全达到。</span></div>
+            <div class="compact-item"><b>Light green</b><span>不锁定排放，近期减排或有环境收益，但非长期韧性方案。</span></div>
+            <div class="compact-item"><b>Yellow</b><span>没有明确贡献，或信息太少无法评估。</span></div>
+            <div class="compact-item"><b>Red</b><span>在低碳韧性未来无角色，高排放、锁定风险和搁浅风险最高。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Green Loan Principles</div><span class="tag tag-teal">Four Pillars</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>1 Use of proceeds</b><span>贷款资金有清晰绿色用途。</span></div>
+            <div class="compact-item"><b>2 Project evaluation</b><span>项目可持续目标已评估并向贷款人沟通。</span></div>
+            <div class="compact-item"><b>3 Management</b><span>贷款资金通过项目账户严格管理。</span></div>
+            <div class="compact-item"><b>4 Reporting</b><span>要求详细且严格的报告。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Blue economy development framework</div><span class="tag tag-blue">Ocean</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">定义</div><div class="case-text">可持续利用海洋资源，促进经济增长、改善生计和就业，同时保护海洋生态系统健康。</div></div>
+          <div class="case-row"><div class="case-lab">BEDF</div><div class="case-text">World Bank 和 European Commission 推出框架，帮助沿海国家转向多元和可持续蓝色经济，并增强气候韧性。</div></div>
+          <div class="case-row"><div class="case-lab">路线图</div><div class="case-text">准备政策、财政和行政改革；识别蓝色经济价值创造机会；识别战略金融投资。</div></div>
+          <div class="case-row"><div class="case-lab">OECD</div><div class="case-text">优先行动包括推动海洋商业和环境双赢、建设创新网络，并用 satellite accounts 改进海洋经济计量。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：机会也要回到财务和证据</h2>
+      </div>
+      <div class="head-desc">最后一模块的陷阱是把绿色概念当作确定收益，或者把绿色标签当作质量保证。</div>
+    </div>
+    <div class="grid-2">
+      <div class="trap"><b>1. 环境分析不能只写叙述</b>要落到收入、OpEx、CapEx、税费、拨备、资产价值、融资成本等模型项目。</div>
+      <div class="trap"><b>2. 外部冲击和外部性要分清</b>气温上升、水稀缺是环境影响资产；资产污水、社区影响是资产影响外部环境并反馈到财务。</div>
+      <div class="trap"><b>3. Circular economy 不是所有产品退回厂家</b>核心是设计出废弃和污染、保持材料使用、再生自然系统。</div>
+      <div class="trap"><b>4. 技术潜力不等于实际部署</b>清洁技术投资要看经济性、替代方案、社会偏好、基础设施和政策支持。</div>
+      <div class="trap"><b>5. Biofuel 不一定低碳</b>PDF 特别提醒，大规模木材生物能可能比煤炭释放更多 CO2，并损害森林碳汇。</div>
+      <div class="trap"><b>6. Hydrogen 不适合所有用途</b>氢更适合难减排且缺少替代方案的场景；有些用途电气化/电池更有优势。</div>
+      <div class="trap"><b>7. Green bond 和 sustainability-linked debt 不同</b>前者重点看资金用途；后者重点看 KPI 是否达标及融资条款变化。</div>
+      <div class="trap"><b>8. Light green 不等于 medium green</b>Light green 是近期开减排但非长期韧性方案，Practice Problem 就考这个。</div>
+      <div class="trap"><b>9. 绿色标签不等于低漂绿风险</b>要看 eligibility、use of proceeds、报告、影响指标、外部审阅和发行人整体战略。</div>
+      <div class="trap"><b>10. Blue economy 不是水污染治理产品</b>它是海洋和沿海资源的可持续经济社会活动，同时维护海洋生态健康。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Recall</div>
+        <h2>考前压缩：用 14 条式子收尾第 3 章</h2>
+      </div>
+      <div class="head-desc">最后一页建议反复看“左边概念，右边财务落点”。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>财务建模线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Environmental factor → model</b> = revenues + OpEx + CapEx + tax + provisions + financing cost + asset value。</div>
+          <div class="formula"><b>Two-way impact</b> = environment impacts asset + asset impacts environment + feedback to financials。</div>
+          <div class="formula"><b>Pollution regulation</b> = write-off/impairment + CapEx + provisions + OpEx + tax + disclosure cost。</div>
+          <div class="formula"><b>GHG risk</b> = low-carbon demand shift + carbon price/tax + subsidy loss + technology CapEx。</div>
+          <div class="formula"><b>Water risk</b> = lower production/revenue + higher water price/OpEx + community conflict + delay/fines。</div>
+          <div class="formula"><b>Physical climate risk</b> = shutdown + asset damage + repair/rebuild CapEx + insurance premium。</div>
+          <div class="formula"><b>Biodiversity/habitat</b> = operating restrictions + structure alterations + monitoring/reporting costs。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>机会和产品线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Opportunities</b> = circular economy + cleantech + green/ESG products + blue economy。</div>
+          <div class="formula"><b>Circular economy</b> = design out waste/pollution + keep materials in use + regenerate natural systems。</div>
+          <div class="formula"><b>Cleantech</b> = technology potential + economics + alternatives + policy + adoption。</div>
+          <div class="formula"><b>Green bond</b> = use of proceeds for eligible green projects。</div>
+          <div class="formula"><b>Sustainability-linked debt</b> = financing terms linked to ESG/transition KPIs。</div>
+          <div class="formula"><b>CICERO light green</b> = near-term environmental benefit + not long-term climate resilient solution。</div>
+          <div class="formula"><b>Blue economy</b> = sustainable ocean-related economic/social activity + ecosystem health。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">复习节奏建议：本页之后先回看模块 1-8 的“考前压缩”，确认每个公式都能反推 PDF 原文含义，再进入 Key Facts / Further Reading 汇总页。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：看到题眼，反推知识点</h2>
+      </div>
+      <div class="head-desc">优先使用 PDF Practice Problems 中属于本模块的正式题，并补充财务建模反推题。</div>
+    </div>
+
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div>
+            <div class="qtext">A sustainability bond funding a climate-friendly project that will reduce emissions in the near term but does not represent a climate resilient long-term solution would be graded by CICERO as:</div>
+            <div class="qchoices">A. brown<br>B. light green<br>C. medium green</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：CICERO 的 light green 对应近期减少排放或有环境收益，但不是长期低碳、气候韧性解决方案。<br><b>逻辑等式：</b>Light green = near-term benefit + not long-term resilient。<br><b>题眼钩子：</b>near term + not climate resilient long-term。<br><b>易错提醒：</b>Medium green 是朝长期愿景迈出重要一步，但还未完全达到。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div>
+            <div class="qtext">Which of the following best describes the principles of a circular economy?</div>
+            <div class="qchoices">A. Designing out waste and pollution, keeping materials in use, and regenerating natural systems<br>B. Ensuring that all products are returned to manufacturers to reuse component parts<br>C. Producing goods only for consumption by customers in the manufacturer’s domestic market</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：循环经济三原则是设计出废弃和污染、保持材料使用、再生自然系统。<br><b>逻辑等式：</b>Circular economy = design out + keep in use + regenerate。<br><b>题眼钩子：</b>principles of circular economy。<br><b>易错提醒：</b>不是所有产品都必须退回厂家，也不是只面向国内市场。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div>
+            <div class="qtext">The blue economy is best described as:</div>
+            <div class="qchoices">A. industrial activities that generate pollution of oceans and inland waterways<br>B. products and processes used to clean up water-based environmental pollution<br>C. sustainable economic and social activity related to oceans and coastal areas</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：C。</b>中文解析：蓝色经济是围绕海洋和沿海区域的可持续经济社会活动，同时维护相关生态系统健康。<br><b>逻辑等式：</b>Blue economy = ocean resources + sustainable growth/jobs + ecosystem health。<br><b>题眼钩子：</b>sustainable + oceans/coastal areas。<br><b>易错提醒：</b>不要把 blue economy 误解成水污染治理产品或污染海洋的产业。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div>
+            <div class="qtext">A tightening of air or water pollution regulations is most likely to affect which financial model inputs?</div>
+            <div class="qchoices">A. Asset write-offs, CapEx, provisions, OpEx, taxes, revenues, and financing costs<br>B. Only the company’s brand colors and logo design<br>C. Only the number of employees in the finance department</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：PDF Exhibit 27 将污染监管收紧映射到资产减值/提前退役、CapEx、拨备、OpEx、税费、声誉收入影响和融资成本。<br><b>逻辑等式：</b>Pollution regulation → write-off + CapEx + provisions + OpEx + tax + revenues + financing cost。<br><b>题眼钩子：</b>tightening regulations。<br><b>易错提醒：</b>环境监管不是只影响合规部门，会直接进入估值模型。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div>
+            <div class="qtext">In an infrastructure asset model, increased water scarcity for a water-reliant asset is most likely to affect:</div>
+            <div class="qchoices">A. revenue and operating expenses<br>B. only the color of the sustainability report<br>C. only the par value of issued shares</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：水资源不足可能让水依赖资产损失产量和收入，也可能因水价上升导致运营成本增加。<br><b>逻辑等式：</b>Water scarcity → insufficient supply → revenue loss + higher OpEx。<br><b>题眼钩子：</b>water-reliant asset。<br><b>易错提醒：</b>水风险不是抽象环境议题，而是直接影响产量和运营成本。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div>
+            <div class="qtext">Which statement best distinguishes a green bond from sustainability-linked debt?</div>
+            <div class="qchoices">A. A green bond focuses on eligible use of proceeds, while sustainability-linked debt links financing terms to performance targets.<br>B. A green bond can never finance climate-related projects.<br>C. Sustainability-linked debt always has no performance indicators.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：绿色债券重点是资金用于合格绿色项目；可持续挂钩债务的融资条款与环境、社会或转型绩效指标挂钩。<br><b>逻辑等式：</b>Green bond = use-of-proceeds；SLB/SLL = KPI-linked terms。<br><b>题眼钩子：</b>use of proceeds vs coupon/terms linked to targets。<br><b>易错提醒：</b>不要只看标签，要看产品结构。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div>
+            <div class="qtext">The four pillars of the Green Loan Principles include:</div>
+            <div class="qchoices">A. clear use of proceeds, project evaluation, management of proceeds, and reporting<br>B. governance, strategy, risk management, and metrics and targets<br>C. land, ocean, freshwater, and atmosphere</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：GLP 四支柱是绿色资金用途、项目可持续目标评估和沟通、贷款资金严格管理、严格报告。<br><b>逻辑等式：</b>GLP = proceeds + evaluation + management + reporting。<br><b>题眼钩子：</b>Green Loan Principles。<br><b>易错提醒：</b>选项 B 是 TCFD 核心披露要素；选项 C 是 TNFD realms。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div>
+            <div class="qtext">In clean technology investing, why does the PDF caution that technical potential does not guarantee deployment?</div>
+            <div class="qchoices">A. Deployment also depends on economics, alternatives, social preferences, infrastructure, and policy support.<br>B. Clean technologies never reduce emissions on a life-cycle basis.<br>C. All clean technologies are already fully deployed globally.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：技术能减碳只是第一步，实际部署还取决于经济性、替代方案、社会偏好、基础设施和政策。<br><b>逻辑等式：</b>Deployment = technical potential + economics + alternatives + social preference + policy。<br><b>题眼钩子：</b>does not guarantee deployment。<br><b>易错提醒：</b>EV 生命周期案例说明低碳技术通常有优势，但仍要看实际条件。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div>
+            <div class="qtext">What does the “performance gap” in the real estate case refer to?</div>
+            <div class="qchoices">A. The difference between design intent and how a building actually performs in use<br>B. The gap between two unrelated stock indexes<br>C. The difference between ocean and freshwater ecosystems</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：BBP 认为既有标准关注设计意图，而非建筑实际使用表现，因此存在 performance gap。<br><b>逻辑等式：</b>Performance gap = design intent - actual operational performance。<br><b>题眼钩子：</b>real estate / NABERS / Design for Performance。<br><b>易错提醒：</b>这和金融产品表现无关，是建筑能效标准问题。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">10</div>
+          <div>
+            <div class="qtext">Which green product quality check is most consistent with the PDF’s anti-greenwashing discussion?</div>
+            <div class="qchoices">A. Eligibility of assets, use of proceeds, transparency/reporting, impact measures, and issuer strategy<br>B. Whether the product name contains the word “green”<br>C. Whether the issuer avoids any external review</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：投资者需要清晰框架评估绿色资产，包括资产资格、资金用途、透明和报告要求、影响指标以及发行人整体可持续战略。<br><b>逻辑等式：</b>Anti-greenwashing = eligibility + proceeds + reporting + impact + strategy。<br><b>题眼钩子：</b>greenwashing / transparency / reporting。<br><b>易错提醒：</b>绿色名称不是质量保证。</div>
+      </article>
+    </div>
+  </section>
+
+  <div class="footer-note">资料依据：本页内容依据 ch03/esg-03.pdf 第 189-207 页及本章 Practice Problems 中相关题目整理；ch04 仅参考页面结构和交互风格。</div>
+</main>
+
+<script>
+const tabs=document.querySelectorAll('.tab');
+const panels=document.querySelectorAll('.panel');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const id=tab.dataset.tab;
+    tabs.forEach(t=>t.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel=document.getElementById(id);
+    if(panel){
+      panel.classList.add('active');
+      panel.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

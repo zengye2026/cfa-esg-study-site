@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.6 Module 2 · 6.1.2 Benefits and Limitations of Engagement</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.card.dark .small{color:#cbd5e1}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:680px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.concept-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.concept-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.concept-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;margin:10px 0}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(92px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.metric{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.metric-num{font-family:var(--serif);font-size:28px;font-weight:950;line-height:1;color:var(--dark)}
+.metric-lab{font-size:12px;font-weight:900;color:var(--muted);line-height:1.35;margin-top:5px}
+.metric-desc{font-size:12.5px;color:var(--sub);line-height:1.55;margin-top:6px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.concept-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.concept-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1080px){
+  .branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flowline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow-step:not(:last-child)::after{display:none}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid-2,.grid-3,.metric-grid{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:25px;line-height:1.13}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 6</span>
+        <span class="pill">Module 2</span>
+        <span class="pill">6.1.2</span>
+        <span class="pill">Benefits & Limitations</span>
+      </div>
+      <h1>Benefits and Limitations of Engagement</h1>
+      <p class="lead">本页覆盖第 6 章 6.1.2：投资者参与的价值、成功衡量和限制。重点是把“为什么参与有用”与“什么时候参与可能无效”同时记住。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Engagement value == 信息交换 + 知识提升 + 关系建设 + 明确目标 + 持续跟进；Engagement limits == 耗时定制 + 资源约束 + 公司不愿改变 + 目标不清 + 只报活动不报结果。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Module Focus</div>
+      <div class="side-big">好参与不是“见了几次面”，而是目标是否实现、行为是否改变、长期价值是否被保护。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">价值动态</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">核心研究</div></div>
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">实践案例</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>考点提醒：</b>衡量 engagement 成功，优先看预先设定的目标是否达成，不是先看股价，也不是只看披露了多少活动。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑等式</button>
+    <button class="tab" data-tab="evidence">研究与案例</button>
+    <button class="tab" data-tab="mistakes">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>参与价值链：从对话到长期价值</h2>
+      </div>
+      <div class="head-desc">按照逻辑等式心象术，拆“benefits and limitations”：先看价值怎么产生，再看价值为什么可能落空。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Benefits and Limitations of Engagement<br>有目标的对话，只有转化为结果才算真正有价值</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1 信息交换</div><p>投资者和公司交换观点，改善信息流。</p><p>对应 communicative dynamics。</p></div>
+        <div class="branch"><div class="branch-title">2 知识提升</div><p>理解公司、行业、技术和 ESG 方法。</p><p>对应 learning dynamics。</p></div>
+        <div class="branch"><div class="branch-title">3 关系建设</div><p>建立信任和沟通渠道，更容易推动改变。</p><p>对应 political dynamics。</p></div>
+        <div class="branch"><div class="branch-title">4 目标衡量</div><p>成功要按预先目标衡量。</p><p>股价表现只是从属结果。</p></div>
+        <div class="branch"><div class="branch-title">5 限制边界</div><p>耗时、定制、资源有限，公司也可能不愿变。</p><p>不是真参与时要识别。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>设目标</h3><p>没有目标只是了解情况。</p></div>
+        <div class="flow-step"><h3>建理解</h3><p>学习公司背景和具体处境。</p></div>
+        <div class="flow-step"><h3>促改变</h3><p>表达立场并推动实践改进。</p></div>
+        <div class="flow-step"><h3>看结果</h3><p>用里程碑或 KPI 判断进展。</p></div>
+        <div class="flow-step"><h3>保价值</h3><p>最终服务长期价值和受托责任。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">价值线</span>
+        <h3>参与能创造信息价值</h3>
+        <p class="small">公司理解投资者期待，投资者理解公司战略、风险和改变能力，双方信息流更充分。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">衡量线</span>
+        <h3>成功要回到目标</h3>
+        <p class="small">如果目标是提高董事会性别多样性，最后只换成更独立但仍是男性董事，就不能算这个目标成功。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-rose">限制线</span>
+        <h3>参与也可能只是借口</h3>
+        <p class="small">如果公司不愿改变，或者基金经理只是用 engagement 为继续持有不合适资产找理由，就不是高质量参与。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-06.pdf` 第 337-344 页整理，覆盖 6.1.2 的价值、证据、限制和实践案例。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Benefits</span> 参与为什么有价值</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement and stewardship 有助于提升 shareholder value，并支持投资者履行 fiduciary duty。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">参与改善 investor 和 investee 之间的信息流，让双方讨论并辩论关键议题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">参与让双方互相学习、建立关系，并通过股东表达观点推动改变。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 提出三种创造价值的动态：communicative dynamics、learning dynamics、political dynamics。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Good engagement 需要深入理解公司业务，尊重公司具体处境，建立沟通和关系，不是简单要求公司改变。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">参与可以帮助投资者理解商业模式适应能力，以及管理层和董事会是否愿意战略性应对挑战。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Success Measurement</span> 成功如何衡量</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement 通常被定义为 purposeful dialogue with a specific objective，目标必须在开始时设定。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">参与成功首先看 pre-agreed objectives 是否达成，而不是先看股价表现。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">很多参与是为了 safeguarding value，因此不一定能直接证明股价如果没有参与会怎样。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Stewardship Code 2020 强调 outcomes，要求披露参与活动带来的具体结果和客户/受益人利益。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">真正的 engagement 与 monitoring 不同：monitoring 主要帮助投资者理解表现和机会，支持 buy/sell/hold 决策。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement dialogues 是投资者与被投实体不同层级进行双向交流，表达立场和关注，以实现公司行为改变。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Evidence</span> 实证研究和数字</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Hermes UK Focus Fund 研究中，整体目标成功率约 65%，重组和财务政策目标成功最高。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Hermes 研究中，薪酬政策改变成功率较低，约 25%；投资者关系改善约 44%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Six Continents 案例目标包括简化集团结构、向股东返还现金、拆分 CEO 和 chair 角色、限制进一步收购。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Dimson 等人的 Active Ownership 研究覆盖 2,000 多次 engagement、600 多家公司，整体成功率约 18%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">成功 engagement 往往出现在目标公司有声誉顾虑且有能力实施改变的情形。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">平均 ESG engagement 在初始参与后一年的 abnormal return 约 2.3%，成功 engagement 约 7.1%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">成功 climate change engagement 一年后 excess return 超过 10%，成功 corporate governance engagement 接近 9%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">典型成功需要时间，平均从初次参与到成功约 1.5 年，通常需要 2 到 3 次 engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Hoepner 等研究发现 ESG engagement 可降低 downside risk，成功时效果更强。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Limits and Reporting</span> 限制、误用和披露质量</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Good engagement 通常耗时，并且需要按公司、行业和地区具体情况定制。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有些公司不愿改变，也不愿进入有成效的对话，对这些公司 engagement 的利益有限。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有些所谓 engagement 可能只是继续持有不合适公司的借口，不应视为真正参与。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">因股价下跌才突然开始的 knee-jerk engagement，往往不如长期一致的信息传递有效。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">很多 stewardship reports 容易报告大量活动次数，而不是高质量活动和结果。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Redington 分析指出，领先投资管理人的报告仍有基本信息缺口，且很多案例未能同时体现主动性和实质性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">优质报告应诚实披露成功和失败，而不是只追求活动数量。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：价值和限制一起记</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+
+    <div class="concept-grid">
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">1. 三种价值动态</div><span class="tag tag-blue">PRI</span></div>
+        <p class="small"><b>原文要点：</b>PRI 将 ESG engagement 创造价值的机制概括为 communicative、learning、political 三类 dynamics。</p>
+        <div class="quote-box"><b>中文解释：</b>参与之所以有价值，不只是“投资者施压”。它先让双方交换信息，再让投资者和公司获得新知识，最后通过关系建设提高改变可能性。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">价值动态</div><div class="eq-op">==</div><div class="eq-rhs">communicative 信息交换 + learning 知识提升 + political 关系建设</div></div>
+          <div class="eq"><div class="eq-lhs">改变前提</div><div class="eq-op">==</div><div class="eq-rhs">理解公司 + 建立关系 + 形成说服力</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干若说投资者想理解创新方法或获得新 ESG 知识，优先对应 learning dynamics。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">2. 成功衡量</div><span class="tag tag-green">Objectives</span></div>
+        <p class="small"><b>原文要点：</b>engagement 成功首先按预先设定的目标是否达成衡量，财务表现可能出现，但从属于目标达成。</p>
+        <div class="quote-box"><b>中文解释：</b>如果参与目标是“提高董事会性别多样性”，那么换来更独立、更有能力但仍然没有性别多样性的董事，不等于该目标成功。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">成功</div><div class="eq-op">==</div><div class="eq-rhs">预设目标达成 + 可观察结果 + 长期价值逻辑</div></div>
+          <div class="eq"><div class="eq-lhs">不等式</div><div class="eq-op">≠</div><div class="eq-rhs">股价上涨本身，或公司政策看起来更好</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Practice Problems 里会考：engagement success 最好按 engagement objectives 的 outcomes 判断。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">3. Monitoring vs Engagement</div><span class="tag tag-violet">区分</span></div>
+        <p class="small"><b>原文要点：</b>Investor Forum 区分 monitoring dialogues 和 engagement dialogues。前者支持投资决策，后者以改变为目标。</p>
+        <div class="quote-box"><b>中文解释：</b>monitoring 像“我想更懂这家公司，所以问问题”；engagement 像“我有明确立场，希望公司改变，所以双向沟通”。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Monitoring</div><div class="eq-op">==</div><div class="eq-rhs">理解表现和机会 + 详细提问 + 支持 buy/sell/hold</div></div>
+          <div class="eq"><div class="eq-lhs">Engagement</div><div class="eq-op">==</div><div class="eq-rhs">双向表达 + 明确目标 + 促成公司行为改变</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 incremental buy/sell/hold decisions 是 monitoring；看到 targeted objective 和 change outcomes 是 engagement。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">4. 实证价值</div><span class="tag tag-teal">Evidence</span></div>
+        <p class="small"><b>原文要点：</b>研究显示，围绕重大且相关议题并持续推进的 engagement 可以改变公司行为，并带来价值。</p>
+        <div class="quote-box"><b>中文解释：</b>不是所有参与都成功，但成功参与往往伴随异常正收益、下行风险降低，且通常需要时间和多轮沟通。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">实证价值</div><div class="eq-op">==</div><div class="eq-rhs">重大议题 + 持续推进 + 公司可改变 + 行为改善 + 长期价值</div></div>
+          <div class="eq"><div class="eq-lhs">时间特征</div><div class="eq-op">==</div><div class="eq-rhs">平均约 1.5 年 + 2 到 3 次 engagement</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>成功 engagement 后一年 abnormal return 的高频数字是约 7.1%，普通 ESG engagement 平均约 2.3%。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">5. 限制和误用</div><span class="tag tag-rose">Limits</span></div>
+        <p class="small"><b>原文要点：</b>engagement 可能无效或不适当，尤其当公司不愿改变、没有生产性对话，或投资者只是把它当成继续持有的借口。</p>
+        <div class="quote-box"><b>中文解释：</b>真正参与需要目标、持续性和改变路径。股价跌了才临时着急沟通，或者公司根本不愿意回应，都很难有效。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">参与限制</div><div class="eq-op">==</div><div class="eq-rhs">耗时定制 + 资源有限 + 公司不愿变 + 目标不清 + 沟通无结果</div></div>
+          <div class="eq"><div class="eq-lhs">伪参与</div><div class="eq-op">==</div><div class="eq-rhs">用 engagement 名义掩盖继续持有或错误投资决策</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干如果描述公司 unlikely to change 或 no productive dialogue，说明 engagement 的 benefits limited。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">6. 结果报告</div><span class="tag tag-amber">Outcomes</span></div>
+        <p class="small"><b>原文要点：</b>许多 stewardship reports 会报告大量活动，但高质量报告更关注实质目标、结果、失败和成功。</p>
+        <div class="quote-box"><b>中文解释：</b>“我们见了 500 次公司”不等于“我们推动了 500 个结果”。报告质量要看是否说明目标、行动、里程碑和 outcome。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">好报告</div><div class="eq-op">==</div><div class="eq-rhs">目标 + 活动 + 结果 + 失败披露 + 客户利益</div></div>
+          <div class="eq"><div class="eq-lhs">差报告</div><div class="eq-op">==</div><div class="eq-rhs">活动数量堆砌 + 缺少实质性 outcome</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>UK Stewardship Code 2020 的思路是 outcomes，不是只报 policy statements 或 activity counts。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="evidence" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Evidence and Cases</div>
+        <h2>研究与案例：参与如何真的产生结果</h2>
+      </div>
+      <div class="head-desc">这些内容容易出选择题：数字、目标、研究结论和案例路径都要能反推。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Hermes UK Focus Fund：目标达成和财务政策</div><span class="tag tag-blue">Study</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">样本</div><div class="case-text">研究 Hermes Focus Fund 早期 41 项投资，并根据每项 engagement 起初设定的目标判断成功。</div></div>
+          <div class="case-row"><div class="case-lab">结论</div><div class="case-text">整体目标成功率约 65%，重组和财务政策目标成功最高，董事会变化略低。</div></div>
+          <div class="case-row"><div class="case-lab">低成功率</div><div class="case-text">薪酬政策改变约 25%，投资者关系改善约 44%。</div></div>
+          <div class="metric-grid">
+            <div class="metric"><div class="metric-num">65%</div><div class="metric-lab">overall success</div><div class="metric-desc">按预设目标判断。</div></div>
+            <div class="metric"><div class="metric-num">25%</div><div class="metric-lab">remuneration policy</div><div class="metric-desc">薪酬改变成功较低。</div></div>
+            <div class="metric"><div class="metric-num">90%</div><div class="metric-lab">excess return attributed</div><div class="metric-desc">超额收益中大部分归因于 activist outcomes。</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Six Continents：四个目标推动结构改变</div><span class="tag tag-green">Case</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">目标 1</div><div class="case-text">简化 conglomerate structure。</div></div>
+          <div class="case-row"><div class="case-lab">目标 2</div><div class="case-text">向股东返还现金。</div></div>
+          <div class="case-row"><div class="case-lab">目标 3</div><div class="case-text">拆分 chair 和 CEO 角色。</div></div>
+          <div class="case-row"><div class="case-lab">目标 4</div><div class="case-text">限制进一步收购，因为基金认为这些收购破坏价值。</div></div>
+          <div class="case-row"><div class="case-lab">结果</div><div class="case-text">啤酒业务出售，酒店业务和英国 pubs 业务拆分，现金回购，治理改变，收购暂停。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Active Ownership：成功参与的数字</div><span class="tag tag-violet">Dimson et al.</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">样本</div><div class="case-text">1999-2009 年，超过 2,000 次 engagement，覆盖 600 多家美国被投公司。</div></div>
+          <div class="case-row"><div class="case-lab">成功条件</div><div class="case-text">目标公司有声誉顾虑，并且有能力实施改变时，成功可能性更高。</div></div>
+          <div class="case-row"><div class="case-lab">时间</div><div class="case-text">典型成功平均需要约 1.5 年，通常需要 2 到 3 次沟通。</div></div>
+          <div class="metric-grid">
+            <div class="metric"><div class="metric-num">18%</div><div class="metric-lab">overall success</div><div class="metric-desc">整体成功率。</div></div>
+            <div class="metric"><div class="metric-num">2.3%</div><div class="metric-lab">average ESG engagement</div><div class="metric-desc">初始参与后一年异常收益。</div></div>
+            <div class="metric"><div class="metric-num">7.1%</div><div class="metric-lab">successful engagement</div><div class="metric-desc">成功参与后一年异常收益。</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">参与实践：VF、Siam Cement、Imperial Brands</div><span class="tag tag-teal">Practice</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">VF Corp</div><div class="case-text">Boston Common 围绕棉花和皮革供应链水风险长期参与，公司改善报告、做重大风险评估，并加入 Better Cotton Initiative。</div></div>
+          <div class="case-row"><div class="case-lab">Siam Cement</div><div class="case-text">Federated Hermes EOS 通过会谈和 TCFD workshop 推动公司改善气候治理、情景分析和转型准备。</div></div>
+          <div class="case-row"><div class="case-lab">Imperial</div><div class="case-text">Investor Forum 与成员围绕战略方向、运营执行和披露参与，公司随后宣布处置计划并改善沟通和分部报告。</div></div>
+          <div class="case-row"><div class="case-lab">总式</div><div class="case-text">案例分析 == 议题明确 + 多轮沟通 + 公司回应 + 可观察行动。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">AXA IM：成功、升级和失败都要披露</div><span class="tag tag-amber">Reporting</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">CRH</div><div class="case-text">AXA IM 从 2021 年开始参与，要求公司发布更有雄心的脱碳计划，之后公司验证 SBTi 目标并展示减排路径。</div></div>
+          <div class="case-row"><div class="case-lab">升级例子</div><div class="case-text">包括给董事会委员会主席写信、与其他投资者协作、在 AGM 提问、反对气候转型计划、共同提交股东提案、因腐败担忧撤资。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">高质量 stewardship reporting 要展示具体目标和结果，也要能诚实呈现失败或升级动作。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">何时必须作出 stewardship 判断</div><span class="tag tag-rose">Required View</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">公司行动</div><div class="case-text">例如 share issuance，投资者要决定是否参与。</div></div>
+          <div class="case-row"><div class="case-lab">收购事项</div><div class="case-text">例如 proposed takeovers，投资者要决定卖出，或在允许时继续持有。</div></div>
+          <div class="case-row"><div class="case-lab">投票事项</div><div class="case-text">Voting 现在也常被视为 client asset，需要认真考虑并审慎行使。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">受托责任不是抽象原则，遇到影响资产价值的事项时，投资者必须形成判断。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mistakes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>易错点：别把“活动、目标、结果”混在一起</h2>
+      </div>
+      <div class="head-desc">这一模块的考试陷阱常常是拿“活动数量、股价、政策改善”来替代目标达成。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Engagement value ==</b> communicative dynamics + learning dynamics + political dynamics。</div>
+          <div class="formula"><b>Engagement success ==</b> pre-agreed objectives delivered over time。</div>
+          <div class="formula"><b>Monitoring ==</b> understand performance and opportunity for buy/sell/hold。</div>
+          <div class="formula"><b>Engagement ==</b> two-way sharing + clear investor position + targeted objective。</div>
+          <div class="formula"><b>Good reporting ==</b> objectives + activity + outcomes + honest failures。</div>
+          <div class="formula"><b>Limits ==</b> time-consuming + tailored + resource intensive + company may not change。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Learning vs Communicative</b>想理解新方法或新知识是 learning；单纯交换信息是 communicative。</div>
+          <div class="trap"><b>Outcome vs Activity</b>做了多少次会谈不是结果。结果要看目标是否实现、公司行为是否改变。</div>
+          <div class="trap"><b>股价表现 vs 参与成功</b>股价可作为结果之一，但成功首先按 engagement objectives 衡量。</div>
+          <div class="trap"><b>Monitoring vs Engagement</b>monitoring 是为了更好投资决策；engagement 是为了推动被投方改变。</div>
+          <div class="trap"><b>长期一致 vs 突然反应</b>长期清晰沟通更有效；股价跌后才临时参与通常较弱。</div>
+          <div class="trap"><b>真实参与 vs 持有借口</b>如果公司不愿改变，engagement 可能只是继续持有问题公司的借口。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">记忆线：看到“理解知识”找 learning；看到“成功衡量”找 objectives/outcomes；看到“买卖持有判断”找 monitoring；看到“推动公司改变”找 engagement。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖模块 2</h2>
+      </div>
+      <div class="head-desc">点击“看答案”自测。正式 Practice Problems 会放到最后的三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">PRI 提出的三种 engagement value dynamics 分别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">communicative dynamics 信息交换，learning dynamics 知识提升，political dynamics 关系建设。等式：价值动态 == 信息 + 知识 + 关系。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">如果投资者想理解被投公司新的 GHG tracking methodology，属于哪种 dynamics？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">learning dynamics。题眼是 understand / enhance knowledge / innovative methodology。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">衡量 engagement success 的首要标准是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">看预先设定的 engagement objectives 是否达成，而不是先看股价表现、活动次数或笼统的政策改善。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Monitoring dialogues 与 engagement dialogues 的核心区别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Monitoring 是为了理解公司表现和机会，支持 buy/sell/hold 决策；engagement 是有目标的双向对话，投资者表达立场并推动公司行为改变。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Dimson 等研究中，成功 ESG engagement 一年后的 abnormal return 约是多少？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">约 7.1%。普通 ESG engagement 平均约 2.3%，成功 climate engagement 超过 10%，成功 governance engagement 接近 9%。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">为什么 engagement 可能无效或不适当？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">如果公司不愿改变、没有意愿进入生产性对话，或者投资者只是把 engagement 当成继续持有不合适资产的借口，参与的实际利益会很有限。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">高质量 stewardship reporting 应该强调什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">应强调目标、活动、具体结果、客户和受益人利益，也要诚实披露失败和升级动作，而不是只堆活动数量。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">为什么 good engagement 通常耗时且需要定制？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为投资者需要理解公司、行业、地区和文化背景，尊重公司具体处境，建立信任和关系，并持续推动目标达成。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const open = card.classList.toggle('show');
+    btn.textContent = open ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

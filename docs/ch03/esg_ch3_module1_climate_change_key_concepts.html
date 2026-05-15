@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 1：Climate Change Key Concepts</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%}
+h1{font-family:var(--serif);font-size:clamp(28px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:620px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:78px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">3.1.1 前半</span>
+        <span class="pill">Environmental Factors</span>
+      </div>
+      <h1>Climate Change Key Concepts</h1>
+      <p class="lead">本页先把第 3 章最基础的一组气候概念讲透：环境因素为什么会影响投资、温室气体为什么会升温、行星边界为什么重要、碳预算和净零为什么是同一件事的两个视角。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Climate change key concepts == 人类活动改变大气成分 + GHG 积累造成升温 + 地球边界被突破 + 碳预算快速变小 + 情景与临界点放大不确定性 + 成本最终回到投资价值</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">3.1.1 解释气候变化相关关键概念：本模块覆盖定义、GHG、planetary boundaries、carbon budget、scenario、tipping elements 和 climate cost。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">6/9</div><div class="mini-lab">行星边界已越界</div></div>
+        <div class="mini-stat"><div class="mini-num">2050</div><div class="mini-lab">净零 CO2 关键节点</div></div>
+      </div>
+      <div class="side-note">记忆抓手：把气候变化想成“浴缸”。水龙头是新排放，浴缸水位是大气存量，排水口是吸收和移除；水位不再上涨的时点，就是净零。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">概念卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看主线：从一吨排放到投资损失</h2>
+      </div>
+      <div class="head-desc">按照“逻辑等式心象术”，本模块不背散点名词，而是顺着“排放进入系统、系统变得不稳定、投资必须定价”这一条线。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Climate Change Key Concepts<br>排放进入大气系统，最后进入投资模型</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">问题范围</div>
+          <p>E 包括 climate change、natural resources、pollution、waste、circular economy。</p>
+          <p>这些议题相互连接，并会影响 business activities。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">升温机制</div>
+          <p>GHGs 允许太阳光进入，却阻止部分红外辐射散出。</p>
+          <p>CO2 浓度、methane 短期冲击、land-use change 都是题眼。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">系统边界</div>
+          <p>Planetary boundaries 描述地球稳定运行的安全范围。</p>
+          <p>越界后进入更高风险、更高不确定性区域。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">预算路径</div>
+          <p>Carbon budget 是还能排多少 CO2 的概率性额度。</p>
+          <p>Net zero 是新增排放和移除相等，温度才开始稳定。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">财务后果</div>
+          <p>Scenarios、tipping elements、discounting、dismal theorem 都是在处理不确定性和尾部风险。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>人类活动</h3><p>化石燃料、土地变化、工业、农业释放 GHG。</p></div>
+        <div class="flow-step"><h3>大气存量</h3><p>CO2 长寿命累积，methane 短期升温强。</p></div>
+        <div class="flow-step"><h3>地球系统</h3><p>边界越界、反馈回路、tipping elements。</p></div>
+        <div class="flow-step"><h3>情景路径</h3><p>碳预算、NDC、RCP8.5、净零时间。</p></div>
+        <div class="flow-step"><h3>投资影响</h3><p>收入、资产、负债、折现率和风险溢价被重估。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">拆题目</span>
+        <h3>Climate change</h3>
+        <p class="small">拆成 climate + change：不是普通天气波动，而是人类活动改变大气成分后，叠加在自然变动之上的气候改变。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">找隐藏线</span>
+        <h3>从“排放”到“估值”</h3>
+        <p class="small">排放不是环境口号，而是未来政策、成本、资产减值、保险损失、供应链中断和投资机会的起点。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考试提醒</span>
+        <h3>数字只背有钩子的</h3>
+        <p class="small">419 ppm、6 of 9、150/250 billion tons、40-60 GtCO2e/year、2050 net zero、1.5/2 degrees，都是高频题眼。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">本清单只覆盖模块 1。mitigation、adaptation、resilience 的策略细节放到模块 2。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">导论</span> Environmental factors 为什么和投资有关</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">E 的范围很广，包括 climate change、natural resources、pollution、waste、circular economy。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">环境决策同时包含事实判断和规范判断，投资者还要考虑风险、回报和影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD 建议被广泛接受，并由 IFRS Foundation 延续，形成企业气候披露共同框架。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">气候概念</span> Climate change, GHGs and climate response</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">气候变化定义：由人类活动直接或间接造成的大气成分变化，并叠加在自然气候变动之上。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CO2 是重要贡献者，2023 年 5 月全球平均约 419 ppm，处于 800,000 年未见水平。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Climate sensitivity 看 CO2 翻倍后的长期温度变化；transient climate response 看约 70 年逐步翻倍时的变化速度。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Methane、nitrous oxide、fluorinated gases 的全球变暖潜势更高；methane 寿命短但短期冲击强。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">系统风险</span> Boundaries, carbon budget and scenarios</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2023 年更新显示，9 个 planetary boundaries 中已有 6 个因人类活动被突破。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Carbon budget 是在一定概率下不超过某温度阈值还能排放的 CO2 总量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Carbon budget 具有 probabilistic 和 path dependent 两个特点。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Scenario 可以是 normative、predictive 或 what-if；RCP8.5 是高排放 business-as-usual 情景，但近年被认为可能性较低。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-rose">尾部风险</span> Impacts, tipping elements and costs</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">全球平均温升会掩盖地区、陆地/海洋、季节差异；每 0.1°C 额外升温都可能扩大威胁。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Feedback loops 包括水汽增加、永久冻土释放 methane、冰雪反照率下降。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Tipping elements 是达到阈值后可能出现的大规模、长期或不可逆变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Dismal theorem 提醒：传统成本收益分析可能低估极端灾难性气候损失。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>核心概念卡片：原文要点、中文解释、逻辑等式</h2>
+      </div>
+      <div class="head-desc">每张卡片都按“原文要点 → 中文解释 → 逻辑等式 → 投资影响/考点”整理。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">1. Environmental factors 的投资意义</div>
+          <span class="tag tag-blue">Introduction</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>E factors are broad, material, and linked: climate change, natural resources, pollution, waste, circular economy.</div>
+        <p class="small">中文解释：第 3 章不是只讲“环保”，而是讲环境因素如何变成可投资、可损失、可披露、可监管的财务问题。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">E factors</div><div class="eq-op">==</div><div class="eq-rhs">气候 + 资源 + 污染/废弃物 + 循环经济 + 系统传导</div></div>
+          <div class="eq"><div class="eq-lhs">投资意义</div><div class="eq-op">==</div><div class="eq-rhs">事实判断 + 价值偏好 + 风险回报影响</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 environmental factors，不要只想到 carbon。考试会把自然资源、污染、披露、政策、投资机会一起考。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">2. 经济活动和稳定地球系统</div>
+          <span class="tag tag-teal">System Link</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Economics and environment are linked by scarcity, trade-offs, resource depletion, and time horizons.</div>
+        <p class="small">中文解释：经济学研究稀缺资源如何分配；环境可持续性研究当代使用不能损害未来能力。两者交点就是“今天的成本、未来的收益和风险”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">经济-环境</div><div class="eq-op">==</div><div class="eq-rhs">稀缺资源 + 现在/未来权衡 + 生态系统依赖</div></div>
+          <div class="eq"><div class="eq-lhs">时间挑战</div><div class="eq-op">==</div><div class="eq-rhs">短期急性冲击 + 长期慢性变化 + 伤害可能持续</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>环境损害如果没有被定价，会变成 uncompensated risk；当政策、技术、消费者偏好改变，资产价值可能被重估。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">3. Climate change 的定义</div>
+          <span class="tag tag-green">Definition</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Climate change is climate alteration attributed to human activity, in addition to natural variability.</div>
+        <p class="small">中文解释：不是普通天气变化，而是人类活动改变全球大气成分后，导致局部极端天气和全球平均温度、海平面、粮食安全等问题共同恶化。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Climate change</div><div class="eq-op">==</div><div class="eq-rhs">人类活动改变大气成分 + 自然气候变动之外的长期变化</div></div>
+          <div class="eq"><div class="eq-lhs">表现</div><div class="eq-op">==</div><div class="eq-rhs">local extreme weather + global temperature/sea level/food insecurity</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Arctic warming 超过全球平均 3 倍，land warming 快于 sea；看到 Arctic、land/sea uneven warming，要想到区域风险不同。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">4. GHG 升温机制和 CO2</div>
+          <span class="tag tag-amber">Mechanism</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>GHGs trap heat; CO2 concentration was around 419 ppm in May 2023 and is historically high.</div>
+        <p class="small">中文解释：温室气体像“单向玻璃”：让可见光进入地表，但阻挡部分地球反射的红外辐射离开。CO2 因浓度高、寿命长，是核心题眼。IPCC 指出，2011-2020 年全球表面温度较 1850-1900 年已上升约 1.1°C。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">GHG effect</div><div class="eq-op">==</div><div class="eq-rhs">太阳光进来 + 红外线出不去 + 热量被留在地球系统</div></div>
+          <div class="eq"><div class="eq-lhs">CO2 题眼</div><div class="eq-op">==</div><div class="eq-rhs">419 ppm + 800,000 年未见 + 工业革命后化石燃料加速</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>GHG 主要来自 energy、industry、transport、agriculture 和 land-use changes；人为 CO2 主要来自化石燃料燃烧，约占所有 GHG 最高份额。注意：不是所有排放都只有升温效果，某些 aerosols 也会影响太阳光到达地表。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">5. Climate sensitivity vs transient response</div>
+          <span class="tag tag-violet">Model Concept</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Climate sensitivity estimates equilibrium warming from doubled CO2; transient response looks at gradual doubling over about 70 years.</div>
+        <p class="small">中文解释：sensitivity 问“最终会升多少”，transient response 问“变化速度有多快”。前者像目标水位，后者像速度表。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sensitivity</div><div class="eq-op">==</div><div class="eq-rhs">CO2 翻倍 + 长期均衡温度结果</div></div>
+          <div class="eq"><div class="eq-lhs">Transient</div><div class="eq-op">==</div><div class="eq-rhs">约 70 年逐步翻倍 + 条件变化速度 + implied temperature</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>IPCC 给出的 equilibrium climate sensitivity likely range 为 2.5°C-4.0°C，best estimate 3.0°C。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">6. Methane 和其他 GHG</div>
+          <span class="tag tag-rose">GHG Detail</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Methane and fluorinated gases have higher warming potential than CO2, even if some have shorter atmospheric lives.</div>
+        <p class="small">中文解释：CO2 是“长期库存”，methane 是“短期强冲击”。methane 变暖潜势约为 CO2 的 30 倍，寿命约 12 年；sulphur hexafluoride 的相对变暖潜势超过 23,000 倍。快速控制短寿命气体会带来较快气候收益。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Methane</div><div class="eq-op">==</div><div class="eq-rhs">短寿命 + 高 GWP + 短期升温冲击 + 快速减排机会</div></div>
+          <div class="eq"><div class="eq-lhs">CO2e</div><div class="eq-op">==</div><div class="eq-rhs">把不同 GHG 按相对变暖潜势折算成 CO2 等价</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>天然气基础设施损坏、永久冻土融化会释放 methane；题目若问短期气候影响，methane 往往比 CO2 更敏感。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">7. Planetary boundaries</div>
+          <span class="tag tag-blue">Boundary</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Planetary boundaries describe safe limits for Earth-system stability and resilience; six of nine have been crossed.</div>
+        <p class="small">中文解释：它不是单纯环保清单，而是地球系统“安全操作范围”。越界后，风险和不确定性上升，且很多影响不是可分散的普通风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Boundaries</div><div class="eq-op">==</div><div class="eq-rhs">稳定性边界 + 韧性边界 + 超界后的系统风险</div></div>
+          <div class="eq"><div class="eq-lhs">已越界 6 个</div><div class="eq-op">==</div><div class="eq-rhs">climate + biosphere + land + freshwater + novel entities + biogeochemical flows</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>未越界的是 stratospheric ozone depletion、atmospheric aerosol pollution、ocean acidification。注意 ocean acidification 仍与 climate change 相关，但表中尚未越界。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">8. Carbon budget and net zero</div>
+          <span class="tag tag-green">Bathtub</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Carbon budget is remaining CO2 emissions compatible with a probability of staying below a temperature threshold.</div>
+        <p class="small">中文解释：碳预算不是固定保险箱，而是“概率性额度”。排放路径、其他 GHG、行业技术进展、carbon capture 都会改变可用预算。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">碳预算</div><div class="eq-op">==</div><div class="eq-rhs">温度阈值 + 达标概率 + 可排放 CO2 总量</div></div>
+          <div class="eq"><div class="eq-lhs">净零</div><div class="eq-op">==</div><div class="eq-rhs">新排放 = 移除/吸收，温度才开始稳定</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>1.5°C 对应的剩余预算估计在快速下降；当前 40-60 GtCO2e/year 的排放速度意味着窗口很短。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">9. Climate scenarios and RCP8.5</div>
+          <span class="tag tag-amber">Scenario</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Scenarios may be normative, predictive, or what-if exercises; RCP8.5 is a high-emissions scenario.</div>
+        <p class="small">中文解释：情景不是预测本身，而是分析工具。business-as-usual 可以帮助分析强信号，但必须看假设是否还现实。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scenario</div><div class="eq-op">==</div><div class="eq-rhs">目标倒推 + 可能预测 + 假设检验</div></div>
+          <div class="eq"><div class="eq-lhs">RCP8.5</div><div class="eq-op">==</div><div class="eq-rhs">高排放 + 4°C-5°C by 2100 + 近年可能性被认为较低</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>已实施政策的中位路径约 3.2°C；NDCs 可能把路径拉近 2°C，但“宣布”不等于“已实施”。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top">
+          <div class="topic-title">10. Tipping elements and climate costs</div>
+          <span class="tag tag-rose">Tail Risk</span>
+        </div>
+        <div class="source-point"><b>原文要点：</b>Tipping elements may involve large-scale, long-term, or irreversible shifts; climate damages may reach trillions per year by 2050.</div>
+        <p class="small">中文解释：临界点的难点在于“阈值不确定、后果可能慢慢显现、但一旦越过就不容易回来”。传统折现模型可能低估极端尾部损失。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Tipping</div><div class="eq-op">==</div><div class="eq-rhs">阈值 + 相变 + 长期/不可逆后果</div></div>
+          <div class="eq"><div class="eq-lhs">Dismal theorem</div><div class="eq-op">==</div><div class="eq-rhs">小概率灾难 × 无限级损失，传统成本收益分析不够用</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>成本不只落在环境账上，也会落到基础设施、地产、农业、人类健康和宏观经济上；贫困和脆弱群体承受更大冲击。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Exhibits</div>
+        <h2>案例框：把抽象概念落到题眼</h2>
+      </div>
+      <div class="head-desc">这些不是额外知识，而是 PDF 图表和案例的考试化整理。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head">
+          <div class="case-name">CO2 800,000 年图</div>
+          <span class="tag tag-blue">Exhibit 1</span>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2023 年 CO2 平均约 419 ppm，超过过去 800,000 年的历史范围。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">工业革命以来化石燃料燃烧加速，且过半历史 CO2 排放发生在最近 30 年。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">“highest in 800,000 years”“more than half in last 30 years”“fossil fuels highest share”。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head">
+          <div class="case-name">Planetary boundaries 表</div>
+          <span class="tag tag-green">Exhibit 3</span>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">9 个边界中 6 个已越界：climate、biosphere、land、freshwater、novel entities、biogeochemical flows。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">气候变化既可能由其他边界问题推动，也会反过来加剧其他问题。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">如果问“多少个边界已越界”，答案是 six，不是 three 或 all nine。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head">
+          <div class="case-name">浴缸类比</div>
+          <span class="tag tag-amber">Carbon Budget</span>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">水龙头是新增 GHG 排放，水位是大气存量，排水口是自然吸收和人为移除。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">只有新增和移除相等，温度才会开始稳定；这就是 net zero 的直觉。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Carbon budget 具有 probabilistic 和 path dependent 两个特点。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head">
+          <div class="case-name">Business as Unusual</div>
+          <span class="tag tag-violet">Case Study</span>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">RCP8.5 是高排放路径，可能导致 2100 年 4°C-5°C 升温。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">它适合做高冲击情景分析，但其煤炭增长假设在清洁能源成本下降后被认为越来越不现实。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Scenario 是分析工具，不等于预测；使用时要看假设。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head">
+          <div class="case-name">每 0.1°C 都重要</div>
+          <span class="tag tag-rose">Impact</span>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">全球平均温升数字看似小，但区域、陆地、季节差异会放大实际冲击。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">热浪、干旱、极端降水、海平面、冰盖、永久冻土等风险随温升上升；影响落点包括 liveability and workability、food systems、physical assets、infrastructure services 和 natural capital。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Overshooting 1.5°C 即使是暂时的，也会提高严重和不可逆风险。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head">
+          <div class="case-name">Dismal theorem</div>
+          <span class="tag tag-teal">Cost</span>
+        </div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">到 2050 年，气候损害成本估计可能达到每年 1.7-3.1 万亿美元。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">远期现金流折现可能低估灾难性风险，尤其是无法排除文明级崩溃时。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">Dismal theorem 对应的是“传统成本收益分析不足以处理极端下行损失”。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：最像但不能混的概念</h2>
+      </div>
+      <div class="head-desc">这些是后面三轮练习会反复用的“题眼钩子”。</div>
+    </div>
+    <div class="grid-2">
+      <div class="trap"><b>1. Climate sensitivity 不是 transient climate response</b>Sensitivity 看 CO2 翻倍后的长期均衡温度；transient response 看约 70 年逐步翻倍时的速度和路径。</div>
+      <div class="trap"><b>2. CO2 最高份额不要选 agriculture</b>人为 CO2 主要来自化石燃料燃烧，约占所有 GHG 的最高份额；农业和土地利用变化重要，但不是最高份额。</div>
+      <div class="trap"><b>3. Methane 不是“因为寿命短所以不重要”</b>它寿命短，但全球变暖潜势高，短期影响强；快速控制 methane 能带来较快气候收益。</div>
+      <div class="trap"><b>4. Planetary boundaries 不是全都越界</b>2023 年更新是 6 of 9 已越界；未越界项也可能和 climate change 相互影响。</div>
+      <div class="trap"><b>5. Carbon budget 不是固定数字</b>它依赖概率、温度阈值、其他 GHG、技术、行业路径和碳移除假设。</div>
+      <div class="trap"><b>6. Scenario 不是预测承诺</b>RCP8.5 是高排放 what-if 情景；用来分析极端信号，但要谨慎理解假设。</div>
+      <div class="trap"><b>7. 全球平均温升会掩盖局部风险</b>陆地升温快于海洋，北极升温超过全球平均 3 倍；公司和资产的地理暴露很关键。</div>
+      <div class="trap"><b>8. Dismal theorem 不是低折现率观点</b>低折现率常和 Stern 的道德考虑相关；dismal theorem 讲的是小概率灾难性损失可能让传统成本收益分析失效。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">One Screen Review</div>
+        <h2>考前压缩版：一屏背完模块 1</h2>
+      </div>
+      <div class="head-desc">先背总式，再用数字和易错点校准。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <span class="tag tag-blue">逻辑等式总表</span>
+        <div class="formula-list">
+          <div class="formula"><b>Environmental factors</b> == climate + resources + pollution/waste + circular economy + systemic consequences。</div>
+          <div class="formula"><b>Climate change</b> == human activity alters atmosphere + natural variability之外的变化。</div>
+          <div class="formula"><b>GHG warming</b> == sunlight enters + infrared trapped + Earth warms。</div>
+          <div class="formula"><b>CO2 key facts</b> == 419 ppm + highest in 800,000 years + fossil fuels highest share + observed warming about 1.1°C。</div>
+          <div class="formula"><b>Climate sensitivity</b> == doubled CO2 → equilibrium warming；<b>transient response</b> == gradual doubling → speed of change。</div>
+          <div class="formula"><b>Planetary boundaries</b> == safe operating limits；6 of 9 crossed。</div>
+          <div class="formula"><b>Carbon budget</b> == temperature threshold + probability + remaining CO2。</div>
+          <div class="formula"><b>Net zero</b> == emissions added = emissions removed；around 2050 for 1.5°C pathway。</div>
+          <div class="formula"><b>Tipping elements</b> == uncertain threshold + possible irreversible shift + tail risk。</div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">关键数字</span>
+        <div class="formula-list">
+          <div class="formula"><b>419 ppm</b>：2023 年 5 月 CO2 全球平均约数。</div>
+          <div class="formula"><b>2.5°C-4.0°C</b>：equilibrium climate sensitivity likely range；best estimate 3.0°C。</div>
+          <div class="formula"><b>30 times / 23,000 times</b>：methane 相对 CO2 的百年全球变暖潜势大致量级为 30 倍；sulphur hexafluoride 超过 23,000 倍。</div>
+          <div class="formula"><b>12 years</b>：methane 大气寿命大致量级。</div>
+          <div class="formula"><b>6 of 9</b>：2023 年 planetary boundaries 已越界数量。</div>
+          <div class="formula"><b>150 / 250 billion tons CO2</b>：1.5°C 预算在 67% / 50% 概率下的大致估计。</div>
+          <div class="formula"><b>40-60 GtCO2e/year</b>：当前年排放量级，说明预算窗口很短。</div>
+          <div class="formula"><b>3.2°C</b>：已实施政策路径的中位升温结果大致量级。</div>
+          <div class="formula"><b>1.7-3.1 trillion USD/year</b>：2050 年气候损害成本估计区间。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块边界提醒：mitigation、adaptation、resilience 的定义和策略会在模块 2 展开；本页只在总逻辑里提示“净零”和“稳定温度”的关系。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">先自己想答案，再点开。后续三轮练习系统会用正式 Practice Problems 做完整题库。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div class="qtext">Climate change 的定义里，最关键的限定是什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">关键是 attributed to human activity，并且是在 natural climate variability 之外的变化。逻辑等式：climate change == 人类活动改变大气成分 + 自然变动之外的长期气候变化。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div class="qtext">为什么说 GHG 像“单向玻璃”？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">因为 GHG 允许太阳可见光进入地表，但阻挡部分地球反射的红外辐射逃逸到太空，把热量留在地球系统。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div class="qtext">According to the Stockholm Resilience Centre, how many of the nine planetary boundaries have already been crossed?</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">Six。题眼：2023 update、six of nine。不要选 three 或 all nine。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div class="qtext">Compared to the rest of the world, the Arctic is warming at what approximate rate?</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">More than three times faster than the global average。题眼：Arctic warming，不是跟全球平均一致。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div class="qtext">Which statement about CO2 is most accurate: highest in over 800,000 years, only 10% recent emissions, or agriculture/land-use highest share?</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">正确是 CO2 levels are the highest they have been in over 800,000 years。错误项：不是 10%，而是过半历史排放发生在最近 30 年；最高份额来自化石燃料燃烧。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div class="qtext">Carbon budget 为什么既是 probabilistic，又是 path dependent？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">Probabilistic：它对应“有多大概率不超过某温度阈值”。Path dependent：CO2 预算取决于 methane 等其他 GHG、行业减排速度、碳捕集技术和经济发展路径。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div class="qtext">For a reasonable chance of limiting warming to 1.5°C, IPCC recommends global CO2 emissions reach net zero around when?</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">Around 2050。题眼：1.5°C pathway、net-zero CO2、around 2050。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div class="qtext">RCP8.5 在本章里的正确理解是什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">它是高排放 business-as-usual 情景，可能导致 2100 年 4°C-5°C 升温；但由于清洁能源成本下降和煤电管线收缩，IPCC 认为这类高排放情景的可能性较低。它是分析工具，不是预测承诺。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div class="qtext">Dismal theorem 在气候成本分析中提醒什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">提醒传统成本收益分析可能无法处理灾难性尾部损失。只要无法完全排除文明级崩溃等极端情景，其期望损失就不能被普通折现轻易忽略。</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <details>
+        <summary>复核问题：看到 “methane” 你要反推出什么？</summary>
+        <div class="detail-body">反推：短寿命、高 GWP、短期升温冲击、永久冻土/天然气基础设施风险、快速减排可以带来较快气候收益。</div>
+      </details>
+      <details>
+        <summary>复核问题：看到 “tipping elements” 你要反推出什么？</summary>
+        <div class="detail-body">反推：不确定阈值、相变、大规模长期或不可逆影响，以及 ice sheets、summer Arctic sea ice、permafrost、AMOC、cloud deck、Amazon/rainforests、boreal forests、coral reefs、monsoons 等候选项。</div>
+      </details>
+    </div>
+    <div class="footer-note">依据文件：ch03/esg-03.pdf，第 3 章导论、第 3.1.1 节前半部分及对应 Practice Problems。为便于复习，本页对原文做了压缩和中文解释，不替代原 PDF。</div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

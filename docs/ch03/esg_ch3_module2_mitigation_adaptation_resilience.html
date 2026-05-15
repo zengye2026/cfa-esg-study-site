@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 2：Mitigation, Adaptation and Resilience</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%}
+h1{font-family:var(--serif);font-size:clamp(28px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.path-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:10px;margin-top:10px}
+.path{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:12px;box-shadow:var(--sh-sm)}
+.path h3{font-size:14px;margin:0 0 7px}
+.path ul{margin:0;padding-left:17px;color:var(--sub);font-size:12.8px;line-height:1.65}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qchoices{font-size:12.8px;color:var(--sub);line-height:1.7;margin-top:6px;font-weight:500}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 2</span>
+        <span class="pill">3.1.1 后半</span>
+        <span class="pill">Climate Response</span>
+      </div>
+      <h1>Mitigation, Adaptation and Resilience</h1>
+      <p class="lead">本页把气候应对拆成两条主线：mitigation 负责减少新排放并增强吸收，adaptation/resilience 负责应对已经发生或预期会发生的气候影响。考试最爱考它们的边界、协同、冲突和投资含义。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Climate response == Mitigation 少排放/多吸收 + Adaptation 调整人类活动 + Resilience 在变化中仍能运转 + Policy/finance 决定速度 + Trade-off 决定质量</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">3.1.1 解释 climate change mitigation、climate change adaptation 和 resilience measures。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">88%</div><div class="mini-lab">全球排放处于净零目标辖区</div></div>
+        <div class="mini-stat"><div class="mini-num">20bn</div><div class="mini-lab">2020 年发展中国家适应资金流</div></div>
+      </div>
+      <div class="side-note">记忆抓手：mitigation 是“关水龙头、加排水口”；adaptation 是“水已经涨了，先把房子垫高”；resilience 是“垫高后还能正常住”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先分清：减缓、适应、韧性不是同一件事</h2>
+      </div>
+      <div class="head-desc">用“逻辑等式心象术”看，本模块的题目可以拆成“减缓”和“适应/韧性”，再加上政策、资金和冲突判断。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Climate Response<br>少制造问题 + 学会承受问题 + 避免新问题</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Mitigation 减缓</div>
+          <p>减少 GHG sources，增强 GHG sinks。</p>
+          <p>目标是减慢气候变化，防止不可避免之外的升温。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Adaptation 适应</div>
+          <p>针对实际或预期气候事件调整人类实践。</p>
+          <p>重点是减少脆弱性和损害。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Resilience 韧性</div>
+          <p>适应措施在气候变化中仍能发挥作用。</p>
+          <p>World Bank 将 adaptation 和 resilience 称为一枚硬币的两面。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Policy & Finance</div>
+          <p>政策支持、学习曲线、规模经济和公共资金会改变技术经济性。</p>
+          <p>净零目标多，不代表执行缺口消失。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Trade-offs</div>
+          <p>有些适应措施会增加排放。</p>
+          <p>例如海水淡化可防水荒，但可能有高排放。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>气候已变</h3><p>未来不一定能用过去模型校准。</p></div>
+        <div class="flow-step"><h3>先减缓</h3><p>少排放、保护森林土壤海洋等 sinks。</p></div>
+        <div class="flow-step"><h3>还要适应</h3><p>已发生的升温必须管理。</p></div>
+        <div class="flow-step"><h3>用资金落地</h3><p>能源、城市、农业、公司项目都要投入。</p></div>
+        <div class="flow-step"><h3>检查冲突</h3><p>适应不应反过来锁定高排放。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">拆题目</span>
+        <h3>Mitigation</h3>
+        <p class="small">mitigate 是“把问题压下去”：减少新增 GHG，增强森林、海洋、土壤等吸收和储存。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">拆题目</span>
+        <h3>Adaptation</h3>
+        <p class="small">adapt 是“跟变化相处”：对已经发生或预期发生的气候事件做调整，降低损失。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考试提醒</span>
+        <h3>不是二选一</h3>
+        <p class="small">适应永远需要，因为气候变化已经发生；优秀政策常同时实现 adaptation 和 mitigation。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">这一页覆盖 PDF 第 122-128 页的气候应对内容。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Response Framework</span> 两条主线但不是二选一</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">气候应对通常分为 mitigation 与 adaptation/resilience。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">过去经济结果校准的模型，面对完全不同的未来气候结果可能存在张力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">adaptation 总是需要，因为气候变化已经发生；一些有效政策可以同时做到减缓和适应。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Mitigation</span> 减少源头、增强吸收</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Mitigation 是人为干预：减少 GHG emissions sources，同时增强 sinks。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">目标包括：避免危险气候干扰、稳定 GHG 水平、保护粮食生产、支持可持续经济发展。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">策略包括 energy、buildings、transport、land use and forestry、agriculture、carbon pricing、industry and manufacturing。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">不是所有 biofuels 或燃木发电都天然低碳，必须看全生命周期排放和森林碳积累机会成本。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Exhibit 6</span> 近端减排与适应选项</h3>
+      <div class="path-table">
+        <div class="path"><h3>Energy Supply</h3><ul><li>Mitigation：solar、wind、减少煤油气 methane、bioelectricity、geothermal/hydro、nuclear、fossil CCS。</li><li>Adaptation：energy reliability、resilient power systems、water-use efficiency。</li></ul></div>
+        <div class="path"><h3>Land, Water, Food</h3><ul><li>Mitigation：减少自然生态系统转化、农业碳封存、生态恢复、可持续健康饮食、森林管理、减少 methane/N2O、减少食物损失和浪费。</li><li>Adaptation：efficient livestock、cropland、water management、biodiversity connectivity、agroforestry、aquaculture/fisheries、forest adaptation、coastal zone/defense。</li></ul></div>
+        <div class="path"><h3>Settlements & Infrastructure</h3><ul><li>Mitigation：efficient buildings、fuel-efficient vehicles、EVs、efficient equipment、public transport/bicycling、biofuels、efficient shipping/aviation、avoid demand、on-site renewables。</li><li>Adaptation：urban water、land use and urban planning、green infrastructure and ecosystem services。</li></ul></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Policy and Investment</span> 技术、政策与净零竞赛</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">基本材料行业的很多低/零 GHG 工艺处于 pilot、near-commercial 或初步 commercial 阶段，但尚未成为成熟工业惯例。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">减排路径包括 material efficiency、circularity、electrification、heat pumps、hydrogen、ammonia、bio-based/synthetic fuels。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">政策支持会通过新市场、规模经济、学习效应和私人投资进入来改变技术部署速度。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2022 年美国 Inflation Reduction Act 推动低碳领域资本开支，并引发国际低碳产业竞争。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">净零目标覆盖面很大，但 offsets、精确时间表和执行质量仍存在不确定性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">1.5°C 情景需要大量额外能源投资；关键问题是今天的钱是否锁定未来高排放。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-rose">Adaptation and Resilience</span> 已经发生的气候影响如何管理</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Adaptation 是对实际或预期气候事件进行调整，增强社会韧性、降低脆弱性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">气候变化越快、越大，适应越困难；不能简单认为适应一定比减缓便宜。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">适应机会包括北极航道、寒冷地区葡萄种植等，但农业总体仍受干旱、洪水、土壤侵蚀、海平面和海洋酸化压力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">适应策略包括海岸保护、防洪、土地和森林管理、水资源规划、抗旱作物、基础设施保护、清洁制冷。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">企业也要适应，例如矿业项目面临水压力和洪水风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">城市处在适应前线：城市贡献约 80% 全球 GDP，也高度暴露于海平面、极端天气和热带疾病传播风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">发展中国家适应成本远高于现有资金流，形成 adaptation gap。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Climate Resilience Principles 和多边开发银行指标框架为韧性项目融资和结果衡量提供参考。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>核心逻辑卡片：定义、策略、投资影响</h2>
+      </div>
+      <div class="head-desc">每张卡片都把原文知识点转成可反推的逻辑等式。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Mitigation 的定义</div><span class="tag tag-blue">Definition</span></div>
+        <div class="source-point"><b>原文要点：</b>Mitigation reduces GHG sources and enhances sinks that store GHGs.</div>
+        <p class="small">中文解释：减缓不是“适应损害”，而是从源头让气候变化变慢：少排放，并让森林、海洋、土壤等多吸收。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Mitigation</div><div class="eq-op">==</div><div class="eq-rhs">减少 sources + 增强 sinks + 减慢 climate change</div></div>
+          <div class="eq"><div class="eq-lhs">目标</div><div class="eq-op">==</div><div class="eq-rhs">稳定 GHG + 保护食物生产 + 支持可持续发展</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>mitigation 对应低碳能源、节能建筑、绿色交通、森林农业碳汇、碳价和工业脱碳投资。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Mitigation 的七类策略</div><span class="tag tag-green">Categories</span></div>
+        <div class="source-point"><b>原文要点：</b>Mitigation strategies cover energy, buildings, transport, land and forestry, agriculture, carbon pricing, and industry.</div>
+        <p class="small">中文解释：这七类可以按“能源从哪里来、资产怎么用、交通怎么走、土地怎么吸收、农业怎么储碳、价格怎么约束、工业怎么改造”来记。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">七类策略</div><div class="eq-op">==</div><div class="eq-rhs">能源 + 建筑 + 交通 + 土地森林 + 农业 + 碳价 + 工业制造</div></div>
+          <div class="eq"><div class="eq-lhs">策略底层</div><div class="eq-op">==</div><div class="eq-rhs">替代高碳 + 提高效率 + 增加碳汇 + 给排放定价</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>不要把“减少消费/去工业化”当作当然最优，原文提醒这会带来衰退和失业等社会成本。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Exhibit 6 的减排重点</div><span class="tag tag-violet">Options</span></div>
+        <div class="source-point"><b>原文要点：</b>Near-term options include energy supply, land-water-food, and settlements/infrastructure.</div>
+        <p class="small">中文解释：表格不是让你背所有数字，而是让你识别“哪一类选项贡献较大，哪一类更多是适应或协同”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">近端行动</div><div class="eq-op">==</div><div class="eq-rhs">能源供给 + 土地水食物 + 居住和基础设施</div></div>
+          <div class="eq"><div class="eq-lhs">高贡献题眼</div><div class="eq-op">==</div><div class="eq-rhs">solar、wind、减少自然生态转化、农业碳封存、生态恢复</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>建筑、交通、设备效率、公交骑行、EV、on-site renewables 都会进入城市和基础设施投资判断。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. 技术成熟度与政策支持</div><span class="tag tag-amber">Policy</span></div>
+        <div class="source-point"><b>原文要点：</b>Many industrial low-GHG processes are not yet established practice; policy support affects deployment economics.</div>
+        <p class="small">中文解释：技术能否成为投资机会，不只看“有没有技术”，还看成本、成熟度、政策补贴、市场规模和学习曲线。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">技术落地</div><div class="eq-op">==</div><div class="eq-rhs">成熟度 + 成本 + 政策支持 + 规模经济 + 私人资本进入</div></div>
+          <div class="eq"><div class="eq-lhs">工业脱碳</div><div class="eq-op">==</div><div class="eq-rhs">材料效率 + 循环性 + 电气化 + 低/零 GHG 燃料</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>IRA 这类政策会改变低碳领域资本开支和产业选址，影响公司竞争力与估值。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Race to Net Zero</div><span class="tag tag-teal">Targets</span></div>
+        <div class="source-point"><b>原文要点：</b>Net-zero targets cover a large share of emissions, GDP, population, cities, and listed companies.</div>
+        <p class="small">中文解释：净零目标说明方向已经形成，但目标的质量要看 offsets、时间表、范围、执行计划和资本开支。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">净零目标</div><div class="eq-op">==</div><div class="eq-rhs">方向信号 + 投资机会 + 监管风险 + 执行不确定性</div></div>
+          <div class="eq"><div class="eq-lhs">目标质量</div><div class="eq-op">==</div><div class="eq-rhs">范围 + 时间表 + offsets + capex + 实际减排</div></div>
+        </div>
+        <div class="memory"><b>数字钩子：</b>截至 2022 年 4 月，净零目标辖区覆盖约 88% GHG 排放、92% GDP、85% 人口；还有 200 多个城市和 850 多家公司。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Emissions gap and lock-in</div><span class="tag tag-rose">Gap</span></div>
+        <div class="source-point"><b>原文要点：</b>There remains a gap between short-term NDCs and the emissions cuts needed for climate pathways.</div>
+        <p class="small">中文解释：2030 年前的承诺和长期净零目标之间有落差；投资者要问今天的资本开支是在替换旧资产，还是锁定未来高排放。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">排放缺口</div><div class="eq-op">==</div><div class="eq-rhs">短期 NDC 不足 + 长期净零依赖执行 + 条件承诺有资金/技术前提</div></div>
+          <div class="eq"><div class="eq-lhs">Lock-in</div><div class="eq-op">==</div><div class="eq-rhs">今天投高碳资产 → 未来排放和搁浅风险被锁定</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>当前政策、无条件 NDC、有条件 NDC、带净零目标路径，对应升温结果不同；宣布不等于执行。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Adaptation and resilience</div><span class="tag tag-blue">Definition</span></div>
+        <div class="source-point"><b>原文要点：</b>Adaptation adjusts to actual or expected climate events, increasing resilience and reducing vulnerability.</div>
+        <p class="small">中文解释：适应是“调整做法”，韧性是“调整后还能运转”。两者不是两个完全分离的东西，而是同一件事的两面。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Adaptation</div><div class="eq-op">==</div><div class="eq-rhs">实际/预期气候事件 + 调整人类实践 + 减少损害</div></div>
+          <div class="eq"><div class="eq-lhs">Resilience</div><div class="eq-op">==</div><div class="eq-rhs">适应措施在气候变化中仍能发挥作用</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Protecting coastlines from erosion 是 adaptation；retrofitting buildings for energy efficiency 更偏 mitigation。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">8. Adaptation 不是低成本替代</div><span class="tag tag-amber">Caveat</span></div>
+        <div class="source-point"><b>原文要点：</b>It is tempting but uncertain to assume adaptation is less costly than mitigation.</div>
+        <p class="small">中文解释：人类可以在恶劣气候中生存，不代表适应便宜。空调就是反例：越热越用，越用越耗电和制冷剂，可能形成恶性循环。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">AC 循环</div><div class="eq-op">==</div><div class="eq-rhs">更热 → 更多空调 → 更多电力和制冷剂排放 → 更热</div></div>
+          <div class="eq"><div class="eq-lhs">适应难度</div><div class="eq-op">==</div><div class="eq-rhs">气候变得越快越大，适应越难越贵</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>制冷需求可能带来机会，也可能带来电力负荷、制冷剂排放和政策风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">9. 城市与公司适应</div><span class="tag tag-green">Application</span></div>
+        <div class="source-point"><b>原文要点：</b>Cities and companies are increasingly factoring adaptation into planning and business strategy.</div>
+        <p class="small">中文解释：适应不是政府的单独任务。城市、矿业、农业、能源、公共基础设施都要把水、热、洪水、海平面等纳入资本开支和运营计划。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">城市适应</div><div class="eq-op">==</div><div class="eq-rhs">海平面 + 极端天气 + 疾病传播 + 基础设施韧性</div></div>
+          <div class="eq"><div class="eq-lhs">企业适应</div><div class="eq-op">==</div><div class="eq-rhs">水压力 + 洪水 + 供应/运营中断 + 社区资源竞争</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>矿业金属对低碳技术重要，但自身又受水压力和洪水风险影响，这就是 ESG 分析的双向性。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">10. Adaptation gap and trade-offs</div><span class="tag tag-rose">Finance</span></div>
+        <div class="source-point"><b>原文要点：</b>Adaptation costs are high and funding is insufficient; adaptation can conflict with mitigation.</div>
+        <p class="small">中文解释：适应需要资金、项目和指标。发展中国家的资金缺口尤其大；同时，有些适应项目本身排放高，需要评估净影响。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Adaptation gap</div><div class="eq-op">==</div><div class="eq-rhs">适应需求成本 - 可用适应资金</div></div>
+          <div class="eq"><div class="eq-lhs">Trade-off</div><div class="eq-op">==</div><div class="eq-rhs">适应收益 + 排放代价 + 有限资源配置</div></div>
+        </div>
+        <div class="memory"><b>数字钩子：</b>发展中国家适应成本估计到 2030 年为 160-340 billion USD；2020 年国际适应资金流仅约 20 billion USD。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Exhibits</div>
+        <h2>案例框：把应对策略落到投资判断</h2>
+      </div>
+      <div class="head-desc">案例的作用是训练“看到题眼，判断是 mitigation、adaptation、resilience 还是 trade-off”。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">生物燃料和燃木发电</div><span class="tag tag-amber">Mitigation Caveat</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">并非所有 biofuels 都优于石油替代品；燃木发电也可能在燃烧时释放更多 CO2，并放弃树木继续吸碳的机会。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">低碳判断要看全生命周期和机会成本，不能只看“可再生”标签。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">not all biofuels、life-cycle emissions、wood combustion、foregone carbon accumulation。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Inflation Reduction Act</div><span class="tag tag-blue">Policy Support</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">2022 年美国 IRA 推动国内低碳领域资本开支，例如绿色氢能。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">政策会创造新市场，拉动私人投资，并引发国家间吸引低碳产业的竞争。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">policy support changes economics and deployment。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Race to Net Zero</div><span class="tag tag-green">Targets</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">截至 2022 年 4 月，净零目标辖区覆盖 88% 全球 GHG 排放、92% GDP、85% 人口。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">这说明方向明确，但 offsets、时间表和执行细节仍会影响目标质量。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">momentum、investment opportunities、regulatory risk、uncertainty。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">空调恶性循环</div><span class="tag tag-rose">Adaptation Risk</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">随着人口和收入增长，炎热地区空调使用增加；空调耗电且使用强 GHG 制冷剂。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">适应措施若设计不好，可能增加排放，从而加剧原问题。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">adaptation can create feedback to more warming。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Escondida Copper Mine</div><span class="tag tag-teal">Corporate Adaptation</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">智利 Atacama Desert 的 Escondida 是全球最大铜矿之一，运营方计划减少淡水地下水使用，改用海水淡化水。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">矿业需要水，但水资源也常被当地社区使用；适应战略会影响运营连续性和社会风险。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">water stress、mining、desalinated ocean water、community resource pressure。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">城市适应做法</div><span class="tag tag-violet">Urban Resilience</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">纽约将洪水风险纳入建筑设计，武汉建设 sponge city，横滨模拟自然灾害对能源供应影响，洛杉矶和巴黎分析食品供应韧性。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">城市既高度暴露，也贡献大量排放；适应和减缓要一起看。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">flood design、sponge city、energy supply、food supply resilience。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Adaptation Gap</div><span class="tag tag-amber">Finance</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">发展中国家适应成本预计 2030 年达到 160-340 billion USD，2050 年达到 315-565 billion USD；2020 年国际适应资金仅约 20 billion USD。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">资金流远低于需求，必须把适应纳入发展规划和融资安排。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">costs exceed finance flows，adaptation gap。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">海水淡化的权衡</div><span class="tag tag-rose">Trade-off</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事实</div><div class="case-text">海水淡化厂可以缓解危机中的缺水风险，但可能伴随较高排放。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">适应/韧性项目不能只看“能不能扛住”，还要看是否破坏 mitigation 目标。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">adaptation-resilience vs mitigation trade-off。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：看到题眼先分类型</h2>
+      </div>
+      <div class="head-desc">这一节是三轮练习里最容易错的判断题基础。</div>
+    </div>
+    <div class="grid-2">
+      <div class="trap"><b>1. Mitigation 不是 adaptation</b>减少排放、提高能效、替代能源、增强碳汇，通常是 mitigation；防洪、海岸保护、抗旱作物、城市韧性，通常是 adaptation/resilience。</div>
+      <div class="trap"><b>2. Adaptation 和 resilience 不是完全割裂</b>Adaptation 是调整行动；resilience 是调整后在气候变化中仍能运转。World Bank 把二者称为一枚硬币的两面。</div>
+      <div class="trap"><b>3. 不是二选一</b>气候变化已经发生，所以 adaptation 必须做；但 mitigation 仍然是防止更多不可避免损害的核心。</div>
+      <div class="trap"><b>4. Biofuel/wood 不一定低碳</b>看到 biofuel、wood，不要机械选低碳，要看全生命周期排放、化肥 N2O、生产排放和森林碳汇机会成本。</div>
+      <div class="trap"><b>5. 净零目标不等于净零实现</b>覆盖 88% 排放说明方向强，但 offsets、timeline、执行质量、资本开支决定目标可信度。</div>
+      <div class="trap"><b>6. NDC 有条件和无条件不同</b>Conditional NDC 可能依赖融资、援助和技术转让；题目问短期承诺与长期目标缺口时，要想到 emissions gap。</div>
+      <div class="trap"><b>7. 适应不一定便宜</b>空调、海水淡化、基础设施加固都需要能源和资本；适应项目还可能提高排放。</div>
+      <div class="trap"><b>8. CO2 是植物营养不等于农业受益</b>干旱、洪水、土壤侵蚀、海平面盐水入侵、海洋酸化会削弱粮食系统。</div>
+      <div class="trap"><b>9. 低碳转型投资不是“额外花钱”这么简单</b>无气候减缓情景也要投资；关键是今天资金投向何种能源系统，是否锁定未来排放。</div>
+      <div class="trap"><b>10. 城市同时是风险暴露点和排放来源</b>城市贡献约 80% GDP，面对海平面、极端天气和疾病传播风险，同时交通和建筑也是主要排放来源。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">One Screen Review</div>
+        <h2>考前压缩版：一屏背完模块 2</h2>
+      </div>
+      <div class="head-desc">先用总式区分类型，再用数字校准判断。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <span class="tag tag-blue">逻辑等式总表</span>
+        <div class="formula-list">
+          <div class="formula"><b>Climate response</b> == mitigation + adaptation + resilience + finance + trade-off。</div>
+          <div class="formula"><b>Mitigation</b> == reduce GHG sources + enhance GHG sinks。</div>
+          <div class="formula"><b>Mitigation strategies</b> == energy + buildings + transport + land/forestry + agriculture + carbon pricing + industry。</div>
+          <div class="formula"><b>Industrial decarbonization</b> == material efficiency + circularity + electrification + low/zero GHG fuels。</div>
+          <div class="formula"><b>Net-zero target</b> == direction + opportunity + regulatory risk + execution uncertainty。</div>
+          <div class="formula"><b>Emissions gap</b> == short-term NDCs insufficient + long-term net-zero implementation uncertain。</div>
+          <div class="formula"><b>Adaptation</b> == adjust to actual/expected climate events + reduce vulnerability。</div>
+          <div class="formula"><b>Resilience</b> == adaptation measures keep functioning under climate change。</div>
+          <div class="formula"><b>Adaptation gap</b> == needs far greater than available finance。</div>
+          <div class="formula"><b>Trade-off</b> == adaptation benefit must be assessed against mitigation impact。</div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">关键数字和题眼</span>
+        <div class="formula-list">
+          <div class="formula"><b>88% / 92% / 85%</b>：净零目标辖区覆盖全球 GHG 排放、GDP、人口的大致比例。</div>
+          <div class="formula"><b>200+ / 850+</b>：设置净零目标的城市和公司数量级。</div>
+          <div class="formula"><b>US$1-4 trillion</b>：到 2050 年能源供给侧额外年投资需求量级，用于 1.5°C 路径。</div>
+          <div class="formula"><b>US$1 trillion</b>：能源需求侧额外年投资需求量级。</div>
+          <div class="formula"><b>2.8 / 2.6 / 2.4°C</b>：当前政策、无条件 NDC、有条件 NDC 的中位升温路径大致量级。</div>
+          <div class="formula"><b>1.8°C</b>：NDC 加净零目标且充分执行时可能接近的路径量级。</div>
+          <div class="formula"><b>0.5%</b>：全球每年可耕地损失的大致比例。</div>
+          <div class="formula"><b>50%</b>：部分关键矿产生产位于高水压力地区的大致比例。</div>
+          <div class="formula"><b>US$160-340bn / US$315-565bn</b>：发展中国家 2030 / 2050 年适应成本估计。</div>
+          <div class="formula"><b>US$20bn</b>：2020 年流向发展中国家的国际适应资金。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块边界提醒：Paris Agreement、EU Green Deal、TCFD、NGFS、carbon pricing 的制度细节会在后续模块展开；本页只保留与 climate response 直接相关的净零、NDC 和融资缺口。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">训练“看到措施，反推出 mitigation/adaptation/resilience”。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div class="qtext">The set of actions taken to adapt human practices to function better in a warming world is called climate change:<div class="qchoices">a. mitigation<br>b. adaptation<br>c. resilience measures</div></div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">答案：b. adaptation。逻辑等式：adaptation == 调整人类实践 + 应对变暖世界 + 降低损害。resilience 更强调这些适应措施在变化中仍能发挥作用。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div class="qtext">Which is most clearly a climate change adaptation strategy?<div class="qchoices">a. 释放反射阳光的 aerosols<br>b. 提高建筑能效<br>c. 保护海岸线免受侵蚀</div></div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">答案：c。保护海岸线是为了降低海平面上升和侵蚀带来的损害，属于 adaptation。提高建筑能效更偏 mitigation。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div class="qtext">Mitigation 的核心动作是哪两个？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">减少 GHG 排放源，并增强储存 GHG 的 sinks。记忆：少开水龙头 + 加强排水口。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div class="qtext">为什么说 mitigation 和 adaptation 不是二选一？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">因为气候变化已经发生，所以 adaptation 总是需要；同时 mitigation 是防止更多升温和更大损害的核心。一些政策还可以同时实现二者，例如湿地保护和可持续 agroforestry。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div class="qtext">看到 biofuels 或 burning wood，为什么不能直接判断为低碳？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">因为要看全生命周期排放。生物燃料可能涉及化肥 N2O 和生产排放；燃木可能在燃烧时释放 CO2，并放弃树木继续生长吸碳的机会。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div class="qtext">净零目标覆盖很多排放和 GDP，为什么仍然不能直接等同于低风险？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">因为目标质量取决于 offsets、时间表、范围、资本开支和实际执行。目标代表方向和监管风险，也代表投资机会，但不等于已经实现减排。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div class="qtext">空调案例说明了 adaptation 的什么风险？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">说明适应措施可能反过来增加排放：更热导致更多空调，空调耗电并使用高 GHG 制冷剂，形成“更热 - 更多空调 - 更多排放 - 更热”的循环。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div class="qtext">Escondida Copper Mine 案例的考点是什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">矿业项目依赖水资源，水压力会影响运营和社区关系。使用海水淡化水是企业适应水资源压力的例子，但也要关注能源和排放影响。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div class="qtext">Adaptation gap 的逻辑等式是什么？</div>
+          <button class="qbtn">看答案</button>
+        </div>
+        <div class="qanswer">Adaptation gap == 适应需求成本 - 可用适应资金。发展中国家适应成本巨大，但 2020 年国际适应资金流只有约 US$20bn，明显不足。</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <details>
+        <summary>反推训练：看到 “coastal defense” 你要想到什么？</summary>
+        <div class="detail-body">想到 adaptation/resilience。它是为了应对海平面上升、风暴潮和侵蚀等已发生或预期发生的物理风险，不是直接减少 GHG 排放。</div>
+      </details>
+      <details>
+        <summary>反推训练：看到 “efficient buildings” 你要想到什么？</summary>
+        <div class="detail-body">通常想到 mitigation，因为它降低建筑运行能耗和排放；如果设计同时考虑洪水、热浪等，也可能有 adaptation 协同。</div>
+      </details>
+    </div>
+    <div class="footer-note">依据文件：ch03/esg-03.pdf，第 3 章 3.1.1 后半部分及对应 Practice Problems。为便于复习，本页对原文做了压缩和中文解释，不替代原 PDF。</div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

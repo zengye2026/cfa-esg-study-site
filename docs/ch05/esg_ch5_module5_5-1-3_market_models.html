@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 Module 5 · Corporate Governance Models in Major Markets</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:820px;margin:0;line-height:1.86;overflow-wrap:anywhere}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}.card.dark h3{color:#fff}p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}.center-node{max-width:700px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(92px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}.market-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.market-head{padding:13px 15px;border-bottom:1px solid var(--line2);display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}.market-name{font-size:16px;font-weight:950;color:var(--dark);line-height:1.25}.market-body{padding:14px 15px}.market-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;margin-bottom:8px}.market-lab{font-size:11.5px;font-weight:950;color:var(--muted);text-transform:uppercase}.market-text{font-size:13px;color:var(--sub);line-height:1.62}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:10px}.compare{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:13px;min-width:0}.compare b{display:block;color:var(--dark);font-size:14px;margin-bottom:5px}.compare span{font-size:12.8px;color:var(--sub);line-height:1.55}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.market-card,.center-node,.formula,.trap{max-width:100%}.center-node,.branch-title,.topic-title,.case-name,.market-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flowline{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-step:not(:last-child)::after{display:none}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr 1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row,.market-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:17px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 5</span>
+        <span class="pill">Module 5</span>
+        <span class="pill">5.1.3</span>
+        <span class="pill">Market Models</span>
+      </div>
+      <h1>Governance Models in Major Markets</h1>
+      <p class="lead">本页把主要市场治理差异整理成一张“结构地图”：有的市场重点在单层或双层董事会，有的重点在控制股东和少数股东保护，有的重点在员工、社会转型、文化、审计或美国州法结构。记忆时不要硬背国家故事，要抓每个市场最独特的治理机制。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Market governance model == legal history + board structure + ownership pattern + stakeholder culture + investor rights</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">5.1.3 对比主要市场公司治理模型和影响最佳实践的变量</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">11</div><div class="mini-lab">重点市场</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">基础结构：single-tier / two-tier</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先分 single-tier 和 two-tier，再记每个国家“最不像别人”的制度安排。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="structure">结构总图</button>
+    <button class="tab" data-tab="markets">市场卡片</button>
+    <button class="tab" data-tab="compare">易混对比</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div><div class="eyebrow">Memory Map</div><h2>第一屏先看一张图：国家差异来自法律、文化和所有权</h2></div>
+      <div class="head-desc">PDF 明确提醒：没有一种治理模式天然更好，它们是各国法律历史和文化的产物。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Structural Corporate Governance Differences<br>没有单一最佳结构，只有不同制度背景下的治理重点</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">Board model</div><p>Two-tier：Germany、Netherlands、China、部分 Scandinavia。</p><p>Single-tier：UK、USA、Japan、France 等多数市场。</p></div>
+        <div class="branch"><div class="branch-title">Ownership</div><p>控制股东、家族、国家、创始人、机构投资者力量不同。</p><p>会改变董事提名和少数股东保护。</p></div>
+        <div class="branch"><div class="branch-title">Stakeholders</div><p>法国员工代表、荷兰利益相关方、南非 HDSA/BBBEE、英国 workforce。</p><p>不只是股东单线。</p></div>
+        <div class="branch"><div class="branch-title">Special mechanisms</div><p>Brazil cumulative voting、Italy voto di lista、France joint auditors、Sweden shareholder nomination。</p></div>
+        <div class="branch"><div class="branch-title">US exception</div><p>无全国公司治理代码。</p><p>州公司法、Delaware、SEC 证券法和市场化原则并存。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>法律历史</h3><p>公司法、证券法和法院传统不同。</p></div>
+        <div class="flow-step"><h3>所有权结构</h3><p>股权分散或集中，控制人不同。</p></div>
+        <div class="flow-step"><h3>董事会结构</h3><p>单层、双层、法定审计人、员工代表。</p></div>
+        <div class="flow-step"><h3>股东权利</h3><p>提名、投票、累积投票、代理权访问。</p></div>
+        <div class="flow-step"><h3>利益相关方</h3><p>员工、社区、历史公平和社会转型。</p></div>
+        <div class="flow-step"><h3>投资者判断</h3><p>既要看本地规则，也要看国际最佳实践。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">题眼</span><h3>single-tier vs two-tier</h3><p class="small">双层董事会常见于 Germany、Netherlands、China 和部分 Scandinavia；单层董事会常见于 UK、USA、Japan、France 和多数市场。</p></div>
+      <div class="card"><span class="tag tag-green">题眼</span><h3>no one model is better</h3><p class="small">公司治理模型来自各国法律历史和文化；投资者常希望公司超越当地标准，采用国际最佳实践。</p></div>
+      <div class="card"><span class="tag tag-amber">题眼</span><h3>OECD Factbook</h3><p class="small">OECD Corporate Governance Factbook 是了解 49 个司法辖区治理结构和方法的资料来源。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Coverage Checklist</div><h2>逐条覆盖清单</h2></div>
+      <div class="head-desc">对应 PDF 第 299-310 页。审计职能会在模块 6 单独展开。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Global structure</span> 基础结构和原则</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">全球公司治理最基本结构差异之一，是 supervisory board 与 management board 的分离，即 two-tier board。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Two-tier boards 常见于 Germany、Netherlands、China 和部分 Scandinavian countries。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Single-tier / unitary boards 更常见于 UK、USA、Japan、France 和大多数其他市场。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">USA 和 France 通常只有一名执行董事，且常兼 chair 和 CEO；美国这一传统正在下降。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Australia 通常 CEO 是唯一执行董事且一般不担任 chair，通常也不由股东选举。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Japan 单层董事会通常由执行董事主导，非执行董事数量少但正在增加。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">没有一种治理模型天然优于其他模型；它们源于各国法律历史和文化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者常期望公司采纳国际最佳实践并超越本地代码；ICGN 和 OECD Principles 是全球倡议。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Market specifics</span> 各市场独特制度</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Australia：单层小董事会、CEO/Managing Director 通常唯一执行董事、if not why not、super funds 和 ACSI 影响强、股东提案相对常见。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Brazil：cumulative voting 帮助少数股东获得董事会代表；fiscal council 可监督董事会和管理层。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">France：多为单层董事会并常见 chair/CEO 合一；40% 女性董事、约三分之一员工代表、关联交易投票、joint auditors、Florange double voting rights。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">India：创始人或家族 promoter 影响强；独立董事比例取决于 chair 是否独立；至少一名女性董事；CEO/CFO 认证财报并负责内控。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Italy：voto di lista 为少数股东保留董事席位；statutory auditors 通过名单制选举，保护少数股东。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Japan：statutory auditors / kansayaku、董事会委员会模式逐步发展、独立非执行董事、减少 cross-shareholdings。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Netherlands：强调利益相关方，尤其 takeover 情境；AkzoNobel 展示董事会可不以股东意见为唯一优先；stichting 曾用于防御敌意收购。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">South Africa：BBBEE、HDSAs、股东批准 audit committee、King IV、social and ethics committee。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sweden：大股东影响强，双重投票权常见；nominations committee 由股东而非董事会组成，通常整张 slate 投票。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK：世界首个治理代码；强调董事会行为、文化、workforce；反对 chair/CEO 合一，要求 chair 任命时独立。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">USA：唯一没有正式公司治理代码的主要市场；州公司法、Delaware、business judgement rule、market-led principles、SEC 证券法、say-on-pay 和 proxy access。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="structure" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Structure Map</div><h2>结构总图：先分董事会模型，再看特殊制度</h2></div>
+      <div class="head-desc">做题时先判断是“结构差异题、国家特色题、股东权利题、文化/利益相关方题”，再定位国家。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Two-tier boards</div><span class="tag tag-blue">Supervisory</span></div>
+        <p class="small"><b>原文要点：</b>two-tier board 将 supervisory board 和 management board 分开，典型市场包括 Germany、Netherlands、China 和部分 Scandinavian countries。</p>
+        <p class="small"><b>中文解释：</b>监督和经营分开，理论上更强调监督层对管理层的独立监督，但实际独立性仍要看成员代表谁。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Two-tier</div><div class="eq-op">==</div><div class="eq-rhs">supervisory board + management board</div></div></div>
+        <div class="riskline"><b>考点提醒：</b>Supervisory board 全员多为非执行，但未必全部独立，可能有大股东或员工代表。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Single-tier boards</div><span class="tag tag-green">Unitary</span></div>
+        <p class="small"><b>原文要点：</b>single-tier / unitary board 常见于 UK、USA、Japan、France 和多数其他市场，但内部形态差异很大。</p>
+        <p class="small"><b>中文解释：</b>同样叫单层董事会，USA/France 常见 chair/CEO 合一，Japan 执行董事占多，UK 更偏多数独立非执行。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Single-tier</div><div class="eq-op">==</div><div class="eq-rhs">one board, but composition varies by market</div></div></div>
+        <div class="riskline"><b>易错提醒：</b>不要把 single-tier 理解成所有国家董事会结构相同。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Best practice</div><span class="tag tag-violet">Context</span></div>
+        <p class="small"><b>原文要点：</b>没有一种公司治理模型优于其他模型，它们由各国法律历史和文化塑造。</p>
+        <p class="small"><b>中文解释：</b>投资判断要同时看本地制度合理性和国际最佳实践，而不能机械套一个模板。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Best practice</div><div class="eq-op">==</div><div class="eq-rhs">local law/culture + international principles + investor expectations</div></div></div>
+        <div class="riskline"><b>考点提醒：</b>ICGN Principles、OECD Principles 和 OECD Factbook 都是全球比较的重要线索。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="markets" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Market Cards</div><h2>11 个市场：每个只抓最独特的治理机制</h2></div>
+      <div class="head-desc">这些卡片会成为后续三轮练习的国家题眼库。</div>
+    </div>
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">Australia</div><span class="tag tag-blue">single-tier</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">结构</div><div class="market-text">单层董事会，通常只有 CEO / managing director 一名执行董事，且一般不由股东选举。</div></div>
+          <div class="market-row"><div class="market-lab">特色</div><div class="market-text">董事会相对小，常见 6-7 人；“if not, why not” 版本的 comply or explain。</div></div>
+          <div class="market-row"><div class="market-lab">投资者</div><div class="market-text">Super funds 和 ACSI 影响强；股东提案相对常见，仅美国更多。</div></div>
+          <div class="market-row"><div class="market-lab">案例</div><div class="market-text">Rio Tinto Juukan Gorge 事件显示投资者和公众对公司行为有强影响。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">Brazil</div><span class="tag tag-green">cumulative voting</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">特色</div><div class="market-text">允许累积投票：股东可将多个董事席位对应票数集中投给一人，帮助少数股东获得代表。</div></div>
+          <div class="market-row"><div class="market-lab">保护</div><div class="market-text">若无累积投票，可能为独立股东或无投票权股东保留董事席位。</div></div>
+          <div class="market-row"><div class="market-lab">Fiscal council</div><div class="market-text">许多公司设 fiscal council，类似监督机构，向股东报告管理行为和公司进展。</div></div>
+          <div class="market-row"><div class="market-lab">代码</div><div class="market-text">IBGC Code 采用 comply or explain，不强制，不合规不直接处罚。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">France</div><span class="tag tag-violet">joint auditors</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">结构</div><div class="market-text">多数为单层董事会，并常由 combined chair/CEO 领导，即 PDG。</div></div>
+          <div class="market-row"><div class="market-lab">DEI</div><div class="market-text">要求 40% 董事为女性，约三分之一董事为员工代表。</div></div>
+          <div class="market-row"><div class="market-lab">审计</div><div class="market-text">唯一要求 joint auditors 的主要市场，由两家审计 firm 共同审计。</div></div>
+          <div class="market-row"><div class="market-lab">投票权</div><div class="market-text">Florange Act 给予长期股东双重投票权，除非三分之二股东反对。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">India</div><span class="tag tag-amber">promoters</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">所有权</div><div class="market-text">创始人、家族或共同大股东称为 promoters，并承担证券法下部分约束。</div></div>
+          <div class="market-row"><div class="market-lab">独立性</div><div class="market-text">若 chair 独立，董事会三分之一独立；若 chair 非独立，则半数董事应独立。</div></div>
+          <div class="market-row"><div class="market-lab">要求</div><div class="market-text">至少一名女性董事；董事会每年至少开四次会；CEO/CFO 认证财报并负责内控。</div></div>
+          <div class="market-row"><div class="market-lab">案例</div><div class="market-text">Satyam 后更重视财报和内控问责；Adani 事件凸显关联交易理解难题。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">Italy</div><span class="tag tag-green">voto di lista</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">结构</div><div class="market-text">单层董事会，通常一名执行董事和独立 chair。</div></div>
+          <div class="market-row"><div class="market-lab">特色</div><div class="market-text">voto di lista 为少数股东保留部分董事席位，通常约 30%。</div></div>
+          <div class="market-row"><div class="market-lab">门槛</div><div class="market-text">通常 1% 持股可提出董事名单；Assogestioni 常组织少数股东名单。</div></div>
+          <div class="market-row"><div class="market-lab">审计人</div><div class="market-text">statutory auditors 不是外部审计师，而是确认董事会某些行为合法性的法定角色。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">Japan</div><span class="tag tag-teal">kansayaku</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">结构</div><div class="market-text">传统上有 statutory auditors / kansayaku，通常 3 或 5 人，股东单独任命，任期约四年。</div></div>
+          <div class="market-row"><div class="market-lab">变化</div><div class="market-text">部分公司转向 board with committees，增加非执行董事，但历史上缺乏非执行董事传统。</div></div>
+          <div class="market-row"><div class="market-lab">代码</div><div class="market-text">2015 年引入治理代码，2018 年修订，强调独立非执行董事。</div></div>
+          <div class="market-row"><div class="market-lab">交叉持股</div><div class="market-text">代码要求披露减少 cross-shareholdings 的政策，每个董事会至少两名独立非执行董事。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">Netherlands</div><span class="tag tag-blue">stakeholders</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">结构</div><div class="market-text">常见 supervisory board，股东任命监督董事会，但距离管理层问责较远。</div></div>
+          <div class="market-row"><div class="market-lab">特色</div><div class="market-text">股东不一定优先于其他利益相关方，尤其在收购情境中。</div></div>
+          <div class="market-row"><div class="market-lab">案例</div><div class="market-text">AkzoNobel 拒绝与 PPG 谈判，法院支持其考虑员工等利益相关方的立场。</div></div>
+          <div class="market-row"><div class="market-lab">Stichting</div><div class="market-text">曾用于 hostile bid 防御，使投资者持有存托凭证而非完整股东权利。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">South Africa</div><span class="tag tag-amber">BBBEE / King IV</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">背景</div><div class="market-text">治理特色来自纠正种族历史不公平和经济差距，重点支持 HDSAs。</div></div>
+          <div class="market-row"><div class="market-lab">BBBEE</div><div class="market-text">公司需为黑人和其他 HDSA 领导团体保留约 15% 股份，比例因行业而异。</div></div>
+          <div class="market-row"><div class="market-lab">董事会</div><div class="market-text">单层董事会，通常两名执行董事和非执行董事，多数为独立董事，同时也有股东代表。</div></div>
+          <div class="market-row"><div class="market-lab">特色</div><div class="market-text">股东批准 audit committee；King IV 强调综合报告和 E/S 风险；上市和国企须有 social and ethics committee。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">Sweden</div><span class="tag tag-violet">shareholder nominations</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">所有权</div><div class="market-text">大股东影响强，如 Wallenberg family 的 Investor AB；双重投票权常见。</div></div>
+          <div class="market-row"><div class="market-lab">提名</div><div class="market-text">nominations committee 不是董事会委员会，而是由最大股东依序参与组成。</div></div>
+          <div class="market-row"><div class="market-lab">投票</div><div class="market-text">提名委员会向 AGM 提出董事会和 chair，通常以 single slate 投票。</div></div>
+          <div class="market-row"><div class="market-lab">效果</div><div class="market-text">结果通常是技能较好且较平衡的董事会，但大股东仍经常担任 chair。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">United Kingdom</div><span class="tag tag-green">culture</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">代码</div><div class="market-text">发布世界首个公司治理代码，现行代码比多数国家更关注董事会行为和企业文化。</div></div>
+          <div class="market-row"><div class="market-lab">董事会</div><div class="market-text">反对 chair/CEO 合一，chair 任命时应独立；独立非执行董事应占多数。</div></div>
+          <div class="market-row"><div class="market-lab">风险</div><div class="market-text">董事会需考虑 emerging/principal risks，包括 ESG 风险，并做至少三年 viability statement。</div></div>
+          <div class="market-row"><div class="market-lab">Workforce</div><div class="market-text">通过员工董事、workforce advisory panel 或非执行董事联络人了解员工观点；薪酬委员会需考虑员工薪酬和文化。</div></div>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="market-head"><div class="market-name">United States</div><span class="tag tag-rose">no formal code</span></div>
+        <div class="market-body">
+          <div class="market-row"><div class="market-lab">特殊性</div><div class="market-text">PDF 称截至 2024 年，美国是唯一没有正式公司治理代码的主要市场，因为公司法在州层面。</div></div>
+          <div class="market-row"><div class="market-lab">Delaware</div><div class="market-text">超过一半美国上市公司注册在 Delaware，法院决定影响很大；通常适用 business judgement rule。</div></div>
+          <div class="market-row"><div class="market-lab">Tesla</div><div class="market-text">Musk 薪酬案中，因控制力和缺乏独立性，法院使用 entire fairness 审查过程和结果。</div></div>
+          <div class="market-row"><div class="market-lab">规则来源</div><div class="market-text">市场化原则包括 Commonsense Principles、ISG Principles、CII Policies；联邦层面主要是 SEC 证券法，如 SOX、Dodd-Frank say-on-pay 和 proxy access。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Compare</div><h2>易混对比：看到关键词就定位国家</h2></div>
+      <div class="head-desc">这部分按正式题常见干扰项设计。</div>
+    </div>
+    <div class="compare-grid">
+      <div class="compare"><b>Australia vs USA</b><span>股东提案数量：美国最多，澳大利亚也相对常见。澳大利亚题眼是 if not, why not、super funds、ACSI、Juukan Gorge。</span></div>
+      <div class="compare"><b>Brazil vs Italy</b><span>Brazil 是 cumulative voting 和 fiscal council；Italy 是 voto di lista 和 statutory auditors。</span></div>
+      <div class="compare"><b>France vs Sweden</b><span>France 的长期股东 double voting rights 来自 Florange Act；Sweden 常见 differential voting rights 和股东组成的 nomination committee。</span></div>
+      <div class="compare"><b>India vs South Africa</b><span>India 题眼是 promoters、女性董事、CEO/CFO 认证；South Africa 题眼是 HDSAs、BBBEE、King IV、social and ethics committee。</span></div>
+      <div class="compare"><b>Japan vs Netherlands</b><span>Japan 是 kansayaku、cross-shareholdings、至少两名独立非执行；Netherlands 是 stakeholder duty、AkzoNobel、stichting、takeover sensitivity。</span></div>
+      <div class="compare"><b>UK vs USA</b><span>UK 有世界首个治理代码，强调 culture/workforce；USA 无全国正式代码，州法、Delaware、SEC 证券法和 market-led principles 并存。</span></div>
+    </div>
+    <div class="topic-card" style="margin-top:14px">
+      <div class="topic-top"><div class="topic-title">逻辑等式：国家题眼定位法</div><span class="tag tag-dark">Exam Hook</span></div>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">cumulative voting</div><div class="eq-op">==</div><div class="eq-rhs">Brazil，少数股东集中票数选董事</div></div>
+        <div class="eq"><div class="eq-lhs">joint auditors</div><div class="eq-op">==</div><div class="eq-rhs">France，唯一主要市场要求两家审计 firm</div></div>
+        <div class="eq"><div class="eq-lhs">promoters</div><div class="eq-op">==</div><div class="eq-rhs">India，创始人/控制股东承担特定义务</div></div>
+        <div class="eq"><div class="eq-lhs">voto di lista</div><div class="eq-op">==</div><div class="eq-rhs">Italy，为少数股东保留董事席位</div></div>
+        <div class="eq"><div class="eq-lhs">kansayaku</div><div class="eq-op">==</div><div class="eq-rhs">Japan，法定审计人结构</div></div>
+        <div class="eq"><div class="eq-lhs">no formal code</div><div class="eq-op">==</div><div class="eq-rhs">USA，公司法州层面，Delaware 重要</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Audit-style Cases</div><h2>案例框：用投资复核思路看市场差异</h2></div>
+      <div class="head-desc">同一治理问题，在不同市场下证据和判断重点会不同。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 1：法国长期股东双重投票权</div><span class="tag tag-violet">Florange</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">长期股东双重投票权可能强化国家或控制股东影响，限制少数股东声音。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">持股期限、投票权比例变化、是否有三分之二股东反对、是否存在控制权变化。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">经济持股和投票影响脱节，可能影响战略方向和并购谈判。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Florange risk == long-term shares + double votes + control amplification。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 2：印度 promoter 集团和关联交易</div><span class="tag tag-amber">Promoters</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">集团公司之间联系紧密，promoter 可能通过关联交易影响少数股东利益。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">关联交易清单、独立董事比例、审计师是否能理解交易、CEO/CFO 内控认证。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">财报可信度、控制权透明度和治理折价都会受影响。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">India promoter risk == founder dominance + related parties + internal control accountability。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 3：荷兰董事会拒绝收购谈判</div><span class="tag tag-blue">Stakeholders</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">股东支持交易，但董事会认为员工等利益相关方保护不足。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">董事会职责范围、法院态度、交易对员工和长期战略的影响、股东后续是否获得价值回报。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">股东价值不一定在短期交易中优先，但非收购情境下股东影响仍可能很强。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Dutch takeover logic == shareholder value + employee/stakeholder duty + board discretion。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 4：美国 Tesla 薪酬案</div><span class="tag tag-rose">Delaware</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险点</div><div class="case-text">创始人对公司和董事会影响过强，薪酬决策过程缺乏独立性和透明度。</div></div>
+          <div class="case-row"><div class="case-lab">证据</div><div class="case-text">董事关系、独立股东批准、披露充分性、薪酬规模、法院采用的审查标准。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">在极端情况下，法院可从通常尊重董事判断转向 entire fairness 审查。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">Tesla pay case == founder dominance + weak independence + entire fairness review。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Compressed Review</div><h2>考前压缩：一组式子背完模块 5</h2></div>
+      <div class="head-desc">这部分会进入最后 Key Facts 汇总和三轮练习的压缩背诵区。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>模块 5 主式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Market governance</b> == legal history + culture + board model + ownership + investor rights。</div>
+          <div class="formula"><b>Two-tier</b> == supervisory board + management board；Germany / Netherlands / China / some Scandinavia。</div>
+          <div class="formula"><b>Single-tier</b> == UK / USA / Japan / France / most markets，但内部差异很大。</div>
+          <div class="formula"><b>Australia</b> == single executive CEO + if not why not + super funds + shareholder proposals。</div>
+          <div class="formula"><b>Brazil</b> == cumulative voting + fiscal council。</div>
+          <div class="formula"><b>France</b> == combined chair/CEO + 40% women + employee representatives + joint auditors + Florange double voting。</div>
+          <div class="formula"><b>India</b> == promoters + independent board ratio + female director + CEO/CFO certification。</div>
+          <div class="formula"><b>Italy</b> == voto di lista + statutory auditors。</div>
+          <div class="formula"><b>Japan</b> == kansayaku + board with committees + cross-shareholding reduction + two independent NEDs。</div>
+          <div class="formula"><b>Netherlands</b> == stakeholder model + AkzoNobel + stichting。</div>
+          <div class="formula"><b>South Africa</b> == BBBEE + audit committee vote + King IV + social and ethics committee。</div>
+          <div class="formula"><b>Sweden</b> == shareholder nominations committee + single slate + differential voting rights。</div>
+          <div class="formula"><b>UK</b> == code + culture/workforce + independent chair + majority independent NEDs。</div>
+          <div class="formula"><b>USA</b> == no formal code + state corporate law + Delaware + SEC securities law + say-on-pay/proxy access。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错点</h3>
+        <div class="formula-list">
+          <div class="trap"><b>易错 1：把 two-tier 直接等于更好。</b>PDF 明确说没有一种模型天然更好。</div>
+          <div class="trap"><b>易错 2：把 France 和 USA 混。</b>两者都常见 combined chair/CEO，但 France 有 joint auditors、40% 女性董事和员工代表。</div>
+          <div class="trap"><b>易错 3：把 Brazil 和 Italy 混。</b>Brazil 是 cumulative voting/fiscal council；Italy 是 voto di lista/statutory auditors。</div>
+          <div class="trap"><b>易错 4：把 Japan 当成没有治理代码。</b>Japan 2015 年已有代码；PDF 说唯一主要市场无代码的是 USA。</div>
+          <div class="trap"><b>易错 5：把 South Africa 的 social and ethics committee 当普通可选委员会。</b>PDF 说上市公司和国企需有该委员会。</div>
+          <div class="trap"><b>易错 6：认为 Sweden 的 nominations committee 是董事会委员会。</b>它由股东组成。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 5 边界提醒：独立审计职能、审计师轮换、增强审计报告、内审等内容会在模块 6 继续展开。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div><div class="eyebrow">Self Test</div><h2>自测题：国家题眼反推</h2></div>
+      <div class="head-desc">正式 Practice Problems 后续会集中放入三轮练习系统；这里先训练国家关键词。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard"><div class="qtop"><div class="qno">1</div><div class="qtext">two-tier boards 典型市场有哪些？single-tier boards 典型市场有哪些？</div><button class="qbtn">看答案</button></div><div class="qanswer">Two-tier 常见于 Germany、Netherlands、China 和部分 Scandinavian countries。Single-tier / unitary 常见于 UK、USA、Japan、France 和多数其他市场。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">2</div><div class="qtext">哪个市场以 cumulative voting 和 fiscal council 为特色？</div><button class="qbtn">看答案</button></div><div class="qanswer">Brazil。Cumulative voting 帮助少数股东集中票数选董事；fiscal council 类似监督机构，向股东报告。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">3</div><div class="qtext">France 的两个特别治理制度是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">一是 joint auditors，即两家审计 firm 共同审计；二是 Florange Act 下长期股东双重投票权。France 还要求 40% 女性董事和约三分之一员工代表。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">4</div><div class="qtext">India 的 promoters 是什么？为什么重要？</div><button class="qbtn">看答案</button></div><div class="qanswer">Promoters 是创始人、家族或控制股东群体，在印度治理制度中承担特定义务，并影响关联交易、董事会独立性和控制权透明度。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">5</div><div class="qtext">Italy 的 voto di lista 用来解决什么问题？</div><button class="qbtn">看答案</button></div><div class="qanswer">用于在大股东主导的公司中为少数股东保留董事席位，通常约 30%，使少数股东可通过名单制获得董事会代表。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">6</div><div class="qtext">Japan 的两个关键词 kansayaku 和 cross-shareholdings 分别指什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">Kansayaku 是日本 statutory auditors；cross-shareholdings 是公司之间交叉持股，治理代码要求披露减少这类持股的政策。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">7</div><div class="qtext">South Africa 的 BBBEE 和 King IV 分别反映什么治理重点？</div><button class="qbtn">看答案</button></div><div class="qanswer">BBBEE 反映对 HDSAs 的经济赋权和历史公平；King IV 强调综合报告、E/S 风险和治理责任，上市公司和国企还需有 social and ethics committee。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">8</div><div class="qtext">Sweden 的 nominations committee 为什么特别？</div><button class="qbtn">看答案</button></div><div class="qanswer">它不是董事会委员会，而是由最大股东依序参与组成，在 AGM 提出董事会和 chair，通常以 single slate 方式投票。</div></div>
+      <div class="qcard"><div class="qtop"><div class="qno">9</div><div class="qtext">PDF 中截至 2024 年唯一没有正式公司治理代码的主要市场是哪一个？原因是什么？</div><button class="qbtn">看答案</button></div><div class="qanswer">USA。原因是美国公司法由各州而非联邦制定，因此没有全国统一的正式公司治理代码。</div></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id=btn.dataset.tab;
+    tabs.forEach(t=>t.classList.toggle('active',t===btn));
+    panels.forEach(p=>p.classList.toggle('active',p.id===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.6 Module 3 · 6.1.3 Stewardship Codes and Standards</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.card.dark .small{color:#cbd5e1}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:700px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.concept-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.concept-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.concept-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;margin:10px 0}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.principle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:9px}
+.principle{border:1px solid var(--line);border-radius:var(--r);background:#fff;padding:10px 11px;min-width:0}
+.principle b{display:block;font-size:12px;color:var(--muted);line-height:1.35;margin-bottom:4px}
+.principle span{display:block;font-size:13px;font-weight:850;color:var(--dark);line-height:1.42}
+.code-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:10px}
+.code-item{border:1px solid var(--line);border-radius:var(--r);background:var(--soft);padding:12px;min-width:0}
+.code-title{font-size:13.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px}
+.code-desc{font-size:12.7px;color:var(--sub);line-height:1.6}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.concept-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.concept-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1080px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .flowline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow-step:not(:last-child)::after{display:none}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:25px;line-height:1.13}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 6</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">6.1.3</span>
+        <span class="pill">Codes & Standards</span>
+      </div>
+      <h1>Stewardship Codes and Standards</h1>
+      <p class="lead">本页覆盖第 6 章 6.1.3：stewardship codes 的原则和要求，以及这些要求如何适用于资产所有者、资产管理人和服务提供商。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Stewardship codes == 受托责任制度化 + 公开政策 + 监督和参与 + 投票 + 利益冲突管理 + 结果披露；UK 2020 == 从“说打算做什么”升级为“证明做出了什么结果”。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Module Focus</div>
+      <div class="side-big">第 6 章的准则主线：监管越来越不满足于漂亮政策，开始要求 outcome。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">12</div><div class="mini-lab">资产所有者/管理人原则</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">服务提供商原则</div></div>
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">核心逻辑卡</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>考点提醒：</b>UK Stewardship Code 2020 最大变化是要求报告 practical effects / outcomes，不是简单增加政策声明。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑等式</button>
+    <button class="tab" data-tab="codes">准则地图</button>
+    <button class="tab" data-tab="mistakes">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>准则地图：从金融危机反思到结果披露</h2>
+      </div>
+      <div class="head-desc">用“为什么有准则、准则要求什么、谁被要求、哪里容易混”四步记住本节。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Stewardship Codes<br>把投资者的主动所有权变成可报告、可监督、可比较的责任</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1 起点</div><p>GFC 后监管认为机构投资者参与不足。</p><p>Walker Report 推动英国准则。</p></div>
+        <div class="branch"><div class="branch-title">2 UK 2010</div><p>英国 FRC 发布 Stewardship Code。</p><p>带监管支持，推动接受度。</p></div>
+        <div class="branch"><div class="branch-title">3 UK 2020</div><p>12 项资产所有者和管理人原则。</p><p>另有 6 项服务提供商原则。</p></div>
+        <div class="branch"><div class="branch-title">4 Outcomes</div><p>不只披露活动和意图。</p><p>要报告具体实践效果。</p></div>
+        <div class="branch"><div class="branch-title">5 全球扩散</div><p>ICGN、EFAMA、ACSI、日本、新加坡、南非等。</p><p>原则相似但侧重点不同。</p></div>
+        <div class="branch"><div class="branch-title">6 易混点</div><p>conflicts 常被投资者团体准则弱化。</p><p>collective engagement 容易涉及 concert party 争议。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>危机反思</h3><p>机构投资者未能有效约束银行风险。</p></div>
+        <div class="flow-step"><h3>准则形成</h3><p>用原则框架规范 stewardship。</p></div>
+        <div class="flow-step"><h3>监管支持</h3><p>基金经理需要说明是否和如何遵循。</p></div>
+        <div class="flow-step"><h3>结果导向</h3><p>2020 版强调 outcomes 和 practical effects。</p></div>
+        <div class="flow-step"><h3>全球应用</h3><p>原则推广到多市场和多资产类别。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">起因</span>
+        <h3>监管相信参与有市场价值</h3>
+        <p class="small">准则不是凭空出现，而是金融危机后对机构投资者消极监督的反思。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">变化</span>
+        <h3>2020 版强调结果</h3>
+        <p class="small">以前偏 policy statements，现在要求证明治理、ESG 整合、参与和投票怎样实际服务客户和受益人。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-rose">陷阱</span>
+        <h3>利益冲突和集体行动最容易混</h3>
+        <p class="small">基金管理行业起草的准则更可能淡化 conflicts；集体参与要小心 acting in concert / concert party 风险。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-06.pdf` 第 344-349 页整理，覆盖 6.1.3 所有核心准则点。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Origins</span> 准则起点和监管逻辑</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">监管者相信 engagement 不仅给投资组合增加价值，也能给市场整体增加价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Global Financial Crisis 后，监管对 stewardship 的兴趣来自对机构投资者未能约束银行风险的失望。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Walker Report 要求 FRC 发布 stewardship code，为股东参与提供框架。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2010 年 FRC 发布 UK Stewardship Code，接受较快，尤其在 fund managers 中。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Stewardship Code 2010 有 7 项原则，建立在更早的机构股东责任原则基础上。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">UK Stewardship Code 2020</span> 原则和最大变化</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Stewardship Code 2020 包含 12 项适用于 asset owners and managers 的原则。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2020 版还新增 6 项适用于 service providers 的原则。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2020 版最大变化是提高 practical delivery 要求，要求每年报告 activity 和最重要的 outcomes。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">仅报告活动不够，每项原则相关 outcomes 都要报告，并提供实际服务客户和受益人的具体例子。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者不能再用充满雄心表述的 policy statements 满足准则要求，而要展示实际效果。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">原则 1-8 是 stewardship 的基础，原则 9-12 关注 engagement responsibilities 的实际履行。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">原则 7 和 8 要求 ESG factors 整合进投资流程，并有效监督 service providers。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">原则 9-12 涉及 engagement 和 voting，要展示因为参与活动导致公司或其他被投资产发生实质改变。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Principle 4 and Global Codes</span> 系统性风险和全球扩散</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK 2020 最有挑战性的原则之一是 Principle 4，要求识别并回应 market-wide and systemic risks。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">该原则要求签署方披露其识别和回应系统性风险的有效性评估。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Australian Asset Owner Stewardship Code 有类似期望：鼓励金融系统和监管政策与长期投资者利益对齐。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ICGN 2020 也讨论投资者就系统性风险与公共政策制定者沟通的需要。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">日本 2020 stewardship guidance 小幅借鉴英国，包括报告 engagement outcomes，但重要性没有 UK 2020 那么突出。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">全球各地已有类似准则，包括 ICGN、EFAMA、ACSI、AMEC、香港、印度、日本、马来西亚、新加坡、南非、韩国、瑞士、美国等。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Shared Principles and Conflicts</span> 共同原则、利益冲突和集体参与</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">除 UK 2020 外，各国 stewardship codes 的原则通常很相似，多沿袭英国 2012 版的七项原则。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">常见原则包括公开 stewardship policy、定期 monitoring、必要时 active engagement、thoughtfully intelligent voting、诚实开放报告。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有时出现但不一定都有的原则包括 conflicts of interest 管理，以及愿意与其他机构投资者集体行动。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">由 fund management industry 起草的准则更可能淡化 conflicts，由监管支持更强的准则更重视 conflicts。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EFAMA Stewardship Code 与英国 2012 版很像，但不包括 conflicts 原则，几乎回避该问题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Collective engagement 有争议，因为可能被担心形成 concert parties，即投资者合力控制公司但未发起正式收购。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">当前准则通常说适用于所有资产类别，但语言和实践仍显露出最初侧重 public equity。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">Law and Regulation</span> SRD II 与 ERISA</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU Shareholder Rights Directive II 于 2019 年 6 月生效，会提高各国本地投资者 stewardship 期望。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SRD II 名称是股东权利，但实质更强调 shareholder responsibilities。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">美国 ERISA 要求 advisers 以 beneficiaries 的 fiduciaries 身份行动，fund management firms 在美国制度下被视为 advisers。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ERISA 相关义务包括基金会在被投公司 general meetings 投票并与公司 engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">2018 年解释更支持 stewardship：如果投票和代理权使用预期能提升投资经济价值，并考虑成本，则 fiduciaries 可以这样做。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ERISA 语境下，engagement 需要与 beneficiaries 的价值有明确联系，不能只是为了纯社会政策目标。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：把准则变成判断线</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+
+    <div class="concept-grid">
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">1. 准则为什么出现</div><span class="tag tag-blue">Origins</span></div>
+        <p class="small"><b>原文要点：</b>GFC 后监管对机构投资者未能有效约束银行风险感到失望，Walker Report 推动英国发布 stewardship code。</p>
+        <div class="quote-box"><b>中文解释：</b>准则的本质是把“投资者应该负责任地监督公司”制度化，避免机构投资者只做沉默股东。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">准则起点</div><div class="eq-op">==</div><div class="eq-rhs">金融危机反思 + 机构投资者参与不足 + 监管推动</div></div>
+          <div class="eq"><div class="eq-lhs">准则目的</div><div class="eq-op">==</div><div class="eq-rhs">给 shareholder engagement 建立原则框架</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>看到 Walker Report、GFC、FRC，联想到 UK Stewardship Code 的监管起点。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">2. UK 2020 最大变化</div><span class="tag tag-green">Outcomes</span></div>
+        <p class="small"><b>原文要点：</b>UK Stewardship Code 2020 最大变化是提升 practical delivery，要每年报告 activity 和 outcomes。</p>
+        <div class="quote-box"><b>中文解释：</b>过去可以说“我们有政策、我们有意愿”。2020 版更像复核底稿：你做了什么、结果是什么、怎么证明对客户和受益人有用。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">UK 2020</div><div class="eq-op">==</div><div class="eq-rhs">activity 披露 + outcome 披露 + concrete examples</div></div>
+          <div class="eq"><div class="eq-lhs">最大变化</div><div class="eq-op">==</div><div class="eq-rhs">从 policy statements 转向 practical effects</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Practice Problems 会直接考：2020 版最重大变化是要求报告 engagement actions 的 practical effects / outcomes。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">3. 12 项原则的结构</div><span class="tag tag-violet">Structure</span></div>
+        <p class="small"><b>原文要点：</b>12 项原则可分为基础性 stewardship 原则和 engagement responsibilities 的实际履行。</p>
+        <div class="quote-box"><b>中文解释：</b>前半部分看投资机构自己有没有治理、文化、资源、冲突管理、ESG 整合和服务商监督；后半部分看它怎样 engagement、collaboration、escalation 和行使权利。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Principles 1-8</div><div class="eq-op">==</div><div class="eq-rhs">机构基础 + ESG 整合 + 服务商监督</div></div>
+          <div class="eq"><div class="eq-lhs">Principles 9-12</div><div class="eq-op">==</div><div class="eq-rhs">engagement + collaboration + escalation + rights</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>不要只把 code 理解成投票规则，它还覆盖机构治理、资源、激励、冲突、客户需要和服务商监督。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">4. 系统性风险原则</div><span class="tag tag-teal">Principle 4</span></div>
+        <p class="small"><b>原文要点：</b>UK 2020 Principle 4 要求识别和回应 market-wide and systemic risks，是最具挑战性的原则之一。</p>
+        <div class="quote-box"><b>中文解释：</b>这不只是管单家公司，而是要求投资者关注市场、金融系统、社会和环境系统是否健康运行。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Principle 4</div><div class="eq-op">==</div><div class="eq-rhs">识别系统性风险 + 回应系统性风险 + 披露有效性</div></div>
+          <div class="eq"><div class="eq-lhs">相似代码</div><div class="eq-op">==</div><div class="eq-rhs">Australian Asset Owner Stewardship Code Principle 5</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干若问哪项准则含有 market-wide financial system / long-term investors alignment，答案指向 Australian Asset Owner Stewardship Code。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">5. 利益冲突和集体参与</div><span class="tag tag-rose">Risk</span></div>
+        <p class="small"><b>原文要点：</b>不同准则对 conflicts of interest 处理差异大；collective engagement 有 concert party 争议。</p>
+        <div class="quote-box"><b>中文解释：</b>基金管理人可能与被投公司或客户有商业关系，投票和参与不一定天然独立；多个投资者联合行动也可能被监管担心是在变相控制公司。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Conflicts</div><div class="eq-op">==</div><div class="eq-rhs">商业关系 + 客户利益差异 + 个人关系 + 投票/参与偏差风险</div></div>
+          <div class="eq"><div class="eq-lhs">Collective risk</div><div class="eq-op">==</div><div class="eq-rhs">协作影响力 + acting in concert 担忧 + concert party 风险</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>由 investor groups 或 fund management industry 起草的 code 更可能忽略 conflicts；EFAMA 是典型例子。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="codes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Codes Map</div>
+        <h2>准则地图：原则、地区和责任对象</h2>
+      </div>
+      <div class="head-desc">这一页把容易散的名称压成几个判断块，后面做题时先定位“问的是哪类准则”。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">UK Stewardship Code 2020：资产所有者和管理人 12 项原则</div><span class="tag tag-blue">12 principles</span></div>
+        <div class="case-body">
+          <div class="principle-grid">
+            <div class="principle"><b>1</b><span>Purpose, strategy, and culture</span></div>
+            <div class="principle"><b>2</b><span>Governance, resources, and incentives</span></div>
+            <div class="principle"><b>3</b><span>Conflicts of interest</span></div>
+            <div class="principle"><b>4</b><span>Promoting well-functioning markets</span></div>
+            <div class="principle"><b>5</b><span>Review and assurance</span></div>
+            <div class="principle"><b>6</b><span>Client and beneficiary needs</span></div>
+            <div class="principle"><b>7</b><span>Stewardship, investment, and ESG integration</span></div>
+            <div class="principle"><b>8</b><span>Monitoring managers and service providers</span></div>
+            <div class="principle"><b>9</b><span>Engagement</span></div>
+            <div class="principle"><b>10</b><span>Collaboration</span></div>
+            <div class="principle"><b>11</b><span>Escalation</span></div>
+            <div class="principle"><b>12</b><span>Exercising rights and responsibilities</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">UK Stewardship Code 2020：服务提供商 6 项原则</div><span class="tag tag-green">Service providers</span></div>
+        <div class="case-body">
+          <div class="principle-grid">
+            <div class="principle"><b>1</b><span>Purpose, strategy, and culture</span></div>
+            <div class="principle"><b>2</b><span>Governance, resources, and incentives</span></div>
+            <div class="principle"><b>3</b><span>Conflicts of interest</span></div>
+            <div class="principle"><b>4</b><span>Promoting well-functioning markets</span></div>
+            <div class="principle"><b>5</b><span>Supporting client's stewardship</span></div>
+            <div class="principle"><b>6</b><span>Review and assurance</span></div>
+          </div>
+          <div class="footer-note">服务提供商也被纳入准则，说明 stewardship 不只是资产所有者或基金经理自己的事，也包括支持它们履责的代理投票、研究和服务机构。</div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">全球代码：名称先按地区记</div><span class="tag tag-violet">Global examples</span></div>
+        <div class="case-body">
+          <div class="code-list">
+            <div class="code-item"><div class="code-title">Global</div><div class="code-desc">ICGN Global Stewardship Principles。</div></div>
+            <div class="code-item"><div class="code-title">Europe</div><div class="code-desc">EFAMA Stewardship Code；SRD II 推高欧洲各国期望。</div></div>
+            <div class="code-item"><div class="code-title">Australia</div><div class="code-desc">Australian Asset Owner Stewardship Code；包含类似系统性风险/金融系统对齐原则。</div></div>
+            <div class="code-item"><div class="code-title">Asia</div><div class="code-desc">香港 Responsible Ownership、印度 SEBI、日本 Institutional Investors、马来西亚、新加坡、韩国等。</div></div>
+            <div class="code-item"><div class="code-title">South Africa</div><div class="code-desc">CRISA 是 responsible investing code，不只是 stewardship。</div></div>
+            <div class="code-item"><div class="code-title">United States</div><div class="code-desc">Investor Stewardship Group principles；ERISA 也影响 stewardship 义务。</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">共享原则：多数准则的共同骨架</div><span class="tag tag-amber">Common spine</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">开头</div><div class="case-text">通常要求投资者制定并公开 stewardship policy。</div></div>
+          <div class="case-row"><div class="case-lab">主体</div><div class="case-text">regular monitoring、active engagement where relevant、thoughtfully intelligent voting。</div></div>
+          <div class="case-row"><div class="case-lab">结尾</div><div class="case-text">要求 honest and open reporting of stewardship activities。</div></div>
+          <div class="case-row"><div class="case-lab">有时出现</div><div class="case-text">manage conflicts of interest；愿意与其他机构投资者集体行动。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">法律线：SRD II 和 ERISA</div><span class="tag tag-teal">Regulation</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">SRD II</div><div class="case-text">名称是 shareholder rights，但实质更强调 shareholder responsibilities，推动欧洲各国提高 stewardship 期望。</div></div>
+          <div class="case-row"><div class="case-lab">ERISA</div><div class="case-text">美国制度下 advisers 对 beneficiaries 承担 fiduciary duty，义务包括投票和 engagement。</div></div>
+          <div class="case-row"><div class="case-lab">价值约束</div><div class="case-text">美国语境下，投票和代理权使用必须有合理预期能提升投资经济价值，并考虑成本；不能只是纯社会政策目标。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">考点总式：谁、做什么、怎么证明</div><span class="tag tag-rose">Exam logic</span></div>
+        <div class="case-body">
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Asset owners</div><div class="eq-op">==</div><div class="eq-rhs">设定委托期望 + 监督 managers + 关注 beneficiaries</div></div>
+            <div class="eq"><div class="eq-lhs">Asset managers</div><div class="eq-op">==</div><div class="eq-rhs">整合 ESG + monitoring + engagement + voting + reporting</div></div>
+            <div class="eq"><div class="eq-lhs">Service providers</div><div class="eq-op">==</div><div class="eq-rhs">支持客户 stewardship + 管理自身治理资源冲突 + 接受 review</div></div>
+            <div class="eq"><div class="eq-lhs">Code quality</div><div class="eq-op">==</div><div class="eq-rhs">原则清楚 + 冲突管理 + 结果披露 + 监管支持</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mistakes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>易错点：准则题先抓关键词</h2>
+      </div>
+      <div class="head-desc">这一节名称多，但考试通常抓几个关键词：outcomes、conflicts、systemic risks、concert parties、value link。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>UK Code origin ==</b> GFC + Walker Report + FRC + shareholder engagement framework。</div>
+          <div class="formula"><b>UK 2020 biggest change ==</b> practical delivery + annual activity and outcome reporting。</div>
+          <div class="formula"><b>Principles 1-8 ==</b> stewardship foundation；<b>9-12 ==</b> engagement and voting delivery。</div>
+          <div class="formula"><b>Principle 4 ==</b> market-wide and systemic risks。</div>
+          <div class="formula"><b>Conflicts risk ==</b> more likely downplayed in codes drafted by fund management industry。</div>
+          <div class="formula"><b>Collective engagement controversy ==</b> concern over concert parties / acting in concert。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Policy statements vs Outcomes</b>2020 版重点不是更漂亮的政策，而是活动结果和实际效果。</div>
+          <div class="trap"><b>Activity vs Practical effects</b>只说做了多少参与不够，要说明公司或资产发生了什么实质改变。</div>
+          <div class="trap"><b>Conflicts vs Collaboration</b>conflicts 是利益冲突管理；collaboration 是与其他投资者协作。</div>
+          <div class="trap"><b>Collective engagement vs Concert party</b>集体参与不是为了控制公司，但若投资者协同行动过强，会触发监管担忧。</div>
+          <div class="trap"><b>Shareholder rights vs responsibilities</b>SRD II 名称是权利，但实质更强调股东责任。</div>
+          <div class="trap"><b>ESG policy goals vs Economic value</b>ERISA 语境下，参与需要与受益人的经济价值有明确联系。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">记忆线：看到 UK 2020 先想 outcome；看到 Australia 先想 market-wide financial system；看到 EFAMA 先想 conflicts 缺失；看到 ERISA 先想 fiduciary duty 和 economic value。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖模块 3</h2>
+      </div>
+      <div class="head-desc">点击“看答案”自测。正式 Practice Problems 会放到最后的三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">UK Stewardship Code 最初为什么受到监管推动？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">GFC 后，监管反思机构投资者未能有效约束银行风险。Walker Report 要求 FRC 发布 stewardship code，为 shareholder engagement 提供框架。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">UK Stewardship Code 2020 最大变化是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">要求报告 practical effects / outcomes。也就是说，不只披露活动和意图，还要说明参与行动带来的具体结果。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">UK 2020 对 asset owners and managers 有多少项原则？对 service providers 有多少项原则？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">资产所有者和资产管理人 12 项原则；服务提供商 6 项原则。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">UK 2020 Principle 4 的核心是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">识别并回应 market-wide and systemic risks，并披露识别和回应这些风险的有效性。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">哪个 stewardship code 与 UK 2020 Principle 4 有类似的市场系统对齐要求？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Australian Asset Owner Stewardship Code。它要求资产所有者鼓励金融系统和监管政策运行与长期投资者利益更好对齐。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">为什么 conflicts of interest 是 stewardship codes 的重要考点？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为投资管理人可能与被投公司、母子公司、客户或员工个人关系存在利益冲突，影响投票和参与独立性。投资者团体或基金管理行业起草的准则更可能淡化该问题。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Collective engagement 为什么会有争议？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为它可能被担心形成 concert parties，即一组股东在没有正式收购的情况下合力控制或影响公司，触发 acting in concert 相关监管风险。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">ERISA 语境下，ESG engagement 为什么不能只是纯社会政策目标？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为 fiduciaries 需要为 beneficiaries 的利益行动。投票和 proxy use 要有合理预期能提升投资经济价值，并考虑成本；不能只为无价值链接的社会政策目标。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const open = card.classList.toggle('show');
+    btn.textContent = open ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

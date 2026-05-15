@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 Module 4 · 8.1.6 Fixed Income and Alternatives</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(98px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}
+  .grid-2,.grid-3,.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}
+  .branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}
+  .eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 8</span>
+        <span class="pill">Module 4</span>
+        <span class="pill">8.1.6</span>
+        <span class="pill">Fixed Income</span>
+      </div>
+      <h1>ESG Screens across<br>Fixed Income and Alternatives</h1>
+      <p class="lead">本页覆盖第 8 章 8-9 节前半：ESG 在固定收益及部分另类资产中的应用、公司债 ESG 评价、labeled bonds、greenium、能源板块排除案例、主权债 ESG 工具和 Italy sovereign ESG case。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>固定收益 ESG 筛选 == 资产类别权利差异 + 发行人/证券两层评分 + labeled bond 资金用途验证 + 排除规则的 tracking error + 主权 ESG 进入 FSS 和收益率要求。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">8.1.6 apply ESG screens to fixed income, equities, and alternative investments</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">资产类别差异</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">可持续债类型</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">排除案例</div></div>
+        <div class="mini-stat"><div class="mini-num">1</div><div class="mini-lab">主权 FSS 逻辑</div></div>
+      </div>
+      <div class="side-note">记忆抓手：固定收益不是“没有 ESG”。它只是权利结构不同：债权人没有股东投票权，所以 ESG 更多通过信用风险、契约、期限、收益率补偿、资金用途和主权资产负债表进入分析。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="assetclass">资产类别</button>
+    <button class="tab" data-tab="corporate">公司债</button>
+    <button class="tab" data-tab="bonds">Labeled Bonds</button>
+    <button class="tab" data-tab="greenium">Greenium</button>
+    <button class="tab" data-tab="examples">筛选案例</button>
+    <button class="tab" data-tab="sovereign">主权债</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看总图：固定收益 ESG 的五个入口</h2>
+      </div>
+      <div class="head-desc">按逻辑等式心象术，先拆“fixed income ESG”：fixed 是契约和期限，income 是收益率补偿，ESG 是风险和资金用途。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Fixed Income ESG Integration<br>权利不同，但 ESG 仍会进入信用、收益率和组合风险</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">1 资产类别差异</div>
+          <p>上市股票有投票权。</p>
+          <p>债券和结构化产品更多看 covenants 和 engagement。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">2 公司债两层评分</div>
+          <p>Issuer fundamental ESG risk。</p>
+          <p>Security-level investment ESG score。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">3 Labeled bonds</div>
+          <p>Green、social、sustainability、SLB、transition、SDG、blue。</p>
+          <p>看资金用途或目标挂钩。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">4 排除案例</div>
+          <p>Energy sector exclusion。</p>
+          <p>Freedom House sovereign exclusion。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">5 主权 ESG</div>
+          <p>Governance 最重要。</p>
+          <p>ESG 进入 FSS，进而影响要求收益率。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>确定资产</h3><p>公司债、主权债、市政债、结构化产品、另类。</p></div>
+        <div class="flow-step"><h3>判断权利</h3><p>能否投票、能否谈 covenants、能否 engagement。</p></div>
+        <div class="flow-step"><h3>识别风险</h3><p>发行人风险、证券条款风险、资金用途风险。</p></div>
+        <div class="flow-step"><h3>组合后果</h3><p>tracking error、duration、credit risk、yield profile。</p></div>
+        <div class="flow-step"><h3>估值落地</h3><p>FSS、risk premium、higher yield required。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">核心判断</span>
+        <h3>固定收益 ESG 不是只看“是否绿色债”</h3>
+        <p class="small">还要看发行人 ESG 风险、债券条款、信用评级、期限结构、资金用途、影响报告和组合层跟踪误差。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">投资影响</span>
+        <h3>排除在不同指数中影响不同</h3>
+        <p class="small">能源板块在股票指数和高收益债指数中的权重不同，同样排除 fossil fuels，tracking error 和收益影响也不同。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考点提醒</span>
+        <h3>主权债 ESG 先看治理</h3>
+        <p class="small">主权债中 governance 最重要，因为政府政策决定社会和环境结果，也影响国家资产负债表和风险溢价。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-08.pdf` 第 457-468 页整理，覆盖 8.1.6 前半段。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Asset Classes</span> 跨资产类别方法差异</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">上市股票、公司债、主权债、市政/次主权债、结构化产品在 stewardship、screening、tilting、norms-based、thematic 方面适用性不同。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">上市股票投资者有 proxy voting rights；债券投资者不能投票，更多依赖 covenants 和 engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sovereign 和 munis/sub-sovereigns 的 screening scope 较有限，因为机会集小于公司债。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">结构化产品中，negative screening 是欧洲 ESG-labeled CLO 较常见方法。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Corporate Debt</span> 公司债 ESG 两层框架</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">BlueBay 示例基于 ESG integration，使用第三方 ESG 数据形成 proprietary issuer ESG metrics。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Fundamental ESG risk metric 在 issuer level 检查发行人基本 ESG 风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Investment ESG score 在 bond security level 运作，考虑债券特征导致的 ESG 信用风险敏感性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">该框架把 ESG 风险图像从 individual bond 提升到 single issuer，再到 credit portfolio。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Labeled Bonds</span> 可持续债与 greenium</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG bonds 可分为 use-of-proceeds bonds 和 sustainability-linked bonds。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Green、social、sustainability、sustainability-linked、transition、SDG-linked、blue bonds 各有不同资金用途或目标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Greenium 指 labeled bond 收益率低于同发行人、同特征非 labeled bond 的收益率。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者要看 term structure、sector profile、framework alignment、client objective、allocation/impact reports。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Screening Examples</span> 固收筛选案例</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">能源板块在不同基准中权重差异大，排除能源会在高收益债等组合中产生更大 tracking error。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">信用评级对固定收益独特且重要，很多客户授权有最低信用评级要求。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">信用评级、债券收益率和 CDS spreads 高相关；ESG rating provider 方法差异会导致同一发行人 ESG 评级分歧。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 评级可补充信用评级，因为信用评级时间视角更短，ESG 提供商通常视角更长。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">Sovereign ESG</span> 主权债 ESG</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">主权债发行人数量远少于公司债发行人，排除国家会进一步缩小机会集。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Freedom House Not Free 排除会对全球债券基准引入 material tracking error。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">主权债中 governance 是最重要因素，因为它影响社会和环境结果。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 因素可进入 proprietary financial stability score；弱 ESG 会降低 FSS，需要更高收益率补偿风险。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="assetclass" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Asset-Class Differences</div>
+        <h2>资产类别差异：同一个 ESG 方法，不同资产落地方式不同</h2>
+      </div>
+      <div class="head-desc">这张表用于防混：不是每个资产类别都能 voting，也不是每个资产类别都适合大规模筛选和 tilt。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>方法</th>
+            <th>上市股票</th>
+            <th>公司债</th>
+            <th>主权债 / 市政债</th>
+            <th>结构化产品</th>
+            <th>逻辑等式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Stewardship / Engagement</b></td>
+            <td>有 proxy voting rights。</td>
+            <td>不能投票，主要通过 covenants 或 engagement。</td>
+            <td>不能投票，问责渠道更有限。</td>
+            <td>不能投票，主要靠 covenants 和 engagement。</td>
+            <td>权益类 == voting；债权类 == covenant / financing channel。</td>
+          </tr>
+          <tr>
+            <td><b>Integration</b></td>
+            <td>可行。</td>
+            <td>可行。</td>
+            <td>可行。</td>
+            <td>可行。</td>
+            <td>ESG integration across assets == yes, but implementation differs。</td>
+          </tr>
+          <tr>
+            <td><b>Screening</b></td>
+            <td>可行。</td>
+            <td>可行。</td>
+            <td>范围有限，因为发行人机会集更小。</td>
+            <td>可行，欧洲 ESG-labeled CLO 中 negative screening 常见。</td>
+            <td>Screening ease == opportunity set size + data availability。</td>
+          </tr>
+          <tr>
+            <td><b>Tilting / Norms-based</b></td>
+            <td>可行。</td>
+            <td>可行。</td>
+            <td>更有挑战。</td>
+            <td>更有挑战。</td>
+            <td>Tilting difficulty ↑ when issuer universe smaller。</td>
+          </tr>
+          <tr>
+            <td><b>Thematic</b></td>
+            <td>可行。</td>
+            <td>可行，可通过 labeled bonds。</td>
+            <td>可行，可通过 labeled bonds。</td>
+            <td>可行。</td>
+            <td>Thematic fixed income == bond proceeds / targets linked to ESG theme。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card"><span class="tag tag-blue">记忆线</span><h3>股权看投票，债权看条款</h3><p class="small">上市股票最天然的 stewardship 是投票；固定收益没有股东投票权，因此更多通过 covenant、资本成本和发行人沟通体现影响力。</p></div>
+      <div class="card"><span class="tag tag-green">固收差异</span><h3>投资级和新兴市场整合较成熟</h3><p class="small">MercerInsight 示例中，investment-grade credit、emerging market debt、buy-and-maintain 策略 ESG1/ESG2 更多。</p></div>
+      <div class="card"><span class="tag tag-amber">数据限制</span><h3>高收益和私募债更难</h3><p class="small">High-yield 和 private debt 的 ESG incorporation 较低，常见原因是 ESG company ratings 和数据可得性不足。</p></div>
+    </div>
+  </section>
+
+  <section id="corporate" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Corporate Debt</div>
+        <h2>公司债 ESG：发行人层和证券层要分开</h2>
+      </div>
+      <div class="head-desc">固定收益最容易混的一点：同一发行人可能有多只债券，发行人 ESG 风险和具体债券的投资相关性不是同一层。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Issuer Level</span><div class="topic-title">Fundamental ESG risk metric</div></div></div>
+        <p class="small">该指标在 issuer level 检查 fundamental ESG risk，关注借款人如何管理其面临的重大 ESG 风险，并捕捉当前表现和变化趋势。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Issuer ESG risk</div><div class="eq-op">==</div><div class="eq-rhs">borrower management of material ESG risks + current performance + trajectory</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>这是看“这个借款人本身 ESG 体质如何”。</div>
+        <div class="riskline"><b>考点提醒：</b>看到 fundamental ESG risk metric，选 issuer level。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Security Level</span><div class="topic-title">Investment ESG score</div></div></div>
+        <p class="small">Investment ESG score 在 bond security level 运作，考虑 ESG 风险是否 investment relevant and material，以及对信用风险的方向和程度。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Bond ESG score</div><div class="eq-op">==</div><div class="eq-rhs">ESG risk relevance + materiality + credit risk direction/extent + bond features</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>这是看“这只债券的条款、期限、偿付结构，使 ESG 风险对它有多重要”。</div>
+        <div class="riskline"><b>考点提醒：</b>看到 investment ESG score，选 security level。</div>
+      </article>
+    </div>
+    <div class="topic-card" style="margin-top:14px">
+      <div class="topic-top"><div><span class="tag tag-violet">Portfolio View</span><div class="topic-title">从 individual bond 到 credit portfolio</div></div></div>
+      <p class="small">BlueBay 框架的价值在于把 ESG 风险图像从 individual bond 提升到 single issuer，并最终理解给定 credit portfolio 中的 ESG risk。</p>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">Credit ESG view</div><div class="eq-op">==</div><div class="eq-rhs">individual bond → issuer → portfolio distribution</div></div>
+      </div>
+      <div class="memory"><b>中文解释：</b>这像底稿汇总：单笔债券是明细，发行人是客户层，组合才是总表。</div>
+    </div>
+  </section>
+
+  <section id="bonds" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Labeled Bonds</div>
+        <h2>Labeled bonds：资金用途债和目标挂钩债要分清</h2>
+      </div>
+      <div class="head-desc">这部分是固定收益题的高频记忆区。先问：这只债券是“钱用到哪里”，还是“票息/条款和 ESG 目标挂钩”。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>类型</th>
+            <th>原文要点</th>
+            <th>中文解释</th>
+            <th>逻辑等式 / 题眼</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Green bonds</b></td>
+            <td>为有明确环境收益的项目融资，例如可再生能源。</td>
+            <td>重点是 environmental benefit。</td>
+            <td>Green == environment project proceeds。</td>
+          </tr>
+          <tr>
+            <td><b>Social bonds</b></td>
+            <td>为欠服务人群和社区提供基本服务、基础设施和社会项目。</td>
+            <td>例子包括 affordable housing、microfinance、health care、education。</td>
+            <td>Social == underserved people/community services。</td>
+          </tr>
+          <tr>
+            <td><b>Sustainability bonds</b></td>
+            <td>更广义地创造正面社会或环境影响。</td>
+            <td>Starbucks 2016 年美国公司 sustainability bond 与咖啡采购供应链 ESG 标准直接相关。</td>
+            <td>Sustainability == social and/or environmental impact proceeds。</td>
+          </tr>
+          <tr>
+            <td><b>Sustainability-linked bonds</b></td>
+            <td>为承诺具体 sustainability outcomes 改善的发行人融资，债券特征可与目标挂钩。</td>
+            <td>不要和 sustainability bonds 混淆；它看发行人整体目标，不一定限定资金用途。</td>
+            <td>SLB == coupon/features linked to ESG target progress。</td>
+          </tr>
+          <tr>
+            <td><b>Transition bonds</b></td>
+            <td>为高排放 brown industries 向更绿色方向转型融资。</td>
+            <td>适用于 mining、utilities、heavy industry 等通常被可持续融资市场排除的行业。</td>
+            <td>Transition == brown sector financing to greener transition。</td>
+          </tr>
+          <tr>
+            <td><b>SDG-linked bonds</b></td>
+            <td>发行人通过承诺和实现特定 SDG targets 融资。</td>
+            <td>通常需要提供证据和 assurance 证明业务对齐目标 SDGs。</td>
+            <td>SDG-linked == specific SDG targets + evidence/assurance。</td>
+          </tr>
+          <tr>
+            <td><b>Blue bonds</b></td>
+            <td>为明确海洋和海洋基础收益项目融资，例如 sustainable fishing。</td>
+            <td>Seychelles 和 World Bank 于 2018 年联合发行首只 blue bond。</td>
+            <td>Blue == marine/ocean benefits。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="greenium" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Greenium and Due Diligence</div>
+        <h2>Greenium：便宜融资背后要看风险和真实性</h2>
+      </div>
+      <div class="head-desc">这里的重点不是“绿色债一定好”，而是要同时看收益率溢价、期限结构、久期风险、框架对齐和 greenwashing。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Greenium</span><div class="topic-title">什么是 greenium？</div></div></div>
+        <p class="small">Greenium 指同一发行人、相同债券特征下，labeled bond 的收益率低于 non-labeled bond 的收益率。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Greenium</div><div class="eq-op">==</div><div class="eq-rhs">labeled bond yield lower than comparable non-labeled bond yield</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>投资者愿意为了绿色/可持续标签接受较低收益率；对发行人来说相当于融资成本更低。</div>
+        <div class="riskline"><b>考点提醒：</b>greenium 是 yield 低，不是价格低。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Term Structure</span><div class="topic-title">长期债和久期风险</div></div></div>
+        <p class="small">Utilities 等高碳行业常发行 longer-maturity labeled bonds，因为低碳转型通常需要长期项目融资。长期债 duration 更高，利率波动更大。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Long maturity</div><div class="eq-op">==</div><div class="eq-rhs">transition financing need + higher duration + higher interest rate volatility</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>绿色标签不消除普通债券风险，期限、久期、信用和资本结构仍要看。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Greenwashing</span><div class="topic-title">如何降低 greenwashing 风险？</div></div></div>
+        <p class="small">投资者应审阅 annual allocation and/or impact reports，确认 labeled bond 对应经济活动真实发生。行业建议使用第三方 review、second-party opinion、external reviewer。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Anti-greenwashing</div><div class="eq-op">==</div><div class="eq-rhs">pre-due diligence + post-due diligence + allocation/impact report review + ongoing monitoring</div></div>
+        </div>
+        <div class="memory"><b>审计视角：</b>这就像看专项资金用途：发行时看框架，发行后看资金是否按承诺投向项目，缺资料还要和发行人沟通。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Reporting</span><div class="topic-title">报告和验证类型</div></div></div>
+        <p class="small">PRI 展示的行业标准包括 pre/post-issuance assurance、certificate verification、sustainable bond review、scoring/rating、post-issuance impact analysis、sustainability analysis、use-of-proceeds analysis。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Bond reporting</div><div class="eq-op">==</div><div class="eq-rhs">issuance verification + maintenance reporting + use-of-proceeds monitoring</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>labeled bond 不能只看标签，必须看框架、资金用途、影响报告和第三方验证。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="examples" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Screening Examples</div>
+        <h2>筛选案例：能源排除和评级差异</h2>
+      </div>
+      <div class="head-desc">这一节把“排除会影响组合”具体化：同一个能源排除规则，在股票、投资级债、高收益债中的影响不同。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Energy sector exclusion</div><span class="tag tag-rose">Tracking Error</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">权重差异</div><div class="case-text">Energy 在 S&P 500 和 MSCI ACWI 中低于 5%，但在 Bloomberg US HY 中接近 13%，在 Bloomberg Global Aggregate Corporate Bond 中约 6%。</div></div>
+          <div class="case-row"><div class="case-lab">原因</div><div class="case-text">许多较小能源企业和 mid-stream pipeline 发行人在债券市场融资。</div></div>
+          <div class="case-row"><div class="case-lab">后果</div><div class="case-text">整体排除能源板块会引入 tracking error；油价和地缘冲突相关时，还要考虑表现影响。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">Energy exclusion impact == index energy weight × replacement difficulty × oil/geopolitical sensitivity。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Credit ratings vs ESG ratings</div><span class="tag tag-blue">Ratings</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">信用评级</div><div class="case-text">固定收益独特且重要，许多客户授权有最低信用评级要求；信用评级、债券收益率和 CDS spreads 高相关。</div></div>
+          <div class="case-row"><div class="case-lab">ESG评级</div><div class="case-text">ESG 提供商方法不同，同一公司或国家可能得到不同 ESG 评级。</div></div>
+          <div class="case-row"><div class="case-lab">补充性</div><div class="case-text">ESG rating 可补充信用评级，因为信用评级时间视角更短，且信用评级机构通常较少强调 ESG，治理因素除外。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">Credit rating == regulated method + short/medium credit lens；ESG rating == provider methodology + longer ESG lens。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card"><span class="tag tag-green">主权相关性</span><h3>国家 ESG 与信用评级正相关</h3><p class="small">115 个国家样本显示，评级更好的国家通常 ESG 分数也更好，其中 social 和 governance 与信用评级相关性更强，environmental 较弱。</p></div>
+      <div class="card"><span class="tag tag-amber">ESG供应商分歧</span><h3>不同 ESG rating providers 相关性低</h3><p class="small">不同数据商在 ESG、E、S、G 维度的相关性并不高，尤其 governance 维度平均相关性更低。</p></div>
+      <div class="card"><span class="tag tag-violet">投资提醒</span><h3>不要用单一 ESG 分数替代信用分析</h3><p class="small">固定收益仍要看信用评级、收益率、CDS、期限结构、资本结构和合同条款。</p></div>
+    </div>
+  </section>
+
+  <section id="sovereign" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Sovereign ESG</div>
+        <h2>主权债 ESG：治理进入国家资产负债表</h2>
+      </div>
+      <div class="head-desc">主权债不同于公司债：发行人有限，排除国家会明显缩小机会集；治理通常是最重要 ESG 因素。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Opportunity Set</span><div class="topic-title">主权发行人数量有限</div></div></div>
+        <p class="small">主权债金额很大，但 sovereign issuers 数量远少于 corporate issuers，且基本有限。排除国家会进一步缩小可投资机会集。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sovereign screen</div><div class="eq-op">==</div><div class="eq-rhs">finite issuer universe + country exclusion → opportunity set reduction</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>公司可以不断新增，国家发行人数量有限；所以主权筛选的组合影响可能更大。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Freedom House</span><div class="topic-title">Not Free 排除会带来 tracking error</div></div></div>
+        <p class="small">Freedom House Not Free criteria 下，若排除相关主权债和国有/受控企业，可能对 Bloomberg Global Aggregate Bond Benchmark 引入 material tracking error。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Freedom House screen</div><div class="eq-op">==</div><div class="eq-rhs">Not Free sovereigns + state-owned/controlled entities → material tracking error</div></div>
+        </div>
+        <div class="memory"><b>易错提醒：</b>国有/受控企业虽然不是主权债本身，但政府控制程度高，可能与排除精神冲突。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Governance</span><div class="topic-title">治理是主权债核心 ESG 因素</div></div></div>
+        <p class="small">Governance is the most important factor when considering sovereign bonds，因为政府政策决定社会和环境结果，也与 GDP per capita 等经济结果相关。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sovereign ESG</div><div class="eq-op">==</div><div class="eq-rhs">governance framework → social/environmental outcomes → economic strength</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>国家治理好，政策执行、教育、医疗、环保和经济稳定性通常更有基础。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">FSS</span><div class="topic-title">ESG 进入 financial stability score</div></div></div>
+        <p class="small">主权资产管理人可把 ESG 因素纳入国家 balance sheet 分析，形成 proprietary financial stability score。弱 ESG 会降低 FSS，进而要求更高收益率补偿风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">FSS</div><div class="eq-op">==</div><div class="eq-rhs">balance sheet strength + ESG factors</div></div>
+          <div class="eq"><div class="eq-lhs">Weak ESG</div><div class="eq-op">→</div><div class="eq-rhs">lower FSS → higher required yield / risk premium</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>如果两个国家未调整收益率相同，FSS 更高的国家更有吸引力。</div>
+      </article>
+    </div>
+    <div class="case-grid" style="margin-top:14px">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Italy Sovereign ESG Case</div><span class="tag tag-rose">Case Study</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">结构问题</div><div class="case-text">意大利资产负债表长期存在结构性弱点，政治不稳定限制持久结构改革和增长潜力。</div></div>
+          <div class="case-row"><div class="case-lab">治理后果</div><div class="case-text">弱治理促成税收逃避、腐败、资源配置低效和生产率增长受阻。</div></div>
+          <div class="case-row"><div class="case-lab">指标用途</div><div class="case-text">Worldwide Governance Indicators 有长期数据，可判断国家方向、趋势并与同类国家比较。</div></div>
+          <div class="case-row"><div class="case-lab">投资结论</div><div class="case-text">这些 ESG 因素压低 Italy 的 FSS，因此若要同等投资位置，需要风险溢价补偿。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Sovereign ESG tools</div><span class="tag tag-teal">Tools</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">World Bank</div><div class="case-text">ESG Sovereign Data Portal 可提供主权 ESG 数据。</div></div>
+          <div class="case-row"><div class="case-lab">IMF</div><div class="case-text">Climate Change Indicators Dashboard 包括 NGFS 气候情景数据。</div></div>
+          <div class="case-row"><div class="case-lab">ASCOR</div><div class="case-text">Assessing Sovereign Climate-related Opportunities and Risks，提供国家层面的气候机会和风险评估框架。</div></div>
+          <div class="case-row"><div class="case-lab">趋势</div><div class="case-text">主权 engagement 从治理问题扩展到更多环境主题。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组等式背模块 4</h2>
+      </div>
+      <div class="head-desc">固定收益题先拆层级：资产类别权利、发行人、证券、资金用途、主权国家。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Fixed income ESG ==</b> credit risk + issuer ESG + bond features + covenants + duration + use of proceeds。</div>
+          <div class="formula"><b>Issuer ESG metric ==</b> borrower material ESG risk management + performance + trajectory。</div>
+          <div class="formula"><b>Investment ESG score ==</b> bond-level ESG materiality + credit risk direction/extent。</div>
+          <div class="formula"><b>Green bond ==</b> environmental proceeds；<b>Social bond ==</b> underserved community services。</div>
+          <div class="formula"><b>Sustainability bond ==</b> broad social/environmental impact；<b>SLB ==</b> issuer target-linked bond features。</div>
+          <div class="formula"><b>Transition bond ==</b> brown industry finances transition；<b>Blue bond ==</b> marine/ocean benefits。</div>
+          <div class="formula"><b>Greenium ==</b> labeled bond yield below comparable non-labeled bond yield。</div>
+          <div class="formula"><b>Energy exclusion impact ==</b> index weight + tracking error + oil/geopolitical performance effect。</div>
+          <div class="formula"><b>Sovereign ESG ==</b> governance + social/environmental outcomes + FSS + required yield。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Issuer vs security</b>Fundamental ESG risk 是发行人层；investment ESG score 是债券证券层。</div>
+          <div class="trap"><b>Sustainability bond vs SLB</b>前者偏资金用途/影响，后者偏发行人 ESG 目标与票息或条款挂钩。</div>
+          <div class="trap"><b>Greenium</b>是收益率更低，不是价格更低。</div>
+          <div class="trap"><b>Green label</b>不消除 duration、credit risk、term structure 和 greenwashing 风险。</div>
+          <div class="trap"><b>Energy exclusion</b>股票指数权重低不代表债券指数影响低，高收益债中能源权重更高。</div>
+          <div class="trap"><b>Sovereign ESG</b>主权债先看治理；弱 ESG 会降低 FSS，需要更高 risk premium。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 4 的一根线：固定收益 ESG 的核心不是“有无标签”，而是 ESG 如何进入信用风险、债券条款、资金用途验证、组合跟踪误差和主权风险溢价。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只覆盖模块 4</h2>
+      </div>
+      <div class="head-desc">正式 Practice Problems 会在全章完成后统一进入三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">公司债 ESG 框架中，fundamental ESG risk metric 和 investment ESG score 分别在哪一层？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Fundamental ESG risk metric 在 issuer level；investment ESG score 在 bond security level。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Sustainability bonds 和 sustainability-linked bonds 的关键区别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Sustainability bonds 通常偏广义社会/环境影响或资金用途；sustainability-linked bonds 是债券特征与发行人具体 sustainability outcomes 改善目标挂钩。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Blue bonds 的题眼是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Marine and ocean-based benefits，例如 sustainable fishing projects。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Greenium 是收益率更高还是更低？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">更低。Greenium 指 labeled bond 的 yield 低于同发行人、同特征 non-labeled bond 的 yield。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">为什么长期 labeled bonds 仍需关注久期风险？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">长期债 duration 更高，对利率波动更敏感；绿色或可持续标签不消除 term structure risk。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">排除能源板块为什么在高收益债中影响可能更大？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为能源在高收益债指数中的权重显著高于主要股票指数，且许多小型能源和管道发行人依赖债券市场融资，因此排除会带来更大 tracking error。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">主权债 ESG 中最重要的因素通常是什么？为什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Governance。政府政策定义社会和环境结果的框架，也影响经济结果、资产负债表和风险溢价。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">弱 ESG 因素如何影响主权债投资判断？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">弱 ESG 会降低 proprietary financial stability score，进而要求更高 yield 或 risk premium 才能补偿风险。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

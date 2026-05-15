@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.2 · Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:30px 16px 84px;overflow:hidden}
+.hero{background:rgba(255,255,255,.93);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);padding:28px 30px;margin-bottom:18px;min-width:0;overflow:hidden}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px;min-width:0}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);line-height:1.25;max-width:100%}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:900px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68;overflow-wrap:anywhere}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;overflow-wrap:anywhere;word-break:break-word}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;margin:0;overflow-wrap:anywhere}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;max-width:100%}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;overflow:hidden}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:var(--r);text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-card h3{font-size:13px;margin:0 0 6px}.flow-card p{font-size:12px;color:var(--sub);line-height:1.55;margin:0}
+.facts-grid{display:flex;flex-direction:column;gap:10px}
+.fact-card{display:grid;grid-template-columns:54px minmax(0,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);overflow:hidden;min-width:0}
+.fact-num{display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:950;background:var(--accent,#1d4ed8)}
+.fact-body{padding:15px 17px;min-width:0}.fact-title{font-size:15px;font-weight:950;color:var(--dark);margin-bottom:5px;overflow-wrap:anywhere}.fact-text{font-size:13.7px;color:var(--sub);line-height:1.72;margin:0;overflow-wrap:anywhere}
+.f1{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.f2{--accent:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.f3{--accent:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.f4{--accent:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.f5{--accent:var(--amber);background:var(--amber-bg);border-color:var(--amber-bdr)}
+.f6{--accent:var(--rose);background:var(--rose-bg);border-color:var(--rose-bdr)}
+.equations{display:flex;flex-direction:column;gap:8px}.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.reading-list{display:flex;flex-direction:column;gap:12px}.reading-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:17px 18px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;min-width:0}
+.reading-icon{width:34px;height:34px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-weight:950;color:var(--dark)}
+.reading-title{font-size:14.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px;overflow-wrap:anywhere}
+.reading-desc{font-size:13.2px;color:var(--sub);line-height:1.68;margin:0 0 8px;overflow-wrap:anywhere}.reading-url{font-size:12px;color:var(--blue);font-weight:850;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero{padding:22px 18px}.flow{grid-template-columns:1fr}.fact-card{grid-template-columns:44px minmax(0,1fr)}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.reading-card{grid-template-columns:1fr}h1{font-size:28px;line-height:1.12}.lead,.hero-eq{font-size:14px}.center-node{padding:12px 14px}.pill,.tag{white-space:normal;text-align:left}.hero,.nav,.panel,.map-board,.card,.fact-card,.reading-card,.footer-note{width:100%;max-width:100%;overflow:hidden}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="pills">
+      <span class="pill">Chapter 2</span>
+      <span class="pill">Key Facts</span>
+      <span class="pill">Further Reading</span>
+      <span class="pill">The ESG Market</span>
+    </div>
+    <h1>Key Facts & Further Reading</h1>
+    <p class="lead">这一页是第 2 章的收口页：把 PDF 的 20 条 Key Facts 压缩成一张总图、20 张事实卡和一组考前逻辑等式，并把 6 项 Further Reading 变成“看什么、服务哪个考点”的阅读地图。</p>
+    <div class="hero-eq"><b>整章总逻辑等式：</b>The ESG Market == market scale + investor mix + asset-owner direction + manager/product execution + gatekeepers/infrastructure + policy/regulation + implementation barriers/trust.</div>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">总图</button>
+    <button class="tab" data-tab="facts">20条事实</button>
+    <button class="tab" data-tab="reading">延伸阅读</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Chapter Map</div>
+        <h2>第 2 章一条线：ESG 市场如何形成、扩张、受约束</h2>
+      </div>
+      <div class="head-desc">用“市场流水线”记忆：先看钱在哪里，再看谁决定方向，谁做产品，谁做规则，最后看阻碍和信任问题。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">The ESG Market<br>规模与结构 + 价值链主体 + 政策监管 + 现实阻碍</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 市场规模</h3><p>2022 年五大市场 ESG assets 为 USD30.3tn；各地区相对占比不同。</p></div>
+        <div class="flow-card"><h3>2 投资者与资产类别</h3><p>机构仍主导，零售增长；资产类别以 public equities 和 fixed income 为主。</p></div>
+        <div class="flow-card"><h3>3 价值链方向</h3><p>Asset owners 通过理解、mandates、长期负债和受托责任设定方向。</p></div>
+        <div class="flow-card"><h3>4 产品和中介</h3><p>Asset managers 做组合和产品；consultants/advisers、platforms、labels 推动筛选和识别。</p></div>
+        <div class="flow-card"><h3>5 监管和信任</h3><p>Regulators、investees、governments、civil society、academia 提供规则、数据、资本方向和证据。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">记忆线</span>
+        <h3>从钱到规则</h3>
+        <p class="small">ESG 市场不是单一产品市场，而是资产所有者、管理人、中介、监管者、被投公司和社会主体共同塑造的投资生态。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">考点线</span>
+        <h3>数字要少而准</h3>
+        <p class="small">USD30.3tn、Canada 47%、ANZ 43%、Japan 34%、Europe 38%、US 13%、public equity over 50%、fixed income 36%、policies over 95% after 2000。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">风险线</span>
+        <h3>增长仍有阻碍</h3>
+        <p class="small">质疑投资价值、质疑受托责任、不会实施 ESG、数据和工具成本、greenwashing，都是 ESG 市场继续扩张的约束。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>20 条 Key Facts：原文要点 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条都按 PDF 原意压缩。复习时先看标题，再用等式反推英文关键词。</div>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card f1"><div class="fact-num">1</div><div class="fact-body"><div class="fact-title">ESG assets 五大市场 2022 年为 USD30.3 trillion</div><p class="fact-text">GSIA 2023 report 显示，2022 年底五大市场 ESG investing assets 为 USD30.3tn。相对总 managed assets：Australia/New Zealand 43%、Japan 34% 上升；Canada 47%、Europe 38%、United States 13% 下降。<br><b>逻辑等式：</b>ESG market size == USD30.3tn + regional share divergence。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">2</div><div class="fact-body"><div class="fact-title">机构主导，零售增长但采用更慢</div><p class="fact-text">Institutional investors 仍主导 ESG market；retail investors 的兴趣持续增长，2018 年达到 total ESG assets 的四分之一，但整体 adoption generally slower than institutional investors。Millennials interest 可能推动未来零售 ESG 增长。<br><b>逻辑等式：</b>Investor mix == institutional dominance + retail share growth + retail adoption lag。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">3</div><div class="fact-body"><div class="fact-title">资产类别以 public equities 和 fixed income 为主</div><p class="fact-text">ESG assets primarily consist of public equities，2019 年初超过 50%；第二大资产类别 historically 是 fixed income，2019 年初约 36%。<br><b>逻辑等式：</b>ESG asset classes == public equities first + fixed income second。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">4</div><div class="fact-body"><div class="fact-title">Asset owners 设定投资价值链方向</div><p class="fact-text">Asset owners 对 ESG 如何影响 financial returns，以及资本如何影响 real economy 的理解，会显著推动 ESG investing 的数量和质量。<br><b>逻辑等式：</b>Asset-owner direction == ESG-return understanding + capital-real economy understanding → amount & quality of ESG investing。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">5</div><div class="fact-body"><div class="fact-title">Investment mandates 是 asset owners 的合同抓手</div><p class="fact-text">Institutional asset owners 与 asset managers 建立 investment mandates，用于定义 investment product expectations，有时也涉及 manager processes and resources。<br><b>逻辑等式：</b>Mandate == product expectations + possible manager process/resource requirements。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">6</div><div class="fact-body"><div class="fact-title">Short-termism 会削弱长期项目和 ESG 因素</div><p class="fact-text">投资价值链很多主体意识到 short-termism 的缺陷，并推动 long-termism。短期主义会让公司不愿承担多年研发等项目，也会忽略 ESG 等长期因素。<br><b>逻辑等式：</b>Short-termism == less patient capital + ignored long-term ESG factors。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">7</div><div class="fact-body"><div class="fact-title">长负债资产所有者理论上适合长期投资</div><p class="fact-text">Pension funds 和 life insurers 等 long-term liabilities 的 asset owners 理论上适合 long-term investing；但实践中有时会奖励 managers 和 companies 的短期行为，反而固化 short-termism。<br><b>逻辑等式：</b>Long liabilities should align with long-term investing，但 incentives may entrench short-termism。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">8</div><div class="fact-body"><div class="fact-title">Insurers 天然敏感于某些 ESG 风险</div><p class="fact-text">保险公司因产品性质而敏感于 ESG：P&C 和 reinsurance 受极端天气频率和强度影响；life insurance 受长期资产价值的气候影响和人口变化影响。<br><b>逻辑等式：</b>Insurer ESG sensitivity == extreme weather + climate asset value + demographic change。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">9</div><div class="fact-body"><div class="fact-title">Asset managers 通过 selection 和 engagement 影响组合 ESG</div><p class="fact-text">Asset managers 通过 security selection 和 engagement with investee companies 影响组合 ESG characteristics；他们回应 asset owners 需求，也可主动提出 ESG products and approaches。<br><b>逻辑等式：</b>Asset manager influence == selection + engagement + product innovation。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">10</div><div class="fact-body"><div class="fact-title">ESG offerings 从主动上市股票走向其他资产和被动指数</div><p class="fact-text">Asset managers 的 ESG offerings 一般从 active listed equities 开始，后来发展到其他资产类别，尤其 fixed income。ESG indexes/passive funds 比 active investments 晚约 20 年，但 indexes 是 benchmarks，也是 ETFs 等 passive funds 的基础。<br><b>逻辑等式：</b>ESG product evolution == active listed equity → fixed income/other assets → indexes/passive funds。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">11</div><div class="fact-body"><div class="fact-title">Consultants 和 retail advisers 可筛选 ESG funds，但过去支持不足</div><p class="fact-text">Investment consultants 和 retail financial advisers 可在 screening and short-listing 中考虑基金 ESG characteristics；但过去他们的建议常常不支持 ESG-integrated products，investor-led initiatives 正在逐步改变这一点。<br><b>逻辑等式：</b>Advice gatekeeping == ESG screening potential + historical weak support + investor-led change。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">12</div><div class="fact-body"><div class="fact-title">Financial regulators 关注 ESG 对稳定和长期风险回报的影响</div><p class="fact-text">Financial regulators 考虑 ESG 对 economies、financial markets 稳定，以及 financial instruments long-term risk-return profile 的影响；同时推动 green bonds 等 ESG products，并要求披露 ESG characteristics。<br><b>逻辑等式：</b>Regulator role == stability + long-term risk-return + product enablement + disclosure。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">13</div><div class="fact-body"><div class="fact-title">超过 95% 新增或修订政策在 2000 年后形成</div><p class="fact-text">Over 95% of new or revised policies were developed after 2000，推动因素包括 Europe 和 Asia 的快速发展，以及 stewardship 和 corporate governance codes 的兴起与强化。<br><b>逻辑等式：</b>Policy growth == post-2000 acceleration + Europe/Asia + stewardship/corporate governance codes。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">14</div><div class="fact-body"><div class="fact-title">Investees 通过风险管理、影响和披露推动 ESG investing</div><p class="fact-text">Companies and other investees 可通过管理 ESG risks、影响 environment and society、以及提供 disclosure，推动 ESG investing 增长。<br><b>逻辑等式：</b>Investee contribution == ESG risk management + social/environmental impact + disclosure level。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">15</div><div class="fact-body"><div class="fact-title">Governments 看重 RI 对基础设施、低碳转型和养老金的作用</div><p class="fact-text">Governments 认识到 responsible investment 可支持 public infrastructure、low-carbon transition，以及 pension systems transition，因为许多公民更依赖 private pension plans。<br><b>逻辑等式：</b>Government interest == infrastructure funding + low-carbon capital shift + pension transition。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">16</div><div class="fact-body"><div class="fact-title">Civil society / NGOs 和 academia 分别提供压力与证据</div><p class="fact-text">Civil society and NGOs 可提升公司 ESG risk awareness 并改善 disclosure；academic research 可加强 ESG factors 与 investment decision making 的研究基础。<br><b>逻辑等式：</b>External knowledge pressure == NGO awareness/disclosure push + academic evidence base。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">17</div><div class="fact-body"><div class="fact-title">仍有人质疑 ESG 是否能增加投资决策价值</div><p class="fact-text">尽管已有广泛研究表明 ESG integration 可帮助 limit volatility 或 enhance returns，一些投资者仍质疑 ESG issues 是否能为投资决策增加价值。<br><b>逻辑等式：</b>Value skepticism == research evidence exists + investor doubts remain。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">18</div><div class="fact-body"><div class="fact-title">仍有人质疑 fiduciary duty 是否允许 ESG investing</div><p class="fact-text">部分投资者仍不确定受托责任是否允许实施 ESG investing。内部证据和与 direct peers 的交流，有助于解决这些疑问。<br><b>逻辑等式：</b>Fiduciary doubt == legal/role uncertainty → internal evidence + peer engagement。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">19</div><div class="fact-body"><div class="fact-title">实施能力、数据和工具成本会限制 ESG 增长</div><p class="fact-text">投资者若不了解如何在投资流程各阶段实施 ESG factors，或认为 data/tools 成本高、可得性差，都会限制 ESG investing growth。<br><b>逻辑等式：</b>Implementation barrier == process know-how gap + data/tool cost + availability concerns。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">20</div><div class="fact-body"><div class="fact-title">ESG-labeled funds 增加 greenwashing 风险，SDR 和标签制度帮助建立信任</div><p class="fact-text">ESG-labeled funds 的兴起增加 greenwashing 风险。FCA 的 SDR updates，包括 anti-greenwashing regulations 和 fund labeling regimes，在 2024 年夏季生效，有助于提升市场信任。<br><b>逻辑等式：</b>ESG labels growth == more access + greenwashing risk；trust repair == anti-greenwashing rules + fund labels。</p></div></div>
+    </div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading</div>
+        <h2>6 项 Further Reading：每份材料服务哪个考点</h2>
+      </div>
+      <div class="head-desc">这里不是要求逐篇精读，而是帮你知道它们分别补强第 2 章哪条逻辑。</div>
+    </div>
+    <div class="reading-list">
+      <div class="reading-card"><div class="reading-icon">1</div><div><div class="reading-title">Amel-Zadeh & Serafeim, 2018 · Why and How Investors Use ESG Information</div><p class="reading-desc">用于理解投资者为什么使用 ESG information、如何把 ESG information 放入投资决策。对应 Key Facts 17、19：ESG 是否有用，以及如何实施。</p><div class="reading-url">Financial Analysts Journal 74(3): 87-103</div></div></div>
+      <div class="reading-card"><div class="reading-icon">2</div><div><div class="reading-title">Bassen, Busch & Friede, 2015 · ESG and Financial Performance</div><p class="reading-desc">汇总 2,000 多项实证研究，用来支持 ESG 与 financial performance 的商业逻辑。对应 Key Fact 17：ESG integration 可帮助控制波动或提升回报。</p><div class="reading-url">Journal of Sustainable Finance & Investment 5(4): 210-233</div></div></div>
+      <div class="reading-card"><div class="reading-icon">3</div><div><div class="reading-title">Forum pour l’Investissement Responsable, 2016 · French Regulation on Investor Climate Reporting</div><p class="reading-desc">用于理解投资者气候报告监管如何形成。对应 Key Facts 12、13：监管者如何推动 ESG disclosure，以及 2000 年后政策快速增长。</p><div class="reading-url">Article 173-VI</div></div></div>
+      <div class="reading-card"><div class="reading-icon">4</div><div><div class="reading-title">Fulton, Kahn & Sharples, 2012 · Sustainable Investing: Establishing Long-Term Value and Performance</div><p class="reading-desc">用于补强 long-term value and performance 的逻辑。对应 Key Facts 6、7：为什么 short-termism 会削弱长期项目和 ESG 因素。</p><div class="reading-url">Working paper, 12 June 2012</div></div></div>
+      <div class="reading-card"><div class="reading-icon">5</div><div><div class="reading-title">International Corporate Governance Network, 2012 · ICGN Global Stewardship Principles</div><p class="reading-desc">用于理解 stewardship principles 如何规范投资者与被投公司的关系。对应 Key Facts 12、13、14：监管、治理和 investee disclosure。</p><div class="reading-url">ICGN Global Stewardship Principles</div></div></div>
+      <div class="reading-card"><div class="reading-icon">6</div><div><div class="reading-title">National Association Pension Funds, 2014 · What Do Pension Scheme Members Expect</div><p class="reading-desc">用于理解 pension scheme members 对储蓄投资方式的期待。对应 Key Facts 4、5、7、18：asset owners、mandates、long-term liabilities 和 fiduciary duty。</p><div class="reading-url">Pension scheme member expectations</div></div></div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：20 条事实压成 5 组等式</h2>
+      </div>
+      <div class="head-desc">如果只用 5 分钟复习第 2 章 Key Facts，先背这 5 组。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>5 组主线等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Market size</div><div class="eq-op">==</div><div class="eq-rhs">USD30.3tn + regional shares + institutional dominance + retail growth + equity/fixed income core</div></div>
+          <div class="eq"><div class="eq-lhs">Owner power</div><div class="eq-op">==</div><div class="eq-rhs">direction setting + mandates + long-term liability alignment + fiduciary interpretation</div></div>
+          <div class="eq"><div class="eq-lhs">Product chain</div><div class="eq-op">==</div><div class="eq-rhs">asset manager selection/engagement + active listed equity origin + fixed income/passive/index expansion + adviser/platform screening</div></div>
+          <div class="eq"><div class="eq-lhs">Regulation</div><div class="eq-op">==</div><div class="eq-rhs">financial stability + long-term risk-return + green products + disclosure + post-2000 policy acceleration</div></div>
+          <div class="eq"><div class="eq-lhs">Barriers</div><div class="eq-op">==</div><div class="eq-rhs">value skepticism + fiduciary doubt + implementation gap + data/tool limits + greenwashing</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混淆的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Canada vs Europe</b>Canada 是 relative to total managed assets 占比最高 47%；Europe 是绝对规模很大，不要混。</div>
+          <div class="trap"><b>Retail growth vs retail speed</b>零售份额增长，但 adoption generally slower than institutional investors。</div>
+          <div class="trap"><b>Public equity vs fixed income</b>Public equities 是 ESG assets 最大类；fixed income 通常是第二大类。</div>
+          <div class="trap"><b>Mandate vs product</b>Mandate 不是产品本身，而是 asset owner 和 manager 之间定义产品期望和流程要求的合同抓手。</div>
+          <div class="trap"><b>Short-termism vs long-term liabilities</b>养老金和寿险理论上适合长期投资，但实践激励可能仍奖励短期行为。</div>
+          <div class="trap"><b>Label vs trust</b>ESG labels 帮助识别产品，但也带来 greenwashing 风险，因此需要 SDR、anti-greenwashing 和 labeling regimes 建立信任。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">依据：CFA Institute ESG Investing, Chapter 2, PDF 第 95-98 页 Key Facts 与 Further Reading。ch04 仅作为页面结构和交互方式参考，知识点均来自 ch02 PDF。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

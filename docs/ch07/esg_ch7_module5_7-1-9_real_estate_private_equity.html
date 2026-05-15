@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.7 Module 5 · Real Estate and Private Equity</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;--green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;--rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;--teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 48%,#eaf0f6 100%);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);min-width:0}
+.hero-main{padding:28px 30px;border-radius:var(--r)}
+.hero-side{padding:20px;border-radius:var(--r);display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(28px,4.7vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere;word-break:break-word}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:0;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:18px;font-weight:900;color:var(--dark);line-height:1.48;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:0;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:500px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card,.trend-card,.case-card,.map-board,.formula,.trap,.qcard,details{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.card{padding:18px}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:700px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.trend-card{padding:18px}
+.trend-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.trend-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.kv{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px;margin:9px 0}
+.kv-lab{font-size:12px;font-weight:950;color:var(--muted);line-height:1.55}
+.kv-text{font-size:13px;color:var(--sub);line-height:1.65;overflow-wrap:anywhere}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(86px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:#94a3b8;font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.warnline{border-left:4px solid var(--rose);background:var(--rose-bg);border-radius:var(--r);padding:10px 12px;color:#881337;font-size:13px;line-height:1.68}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:0}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compare{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:table}
+.compare th,.compare td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+.compare th{background:var(--soft);color:var(--dark);font-weight:950}
+.compare tr:last-child td{border-bottom:0}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:10px}
+.metric{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--sh-sm)}
+.metric-num{font-family:var(--serif);font-size:27px;font-weight:950;line-height:1;color:var(--dark)}
+.metric-lab{font-size:12px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border-color:var(--rose-bdr);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.center-node,.branch-title,.trend-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:1fr 1fr}.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.kv{grid-template-columns:1fr;gap:3px}.case-row{grid-template-columns:1fr;gap:3px}.compare{display:block;overflow-x:auto}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:16.5px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 7</span>
+        <span class="pill">Module 5</span>
+        <span class="pill">7.1.9</span>
+        <span class="pill">Real Estate</span>
+        <span class="pill">Private Equity</span>
+      </div>
+      <h1>ESG Integration<br>in Real Estate and Private Equity</h1>
+      <p class="lead">本页把第 7 章“其他资产类别”中的房地产和私募股权拆成一条主线：资产越私有、所有权越集中，投资者越可能直接影响 ESG 数据、KPI、运营改进和退出价值，但也会面对透明度、监管、报告能力和创始人控制等挑战。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>其他资产类别 ESG 整合 == 控制权更强 + 数据更难取 → 先定重大性 → 再落到资产运营/KPI/投后管理 → 最后影响成本、风险、估值和退出</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">7.1.9 将 ESG 分析和整合方法应用于不同资产类别</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">GRESB Benchmark 关注项</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">私募股权 ESG 评估阶段</div></div>
+      </div>
+      <div class="side-note">记忆抓手：房地产看“楼怎么运营”，私募股权看“公司从投前到退出怎么被管理”。两者都不是只买证券，而是更接近管资产、管企业。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="realestate">房地产</button>
+    <button class="tab" data-tab="gresb">GRESB</button>
+    <button class="tab" data-tab="private">私募股权</button>
+    <button class="tab" data-tab="steps">四阶段</button>
+    <button class="tab" data-tab="cases">案例/题眼</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>一张图记住：房地产和私募股权为什么要单独讲</h2>
+      </div>
+      <p class="head-desc">这部分不是换一组 ESG 词汇，而是资产类别变了：所有权、数据、监管、报告能力、投后影响方式都变了。</p>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Real Estate and Private Equity ESG Integration<br>从“买证券”转向“管资产/管企业”</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">资产性质</div>
+          <p>真实资产和私募公司常有更集中或直接的控制权。</p>
+          <p>优势是能影响数据、运营和报告。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">房地产</div>
+          <p>关注建筑全生命周期碳足迹、能耗、水、废弃物、租户和社区。</p>
+          <p>标准可参考 BREEAM、GRESB。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">私募股权</div>
+          <p>挑战是透明度不足、监管较弱、被投公司报告能力有限。</p>
+          <p>机会是早期建立 ESG KPI。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">投后路径</div>
+          <p>筛选、投资决策、持有期管理、退出。</p>
+          <p>ESG 不只用于准入，也用于价值提升。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">考点落点</div>
+          <p>风险管理、价值创造、吸引 ESG 资金。</p>
+          <p>最后一项容易伴随 greenwashing 风险。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>先看控制权</h3><p>持有资产或控股公司时，投资者能更直接定义和推动 ESG。</p></div>
+        <div class="flow-step"><h3>再看重大性</h3><p>房地产与私募股权的重大 ESG 因素不完全等同于上市股票。</p></div>
+        <div class="flow-step"><h3>落到运营</h3><p>能源、水、废弃物、劳工、治理、KPI、投后监督。</p></div>
+        <div class="flow-step"><h3>回到收益风险</h3><p>影响成本、收入、监管诉讼风险、客户认同、估值与退出。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>本模块覆盖清单</h2>
+      </div>
+      <p class="head-desc">按 PDF 顺序覆盖，不把第 4 章或其他章节内容混进来。</p>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Real Estate</span> 房地产与真实资产</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">真实资产范围：空置土地、农田、林地、基础设施、知识产权、商品和私有房地产。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多数或完全所有权使投资者能更强地定义、应用和报告 ESG 数据。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">可与 BREEAM、GRESB 等标准并行或在其之外披露。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">房地产重大性因素包括环境因素、社会因素和建筑全生命周期碳足迹。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">GRESB</span> 房地产基准</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">GRESB Benchmark 很依赖企业参与报告流程。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">包含同业组信息、投资组合 KPI、环境使用和效率改善数据。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">GRESB score 权衡管理、政策、披露、风险机会、监控和环境管理系统。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">还关注环境影响削减目标，以及数据验证和保证。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Private Equity</span> 私募股权</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">挑战：透明度与监管弱、公司报告能力不足、管理层忙于生存和增长。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">私募投资者可能要与持有多数股权的创始人谈判。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">机会：早期、长期资本可以在公司生命周期早期建立 ESG KPI。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">典型评估四阶段：Deal Sourcing、Investment Decision、Ownership、Exit。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realestate" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Real Estate</div>
+        <h2>房地产 ESG：核心不是“公司披露”，而是“资产怎么运营”</h2>
+      </div>
+      <p class="head-desc">房地产和其他真实资产与股票、债券不同，投资者可能是多数所有者或直接拥有资产，因此有更强控制权。</p>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top">
+          <div class="trend-title">1. 原文要点：Real assets 的范围和控制权</div>
+          <span class="tag tag-blue">Source Logic</span>
+        </div>
+        <div class="kv"><div class="kv-lab">英文抓手</div><div class="kv-text">Real assets include land, farmland, timber, infrastructure, intellectual property, commodities, and private real estate.</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">这类资产常常不是“买一只股票”那么远，而是更接近直接持有资产。投资者若拥有多数权益或完全所有权，就能更主动影响 ESG 数据的定义、执行和报告。</div></div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">真实资产 ESG</div><div class="eq-op">==</div><div class="eq-rhs">资产本身 + 所有权控制 + 运营数据 + 外部标准</div></div>
+          <div class="eq"><div class="eq-lhs">控制权更强</div><div class="eq-op">→</div><div class="eq-rhs">可以自定义 KPI、推动运营改进、形成更细的 ESG 报告</div></div>
+        </div>
+        <div class="riskline"><b>投资影响：</b>房地产 ESG 分析常从资产层面开始，不只是看发行人报告；投资者能否取得并改善数据，是分析质量的关键。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top">
+          <div class="trend-title">2. 原文要点：房地产重大 ESG 因素</div>
+          <span class="tag tag-green">Materiality</span>
+        </div>
+        <div class="kv"><div class="kv-lab">环境因素</div><div class="kv-text">能源效率 energy efficiency、使用可再生能源 renewable energy、节水 water conservation、废弃物管理 waste management、是否接近环境危害等。</div></div>
+        <div class="kv"><div class="kv-lab">社会因素</div><div class="kv-text">租户关系 tenant relations、社区参与 community engagement、无障碍与包容 accessibility and inclusion、本地就业创造、可负担性 affordability 等。</div></div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">房地产重大性</div><div class="eq-op">==</div><div class="eq-rhs">E: 楼的资源消耗与环境暴露 + S: 楼里的人和社区关系</div></div>
+          <div class="eq"><div class="eq-lhs">考题看到 property</div><div class="eq-op">→</div><div class="eq-rhs">先想能源、水、废弃物、环境危害，再想租户、社区、可负担性</div></div>
+        </div>
+        <div class="memory"><b>记忆抓手：</b>把一栋楼拆成“两层”：楼的物理层看 E，楼里的人和周边社区看 S。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top">
+          <div class="trend-title">3. 原文要点：建筑碳足迹贯穿生命周期</div>
+          <span class="tag tag-amber">Carbon Footprint</span>
+        </div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">建筑的碳足迹不只在运营期。PDF 强调从建造、持续运营和能源使用，到土地使用，都会形成碳足迹。</div></div>
+        <div class="kv"><div class="kv-lab">整合做法</div><div class="kv-text">可以通过更高效的材料和暖通空调系统降低碳价格影响，也可能从能源效率提升中获得收益。</div></div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">建筑碳足迹</div><div class="eq-op">==</div><div class="eq-rhs">建造 + 运营 + 能源使用 + 土地使用</div></div>
+          <div class="eq"><div class="eq-lhs">减碳动作</div><div class="eq-op">→</div><div class="eq-rhs">高效材料/HVAC → 降低碳价冲击 + 获取节能收益</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>不要只把房地产 ESG 理解成“绿色建筑证书”。PDF 更强调资产运营、能耗效率和碳价格影响。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="gresb" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">GRESB and BREEAM</div>
+        <h2>GRESB：房地产 ESG 数据怎么被组织</h2>
+      </div>
+      <p class="head-desc">PDF 把 BREEAM 和 GRESB 作为房地产 ESG 数据与标准化框架的例子。注意：框架类似 SASB 的思路，但重大性因素不同。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>原文要点：GRESB Benchmark 的六类内容</h3>
+        <table class="compare">
+          <thead><tr><th>项目</th><th>中文解释</th></tr></thead>
+          <tbody>
+            <tr><td>Peer group information</td><td>同业组信息，用于比较。</td></tr>
+            <tr><td>Portfolio KPI performance</td><td>整体投资组合关键绩效指标表现。</td></tr>
+            <tr><td>Environmental data</td><td>环境使用量与效率改善等汇总数据。</td></tr>
+            <tr><td>GRESB score</td><td>权衡管理、政策、披露、风险机会、监控和 EMS。</td></tr>
+            <tr><td>Impact reduction targets</td><td>环境影响削减目标。</td></tr>
+            <tr><td>Validation and assurance</td><td>数据验证和保证。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>逻辑等式：GRESB 不是一个单点分数</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">GRESB</div><div class="eq-op">==</div><div class="eq-rhs">同业比较 + 组合 KPI + 环境数据 + 管理披露评分 + 减排目标 + 数据保证</div></div>
+          <div class="eq"><div class="eq-lhs">可比性</div><div class="eq-op">←</div><div class="eq-rhs">参与报告流程 + 统一指标 + 验证保证</div></div>
+          <div class="eq"><div class="eq-lhs">局限</div><div class="eq-op">==</div><div class="eq-rhs">高度依赖公司参与和报告质量</div></div>
+        </div>
+        <div class="memory">记忆抓手：GRESB 像一张房地产 ESG 体检表，既看“同业排名”，也看“日常指标”，还看“目标和数据是否可信”。</div>
+        <div class="warnline" style="margin-top:10px"><b>易错点：</b>不要把 GRESB 误认为只适用于上市公司，也不要把房地产重大性直接照搬上市股票行业模板。</div>
+      </div>
+    </div>
+    <div class="metric-row" style="margin-top:14px">
+      <div class="metric"><div class="metric-num">BREEAM</div><div class="metric-lab">建筑环境评估认证框架</div></div>
+      <div class="metric"><div class="metric-num">GRESB</div><div class="metric-lab">房地产可持续性基准</div></div>
+      <div class="metric"><div class="metric-num">EMS</div><div class="metric-lab">环境管理系统</div></div>
+    </div>
+  </section>
+
+  <section id="private" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Private Equity</div>
+        <h2>私募股权 ESG：挑战更大，但可塑性也更强</h2>
+      </div>
+      <p class="head-desc">私募市场不像公开市场那样有成熟披露和监管环境，所以 ESG 整合更依赖投资者自身流程和投后管理能力。</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>挑战：为什么私募 ESG 更难</h3>
+        <div class="coverage-grid">
+          <div class="coverage-item"><div class="check">1</div><div class="text">透明度不足：公开信息少，外部可验证资料更少。</div></div>
+          <div class="coverage-item"><div class="check">2</div><div class="text">监管监督较弱：不像公开市场那样有较完整披露要求。</div></div>
+          <div class="coverage-item"><div class="check">3</div><div class="text">小型私营公司能力不足：管理层可能只顾生存和增长，难以承担 ESG 报告要求。</div></div>
+          <div class="coverage-item"><div class="check">4</div><div class="text">创始人控制：私募投资者可能要和持多数股权的创始人谈判。</div></div>
+        </div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">私募难点</div><div class="eq-op">==</div><div class="eq-rhs">信息少 + 监管弱 + 公司小 + 创始人强</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>机会：为什么私募 ESG 也更有操作空间</h3>
+        <p class="small">PDF 强调，早期投资者可以更具战略性和长期导向，因此有动力在企业生命周期早期建立强 ESG KPI。私募也可以像上市股票一样做重大性分析，并使用 SASB 或私募行业框架。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">私募机会</div><div class="eq-op">==</div><div class="eq-rhs">早期进入 + 长期持有 + 投后参与 → 建立 ESG KPI</div></div>
+          <div class="eq"><div class="eq-lhs">重大性分析</div><div class="eq-op">==</div><div class="eq-rhs">可借鉴 public equity + SASB + 私募行业框架</div></div>
+        </div>
+        <div class="memory">记忆抓手：上市公司像“看公开成绩单”，私募股权更像“进班辅导学生”。难在资料少，好处是能更早改习惯。</div>
+        <div class="riskline" style="margin-top:10px"><b>投资影响：</b>ESG KPI 如果在早期建立，后续能嵌入经营、监控和退出叙事，不只是投前打勾。</div>
+      </div>
+    </div>
+    <div class="trend-grid" style="margin-top:14px">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">私募股权三种 ESG 视角</div><span class="tag tag-teal">Three Lenses</span></div>
+        <table class="compare">
+          <thead><tr><th>视角</th><th>原文要点</th><th>投资影响</th></tr></thead>
+          <tbody>
+            <tr><td>Risk management</td><td>识别和管理会影响被投公司财务表现的 ESG 风险。</td><td>环境监管、劳工诉讼等可能影响收入、成本和估值。</td></tr>
+            <tr><td>Value creation</td><td>强 ESG 实践可能创造业务价值。</td><td>提升员工留存、客户认同，进入新市场和新产品。</td></tr>
+            <tr><td>Attracting investors</td><td>ESG 可作为吸引有限合伙人资金的差异化因素。</td><td>面向养老金、主权财富基金、家族办公室等 ESG 资金，但有漂绿风险。</td></tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">逻辑等式：三种视角不是同一件事</div><span class="tag tag-amber">Exam Trap</span></div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">风险管理</div><div class="eq-op">==</div><div class="eq-rhs">避免收入/成本/估值受损</div></div>
+          <div class="eq"><div class="eq-lhs">价值创造</div><div class="eq-op">==</div><div class="eq-rhs">用 ESG 改善经营和增长机会</div></div>
+          <div class="eq"><div class="eq-lhs">吸引投资者</div><div class="eq-op">==</div><div class="eq-rhs">向 ESG-conscious capital allocators 展示差异化</div></div>
+        </div>
+        <div class="warnline"><b>易错点：</b>如果题干强调“见了潜在 LP 后做 ESG 决定”，通常不是单纯价值创造，而更可能是吸引有 ESG 偏好的出资人。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="steps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exhibit 9</div>
+        <h2>私募股权典型 ESG 评估四阶段</h2>
+      </div>
+      <p class="head-desc">这是模块 5 最适合背成流程图的内容：ESG 从投前筛选一直走到退出。</p>
+    </div>
+    <div class="map-board">
+      <div class="flowline">
+        <div class="flow-step">
+          <h3>1. Deal Sourcing</h3>
+          <p>在 ESG screening 和 due diligence 中识别重大 ESG 问题。</p>
+        </div>
+        <div class="flow-step">
+          <h3>2. Investment Decision</h3>
+          <p>把重大问题写入 investment memorandum，并纳入投资协议谈判。</p>
+        </div>
+        <div class="flow-step">
+          <h3>3. Ownership</h3>
+          <p>在 onboarding、engagement 和 portfolio company monitoring 中管理 ESG 问题。</p>
+        </div>
+        <div class="flow-step">
+          <h3>4. Exit</h3>
+          <p>通过 ESG 改善在退出时增加价值。</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">PE ESG assessment</div><div class="eq-op">==</div><div class="eq-rhs">投前发现问题 → 投资时写进文件/协议 → 持有期管理监督 → 退出时体现价值</div></div>
+          <div class="eq"><div class="eq-lhs">投前</div><div class="eq-op">→</div><div class="eq-rhs">重大性识别和尽调</div></div>
+          <div class="eq"><div class="eq-lhs">投后</div><div class="eq-op">→</div><div class="eq-rhs">KPI、参与、监控、价值提升</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>考点提醒</h3>
+        <div class="formula-list">
+          <div class="formula"><b>看到 due diligence：</b>想到 Deal Sourcing 阶段识别重大 ESG 问题。</div>
+          <div class="formula"><b>看到 investment memorandum：</b>想到 Investment Decision 阶段把 ESG 问题纳入决策和协议。</div>
+          <div class="formula"><b>看到 onboarding / engagement / monitoring：</b>想到 Ownership 阶段。</div>
+          <div class="formula"><b>看到 exit value：</b>想到退出时把 ESG 改善转化为价值。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Hooks</div>
+        <h2>案例和题眼：Uber、WeWork、年龄歧视题</h2>
+      </div>
+      <p class="head-desc">本模块的案例核心都指向一个点：治理和社会因素会影响估值、IPO、融资叙事或 LP 吸引力。</p>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Uber and WeWork</div><span class="tag tag-violet">Governance</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">PDF 提到 Uber 和 WeWork 的近年案例，用于说明治理分析在 IPO 和估值中的作用。</div></div>
+          <div class="case-row"><div class="case-lab">中文解释</div><div class="case-text">私募或准上市企业如果治理问题突出，会直接影响投资人对 IPO 成功率、估值质量和公司可持续性的判断。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">治理质量 == IPO 信任基础 + 估值可信度 + 投资人接受度</div></div>
+          <div class="case-row"><div class="case-lab">考点提醒</div><div class="case-text">看到 failed IPO、valuation、founder control，就往 governance analysis 上靠。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">ABC Private Equity Fund</div><span class="tag tag-green">Practice Problem</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">潜在新 LP 是 pension fund；基金因强制 65 岁退休政策而退出一家盈利公用事业公司。</div></div>
+          <div class="case-row"><div class="case-lab">正确方向</div><div class="case-text">这是为了向关注年龄歧视的客户形成差异化，不是因为该公司一定没有价值创造空间。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">见潜在 LP + ESG 价值观冲突 + divest == 用 ESG 差异化吸引资本</div></div>
+          <div class="case-row"><div class="case-lab">易错提醒</div><div class="case-text">“profitable utility” 是干扰项。盈利不代表题目在考 value creation，题眼在 pension fund 和 age discrimination。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="footer-note">说明：本页对 Practice Problem 仅做题眼训练和中文解析，后续三轮练习系统会集中整理正式练习题。</div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Review</div>
+        <h2>考前压缩：模块 5 十条式子</h2>
+      </div>
+      <p class="head-desc">闭眼复述时，不要背零散名词，按资产类别和流程回忆。</p>
+    </div>
+    <div class="compress">
+      <div class="formula-list">
+        <div class="formula"><b>1. 其他资产类别 ESG ==</b> 控制权更强 + 数据更难取 + 重大性不同。</div>
+        <div class="formula"><b>2. Real assets ==</b> 土地/农田/林地/基础设施/IP/商品/私有房地产。</div>
+        <div class="formula"><b>3. 控制权 ==</b> 能定义 ESG 数据 + 应用 ESG 要求 + 报告 ESG 结果。</div>
+          <div class="formula"><b>4. 房地产 E ==</b> energy efficiency + renewable energy + water conservation + waste management + 环境危害暴露。</div>
+          <div class="formula"><b>5. 房地产 S ==</b> tenant relations + community engagement + accessibility and inclusion + 本地就业 + affordability。</div>
+      </div>
+      <div class="formula-list">
+        <div class="formula"><b>6. 建筑碳足迹 ==</b> 建造 + 运营 + 能源使用 + 土地使用。</div>
+        <div class="formula"><b>7. GRESB ==</b> 同业比较 + KPI + 环境数据 + 评分 + 减排目标 + 数据保证。</div>
+        <div class="formula"><b>8. PE 难点 ==</b> 透明度低 + 监管弱 + 报告能力弱 + 创始人控制。</div>
+        <div class="formula"><b>9. PE 四阶段 ==</b> Deal Sourcing → Investment Decision → Ownership → Exit。</div>
+        <div class="formula"><b>10. PE 三视角 ==</b> 风险管理 + 价值创造 + 吸引 ESG 资金。</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="trap"><b>最容易混淆 1：</b>房地产框架类似 SASB 的“重大性思路”，但重大因素不同，不能直接照搬上市股票行业指标。</div>
+      <div class="trap"><b>最容易混淆 2：</b>私募股权“吸引投资者”可能带来 greenwashing 风险，因为 ESG 被用于融资和对 LP 展示差异化。</div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：看到题眼能不能反推知识点</h2>
+      </div>
+      <p class="head-desc">每题先自己说答案，再点开看解析。</p>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">为什么真实资产投资者通常比上市股票投资者更能影响 ESG 数据和报告？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为真实资产投资者可能是多数所有者或直接拥有资产。逻辑等式：多数/完全所有权 → 更强控制权 → 能定义、应用和报告 ESG 数据。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">房地产的环境类重大 ESG 因素有哪些？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">能源效率 energy efficiency、可再生能源 renewable energy、节水 water conservation、废弃物管理 waste management、接近环境危害等。记忆：楼的资源消耗和环境暴露。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">房地产的社会类重大 ESG 因素有哪些？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">租户关系 tenant relations、社区参与 community engagement、无障碍与包容 accessibility and inclusion、本地就业创造、可负担性 affordability 等。记忆：楼里的人和周边社区。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">建筑碳足迹为什么不能只看运营期？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">PDF 强调建筑碳足迹包括建造、持续运营、能源使用和土地使用。逻辑等式：建筑碳足迹 == 建造 + 运营 + 能源 + 土地。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">GRESB Benchmark 依赖什么，主要包括哪些内容？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">它高度依赖企业参与报告流程。包括同业组信息、组合 KPI、环境使用与效率数据、GRESB score、环境影响削减目标、数据验证和保证。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">私募股权 ESG 整合面临哪些主要挑战？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">透明度不足、监管监督较弱、小型私营公司 ESG 报告能力有限、管理层专注生存和增长，以及可能存在创始人多数股权谈判问题。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">私募股权典型 ESG 评估四阶段是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Deal Sourcing、Investment Decision、Ownership、Exit。逻辑：投前识别 → 投资文件/协议 → 持有期管理 → 退出增值。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">如果题干出现 pension fund、潜在 LP、因年龄歧视政策而 divest，最可能考哪种私募 ESG 视角？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">考“作为吸引投资者的差异化因素”。题眼是潜在 LP 和年龄歧视偏好，不是单纯价值创造或风险管理。</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">依据：ch07/esg-07.pdf 第 7 章 7.1.9 中 Real Estate and Private Markets 相关内容。ch04 页面仅作结构和排版参考。</div>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.7 · Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 46%,#eaf0f6 100%);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:30px 16px 84px;overflow:hidden}
+.hero{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);padding:28px 30px;margin-bottom:18px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:880px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:0;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:760px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-card:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-card h3{font-size:13px;margin:0 0 6px}.flow-card p{font-size:12px;color:var(--sub);line-height:1.55;margin:0}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:10px}
+.module-link{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:13px 14px;min-width:0}
+.module-link:hover{border-color:var(--blue-bdr);background:var(--blue-bg)}
+.module-title{font-size:13.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px}.module-desc{font-size:12.5px;color:var(--sub);line-height:1.55;margin:0}
+.facts-grid{display:flex;flex-direction:column;gap:10px}
+.fact-card{display:grid;grid-template-columns:54px minmax(0,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);overflow:hidden}
+.fact-num{display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:950;background:var(--accent,#1d4ed8)}
+.fact-body{padding:15px 17px}.fact-title{font-size:15px;font-weight:950;color:var(--dark);margin-bottom:5px}.fact-text{font-size:13.7px;color:var(--sub);line-height:1.72;margin:0}
+.f1{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.f2{--accent:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.f3{--accent:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.f4{--accent:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.f5{--accent:var(--amber);background:var(--amber-bg);border-color:var(--amber-bdr)}
+.f6{--accent:var(--rose);background:var(--rose-bg);border-color:var(--rose-bdr)}
+.f7{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.f8{--accent:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.f9{--accent:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.f10{--accent:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.equations{display:flex;flex-direction:column;gap:8px}.eq{display:grid;grid-template-columns:minmax(94px,.32fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark);line-height:1.45}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.reading-list{display:flex;flex-direction:column;gap:12px}.reading-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:17px 18px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px}
+.reading-icon{width:34px;height:34px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-weight:950;color:var(--dark)}
+.reading-title{font-size:14.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px}
+.reading-desc{font-size:13.2px;color:var(--sub);line-height:1.68;margin:0 0 8px}.reading-url{font-size:12px;color:var(--blue);font-weight:850;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-card:not(:last-child)::after{display:none}.grid-2,.grid-3{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero{padding:22px 18px}.flow{grid-template-columns:1fr}.fact-card{grid-template-columns:44px minmax(0,1fr)}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}h1{font-size:27px;line-height:1.12}.hero-title-line{display:block}.lead,.hero-eq{font-size:14px}.center-node{border-radius:var(--r);padding:12px 14px}.reading-card{grid-template-columns:1fr}.reading-icon{width:32px;height:32px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="pills">
+      <span class="pill">Chapter 7</span>
+      <span class="pill">Key Facts</span>
+      <span class="pill">Further Reading</span>
+      <span class="pill">ESG Analysis, Valuation, and Integration</span>
+    </div>
+    <h1><span class="hero-title-line">Key Facts &</span> <span class="hero-title-line">Further Reading</span></h1>
+    <p class="lead">这一页是第 7 章的收口页：把 PDF 的 10 条 Key Facts 压缩成一条“ESG 如何进入投资分析”的主线，并把 Further Reading 变成“看什么、为了什么”的阅读地图。</p>
+    <div class="hero-eq"><b>整章总逻辑等式：</b>ESG analysis, valuation, and integration == 客户/监管目标 → 多种整合方法 → 重大性判断 → 估值/信用/资产类别应用 → 数据工具和评级限制</div>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">总图</button>
+    <button class="tab" data-tab="facts">10条事实</button>
+    <button class="tab" data-tab="reading">延伸阅读</button>
+    <button class="tab" data-tab="modules">模块索引</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Chapter Map</div>
+        <h2>第 7 章一条线：从 ESG 信息到投资决策</h2>
+      </div>
+      <div class="head-desc">Key Facts 的隐藏逻辑线是：为什么整合、怎么整合、整合什么、用什么数据、受什么限制。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Chapter 7 Summary<br>目标 → 方法 → 重大性 → 估值/信用/资产类别 → 数据与工具</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 目标</h3><p>提高收益、降低风险、满足客户需求、遵守监管。</p></div>
+        <div class="flow-card"><h3>2 方法</h3><p>定性、定量、AI、scorecard、估值调整等可组合使用。</p></div>
+        <div class="flow-card"><h3>3 过滤</h3><p>重大性决定哪些 ESG 因素真正影响投资考虑。</p></div>
+        <div class="flow-card"><h3>4 入模</h3><p>现金流、折现率、倍数、信用评级、资产类别方法。</p></div>
+        <div class="flow-card"><h3>5 校验</h3><p>数据来源、评级差异、工具局限和技术快速变化。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">主线 1</span>
+        <h3>ESG 不是单独标签</h3>
+        <p class="small">第 7 章反复强调：ESG 要进入投资流程、估值、信用分析、基金评估或组合构建，才叫 integration。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">主线 2</span>
+        <h3>重大性是过滤器</h3>
+        <p class="small">不是所有 ESG 因素都重要。重要的是 likelihood 和 magnitude 是否足以影响财务表现和投资判断。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">主线 3</span>
+        <h3>数据工具要带着怀疑用</h3>
+        <p class="small">ESG 数据和评级有用，但方法、覆盖、权重、相关性和历史可比性都有局限。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>10 条 Key Facts：原文要点 + 中文解释 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条保留 PDF 原意，再压缩成考试可回忆的式子。</div>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card f1"><div class="fact-num">1</div><div class="fact-body"><div class="fact-title">ESG 整合的目的</div><p class="fact-text">投资者整合 ESG 技术，是为了追求更高投资回报 increased investment returns 或更低投资风险 reduced investment risk，同时满足客户需求并遵守相关监管要求。<br><b>逻辑等式：</b>ESG 整合目的 == 增加收益 + 降低风险 + 满足客户 + 合规监管。<br><b>考点提醒：</b>ESG 不是只有价值观，也服务风险调整后收益和客户约束。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">2</div><div class="fact-body"><div class="fact-title">整合方法很多，且可组合</div><p class="fact-text">许多方法都可用于把 ESG 分析纳入投资流程；方法之间可以组合，且不同资产类别和风险更适合不同方法。<br><b>逻辑等式：</b>ESG 方法 == 多工具组合 + 因资产类别而变 + 因风险类型而变。<br><b>考点提醒：</b>不要把一种方法当成全资产通用答案。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">3</div><div class="fact-body"><div class="fact-title">重大性评估是关键过滤器</div><p class="fact-text">Materiality assessment 是重要 ESG 考虑；投资者通常区分重要的 material ESG factors 和不重要的 nonmaterial ESG factors；非重大因素不会影响投资考虑。<br><b>逻辑等式：</b>重大性 == 会影响投资考虑的 ESG 因素；非重大 == 不影响投资考虑。<br><b>考点提醒：</b>题目出现 likelihood 和 magnitude，通常在考 materiality。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">4</div><div class="fact-body"><div class="fact-title">一手和二手 ESG 数据都可使用</div><p class="fact-text">Primary ESG data 来自发行人；Secondary ESG data 由第三方服务商准备。投资者可以同时使用两者，但 ESG 数据和所有数据一样，要放在最有经济相关性的语境中解释。<br><b>逻辑等式：</b>ESG 数据使用 == 发行人一手数据 + 第三方二手数据 + 经济语境解释。<br><b>考点提醒：</b>不要把第三方评分当成无需判断的结论。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">5</div><div class="fact-body"><div class="fact-title">ESG 评级机构相关性可变</div><p class="fact-text">ESG rating agencies 使用 ESG 信息和自有评估，为股票、债券和另类资产赋予 ESG 评级。由于方法不同，当前 ESG 评级之间相关性可变。<br><b>逻辑等式：</b>ESG rating == ESG 信息 + proprietary assessment；评级分歧 == 方法差异。<br><b>考点提醒：</b>同一公司被不同机构评出不同结果，通常考 methodology difference。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">6</div><div class="fact-body"><div class="fact-title">信用评级机构越来越使用 ESG 因素</div><p class="fact-text">CRAs 越来越多地在信用评估中使用 ESG 因素，尤其是 G 因素。该趋势已经形成，并预计继续快速发展。<br><b>逻辑等式：</b>CRA ESG 信用评估 == 尤其重视 G 因素 + 与偿债能力相关。<br><b>考点提醒：</b>信用分析看下行风险和偿债能力，治理因素常最直接。</p></div></div>
+      <div class="fact-card f7"><div class="fact-num">7</div><div class="fact-body"><div class="fact-title">投资顾问和资产所有者会用 ESG 评估管理人</div><p class="fact-text">Investment consultants 和 asset owners 可能使用 ESG assessment 判断投资管理人，并把它作为决策标准的一部分。<br><b>逻辑等式：</b>管理人 ESG 评估 == 判断管理人 ESG 整合实践 + 纳入选择标准。<br><b>考点提醒：</b>Morningstar 偏持仓结果，Mercer 更看管理人能力和流程。</p></div></div>
+      <div class="fact-card f8"><div class="fact-num">8</div><div class="fact-body"><div class="fact-title">指数提供商用 ESG 因素建立指数</div><p class="fact-text">Index providers 使用 ESG 因素建立 ESG indexes；这些指数可以是 thematic，也可以是 general。<br><b>逻辑等式：</b>ESG index == ESG 标准 + 规则化选择/加权；类型 == thematic 或 general。<br><b>考点提醒：</b>ESG ETF 往往跟踪这类规则化指数。</p></div></div>
+      <div class="fact-card f9"><div class="fact-num">9</div><div class="fact-body"><div class="fact-title">投资者会同时使用内部和外部 ESG 技术</div><p class="fact-text">投资者在估值和决策过程中使用一系列 ESG ratings 和 techniques，包括内部生成和第三方来源。<br><b>逻辑等式：</b>投资决策 ESG 输入 == 内部研究 + 第三方评级/数据 + 估值判断。<br><b>考点提醒：</b>第三方工具是输入，不应替代投资判断。</p></div></div>
+      <div class="fact-card f10"><div class="fact-num">10</div><div class="fact-body"><div class="fact-title">ESG 工具和整合技术快速发展</div><p class="fact-text">由于投资者和终端客户需求，ESG tools and integration techniques continue to develop at a fast pace。<br><b>逻辑等式：</b>ESG 工具演进 == 投资者需求 + 终端客户需求 + 披露/技术变化。<br><b>考点提醒：</b>这也解释了为什么历史比较和方法稳定性是重要限制。</p></div></div>
+    </div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading</div>
+        <h2>延伸阅读：每份材料看什么</h2>
+      </div>
+      <div class="head-desc">PDF 的 Further Reading 分两组：实践报告/标准，以及书籍和学术文章。</div>
+    </div>
+    <div class="grid-2" style="margin-bottom:14px">
+      <div class="card">
+        <span class="tag tag-blue">Reports and Standards</span>
+        <h3>实践类材料</h3>
+        <p class="small">用于理解 ESG 投资实践、监管/受托责任、信用评级、 stewardship 和社会价值计量。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-violet">Books and Articles</span>
+        <h3>研究类材料</h3>
+        <p class="small">用于理解重大性、无形资产、员工满意度、CSR 财务表现、基金评级局限和私募股权 ESG。</p>
+      </div>
+    </div>
+    <div class="reading-list">
+      <div class="reading-card"><div class="reading-icon">1</div><div><div class="reading-title">CFA Institute. 2017. “Global Perceptions of Environmental, Social, and Governance Issues in Investing.”</div><p class="reading-desc">看点：投资界如何看待 ESG 议题，是第 7 章“为什么整合 ESG”的背景材料。</p><div class="reading-url">cfainstitute.org · esg-survey-2017</div></div></div>
+      <div class="reading-card"><div class="reading-icon">2</div><div><div class="reading-title">CFA Institute and PRI. 2018. “ESG Integration in the Americas: Markets, Practices, and Data.”</div><p class="reading-desc">看点：市场实践和数据问题，呼应本章的 ESG integration、case studies 和 data limitations。</p><div class="reading-url">cfainstitute.org · esg-integration-americas-survey-report</div></div></div>
+      <div class="reading-card"><div class="reading-icon">3</div><div><div class="reading-title">Financial Reporting Council. 2020. “UK Stewardship Code.”</div><p class="reading-desc">看点：stewardship 和所有权实践，适合连接投资者参与、投票、管理人评估。</p><div class="reading-url">frc.org.uk · UK Stewardship Code</div></div></div>
+      <div class="reading-card"><div class="reading-icon">4</div><div><div class="reading-title">Financial Services Agency. 2017. “Principles for Responsible Institutional Investors <<Japan's Stewardship Code>>.”</div><p class="reading-desc">看点：日本机构投资者 stewardship 原则，补充全球 stewardship 标准。</p><div class="reading-url">fsa.go.jp · pc_stewardship.html</div></div></div>
+      <div class="reading-card"><div class="reading-icon">5</div><div><div class="reading-title">PRI. 2016. “Credit Risk and Ratings Initiative.”</div><p class="reading-desc">看点：ESG 如何进入信用风险和评级，对应固定收益、CRA 和信用评分。</p><div class="reading-url">unpri.org · credit-ratings</div></div></div>
+      <div class="reading-card"><div class="reading-icon">6</div><div><div class="reading-title">Sullivan, Martindale, Feller, and Bordon. 2019. “Fiduciary Duty in the 21st Century.”</div><p class="reading-desc">看点：受托责任如何纳入 ESG，帮助理解“满足客户需求与合规监管”。</p><div class="reading-url">unepfi.org · fiduciary_duty_21st_century.pdf</div></div></div>
+      <div class="reading-card"><div class="reading-icon">7</div><div><div class="reading-title">Tuan. 2008. “Measuring and/or Estimating Social Value Creation: Insights into Eight Integrated Cost Approaches.”</div><p class="reading-desc">看点：社会价值如何计量，对应 ESG 数据、评分和社会影响度量。</p><div class="reading-url">gatesfoundation.org · measuring-estimating-social-value-creation</div></div></div>
+      <div class="reading-card"><div class="reading-icon">8</div><div><div class="reading-title">Berchicci and King. 2022. “Corporate Sustainability: A Model Uncertainty Analysis of Materiality.”</div><p class="reading-desc">看点：重大性和模型不确定性，适合复习 materiality assessment。</p><div class="reading-url">Journal of Financial Reporting 7(2): 43-74</div></div></div>
+      <div class="reading-card"><div class="reading-icon">9</div><div><div class="reading-title">Edmans. 2011. “Does the Stock Market Fully Value Intangibles? Employee Satisfaction and Equity Prices.”</div><p class="reading-desc">看点：员工满意度这类无形资产是否被市场充分定价，对应 S 因素和估值。</p><div class="reading-url">Journal of Financial Economics 101(3): 621-40</div></div></div>
+      <div class="reading-card"><div class="reading-icon">10</div><div><div class="reading-title">Flammer. 2015. “Does Corporate Social Responsibility Lead to Superior Financial Performance?”</div><p class="reading-desc">看点：CSR 和财务表现的关系，支撑 ESG 与收益/风险关系的实证背景。</p><div class="reading-url">Management Science 61(11)</div></div></div>
+      <div class="reading-card"><div class="reading-icon">11</div><div><div class="reading-title">Haskel and Westlake. 2017. Capitalism without Capital: The Rise of the Intangible Economy.</div><p class="reading-desc">看点：无形经济背景，帮助理解 ESG 中人力资本、品牌、治理、创新等非传统资产。</p><div class="reading-url">Princeton University Press</div></div></div>
+      <div class="reading-card"><div class="reading-icon">12</div><div><div class="reading-title">Khan, Serafeim, and Yoon. 2016. “Corporate Sustainability: First Evidence on Materiality.”</div><p class="reading-desc">看点：最直接支持“重大 ESG 因素才更影响财务表现”的研究。</p><div class="reading-url">Accounting Review 91(6): 1697-724</div></div></div>
+      <div class="reading-card"><div class="reading-icon">13</div><div><div class="reading-title">Krosinsky. 2018. “The Failure of Fund Sustainability Ratings.”</div><p class="reading-desc">看点：基金可持续性评级的局限，对应 Morningstar holdings-based approach 的批评。</p><div class="reading-url">Medium.com · The Failure of Fund Sustainability Ratings</div></div></div>
+      <div class="reading-card"><div class="reading-icon">14</div><div><div class="reading-title">OECD. 2017. “Responsible Business Conduct for Institutional Investors.”</div><p class="reading-desc">看点：机构投资者尽职调查和负责任商业行为，连接 ESG 整合、参与和治理。</p><div class="reading-url">mneguidelines.oecd.org · RBC-for-Institutional-Investors.pdf</div></div></div>
+      <div class="reading-card"><div class="reading-icon">15</div><div><div class="reading-title">PRI. 2014. “A GP's Guide to Integrating ESG Factors in Private Equity.”</div><p class="reading-desc">看点：私募股权 GP 如何整合 ESG，对应模块 5 的投前、投后、退出流程。</p><div class="reading-url">PRI · Private Equity ESG integration</div></div></div>
+    </div>
+  </section>
+
+  <section id="modules" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Module Index</div>
+        <h2>7 个复习模块索引</h2>
+      </div>
+      <div class="head-desc">如果你从汇总页回看细节，可以从这里跳到各模块。</div>
+    </div>
+    <div class="module-grid">
+      <a class="module-link" href="esg_ch7_module1_7-1-1_to_7-1-2.html"><div class="module-title">模块 1 · ESG 整合方法</div><p class="module-desc">定性、定量、AI、混合方法、ISSB、挑战和批评。</p></a>
+      <a class="module-link" href="esg_ch7_module2_7-1-3_to_7-1-5.html"><div class="module-title">模块 2 · 股票分析、重大性与披露</div><p class="module-desc">上市股票流程、materiality、scorecard、披露和新兴市场。</p></a>
+      <a class="module-link" href="esg_ch7_module3_7-1-6_to_7-1-8.html"><div class="module-title">模块 3 · 估值整合</div><p class="module-desc">DCF、现金流、折现率、终值、倍数和 double counting。</p></a>
+      <a class="module-link" href="esg_ch7_module4_7-1-9_to_7-1-10_fixed_income.html"><div class="module-title">模块 4 · 固定收益</div><p class="module-desc">债券 ESG、主权债、信用评级、绿色债券和 SLB。</p></a>
+      <a class="module-link" href="esg_ch7_module5_7-1-9_real_estate_private_equity.html"><div class="module-title">模块 5 · 房地产与私募股权</div><p class="module-desc">GRESB、真实资产、私募股权四阶段和三种 ESG 视角。</p></a>
+      <a class="module-link" href="esg_ch7_module6_7-1-9_case_studies.html"><div class="module-title">模块 6 · ESG 整合案例</div><p class="module-desc">7 个案例的题眼反推、模型入口和投资动作。</p></a>
+      <a class="module-link" href="esg_ch7_module7_7-1-11_to_7-1-14_data_tools.html"><div class="module-title">模块 7 · 数据、评级和软件</div><p class="module-desc">一手/二手数据、基金评估、指数、提供商和评级限制。</p></a>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组总式背完整章</h2>
+      </div>
+      <div class="head-desc">如果只能用 5 分钟复习第 7 章，先背这一页。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>整章逻辑等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">7.1.1-7.1.2</div><div class="eq-op">==</div><div class="eq-rhs">ESG 整合工具箱：定性、定量、AI 和混合方法。</div></div>
+          <div class="eq"><div class="eq-lhs">7.1.3-7.1.5</div><div class="eq-op">==</div><div class="eq-rhs">股票投资流程中识别重大性、打分、解读披露。</div></div>
+          <div class="eq"><div class="eq-lhs">7.1.6-7.1.8</div><div class="eq-op">==</div><div class="eq-rhs">ESG 进入 DCF、折现率、终值和倍数。</div></div>
+          <div class="eq"><div class="eq-lhs">7.1.9-7.1.10</div><div class="eq-op">==</div><div class="eq-rhs">不同资产类别应用：固定收益、房地产、私募股权、案例。</div></div>
+          <div class="eq"><div class="eq-lhs">7.1.11-7.1.14</div><div class="eq-op">==</div><div class="eq-rhs">ESG 数据、基金评估、指数/数据库/软件和限制。</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Integration vs Screening</b>整合是把 ESG 放进研究、估值、评级和决策；筛选是按暴露、行业、产品或阈值做选择/剔除。</div>
+          <div class="trap"><b>Material vs Nonmaterial</b>重大因素影响投资考虑；非重大因素不会影响财务表现、估值或业务模型。</div>
+          <div class="trap"><b>Cash Flow vs Discount Rate</b>公司特定经营影响常进现金流；系统性风险或风险溢价变化才更常进折现率。</div>
+          <div class="trap"><b>Equity vs Fixed Income</b>股票看上行和增长；债券更重本金回收、资产负债表强度和违约风险。</div>
+          <div class="trap"><b>Green Bond vs SLB</b>绿色债券 proceeds 用于绿色项目；SLB 是一般债务，但 coupon 与可持续目标挂钩。</div>
+          <div class="trap"><b>Primary vs Secondary Data</b>一手数据来自发行人；二手数据由第三方加工成分数、评估或评级。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">第 7 章现在已形成：7 个复习模块 + 1 个 Key Facts / Further Reading 汇总页。下一步按你的原计划制作第 7 章三轮练习系统。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

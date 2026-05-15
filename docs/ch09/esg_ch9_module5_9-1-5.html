@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESG Ch.9 Module 5 · 9.1.5</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#edf2f7;--paper:#fff;--soft:#f8fafc;--bg:#eef3f8;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 14px 38px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef3f8 52%,#e8eef5 100%);line-height:1.68;min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 78px;min-width:0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin-bottom:16px}
+.hero-main,.hero-side,.panel-card,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main{padding:28px 30px}.hero-side{padding:18px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.pill{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,54px);line-height:1.08;letter-spacing:0;margin:0 0 12px;color:var(--dark);word-break:break-word}
+.lead{font-size:15px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.76}.hero-eq b{color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.stat-num{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--dark);line-height:1}.stat-lab{font-size:12px;font-weight:850;color:var(--muted);margin-top:5px}
+.side-note{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:13px 14px;font-size:13px;line-height:1.72}.side-note b{color:#fff}
+.tabbar{position:sticky;top:10px;z-index:20;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px;overflow-x:auto;scrollbar-width:none}.tabbar::-webkit-scrollbar{display:none}
+.tab-title{font-size:12px;font-weight:950;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;padding:0 7px;white-space:nowrap}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 12px;font-size:13px;font-weight:900;color:var(--muted);cursor:pointer;white-space:nowrap}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff}
+.panel{display:none;min-width:0}.panel.active{display:block}
+.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:950;letter-spacing:.10em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(24px,4vw,36px);line-height:1.16;letter-spacing:0;margin:0;color:var(--dark)}.sub{font-size:14px;color:var(--muted);line-height:1.76;margin:8px 0 0;max-width:820px}
+h3{font-size:16px;color:var(--dark);line-height:1.36;margin:0 0 8px}.small{font-size:12.8px;color:var(--muted);line-height:1.65}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:12px}.pad{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:950;line-height:1.25;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px;margin-bottom:14px;min-width:0;overflow:hidden}.center-node{max-width:700px;margin:0 auto 16px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45;word-break:break-word}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}.flow-card h3{font-size:14px;margin:0 0 6px}.flow-card p{font-size:12.5px;color:var(--sub);line-height:1.58;margin:0}
+.logic-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.logic-step{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.logic-step b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}.logic-step span{font-size:12.6px;color:var(--sub);line-height:1.58}
+.coverage-group{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px;min-width:0}.coverage-group h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.coverage-list{display:grid;gap:8px;margin-top:10px}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:9px}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:13px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.6}
+.knowledge-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.card-top{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.num{width:38px;height:38px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--accent,var(--blue));color:#fff;font-family:var(--serif);font-size:20px;font-weight:950;flex:0 0 auto}.card-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;margin:2px 0 4px}.row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;border-top:1px solid var(--line2);padding-top:10px;margin-top:10px}.row-lab{font-size:11px;font-weight:950;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}.row-val{font-size:13.2px;color:var(--sub);line-height:1.75}.row-val b{color:var(--dark)}
+.eq{background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:11px 12px;font-size:13px;line-height:1.72}.eq b{color:#fff}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;min-width:0}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);background:var(--soft)}.case-body{padding:16px}.case-body p{font-size:13.3px;color:var(--sub);line-height:1.78;margin:0 0 10px}.case-body p:last-child{margin-bottom:0}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;margin-top:10px}.mini-table th,.mini-table td{border-bottom:1px solid var(--line2);padding:10px;text-align:left;vertical-align:top;font-size:12.7px;line-height:1.58}.mini-table th{background:var(--soft);color:var(--dark);font-weight:950}.mini-table tr:last-child td{border-bottom:0}
+.client-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px;min-width:0;border-left:5px solid var(--accent,var(--blue))}.client-card h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.client-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.client-cell{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:9px;font-size:12.7px;color:var(--sub);line-height:1.58}.client-cell b{display:block;color:var(--dark);font-size:11.5px;margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.trap{background:#fff;border:1px solid var(--line);border-left:5px solid var(--accent,var(--rose));border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px}.trap b{color:var(--dark)}.trap p{font-size:13.2px;color:var(--sub);line-height:1.72;margin:5px 0 0}
+.cheat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;min-width:0}.cheat-key{font-size:13px;font-weight:950;color:var(--dark);margin-bottom:5px}.cheat-val{font-size:13px;color:var(--sub);line-height:1.62}
+.quiz-list{display:flex;flex-direction:column;gap:12px}.q-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.q-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.q-num{font-size:12px;font-weight:950;color:var(--muted)}.q-text{font-size:14.5px;color:var(--dark);font-weight:760;line-height:1.7;margin-bottom:12px}.options{display:flex;flex-direction:column;gap:8px}.opt{width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:var(--r);padding:10px 12px;font-size:13.6px;line-height:1.55;color:var(--ink);cursor:pointer}.opt:hover{border-color:var(--blue);background:var(--blue-bg)}.opt.correct{border-color:var(--green);background:var(--green-bg);color:#047857;font-weight:950}.opt.wrong{border-color:var(--rose);background:var(--rose-bg);color:#be123c}.exp{display:none;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:13px;margin-top:12px;font-size:13px;line-height:1.78;color:var(--sub)}.exp.show{display:block}.exp b{color:var(--dark)}
+.footer-note{margin-top:18px;background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.72}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.logic-line{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.section-head{display:block}}
+@media(max-width:640px){.wrap{padding:18px 12px 64px}.hero-main{padding:22px 18px}.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.pill{justify-content:center;text-align:center;white-space:normal}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow,.logic-line,.client-grid{grid-template-columns:1fr}.center-node{border-radius:var(--r)}.row{grid-template-columns:1fr;gap:4px}h1{font-size:30px;line-height:1.12}.tab{padding:8px 10px}.mini-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 9</span>
+        <span class="pill">Module 5</span>
+        <span class="pill">9.1.5</span>
+        <span class="pill">Client Types</span>
+      </div>
+      <h1>Tailoring ESG Investment<br>to Client Expectations</h1>
+      <p class="lead">本模块覆盖 PDF 第 9 章 9.1.5：不同客户类型的投资目标、风险收益特征、时间期限和 ESG 驱动不同，因此会偏好不同 ESG 投资策略。核心不是背客户名称，而是看“时间期限 + 驱动 + 风险偏好 + 策略形态”。</p>
+      <div class="hero-eq"><b>本模块总逻辑等式：</b>ESG strategy selected == client type + time horizon + primary ESG driver + risk mindset + mandate / product constraints</div>
+    </div>
+    <aside class="hero-side">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">1</div><div class="stat-lab">Learning Outcome</div></div>
+        <div class="stat"><div class="stat-num">7</div><div class="stat-lab">客户类型</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">知识卡片</div></div>
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>做题入口：</b>看到 sovereign wealth fund 想 reputational risk；general insurer 想 loss aversion；foundation 想 exclusions；defined benefit pension 想 fiduciary duty。</div>
+    </aside>
+  </section>
+
+  <nav class="tabbar" aria-label="module navigation">
+    <span class="tab-title">9.1.5 Review</span>
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="cards">逻辑等式卡片</button>
+    <button class="tab" data-tab="clients">客户矩阵</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>第一屏先看一张图：先识别客户，再选择 ESG 策略</h2>
+        <p class="sub">9.1.5 的隐藏逻辑是“客户画像决定策略”。机构客户通常看整体 ESG philosophy 和跨资产类别整合；零售客户更常寻找符合个人伦理的产品；基金会和宗教相关客户常重视排除和筛选。</p>
+      </div>
+    </div>
+
+    <div class="map-board">
+      <div class="center-node">Client Expectations<br>客户目标不同，ESG strategy selected 也不同</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 客户类型</h3><p>DB/DC pension、insurer、sovereign wealth fund、foundation、individual investor。</p></div>
+        <div class="flow-card"><h3>2 时间期限</h3><p>从 general insurer 的 1-2 年，到 foundation 的 50-250+ 年。</p></div>
+        <div class="flow-card"><h3>3 ESG 驱动</h3><p>fiduciary duty、climate financial impacts、reputational risk、ethics、personal perspectives。</p></div>
+        <div class="flow-card"><h3>4 风险偏好</h3><p>loss aversion、higher risk tolerance、illiquidity tolerance、short-term underperformance tolerance。</p></div>
+        <div class="flow-card"><h3>5 策略选择</h3><p>ESG integration、engagement、exclusions、screened funds、impact investing。</p></div>
+      </div>
+      <div class="logic-line">
+        <div class="logic-step"><b>隐藏逻辑 1：谁的钱</b><span>客户责任不同，ESG 目标就不同。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 2：等多久</b><span>时间期限决定能承受什么波动、流动性和转型周期。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 3：怕什么</b><span>fiduciary、reputation、ethics、loss aversion 是题眼。</span></div>
+        <div class="logic-step"><b>隐藏逻辑 4：买什么</b><span>机构看整套体系，零售看产品，基金会常看排除。</span></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="panel-card pad">
+        <span class="tag tag-blue">一句话</span>
+        <h3 style="margin-top:10px">不要用一个 ESG 产品套所有客户</h3>
+        <p class="small">不同客户的时间、责任、风险承受和道德约束不同，决定了 mandate 和产品选择会不同。</p>
+      </div>
+      <div class="panel-card pad">
+        <span class="tag tag-green">做题线索</span>
+        <h3 style="margin-top:10px">Institutional 看 firm-wide philosophy</h3>
+        <p class="small">大资产所有者往往不只问某个 ESG fund，而会问基金管理公司的整体 ESG mindset、资源和跨资产类别协作。</p>
+      </div>
+      <div class="panel-card pad">
+        <span class="tag tag-amber">做题线索</span>
+        <h3 style="margin-top:10px">Retail 更像找产品</h3>
+        <p class="small">零售投资者受可投资工具限制，更可能找符合个人伦理或世界观的 fund，例如 sin stocks 排除或低碳筛选。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单：9.1.5 不漏点</h2>
+        <p class="sub">这一节主要围绕 Exhibit 4 和后续文字说明展开。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">总原则</span> 客户类型决定策略</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">不同客户类型，包括 institutional、retail、private，有不同 investment objectives、risk/return profiles、time horizons 和 drivers。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">这些差异会影响客户认为最有吸引力的 ESG investing strategies。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Exhibit 4 是高度简化和概括的观点，现实中会有许多个体例外。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">Exhibit 4</span> 时间期限与驱动</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">DB pension scheme：10-70 years；primary driver 为 fiduciary duty。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">DC pension scheme：10-70 years；primary driver 为 fiduciary duty 和 beneficiaries personal perspectives。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">General insurer：1-2 years；primary driver 为 awareness of financial impacts of climate change。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Life insurer：10-50 years；primary driver 为 recognition of risk implications of lengthy investment horizons。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Sovereign wealth fund：30-150+ years；primary driver 为 reputational risk。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Foundation：50-250+ years；primary driver 为 reputational risk、ethics 以及投资需符合 founding or charitable aims。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Individual investor：1-50 years；primary driver 为 personal perspectives。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-violet">Exhibit 4</span> 风险心态与偏好策略</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">DB pension：长期视角通常允许较高 risk tolerance；偏好 some exclusions、ESG integration，且 ESG engagement approach often most important。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">DC pension：若个人受益人可切换提供方，风险厌恶可能高于时间期限本身暗示；偏好 ESG integration。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">General insurer：risk mindset 为 loss aversion；偏好 ESG integration。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Life insurer：长期视角通常允许较高 risk tolerance；偏好 ESG integration。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Sovereign wealth fund：对 illiquidity 和 short-term underperformance 有较高容忍度；偏好 some exclusions 和 ESG integration。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Foundation：对 illiquidity 和 short-term underperformance 有较高容忍度；exclusions likely，以确保投资符合 founding or charitable aims。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Individual investor：loss aversion；偏好 screened funds 和 strong ESG integration。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-amber">Institutional clients</span> 关注整体 ESG 体系</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">机构投资客户通常期望 ESG principles 被真实应用到整体 approach 中。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">这样资产所有者可以投资 diverse asset classes，并在每类资产中受益于 ESG integration 和 effective stewardship engagement。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">无论资产类别如何，RFP 讨论通常会纳入投资公司的 overall ESG philosophy and approach。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">ESG expectations 通常写入 mandate，即基金经理与客户之间的合同。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-teal">Side letter / Brunel Accord</span> 软性协议也有合同义务</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">有时客户特定 ESG 或其他要求不写入主合同 mandate，而写入 side letter；side letter 也有 contractual obligations。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">Brunel Asset Management Accord 展示一种较软语言的协议形式，用于让基金经理理解客户长期投资和 ESG 视角。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">本章讨论 mandates 时，也包括 side letters 或其他 framing agreement 的法律文件。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">asset owner 的时间期限和整体投资哲学，决定 mandate 能否真正促使基金经理回应 ESG risks and opportunities。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-rose">Time horizon</span> 资产所有者通常更长期</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">ICGN Model Mandate 指出，大多数 asset owners 的 time horizon 明显长于 fund managers。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">长期组合中，对 asset owner 重要的 factors and risks，往往不同于传统基金管理流程通常考虑的内容。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">这些长期因素会影响长期回报，因此资产所有者希望基金经理更有效地将长期因素整合进投资流程。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-blue">Specific fund vs overall firm</span> 不只问单个产品</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">即使资产所有者想投某个 ESG fund，也通常不会只问该基金本身的方法。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">基金经理整体 mindset and philosophy 很重要，因为它提供长期资源支持和可信背景。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">engagement 往往是跨投资公司的 integrated activity，一个固定收益基金也可能受益于权益组合 engagement 带来的公司改变。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">大型 asset owners 会探查投资公司内部不同资产类别和团队是否有效协作。</div></div>
+        </div>
+      </div>
+
+      <div class="coverage-group">
+        <h3><span class="tag tag-green">Retail / Impact</span> 产品、伦理、规模和流动性</h3>
+        <div class="coverage-list">
+          <div class="coverage-item"><div class="check">✓</div><div class="text">retail investors 更常寻找产品，受可投资工具限制，也更可能寻找符合个人伦理和世界观的基金。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">他们可能选择排除 sin stocks，或避免特别 carbon-intensive businesses。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">foundation 或 religion-linked asset owners 若有 moral constraint，常与此类似，更看重 exclusions 和 screened portfolios。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">impact investing 从 high-net-worth individuals 和 foundations 发展到更主流投资工具，但面临 scalability 和 liquidity 问题。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">wise client 不应只按 impact 品牌购买，而应理解 underlying investment philosophy and process。</div></div>
+          <div class="coverage-item"><div class="check">✓</div><div class="text">基金经理报告 portfolio real-world impacts，有助于把投资理解为现实世界的一部分，而不是与现实脱节。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：每类客户抓一个题眼</h2>
+        <p class="sub">客户类型题不要硬背整张表，先抓最有区分度的驱动和风险心态。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">1</div><div><div class="card-title">客户画像决定 ESG 策略</div><span class="tag tag-blue">Core Logic</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">不同客户类型有不同 investment objectives、risk/return profiles、time horizons 和 drivers，因此会考虑不同 ESG strategies。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">ESG 不是一个标准产品包。先看客户为什么投、投多久、能承受什么，再谈 integration、screening、exclusion 或 impact。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>ESG strategy == 客户目标 + 时间期限 + 驱动 + 风险偏好</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">表格题通常靠 primary driver 和 risk mindset 区分。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">2</div><div><div class="card-title">DB pension scheme</div><span class="tag tag-green">Fiduciary Duty</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">DB pension 时间期限 10-70 年，primary driver 是 fiduciary duty，长期视角通常允许较高 risk tolerance。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">DB 养老金的核心是受托责任和长期支付能力，所以 ESG 不是个人偏好，而是长期风险收益管理的一部分。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>DB pension ESG == fiduciary duty + long horizon + integration / engagement</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题问 DB primary ESG driver，答案是 fiduciary duty。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#6d28d9">
+        <div class="card-top"><div class="num">3</div><div><div class="card-title">General insurer</div><span class="tag tag-violet">Loss Aversion</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">general insurer 时间期限 1-2 年，primary driver 是 awareness of financial impacts of climate change，risk mindset 是 loss aversion。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">一般保险公司期限短、赔付和资产负债约束强，最怕损失，因此 ESG 更像风险识别和损失控制工具。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>General insurer ESG == short horizon + climate financial impacts + loss aversion</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题问 general insurer risk mindset，答案是 loss aversion。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#b45309">
+        <div class="card-top"><div class="num">4</div><div><div class="card-title">Sovereign wealth fund</div><span class="tag tag-amber">Reputation</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">sovereign wealth fund 时间期限 30-150+ 年，primary driver 是 reputational risk，通常可承受 illiquidity 和 short-term underperformance。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">主权财富基金体量大、期限长、公共性强，声誉风险很突出，同时有能力承受短期波动和低流动性。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>SWF ESG == reputational risk + very long horizon + illiquidity tolerance</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题问 sovereign wealth fund primary driver，答案是 reputational risk。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#0f766e">
+        <div class="card-top"><div class="num">5</div><div><div class="card-title">Foundation</div><span class="tag tag-teal">Exclusions</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">foundation 时间期限 50-250+ 年，primary driver 包括 reputational risk、ethics，以及投资需符合 founding or charitable aims；implied favored approach 是 exclusions likely。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">基金会的钱有宗旨约束，投资不能与创立目的或慈善目标冲突，所以排除策略特别自然。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Foundation ESG == charitable aims + ethics + reputation → exclusions</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">正式题问 exclusions 最可能是谁偏好，答案常是 charitable foundation。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#be123c">
+        <div class="card-top"><div class="num">6</div><div><div class="card-title">Individual investor</div><span class="tag tag-rose">Personal Perspective</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">individual investor 时间期限 1-50 年，primary driver 是 personal perspectives，risk mindset 是 loss aversion，偏好 screened funds 和 strong ESG integration。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">个人投资者更容易从伦理、世界观、产品可得性出发，同时又比较厌恶损失。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Individual ESG == personal ethics + product access + loss aversion</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">对零售客户，产品名称、筛选规则和是否符合个人价值观往往更突出。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#1d4ed8">
+        <div class="card-top"><div class="num">7</div><div><div class="card-title">Institutional clients 看整体能力</div><span class="tag tag-blue">Firm-Wide Approach</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">机构客户通常希望 ESG principles 真实应用于整体 approach，并在 diverse asset classes 中受益于 ESG integration 和 stewardship engagement。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">大客户不会只问一个基金怎么做，还会问投资公司整体有没有长期资源、团队协作和一致方法。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Institutional ESG assessment == product + firm philosophy + resources + cross-asset collaboration</b></div></div></div>
+        <div class="row"><div class="row-lab">考点提醒</div><div class="row-val">carbon-tilted bond fund 也可能受益于 equity engagement 带来的公司改变。</div></div>
+      </article>
+
+      <article class="knowledge-card" style="--accent:#047857">
+        <div class="card-top"><div class="num">8</div><div><div class="card-title">Impact investing 要穿透品牌</div><span class="tag tag-green">Impact</span></div></div>
+        <div class="row"><div class="row-lab">原文要点</div><div class="row-val">impact investing 从高净值个人和基金会发展到更主流工具，但面临 scalability 和 liquidity 问题；wise client 不应只按品牌购买。</div></div>
+        <div class="row"><div class="row-lab">中文解释</div><div class="row-val">impact 这个词可能被重命名滥用，客户仍要看底层投资哲学和投资流程。</div></div>
+        <div class="row"><div class="row-lab">逻辑等式</div><div class="row-val"><div class="eq"><b>Impact investing 判断 == real-world impact + process substance - brand-only risk</b></div></div></div>
+        <div class="row"><div class="row-lab">投资影响</div><div class="row-val">大资产所有者可能因规模不够、锁定期长、退出困难而难以配置某些 impact opportunities。</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="clients" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Client Matrix</div>
+        <h2>客户矩阵：Exhibit 4 复习版</h2>
+        <p class="sub">这里按“期限、驱动、风险心态、偏好策略”四列压缩。考试优先记最能区分的词。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="client-card" style="--accent:#1d4ed8">
+        <h3><span class="tag tag-blue">Defined Benefit Pension Scheme</span></h3>
+        <div class="client-grid">
+          <div class="client-cell"><b>Time horizon</b>10-70 years</div>
+          <div class="client-cell"><b>Primary driver</b>Fiduciary duty</div>
+          <div class="client-cell"><b>Risk mindset</b>Long-term perspective should permit higher risk tolerance</div>
+          <div class="client-cell"><b>ESG approach</b>Some exclusions, ESG integration, ESG engagement often most important</div>
+        </div>
+      </div>
+
+      <div class="client-card" style="--accent:#047857">
+        <h3><span class="tag tag-green">Defined Contribution Pension Scheme</span></h3>
+        <div class="client-grid">
+          <div class="client-cell"><b>Time horizon</b>10-70 years</div>
+          <div class="client-cell"><b>Primary driver</b>Fiduciary duty + personal perspectives of beneficiaries</div>
+          <div class="client-cell"><b>Risk mindset</b>Switchable providers may imply greater risk aversion than time horizon suggests</div>
+          <div class="client-cell"><b>ESG approach</b>ESG integration</div>
+        </div>
+      </div>
+
+      <div class="client-card" style="--accent:#6d28d9">
+        <h3><span class="tag tag-violet">General Insurer</span></h3>
+        <div class="client-grid">
+          <div class="client-cell"><b>Time horizon</b>1-2 years</div>
+          <div class="client-cell"><b>Primary driver</b>Awareness of financial impacts of climate change</div>
+          <div class="client-cell"><b>Risk mindset</b>Loss aversion</div>
+          <div class="client-cell"><b>ESG approach</b>ESG integration</div>
+        </div>
+      </div>
+
+      <div class="client-card" style="--accent:#b45309">
+        <h3><span class="tag tag-amber">Life Insurer</span></h3>
+        <div class="client-grid">
+          <div class="client-cell"><b>Time horizon</b>10-50 years</div>
+          <div class="client-cell"><b>Primary driver</b>Recognition of risk implications of lengthy investment horizons</div>
+          <div class="client-cell"><b>Risk mindset</b>Long-term perspective typically permits higher risk tolerance</div>
+          <div class="client-cell"><b>ESG approach</b>ESG integration</div>
+        </div>
+      </div>
+
+      <div class="client-card" style="--accent:#0f766e">
+        <h3><span class="tag tag-teal">Sovereign Wealth Fund</span></h3>
+        <div class="client-grid">
+          <div class="client-cell"><b>Time horizon</b>30-150+ years</div>
+          <div class="client-cell"><b>Primary driver</b>Reputational risk</div>
+          <div class="client-cell"><b>Risk mindset</b>High tolerance for illiquidity and short-term underperformance</div>
+          <div class="client-cell"><b>ESG approach</b>Some exclusions, ESG integration</div>
+        </div>
+      </div>
+
+      <div class="client-card" style="--accent:#be123c">
+        <h3><span class="tag tag-rose">Foundation</span></h3>
+        <div class="client-grid">
+          <div class="client-cell"><b>Time horizon</b>50-250+ years</div>
+          <div class="client-cell"><b>Primary driver</b>Reputational risk, ethics, investment consistent with founding or charitable aims</div>
+          <div class="client-cell"><b>Risk mindset</b>High tolerance for illiquidity and short-term underperformance</div>
+          <div class="client-cell"><b>ESG approach</b>Exclusions likely, to ensure investments are consistent with charitable aims</div>
+        </div>
+      </div>
+
+      <div class="client-card" style="--accent:#1d4ed8">
+        <h3><span class="tag tag-blue">Individual Investor</span></h3>
+        <div class="client-grid">
+          <div class="client-cell"><b>Time horizon</b>1-50 years</div>
+          <div class="client-cell"><b>Primary driver</b>Personal perspectives</div>
+          <div class="client-cell"><b>Risk mindset</b>Loss aversion</div>
+          <div class="client-cell"><b>ESG approach</b>Screened funds, strong ESG integration</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">速记：DB=受托责任；General insurer=损失厌恶；SWF=声誉风险；Foundation=慈善目标和排除；Individual=个人观点和筛选基金。</div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Cases</div>
+        <h2>案例区：客户期望怎样改变提问方式</h2>
+        <p class="sub">这些案例来自 PDF 文字说明，用来理解表格背后的实际投资沟通。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-teal">Institutional Client</span><h3 style="margin-top:8px">不只看单一 ESG fund</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>即使资产所有者想投某个 ESG fund，也会关心基金管理公司的整体 mindset and philosophy，因为这说明该产品是否有长期支持和资源。</p>
+          <p><b>中文解释：</b>像审计看集团层面控制环境一样，大客户不会只看一个产品说明书，还会看整个投资公司的 ESG 文化、资源和协作。</p>
+          <p><b>逻辑等式：</b>Institutional selection == specific fund + firm-wide ESG philosophy + long-term resourcing。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-blue">Carbon-Tilted Bond Fund</span><h3 style="margin-top:8px">固定收益也可能受益于权益 engagement</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>碳倾斜债券基金可能对固定收益投资做直接 stewardship，同时也可受益于权益组合 engagement 对同一公司的改变。</p>
+          <p><b>中文解释：</b>同一家公司可能既是债券发行人也是股票持仓，权益团队推动公司改变，也会改善债券持仓风险。</p>
+          <p><b>逻辑等式：</b>Cross-asset ESG benefit == fixed income exposure + equity engagement spillover。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-amber">Retail / Ethical Product</span><h3 style="margin-top:8px">零售客户更像在找“符合我价值观的产品”</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>零售投资者受可投资工具限制，更可能寻找符合个人伦理和世界观的基金，例如排除 sin stocks 或避免 carbon-intensive businesses。</p>
+          <p><b>中文解释：</b>这类客户通常不是深入谈全公司 ESG 哲学，而是看产品规则是否符合个人偏好。</p>
+          <p><b>逻辑等式：</b>Retail ESG demand == personal ethics + product availability + exclusions/screens。</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><span class="tag tag-violet">Impact Investing</span><h3 style="margin-top:8px">不要被 impact 品牌带着走</h3></div>
+        <div class="case-body">
+          <p><b>原文要点：</b>impact investing 从高净值个人和基金会进入更主流投资工具，但大型资产所有者可能面临规模不足、流动性差和退出困难。</p>
+          <p><b>中文解释：</b>基金经理可能把更广泛的投资方法重新包装为 impact，明智客户要看底层投资哲学和流程，而不是只买品牌。</p>
+          <p><b>逻辑等式：</b>Impact due diligence == impact claim + scale + liquidity + underlying process。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：客户类型题要抓最有区分度的词</h2>
+        <p class="sub">这一节的选择题经常把“受托责任、声誉风险、个人伦理、损失厌恶、排除策略”互相混淆。</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="trap" style="--accent:#be123c"><b>易错 1：把 sovereign wealth fund 的驱动选成 fiduciary duty</b><p>PDF 表格中 sovereign wealth fund 的 primary driver 是 reputational risk。</p></div>
+      <div class="trap" style="--accent:#b45309"><b>易错 2：把 general insurer 的风险心态选成高风险承受</b><p>general insurer 的 risk mindset 是 loss aversion。</p></div>
+      <div class="trap" style="--accent:#6d28d9"><b>易错 3：把 charitable foundation 和 DB pension 混在一起</b><p>foundation 最典型是 exclusions，以符合 founding or charitable aims；DB pension 更典型是 fiduciary duty。</p></div>
+      <div class="trap" style="--accent:#1d4ed8"><b>易错 4：只看单个 ESG 产品，不看投资公司整体</b><p>大型资产所有者通常会探查整个 fund manager 的 ESG mindset、长期资源和跨资产类别协作。</p></div>
+      <div class="trap" style="--accent:#047857"><b>易错 5：把 side letter 当成无约束补充说明</b><p>PDF 明确 side letter 也有 contractual obligations，本章 discussion of mandates 包括这类法律文件。</p></div>
+      <div class="trap" style="--accent:#0f766e"><b>易错 6：看到 impact 就直接相信</b><p>wise client 不按品牌购买，要看 underlying investment philosophy and process，并考虑规模和流动性问题。</p></div>
+    </div>
+
+    <div class="panel-card pad" style="margin-top:14px">
+      <h3>考前压缩：一屏背完 Module 5</h3>
+      <div class="grid-auto">
+        <div class="cheat"><div class="cheat-key">总式</div><div class="cheat-val">Client type → horizon → driver → risk mindset → ESG strategy。</div></div>
+        <div class="cheat"><div class="cheat-key">DB pension</div><div class="cheat-val">Fiduciary duty，长期，ESG integration / engagement。</div></div>
+        <div class="cheat"><div class="cheat-key">General insurer</div><div class="cheat-val">1-2 年，climate financial impacts，loss aversion。</div></div>
+        <div class="cheat"><div class="cheat-key">SWF</div><div class="cheat-val">30-150+ 年，reputational risk，illiquidity / short-term underperformance tolerance。</div></div>
+        <div class="cheat"><div class="cheat-key">Foundation</div><div class="cheat-val">50-250+ 年，reputation + ethics + charitable aims，exclusions likely。</div></div>
+        <div class="cheat"><div class="cheat-key">Individual</div><div class="cheat-val">personal perspectives，loss aversion，screened funds。</div></div>
+        <div class="cheat"><div class="cheat-key">Institutional</div><div class="cheat-val">看整体 ESG philosophy、跨资产类别整合和 stewardship engagement。</div></div>
+        <div class="cheat"><div class="cheat-key">Retail</div><div class="cheat-val">更像寻找产品，受投资工具限制，偏 personal ethics。</div></div>
+        <div class="cheat"><div class="cheat-key">Impact</div><div class="cheat-val">看底层投资流程，不只看品牌；注意 scalability 和 liquidity。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只测 Module 5</h2>
+        <p class="sub">点击选项后会显示答案。题眼训练重点：sovereign wealth fund、general insurer、foundation、DB pension、time horizon。</p>
+      </div>
+    </div>
+
+    <div class="quiz-list">
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q1</span><span class="tag tag-blue">正式题改编</span></div>
+        <div class="q-text">Which of the following is the most likely primary driver of ESG investment for a sovereign wealth fund?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Fiduciary duty.</button>
+          <button class="opt" data-correct="true">B. Reputational risk.</button>
+          <button class="opt" data-correct="false">C. Awareness of financial impacts of climate change.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>sovereign wealth fund 的 primary driver 是 reputational risk。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q2</span><span class="tag tag-green">正式题改编</span></div>
+        <div class="q-text">Which of the following describes the risk mindset of a general insurer?</div>
+        <div class="options">
+          <button class="opt" data-correct="true">A. Loss aversion.</button>
+          <button class="opt" data-correct="false">B. High risk tolerance.</button>
+          <button class="opt" data-correct="false">C. High tolerance for illiquidity.</button>
+        </div>
+        <div class="exp"><b>答案：A。</b>general insurer 时间期限短，risk mindset 是 loss aversion。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q3</span><span class="tag tag-amber">正式题改编</span></div>
+        <div class="q-text">Exclusions is the most likely implied favored ESG approach of a:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. General insurer.</button>
+          <button class="opt" data-correct="true">B. Charitable foundation.</button>
+          <button class="opt" data-correct="false">C. Defined benefit pension scheme.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>foundation 需要确保投资符合 founding or charitable aims，因此 exclusions likely。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q4</span><span class="tag tag-violet">正式题改编</span></div>
+        <div class="q-text">When seeking to implement ESG factors into an investment mandate, which statement regarding investment time horizon is most accurate?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Asset owners and asset managers have similar time horizons.</button>
+          <button class="opt" data-correct="false">B. Asset managers have a longer time horizon than asset owners.</button>
+          <button class="opt" data-correct="true">C. Asset owners have a longer time horizon than asset managers.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>ICGN Model Mandate 指出，大多数 asset owners 的 time horizon 明显长于 fund managers。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q5</span><span class="tag tag-teal">正式题改编</span></div>
+        <div class="q-text">Which form of asset owner is most likely to apply an exclusion policy barring investment in all assets exposed to a particular business area?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Defined benefit pension scheme.</button>
+          <button class="opt" data-correct="true">B. Charitable foundation.</button>
+          <button class="opt" data-correct="false">C. Sovereign wealth fund.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>foundation 常因创立或慈善目标，对特定业务领域采用排除政策。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q6</span><span class="tag tag-rose">正式题改编</span></div>
+        <div class="q-text">Which of the following is least likely a driver for clients to seek ESG investment?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Fiduciary duty.</button>
+          <button class="opt" data-correct="false">B. Reputational risk.</button>
+          <button class="opt" data-correct="true">C. A belief that social issues are unimportant.</button>
+        </div>
+        <div class="exp"><b>答案：C。</b>认为社会议题不重要，与 ESG investing 至少部分不一致。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q7</span><span class="tag tag-blue">正式题改编</span></div>
+        <div class="q-text">Which of the following is likely to be a primary ESG driver for a defined benefit pension scheme?</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Reputational risk.</button>
+          <button class="opt" data-correct="true">B. Fiduciary duty.</button>
+          <button class="opt" data-correct="false">C. Personal ethics.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>DB pension scheme 的 primary ESG driver 是 fiduciary duty。</div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-meta"><span class="q-num">Q8</span><span class="tag tag-green">理解题</span></div>
+        <div class="q-text">A wise client considering an “impact” product should primarily:</div>
+        <div class="options">
+          <button class="opt" data-correct="false">A. Buy based on the product brand alone.</button>
+          <button class="opt" data-correct="true">B. Understand the underlying investment philosophy and process, including scalability and liquidity issues.</button>
+          <button class="opt" data-correct="false">C. Ignore whether real-world impacts are reported.</button>
+        </div>
+        <div class="exp"><b>答案：B。</b>PDF 提醒 wise client 不应只买品牌，要看底层投资哲学和流程；impact investing 还可能有规模和流动性问题。</div>
+      </div>
+    </div>
+
+    <div class="footer-note">复核问题：看到客户名称，你能不能立刻说出“驱动 + 风险心态 + 偏好策略”？例如 SWF=声誉风险，general insurer=损失厌恶，foundation=排除。</div>
+  </section>
+</main>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = document.getElementById(tab.dataset.tab);
+    if (panel) panel.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+document.querySelectorAll('.q-card').forEach(card => {
+  const opts = card.querySelectorAll('.opt');
+  const exp = card.querySelector('.exp');
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opts.forEach(o => {
+        o.classList.remove('correct', 'wrong');
+        o.disabled = true;
+        if (o.dataset.correct === 'true') o.classList.add('correct');
+      });
+      if (opt.dataset.correct !== 'true') opt.classList.add('wrong');
+      if (exp) exp.classList.add('show');
+    });
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.4 Module 4 · 4.1.6 Application of Social Factors in Investments</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}.card.dark h3{color:#fff}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:640px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(82px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}table{border-collapse:collapse;width:100%;min-width:760px}th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:700px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 4</span>
+        <span class="pill">Module 4</span>
+        <span class="pill">4.1.6</span>
+        <span class="pill">Application</span>
+      </div>
+      <h1>Application of Social Factors<br>in Investments</h1>
+      <p class="lead">本页覆盖第 4 章 4.1.6：把重大社会因素放进投资分析。重点是从“知道风险”走到“怎么进模型”：风险评估、管理质量、比率分析、财务建模和折现率。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>社会因素应用 == 重大性/风险评估 + 管理质量判断 + 情景量化 + 财务模型调整；财务影响 == 收入/成本/负债/折现率/声誉与招聘</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">4.1.6 将重大社会因素应用到 risk assessment、quality of management、ratio analysis 和 financial modeling。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">应用入口</div></div>
+        <div class="mini-stat"><div class="mini-num">5</div><div class="mini-lab">建模情景</div></div>
+      </div>
+      <div class="side-note">记忆抓手：社会风险不是“写在报告里就结束”，它要么进风险评估，要么进管理质量判断，最后进收入、成本、负债或折现率。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="risk">风险评估</button>
+    <button class="tab" data-tab="cases">三家公司案例</button>
+    <button class="tab" data-tab="management">管理质量</button>
+    <button class="tab" data-tab="modeling">建模分析</button>
+    <button class="tab" data-tab="legal">法律案例</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>从“社会因素”到“投资模型”</h2>
+      </div>
+      <div class="head-desc">这一节的隐藏线是递进关系：先识别重大性，再评价管理，再把情景放进财务分析。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Application of Social Factors in Investments<br>社会因素 → 风险/机会 → 管理质量 → 财务模型</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Materiality & Risk</div>
+          <p>不同国家和行业中，社会因素如何影响被投公司。</p>
+          <p>社会风险纳入传统风险评估。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Double Materiality</div>
+          <p>Financial materiality：影响企业价值。</p>
+          <p>Impact materiality：公司对环境和人的影响。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Quality of Management</div>
+          <p>战略、政策、流程、指标、披露。</p>
+          <p>当前表现、历史进步、同业比较。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Ratio & Modeling</div>
+          <p>量化事故、流失、供应链、抗议、产品安全。</p>
+          <p>调整收入、成本、负债和折现率。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>识别重大性</h3><p>行业和国家背景下的社会风险和机会。</p></div>
+        <div class="flow-step"><h3>判断方向</h3><p>风险会带来损失，趋势也可能带来机会。</p></div>
+        <div class="flow-step"><h3>评价管理</h3><p>看公司和同业相比是否会管理。</p></div>
+        <div class="flow-step"><h3>量化情景</h3><p>把事故、诉讼、抗议、流失放进模型。</p></div>
+        <div class="flow-step"><h3>投资结论</h3><p>反映到估值、风险溢价和组合决策。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">Risk</span>
+        <h3>社会风险是非财务风险，但会有财务影响</h3>
+        <p class="small">事故、劳资冲突、供应链人权、消费者抵制都可能影响投资表现，因此应纳入传统风险评估。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Opportunity</span>
+        <h3>提前适应趋势也可能形成机会</h3>
+        <p class="small">某些公司或行业如果及早识别社会趋势并调整战略，可能不是被动受损，而是从趋势中获益。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">Modeling</span>
+        <h3>最后要落到收入、成本、负债、折现率</h3>
+        <p class="small">这就是 4.1.6 的题眼：不是只描述社会议题，而是能说明它怎样影响财务模型。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-04.pdf` 第 251-256 页整理，覆盖 4.1.6 所有核心点和案例。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Materiality and Risk Assessment</span> 重大性与风险评估</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">第一步是判断社会因素和趋势对不同行业、不同国家经营的被投公司有什么影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">矿业、油气等行业更容易受到人权侵犯或健康安全问题影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">财务重大性评估应纳入公司传统风险评估。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会风险属于非财务风险，但可能对投资表现产生重大影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">除风险外，提前识别社会趋势并调整战略的公司或行业也可能提供投资机会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU 和 UK 监管强调 double materiality reporting。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Double materiality 包括 financial materiality 和 impact materiality。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">评估重大负面影响可参考 OECD Due Diligence Guidance for Responsible Business Conduct 和 UNGPs。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">关注正面影响和为组织、社会、环境增加价值时，常参考 United Nations Sustainable Development Goals。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Cases</span> Amazon、Apple、Thai Union</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Amazon：仓库高温、picker 长距离行走与扫描器监控、员工心理健康、生活工资争议。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Amazon 财务重大性：立法、社会动荡、员工流失率高或士气低可能导致运营中断和成本增加。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Apple / Foxconn / Inventec：供应商工作条件、超长工时、低工资、员工自杀、审计和供应商标准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Apple 财务重大性：争议可能影响客户忠诚、罚款、员工或供应商罢工、股价和发货延迟。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Thai Union：被指涉及严重人权和环境问题，导致消费者和超市抵制、收入损失、供应链重组成本。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Thai Union 缓解措施：新行为准则、终止 17 家供应商、取消劳工中介、虾加工内包、签署公平劳工框架、与 Greenpeace 达成进展。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">评估公司投资时，应同时考虑社会风险和风险缓解/管理水平。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">问题持续时，可能出现消费者抵制或投资者撤资，影响股价；表现改善则可能强化品牌和收入韧性。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Management and Modeling</span> 管理质量与模型调整</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Quality of Management：识别相关社会因素后，分析师要评估公司相较同业如何管理风险和机会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">管理质量评估包括 corporate strategy、policies、processes and measures、performance indicators、public disclosure。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">分析师会看当前表现、随时间进步情况，以及与行业平均和主要竞争对手比较。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会因素管理不善可能表明整体利益相关方管理不善，是投资者预警信号。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DEI：研究显示管理层多样性和强 DEI 文化会带来更好决策和投资结果。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CFA Institute 长期倡导投资行业 DEI，并于 2022 年发布美国和加拿大 DEI Code 及实施指南。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Ratio Analysis and Financial Modeling：量化社会因素情景并纳入比率分析和财务建模。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">情景 1：职业健康安全事故和死亡可能导致巨额罚款和负债。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">情景 2：人力资本管理问题导致高员工流失，新员工培训使运营成本上升。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">情景 3：供应链问题影响品牌声誉，消费者抵制使收入下降。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">情景 4：地方抗议导致工厂或厂房运营中断。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">情景 5：恶劣工作条件可能导致产品安全问题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">除调整未来收入、成本、潜在负债外，如果公司社会因素管理不当，分析师可能提高折现率以反映更高风险。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-rose">Legal cases</span> Goldman Sachs 与 Tesco</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Goldman Sachs：2023 年支付超过 USD200 million 和解集体诉讼，涉及低薪、绩效评估和晋升偏见、性别歧视。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Goldman Sachs 和解要求与外部独立顾问合作，改善性别薪酬和绩效差距；该事项具有财务重大性并可能影响声誉、招聘和绩效。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Tesco：自 2018 年起面对最高 GBP4 billion 补发工资要求，主要来自女性门店员工。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Tesco 争议：仓储配送中心员工比门店员工时薪高最多 GBP3，尽管角色被称为 comparable value。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Tesco 案例直指 labor rights 中的 equal pay，结果可能对公司和行业产生重大财务后果。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risk" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Materiality and Risk Assessment</div>
+        <h2>风险评估：社会风险要进传统风险框架</h2>
+      </div>
+      <div class="head-desc">这一节不是另起炉灶，而是把社会风险放回传统投资分析：哪些因素会影响表现，哪些公司能借趋势获益。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. First step 第一步：判断影响</div><span class="tag tag-blue">Impact</span></div>
+        <p class="small"><b>原文要点：</b>财务重大性或风险评估的第一步，是判断社会因素和趋势对不同国家、不同地区、不同部门运营的被投公司有什么影响。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">第一步</div><div class="eq-op">==</div><div class="eq-rhs">社会因素 × 行业 × 国家 → 对被投公司的影响</div></div></div>
+        <div class="memory"><b>记忆线：</b>不要直接问“这个社会因素重要吗”，要问“对这个国家、这个行业、这家公司怎么重要”。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Non-financial risk 非财务风险的财务后果</div><span class="tag tag-amber">Performance</span></div>
+        <p class="small"><b>原文要点：</b>社会风险等非财务风险可能对投资表现产生重大影响，因此应纳入风险评估。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">社会风险</div><div class="eq-op">==</div><div class="eq-rhs">非财务风险 → 罚款/中断/成本/收入/估值 → 投资表现</div></div></div>
+        <div class="memory"><b>记忆线：</b>“非财务”不是“不影响财务”，只是影响路径不直接写在财务报表标题上。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Opportunity 机会也要识别</div><span class="tag tag-green">Upside</span></div>
+        <p class="small"><b>原文要点：</b>某些公司或行业如果早期识别社会趋势，并调整战略以受益于这些趋势，可能提供投资机会，而不是被动处于不利地位。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">社会机会</div><div class="eq-op">==</div><div class="eq-rhs">提前识别趋势 + 调整战略 → 受益而非受损</div></div></div>
+        <div class="memory"><b>记忆线：</b>ESG 社会因素不是只找雷，也要找谁先学会避雷并借势增长。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Double Materiality 双重重大性</div><span class="tag tag-violet">Two lenses</span></div>
+        <p class="small"><b>原文要点：</b>EU 和 UK 监管强调 double materiality reporting：公司既报告影响企业价值的财务重大事项，也报告公司对环境和人的影响。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">双重重大性</div><div class="eq-op">==</div><div class="eq-rhs">Financial materiality + Impact materiality</div></div></div>
+        <div class="memory"><b>记忆线：</b>一只眼看“社会因素怎么影响公司”，另一只眼看“公司怎么影响社会”。</div>
+        <div class="riskline">负面影响：参考 OECD Due Diligence Guidance 和 UNGPs；正面影响和社会价值：常参考 SDGs。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case Study</div>
+        <h2>Amazon、Apple、Thai Union：社会问题如何变成财务问题</h2>
+      </div>
+      <div class="head-desc">三家公司案例的共同点：社会议题不是停留在道德层面，而是会穿透到收入、成本、运营、股价和品牌。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Amazon：工作条件和员工压力</div><span class="tag tag-rose">Working conditions</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">问题</div><div class="case-text">仓库高温 38°C、picker 一天最多走 15 miles、手持扫描器实时监控速度和 idle time。</div></div>
+          <div class="case-row"><div class="case-lab">心理健康</div><div class="case-text">2013-2018 年，46 个美国仓库发生 189 次与员工自杀相关的急救呼叫。</div></div>
+          <div class="case-row"><div class="case-lab">工资回应</div><div class="case-text">2018 年宣布美国和英国员工最低工资分别为 USD15 或 GBP10.78，并游说提高美国联邦最低工资。</div></div>
+          <div class="case-row"><div class="case-lab">建模点</div><div class="case-text">立法、社会动荡、高流失、低士气可能造成中断和成本上升；双重重大性还要看员工影响。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Apple / Foxconn / Inventec：供应链劳工</div><span class="tag tag-violet">Supply chain</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">2006</div><div class="case-text">iPod 代工厂工作条件被批评，员工每周工作超过 60 小时、月薪约 USD100，部分收入用于支付公司住宿和食物。</div></div>
+          <div class="case-row"><div class="case-lab">2010</div><div class="case-text">Foxconn 员工自杀引发调查；18 人尝试自杀，14 人死亡。</div></div>
+          <div class="case-row"><div class="case-lab">2014/2022</div><div class="case-text">BBC 调查认为超长工时等问题持续；2022 年郑州工厂工人因工作生活条件、疫情封控和工资奖金延迟抗议。</div></div>
+          <div class="case-row"><div class="case-lab">建模点</div><div class="case-text">客户忠诚、罚款、罢工、股价、发货延迟、供应链集中度都可能受影响。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Thai Union：人权、环境和供应链治理</div><span class="tag tag-teal">Mitigation</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">争议</div><div class="case-text">2015 年 Greenpeace 指控其严重涉及人权和环境滥用，并警告股东和投资者相关财务风险。</div></div>
+          <div class="case-row"><div class="case-lab">后果</div><div class="case-text">消费者和超市抵制导致收入损失；终止分包商带来转型和未来成本。</div></div>
+          <div class="case-row"><div class="case-lab">整改</div><div class="case-text">发布新行为准则、终止 17 家供应商、停止使用劳工中介、虾加工内包、签署公平劳工实践框架。</div></div>
+          <div class="case-row"><div class="case-lab">建模点</div><div class="case-text">问题持续会带来抵制和撤资；改善表现可能强化品牌并提高未来收入韧性。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>案例总式</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">案例分析</div><div class="eq-op">==</div><div class="eq-rhs">社会问题事实 + 财务重大性 + 双重重大性 + 管理缓解措施</div></div>
+      </div>
+      <p class="small">做题时看到案例，不要被故事带走。按这四项拆：发生了什么、如何影响财务、公司对人和社会造成什么影响、公司有没有缓解和改善。</p>
+    </div>
+  </section>
+
+  <section id="management" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quality of Management</div>
+        <h2>管理质量：社会因素管理不善，是整体管理预警</h2>
+      </div>
+      <div class="head-desc">识别出相关社会因素后，下一步不是直接下结论，而是看公司如何管理这些风险和机会。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. What analysts assess 分析师看什么</div><span class="tag tag-blue">5 件事</span></div>
+        <p class="small"><b>原文要点：</b>分析师要评估公司相对同业如何管理社会因素相关风险和机会。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">管理质量</div><div class="eq-op">==</div><div class="eq-rhs">strategy + policies + processes/measures + performance indicators + disclosure</div></div></div>
+        <div class="memory"><b>记忆线：</b>从“说要管”到“怎么管、管得怎样、有没有披露”，五层一起看。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Peer comparison 同业比较</div><span class="tag tag-green">Benchmark</span></div>
+        <p class="small"><b>原文要点：</b>分析师会看当前表现和随时间进步，并调查其与行业平均水平和关键竞争对手相比如何。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">同业比较</div><div class="eq-op">==</div><div class="eq-rhs">当前表现 + 时间进步 + 行业平均 + 关键竞争对手</div></div></div>
+        <div class="memory"><b>记忆线：</b>一个数字孤零零没意义，要看趋势，也要看同业位置。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Warning signal 投资预警</div><span class="tag tag-rose">Red flag</span></div>
+        <p class="small"><b>原文要点：</b>社会因素管理不善可能是整体利益相关方管理不善的指标，因此对投资者是有效预警。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">管理不善</div><div class="eq-op">==</div><div class="eq-rhs">社会因素管不好 → stakeholder management 可能也弱 → 投资预警</div></div></div>
+        <div class="memory"><b>记忆线：</b>社会问题不是边角料，可能暴露公司对员工、供应商、客户、社区的整体管理能力。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Diversity, Equity, and Inclusion DEI</div><span class="tag tag-violet">Decision quality</span></div>
+        <p class="small"><b>原文要点：</b>研究显示，管理团队多样性和强 DEI 文化会带来更好的决策和投资结果。CFA Institute 于 2022 年发布美国和加拿大 DEI Code 及实施指南。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">DEI</div><div class="eq-op">==</div><div class="eq-rhs">多元管理团队 + 包容文化 → 更好决策 + 更好投资结果</div></div></div>
+        <div class="memory"><b>记忆线：</b>DEI 不是形象工程，在教材中它连接的是 decision making 和 investment outcomes。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="modeling" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Ratio Analysis and Financial Modeling</div>
+        <h2>建模分析：把社会情景量化</h2>
+      </div>
+      <div class="head-desc">这部分最像审计和财务分析：识别事项、判断影响科目、调整收入成本负债或折现率。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>五类情景进入模型</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>社会因素情景</th><th>可能财务影响</th><th>模型入口</th></tr></thead>
+            <tbody>
+              <tr><td>occupational health and safety issues：accidents / fatalities</td><td>巨额罚款和负债</td><td>Liabilities、法律费用、保险、折现率</td></tr>
+              <tr><td>human capital management issues</td><td>高流失导致培训新员工，运营成本上升</td><td>Operating costs、利润率</td></tr>
+              <tr><td>supply chain issues</td><td>品牌声誉受损，消费者抵制导致收入下降</td><td>Revenue、增长率、品牌价值</td></tr>
+              <tr><td>local protests</td><td>工厂或厂房业务中断</td><td>产能、收入确认、恢复成本</td></tr>
+              <tr><td>poor working conditions</td><td>产品安全问题</td><td>召回、赔偿、收入、成本、声誉</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>财务模型总式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">社会情景</div><div class="eq-op">==</div><div class="eq-rhs">收入影响 + 成本影响 + 潜在负债 + 折现率调整</div></div>
+          <div class="eq"><div class="eq-lhs">管理不当</div><div class="eq-op">==</div><div class="eq-rhs">更高风险画像 → 提高 discount rate</div></div>
+        </div>
+        <div class="memory"><b>记忆线：</b>能量化就进收入、成本、负债；不好量化但风险更高，就可能进折现率。</div>
+        <div class="riskline">考试常考：安全事故多重死亡最可能影响 liabilities-to-assets ratio，因为罚款和赔偿会增加负债。</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>分析师调整路径</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">模型调整</div><div class="eq-op">==</div><div class="eq-rhs">具体影响能估计 → 调整收入/成本/负债；风险管理差但金额难估 → 调整折现率</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="legal" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Legal Cases</div>
+        <h2>法律案例：DEI 和 equal pay 也能高度财务重大</h2>
+      </div>
+      <div class="head-desc">这两个案例都提醒：社会因素不是“软问题”，集体诉讼和补发工资可能直接变成重大金额。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Goldman Sachs Gender Discrimination Case</div><span class="tag tag-violet">DEI</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事项</div><div class="case-text">2023 年 Goldman Sachs 支付超过 USD200 million 和解集体诉讼。</div></div>
+          <div class="case-row"><div class="case-lab">争议</div><div class="case-text">涉及较低薪酬、员工绩效评估和晋升偏见、性别歧视，覆盖美国数千名女性员工。</div></div>
+          <div class="case-row"><div class="case-lab">整改</div><div class="case-text">和解要求公司与独立外部顾问合作，改善 gender pay 和 performance disparities。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">该和解对 Goldman Sachs 财务重大，并有损害声誉、招聘和长期绩效的风险。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Tesco Equal Pay Claim</div><span class="tag tag-rose">Equal pay</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">事项</div><div class="case-text">自 2018 年起，Tesco 面临最高 GBP4 billion 的补发工资要求。</div></div>
+          <div class="case-row"><div class="case-lab">争议</div><div class="case-text">主要女性门店员工声称配送中心员工时薪高出最多 GBP3，尽管工作被认为具有 comparable value。</div></div>
+          <div class="case-row"><div class="case-lab">法律</div><div class="case-text">Equality Act 2010 Section 66 包含 sex equality clause，要求不利条款被修改或补足对应有利条款。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">该案具有开创性，财务重大，并直指 labor rights 中的 equal pay；结果可能影响 Tesco 和行业其他公司。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩版：一屏背完</h2>
+      </div>
+      <div class="head-desc">4.1.6 的记忆线很适合压缩：风险评估、管理质量、建模、折现率。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>4.1.6 总式</b> == risk assessment + quality of management + ratio analysis + financial modeling。</div>
+          <div class="formula"><b>Risk assessment</b> == 社会因素 × 行业 × 国家 → 被投公司风险/机会。</div>
+          <div class="formula"><b>Double materiality</b> == financial materiality + impact materiality。</div>
+          <div class="formula"><b>Management quality</b> == strategy + policies + processes/measures + KPIs + disclosure + peer comparison。</div>
+          <div class="formula"><b>DEI</b> == 多元管理团队 + 强 DEI 文化 → 更好决策和投资结果。</div>
+          <div class="formula"><b>Modeling</b> == social scenario → revenues / costs / liabilities / discount rate。</div>
+          <div class="formula"><b>Bad social management</b> == 更高风险画像 → 可能提高 discount rate。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>双重重大性</b>Financial materiality 看社会因素如何影响企业价值；impact materiality 看公司如何影响环境和人。</div>
+          <div class="trap"><b>安全事故</b>多重死亡和重大罚款最容易影响负债类指标，例如 liabilities-to-assets ratio。</div>
+          <div class="trap"><b>管理质量</b>不是只看是否有政策，还要看战略、流程、指标、披露、进步和同业比较。</div>
+          <div class="trap"><b>案例题</b>Amazon 看工作条件和员工压力；Apple 看供应链劳工；Thai Union 看人权/环境争议和缓解措施。</div>
+          <div class="trap"><b>Goldman / Tesco</b>都说明 DEI、equal pay、labor rights 可以直接变成重大和解、补偿和声誉风险。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quick Check</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">这些题对应第 4 章练习题中与 4.1.6 最相关的考点。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">矿业公司发生多重死亡安全事故，最可能影响哪个比率：asset turnover、days receivable、liabilities-to-assets ratio？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：liabilities-to-assets ratio。</b>安全事故可能带来罚款、赔偿和法律负债，从而增加负债。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Double materiality 包含哪两层？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>一是影响企业价值的 financial materiality；二是公司对环境和人的 impact materiality。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">公司社会因素管理质量通常看哪五类材料？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>公司战略、政策、已实施流程和措施、绩效指标、公开披露，并结合当前表现、进步和同业比较。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">高员工流失率通常如何进入财务模型？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>新人招聘和培训成本上升，通常影响 operating costs 和利润率。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">供应链人权问题导致消费者抵制，主要影响模型哪一侧？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>收入和品牌声誉，可能体现为 revenue 下调、增长率下调或更高风险溢价。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">如果社会风险金额难以具体估计，但公司明显管理不当，分析师可能怎么处理？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>提高 discount rate，以反映更高风险画像。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">研究支持强 DEI 文化通常带来什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>更好的决策和投资结果。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">Thai Union 案例中，问题持续和表现改善分别可能带来什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>问题持续可能导致消费者抵制或投资者撤资并影响股价；表现改善可能强化品牌并增加或稳住未来收入。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">Goldman Sachs 案例为什么具有财务重大性？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>公司支付超过 USD200 million 和解，并面临声誉、招聘和绩效的长期影响风险。</div>
+      </article>
+    </div>
+    <div class="footer-note">复习时试着把每个社会问题都问成四个问题：影响收入吗？影响成本吗？形成负债吗？需要提高折现率吗？</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

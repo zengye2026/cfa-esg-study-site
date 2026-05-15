@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Chapter 1 Module 6 - Putting ESG Investing into Practice</title>
+<style>
+:root{
+  --bg:#eef3f8;
+  --panel:#ffffff;
+  --ink:#121826;
+  --muted:#52657d;
+  --line:#d7e1ec;
+  --line2:#e8eef5;
+  --navy:#101827;
+  --blue:#2563eb;
+  --teal:#0f766e;
+  --green:#15803d;
+  --amber:#b45309;
+  --red:#b91c1c;
+  --violet:#6d28d9;
+  --shadow:0 14px 34px rgba(15,23,42,.10);
+  --serif:Georgia,"Times New Roman","Noto Serif SC","Songti SC",serif;
+  --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.68;background:var(--bg);overflow-x:hidden}
+.page{width:min(1148px, calc(100% - 40px));margin:28px auto 60px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;margin-bottom:18px}
+.hero-main,.hero-side,.nav,.panel-card,.case-box,.topic-card,.qcard{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+.hero-main{border-radius:8px;padding:30px}
+.hero-side{border-radius:8px;padding:22px}
+.kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-weight:800;font-size:12px;color:#63748c;background:#fbfdff}
+h1{font-family:var(--serif);font-size:52px;line-height:.98;margin:0 0 16px;letter-spacing:0;color:#0f172a}
+.lead{font-size:16px;color:#344961;margin:0;max-width:860px}
+.hero-eq{margin-top:20px;background:var(--navy);color:#fff;border-radius:6px;padding:16px 18px;font-size:14px}
+.hero-eq b{color:#fff}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:#71829a;font-weight:900;font-size:12px}
+.side-title{font-family:var(--serif);font-size:22px;line-height:1.3;margin:12px 0 14px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.stat{border:1px solid var(--line);background:#f8fbff;border-radius:8px;padding:12px}
+.stat-num{font-size:28px;line-height:1;font-weight:900;color:#101827}
+.stat-lab{font-size:12px;color:var(--muted);font-weight:700;margin-top:4px}
+.memory{background:#ecfdf5;border:1px solid #86efac;border-radius:6px;padding:12px;color:#14532d;font-size:14px;margin-top:12px}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;border-radius:8px;padding:7px;margin:18px 0 24px}
+.tab{appearance:none;border:0;background:transparent;color:#61738c;border-radius:7px;padding:10px 13px;font-weight:900;white-space:nowrap;cursor:pointer}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--navy);color:#fff}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:end;margin:0 0 16px}
+.panel-head h2{font-family:var(--serif);font-size:34px;line-height:1.16;margin:4px 0 0;letter-spacing:0}
+.head-desc{color:var(--muted);font-size:14px}
+.panel-card{border-radius:8px;padding:22px;margin-bottom:16px}
+.map-card{border-radius:8px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:22px}
+.map-center{width:min(720px,100%);margin:0 auto 18px;border:2px solid #c2410c;background:#ffedd5;color:#7c2d12;border-radius:999px;padding:12px;text-align:center;font-weight:900}
+.branch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.branch{border:1px solid var(--line);border-radius:7px;padding:14px;min-height:150px}
+.branch h3{margin:0 0 8px;font-size:16px}
+.branch p{margin:5px 0;color:#354a62;font-size:14px}
+.b-blue{background:#eff6ff;border-color:#bfdbfe}
+.b-green{background:#ecfdf5;border-color:#bbf7d0}
+.b-amber{background:#fffbeb;border-color:#fde68a}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#f8fafc;border:1px solid var(--line);border-radius:7px;padding:14px;position:relative}
+.flow-step h3{margin:0 0 6px;font-size:15px}
+.flow-step p{margin:0;color:var(--muted);font-size:13px}
+.coverage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.coverage-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:13px;border:1px solid var(--line);border-radius:7px;background:#fbfdff}
+.check{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#dcfce7;color:#166534;font-weight:900}
+.text b{color:#0f172a}
+.text{color:#40536b;font-size:14px}
+.topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.topic-card{border-radius:8px;padding:18px;min-height:235px}
+.topic-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+.topic-title{font-weight:950;font-size:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;white-space:nowrap}
+.tag-blue{background:#dbeafe;color:#1d4ed8}
+.tag-green{background:#dcfce7;color:#15803d}
+.tag-amber{background:#fef3c7;color:#92400e}
+.tag-red{background:#fee2e2;color:#991b1b}
+.tag-violet{background:#ede9fe;color:#5b21b6}
+.small{font-size:14px;color:#455970;margin:8px 0}
+.equations{display:grid;gap:8px;margin-top:12px}
+.eq{display:grid;grid-template-columns:130px 34px minmax(0,1fr);gap:8px;align-items:center;background:#f8fafc;border:1px solid var(--line);border-radius:7px;padding:11px}
+.eq-lhs{font-weight:950;color:#0f172a}
+.eq-op{text-align:center;font-weight:950;color:#c2410c}
+.eq-rhs{color:#31445c}
+.riskline{margin-top:10px;padding:10px 12px;border-left:4px solid var(--amber);background:#fff7ed;color:#7c2d12;border-radius:4px;font-size:14px}
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.case-box{border-radius:8px;overflow:hidden}
+.case-head{padding:13px 16px;background:#0f172a;color:#fff;font-weight:950}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;border-top:1px solid var(--line2);padding:10px 0}
+.case-row:first-child{border-top:0;padding-top:0}
+.case-lab{font-weight:950;color:#0f172a}
+.case-text{color:#40536b;font-size:14px}
+.trap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.trap{background:#fff7ed;border:1px solid #fed7aa;border-radius:7px;padding:14px;color:#7c2d12}
+.formula{font-family:"Consolas","Microsoft YaHei",monospace;background:#0f172a;color:#fff;border-radius:6px;padding:12px;margin:8px 0;font-size:14px;white-space:normal;overflow-wrap:anywhere}
+.quiz-list{display:grid;gap:12px}
+.qcard{border-radius:8px;padding:14px}
+.qtop{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:start}
+.qno{width:36px;height:36px;border-radius:8px;background:#e0f2fe;color:#075985;display:grid;place-items:center;font-weight:950}
+.qtext{font-weight:900;color:#0f172a}
+.qbtn{border:1px solid var(--line);background:#f8fafc;border-radius:999px;padding:6px 10px;color:#53657d;font-weight:900;cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:#e8eef5;color:#0f172a}
+.qanswer{display:none;margin-top:10px;border-top:1px dashed var(--line);padding-top:10px;color:#40536b;font-size:14px}
+.qcard.show .qanswer{display:block}
+@media(max-width:1100px){
+  .hero,.panel-head{grid-template-columns:1fr}
+  .hero-side{order:2}
+  .branch-grid,.topic-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .page{width:min(340px, calc(100vw - 48px));max-width:340px;margin:18px auto 42px}
+  .hero-main,.hero-side,.panel-card,.map-card{padding:18px}
+  h1{font-size:29px;line-height:1.04}
+  .lead{font-size:14px}
+  .hero-eq{font-size:13px}
+  .panel-head h2{font-size:25px}
+  .coverage,.case-grid,.trap-grid,.flow{grid-template-columns:1fr}
+  .eq{grid-template-columns:1fr}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:4px}
+  .qtop{grid-template-columns:38px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  .stat-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <section class="hero-main">
+      <div class="kicker">
+        <span class="pill">Chapter 1</span>
+        <span class="pill">Module 6</span>
+        <span class="pill">1.1.5</span>
+        <span class="pill">PDF p.28-29</span>
+      </div>
+      <h1>Putting ESG Investing into Practice</h1>
+      <p class="lead">本模块回答一个实务问题：投资者不是“相信 ESG”就结束，而是要把 ESG 放进投资决策、投后影响和市场规则建设三条路径里。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Reflect ESG in investment process == Investment decisions（买什么、怎么配） + Corporate engagement（投后怎么影响公司） + Policy engagement（市场规则怎么改善）。</div>
+    </section>
+    <aside class="hero-side">
+      <div class="eyebrow">Learning Outcome</div>
+      <div class="side-title">1.1.5 explain the three ways investors typically reflect ESG considerations in their investment process</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">3</div><div class="stat-lab">落地方式</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-lab">投资决策层级</div></div>
+      </div>
+      <div class="memory"><b>记忆抓手：</b>先决定“钱怎么投”，再决定“投后怎么推动公司”，最后决定“市场规则怎么变”。</div>
+    </aside>
+  </header>
+
+  <nav class="nav" aria-label="module navigation">
+    <button class="tab active" type="button" data-tab="map">知识地图</button>
+    <button class="tab" type="button" data-tab="coverage">覆盖清单</button>
+    <button class="tab" type="button" data-tab="threeways">三种落地方式</button>
+    <button class="tab" type="button" data-tab="decisions">投资决策链</button>
+    <button class="tab" type="button" data-tab="engagement">参与机制</button>
+    <button class="tab" type="button" data-tab="cases">案例框</button>
+    <button class="tab" type="button" data-tab="traps">易错点</button>
+    <button class="tab" type="button" data-tab="compress">考前压缩</button>
+    <button class="tab" type="button" data-tab="quiz">自测题</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>一张图：ESG 落地不是一个动作，而是一条投资链</h2>
+      </div>
+      <div class="head-desc">这部分最适合用“钱流到哪里、影响施加到哪里、规则改变在哪里”来记。</div>
+    </div>
+    <div class="map-card">
+      <div class="map-center">Institutional investors reflect ESG considerations in the investment process</div>
+      <div class="branch-grid">
+        <div class="branch b-blue">
+          <h3>1. Investment decisions</h3>
+          <p>在投资价值链中纳入 ESG。</p>
+          <p>从 RFP / mandate 到 SAA，再到 security selection 和 portfolio management。</p>
+        </div>
+        <div class="branch b-green">
+          <h3>2. Corporate engagement</h3>
+          <p>通过 AGM 投票、正式表达观点。</p>
+          <p>也可以单独或集体与董事会、管理层沟通。</p>
+        </div>
+        <div class="branch b-amber">
+          <h3>3. Policy engagement</h3>
+          <p>与监管者、准则制定者、顾问、交易所等合作。</p>
+          <p>目标是让金融系统更稳定、更公平、更能纳入 ESG。</p>
+        </div>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><h3>目标</h3><p>生成可持续回报和价值。</p></div>
+        <div class="flow-step"><h3>内部</h3><p>投资流程、授权和组合构建。</p></div>
+        <div class="flow-step"><h3>公司</h3><p>通过所有权实践影响被投企业。</p></div>
+        <div class="flow-step"><h3>市场</h3><p>通过政策参与改善系统规则。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>PDF 覆盖清单：1.1.5 必须掌握这些点</h2>
+      </div>
+      <div class="head-desc">依据 `ch01/esg-01.pdf` 第 28 页至第 29 页前半部分整理。</div>
+    </div>
+    <div class="panel-card">
+      <div class="coverage">
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>三种典型方式：</b>incorporating ESG factors into investment decision-making、corporate engagement、policy engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>不同机构会混合使用：</b>具体组合取决于机构文化和 investment style。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>Asset owners：</b>可在 RFP、管理人 appointment process、mandate 和 monitoring 中纳入 ESG。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>Investment consultants：</b>可在筛选管理人时考虑 ESG policy、implementation 和 outcomes。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>SAA：</b>asset owners 和部分 asset managers 可将 ESG 纳入战略资产配置。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>直接投资者：</b>可在 security selection 和 portfolio management 中纳入 ESG。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>Security selection 三工具：</b>rating filter/threshold、financial and risk analysis、thematic opportunities。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>Shareholder engagement：</b>通过 AGM 投票，或在 AGM 外与董事会/管理层沟通。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>Policy engagement 原因：</b>市场和公共政策的正常运行影响机构投资者创造可持续回报。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text"><b>Policy engagement 行动：</b>回应政策咨询、参加集体倡议、向政策制定者提建议。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="threeways" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Three Ways</div>
+        <h2>三种落地方式：从投资组合到公司，再到政策</h2>
+      </div>
+      <div class="head-desc">考试常把三者混在一起考，关键是先分清“作用对象”。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Investment Decisions</div><span class="tag tag-blue">组合内</span></div>
+        <p class="small"><b>原文要点：</b>ESG factors can be incorporated into investment decision-making throughout the investment value chain.</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">投资决策</div><div class="eq-op">==</div><div class="eq-rhs">把 ESG 写进“选谁管钱、钱配到哪、证券怎么选、组合怎么管”</div></div></div>
+        <div class="riskline">考点提醒：这一路径直接关系 portfolio construction。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Corporate Engagement</div><span class="tag tag-green">公司上</span></div>
+        <p class="small"><b>原文要点：</b>Investors can encourage investees to improve ESG practices through AGM voting or direct/collective dialogue.</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">公司参与</div><div class="eq-op">==</div><div class="eq-rhs">投票表达观点 + 与董事会/管理层沟通 → 推动被投公司改善 ESG 实践</div></div></div>
+        <div class="riskline">考点提醒：engagement 是影响公司行为，不是买入卖出筛选本身。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Policy Engagement</div><span class="tag tag-amber">规则层</span></div>
+        <p class="small"><b>原文要点：</b>Public policy affects sustainable returns; policy engagement is a natural extension of responsibilities and fiduciary duties.</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">政策参与</div><div class="eq-op">==</div><div class="eq-rhs">为了市场正常运作和受益人利益，与规则制定相关方合作</div></div></div>
+        <div class="riskline">考点提醒：policy engagement 的逻辑不是“做公益”，而是保护市场功能。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="decisions" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Investment Value Chain</div>
+        <h2>投资决策链：ESG 可以嵌入三层</h2>
+      </div>
+      <div class="head-desc">这里要按资产所有者、资产配置、证券选择三层记，不要只记“买绿色股票”。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Manager Selection</div><span class="tag tag-blue">选管理人</span></div>
+        <p class="small"><b>原文要点：</b>Asset owners can include ESG factors in RFPs and appointment processes, often supported by investment consultants.</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">选管理人</div><div class="eq-op">==</div><div class="eq-rhs">RFP/appointment + 顾问评估 manager ESG policy/implementation/outcomes + mandate/monitoring</div></div></div>
+        <div class="riskline">投资影响：asset owner 不亲自选股，也可以通过授权和监督把 ESG 传导给 asset manager。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Strategic Asset Allocation</div><span class="tag tag-violet">配资产</span></div>
+        <p class="small"><b>原文要点：</b>SAA allocates capital across asset classes, sectors, and regions based on return/income needs and risk appetite.</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">SAA</div><div class="eq-op">==</div><div class="eq-rhs">资产类别 + 行业 + 地区 的长期配置，依据收益/收入需要和风险偏好</div></div></div>
+        <div class="riskline">考点提醒：SAA 是组合层、长期配置层，不是单只股票分析。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Security Selection</div><span class="tag tag-green">选证券</span></div>
+        <p class="small"><b>原文要点：</b>Direct investors can incorporate ESG issues into security selection and portfolio management.</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">选证券</div><div class="eq-op">==</div><div class="eq-rhs">rating filter/threshold + financial/risk analysis + thematic opportunities</div></div></div>
+        <div class="riskline">例子：水基金、impact investing 是通过 ESG criteria 识别投资机会。</div>
+      </article>
+    </div>
+    <div class="panel-card">
+      <h3>逻辑等式：投资决策链怎么记</h3>
+      <div class="formula">ESG in decision-making == 先选管钱的人（RFP/appointment/mandate） + 再定钱怎么配（SAA） + 最后定买什么（selection/portfolio management）。</div>
+      <p class="small">这条线很像审计中的“从治理层要求到执行程序”：asset owner 先把要求写进授权和监督，再由资产配置和证券选择落到具体组合。</p>
+    </div>
+  </section>
+
+  <section id="engagement" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Engagement Mechanisms</div>
+        <h2>参与机制：公司参与和政策参与不要混</h2>
+      </div>
+      <div class="head-desc">判断题眼时，看对象是“被投公司”还是“市场规则”。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-box">
+        <div class="case-head">Corporate / Shareholder Engagement</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">对象</div><div class="case-text">Investee company，被投企业。</div></div>
+          <div class="case-row"><div class="case-lab">正式场景</div><div class="case-text">AGM 上通过 voting on resolutions 表达观点。</div></div>
+          <div class="case-row"><div class="case-lab">非 AGM 场景</div><div class="case-text">投资机构单独、或通过 collective initiative，与董事会或管理层讨论 ESG issues。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">公司参与 == 所有权权利 + 沟通压力 → 改善 ESG practices。</div></div>
+        </div>
+      </article>
+      <article class="case-box">
+        <div class="case-head">Policy Engagement</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">对象</div><div class="case-text">Regulators、standard setters、consultants、stock exchanges 等。</div></div>
+          <div class="case-row"><div class="case-lab">原因</div><div class="case-text">公共政策会影响市场正常运行，也会影响机构投资者创造可持续回报和价值的能力。</div></div>
+          <div class="case-row"><div class="case-lab">目标</div><div class="case-text">更 sound and stable、level the playing field、更有效纳入 ESG factors。</div></div>
+          <div class="case-row"><div class="case-lab">行动</div><div class="case-text">回应政策咨询、参加集体倡议、向 policymakers 提建议。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="panel-card">
+      <h3>核心区分</h3>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">公司参与</div><div class="eq-op">==</div><div class="eq-rhs">改公司行为：vote、dialogue、board/management。</div></div>
+        <div class="eq"><div class="eq-lhs">政策参与</div><div class="eq-op">==</div><div class="eq-rhs">改市场规则：consultation、collective initiatives、recommendations。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Case Boxes</div>
+        <h2>三个小场景：把抽象流程变成可判断题眼</h2>
+      </div>
+      <div class="head-desc">这些不是 PDF 额外知识，而是把 PDF 原文动作翻译成考试识别场景。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-box">
+        <div class="case-head">场景 1：养老基金选管理人</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">RFP、appointment、manager ESG policy、implementation、outcomes。</div></div>
+          <div class="case-row"><div class="case-lab">对应知识点</div><div class="case-text">Investment decisions 中的 manager selection。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">Asset owner 通过选择、授权和监控，把自己的 ESG 观点传导给管理人。</div></div>
+        </div>
+      </article>
+      <article class="case-box">
+        <div class="case-head">场景 2：基金经理参加 AGM 投票</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">AGM、voting on resolutions、board、management。</div></div>
+          <div class="case-row"><div class="case-lab">对应知识点</div><div class="case-text">Corporate / shareholder engagement。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">已经持有或代表持有人行使所有权权利，推动被投企业改善 ESG 实践。</div></div>
+        </div>
+      </article>
+      <article class="case-box">
+        <div class="case-head">场景 3：投资者回应监管咨询</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">policy consultation、regulators、standard setters、taxonomy、level playing field。</div></div>
+          <div class="case-row"><div class="case-lab">对应知识点</div><div class="case-text">Policy engagement。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">市场规则影响长期可持续回报，所以参与规则建设是受托责任的自然延伸。</div></div>
+        </div>
+      </article>
+      <article class="case-box">
+        <div class="case-head">场景 4：主题基金识别机会</div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">water fund、impact investing、thematic approach、investment opportunities。</div></div>
+          <div class="case-row"><div class="case-lab">对应知识点</div><div class="case-text">Security selection / portfolio management。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">ESG 不只是排除风险，也可以用 criteria 找到投资机会。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：最容易错在“对象”和“动作”</h2>
+      </div>
+      <div class="head-desc">这一页考题往往不难，但会用相似词让人误选。</div>
+    </div>
+    <div class="trap-grid">
+      <div class="trap"><b>误区 1：</b>把 engagement 当成 portfolio construction。Engagement 是影响公司行为，不是筛选证券构建组合。</div>
+      <div class="trap"><b>误区 2：</b>把 policy engagement 当成慈善或宣传。PDF 的逻辑是市场运行和公共政策影响可持续回报。</div>
+      <div class="trap"><b>误区 3：</b>只记 security selection，忘记 RFP、appointment、mandate、monitoring 也是 ESG 纳入投资流程。</div>
+      <div class="trap"><b>误区 4：</b>看到 consultants 就跳到外部建议挑战。这里 consultants 是帮助 asset owners 评估管理人的 ESG policy、implementation 和 outcomes。</div>
+      <div class="trap"><b>误区 5：</b>看到 SAA 就想短线交易。SAA 是跨资产类别、行业、地区的战略配置，依据收益/收入需要和风险偏好。</div>
+      <div class="trap"><b>误区 6：</b>认为 corporate engagement 只能在 AGM。PDF 明确说也可在 AGM 外单独或集体与董事会/管理层沟通。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：看到题眼，反推三条线</h2>
+      </div>
+      <div class="head-desc">先用对象定位，再用动作判断答案。</div>
+    </div>
+    <div class="panel-card">
+      <div class="formula">Reflect ESG == Decision + Engagement + Policy。</div>
+      <div class="formula">Decision == RFP/manager selection + mandate/monitoring + SAA + security selection/portfolio management。</div>
+      <div class="formula">Security selection == rating filter/threshold + financial/risk analysis + thematic opportunities。</div>
+      <div class="formula">Corporate engagement == AGM voting + direct/collective dialogue with board or management。</div>
+      <div class="formula">Policy engagement == market function/public policy affects sustainable returns → consultation + collective initiatives + recommendations。</div>
+      <div class="memory"><b>一句话背诵：</b>ESG 落地先管“钱怎么投”，再管“公司怎么改”，最后管“市场规则怎么更适合长期回报”。</div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>自测题：看到题眼反推知识点</h2>
+      </div>
+      <div class="head-desc">正式三轮练习系统会在整章完成后统一制作；这里先练本模块核心反推。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">机构投资者通常通过哪三种方式在投资流程中反映 ESG considerations？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>将 ESG factors 纳入 investment decision-making；通过 corporate engagement；通过 policy engagement。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">为什么不同机构的 ESG 落地方式不完全相同？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>不同机构会根据自己的 culture 和 investment style，以不同方式混合三种路径。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Asset owners 如何在管理人选择阶段纳入 ESG？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>在 RFP 和 appointment process 中纳入 ESG；可由 consultants 评估 asset managers 的 ESG policy、implementation 和 outcomes；再通过 mandates 和 monitoring 确保观点被执行。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">SAA 在 PDF 中指什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Strategic asset allocation，是投资者根据 return and income needs 与 risk appetite，在 asset classes、sectors、regions 之间分配资本的过程。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Security selection / portfolio management 中纳入 ESG 的三种做法是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>使用 ratings 设置 filter 或 threshold；把 ESG issues 纳入 financial and risk analysis；使用 ESG criteria 通过 thematic approach 识别投资机会。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Shareholder engagement 可以通过哪些方式发生？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>可以在 AGM 上通过 voting on resolutions 正式表达观点；也可以在 AGM 外，单独或通过 collective initiative，与被投公司的 board 或 management 讨论 ESG issues。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Policy engagement 为什么被称为投资者责任和受托责任的自然延伸？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为市场正常运行和公共政策会影响机构投资者创造 sustainable returns and value 的能力，因此为受益人利益参与政策是职责延伸。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">投资者可与哪些对象进行 policy engagement？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Regulators、standard setters 和其他相关方，例如 consultants 与 stock exchanges。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">Policy engagement 希望设计出怎样的金融系统？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>更 sound and stable；level the playing field；更有效地把 ESG factors 纳入 financial decision making。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">10</div><div class="qtext">看到“respond to policy consultations / recommendations to policymakers”应反推哪个知识点？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Policy engagement。题眼是政策咨询、集体倡议、向政策制定者提建议，作用对象是市场规则，而不是单个被投公司。</div>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach((item) => item.classList.toggle('active', item === tab));
+    panels.forEach((panel) => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

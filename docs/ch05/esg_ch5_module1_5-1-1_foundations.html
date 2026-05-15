@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 Module 1 · 5.1.1 Governance Foundations</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}.card.dark h3{color:#fff}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:640px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(82px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.chain{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:stretch}.chain-node{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:13px;text-align:center;min-width:0;position:relative}.chain-node:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);width:26px;height:26px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:950;z-index:2}.chain-node b{display:block;color:var(--dark);font-size:13px;margin-bottom:5px}.chain-node span{font-size:12.5px;color:var(--sub);line-height:1.45}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}summary::-webkit-details-marker{display:none}summary::after{content:"＋";color:var(--muted);font-weight:700}details[open] summary::after{content:"－"}details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flowline{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-step:not(:last-child)::after,.chain-node:not(:last-child)::after{display:none}.chain{grid-template-columns:repeat(2,minmax(0,1fr))}.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-mini{grid-template-columns:1fr 1fr}.grid-2,.grid-3,.branch-grid,.flowline,.chain{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.12}.side-big{font-size:17px;line-height:1.5}.center-node{border-radius:var(--r);padding:12px 14px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 5</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">5.1.1</span>
+        <span class="pill">Governance Factors</span>
+      </div>
+      <h1>Governance Foundations</h1>
+      <p class="lead">本页先把第 5 章的地基打牢：公司治理不是一套抽象制度，而是董事会通过人、流程、账目和薪酬安排，让管理层对长期价值负责，并尽量缓解所有者与经营者之间的代理问题。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Corporate governance == steering and oversight + people and processes + accountability + alignment</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">5.1.1 解释公司治理框架的演进：发展、角色职责、系统流程、股东参与、少数股东权利</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">核心 A：Accountability / Alignment</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">关键委员会</div></div>
+      </div>
+      <div class="side-note">记忆抓手：Governance 先看“谁监督谁”，再看“利益是否一致”。考试常把 people、processes、accounts、pay、committee 互相混淆。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="foundations">基础概念</button>
+    <button class="tab" data-tab="twoa">Two A's</button>
+    <button class="tab" data-tab="committees">三大委员会</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看一张图：治理如何从“方向盘”变成投资判断</h2>
+      </div>
+      <div class="head-desc">按照逻辑等式心象术，先拆 Governance：govern 是“掌舵”，公司治理就是让董事会掌舵、让管理层执行、让所有者能问责。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Corporate Governance<br>公司如何被管理、监督和问责</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">定义</div>
+          <p>管理和监督公司的过程与结构。</p>
+          <p>核心意象：给公司掌舵，避免方向失控。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">人</div>
+          <p>董事会成员质量、思考能力、互动方式。</p>
+          <p>治理最终落在 boardroom 里的人。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">流程</div>
+          <p>政策、行为准则、披露、监督机制。</p>
+          <p>公司越大，越依赖流程而非个人直觉。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Accountability</div>
+          <p>赋予权力，同时要求对结果负责。</p>
+          <p>董事会监督管理层，股东监督董事会。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Alignment</div>
+          <p>通过激励和问责链条缓解代理问题。</p>
+          <p>薪酬要支持长期价值，而不是短期股价。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>所有者分散</h3><p>股东人数多，单个股东不直接经营。</p></div>
+        <div class="flow-step"><h3>管理层掌控</h3><p>经营权交给专业经理人。</p></div>
+        <div class="flow-step"><h3>代理问题出现</h3><p>管理层利益可能偏离所有者。</p></div>
+        <div class="flow-step"><h3>董事会监督</h3><p>用结构、独立性、技能组合进行挑战。</p></div>
+        <div class="flow-step"><h3>账目和薪酬配合</h3><p>用透明报告和长期激励强化约束。</p></div>
+        <div class="flow-step"><h3>投资判断</h3><p>治理质量影响风险、估值和长期价值。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">题眼</span>
+        <h3>larger companies</h3>
+        <p class="small">公司规模越大、业务越复杂，董事不可能直接知道所有细节，因此治理流程的重要性更高。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">题眼</span>
+        <h3>two A's</h3>
+        <p class="small">第 5 章最底层的两个 A 是 accountability 和 alignment。看到 two A's，直接反推这个基础式。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">题眼</span>
+        <h3>agency problem</h3>
+        <p class="small">只要题干出现 owners、professional managers、agents、interests not aligned，答案基本指向代理问题和利益对齐。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">本清单只覆盖模块 1，对应 PDF 第 270-274 页；后续治理代码、舞弊案例和少数股东权利放到模块 2。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">5.1.1</span> Governance 的定义与投资者关注点</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Corporate governance 是监督公司业务和管理层的过程与结构。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Governance 词源带有“掌舵、引导、控制”的意思，适合用“方向盘”理解。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">公司规模和复杂度上升、所有权分散，使董事会角色更加重要。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会代表所有者，并要求管理层按所有者利益经营。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者关注股东权利、战略与领导力、薪酬、审计、董事会独立性和专业能力、透明度、关联交易、双重股权结构等。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">5.1.1</span> People、Processes 与长期价值</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理受公司注册地法律制度和当地文化影响，但核心是 people and processes。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">良好治理需要合适文化，支持强经营表现，同时避免过度冒险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">小公司高层可能直接了解业务，大型复杂公司更依赖政策、行为准则和流程。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者会看政策流程质量、董事会监督执行的勤勉程度，以及董事个人质量和思考能力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理系统有效性可帮助投资者理解问责机制、决策过程和资本配置质量。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Two A's</span> Accountability 与 Alignment</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Accountability：人被赋予决策权和责任，同时要对决策后果和工作效果负责。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会问责链：高级管理层对非执行董事负责，非执行董事对股东负责。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会结构、董事独立性、混合技能组合和多元视角有助于避免 groupthink。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">董事会主席应促进平衡讨论；若主席不独立且兼任 CEO，容易权力过度集中。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">准确账目是问责基础，年度报告和账目、审计独立性、AGM 接受账目都服务于问责。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Alignment 来自代理问题：所有者和专业经理人的利益可能不一致。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">治理通过激励和问责链条，让 agents 与 owners 的利益更一致。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">高管薪酬应兼顾短期和长期目标，重要部分应长期归属，并包含财务与非财务 KPI。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Committees</span> 三大董事会委员会</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Nominations Committee：确保董事会整体平衡有效，帮助管理层承担问责。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Audit Committee：监督财务报告和审计，通常也监督内部审计和风险，除非另设风险委员会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Remuneration Committee：通过高管薪酬安排实现利益对齐。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="foundations" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>基础概念：Governance 是“人 + 流程”的掌舵系统</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Corporate governance 定义</div><span class="tag tag-blue">Definition</span></div>
+        <p class="small"><b>原文要点：</b>公司治理是监督公司业务和管理层的过程与结构，带有“掌舵、引导、控制”的含义。</p>
+        <p class="small"><b>中文解释：</b>不要把治理理解为“合规文件”。它是公司这艘船由谁掌舵、谁看方向、谁纠偏。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Governance</div><div class="eq-op">==</div><div class="eq-rhs">steering + oversight + control</div></div>
+          <div class="eq"><div class="eq-lhs">公司治理</div><div class="eq-op">==</div><div class="eq-rhs">董事会掌舵 + 管理层执行 + 投资者监督</div></div>
+        </div>
+        <div class="riskline"><b>投资影响/考点提醒：</b>治理差不是“小瑕疵”，可能导致战略失误、账目失真、资本误配和价值毁损。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. 为什么董事会越来越重要</div><span class="tag tag-green">Board</span></div>
+        <p class="small"><b>原文要点：</b>随着公司规模和复杂度增加、所有权更加分散，董事会负责代表所有者并监督管理层。</p>
+        <p class="small"><b>中文解释：</b>股东分散以后，单个股东很难直接盯住管理层，董事会就成为“代替股东坐在驾驶室旁边的人”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Board importance</div><div class="eq-op">==</div><div class="eq-rhs">scale grows + ownership disperses + management needs oversight</div></div>
+          <div class="eq"><div class="eq-lhs">董事会</div><div class="eq-op">==</div><div class="eq-rhs">代表所有者 + 监督管理层 + 守住长期价值</div></div>
+        </div>
+        <div class="riskline"><b>投资影响/考点提醒：</b>看到 larger / complex companies，优先想到 governance processes 更重要，不是董事个人质量变得不重要。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. People and processes</div><span class="tag tag-violet">Core</span></div>
+        <p class="small"><b>原文要点：</b>治理核心是人和流程。大型复杂公司需要依靠政策、行为准则和流程确认原则被真正执行。</p>
+        <p class="small"><b>中文解释：</b>人决定判断质量，流程保证判断能穿透复杂组织。缺任何一边，治理都容易停在纸面。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Good governance</div><div class="eq-op">==</div><div class="eq-rhs">quality people + reliable processes + diligent oversight</div></div>
+          <div class="eq"><div class="eq-lhs">大型公司治理</div><div class="eq-op">==</div><div class="eq-rhs">董事不能靠直觉全知 → 必须靠流程验证执行</div></div>
+        </div>
+        <div class="riskline"><b>投资影响/考点提醒：</b>考试问“大公司相较小公司哪项更重要”，答案倾向 effective operation of governance processes。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. 治理与 E/S 风险</div><span class="tag tag-teal">ESG Link</span></div>
+        <p class="small"><b>原文要点：</b>治理健全的公司更能处理关键长期风险，包括环境和社会议题；反过来，无法处理长期风险可能说明有治理失灵。</p>
+        <p class="small"><b>中文解释：</b>E 和 S 问题表面上是环境、员工、客户或社区问题，底层往往是董事会有没有能力识别、监督和纠偏。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">E/S failure</div><div class="eq-op">==</div><div class="eq-rhs">often a symptom of G failure</div></div>
+          <div class="eq"><div class="eq-lhs">治理质量</div><div class="eq-op">==</div><div class="eq-rhs">长期风险识别 + 决策监督 + 资本配置质量</div></div>
+        </div>
+        <div class="riskline"><b>投资影响/考点提醒：</b>分析 E/S 风险时别停在表层事件，要追问董事会为何没有提前识别并管理。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="twoa" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Two A's</div>
+        <h2>治理底层两条线：Accountability + Alignment</h2>
+      </div>
+      <div class="head-desc">第 5 章后面所有董事会、薪酬、审计和投票问题，基本都能回到这两个 A。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <span class="tag tag-blue">A1</span>
+        <h3>Accountability：有权就要负责</h3>
+        <p class="small"><b>原文要点：</b>人需要被赋予决策权和责任，同时对决策后果和工作效果负责。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Accountability</div><div class="eq-op">==</div><div class="eq-rhs">authority + responsibility + consequences</div></div>
+          <div class="eq"><div class="eq-lhs">问责</div><div class="eq-op">==</div><div class="eq-rhs">授权不是放任，监督不是代替经营</div></div>
+        </div>
+        <div class="memory"><b>记忆线：</b>Accountability 这条线从 workforce 往上走到 management，再到 board，再到 portfolio manager、asset owner 和 beneficiaries。</div>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">A2</span>
+        <h3>Alignment：代理问题要被缓解</h3>
+        <p class="small"><b>原文要点：</b>所有权和控制权分离后，专业经理人的利益可能不完全等同于所有者利益。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Alignment</div><div class="eq-op">==</div><div class="eq-rhs">agency problem + incentives + accountability chain</div></div>
+          <div class="eq"><div class="eq-lhs">利益对齐</div><div class="eq-op">==</div><div class="eq-rhs">让管理层为长期所有者价值行动</div></div>
+        </div>
+        <div class="memory"><b>记忆线：</b>看到 agents、owners、professional managers、fragmented ownership，就反推 alignment。</div>
+      </div>
+    </div>
+    <div class="map-board" style="margin-top:14px">
+      <div class="center-node">Chain of Accountability<br>谁对谁负责</div>
+      <div class="chain">
+        <div class="chain-node"><b>Workforce</b><span>一线执行和经营行为</span></div>
+        <div class="chain-node"><b>Management</b><span>管理业务并承担经营后果</span></div>
+        <div class="chain-node"><b>Corporate board</b><span>监督管理层，挑战战略和绩效</span></div>
+        <div class="chain-node"><b>Portfolio manager</b><span>代表基金或客户判断公司</span></div>
+        <div class="chain-node"><b>Asset owner</b><span>资金所有者或受托安排</span></div>
+        <div class="chain-node"><b>Beneficiaries</b><span>最终受益人</span></div>
+      </div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Accountability and the board</div><span class="tag tag-blue">Board</span></div>
+        <p class="small"><b>原文要点：</b>高级管理层需要对非执行董事负责，非执行董事需要对股东负责。董事会结构和独立性因此成为重点。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Board accountability</div><div class="eq-op">==</div><div class="eq-rhs">management → non-executives → shareholders</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>董事技能组合和多元视角是为了提高挑战质量，减少 groupthink。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Chair independence</div><span class="tag tag-amber">Chair</span></div>
+        <p class="small"><b>原文要点：</b>董事会主席负责促进平衡讨论。若主席不独立，尤其兼任 CEO，可能导致权力过度集中。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Weak chair model</div><div class="eq-op">==</div><div class="eq-rhs">non-independent chair + CEO role → concentrated power</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>主席兼 CEO 的问题不是“效率高”，而是削弱监督、挑战、议程设置、继任规划和薪酬讨论。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Accountability and accounts</div><span class="tag tag-violet">Accounts</span></div>
+        <p class="small"><b>原文要点：</b>准确账目是问责基础。年度报告和账目使董事向股东报告财务和业务表现，审计独立性非常重要。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Accounts</div><div class="eq-op">==</div><div class="eq-rhs">evidence for accountability + basis for shareholder vote</div></div>
+        </div>
+        <div class="riskline"><b>审计人视角：</b>账目完整、真实、准确，是投资者问责管理层和董事会的证据基础。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">Executive pay and alignment</div><span class="tag tag-green">Pay</span></div>
+        <p class="small"><b>原文要点：</b>高管薪酬应缓解代理问题，通常包含短期和长期绩效目标，且重要部分长期归属。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Executive pay</div><div class="eq-op">==</div><div class="eq-rhs">short-term goals + long-term vesting + financial / non-financial KPIs</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>股权挂钩可以对齐利益，但也可能诱导管理层过度关注股价而非业务本身。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="committees" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Board Committees</div>
+        <h2>三大委员会：分别解决三个治理难题</h2>
+      </div>
+      <div class="head-desc">这部分非常适合用“题目拆字”：Nominations 领走董事会有效性，Audit 领走账目问责，Remuneration 领走薪酬对齐。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Three Key Board Committees<br>用委员会把 Two A's 落地</div>
+      <div class="branch-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div class="branch">
+          <div class="branch-title">Nominations Committee</div>
+          <p>确保董事会整体平衡、有效。</p>
+          <p>对应 accountability and the board。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Audit Committee</div>
+          <p>监督财务报告和审计。</p>
+          <p>对应 accountability and accounts。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Remuneration Committee</div>
+          <p>通过薪酬安排实现利益对齐。</p>
+          <p>对应 alignment and executive pay。</p>
+        </div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">Nominations</span>
+        <h3>董事会有没有合适的人</h3>
+        <p class="small"><b>原文要点：</b>目标是让董事会整体平衡有效，并确保管理层被问责。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Nomination</div><div class="eq-op">==</div><div class="eq-rhs">board balance + board effectiveness + management accountability</div></div></div>
+        <div class="riskline">不要误选 risk committee。风险委员会常见于金融机构，但不是所有公司通常必须设置的三大委员会之一。</div>
+      </div>
+      <div class="card">
+        <span class="tag tag-violet">Audit</span>
+        <h3>账目有没有可信证据</h3>
+        <p class="small"><b>原文要点：</b>监督财务报告和审计，也监督内部审计；除非另设风险委员会，否则还负责风险监督。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Audit</div><div class="eq-op">==</div><div class="eq-rhs">financial reporting + external audit + internal audit + risk oversight</div></div></div>
+        <div class="riskline">Audit committee 的底层功能是让 accounts 成为问责证据。</div>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Remuneration</span>
+        <h3>薪酬有没有对齐长期利益</h3>
+        <p class="small"><b>原文要点：</b>通过高管薪酬实现所有者和管理层利益对齐。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Remuneration</div><div class="eq-op">==</div><div class="eq-rhs">executive pay → proper alignment of interests</div></div></div>
+        <div class="riskline">看到 compensation committee，也就是 remuneration committee 的美国说法。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Audit-style Cases</div>
+        <h2>案例框：把抽象治理落到底稿式判断</h2>
+      </div>
+      <div class="head-desc">模块 1 的 PDF 还未进入具体舞弊案例，所以这里用原文中的问责链、账目问责和薪酬对齐做小案例。</div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 1：大型集团为什么更依赖流程</div><span class="tag tag-blue">Process</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">情境</div><div class="case-text">集团业务遍布多个国家，董事无法直接掌握每个业务单元的真实执行情况。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">董事会必须依靠政策、行为准则、报告流程和监督机制，而不是依赖个人经验。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">large company governance == less direct knowledge + more process reliance。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">大公司相对小公司 heightened importance 的通常是 effective operation of governance processes。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 2：年度报告为什么是问责工具</div><span class="tag tag-violet">Accounts</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">情境</div><div class="case-text">公司在 AGM 上提交年度报告和账目，股东据此评价董事和管理层表现。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">账目不是单纯披露资料，而是董事向股东交代财务和业务表现的正式证据。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">accurate accounts == evidence base for accountability。</div></div>
+          <div class="case-row"><div class="case-lab">审计提醒</div><div class="case-text">如果账目不透明、不诚实，投资者无法有效问责，审计独立性也会成为治理风险。</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">案例 3：高管薪酬为什么不能只看金额</div><span class="tag tag-green">Alignment</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">情境</div><div class="case-text">管理层薪酬包含年度奖金、长期归属股权和若干财务及非财务 KPI。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">薪酬结构的关键是是否鼓励管理层创造长期价值，而不是只追逐短期股价。</div></div>
+          <div class="case-row"><div class="case-lab">式子</div><div class="case-text">pay alignment == short-term discipline + long-term vesting + balanced KPIs。</div></div>
+          <div class="case-row"><div class="case-lab">考点</div><div class="case-text">股权挂钩既可能对齐利益，也可能带来股价导向风险，题目要看问法。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Review</div>
+        <h2>考前压缩：一组式子背完模块 1</h2>
+      </div>
+      <div class="head-desc">这部分用于最后 3 分钟复盘，也会作为三轮练习系统的压缩背诵素材。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>模块 1 主式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Corporate governance</b> == process and structure for managing and overseeing a company。</div>
+          <div class="formula"><b>Good governance</b> == people + processes + culture + oversight。</div>
+          <div class="formula"><b>Two A's</b> == accountability + alignment。</div>
+          <div class="formula"><b>Accountability</b> == authority + responsibility + consequences。</div>
+          <div class="formula"><b>Alignment</b> == agency problem + incentives + accountability chain。</div>
+          <div class="formula"><b>Three committees</b> == nominations for board + audit for accounts + remuneration for pay。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错点</h3>
+        <div class="formula-list">
+          <div class="trap"><b>易错 1：把 governance 记成合规清单。</b>它更本质是公司如何被管理、监督和问责。</div>
+          <div class="trap"><b>易错 2：把 people 和 processes 对立起来。</b>PDF 明确说治理核心是人和流程，大公司更依赖流程。</div>
+          <div class="trap"><b>易错 3：认为董事只要听股东指示。</b>董事通常负有促进公司长期成功的责任，不能机械服从短期股价诉求。</div>
+          <div class="trap"><b>易错 4：把 risk committee 当成通用三大委员会。</b>通用三大委员会是 nominations、audit、remuneration。</div>
+          <div class="trap"><b>易错 5：看到 equity-linked pay 就一定好。</b>它可对齐利益，也可能让管理层过度关注股价。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 1 边界提醒：Cadbury Code、治理丑闻、少数股东权利、pre-emption、dual-class shares 会放在模块 2，不在本页展开。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：先反推逻辑，再看答案</h2>
+      </div>
+      <div class="head-desc">点击按钮显示答案。这里不是正式 Practice Problems，正式题会集中放入第 5 章三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">1</div><div class="qtext">为什么大型复杂公司相较小公司更依赖治理流程？</div><button class="qbtn">看答案</button></div>
+        <div class="qanswer">因为董事和高层无法直接掌握复杂组织的所有细节，需要依靠政策、行为准则、报告和监督流程确认原则被实际执行。逻辑等式：large company governance == less direct knowledge + more process reliance。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">2</div><div class="qtext">Corporate governance 的两个 A 是什么？分别解决什么问题？</div><button class="qbtn">看答案</button></div>
+        <div class="qanswer">两个 A 是 accountability 和 alignment。Accountability 解决“有权的人如何对结果负责”；alignment 解决“管理层利益如何与所有者长期利益一致”。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">3</div><div class="qtext">为什么董事会主席兼任 CEO 会引发治理担忧？</div><button class="qbtn">看答案</button></div>
+        <div class="qanswer">因为会造成权力过度集中，削弱董事会履行监督、挑战战略和绩效、设置议程、影响继任规划、讨论高管薪酬的能力。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">4</div><div class="qtext">年度报告和账目为什么属于 accountability 的一部分？</div><button class="qbtn">看答案</button></div>
+        <div class="qanswer">年度报告和账目是董事向股东正式交代财务和业务表现的证据。透明、诚实的账目和独立审计，是股东有效问责管理层和董事会的基础。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">5</div><div class="qtext">Nominations、Audit、Remuneration 三个委员会分别对应什么治理任务？</div><button class="qbtn">看答案</button></div>
+        <div class="qanswer">Nominations 负责董事会平衡和有效性；Audit 负责财务报告、审计、内部审计和风险监督；Remuneration 通过薪酬安排实现管理层和所有者利益对齐。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">6</div><div class="qtext">为什么治理失败可能表现为 E 或 S 风险管理失败？</div><button class="qbtn">看答案</button></div>
+        <div class="qanswer">因为治理系统决定公司是否能识别、监督并纠正长期风险。若公司无法管理关键环境或社会风险，可能说明底层存在董事会监督、流程或问责失灵。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id=btn.dataset.tab;
+    tabs.forEach(t=>t.classList.toggle('active',t===btn));
+    panels.forEach(p=>p.classList.toggle('active',p.id===id));
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

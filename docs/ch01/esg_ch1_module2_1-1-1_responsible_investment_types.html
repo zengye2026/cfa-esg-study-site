@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Ch.1 Module 2 · 1.1.1 Types of Responsible Investment</title>
+<style>
+:root{
+  --ink:#172033;--sub:#40516b;--muted:#6b7a90;--faint:#9aa8ba;
+  --bg:#eef3f8;--paper:#ffffff;--soft:#f8fbfd;--line:#dce6f0;--line2:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#111827;--dark2:#1f2937;
+  --r:8px;--sh-sm:0 2px 12px rgba(17,24,39,.06);--sh:0 14px 38px rgba(17,24,39,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular",Consolas,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.68;background:var(--bg);overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fbfd 0%,#eef3f8 44%,#e8eef5 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 76px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,50px);line-height:1.08;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(17,24,39,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark)}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.muted{color:var(--muted)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card,.map-board,.topic-card,.case-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.card{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{padding:22px;margin-bottom:16px;box-shadow:var(--sh)}
+.center-node{max-width:700px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.spectrum{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:18px;overflow:hidden}
+.axis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:10px}
+.axis-card{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.axis-card:nth-child(1){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.axis-card:nth-child(2){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.axis-card:nth-child(3){background:var(--green-bg);border-color:var(--green-bdr)}
+.axis-card:nth-child(4){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.axis-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:7px}
+.axis-card p{font-size:12.5px;color:var(--sub);line-height:1.58;margin:0 0 6px}
+.axis-line{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;color:var(--muted);font-size:12.5px;font-weight:900;margin:12px 0 0}
+.axis-line::before,.axis-line::after{content:"";height:2px;background:var(--line);display:block}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{padding:18px}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(98px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68;margin-top:10px}
+.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.compare-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px}
+.compare-card h3{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{width:100%;border-collapse:collapse;min-width:880px}
+th,td{border-bottom:1px solid var(--line2);padding:12px 13px;text-align:left;vertical-align:top;font-size:13px;line-height:1.62;color:var(--sub)}
+th{background:var(--soft);font-size:12px;color:var(--dark);text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline,.axis{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{width:min(340px, calc(100vw - 48px));max-width:340px;padding:18px 0 68px;margin:0 auto}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini,.grid-2,.grid-3,.branch-grid,.flowline,.axis{grid-template-columns:1fr}
+  .map-board,.spectrum{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+  table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 1</span>
+        <span class="pill">Module 2</span>
+        <span class="pill">1.1.1</span>
+        <span class="pill">PDF p.4-9</span>
+      </div>
+      <h1>Types of Responsible<br>Investment</h1>
+      <p class="lead">本模块把第 1 章最容易混的一组概念整理成“资本光谱 + 投资方式对照”。重点不是背名称，而是分清每种方法到底在筛什么、投什么、影响谁、是否属于组合构建。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Responsible investment == ESG factors 进入 investment decisions + active ownership；投资方式光谱 == 从“只要社会回报”到“只要金融回报”，中间按影响目标、筛选方式和财务回报要求逐步变化。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">1.1.1 定义 ESG investment，并解释不同 ESG / responsible investment approaches</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">10</div><div class="mini-lab">投资方式与相关概念</div></div>
+        <div class="mini-stat"><div class="mini-num">1</div><div class="mini-lab">例外：engagement</div></div>
+      </div>
+      <div class="side-note">记忆抓手：绝大多数方式都在回答“组合里买什么”，只有 engagement 更像“买了以后怎么影响公司”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" type="button" data-tab="map">知识地图</button>
+    <button class="tab" type="button" data-tab="spectrum">资本光谱</button>
+    <button class="tab" type="button" data-tab="coverage">覆盖清单</button>
+    <button class="tab" type="button" data-tab="types">类型卡片</button>
+    <button class="tab" type="button" data-tab="compare">对照表</button>
+    <button class="tab" type="button" data-tab="cases">案例易错</button>
+    <button class="tab" type="button" data-tab="compress">考前压缩</button>
+    <button class="tab" type="button" data-tab="quiz">自测题</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先抓一条主线：责任投资大多是“选资产”，engagement 是“改行为”</h2>
+      </div>
+      <div class="head-desc">PDF 明确说，除 engagement 外，责任投资形式最终都和 portfolio construction 相关。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Types of Responsible Investment<br>组合构建：买什么 + 主动所有权：怎么影响</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">总伞</div>
+          <p>Responsible investment 是 strategy and practice。</p>
+          <p>把 ESG factors 纳入 investment decisions 和 active ownership。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">筛选类</div>
+          <p>SRI：按社会和环境标准打分，设 hurdle。</p>
+          <p>Best-in-class：每个行业选 ESG 排名过线公司。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">主题/目标类</div>
+          <p>Sustainable：选择有助可持续经济的资产。</p>
+          <p>Thematic / Green / Social：围绕环境或社会挑战投。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">影响类</div>
+          <p>Impact：有明确意图，产生可衡量影响，同时有财务回报。</p>
+          <p>测量和跟踪影响是核心。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">价值观/参与类</div>
+          <p>Ethical / faith-based：负面筛选，避开道德或信仰不接受的资产。</p>
+          <p>Engagement：通过对话或投票影响公司 ESG 决策。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>先定位目标</h3><p>财务回报、影响目标、价值观约束各不相同。</p></div>
+        <div class="flow-step"><h3>再看工具</h3><p>打分、筛选、主题、直接投资、债券、参与。</p></div>
+        <div class="flow-step"><h3>判断是否构建组合</h3><p>多数方法决定持有哪些证券。</p></div>
+        <div class="flow-step"><h3>识别 engagement</h3><p>它关注投资者如何影响发行人行为。</p></div>
+        <div class="flow-step"><h3>落到投资分析</h3><p>风险、波动、长期回报和社会环境影响一起看。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">总伞</span>
+        <h3>Responsible investment</h3>
+        <p class="small">最低限度是缓释高风险 ESG practices 以保护价值；也会考虑经济稳定，以及投资和 engagement 对社会环境的影响。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">组合构建</span>
+        <h3>买什么</h3>
+        <p class="small">SRI、best-in-class、sustainable、thematic、green、social、impact、ethical / faith-based，多数都影响投资组合持仓。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">例外</span>
+        <h3>怎么影响</h3>
+        <p class="small">Engagement 不主要回答买什么，而是投资者如何通过对话、投票、潜在撤资来影响公司 ESG 行为。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="spectrum" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Capital Spectrum</div>
+        <h2>资本光谱：从社会回报到传统金融回报</h2>
+      </div>
+      <div class="head-desc">Exhibit 3 的核心不是表格本身，而是四类方法在“回报期待、ESG 指标、优势和挑战”上的位置不同。</div>
+    </div>
+    <div class="spectrum">
+      <div class="axis">
+        <div class="axis-card">
+          <div class="axis-title">Philanthropy 慈善</div>
+          <p><b>关注：</b>通过捐赠或资助解决社会挑战。</p>
+          <p><b>回报：</b>只期待社会回报，不期待金融市场回报。</p>
+          <p><b>优势：</b>不受金融回报要求约束。</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-title">Impact Investing 影响投资</div>
+          <p><b>关注：</b>有意图地产生可衡量的环境或社会结果。</p>
+          <p><b>回报：</b>社会和金融回报并存，回报要求可高可低。</p>
+          <p><b>挑战：</b>机会集较窄，影响衡量有难度。</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-title">Sustainable and Responsible Investing</div>
+          <p><b>关注：</b>用 ESG 因素增强长期价值、缓释风险或识别机会。</p>
+          <p><b>回报：</b>ESG risk-adjusted financial market return，重视长期价值。</p>
+          <p><b>优势：</b>约束较少，ESG integration 可更系统。</p>
+        </div>
+        <div class="axis-card">
+          <div class="axis-title">Traditional Financial Investing</div>
+          <p><b>关注：</b>在风险约束下最大化金融回报。</p>
+          <p><b>回报：</b>只期待金融市场回报。</p>
+          <p><b>挑战：</b>可能遗漏 ESG risk factors。</p>
+        </div>
+      </div>
+      <div class="axis-line">越往左越重视正面社会/环境结果；越往右越接近纯金融回报</div>
+    </div>
+    <div class="footer-note">考试提醒：这张光谱不是严格分类标准。PDF 说行业里没有统一通用分类，这些类型会重叠并随时间演化。</div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">依据 `ch01/esg-01.pdf` 第 4-9 页整理，目标是把每个投资方式的题眼都覆盖到。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">总原则</span> Responsible investment 总伞</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">除 engagement 外，所有 responsible investment 形式最终都和 portfolio construction 相关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement 关注投资者是否以及如何影响发行人在 ESG matters 上的行为。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">这些方法没有行业统一分类，类型会重叠并演化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Responsible investment 是把 ESG factors 纳入 investment decisions 和 active ownership 的 strategy and practice。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">最低限度是缓释 risky ESG practices 以 protect value。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">这些方法不是互斥的，可以合并在同一个 portfolio 中。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">投资方式</span> 主要类型</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SRI：用社会和环境标准评价公司，通常设定分数和 qualification hurdle。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Best-in-class：也叫 positive screening，在每个 sector / industry 中选择超过 ESG ranking hurdle 的公司。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Best-in-class 常用于希望保持指数特征的策略，可维持区域和行业分散，同时倾向高 ESG ratings 公司。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sustainable investment：选择以某种方式有助于 sustainable economy 的资产，降低自然和社会资源耗竭。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sustainable investment 是宽泛术语，可包括 best-in-class、ESG integration、positive impact、可持续宏观趋势受益公司。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Thematic investment：基于环境或社会挑战产生的需求，常见主题包括低碳能源、水资源可得性和高效用水。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Green investment：投向缓解 climate change、biodiversity loss、resource inefficiency 等环境挑战的资产。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Green bonds 是为气候和环境项目融资而专门标记用途的 fixed-income instrument。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Social investment：投向解决社会挑战的资产，BOP 指经济人群金字塔中最贫困的三分之二，超过 40 亿人。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Impact investing：有明确意图，产生正面、可衡量的社会或环境影响，同时有 financial return。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Impact investing 的核心是对约定影响进行 measurement and tracking。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Ethical / values-driven / faith-based：依据原则投资，常用 negative screening 排除道德、宗教或国际规范不接受的公司。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Shareholder engagement：通过与公司管理层对话或股东大会投票来影响 ESG 决策。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement 效果取决于 ownership scale、dialogue quality / method，以及是否告知 divestment 是可能制裁。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">相关概念</span> CSR 和 ESG 投资关系</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG investing 与 corporate sustainability 密切相关。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Corporate sustainability 通过关注伦理、社会、环境、文化和经济维度的商业策略创造长期 stakeholder value。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSR 是公司承诺以 ethical way 开展业务的 broad business concept。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">现代 CSR 不只是 philanthropy，也可在商业模式中发挥 strategic role。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有效管理 sustainability 可巩固 license to operate、提高效率、满足监管、减少罚款概率、提升员工满意和生产率、推动创新与新产品线。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG investing 会在 security / asset selection 和 portfolio construction 中考虑这些收益。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="types" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Approach Cards</div>
+        <h2>类型卡片：每种方法用一句逻辑等式记住</h2>
+      </div>
+      <div class="head-desc">每张卡按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Responsible Investment</div><span class="tag tag-blue">总伞</span></div>
+        <p class="small"><b>原文要点：</b>把 ESG factors 纳入 investment decisions 和 active ownership；可作为一些或全部投资方式的 catch-all term。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">责任投资</div><div class="eq-op">==</div><div class="eq-rhs">投资决策纳入 ESG + 主动所有权 + 保护价值 + 关注经济稳定和社会环境影响</div></div></div>
+        <div class="memory"><b>记忆线：</b>责任投资是“买之前怎么判断 + 买之后怎么负责”。</div>
+        <div class="riskline">考点提醒：不同方法不互斥，可以组合在同一投资组合里。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Socially Responsible Investment (SRI)</div><span class="tag tag-green">打分过线</span></div>
+        <p class="small"><b>原文要点：</b>用社会和环境标准评价公司，通常结合行业权重打分，并设定 hurdle 来形成 SRI-qualified companies 清单。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">SRI</div><div class="eq-op">==</div><div class="eq-rhs">社会/环境标准打分 + 行业权重 + 过线入池</div></div></div>
+        <div class="memory"><b>记忆线：</b>SRI 像先做“资格筛查表”，达标才进入投资候选名单。</div>
+        <div class="riskline">考点提醒：SRI ranking 可与 best-in-class、thematic funds、高信念策略或量化策略结合。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Best-in-Class Investment</div><span class="tag tag-violet">正面筛选</span></div>
+        <p class="small"><b>原文要点：</b>又称 positive screening，在每个 sector 或 industry 中选择超过 ESG ranking hurdle 的公司。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Best-in-class</div><div class="eq-op">==</div><div class="eq-rhs">每个行业内打分 → 只选 ESG 排名过线公司 → 保持指数类似特征</div></div></div>
+        <div class="memory"><b>记忆线：</b>不是只买“好行业”，而是在每个行业里挑相对更好的公司。</div>
+        <div class="riskline">考点提醒：MSCI World SRI Index 目标是每个 sector 中 ESG ratings 较高的 top 25% 公司。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Sustainable Investment</div><span class="tag tag-teal">可持续经济</span></div>
+        <p class="small"><b>原文要点：</b>选择以某种方式有助于 sustainable economy 的资产，即减少自然和社会资源耗竭。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Sustainable</div><div class="eq-op">==</div><div class="eq-rhs">资产选择 → 贡献可持续经济 → 降低自然/社会资源耗竭</div></div></div>
+        <div class="memory"><b>记忆线：</b>它是宽词，既可能包括 ESG integration，也可能指排除长期不可持续活动。</div>
+        <div class="riskline">考点提醒：煤炭、北极油气勘探等可被视为违背长期环境和社会可持续性的活动。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Thematic Investment</div><span class="tag tag-amber">主题需求</span></div>
+        <p class="small"><b>原文要点：</b>ESG 语境下，thematic investment 通常基于环境或社会挑战产生的需求，例如低碳能源、水资源可得性和高效用水。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Thematic</div><div class="eq-op">==</div><div class="eq-rhs">环境/社会挑战 → 形成投资主题 → 投向相关解决方案</div></div></div>
+        <div class="memory"><b>记忆线：</b>先有问题，再有主题；主题不是标签，是围绕挑战形成的投资方向。</div>
+        <div class="riskline">考点提醒：并非所有 thematic funds 都是 responsible investments 或 best-in-class，要看主题和被投公司 ESG 特征。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Green Investment</div><span class="tag tag-green">环境解决方案</span></div>
+        <p class="small"><b>原文要点：</b>投向缓解 climate change、biodiversity loss、resource inefficiency 和其他环境挑战的资产。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Green</div><div class="eq-op">==</div><div class="eq-rhs">资本 → 气候/生物多样性/资源效率等环境问题解决方案</div></div></div>
+        <div class="memory"><b>记忆线：</b>Green 的题眼是“环境挑战”，green bond 的题眼是“用途专门标记的固定收益工具”。</div>
+        <div class="riskline">例子：低碳发电和车辆、智能电网、能效、污染控制、回收、废弃物管理。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Social Investment</div><span class="tag tag-blue">社会挑战</span></div>
+        <p class="small"><b>原文要点：</b>投向解决社会挑战的资产，可服务 BOP 群体；BOP 指经济人群金字塔中最贫困的三分之二，超过 40 亿人。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Social</div><div class="eq-op">==</div><div class="eq-rhs">资本 → 社会挑战/BOP → 减贫 + 企业增长和利润</div></div></div>
+        <div class="memory"><b>记忆线：</b>BOP 不是 ESG 评级，它是社会投资服务的底层市场和人群。</div>
+        <div class="riskline">例子：micro-finance、micro-insurance、基础通信、营养和医疗、清洁能源。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">8. Impact Investment</div><span class="tag tag-rose">可衡量影响</span></div>
+        <p class="small"><b>原文要点：</b>有明确意图，同时产生正面、可衡量的社会或环境影响和 financial return。影响的测量和跟踪是投资 proposition 的核心。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Impact</div><div class="eq-op">==</div><div class="eq-rhs">明确意图 + 正面可衡量影响 + 财务回报 + 持续跟踪</div></div></div>
+        <div class="memory"><b>记忆线：</b>Impact 和 philanthropy 的分界线：impact 仍有 financial return。</div>
+        <div class="riskline">考点提醒：可投资于新兴和发达市场；常见于 private debt、private equity、real estate，也有公募市场产品需求。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">9. Ethical / Values-Driven / Faith-Based</div><span class="tag tag-violet">负面筛选</span></div>
+        <p class="small"><b>原文要点：</b>依据某些原则投资，常用 negative screening 排除投资者、宗教、国际声明、公约或自愿协议认为道德上不可接受的产品和服务。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Ethical / Faith</div><div class="eq-op">==</div><div class="eq-rhs">原则/信仰 → negative screening → 避开 sin stocks 或不符信念资产</div></div></div>
+        <div class="memory"><b>记忆线：</b>Best-in-class 是挑“相对更好”，ethical / faith-based 常是先排除“不能碰”。</div>
+        <div class="riskline">典型排除：烟草、酒精、色情、武器，以及严重违反人权或劳工原则的公司。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">10. Shareholder Engagement</div><span class="tag tag-amber">主动所有权</span></div>
+        <p class="small"><b>原文要点：</b>投资者通过与公司人员对话或股东大会投票，影响公司 ESG matters 上的决策。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Engagement</div><div class="eq-op">==</div><div class="eq-rhs">持有/联合持有权力 + 高质量对话/投票 + 潜在撤资压力 → 影响公司行为</div></div></div>
+        <div class="memory"><b>记忆线：</b>其他方法多是“选股票”，engagement 是“拿着股票去沟通和投票”。</div>
+        <div class="riskline">考点提醒：效果取决于 ownership scale、dialogue quality/method、divestment 是否被告知为可能制裁。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">11. Corporate Social Responsibility (CSR)</div><span class="tag tag-teal">公司侧概念</span></div>
+        <p class="small"><b>原文要点：</b>CSR 是公司承诺以 ethical way 开展业务的 broad business concept；现代 CSR 认识到原则性行为可在商业模式中发挥战略作用。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">CSR</div><div class="eq-op">==</div><div class="eq-rhs">道德经营承诺 → 战略性可持续管理 → 经营许可/效率/监管/员工/创新收益</div></div></div>
+        <div class="memory"><b>记忆线：</b>CSR 在公司内部，ESG investing 在投资者分析和组合构建中识别这些收益。</div>
+        <div class="riskline">投资影响：ESG 投资会把 sustainability management 的收益纳入资产选择和组合构建。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compare" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Comparison Table</div>
+        <h2>一张表区分高频混淆点</h2>
+      </div>
+      <div class="head-desc">这张表适合复核：看到题眼时，快速判断是哪一类投资方式。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>方式</th>
+            <th>核心题眼</th>
+            <th>主要工具</th>
+            <th>与财务回报关系</th>
+            <th>最容易混淆</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Responsible investment</td>
+            <td>ESG factors + investment decisions + active ownership</td>
+            <td>总伞，可覆盖多种方法</td>
+            <td>保护价值，关注风险调整回报和经济稳定</td>
+            <td>不要等同于单一筛选策略</td>
+          </tr>
+          <tr>
+            <td>SRI</td>
+            <td>社会和环境标准打分，设定 hurdle</td>
+            <td>评分、行业权重、资格名单</td>
+            <td>先筛合格投资池，再配合其他策略</td>
+            <td>可与 best-in-class 或 thematic 结合</td>
+          </tr>
+          <tr>
+            <td>Best-in-class</td>
+            <td>positive screening、每个行业选 ESG 排名过线公司</td>
+            <td>sector / industry 内排名筛选</td>
+            <td>常用于保持指数特征和分散度</td>
+            <td>不是排除整个行业，也不一定都是 responsible investment</td>
+          </tr>
+          <tr>
+            <td>Sustainable investment</td>
+            <td>贡献可持续经济，减少自然和社会资源耗竭</td>
+            <td>选择正面贡献资产，也可排除不可持续活动</td>
+            <td>可包括 ESG integration 或可持续趋势受益公司</td>
+            <td>术语很宽，不能当成单一规则</td>
+          </tr>
+          <tr>
+            <td>Thematic investment</td>
+            <td>环境或社会挑战形成主题</td>
+            <td>低碳能源、水、医疗、营养等主题</td>
+            <td>主题带来机会，但还要看被投公司 ESG 特征</td>
+            <td>不是所有 thematic funds 都是 responsible 或 best-in-class</td>
+          </tr>
+          <tr>
+            <td>Green investment</td>
+            <td>环境问题解决方案；green bonds 专款用于气候/环境项目</td>
+            <td>低碳、智能电网、能效、污染控制、回收等</td>
+            <td>可作为 thematic 或 impact 的子类</td>
+            <td>不要和 social investment 的 BOP 混</td>
+          </tr>
+          <tr>
+            <td>Social investment</td>
+            <td>社会挑战、BOP、microfinance</td>
+            <td>小额金融、基础通信、营养医疗、清洁能源、social impact bonds</td>
+            <td>市场化减贫，同时服务企业增长和利润</td>
+            <td>BOP 题眼通常指 social investment</td>
+          </tr>
+          <tr>
+            <td>Impact investment</td>
+            <td>specific intent、positive measurable impact、financial return</td>
+            <td>直接投资、SDGs、影响测量和跟踪</td>
+            <td>可低于市场，也可追求市场竞争或超额回报</td>
+            <td>与 philanthropy 区别在 financial return</td>
+          </tr>
+          <tr>
+            <td>Ethical / faith-based</td>
+            <td>principles、negative screening、sin stocks</td>
+            <td>排除烟酒色情武器、人权/劳工严重违规；宗教筛选</td>
+            <td>回报服从价值观或信仰约束</td>
+            <td>和 best-in-class 的 positive screening 相反</td>
+          </tr>
+          <tr>
+            <td>Shareholder engagement</td>
+            <td>对话、投票、影响 ESG decisions</td>
+            <td>dialogue、votes、collective initiative、divestment threat</td>
+            <td>通过改善公司行为支持长期价值</td>
+            <td>唯一明确不是 portfolio construction 的例外</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="compare-grid" style="margin-top:14px">
+      <div class="compare-card"><h3><span class="tag tag-green">正面筛选</span> Best-in-class</h3><p class="small">在每个 sector 或 industry 中，选择 ESG 排名过线的公司。</p></div>
+      <div class="compare-card"><h3><span class="tag tag-rose">负面筛选</span> Ethical / Faith-based</h3><p class="small">排除与原则、信仰或国际规范冲突的公司或资产。</p></div>
+      <div class="compare-card"><h3><span class="tag tag-amber">主题投资</span> Thematic</h3><p class="small">围绕环境或社会挑战形成投资主题，例如低碳能源和水。</p></div>
+      <div class="compare-card"><h3><span class="tag tag-blue">影响投资</span> Impact</h3><p class="small">明确追求可衡量影响，同时保留财务回报。</p></div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Traps</div>
+        <h2>案例框：把概念落到题眼</h2>
+      </div>
+      <div class="head-desc">这部分主要帮助后续做 Practice Problems 时快速反推。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">MSCI World SRI Index</div><span class="tag tag-violet">Best-in-class</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">PDF 要点</div><div class="case-text">该指数使用 best-in-class selection approach，目标是每个 sector 中 ESG ratings 高的 top 25% 公司。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">重点是保持类似指数特征，同时在每个行业里挑 ESG 更高的公司。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">defined ranking hurdle、positive screening、sector by sector。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Green bonds</div><span class="tag tag-green">Green investment</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">PDF 要点</div><div class="case-text">Green bonds 是固定收益工具，募集资金专门用于气候和环境项目。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">看到 climate / environmental projects + fixed income instrument，优先想到 green bond。</div></div>
+          <div class="case-row"><div class="case-lab">易错</div><div class="case-text">绿色债券不是 BOP 小额金融，也不是 shareholder engagement。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Microfinance and BOP</div><span class="tag tag-blue">Social investment</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">PDF 要点</div><div class="case-text">BOP 是经济人群金字塔中最贫困的三分之二，超过 40 亿人；micro-finance 是例子。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">如果题目问 bottom of the pyramid，答案通常落到 social investment。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">poverty、basic telecommunication、nutrition、health care、clean energy。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">SDG 6 / SDG 11</div><span class="tag tag-rose">Impact investment</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">PDF 要点</div><div class="case-text">Impact investments 可投向帮助实现 SDGs 的产品或服务，例如清洁水和可持续城市。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">只有明确正面影响、可衡量并且仍有财务回报时，才更像 impact investment。</div></div>
+          <div class="case-row"><div class="case-lab">易错</div><div class="case-text">只做捐赠且不期待金融回报，更接近 philanthropy。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Christian / Shari'a Screening</div><span class="tag tag-violet">Faith-based</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Christian</div><div class="case-text">可能排除堕胎、避孕、胚胎干细胞研究、武器生产销售相关公司。</div></div>
+          <div class="case-row"><div class="case-lab">Shari'a</div><div class="case-text">通常限制酒精、色情、赌博、利息相关公司或投资，以及猪肉相关业务。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">negative screening、sin stocks、beliefs、religious principles。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Engagement Efficacy</div><span class="tag tag-amber">Active ownership</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">PDF 要点</div><div class="case-text">效果取决于 ownership scale、dialogue quality / method，以及 divestment 是否是已告知的可能制裁。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">看到“影响公司 ESG 决策”，优先想到 shareholder engagement。</div></div>
+          <div class="case-row"><div class="case-lab">易错</div><div class="case-text">free float 数量不是本节列出的 engagement efficacy 条件。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>易错点</h3>
+      <div class="trap-grid">
+        <div class="trap"><b>Engagement 是例外</b>其他责任投资形式多与组合构建有关；engagement 关注如何影响发行人行为。</div>
+        <div class="trap"><b>Best-in-class 不是 negative screening</b>它是 positive screening，在每个行业里选择排名过线公司。</div>
+        <div class="trap"><b>Thematic 不自动等于 responsible</b>还要看基金主题和被投公司 ESG 特征。</div>
+        <div class="trap"><b>Impact 不等于 philanthropy</b>impact investment 同时有正面可衡量影响和 financial return。</div>
+        <div class="trap"><b>Social investment 题眼是 BOP</b>microfinance、basic telecommunication、nutrition、health care 往 social investment 靠。</div>
+        <div class="trap"><b>CSR 是公司侧概念</b>它描述公司如何道德经营；ESG investing 是投资者如何把这些因素纳入选择和组合。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩：用一串等式背完整组概念</h2>
+      </div>
+      <div class="head-desc">这些式子不是关键词堆砌，而是用来反推定义、例子和易错点。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Responsible investment</b> == ESG factors 进入投资决策 + active ownership。</div>
+          <div class="formula"><b>Portfolio construction rule</b> == 除 engagement 外，责任投资方式最终多与“组合持有什么”有关。</div>
+          <div class="formula"><b>SRI</b> == 社会/环境标准 + 行业权重 + hurdle + 合格名单。</div>
+          <div class="formula"><b>Best-in-class</b> == positive screening + sector/industry 内排名过线。</div>
+          <div class="formula"><b>Sustainable investment</b> == 贡献可持续经济 + 减少自然/社会资源耗竭。</div>
+          <div class="formula"><b>Thematic investment</b> == 环境/社会挑战 → 主题需求 → 投资解决方案。</div>
+          <div class="formula"><b>Green investment</b> == 环境挑战解决方案 + green bonds。</div>
+          <div class="formula"><b>Social investment</b> == 社会挑战 + BOP + microfinance / basic services。</div>
+          <div class="formula"><b>Impact investment</b> == 意图 + 可衡量正面影响 + financial return。</div>
+          <div class="formula"><b>Ethical / faith-based</b> == 原则/信仰 + negative screening + sin stocks。</div>
+          <div class="formula"><b>Engagement</b> == 对话/投票 + ownership scale + dialogue quality + possible divestment sanction。</div>
+          <div class="formula"><b>CSR</b> == ethical business conduct + 战略性可持续管理 + 经营收益。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>题眼钩子</h3>
+        <div class="formula-list">
+          <div class="trap"><b>bottom of the pyramid</b>想到 social investment，不要跑到 green bonds。</div>
+          <div class="trap"><b>positive screening</b>想到 best-in-class。</div>
+          <div class="trap"><b>negative screening / sin stocks</b>想到 ethical 或 faith-based。</div>
+          <div class="trap"><b>measurable impact alongside financial return</b>想到 impact investment。</div>
+          <div class="trap"><b>fixed-income + climate/environmental project</b>想到 green bonds。</div>
+          <div class="trap"><b>dialogue, voting, divestment threat</b>想到 shareholder engagement。</div>
+          <div class="trap"><b>license to operate</b>想到 CSR / corporate sustainability 的经营收益。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>自测题：看到题眼能否反推类型</h2>
+      </div>
+      <div class="head-desc">这里优先训练反推。正式三轮练习系统会在整章完成后使用 PDF 的 Practice Problems 统一制作。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">哪一种责任投资方式不是主要围绕 portfolio construction，而是围绕影响发行人行为？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Shareholder engagement。它通过对话、投票或潜在撤资压力影响公司 ESG matters 上的行为。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">看到 bottom of the pyramid、microfinance、basic telecommunication，应反推哪类投资？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Social investment。BOP 是社会投资的典型题眼。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Positive screening 和 defined ranking hurdle 最典型对应哪种方法？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Best-in-class investment。它是在每个行业中选择超过 ESG ranking hurdle 的公司。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">排除烟草、酒精、色情、武器或严重违反人权/劳工原则的公司，属于哪类投资方式？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Ethical / values-driven / faith-based investment，通常使用 negative screening。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Impact investment 与 philanthropy 的关键区别是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Impact investment 在追求正面、可衡量影响的同时仍有 financial return；philanthropy 不期待金融市场回报。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Green bonds 的两个核心题眼是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>固定收益工具，以及募集资金专门用于气候和环境项目。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">为什么 thematic funds 不一定都是 responsible investments？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为要看基金主题和被投公司的 ESG characteristics，不能只凭主题名称判断。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">Shareholder engagement 的效果取决于哪三类因素？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Ownership scale、dialogue quality and method、以及公司是否知道 divestment 是可能制裁。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">CSR 在现代理解中为什么不只是慈善？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>现代 CSR 强调原则性行为可在公司商业模式中发挥战略作用，例如巩固经营许可、提高效率、降低罚款概率、提升员工生产率和推动创新。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">10</div><div class="qtext">如果题目说“在每个 sector 内选择 ESG ratings 较高的一组公司，同时尽量保留指数特征”，应选什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Best-in-class investment。MSCI World SRI Index 是 PDF 中的典型例子。</div>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach((item) => item.classList.toggle('active', item === tab));
+    panels.forEach((panel) => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

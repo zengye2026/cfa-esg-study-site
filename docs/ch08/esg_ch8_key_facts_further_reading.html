@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 · Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:30px 16px 84px;overflow:hidden}
+.hero{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);padding:28px 30px;margin-bottom:18px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:900px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;overflow-wrap:anywhere}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;margin:0;overflow-wrap:anywhere}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ecfeff;border:2px solid #0f766e;color:#134e4a;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-card h3{font-size:13px;margin:0 0 6px}.flow-card p{font-size:12px;color:var(--sub);line-height:1.55;margin:0}
+.facts-grid{display:flex;flex-direction:column;gap:10px}
+.fact-card{display:grid;grid-template-columns:54px minmax(0,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);overflow:hidden}
+.fact-num{display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:950;background:var(--accent,#1d4ed8)}
+.fact-body{padding:15px 17px}.fact-title{font-size:15px;font-weight:950;color:var(--dark);margin-bottom:5px}.fact-text{font-size:13.7px;color:var(--sub);line-height:1.72;margin:0}
+.f1{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.f2{--accent:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.f3{--accent:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.f4{--accent:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.f5{--accent:var(--amber);background:var(--amber-bg);border-color:var(--amber-bdr)}
+.f6{--accent:var(--rose);background:var(--rose-bg);border-color:var(--rose-bdr)}
+.equations{display:flex;flex-direction:column;gap:8px}
+.eq{display:grid;grid-template-columns:minmax(90px,.32fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark);line-height:1.45}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.reading-section{margin-bottom:18px}
+.reading-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.reading-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:10px}
+.reading-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:14px 15px;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;min-width:0}
+.reading-icon{width:30px;height:30px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-weight:950;color:var(--dark);font-size:12px}
+.reading-title{font-size:13.8px;font-weight:950;color:var(--dark);line-height:1.38;margin-bottom:5px}
+.reading-desc{font-size:12.8px;color:var(--sub);line-height:1.62;margin:0}.reading-use{font-size:12px;color:var(--muted);line-height:1.55;margin-top:6px;font-weight:850}
+.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:880px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero{padding:22px 18px}.flow{grid-template-columns:1fr}.fact-card{grid-template-columns:44px minmax(0,1fr)}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}h1{font-size:28px;line-height:1.12}.hero-title-line{display:block}.lead,.hero-eq{font-size:14px}.center-node{border-radius:var(--r);padding:12px 14px}table{min-width:760px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="pills">
+      <span class="pill">Chapter 8</span>
+      <span class="pill">Key Facts</span>
+      <span class="pill">Further Reading</span>
+      <span class="pill">Integrated Portfolio Construction</span>
+    </div>
+    <h1><span class="hero-title-line">Key Facts &</span> <span class="hero-title-line">Further Reading</span></h1>
+    <p class="lead">这一页是第 8 章的收口页：把 PDF 15 条 Key Facts 压缩成一条“投资方法 → SAA → 筛选 → 数据 → 优化 → 策略”的主线，并把 Further Reading 按用途归类，方便最后复习和定位资料。</p>
+    <div class="hero-eq"><b>整章总逻辑等式：</b>Integrated portfolio construction == discretionary/quant approach + ESG in SAA + climate scenario + screening rules + data limits + portfolio optimization + ESG strategy choice + index-based implementation。</div>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">总图</button>
+    <button class="tab" data-tab="facts">15条事实</button>
+    <button class="tab" data-tab="equations">等式总表</button>
+    <button class="tab" data-tab="reading">延伸阅读</button>
+    <button class="tab" data-tab="allreading">完整清单</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Chapter Map</div>
+        <h2>第 8 章一条线：把 ESG 放进组合这台机器</h2>
+      </div>
+      <div class="head-desc">这张图把 7 个复习模块和 Key Facts 串起来，方便你最后复盘整章。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Portfolio ESG integration<br>先定投资方法，再定资产配置、筛选、数据、优化和策略表达</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 投资方法</h3><p>Discretionary 是流程导向；quantitative 是规则和因子导向。</p></div>
+        <div class="flow-card"><h3>2 SAA 与气候</h3><p>SAA 更适合长期 ESG 整合；TCFD 推动气候情景分析。</p></div>
+        <div class="flow-card"><h3>3 Screening</h3><p>排除、正向、规范筛选；排除偏好通常由资产所有者指定。</p></div>
+        <div class="flow-card"><h3>4 数据与评级</h3><p>ESG 数据仍新，评级相关性低，历史短、可比性弱、覆盖缺口明显。</p></div>
+        <div class="flow-card"><h3>5 组合优化</h3><p>在 ESG 目标和 tracking error 区间之间做权衡。</p></div>
+        <div class="flow-card"><h3>6 策略表达</h3><p>Full integration、exclusion、positive alignment、thematic、active ownership、index-based。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">核心主线</span>
+        <h3>从“选什么”变成“怎么构建组合”</h3>
+        <p class="small">第 8 章不只讨论单个证券 ESG 好不好，更强调 ESG 如何进入资产配置、组合优化、指数规则和管理人评估。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">考试主线</span>
+        <h3>目标越明确，约束越有成本</h3>
+        <p class="small">排除、目标 ESG 分数、碳减排、指数偏离都会改变行业、因子、tracking error 和 active risk。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">记忆主线</span>
+        <h3>数据决定可信度</h3>
+        <p class="small">ESG 数据短历史、评级分歧和覆盖缺口，是第 8 章反复出现的“限制条件”。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>15 条 Key Facts：原文要点 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条都按 PDF Key Facts 保留核心意思，并压成可回忆的等式。</div>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card f1"><div class="fact-num">1</div><div class="fact-body"><div class="fact-title">投资方法分 discretionary 与 quantitative</div><p class="fact-text">Discretionary approaches 中 ESG integration 是 process oriented；quantitative approaches 无论主动或被动，通常 rule based and factor oriented。<br><b>等式：</b>Investment approach == discretionary/process + quantitative/rules/factors。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">2</div><div class="fact-body"><div class="fact-title">SAA 比 DAA 更适合长期 ESG 整合</div><p class="fact-text">Dynamic asset allocation 是相对长期目标做战术再平衡；Strategic asset allocation 只是间歇性再平衡，更适合 ESG 整合，但增加 ESG 或 sustainability risk budget 会带来分散化权衡。<br><b>等式：</b>SAA ESG fit == long-term target mix + intermittent rebalance + diversification trade-off。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">3</div><div class="fact-body"><div class="fact-title">TCFD 要求气候情景分析</div><p class="fact-text">TCFD 建议 climate scenario analysis；资产配置可用 1.5°C 到 2°C 基线，压力测试 physical climate risks 与 transition climate risks。<br><b>等式：</b>Climate scenario == physical risk + transition risk + 1.5°C-2°C baseline stress test。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">4</div><div class="fact-body"><div class="fact-title">Exclusionary screening 有四类</div><p class="fact-text">排除筛选可分为 universal、conduct-related、faith-based、idiosyncratic exclusions。<br><b>等式：</b>Exclusion categories == universal + conduct-related + faith-based + idiosyncratic。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">5</div><div class="fact-body"><div class="fact-title">排除偏好通常由资产所有者指定</div><p class="fact-text">Exclusion preferences 一般由 asset owners 指定，而不是 asset managers。排除筛选是 rule-based 且 reductive，通常不考虑 stewardship 和 engagement 等更软性的责任投资形式。<br><b>等式：</b>Exclusion preference == asset owner specified + rule-based + reductive - stewardship。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">6</div><div class="fact-body"><div class="fact-title">排除和目标 ESG 分数会带来非预期暴露</div><p class="fact-text">施加 exclusion screen 或 targeting an ESG score 可能给组合引入 unintended factor exposure 或 skewness。<br><b>等式：</b>ESG constraint cost == screen/target score → unintended factor exposure/skewness。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">7</div><div class="fact-body"><div class="fact-title">ESG 数据和评级方法仍处早期</div><p class="fact-text">ESG data and rating methodologies 仍 nascent；ESG data providers 相关性较低，约 0.35-0.40。投资者可用 off-the-shelf 数据 + proprietary approaches 建立 ESG analytics platforms 来差异化。<br><b>等式：</b>ESG analytics edge == public ESG data + proprietary model, because provider correlation is only 0.35-0.40。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">8</div><div class="fact-body"><div class="fact-title">ESG 数据集有三大挑战</div><p class="fact-text">Portfolio managers 要认识 ESG datasets and methodologies 的挑战：short historical data、lack of comparability、某些资产类别和地区 coverage gaps。<br><b>等式：</b>ESG dataset risk == short history + low comparability + coverage gaps。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">9</div><div class="fact-body"><div class="fact-title">Index-based ESG 是规则复制指数风险收益</div><p class="fact-text">Index-based ESG investing 描述的是 rule-based strategies，用于 replicate an index/benchmark 的 performance and risk profile。<br><b>等式：</b>Index ESG == rule-based replication of benchmark performance/risk profile。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">10</div><div class="fact-body"><div class="fact-title">组合优化让 ESG 目标和 TE 同时管理</div><p class="fact-text">Portfolio optimization 允许管理人 target a specific ESG rating 或 environmental objective，如 carbon emission reduction，同时把组合管理到 tracking error range。<br><b>等式：</b>Optimization == ESG/carbon target + tracking error range management。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">11</div><div class="fact-body"><div class="fact-title">Full ESG integration 系统纳入 ESG 风险和机会</div><p class="fact-text">Full ESG integration 是在 stock selection 和 portfolio management 中 systematic and explicit inclusion ESG risks and opportunities。<br><b>等式：</b>Full integration == ESG risks/opportunities → stock selection + portfolio management。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">12</div><div class="fact-body"><div class="fact-title">Exclusionary screening 对投资宇宙施加伦理或规范标准</div><p class="fact-text">Exclusionary screening imposes ethical or normative criteria to a portfolio investment universe。<br><b>等式：</b>Exclusionary screening == ethical/normative criteria → constrained investment universe。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">13</div><div class="fact-body"><div class="fact-title">Positive alignment 带来 inclusionary bias</div><p class="fact-text">Positive alignment 会引入 inclusionary bias，因为它通常投资 ESG metrics 表现更好的公司。<br><b>等式：</b>Positive alignment == inclusionary bias toward better ESG performers。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">14</div><div class="fact-body"><div class="fact-title">Thematic investing 围绕可持续主题建组合</div><p class="fact-text">Thematic investing focuses on sustainability-related areas，例如 water 或 renewable energy，用这些主题构建公司组合。<br><b>等式：</b>Thematic investing == sustainability theme such as water/renewable energy → portfolio construction。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">15</div><div class="fact-body"><div class="fact-title">Active ownership 用所有权和投票权推动改变</div><p class="fact-text">Active ownership strategies 使用 ownership and voting rights，通过 direct 或 collaborative engagement 驱动公司 positive change。<br><b>等式：</b>Active ownership == ownership/voting rights + direct/collaborative engagement → positive change。</p></div></div>
+    </div>
+  </section>
+
+  <section id="equations" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>整章逻辑等式：按模块反推 Key Facts</h2>
+      </div>
+      <div class="head-desc">这页的作用是把 7 个模块和 15 条事实接起来，看到题眼能反推位置。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>从组合框架到数据</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">8.1.1</div><div class="eq-op">==</div><div class="eq-rhs">SAA is ESG-friendly because ESG is long horizon, but ESG risk budget reduces diversification room。</div></div>
+          <div class="eq"><div class="eq-lhs">Climate SAA</div><div class="eq-op">==</div><div class="eq-rhs">TCFD scenario analysis → physical risk + transition risk → portfolio stress test。</div></div>
+          <div class="eq"><div class="eq-lhs">ESG research</div><div class="eq-op">==</div><div class="eq-rhs">internal analysts + third-party data + portfolio manager judgment。</div></div>
+          <div class="eq"><div class="eq-lhs">Data problem</div><div class="eq-op">==</div><div class="eq-rhs">nascent methodology + low provider correlation + short history + coverage gaps。</div></div>
+          <div class="eq"><div class="eq-lhs">Manager edge</div><div class="eq-op">==</div><div class="eq-rhs">off-the-shelf data + proprietary analytics + consistent process。</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>从筛选到组合策略</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Screening</div><div class="eq-op">==</div><div class="eq-rhs">negative / positive / norms-based + absolute or relative basis。</div></div>
+          <div class="eq"><div class="eq-lhs">Exclusion</div><div class="eq-op">==</div><div class="eq-rhs">asset owner preference + ethical/normative criteria + TE/factor exposure cost。</div></div>
+          <div class="eq"><div class="eq-lhs">Optimization</div><div class="eq-op">==</div><div class="eq-rhs">ESG target + carbon reduction + tracking error range。</div></div>
+          <div class="eq"><div class="eq-lhs">Index ESG</div><div class="eq-op">==</div><div class="eq-rhs">rule-based replication + third-party dataset + sector reweight + stewardship limitation。</div></div>
+          <div class="eq"><div class="eq-lhs">Strategy choice</div><div class="eq-op">==</div><div class="eq-rhs">integration / exclusion / positive alignment / thematic / impact / active ownership。</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">背法：第 8 章不是一堆策略名，而是“ESG 目标如何被塞进组合机器，并为此付出哪些偏离成本”。</div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading Map</div>
+        <h2>延伸阅读：按用途分组</h2>
+      </div>
+      <div class="head-desc">这里不是让你全读，而是知道每类材料支持哪类考点。</div>
+    </div>
+    <div class="reading-section">
+      <h3><span class="tag tag-blue">Climate / SAA</span> 气候情景、净零、资产配置</h3>
+      <div class="reading-list">
+        <div class="reading-card"><div class="reading-icon">C1</div><div><div class="reading-title">Andersson, Bolton, and Samama · Hedging Climate Risk</div><p class="reading-desc">用于理解低碳指数和气候风险对冲的组合构造思路。</p><div class="reading-use">关联：SAA、低碳目标、指数型 ESG。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">C2</div><div><div class="reading-title">Benedetti et al. · Climate Change Investment Risk</div><p class="reading-desc">用于理解低碳转型前的最优组合构造。</p><div class="reading-use">关联：气候转型、组合优化。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">C3</div><div><div class="reading-title">CFA Institute · Climate Change Analysis in the Investment Process</div><p class="reading-desc">用于补充气候分析如何进入投资流程和不同资产类别案例。</p><div class="reading-use">关联：TCFD、气候情景分析。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">C4</div><div><div class="reading-title">CDSB and SASB · TCFD Good Practice Handbook</div><p class="reading-desc">用于理解 TCFD 披露实践，尤其是情景分析和气候风险报告。</p><div class="reading-use">关联：Key Fact 3。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">C5</div><div><div class="reading-title">IIGCC · Net Zero Investment Framework</div><p class="reading-desc">用于理解净零投资框架、组合目标和实施路径。</p><div class="reading-use">关联：净零组合、carbon target。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">C6</div><div><div class="reading-title">PRI · Embedding ESG Issues into Strategic Asset Allocation Frameworks</div><p class="reading-desc">用于补充 ESG 为什么应进入 SAA，而不是只停留在证券筛选层面。</p><div class="reading-use">关联：Key Fact 2。</div></div></div>
+      </div>
+    </div>
+    <div class="reading-section">
+      <h3><span class="tag tag-green">Data / Ratings</span> ESG 数据、评级、量化和组合优化</h3>
+      <div class="reading-list">
+        <div class="reading-card"><div class="reading-icon">D1</div><div><div class="reading-title">Chatterji et al. · Do Ratings of Firms Converge?</div><p class="reading-desc">用于理解 ESG 评级分歧和 provider correlation 低的问题。</p><div class="reading-use">关联：Key Fact 7。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">D2</div><div><div class="reading-title">Furdak et al. · ESG Data: Building a Solid Foundation</div><p class="reading-desc">用于补充 ESG 数据覆盖、质量和模型基础。</p><div class="reading-use">关联：Key Fact 8。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">D3</div><div><div class="reading-title">Bender et al. · Blueprint for Integrating ESG into Equity Portfolios</div><p class="reading-desc">用于理解 ESG 如何在股票组合中作为因子、约束和优化目标。</p><div class="reading-use">关联：股票、优化、量化模型。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">D4</div><div><div class="reading-title">Lundstrom and Svensson · Including ESG Concerns in Portfolio Selection</div><p class="reading-desc">用于理解 ESG 进入 portfolio selection 的多准则决策方法。</p><div class="reading-use">关联：组合优化。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">D5</div><div><div class="reading-title">Pollard, Sherwood, and Klobus · Establishing ESG as Risk Premia</div><p class="reading-desc">用于理解 ESG 是否可作为风险溢价或因子。</p><div class="reading-use">关联：quantitative / factor-oriented approaches。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">D6</div><div><div class="reading-title">Van Duuren, Plantinga, and Scholtens · ESG Integration and the Investment Management Process</div><p class="reading-desc">用于理解 ESG integration 如何改变传统投资管理流程。</p><div class="reading-use">关联：Full ESG integration。</div></div></div>
+      </div>
+    </div>
+    <div class="reading-section">
+      <h3><span class="tag tag-amber">Asset Class Implementation</span> 固收、私募、另类、实物资产</h3>
+      <div class="reading-list">
+        <div class="reading-card"><div class="reading-icon">A1</div><div><div class="reading-title">AIMA · Short Selling and Responsible Investment</div><p class="reading-desc">用于理解 short selling 与 ESG 排除、负面观点表达之间的关系。</p><div class="reading-use">关联：hedge funds、多空策略。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">A2</div><div><div class="reading-title">British International Investment · ESG Toolkit for Fund Managers</div><p class="reading-desc">用于理解基金管理人 ESG 尽调和投后管理工具。</p><div class="reading-use">关联：private markets。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">A3</div><div><div class="reading-title">ICMA · Green Bond Principles</div><p class="reading-desc">用于补充绿色债券原则和 labeled bonds 的标准基础。</p><div class="reading-use">关联：fixed income、labeled bonds。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">A4</div><div><div class="reading-title">PIMCO · Bonds: ESG into Action</div><p class="reading-desc">用于理解 ESG 如何进入债券投资实践。</p><div class="reading-use">关联：固定收益 ESG。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">A5</div><div><div class="reading-title">PRI · Integrating ESG in Private Equity / ESG Monitoring in Private Equity</div><p class="reading-desc">用于补充私募股权的 ESG 尽调、KPI、投后监控和 LP 报告。</p><div class="reading-use">关联：private equity。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">A6</div><div><div class="reading-title">WWF and Investec · Sustainability & Satellites</div><p class="reading-desc">用于理解主权债投资中可持续性数据的新边界。</p><div class="reading-use">关联：sovereign debt。</div></div></div>
+      </div>
+    </div>
+    <div class="reading-section">
+      <h3><span class="tag tag-violet">Guides / Market Context</span> 投资者指南与市场背景</h3>
+      <div class="reading-list">
+        <div class="reading-card"><div class="reading-icon">G1</div><div><div class="reading-title">GSIA · Global Sustainable Investment Review</div><p class="reading-desc">用于理解全球可持续投资市场规模和策略分类背景。</p><div class="reading-use">关联：ESG strategies。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">G2</div><div><div class="reading-title">KPMG · Sustainable Investing: Fast-Forwarding Its Evolution</div><p class="reading-desc">用于理解可持续投资演进和行业实践趋势。</p><div class="reading-use">关联：全章背景。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">G3</div><div><div class="reading-title">PRI · Asset Owner Strategy Guide</div><p class="reading-desc">用于理解资产所有者如何制定投资策略和 ESG 偏好。</p><div class="reading-use">关联：asset owner vs asset manager。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">G4</div><div><div class="reading-title">PRI · Practical Guide to ESG Integration for Equity Investing</div><p class="reading-desc">用于理解股票投资中 ESG integration 的流程、分析和案例。</p><div class="reading-use">关联：listed equity、full integration。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">G5</div><div><div class="reading-title">Sherwood and Pollard · Responsible Investing</div><p class="reading-desc">用于补充 ESG 投资基础概念和责任投资策略。</p><div class="reading-use">关联：策略总览。</div></div></div>
+        <div class="reading-card"><div class="reading-icon">G6</div><div><div class="reading-title">Swiss Sustainable Finance · Handbook on Sustainable Investments</div><p class="reading-desc">用于从机构投资者角度理解可持续投资实践。</p><div class="reading-use">关联：资产所有者实践。</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="allreading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Complete Further Reading</div>
+        <h2>Further Reading 完整清单：按 PDF 收录</h2>
+      </div>
+      <div class="head-desc">这里保留 PDF Further Reading 的全部条目，并给出一行用途提示。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>PDF Further Reading 条目</th>
+            <th>复习用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>AIMA. 2020. Short Selling and Responsible Investment.</td><td>多空、卖空与责任投资。</td></tr>
+          <tr><td>2</td><td>Amundi Asset Management. 2020. ESG Investing in Recent Years.</td><td>ESG 投资演进和挑战。</td></tr>
+          <tr><td>3</td><td>Andersson, Bolton, and Samama. 2016. Hedging Climate Risk.</td><td>气候风险对冲和低碳指数。</td></tr>
+          <tr><td>4</td><td>Bender et al. 2018. A Blueprint for Integrating ESG into Equity Portfolios.</td><td>股票组合 ESG 整合。</td></tr>
+          <tr><td>5</td><td>Benedetti et al. 2019. Climate Change Investment Risk.</td><td>低碳转型前的组合构造。</td></tr>
+          <tr><td>6</td><td>British International Investment. 2023. ESG Toolkit for Fund Managers.</td><td>基金管理人 ESG 工具箱。</td></tr>
+          <tr><td>7</td><td>Buckle and Thomas. 2020. The Investment Environment.</td><td>投资环境基础。</td></tr>
+          <tr><td>8</td><td>Buckle and Thomas. 2020. The Investment Practice.</td><td>投资实务基础。</td></tr>
+          <tr><td>9</td><td>CFA Institute. 2017. Climate Change Analysis in the Investment Process.</td><td>气候分析进入投资流程。</td></tr>
+          <tr><td>10</td><td>Chatterji et al. 2015. Do Ratings of Firms Converge?</td><td>ESG 评级分歧。</td></tr>
+          <tr><td>11</td><td>Climate Disclosure Standards Board and SASB. 2019. TCFD Good Practice Handbook.</td><td>TCFD 披露和情景分析。</td></tr>
+          <tr><td>12</td><td>Daniel, Litterman, and Wagner. 2019. Applying Asset Pricing Theory to Calibrate the Price of Climate Risk.</td><td>气候风险定价。</td></tr>
+          <tr><td>13</td><td>European Financial Reporting Advisory Group. 2020. How to Improve Climate-Related Reporting.</td><td>气候相关报告改进。</td></tr>
+          <tr><td>14</td><td>Furdak et al. 2019. ESG Data: Building a Solid Foundation.</td><td>ESG 数据基础。</td></tr>
+          <tr><td>15</td><td>G20 Sustainable Finance Study Group. 2018. Sustainable Infrastructure Securitisation Market.</td><td>可持续基础设施证券化。</td></tr>
+          <tr><td>16</td><td>Giglio, Kelly, and Stroebel. 2020. Climate Finance.</td><td>气候金融研究背景。</td></tr>
+          <tr><td>17</td><td>Global Sustainable Investment Alliance. 2018. Global Sustainable Investment Review.</td><td>全球可持续投资市场。</td></tr>
+          <tr><td>18</td><td>Institutional Investors Group on Climate Change. 2021. Net Zero Investment Framework.</td><td>净零投资框架。</td></tr>
+          <tr><td>19</td><td>International Capital Market Association. 2018. Green Bond Principles.</td><td>绿色债券原则。</td></tr>
+          <tr><td>20</td><td>KPMG. 2020. Sustainable Investing: Fast-Forwarding Its Evolution.</td><td>可持续投资行业趋势。</td></tr>
+          <tr><td>21</td><td>Lundstrom and Svensson. 2014. Including ESG Concerns in the Portfolio Selection Process.</td><td>ESG 进入组合选择。</td></tr>
+          <tr><td>22</td><td>Man Group. 2024. A Sustainable Future podcast.</td><td>可持续投资观点材料。</td></tr>
+          <tr><td>23</td><td>PIMCO. 2020. Bonds: ESG into Action.</td><td>债券 ESG 实践。</td></tr>
+          <tr><td>24</td><td>Pollard, Sherwood, and Klobus. 2018. Establishing ESG as Risk Premia.</td><td>ESG 风险溢价。</td></tr>
+          <tr><td>25</td><td>PRI. 2014. Integrating ESG in Private Equity.</td><td>私募股权 ESG 整合。</td></tr>
+          <tr><td>26</td><td>PRI. 2016. Asset Owner Strategy Guide.</td><td>资产所有者投资策略。</td></tr>
+          <tr><td>27</td><td>PRI. 2016. A Practical Guide to ESG Integration for Equity Investing.</td><td>股票 ESG 整合。</td></tr>
+          <tr><td>28</td><td>PRI. 2018. ESG Monitoring, Reporting and Dialogue in Private Equity.</td><td>私募 ESG 监控、报告和沟通。</td></tr>
+          <tr><td>29</td><td>PRI. 2019. Embedding ESG Issues into Strategic Asset Allocation Frameworks.</td><td>SAA 中嵌入 ESG。</td></tr>
+          <tr><td>30</td><td>PRI. 2019. A Practical Guide to ESG Integration in Sovereign Debt.</td><td>主权债 ESG 整合。</td></tr>
+          <tr><td>31</td><td>PRI. 2020. ESG Engagement for Sovereign Debt Investors.</td><td>主权债投资者 engagement。</td></tr>
+          <tr><td>32</td><td>PRI. 2020. Technical Guide: ESG Incorporation in Hedge Funds.</td><td>对冲基金 ESG 纳入。</td></tr>
+          <tr><td>33</td><td>PRI. 2024. Reporting Framework Glossary.</td><td>PRI 报告术语。</td></tr>
+          <tr><td>34</td><td>PRI website.</td><td>ESG portfolio construction 资料库。</td></tr>
+          <tr><td>35</td><td>Sherwood and Pollard. 2018. Responsible Investing.</td><td>责任投资基础。</td></tr>
+          <tr><td>36</td><td>Swiss Sustainable Finance. 2017. Handbook on Sustainable Investments.</td><td>机构投资者可持续投资手册。</td></tr>
+          <tr><td>37</td><td>Van Duuren, Plantinga, and Scholtens. 2016. ESG Integration and the Investment Management Process.</td><td>投资管理流程中的 ESG 整合。</td></tr>
+          <tr><td>38</td><td>World Wildlife Fund and Investec Asset Management. 2019. Sustainability & Satellites.</td><td>主权债可持续性和卫星数据。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组总式背完整章</h2>
+      </div>
+      <div class="head-desc">如果只能用 5 分钟复习第 8 章，先背这一页。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>整章逻辑等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Approach</div><div class="eq-op">==</div><div class="eq-rhs">discretionary/process-oriented + quantitative/rule and factor-oriented。</div></div>
+          <div class="eq"><div class="eq-lhs">SAA</div><div class="eq-op">==</div><div class="eq-rhs">long-term ESG integration + climate scenario analysis + diversification trade-off。</div></div>
+          <div class="eq"><div class="eq-lhs">Screening</div><div class="eq-op">==</div><div class="eq-rhs">asset-owner preferences + exclusion categories + reductive rule-based limits。</div></div>
+          <div class="eq"><div class="eq-lhs">Data</div><div class="eq-op">==</div><div class="eq-rhs">nascent ratings + 0.35-0.40 provider correlation + short history/comparability/coverage gaps。</div></div>
+          <div class="eq"><div class="eq-lhs">Optimization</div><div class="eq-op">==</div><div class="eq-rhs">target ESG score or carbon reduction while managing tracking error range。</div></div>
+          <div class="eq"><div class="eq-lhs">Strategy</div><div class="eq-op">==</div><div class="eq-rhs">full integration + exclusion + positive alignment + thematic + active ownership + index-based implementation。</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 8 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Discretionary vs Quantitative</b>前者看流程和判断，后者看规则和因子。</div>
+          <div class="trap"><b>DAA vs SAA</b>DAA 是战术再平衡，SAA 是长期目标配置，更适合 ESG 整合。</div>
+          <div class="trap"><b>Physical vs Transition Risk</b>前者是气候对经营和战略的直接冲击，后者是监管、法律、政策、技术和市场变化。</div>
+          <div class="trap"><b>Asset Owner vs Asset Manager</b>排除偏好通常由资产所有者指定，管理人多倾向更宽投资宇宙。</div>
+          <div class="trap"><b>Exclusion vs Optimization</b>排除是 yes/no 规则，优化是在 ESG 目标和 tracking error 之间求解。</div>
+          <div class="trap"><b>ESG Rating vs ESG Data Quality</b>评级结果可用，但要警惕 provider correlation 低、历史短和覆盖缺口。</div>
+          <div class="trap"><b>Positive Alignment vs Thematic</b>前者是在同业中选 ESG 更好者，后者围绕可持续主题建组合。</div>
+          <div class="trap"><b>Index ESG vs Active Ownership</b>指数策略可投票，但 engagement 深度通常弱于主动 ESG 策略。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">第 8 章现在已经形成：7 个复习模块 + 1 个 Key Facts / Further Reading 汇总页。下一步按你的原计划，就是制作第 8 章三轮练习系统。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 Module 5 · 8.1.6 Equity, Private Markets, Real Assets and Quant</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(100px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:860px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.branch-grid,.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}
+  .grid-2,.grid-3,.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}
+  .branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}
+  .eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:760px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 8</span>
+        <span class="pill">Module 5</span>
+        <span class="pill">8.1.6</span>
+        <span class="pill">Equity · Private · Real Assets · Quant</span>
+      </div>
+      <h1>ESG Screens in Equity,<br>Private Markets and Quant</h1>
+      <p class="lead">本页覆盖第 8 章 10-13 节：上市股票与 ESG 多空策略、净零组合、Scope 3、私募股权和私募债、实物资产、风险缓释与 alpha generation，以及如何把 ESG 因子嵌入量化多因子模型。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>资产类别 ESG 应用 == 上市股票数据充分 + 多空策略表达 ESG 暴露 + 私募市场重尽调和 KPI + 实物资产重控制和气候物理风险 + 量化模型把 ESG 变成因子。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">8.1.6 apply ESG screens to fixed income, equities, and alternative investments</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">资产应用场景</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">风险收益维度</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">私募 ESG 指标</div></div>
+        <div class="mini-stat"><div class="mini-num">25%</div><div class="mini-lab">覆盖缺口提示线</div></div>
+      </div>
+      <div class="side-note">记忆抓手：上市股票偏“数据和策略多”，私募偏“信息少但控制强”，实物资产偏“物理风险和资产控制”，量化偏“因子嵌入和覆盖缺口”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="equity">上市股票</button>
+    <button class="tab" data-tab="netzero">净零组合</button>
+    <button class="tab" data-tab="private">私募市场</button>
+    <button class="tab" data-tab="realassets">实物资产</button>
+    <button class="tab" data-tab="riskreturn">风险收益</button>
+    <button class="tab" data-tab="quant">量化嵌入</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看总图：从资产场景到模型因子</h2>
+      </div>
+      <div class="head-desc">模块 5 的隐藏线是“应用深度”：上市股票数据足，私募数据弱但影响力强，实物资产控制力强，量化模型把 ESG 变成可排序的因子。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG Screens across Asset Classes<br>数据可得性 × 投资者控制力 × 风险收益目标</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">1 Listed Equity</div>
+          <p>披露更充分。</p>
+          <p>从指数到主动、从 long-only 到 hedge funds。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">2 Net-Zero</div>
+          <p>衍生品和 short 的碳风险净额没有统一标准。</p>
+          <p>Scope 3 会改变行业权重。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">3 Private Markets</div>
+          <p>透明度、标准、监管和公开压力不足。</p>
+          <p>GP 建 KPI，LP 期待更强整合。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">4 Real Assets</div>
+          <p>多数或完全所有权带来更强控制力。</p>
+          <p>气候物理风险直接影响价值和保险。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">5 Quant</div>
+          <p>ESG 可从 tilt/overlay 变成 algorithm factor。</p>
+          <p>覆盖缺口影响分析完整性。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>看数据</h3><p>上市股票和大中型公司数据更成熟。</p></div>
+        <div class="flow-step"><h3>看控制</h3><p>私募和实物资产可能更能直接定义和改进 ESG。</p></div>
+        <div class="flow-step"><h3>看风险</h3><p>尾部风险、气候风险、治理风险、数据缺口。</p></div>
+        <div class="flow-step"><h3>看收益</h3><p>风险缓释或 alpha generation。</p></div>
+        <div class="flow-step"><h3>看模型</h3><p>多因子算法、覆盖率、归因和报告完整性。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">核心判断</span><h3>同样 ESG，资产类别不同，打法不同</h3><p class="small">上市股票能用大量数据和多空策略；私募需要 pre-deal due diligence 和 KPI；实物资产要看资产级控制和物理气候风险。</p></div>
+      <div class="card"><span class="tag tag-green">投资影响</span><h3>ESG 可以防守，也可以进攻</h3><p class="small">投资者通常从 risk mitigation 和 alpha generation 两个维度讨论 ESG 对风险调整收益的影响。</p></div>
+      <div class="card"><span class="tag tag-amber">考点提醒</span><h3>覆盖缺口不能忽略</h3><p class="small">高收益债组合若约 25% 持仓没有 ESG 评级，可以用重缩放或 Bayesian inference，但超过 25% 就要谨慎。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-08.pdf` 第 469-479 页整理，覆盖 8.1.6 后半段。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Listed Equity</span> 上市股票和对冲基金</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">上市股票 ESG 披露较充分，各类责任投资策略都适用，从指数和主动策略到 long-only 和 hedge funds。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Hedge funds 使用杠杆增强收益，并用对冲策略管理净风险、产生 alpha。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">定量 ESG long-short sector-neutral 策略：long ESG top decile，short ESG bottom decile。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">该策略可使用第三方 ESG 分数、专有 factor-neutral score、carbon intensity 和 NLP ESG news sentiment。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Net-Zero</span> 衍生品、空头和 Scope 3</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">衍生品和空头对应的 carbon risk exposure 目前没有清晰公认的 netting 标准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">净零组合构建要看投资 universe 及其对风险和表现的影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SBTi 对齐程度因 G7 股票基准的发行人和行业结构而不同，欧洲相对领先，加拿大因能源和油砂依赖更具挑战。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">仅用 Scope 1/2 时，科技股和金融股可能超配；纳入 Scope 3 后，配置可能下降。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Private Markets</span> 私募股权和私募债</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">私募 ESG 的主要挑战是公开透明度、报告标准、监管监督和公开市场压力不足。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSRD 扩大了需要报告的公司范围，包括上市实体及满足大型企业标准的公司，许多非欧盟公司也受影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">早期公司可能比成熟上市公司更容易调整运营和战略，以适应 ESG 目标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">LP 对 GP 的期待增加，要求 ESG 分析超越简单 screening，进入 pre-deal due diligence 和 portfolio company review。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Real Assets</span> 房地产和基础设施</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">实物资产投资者常拥有多数或完全所有权，因此对 ESG 数据定义、应用和报告有更大控制力。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">实物资产组合管理要形成 portfolio-level risk 图像，并考虑底层资产相关性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">GRESB 报告可提供 peer group、KPI、环境数据、管理/政策/披露得分、目标、验证等信息。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">房地产投资者越来越使用保险公司模型和历史数据理解天气风险和气候风险。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">Risk Return and Quant</span> 风险收益与量化嵌入</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 对 risk-adjusted returns 的影响通常从 risk mitigation 和 alpha generation 两个维度讨论。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG tail risks 通常长期、重大，可能使资产风险轮廓出现多标准差变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">量化 ESG 可从 tilt/overlay 发展到把 ESG factor 直接嵌入 algorithmic stock selection。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG coverage gaps 要披露；缺口约 25%以内可考虑重缩放或 Bayesian inference，超过则可能损害分析完整性。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="equity" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Listed Equity and Hedge Funds</div>
+        <h2>上市股票：数据更充分，多空策略更容易表达 ESG</h2>
+      </div>
+      <div class="head-desc">上市股票披露较好，所以 ESG 策略形态最丰富；本节重点是 long-short hedge fund 的 ESG 逻辑。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Hedge Fund</span><div class="topic-title">Hedge fund 的基本机制</div></div></div>
+        <p class="small">Hedge funds 使用杠杆增强收益，并用 hedging strategies 管理净风险、产生 alpha。Short selling 是借入证券并卖出，之后希望以更低价格买回。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Hedge fund</div><div class="eq-op">==</div><div class="eq-rhs">leverage + hedging + net risk management + alpha generation</div></div>
+          <div class="eq"><div class="eq-lhs">Short selling</div><div class="eq-op">==</div><div class="eq-rhs">borrow security → sell now → buy back lower if successful</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>做多看好，做空看差；多空合起来可以控制市场方向风险，把关注点放在相对表现上。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">ESG Long-Short</span><div class="topic-title">Sector-neutral ESG long-short</div></div></div>
+        <p class="small">定量 ESG 多空策略可以在每个行业内 long ESG top decile，short ESG bottom decile，形成 sector-neutral 组合。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG long-short</div><div class="eq-op">==</div><div class="eq-rhs">long best ESG decile + short worst ESG decile + sector neutrality</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>同一个行业内挑 ESG 好的做多、ESG 差的做空，可以减少行业本身涨跌对结果的干扰。</div>
+        <div class="riskline"><b>考点提醒：</b>题干说 sector-neutral ESG long-short，答案是 long top decile ESG-rated stocks，short bottom decile。</div>
+      </article>
+    </div>
+    <div class="topic-card" style="margin-top:14px">
+      <div class="topic-top"><div><span class="tag tag-violet">Signals</span><div class="topic-title">ESG 多空策略可用哪些信号？</div></div></div>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">ESG signals</div><div class="eq-op">==</div><div class="eq-rhs">third-party ESG scores + proprietary factor-neutral score + carbon intensity + NLP ESG event sentiment</div></div>
+      </div>
+      <p class="small">PDF 的 Man Numeric 例子使用多个数据提供商分数、专有因子中性分数、碳强度指标，以及基于 ESG 新闻的自然语言处理事件情绪策略。</p>
+      <div class="riskline"><b>易错提醒：</b>Exhibit 22 和 23 是模拟结果，gross of fees，不代表任何组合或产品表现，也不反映交易成本。</div>
+    </div>
+  </section>
+
+  <section id="netzero" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Net-Zero Portfolios</div>
+        <h2>净零组合：不是只算 Scope 1 和 2</h2>
+      </div>
+      <div class="head-desc">净零组合的难点在于空头、衍生品、行业结构和 Scope 3。题目常考“纳入 Scope 3 后配置会变”。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Derivatives / Shorts</span><div class="topic-title">衍生品和空头没有统一净额标准</div></div></div>
+        <p class="small">与金融风险不同，衍生品和空头头寸对应的 carbon risk exposure 如何 netting，目前没有清晰公认标准，投资者和 hedge fund managers 仍有分歧。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Carbon netting</div><div class="eq-op">==</div><div class="eq-rhs">derivatives/shorts exposure + no clear accepted standard</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>金融风险可以净额抵消，但碳风险怎么抵消，并没有像财务风险那样成熟统一。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Investment Universe</span><div class="topic-title">净零组合受市场结构影响</div></div></div>
+        <p class="small">构建净零组合要理解 investment universe 及其对风险和表现的影响。G7 指数中，欧洲因行业结构更少超配能源/公用事业而 SBTi 对齐更高；加拿大因能源和油砂依赖更具挑战。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Net-zero difficulty</div><div class="eq-op">==</div><div class="eq-rhs">issuer alignment + sector mix + benchmark country exposure</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>SBTi 对齐发行人少，可能带来重大的 overweights / underweights，使组合风险收益画像偏离 broader universe。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Scope 3</span><div class="topic-title">纳入 Scope 3 会改变配置</div></div></div>
+        <p class="small">只看 Scope 1 和 2 时，科技股和金融股在股票、投资级和高收益信用基准中可能超配；纳入 Scope 3 后，相关配置可能下降。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scope 3 inclusion</div><div class="eq-op">==</div><div class="eq-rhs">value-chain emissions recognized → tech/financials overweight may fall</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>网购平台的运输配送、银行对化石燃料行业的贷款，都可能让看似轻资产的公司暴露出更高间接排放。</div>
+        <div class="riskline"><b>考点提醒：</b>Scope 3 是价值链排放，常用来解释为什么金融和科技配置会下降。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="private" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Private Equity and Debt</div>
+        <h2>私募市场：数据弱，但改造空间可能更大</h2>
+      </div>
+      <div class="head-desc">私募市场的核心矛盾：披露和可比性弱，但股东/债权人常常更接近公司治理和战略。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Challenges</span><div class="topic-title">私募 ESG 的四个挑战</div></div></div>
+        <p class="small">Private equity and debt 面临 public transparency、established reporting standards、regulatory oversight、public market pressures 不足等挑战。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Private ESG challenge</div><div class="eq-op">==</div><div class="eq-rhs">low transparency + weak standards + less oversight + less public pressure</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>私募公司不像上市公司那样公开披露，横向评分和排名更难。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">CSRD</span><div class="topic-title">CSRD 提高报告覆盖</div></div></div>
+        <p class="small">CSRD 大幅增加需报告公司数量，包括所有上市实体，以及满足员工数、收入、资产负债表等标准的大型公司，许多非欧盟公司也会受影响。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">CSRD</div><div class="eq-op">==</div><div class="eq-rhs">more firms required to report + higher ESG data availability</div></div>
+        </div>
+        <div class="memory"><b>易错提醒：</b>更多报告有助于可比性，但对小型私募公司也可能形成负担。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Trajectory</span><div class="topic-title">早期公司看 trajectory</div></div></div>
+        <p class="small">早期公司可能比成熟上市公司更容易调整运营和战略以对齐 ESG 目标，因此组合经理需要权衡其 ESG trajectory 与成熟公司的轨迹。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Private company ESG</div><div class="eq-op">==</div><div class="eq-rhs">current disclosure weakness + potential ability to shift operations/strategy</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>不能只看当前分数，还要看公司是否正处于可塑阶段、是否有明确 ESG 目标和改进路径。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">GP / LP</span><div class="topic-title">GP 建指标，LP 要透明</div></div></div>
+        <p class="small">GP 可建立组合层 ESG KPIs，支持整体组合策略，并向 LP 沟通组合对齐情况。LP 对 GP 的期待也从简单 screening 转向更稳健的 ESG integration。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Private ESG program</div><div class="eq-op">==</div><div class="eq-rhs">pre-deal ESG due diligence + portfolio company review + portfolio-wide KPIs</div></div>
+        </div>
+        <div class="memory"><b>审计视角：</b>这像投前尽调加投后监控，既看进入前的风险，也看持有期间有没有按 KPI 改进。</div>
+      </article>
+    </div>
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Environmental</th><th>Social</th><th>Governance</th><th>记忆提示</th></tr></thead>
+        <tbody>
+          <tr><td>CO2 emissions</td><td>Employee sick days</td><td>Anti-corruption policy</td><td>环境看排放和资源，社会看员工状态，治理看制度控制。</td></tr>
+          <tr><td>Electricity</td><td>Voluntary turnover</td><td>Cybersecurity function</td><td>电耗、离职率、网络安全都是私募可跟踪 KPI。</td></tr>
+          <tr><td>Business air travel miles</td><td>Workers council</td><td>—</td><td>这些指标帮助 GP 给 LP 提供高层次暴露图像。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="realassets" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Real Assets</div>
+        <h2>实物资产：控制力更强，物理风险更直接</h2>
+      </div>
+      <div class="head-desc">房地产和基础设施最像“看得见摸得着”的 ESG：建筑材料、能源效率、海拔、海岸线、保险、社区住房都会直接影响价值。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Control</span><div class="topic-title">多数或完全所有权带来控制力</div></div></div>
+        <p class="small">Real assets 中，投资者常是 majority owners 或 outright owners，因此对 ESG data definition、application 和 reporting 有更大控制力。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Real assets ESG</div><div class="eq-op">==</div><div class="eq-rhs">ownership control + asset-level ESG data + reporting discretion</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>买上市公司股票只能影响管理层；拥有资产本身，能更直接规定数据、改造和报告方式。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">GRESB</span><div class="topic-title">GRESB 报告能提供什么</div></div></div>
+        <p class="small">GRESB 报告提供 peer group、portfolio KPI、aggregate environmental data、GRESB score、risks/opportunities、targets、data validation and assurance 等信息。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">GRESB report</div><div class="eq-op">==</div><div class="eq-rhs">peer + KPI + environmental data + management/policy/disclosure score + targets + validation</div></div>
+        </div>
+        <div class="memory"><b>易错提醒：</b>GRESB 依赖公司、基金和资产参与评估；若大量持仓未参与，组合经理需要补充自己的 ESG scoring。</div>
+      </article>
+    </div>
+    <div class="case-grid" style="margin-top:14px">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Community housing strategies</div><span class="tag tag-teal">Social + E</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">环境</div><div class="case-text">通过更高效建筑材料降低 housing stock 的碳足迹。</div></div>
+          <div class="case-row"><div class="case-lab">社会</div><div class="case-text">提供 affordable mixed-tenure housing，满足年轻人、首次购房者、关键岗位人员和老人等社区需求。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">Impact real estate == carbon reduction + community affordability + social segmentation。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Climate risk in real estate</div><span class="tag tag-rose">Physical Risk</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">工具</div><div class="case-text">投资者利用保险公司分析模型和历史数据理解 weather risk 和 climate risk。</div></div>
+          <div class="case-row"><div class="case-lab">指标</div><div class="case-text">可分析低海拔和海岸线距离，评估海平面上升、洪水和海岸侵蚀风险。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">海岸侵蚀和洪水可影响 property values 和 insurance premiums；美国受海平面上升影响住宅已有约 7% 折价案例。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="riskreturn" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Risk and Return</div>
+        <h2>风险收益：ESG 一手防风险，一手找 alpha</h2>
+      </div>
+      <div class="head-desc">PDF 把 ESG 对 risk-adjusted returns 的讨论压成两条线：risk mitigation 和 alpha generation。</div>
+    </div>
+    <div class="grid-2">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Risk Mitigation</span><div class="topic-title">风险缓释</div></div></div>
+        <p class="small">Risk mitigation 是评估并最小化组合 ESG risks 暴露。ESG tail risks 通常长期、重大，可能导致资产风险轮廓发生多标准差变化。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Risk mitigation</div><div class="eq-op">==</div><div class="eq-rhs">assess ESG exposure + minimize tail risks + protect risk-adjusted returns</div></div>
+        </div>
+        <div class="memory"><b>例子：</b>大量投资海滨地产的组合，应评估 coastal retreat 风险并考虑降低暴露；欧洲公用事业组合要评估短期 carbon price volatility 和长期转型风险。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Alpha Generation</span><div class="topic-title">收益生成</div></div></div>
+        <p class="small">越来越多投资者将 ESG analysis 用于寻求 alpha，逻辑是更好管理、更好治理的公司、国家和资产，在长期可能优于治理较差的同类。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Alpha generation</div><div class="eq-op">==</div><div class="eq-rhs">better-managed/better-governed assets → potential long-term outperformance</div></div>
+        </div>
+        <div class="memory"><b>谨慎点：</b>要证明 ESG 带来收益，需要可靠的 ESG measurement 和 attribution；单个案例不能代表整个组合。</div>
+      </article>
+    </div>
+    <div class="table-wrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>归因方法</th><th>原文要点</th><th>中文解释</th><th>ESG 局限</th></tr></thead>
+        <tbody>
+          <tr><td><b>Brinson attribution</b></td><td>基于组合 active weights 分解收益，通常归因到地区、行业和个股暴露。</td><td>更适合自由裁量型经理，强调股票特定归因。</td><td>目前不能直接分解 ESG 因子收益。</td></tr>
+          <tr><td><b>Risk factor attribution</b></td><td>基于 active factor exposures 衡量投资收益，可用传统 Fama-French 或其他因子。</td><td>强调因子和证券特定暴露。</td><td>目前也没有直接分解 ESG 因子风险或表现归因的能力。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="quant" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quant Integration</div>
+        <h2>量化嵌入：从 ESG tilt 到 ESG factor</h2>
+      </div>
+      <div class="head-desc">模块 5 最后一段讲的是“更深一层”的量化整合：不是简单筛掉或倾斜，而是把 ESG 作为多因子模型的一项输入。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Tilt / Overlay</span><div class="topic-title">量化策略先做倾斜和覆盖</div></div></div>
+        <p class="small">量化策略可通过 screening methodology 施加 tilt 或 overlay，让组合对某个 ESG element 有更多或更少暴露。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG tilt</div><div class="eq-op">==</div><div class="eq-rhs">screening methodology → more/less portfolio exposure to ESG element</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Algorithm Factor</span><div class="topic-title">更高级做法：ESG 进入算法模型</div></div></div>
+        <p class="small">更复杂方法是直接把 ESG factors 嵌入 algorithmic model，驱动组合 stock selection。ESG factors 像多因子策略中的其他 factor 一样运作。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG factor model</div><div class="eq-op">==</div><div class="eq-rhs">value + momentum + quality + ESG → combined rank</div></div>
+        </div>
+        <div class="memory"><b>例子：</b>加入 ESG 因子后，原本综合排名第一的公司可能被 ESG 分数更高的公司超过。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Coverage Gap</span><div class="topic-title">覆盖缺口要披露和处理</div></div></div>
+        <p class="small">资产类别和地区暴露会影响 ESG screen coverage。高收益信用组合可能有约 25% 持仓没有 ESG rating，原因包括发行人太小、新发行人未评分、或 unlisted debt。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Coverage gap</div><div class="eq-op">==</div><div class="eq-rhs">small issuer + new issuer + unlisted debt</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>没有评分不是小问题，它会影响组合 ESG 暴露是否被真实呈现。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Two Fixes</span><div class="topic-title">两种处理方法</div></div></div>
+        <p class="small">处理覆盖缺口可用两种方法：将可评分部分重缩放到 100%；或对 coverage ratio 应用 Bayesian inference，概率性放大到 100%。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Gap treatment</div><div class="eq-op">==</div><div class="eq-rhs">rescale scored portion to 100% OR Bayesian inference gross-up</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>这两种方法一般适合覆盖缺口 roughly up to 25%。超过 25% 可能高估或低估真实 ESG 暴露，损害分析完整性。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组等式背模块 5</h2>
+      </div>
+      <div class="head-desc">先背资产类别差异，再背风险收益和量化覆盖缺口。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Listed equity ESG ==</b> richer disclosure + all RI strategies + long-only to hedge funds。</div>
+          <div class="formula"><b>ESG long-short ==</b> long top ESG decile + short bottom ESG decile + sector neutrality。</div>
+          <div class="formula"><b>Net-zero challenge ==</b> derivatives/shorts netting uncertainty + universe/sector mix + Scope 3。</div>
+          <div class="formula"><b>Private ESG challenge ==</b> low transparency + weak standards + less oversight + less public pressure。</div>
+          <div class="formula"><b>Private ESG program ==</b> pre-deal due diligence + portfolio review + KPIs + LP reporting。</div>
+          <div class="formula"><b>Real assets ESG ==</b> ownership control + asset-level data + climate physical risk modeling。</div>
+          <div class="formula"><b>Risk-return ESG ==</b> risk mitigation + alpha generation。</div>
+          <div class="formula"><b>Quant ESG ==</b> tilt/overlay → ESG factor embedded in algorithmic model。</div>
+          <div class="formula"><b>Coverage gap treatment ==</b> rescale scored portion OR Bayesian inference；roughly up to 25%。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Long-short</b>不是 long ESG 差、short ESG 好；正确是 long best ESG，short worst ESG。</div>
+          <div class="trap"><b>Scope 3</b>会把科技、金融等轻资产行业的间接排放拉出来，可能降低配置。</div>
+          <div class="trap"><b>Private markets</b>数据弱不等于无法整合；反而可通过尽调、KPI、投后监控深入推进。</div>
+          <div class="trap"><b>Real assets</b>有更强控制力，但 GRESB 依赖参与，未参与资产需补充自有评分。</div>
+          <div class="trap"><b>Alpha claim</b>ESG 产生 alpha 需要归因验证，单一案例有选择偏差。</div>
+          <div class="trap"><b>Coverage gap</b>缺口超过 25% 时，强行归一化可能误导投资者。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 5 的一根线：资产类别决定 ESG 数据、控制力和执行方式；风险收益决定 ESG 是防守还是进攻；量化模型决定 ESG 是简单筛选还是成为因子。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只覆盖模块 5</h2>
+      </div>
+      <div class="head-desc">正式 Practice Problems 会在全章完成后统一进入三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">Sector-neutral ESG long-short 策略如何构建 long 和 short？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Long ESG-rated top decile stocks，short ESG-rated bottom decile stocks，并在行业内保持 sector neutrality。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">为什么衍生品和空头在净零组合中难处理？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为目前没有清晰公认的标准来 netting 与 derivatives 和 short positions 相关的 carbon risk exposure。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">纳入 Scope 3 后，科技和金融配置为什么可能下降？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Scope 3 会纳入价值链间接排放，例如线上零售配送、银行对化石燃料行业贷款相关排放，从而提高这些行业的碳暴露。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">私募股权和私募债 ESG 整合的主要挑战是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">缺乏公开透明度、成熟报告标准、监管监督和公开市场压力，导致相对排名和评分可比性较弱。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">实物资产 ESG 为什么可能有更强控制力？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为投资者常是多数所有者或完全所有者，可以更直接定义、应用和报告 ESG 数据，并推动资产级改造。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">ESG 对 risk-adjusted returns 的两条讨论主线是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Risk mitigation 和 alpha generation。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">量化 ESG 从 tilt/overlay 进阶到什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">将 ESG factors 直接嵌入 algorithmic multi-factor model，驱动 stock selection。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">ESG coverage gap 的两种处理方法是什么？适用提示线是多少？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">可将可评分部分重缩放至 100%，或用 Bayesian inference gross up 到 100%。一般适用于缺口 roughly up to 25%，超过需谨慎。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

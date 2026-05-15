@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.2 Module 5 · Policy, Regulation, and Other Stakeholders</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 34px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 46%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.93);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px;min-width:0}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);line-height:1.25;max-width:100%}
+h1{font-family:var(--serif);font-size:40px;line-height:1.1;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:18px;font-weight:900;color:var(--dark);line-height:1.47;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35;overflow-wrap:anywhere}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:34px;line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68;overflow-wrap:anywhere}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}.card.dark h3{color:#fff}.card.dark .small{color:#dbeafe}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;max-width:100%}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%;overflow:hidden}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:var(--r);text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);margin-bottom:12px}
+table{border-collapse:collapse;width:100%;min-width:820px}th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}.qtop{padding:13px 14px;display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:30px;height:30px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qtext .opts{display:block;margin-top:6px;color:var(--sub);font-weight:600}.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.branch-grid{grid-template-columns:1fr 1fr}.flowline{grid-template-columns:1fr 1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}.grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px;width:100%;max-width:100%;margin:0}.hero-main{padding:22px 18px}.hero-side{padding:16px}.hero{display:block;width:100%;max-width:100%;overflow:hidden}.hero-main,.hero-side,.nav,.panel,.map-board,.card,.topic-card,.case-card,.footer-note{width:100%;min-width:0;max-width:100%;overflow:hidden}.hero-side{margin-top:18px}.pill,.tag{white-space:normal;text-align:left}.lead,.hero-eq,.side-note,.side-big,.mini-lab,.small,.head-desc{width:100%;max-width:100%;word-break:break-word;overflow-wrap:anywhere}.side-big{font-size:16px;line-height:1.48}.side-mini{grid-template-columns:1fr}.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}.qtop{grid-template-columns:30px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}h1{font-size:24px;line-height:1.18}h2{font-size:24px}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:720px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 2</span>
+        <span class="pill">Module 5</span>
+        <span class="pill">LO 2.1.2 / 2.1.3</span>
+        <span class="pill">Policy · Regulation · Other Stakeholders</span>
+      </div>
+      <h1>Policymakers, Regulators, Investees, Governments, Civil Society, and Academia</h1>
+      <p class="lead">本页覆盖 PDF 第 83-95 页。核心不是背各国政策名字，而是理解“政策目标如何变成监管工具，再如何影响披露、产品、受托责任、被投公司和社会监督”。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG policy ecosystem == policy choices → financial regulation → financial supervision → disclosure / stewardship / asset-owner rules / investor protection → market behavior.</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">High Frequency Eyes</div>
+      <div class="side-big">TCFD 四件套：Governance、Strategy、Risk management、Metrics and targets；EU Taxonomy 三条件：substantial contribution + DNSH + minimum safeguards；政策趋势：voluntary → mandatory，comply or explain → comply and explain。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">Sustainability-related financial regulations 的四大主题</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">EU Taxonomy 的环境目标数量</div></div>
+      </div>
+      <div class="side-note"><b>题眼提醒：</b>看到 “credit ratings” 不选 TCFD；看到 “doing no significant harm” 想 EU Taxonomy；看到 “investor protection” 想 transparency and efficiency。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="framework">监管框架</button>
+    <button class="tab" data-tab="examples">全球案例</button>
+    <button class="tab" data-tab="fiduciary">受托责任</button>
+    <button class="tab" data-tab="stakeholders">其他主体</button>
+    <button class="tab" data-tab="quiz">易错与自测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>监管生态的主线：目标先行，规则落地，监督执行</h2>
+      </div>
+      <div class="head-desc">逻辑等式心象术拆法：把这段看成一条“政策流水线”。政策选择定方向，金融监管写规则，金融监督看执行，其他主体提供数据、资金、压力和证据。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG Policy Ecosystem<br>政策目标 + 监管工具 + 监督执行 + 市场主体反馈</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Policy Choices：目标</div>
+          <p>金融监管是政策选择的下游。</p>
+          <p>政策制定者回应 sustainability risks and opportunities。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Financial Regulation：规则</div>
+          <p>监管关注市场秩序、投资者保护、金融部门有序扩张。</p>
+          <p>四大主题：corporate disclosure、stewardship、asset owners、investor protection。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Financial Supervision：监督</div>
+          <p>金融监督是金融监管的下游。</p>
+          <p>看银行、保险、基金、养老金是否按气候和 ESG 要求管理风险、披露过程和结果。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Global Tools：工具箱</div>
+          <p>TCFD、IFRS S1/S2、CSRD、EU Taxonomy、SFDR、SDR、stewardship codes、stress tests。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Market Actors：执行者</div>
+          <p>Investees 管理 ESG 风险并决定披露；governments 引导资本；civil society 施压；academia 验证商业逻辑。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Policy Trend：趋势</div>
+          <p>从 voluntary 到 mandatory，从 comply or explain 到 comply and explain，从 policy 到 implementation/reporting。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>1. Risks</h3><p>气候、生物多样性、资源稀缺影响金融稳定和单个组合。</p></div>
+        <div class="flow-step"><h3>2. Policy</h3><p>政府和国际目标设定方向，例如 Paris Agreement、SDGs。</p></div>
+        <div class="flow-step"><h3>3. Regulation</h3><p>披露、分类法、投资者保护、stewardship 进入规则。</p></div>
+        <div class="flow-step"><h3>4. Supervision</h3><p>监管机构用压力测试、报告要求、资本和风险管理要求推动执行。</p></div>
+        <div class="flow-step"><h3>5. Market</h3><p>投资者更能识别可持续资产，市场更能定价 ESG 风险。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><span class="tag tag-blue">第一句总纲</span><h3>Downstream chain</h3><p class="small">Financial regulation is downstream from policy choices；financial supervision is downstream from financial regulation。</p></div>
+      <div class="card"><span class="tag tag-green">考试主线</span><h3>四类监管主题</h3><p class="small">Corporate disclosure、stewardship、asset owners、investor protection，是这段最重要的分类框架。</p></div>
+      <div class="card"><span class="tag tag-amber">考点雷区</span><h3>TCFD 不含 credit ratings</h3><p class="small">TCFD 四块是治理、战略、风险管理、指标和目标。Credit ratings 是金融服务/评级机构话题。</p></div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">按 PDF 第 83-95 页顺序覆盖。这个模块信息量大，建议先用“政策流水线”把清单挂起来。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Policy & Regulation Logic</span> 政策与监管基本逻辑</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Financial regulation is downstream from policy choices。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Financial supervision is downstream from financial regulation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Policymakers respond to sustainability risks and opportunities。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sustainability issues 可影响 financial system stability，例如 climate change、biodiversity、resource scarcity。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sustainability issues 也会影响 individual investor’s portfolio risks。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Financial regulators 的目标包括 maintain orderly financial markets。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Financial regulators 的目标包括 safeguard investments in financial instruments、savings/pensions、investment vehicles。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Financial regulators 的目标包括 orderly expansion of financial sector activities。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Regulators 考虑 ESG factors 对经济和金融市场稳定、金融工具长期 risk-return profile 的影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Regulators 可鼓励 green bonds 等 ESG products，并要求披露 ESG characteristics 或 sustainability objectives。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Other regulators 通过 environment、labor、communities、governance 要求影响公司 ESG characteristics。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Four Themes</span> 可持续金融监管四大主题</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Corporate disclosure：政府或交易所鼓励/要求被投公司披露 material ESG risks。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Corporate disclosure  improves investors’ ability to consider ESG risks in investment decisions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Corporate disclosure 例子包括 TCFD 和 GRI。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD reporting 在英国已成为监管要求。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD recommendations underpin IFRS Sustainability Standards IFRS S1 and IFRS S2，ISSB 于 2023 发布。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD recommendations also informed EU NFRD and successor CSRD，CSRD 于 2024 生效。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship regulation governs interactions between investors and investee companies。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship 旨在保护 shareholders、beneficiaries 以及 market health and stability。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多数司法辖区 stewardship codes 仍为 voluntary，但欧洲已批准 mandatory regulation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset owner regulation 通常聚焦 pension funds and insurers，要求整合 ESG factors 并披露 process and outcome。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">英国、澳大利亚、新加坡等监管者也在考虑 insurance market 和更广金融业的 climate risk。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">英国 2023 年 fund-level/product TCFD annual reporting 要求适用于 retail and institutional funds。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Investor protection regulations aim to protect investors by improving transparency and efficiency in markets。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU MiFID includes obligation to integrate sustainability preferences of investors。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU SFDR entails mandatory sustainability classification of investment products。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU green bond label regulation regulates sustainability claims including those in investment products。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK 2023 anti-greenwashing rule applies to FCA-authorized firms making sustainability-related claims。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Global & Regional Examples</span> 全球和区域政策案例</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 2019 review 发现 97% new or revised sustainable finance policies were developed after 2000。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">政策加速由欧洲和亚洲发展推动，也受 stewardship/corporate governance codes 周期性修订影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">政策和监管通常会 periodic review，以跟上 global sustainability goals 和技术进步。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD 2017 年发布 climate-related financial disclosure recommendations，帮助 firms voluntary disclose information to support capital allocation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD recommendations 已在 New Zealand、Switzerland、Hong Kong SAR、Japan、Singapore、UK 等地强制化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU SFDR scope broader than TCFD，effectively made TCFD mandatory。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">G7 countries backing mandatory reporting，预期 TCFD implementation 会扩大。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD 四大核心领域：Governance、Strategy、Risk management、Metrics and targets。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">TCFD 2021 guidance 涉及 metrics、targets、transition plans，并更新 implementation guidance。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ISSB 于 2023 年 6 月发布 IFRS S1 和 IFRS S2。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">IFRS S1 是 General Requirements for Disclosure of Sustainability-Related Financial Information。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">IFRS S2 是 Climate-Related Disclosures。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU Sustainable Finance Strategy 2018 和 EU Green Deal 2020 形成覆盖 real economy 与 financial economy 的监管组合。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU 五项互锁规则：CSRD、EU Taxonomy、SFDR、EU Ecolabel、ESRS。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSRD 目标是让 consumers and investors 知道 businesses 的 sustainability impact。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSRD adopted in 2021，FY2024 生效，取代 NFRD。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSRD scope：满足 EUR40m net turnover、EUR20m assets、250+ employees 三项中的两项。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSRD 也适用于在 EU 有业务且 EU turnover 超过 EUR150m 的 non-EU companies。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSRD 覆盖公司数量从 NFRD 的 11,000 增至近 50,000，并要求按 ESRS 报告 E、S、G 标准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU Taxonomy Regulation 于 2020 年 6 月发布，设定经济活动 environmentally sustainable 的条件。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU Taxonomy 三条件：substantial contribution、doing no significant harm、minimum social/governance safeguards。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU Taxonomy 六大环境目标：climate mitigation、adaptation、water/marine、circular economy、pollution prevention/control、biodiversity/ecosystems。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SFDR 2019 年 12 月发布，要求披露投资产品考虑或促进 environmental and social factors 的程度。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SFDR 旨在提高透明度、防止 greenwashing，并识别 principal adverse impacts。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">National Examples</span> 国家和地区案例</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">英国 2008 年通过 Climate Change Act，2019 年成为第一个将 net zero commitment 写入法律的国家。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRA 2019 年对受监管公司发布 climate-related supervisory expectations，Bank of England 成为首个对 banks/insurers climate risk 管理设定监督预期的央行和监管者。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Green Finance Strategy 三个 lever：Greening finance、Financing green、Capturing the opportunity。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">英国路线图要求到 2025 年全经济范围 TCFD-aligned disclosures mandatory。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">英国 2021 年从 largest listed companies and pension funds 开始实施，2022 年 FCA 对 asset managers、life insurers、FCA-regulated pension providers 提出要求。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK DWP 2022 要求 pension trustees 测量并报告投资组合 Paris alignment。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK SDR 是 mandatory，2023 年扩展到 double materiality 和 climate change 以外的 sustainability issues。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK fund labels：Sustainability Focus、Sustainability Improvers、Sustainability Impact、Sustainability Mixed Goals。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK TPT 2022 年成立，2023 年发布 Disclosure Framework，2024 年发布 asset owners/managers sector-specific guidance。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">中国 PBoC 2016 年与六个政府机构发布 green financial system guidelines，标志 sustainable finance policy 转折点。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PBOC 2021 年宣布五年战略，支持 green loans、bonds、insurance、derivatives。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CGT 于 2021 年底由 PBoC 和 EU Commission 发布，基于 EU taxonomy 和 China’s Green Bond Endorsed Projects Catalogue。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CGT 目标是建立对 green economic activity 的共同理解，简化跨境 green capital flows，降低交易成本和重复验证。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CGT 判断标准采用两套 taxonomy 共同存在的条件，或采用更严格的标准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CGT 覆盖六大部门：农业林业渔业、制造业、电气燃气蒸汽空调、水/污水/废弃物/修复、建筑、运输仓储。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">AMAC 2018 年发布 Guidelines for Green Investment，称 ESG 是资管行业 emerging investment strategy。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">CSRC 2021 年 6 月发布 ESG disclosure guidelines，主要为 voluntary reporting，覆盖 climate、biodiversity、pollution、waste management。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Singapore MAS 2019 年 Green Finance Action Plan 支持 sustainable Singapore 和 Asia low-carbon transition。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">MAS sustainable finance taxonomies 有两条线：Singapore 本地线和 ASEAN 多边协作线。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">GFIT 2021-2023 年发布三轮 public consultations，taxonomy 与 ABS 合作并面向 Singapore-based financial institutions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">MAS guidance 覆盖 environmental risk management、sustainability-related disclosures、sustainability stress tests。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Singapore SGX 上市公司从 2022 年 1 月 1 日起适用 comply or explain climate reporting；retail ESG funds guidelines 于 2023 年 1 月 1 日生效。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ASEAN Taxonomy end of 2021 发布，作为 umbrella framework harmonize regional frameworks。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ASEAN Taxonomy 是 multi-tiered approach，EU Taxonomy 是 binary approach。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ASEAN Taxonomy 包含 Foundation Framework 和 Plus Standard。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Australia CFR 聚焦 climate change；APRA 2022 执行大银行 Climate Vulnerability Assessment。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ASIC 协调 CFR 对 ISSB draft standards 提交回应；ASFI 2022 年发布 Australian Sustainable Finance Taxonomy draft。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">New Zealand 2023 年 1 月起对 in-scope companies 强制 comply-or-explain climate-related disclosures。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">New Zealand annual disclosures 覆盖 governance arrangements、risk management、strategies for mitigating climate impacts。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">New Zealand FMA 负责 independent monitoring、enforcement、guidance、reporting。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">New Zealand CRD Bill 适用于大型银行/信用合作社/建房互助会、registered schemes managers、大型 insurers、NZX listed issuers、Crown financial institutions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">US 长期以 voluntary 或 comply or explain 为主，使部分投资者继续挑战 ESG integration is a requirement 的说法。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">US SEC 2022 年提出 climate risk disclosure rules，内容包括治理、影响/目标/transition plans、Scope 1/2、material Scope 3。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">US SEC final rule 于 2024 年 3 月 6 日公布，最终不包含 Scope 3 emission disclosures。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">政策成熟后趋势：comply or explain → comply and explain；voluntary → mandatory；policy → implementation and reporting。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">NGFS 由 140 家央行和监管者组成，2017 年成立，承认 climate risks 与 supervisory mandate 相关。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-rose">Fiduciary Cases & Other Stakeholders</span> 受托责任案例和其他主体</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">监管者若狭义解释 fiduciary duty，可能对 ESG investing 形成挑战。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">US ERISA 对 private sector retirement plans 的 fiduciaries 设定 prudent-person standard。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ERISA fiduciaries 应 solely in the interest of participants/beneficiaries 行事。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ERISA fiduciaries 应以 prudent person care、skill、diligence 投资，并 diversify to minimize large losses。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DOL 1994 IB：ETIs 若预期回报与同风险替代投资相当，可与 ERISA fiduciary obligations 相容，即 all things being equal test。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DOL 2008：collateral non-economic factors 应少见，并需文件证明符合 ERISA rigorous fiduciary standards。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DOL 2015 IB 确认 ETIs 可基于 collateral benefits 投资，只要投资适合计划且经济/财务上等同；ESG 有时直接关系经济财务价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DOL 2020 final rule 删除 ESG 术语，使用 non-financial objectives，并认为 ESG 缺乏统一定义。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DOL 2020 强调 tie-breaker extremely rare；ESG only if material economic risks/opportunities；并增加 documentation requirements。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DOL 2021 non-enforcement；2021 new rule 允许 private sector retirement plans 考虑 ESG criteria and proxy voting。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">DOL 2022 final rule clarifies fiduciaries may consider climate/ESG when relevant to risk-return analysis。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Kay Review 2012 强调 long-term decision making、trust、stewardship，并指出 fiduciary duty 被误解和误用的损害。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Law Commission 2014：trustees may and should consider financially material ESG factors。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK non-financial factors 只有在 members likely share concern 且 no significant financial detriment 时才可考虑。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Stewardship Code 2020 适用于 asset owners、asset managers、service providers，并要求系统整合 stewardship、investment、material ESG issues、climate change。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU Shareholder Rights Directive II 2019 旨在提高投资者与 investee companies 的 engagement 水平和质量。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SRD II 要求 engagement policy，并每年报告 strategy integration、dialogue、voting/shareholder rights、collaboration、conflicts of interest。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Investees 包括 companies、projects、agencies、jurisdictions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Investees 决策者影响 ESG risks 管理、对环境和社会的 impact，以及 ESG disclosure level。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG investing 最紧迫问题之一是缺乏 reliable and consistent ESG data。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Governments 认为 RI 通过社保/公共养老金压力、公共基础设施需求、低碳转型资本迁移三方面支持社会结果。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Civil society/NGOs 推动公司可持续性，提高对投资社会和环境影响的透明度要求。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Civil society 有的与投资公司和监管者合作，有的揭示不足以应对全球挑战的行动。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Academia 验证 ESG integration 的 business case，并研究 ESG 对投资回报和金融市场的影响。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="framework" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Regulatory Framework</div>
+        <h2>监管框架：四大主题 + 工具箱</h2>
+      </div>
+      <div class="head-desc">这部分先背结构，不急着背国家。考试喜欢把主题、目标和例子混在一起问。</div>
+    </div>
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 政策、监管、监督的上下游</div><span class="tag tag-blue">downstream</span></div>
+        <p class="small"><b>原文要点：</b>Financial regulation is downstream from policy choices；financial supervision is downstream from financial regulation。</p>
+        <p class="small"><b>中文解释：</b>政策先回答“社会想把金融引向哪里”；监管再写成规则；监督则检查金融机构是否真的执行。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Policy chain</div><div class="eq-op">==</div><div class="eq-rhs">policy choices → financial regulation → financial supervision → market conduct</div></div>
+          <div class="eq"><div class="eq-lhs">Regulator focus</div><div class="eq-op">==</div><div class="eq-rhs">orderly markets + investor protection + orderly sector expansion</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>这是一句总纲。遇到问政策和监管关系，先想 downstream chain。</div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. 四大监管主题</div><span class="tag tag-green">four themes</span></div>
+        <p class="small"><b>原文要点：</b>Sustainability-related financial regulations relevant to investment generally involve corporate disclosure、stewardship、asset owners、investor protection。</p>
+        <p class="small"><b>中文解释：</b>监管不是只管“披露”。它还管投资者如何与公司互动、资产所有者如何管理 ESG、投资者是否被充分保护。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Financial regulation</div><div class="eq-op">==</div><div class="eq-rhs">corporate disclosure + stewardship + asset owners + investor protection</div></div>
+          <div class="eq"><div class="eq-lhs">Investor protection</div><div class="eq-op">==</div><div class="eq-rhs">transparency + market efficiency + sustainability preference/product clarity</div></div>
+        </div>
+        <div class="memory"><b>题眼钩子：</b>“protect investors by improving transparency and efficiency” 对应 investor protection。</div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Corporate disclosure</div><span class="tag tag-amber">material ESG risks</span></div>
+        <p class="small"><b>原文要点：</b>Corporate disclosure guidelines 通常来自 governments 或 stock exchanges，要求公司披露 material ESG risks。</p>
+        <p class="small"><b>中文解释：</b>披露的目的不是“写报告好看”，而是让投资者能把 ESG 风险放进投资决策。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Disclosure</div><div class="eq-op">==</div><div class="eq-rhs">material ESG risk information → better investment decisions</div></div>
+          <div class="eq"><div class="eq-lhs">Examples</div><div class="eq-op">==</div><div class="eq-rhs">TCFD + GRI + IFRS S1/S2 + NFRD/CSRD</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>披露标准越统一，投资者越容易比较公司，ESG data gap 越小。</div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Stewardship regulation</div><span class="tag tag-violet">interaction rules</span></div>
+        <p class="small"><b>原文要点：</b>Stewardship regulation governs interactions between investors and investee companies。</p>
+        <p class="small"><b>中文解释：</b>它管的是投资者持股后怎么和公司互动，例如 engagement、voting、dialogue、conflicts。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Stewardship</div><div class="eq-op">==</div><div class="eq-rhs">investor-investee interaction + shareholder/beneficiary protection + market stability</div></div>
+          <div class="eq"><div class="eq-lhs">Trend</div><div class="eq-op">==</div><div class="eq-rhs">mostly voluntary codes → mandatory regulation in Europe</div></div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Asset owners regulation</div><span class="tag tag-teal">pensions / insurers</span></div>
+        <p class="small"><b>原文要点：</b>Asset owner regulation 通常聚焦 pension funds 和 insurers，要求整合 ESG factors 并披露 process and outcome。</p>
+        <p class="small"><b>中文解释：</b>养老金和保险公司资产规模大、负债期限长，气候风险和 ESG 风险会直接影响长期偿付能力和受益人利益。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">AO regulation</div><div class="eq-op">==</div><div class="eq-rhs">pension funds + insurers + ESG integration + process/outcome disclosure</div></div>
+          <div class="eq"><div class="eq-lhs">Climate concern</div><div class="eq-op">==</div><div class="eq-rhs">insurance market + wider financial industry risk</div></div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Exhibit 10 的监管工具箱</div><span class="tag tag-rose">toolkit</span></div>
+        <p class="small"><b>原文要点：</b>监管工具把 high-level sustainability policy targets 与金融监管干预连接起来。</p>
+        <p class="small"><b>中文解释：</b>政策目标像目的地，工具箱像交通工具：披露标准、taxonomies、压力测试、资本要求、风险管理、税费和补贴都可以把资金引向可持续活动。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Toolkit</div><div class="eq-op">==</div><div class="eq-rhs">disclosure/accounting standards + taxonomies + risk management/stress tests/capital + taxes/subsidies + legal investment rules</div></div>
+          <div class="eq"><div class="eq-lhs">Purpose</div><div class="eq-op">==</div><div class="eq-rhs">awareness + asset identification + better pricing of sustainability risks</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="examples" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Global Examples</div>
+        <h2>全球案例：不要背散点，要按“披露、分类、保护、受托”归位</h2>
+      </div>
+      <div class="head-desc">PDF 中案例很多，考试通常考最有辨识度的关键词：TCFD 四块、EU Taxonomy 三条件、CGT 目标、comply or explain、Scope 3。</div>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Global：TCFD 和 ISSB</div><span class="tag tag-blue">disclosure</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">TCFD 2017</div><div class="case-text">发布 climate-related financial disclosure recommendations，支持 capital allocation。</div></div>
+          <div class="case-row"><div class="case-lab">四块</div><div class="case-text">Governance、Strategy、Risk management、Metrics and targets。</div></div>
+          <div class="case-row"><div class="case-lab">2021</div><div class="case-text">发布 metrics、targets、transition plans 指引，并更新 implementation guidance。</div></div>
+          <div class="case-row"><div class="case-lab">ISSB 2023</div><div class="case-text">IFRS S1 提供 sustainability-related financial information 总体披露要求；IFRS S2 关注 climate-related disclosures。</div></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Europe：CSRD / Taxonomy / SFDR</div><span class="tag tag-green">EU stack</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">五规则</div><div class="case-text">CSRD、EU Taxonomy、SFDR、EU Ecolabel、ESRS。</div></div>
+          <div class="case-row"><div class="case-lab">CSRD</div><div class="case-text">FY2024 生效，取代 NFRD；报告公司从 11,000 增到近 50,000。</div></div>
+          <div class="case-row"><div class="case-lab">Taxonomy</div><div class="case-text">判断绿色经济活动的三条件：substantial contribution、DNSH、minimum safeguards。</div></div>
+          <div class="case-row"><div class="case-lab">SFDR</div><div class="case-text">投资产品可持续性披露，提高透明度、防止 greenwashing，并识别 principal adverse impacts。</div></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">UK：从 net zero 到 SDR labels</div><span class="tag tag-amber">mandatory</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">2008/2019</div><div class="case-text">Climate Change Act；首个将 net zero commitment 写入法律的国家。</div></div>
+          <div class="case-row"><div class="case-lab">PRA 2019</div><div class="case-text">对 banks 和 insurers 气候金融风险管理设定监督预期。</div></div>
+          <div class="case-row"><div class="case-lab">2025</div><div class="case-text">路线图要求 across the economy 的 TCFD-aligned disclosures mandatory。</div></div>
+          <div class="case-row"><div class="case-lab">Labels</div><div class="case-text">Sustainability Focus、Improvers、Impact、Mixed Goals。</div></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">China & CGT</div><span class="tag tag-violet">taxonomy</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">2016</div><div class="case-text">PBoC 与六个政府机构发布 green financial system guidelines。</div></div>
+          <div class="case-row"><div class="case-lab">2021</div><div class="case-text">PBOC 五年战略支持 green loans、bonds、insurance、derivatives。</div></div>
+          <div class="case-row"><div class="case-lab">CGT</div><div class="case-text">由 PBoC 和 EU Commission 发布，目标是建立绿色经济活动共同理解，便利跨境绿色资本流动。</div></div>
+          <div class="case-row"><div class="case-lab">标准</div><div class="case-text">采用两套 taxonomy 共同标准，或采用更严格标准。</div></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">Singapore / ASEAN</div><span class="tag tag-teal">multi-tier</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">MAS 2019</div><div class="case-text">Green Finance Action Plan 支持 sustainable Singapore 和亚洲低碳转型。</div></div>
+          <div class="case-row"><div class="case-lab">Singapore</div><div class="case-text">环境风险管理、可持续披露、保险和全金融业压力测试。</div></div>
+          <div class="case-row"><div class="case-lab">ASEAN</div><div class="case-text">Taxonomy end of 2021 发布，作为 umbrella framework harmonize regional frameworks。</div></div>
+          <div class="case-row"><div class="case-lab">差异</div><div class="case-text">ASEAN multi-tiered；EU binary。</div></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-head"><div class="case-name">US / NZ / Australia</div><span class="tag tag-rose">climate disclosure</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">US SEC</div><div class="case-text">2022 proposed climate disclosure；2024 final rule 不含 Scope 3。</div></div>
+          <div class="case-row"><div class="case-lab">NZ</div><div class="case-text">2023 起 in-scope companies comply-or-explain climate disclosures，FMA 监督执行。</div></div>
+          <div class="case-row"><div class="case-lab">Australia</div><div class="case-text">CFR 聚焦 climate change；APRA 2022 对大银行做 Climate Vulnerability Assessment。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fiduciary" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Fiduciary Duty</div>
+        <h2>受托责任：ESG 能不能纳入，关键看是否与风险回报相关</h2>
+      </div>
+      <div class="head-desc">PDF 用美国和英国案例说明：狭义解释 fiduciary duty 会阻碍 ESG；更成熟的解释强调 financially material ESG factors 应被考虑。</div>
+    </div>
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 为什么受托责任重要</div><span class="tag tag-blue">permission boundary</span></div>
+        <p class="small"><b>原文要点：</b>Challenges to ESG investing can emerge if regulators hold a narrow interpretation of fiduciary duty。</p>
+        <p class="small"><b>中文解释：</b>如果监管者把 ESG 简单看成“非财务偏好”，受托人就会担心纳入 ESG 是违背受益人财务利益。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Fiduciary tension</div><div class="eq-op">==</div><div class="eq-rhs">ESG as financial risk/opportunity vs ESG as non-financial objective</div></div>
+          <div class="eq"><div class="eq-lhs">Modern direction</div><div class="eq-op">==</div><div class="eq-rhs">financially material ESG factors should be considered</div></div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. US ERISA 与 DOL 摆动</div><span class="tag tag-green">pendulum</span></div>
+        <p class="small"><b>原文要点：</b>ERISA 要求 fiduciaries 仅为参与者和受益人利益行事、谨慎投资、分散投资。DOL 对 ESG 的立场从 ETI 兼容，到 2020 年收紧，再到 2022 年明确可在 risk-return relevant 时考虑 ESG。</p>
+        <p class="small"><b>中文解释：</b>美国案例像钟摆：ESG 可以被接受，但前提是要讲得清楚它和风险回报有关。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ERISA duty</div><div class="eq-op">==</div><div class="eq-rhs">sole interest + prudent care/skill/diligence + diversification</div></div>
+          <div class="eq"><div class="eq-lhs">DOL line</div><div class="eq-op">==</div><div class="eq-rhs">1994 ETI allowed → 2020 non-financial caution → 2022 ESG allowed if risk-return relevant</div></div>
+        </div>
+        <div class="riskline"><b>易错：</b>2020 规则不是说所有 ESG 都不能考虑，而是 ESG 只有在 material economic risks/opportunities 时才能作为 financial factor。</div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. UK：财务重大 ESG 应被考虑</div><span class="tag tag-amber">financial materiality</span></div>
+        <p class="small"><b>原文要点：</b>Law Commission 2014 认为 trustees may take into account financially material ESG factors；并进一步认为 should take into account financially material factors。</p>
+        <p class="small"><b>中文解释：</b>英国逻辑更明确：如果 ESG 是财务重大因素，不是“可以考虑一下”，而是履责时应当考虑。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">UK fiduciary logic</div><div class="eq-op">==</div><div class="eq-rhs">financially material ESG → trustees should consider</div></div>
+          <div class="eq"><div class="eq-lhs">Non-financial factors</div><div class="eq-op">==</div><div class="eq-rhs">members share concern + no significant financial detriment</div></div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. UK Stewardship Code 与 EU SRD II</div><span class="tag tag-violet">engagement reporting</span></div>
+        <p class="small"><b>原文要点：</b>UK Stewardship Code 2020 要求系统整合 stewardship and investment，包括 material ESG issues and climate change。EU Shareholder Rights Directive II 要求 engagement policy 和年度报告。</p>
+        <p class="small"><b>中文解释：</b>受托责任不只是“买什么”，也包括“持有后怎么负责地互动”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Stewardship Code</div><div class="eq-op">==</div><div class="eq-rhs">asset owners + asset managers + service providers + ESG/climate integration</div></div>
+          <div class="eq"><div class="eq-lhs">SRD II report</div><div class="eq-op">==</div><div class="eq-rhs">strategy + dialogue + voting/rights + collaboration + conflicts</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stakeholders" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Other Stakeholders</div>
+        <h2>其他主体：被投公司给数据，政府引资本，社会和学术界给压力与证据</h2>
+      </div>
+      <div class="head-desc">最后一组主体不是金融中介，却决定 ESG 市场是否有真实信息、真实项目、社会监督和研究基础。</div>
+    </div>
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Investees</div><span class="tag tag-blue">data source</span></div>
+        <p class="small"><b>原文要点：</b>Investees include companies、projects、agencies、jurisdictions。</p>
+        <p class="small"><b>中文解释：</b>投资者想分析 ESG，第一手数据很多来自被投对象。被投公司和项目既管理 ESG 风险，也决定披露多少信息。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Investees</div><div class="eq-op">==</div><div class="eq-rhs">companies + projects + agencies + jurisdictions</div></div>
+          <div class="eq"><div class="eq-lhs">Investees role</div><div class="eq-op">==</div><div class="eq-rhs">manage ESG risks/impact + decide disclosure level</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>ESG investing 的紧迫问题之一是 reliable and consistent ESG data 不足。</div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Governments</div><span class="tag tag-green">capital direction</span></div>
+        <p class="small"><b>原文要点：</b>Governments 看到 responsible investment 在社保/养老金、公共基础设施、低碳转型三方面支持社会结果。</p>
+        <p class="small"><b>中文解释：</b>政府需要长期资本帮助解决养老金缺口、基础设施建设和低碳转型，因此会鼓励投资行业考虑 ESG 的财务重大性和社会环境影响。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Government need</div><div class="eq-op">==</div><div class="eq-rhs">pension stability + infrastructure funding + low-carbon transition capital</div></div>
+          <div class="eq"><div class="eq-lhs">Policy route</div><div class="eq-op">==</div><div class="eq-rhs">encourage ESG materiality + social/environmental impact + national priorities</div></div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Civil Society</div><span class="tag tag-amber">pressure + partnership</span></div>
+        <p class="small"><b>原文要点：</b>Civil society including NGOs 推动公司层面 sustainability，也要求更透明地考虑 investment 对社会和环境的影响。</p>
+        <p class="small"><b>中文解释：</b>NGO 一方面可以与投资机构和监管者合作，帮助理解具体 ESG 问题；另一方面也会曝光不足以应对全球挑战的行动。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Civil society</div><div class="eq-op">==</div><div class="eq-rhs">company sustainability pressure + investment impact transparency demand + expert partnership + public challenge</div></div>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Academia</div><span class="tag tag-violet">evidence base</span></div>
+        <p class="small"><b>原文要点：</b>Academic research has been influential in validating the business case for integrating ESG factors into the investment process。</p>
+        <p class="small"><b>中文解释：</b>学术界提供证据：ESG 因素如何进入投资决策、如何影响投资回报、如何影响更广金融市场。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Academia</div><div class="eq-op">==</div><div class="eq-rhs">business case validation + ESG-return studies + market impact research</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Traps & Self-Test</div>
+        <h2>易错点与自测题</h2>
+      </div>
+      <div class="head-desc">优先使用 PDF Practice Problems 对应题眼：Q3、Q21、Q22、Q27、Q28、Q29。</div>
+    </div>
+
+    <div class="trap-grid" style="margin-bottom:16px">
+      <div class="trap"><b>易错 1：TCFD 四块没有 credit ratings</b>TCFD = governance、strategy、risk management、metrics and targets。</div>
+      <div class="trap"><b>易错 2：EU Taxonomy 不是贡献三个目标</b>它要求 substantial contribution to at least one objective，并且 DNSH 其他目标。</div>
+      <div class="trap"><b>易错 3：Investor protection 的目标</b>不是限制信息，而是通过 transparency and efficiency 保护投资者。</div>
+      <div class="trap"><b>易错 4：CGT 的目标</b>不是减少欧中碳足迹本身，而是建立绿色经济活动的共同理解，便利资本流向 sustainable solutions。</div>
+      <div class="trap"><b>易错 5：Comply or explain</b>它不是比 comply and explain 更严格，反而给了挑战 ESG integration required 的空间。</div>
+      <div class="trap"><b>易错 6：受托责任</b>ESG 若是 financially material，就不是“非财务爱好”，而是可能应纳入风险回报分析。</div>
+    </div>
+
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">Q3</div><div class="qtext">Which established a framework that lays out the conditions for economic activities to be considered environmentally sustainable?<span class="opts">A. EU Taxonomy Regulation. B. Climate Disclosure Standards Board. C. TCFD.</span></div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：A。</b>EU Taxonomy Regulation 建立了判断经济活动是否 environmentally sustainable 的框架。逻辑等式：EU Taxonomy == green activity conditions + six environmental objectives。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">Q21</div><div class="qtext">The “comply or explain” approach to ESG investment policies:<span class="opts">A. requires mandatory disclosures. B. allows challenges to the assertion that ESG integration is required. C. is more stringent than comply and explain.</span></div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：B。</b>Comply or explain 方式给投资者留下空间，继续挑战“ESG integration 是必需”的说法。逻辑等式：comply or explain == comply or justify non-compliance → more challenge room。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">Q22</div><div class="qtext">Which is one EU Taxonomy condition for an economic activity to be environmentally sustainable?<span class="opts">A. Complying with highest social/governance standards. B. Doing no significant harm to any environmental objective. C. Contributing substantially to at least three environmental objectives.</span></div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：B。</b>三条件是：substantial contribution to at least one of six objectives；doing no significant harm to the others；complying with minimum EU-specified social and governance safeguards。题眼钩子：DNSH = EU Taxonomy。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">Q27</div><div class="qtext">What is the aim of investor protection regulations that consider sustainability?<span class="opts">A. Protect investors by improving transparency and efficiency. B. Restrict sustainability information. C. Prevent investors from incorporating sustainability preferences.</span></div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：A。</b>Investor protection regulations aim to protect investors by improving transparency and efficiency in markets。逻辑等式：investor protection == transparency + efficiency + preference/product clarity。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">Q28</div><div class="qtext">Which is not a key area of focus in the TCFD recommendations?<span class="opts">A. Governance. B. Risk management. C. Credit ratings.</span></div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：C。</b>TCFD 四块是 Governance、Strategy、Risk management、Metrics and targets。Credit ratings 属于评级/金融服务机构相关内容，不是 TCFD 的四大领域。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">Q29</div><div class="qtext">The Common Ground Taxonomy established by the EU and China aims to:<span class="opts">A. Increase transparency for investors. B. Establish a shared understanding of what constitutes a green economic activity. C. Reduce the carbon footprint of both regions.</span></div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：B。</b>CGT 旨在建立对绿色经济活动的共同理解，帮助引导投资流向可持续解决方案，并降低跨境绿色资本流动中的交易和验证成本。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">自测</div><div class="qtext">如果题干说 “financial regulation is downstream from policy choices”，你能反推完整链条吗？</div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>policy choices → financial regulation → financial supervision → disclosure/stewardship/asset-owner rules/investor protection → market behavior。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">自测</div><div class="qtext">EU Taxonomy 六大环境目标怎么压缩记？</div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>气候减缓、气候适应、水和海洋、循环经济、污染防控、生物多样性和生态系统。逻辑等式：EU six objectives == climate x2 + water + circular + pollution + biodiversity。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">自测</div><div class="qtext">Investees、governments、civil society、academia 分别给 ESG 市场提供什么？</div><button class="qbtn">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Investees 给 ESG 风险管理和披露数据；governments 给政策和资本方向；civil society 给压力、合作和监督；academia 给研究证据和 business case。</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">依据：CFA Institute ESG Investing, Chapter 2, PDF 第 83-95 页及 Practice Problems/Solutions。ch04 仅作为页面结构和交互方式参考，知识点均来自 ch02 PDF。</div>
+</main>
+
+<script>
+document.querySelectorAll('.tab').forEach((btn)=>{
+  btn.addEventListener('click',()=>{
+    const id=btn.dataset.tab;
+    document.querySelectorAll('.tab').forEach((b)=>b.classList.toggle('active',b===btn));
+    document.querySelectorAll('.panel').forEach((p)=>p.classList.toggle('active',p.id===id));
+    const nav=document.querySelector('.nav');
+    const top=nav ? nav.offsetTop - 12 : 0;
+    window.scrollTo({top,behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn)=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    const open=card.classList.toggle('show');
+    btn.textContent=open?'收起答案':'显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

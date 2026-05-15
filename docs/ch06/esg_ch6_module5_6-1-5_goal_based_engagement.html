@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.6 Module 5 · 6.1.5 Goal-Based Engagement</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.card.dark .small{color:#cbd5e1}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.concept-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.concept-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.concept-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;margin:10px 0}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.forms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:15px;min-width:0}
+.form-top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap}
+.form-title{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.form-desc{font-size:13px;color:var(--sub);line-height:1.66;margin:0}
+.score-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;margin-top:10px}
+.score{background:var(--soft);border:1px solid var(--line2);border-radius:6px;padding:6px 4px;text-align:center;min-width:0}
+.score b{display:block;font-size:10px;color:var(--muted);line-height:1.1;margin-bottom:3px}
+.score span{font-size:12px;font-weight:950;color:var(--dark)}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.concept-card,.case-card,.center-node,.formula,.trap,.form-card{max-width:100%}
+.center-node,.branch-title,.concept-title,.case-name,.qtext,.formula,.trap,.form-title{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1080px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .flowline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow-step:not(:last-child)::after{display:none}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .score-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:25px;line-height:1.13}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 6</span>
+        <span class="pill">Module 5</span>
+        <span class="pill">6.1.5</span>
+        <span class="pill">Goal-Based Engagement</span>
+      </div>
+      <h1>Goal-Based Engagement</h1>
+      <p class="lead">本页覆盖第 6 章 6.1.5：如何使用不同 engagement forms 设计目标型参与。重点是从“参与形式”走到“目标、资源、优先级、里程碑和执行细节”。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Effective engagement == clear objective + material issue + bespoke approach + capable leadership + meaningful coalition + relationship depth；Goal-based approach == 设目标 → 配资源 → 排优先级 → 定里程碑 → 持续跟踪。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Module Focus</div>
+      <div class="side-big">一场好 engagement，先问目标是否清楚，再问资源是否够、路径是否合适。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">12</div><div class="mini-lab">参与形式</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">成功因素</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">执行挑战</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>考点提醒：</b>目标不清时还不算真正开始 engagement；真正开始是 clear goal / objective 被设定之后。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="forms">12种形式</button>
+    <button class="tab" data-tab="logic">逻辑等式</button>
+    <button class="tab" data-tab="practice">实务执行</button>
+    <button class="tab" data-tab="mistakes">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>目标型参与：从沟通形式到改变结果</h2>
+      </div>
+      <div class="head-desc">按逻辑等式心象术，把“effective engagement”拆成形式、目标、资源、优先级、执行五步。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Goal-Based Engagement<br>不是为了对话而对话，而是为了可衡量的改变</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1 形式</div><p>个人参与 5 种。</p><p>协作参与 7 种。</p></div>
+        <div class="branch"><div class="branch-title">2 目标</div><p>specific and targeted。</p><p>没有目标只是收集信息。</p></div>
+        <div class="branch"><div class="branch-title">3 重大性</div><p>议题要战略相关或治理相关。</p><p>要能连接长期财务表现。</p></div>
+        <div class="branch"><div class="branch-title">4 定制</div><p>按公司、行业、地区和文化调整。</p><p>不是通用模板群发。</p></div>
+        <div class="branch"><div class="branch-title">5 资源</div><p>时间、专业能力、影响力都有限。</p><p>必须优先排序。</p></div>
+        <div class="branch"><div class="branch-title">6 关系</div><p>倾听、准备、信任和董事会接触很关键。</p><p>必要时准备升级。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>Define</h3><p>定义范围和参与目标。</p></div>
+        <div class="flow-step"><h3>Prioritize</h3><p>选公司、选议题。</p></div>
+        <div class="flow-step"><h3>Frame</h3><p>把 ESG 议题放入战略和长期财务表现。</p></div>
+        <div class="flow-step"><h3>Track</h3><p>设置目标、里程碑和 KPI。</p></div>
+        <div class="flow-step"><h3>Adapt</h3><p>适应当地语境，并预备升级措施。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">形式线</span>
+        <h3>形式越正式，越需要清晰目标</h3>
+        <p class="small">从普通信件到集体参与、concert party，正式程度和监管关注通常上升，目标也必须更清楚。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">成功线</span>
+        <h3>有效参与有 6 个成功因素</h3>
+        <p class="small">目标清楚、议题重大、方案定制、领导有效、联盟规模有意义、关系深度足够。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">资源线</span>
+        <h3>所有投资者都有资源约束</h3>
+        <p class="small">组合太广、公司太多，时间和专业能力有限，所以必须用优先级和协作机制提高效率。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-06.pdf` 第 351-359 页整理，覆盖 6.1.5 的参与形式、成功因素、目标设置、资源和执行。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Forms</span> 12 种参与形式</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Investor Forum 2019 白皮书识别 12 种 engagement forms。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">个人机构参与 5 种：generic letter、tailored letter、housekeeping engagement、active private engagement、active public engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">协作参与 7 种：informal discussions、collaborative campaigns、follow-on dialogue、soliciting support、group meetings、collective engagement、concert party。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">越往正式和集体行动方向走，通常越需要清晰目标，也越可能受到监管关注。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Group meetings 相比 collaborative letter-writing campaigns，通常需要更有组织、更正式的方式和更明确的 engagement objectives。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Concert party 是正式协议，可能包括共同提交股东决议或约定如何投票，监管风险最高。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Success Factors</span> 6 个成功因素</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SF1：目标应 specific and targeted，便于清楚判断交付。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SF2：目标应战略相关、治理相关，或与重大战略/治理问题连接。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SF3：engagement approach 应 bespoke，针对目标公司定制。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SF4：参与者需要 clear leadership，并具备适当关系、技能和知识。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SF5：coalition scale 要 meaningful，包括持股规模和 AUM 规模。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">SF6：联盟应与目标公司有 prior relationship 或 cultural awareness。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Active private engagement 和 collective engagement 在多个成功因素上得分最高。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Collaborative campaigns 规模可能大，但通常较不 bespoke。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Goals and Resources</span> 目标、资源和优先级</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement process 的起点是设置 clear goal or objective。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">如果问题规模一开始不清楚，正式 engagement 要等 clear goal 设定后才真正开始；此前只是 conversation 或 information seeking。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">复杂且有价值的目标可能需要多年，因此必须持续关注目标和进展。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">最大挑战之一是资源：投资机构是否有时间、专业能力和足够 leverage。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">多数基金管理公司持有大量公司，单是 monitoring 已经是重大义务，所有投资者实际上都有资源约束。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">优先级包括两类：哪个公司最需要 engagement，以及与公司对话时哪些议题应优先。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者不应向公司提出所有可能担忧，否则会制造混乱，削弱重点。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Operational Challenges</span> 实务执行顺序</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">第一步：define scope and prioritize engagement activities，确保为客户/受益人增加价值并产生影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">第二步：把 climate risk、supply chain risk 等议题放入 strategy 和 long-term financial performance，与管理层和董事会讨论。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">第三步：建立清晰流程，说明现实目标和 milestones，让投资机构和客户能衡量有效性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">第四步：适应当地 context、language 和 business culture，并准备 engagement failed 时的 escalation measures。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Active managers 更容易用 value-at-risk 逻辑优先排序公司和议题，必要时也可能卖出持仓。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Passive investors 也应按 value-at-risk 逻辑，但通常更自然地关注最大公司和 top-down material issues。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">外部 collective vehicles、商业 stewardship operations 或 investor groups 可以补充内部资源和专业技能。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">Practicalities</span> 会议和沟通实务</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Engagement objectives 需要 milestone measures 或 KPIs，便于客户追责和评价交付。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">清晰目标有助于设定议程，找出少数真正需要讨论的关键问题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">目标清晰有助于找到正确公司代表：ESG operational matters 通常找 sustainability / IR，必要时升级到 senior management 和 board。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Business strategy 或 operational matters 通常从 CEO 或 CFO 开始，必要时升级到 non-executive directors。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Governance matters 通常从 chair 开始，company secretary 参与，必要时找 senior independent director 或其他 non-executives。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Site visits 或 supplier visits 能证明投资者愿意深入理解运营，增强 engagement dialogue 的可信度。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Listening 与 speaking 同样重要，甚至更重要；好的参与要说明改变也符合公司自身利益。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">早期通常应私下对话，避免媒体关注使双方立场僵化；如需要更大力度，再考虑 escalation tools。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="forms" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Twelve Forms</div>
+        <h2>12 种 engagement forms：从轻到重</h2>
+      </div>
+      <div class="head-desc">分数是 PDF 中 Exhibit 3 的 1-5 概括。n/a 表示该因素不适用。</div>
+    </div>
+
+    <div class="forms-grid">
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Generic letter-writing</div><span class="tag tag-blue">Individual</span></div>
+        <p class="form-desc">向一批持仓公司发送广泛沟通，目标和定制程度都较低。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>2</span></div><div class="score"><b>SF2</b><span>1</span></div><div class="score"><b>SF3</b><span>1</span></div><div class="score"><b>SF4</b><span>n/a</span></div><div class="score"><b>SF5</b><span>n/a</span></div><div class="score"><b>SF6</b><span>2</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Tailored letter-writing</div><span class="tag tag-blue">Individual</span></div>
+        <p class="form-desc">更有针对性的信件，可涵盖不同主题和细节层次。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>3</span></div><div class="score"><b>SF2</b><span>3</span></div><div class="score"><b>SF3</b><span>2</span></div><div class="score"><b>SF4</b><span>n/a</span></div><div class="score"><b>SF5</b><span>n/a</span></div><div class="score"><b>SF6</b><span>2</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Housekeeping engagement</div><span class="tag tag-blue">Individual</span></div>
+        <p class="form-desc">年度对话，用于维护和加强关系，但目标有限。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>2</span></div><div class="score"><b>SF2</b><span>2</span></div><div class="score"><b>SF3</b><span>2</span></div><div class="score"><b>SF4</b><span>n/a</span></div><div class="score"><b>SF5</b><span>n/a</span></div><div class="score"><b>SF6</b><span>3</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Active private engagement</div><span class="tag tag-green">Individual</span></div>
+        <p class="form-desc">目标明确、针对具体公司的私下参与，通常最定制、关系最深。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>5</span></div><div class="score"><b>SF2</b><span>5</span></div><div class="score"><b>SF3</b><span>5</span></div><div class="score"><b>SF4</b><span>n/a</span></div><div class="score"><b>SF5</b><span>n/a</span></div><div class="score"><b>SF6</b><span>5</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Active public engagement</div><span class="tag tag-amber">Individual</span></div>
+        <p class="form-desc">由机构有意公开的参与，目标清楚但关系深度通常较低。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>4</span></div><div class="score"><b>SF2</b><span>4</span></div><div class="score"><b>SF3</b><span>3</span></div><div class="score"><b>SF4</b><span>n/a</span></div><div class="score"><b>SF5</b><span>n/a</span></div><div class="score"><b>SF6</b><span>2</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Informal discussions</div><span class="tag tag-violet">Collaborative</span></div>
+        <p class="form-desc">机构之间讨论对特定公司情形的看法，正式程度较低。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>2</span></div><div class="score"><b>SF2</b><span>2</span></div><div class="score"><b>SF3</b><span>2</span></div><div class="score"><b>SF4</b><span>2</span></div><div class="score"><b>SF5</b><span>2</span></div><div class="score"><b>SF6</b><span>2</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Collaborative campaigns</div><span class="tag tag-violet">Collaborative</span></div>
+        <p class="form-desc">协作写信或市场/行业范围活动，规模大但通常不够定制。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>3</span></div><div class="score"><b>SF2</b><span>3</span></div><div class="score"><b>SF3</b><span>1</span></div><div class="score"><b>SF4</b><span>2</span></div><div class="score"><b>SF5</b><span>5</span></div><div class="score"><b>SF6</b><span>3</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Follow-on dialogue</div><span class="tag tag-violet">Collaborative</span></div>
+        <p class="form-desc">在更广泛群体发信或表达观点后，由一名或多名投资者跟进公司对话。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>4</span></div><div class="score"><b>SF2</b><span>3</span></div><div class="score"><b>SF3</b><span>3</span></div><div class="score"><b>SF4</b><span>2</span></div><div class="score"><b>SF5</b><span>3</span></div><div class="score"><b>SF6</b><span>3</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Soliciting support</div><span class="tag tag-amber">Collaborative</span></div>
+        <p class="form-desc">为公开目标征集更广泛支持，例如 vote no campaign 或支持股东决议。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>4</span></div><div class="score"><b>SF2</b><span>4</span></div><div class="score"><b>SF3</b><span>3</span></div><div class="score"><b>SF4</b><span>4</span></div><div class="score"><b>SF5</b><span>4</span></div><div class="score"><b>SF6</b><span>3</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Group meetings</div><span class="tag tag-amber">Collaborative</span></div>
+        <p class="form-desc">投资者与公司进行一次或多次小组会议，通常更正式并要求清楚目标。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>4</span></div><div class="score"><b>SF2</b><span>4</span></div><div class="score"><b>SF3</b><span>4</span></div><div class="score"><b>SF4</b><span>3</span></div><div class="score"><b>SF5</b><span>4</span></div><div class="score"><b>SF6</b><span>4</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Collective engagement</div><span class="tag tag-green">Collaborative</span></div>
+        <p class="form-desc">正式投资者联盟，有明确目标，通常长期推进并有协调机构。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>5</span></div><div class="score"><b>SF2</b><span>5</span></div><div class="score"><b>SF3</b><span>5</span></div><div class="score"><b>SF4</b><span>5</span></div><div class="score"><b>SF5</b><span>4</span></div><div class="score"><b>SF6</b><span>5</span></div></div>
+      </article>
+      <article class="form-card">
+        <div class="form-top"><div class="form-title">Concert party</div><span class="tag tag-rose">Collaborative</span></div>
+        <p class="form-desc">正式协议、具体目标和约定步骤，例如共同提出决议或约定投票，监管关注高。</p>
+        <div class="score-row"><div class="score"><b>SF1</b><span>5</span></div><div class="score"><b>SF2</b><span>5</span></div><div class="score"><b>SF3</b><span>4</span></div><div class="score"><b>SF4</b><span>5</span></div><div class="score"><b>SF5</b><span>1</span></div><div class="score"><b>SF6</b><span>2</span></div></div>
+      </article>
+    </div>
+    <div class="footer-note">分数标签：SF1 clear objective；SF2 material and strategic；SF3 bespoke；SF4 effective leadership；SF5 scale of coalition；SF6 depth of relationship。</div>
+  </section>
+
+  <section id="logic" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：好参与的 6 条线</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+
+    <div class="concept-grid">
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">1. 目标清楚才开始</div><span class="tag tag-blue">Goal</span></div>
+        <p class="small"><b>原文要点：</b>engagement 是 purposeful dialogue with a specific objective；clear goal 设定后，engagement proper 才真正开始。</p>
+        <div class="quote-box"><b>中文解释：</b>一开始只是摸情况、问信息，不等于真正参与。真正参与要知道“我要公司改变什么、何时判断达成”。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Goal-based engagement</div><div class="eq-op">==</div><div class="eq-rhs">specific objective + milestones + progress tracking</div></div>
+          <div class="eq"><div class="eq-lhs">No goal</div><div class="eq-op">==</div><div class="eq-rhs">conversation / information seeking, not engagement proper</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干若问 best way to assess success，回到 objectives and outcomes。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">2. 6 个成功因素</div><span class="tag tag-green">SF1-SF6</span></div>
+        <p class="small"><b>原文要点：</b>Investor Forum 提出 6 个关键成功因素，前三个看 engagement focus，后三个看 investor grouping and approach。</p>
+        <div class="quote-box"><b>中文解释：</b>先看目标和议题有没有价值，再看方法是否定制；如果是协作参与，还要看谁领导、规模够不够、是否了解公司文化。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Focus</div><div class="eq-op">==</div><div class="eq-rhs">clear objective + material strategic issue + bespoke approach</div></div>
+          <div class="eq"><div class="eq-lhs">Coalition</div><div class="eq-op">==</div><div class="eq-rhs">effective leadership + meaningful scale + relationship / cultural awareness</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Group meetings 和 collective engagement 之所以更强，是因为目标、正式程度和关系/规模更充分。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">3. 资源约束</div><span class="tag tag-amber">Resources</span></div>
+        <p class="small"><b>原文要点：</b>最大挑战之一是资源：time、expertise、leverage。所有投资者实际都 resource constrained。</p>
+        <div class="quote-box"><b>中文解释：</b>公司太多、议题太多，不能每家公司每个问题都深度参与。必须选公司、选议题、选路径。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Resource constraint</div><div class="eq-op">==</div><div class="eq-rhs">limited time + limited expertise + limited leverage</div></div>
+          <div class="eq"><div class="eq-lhs">Prioritization</div><div class="eq-op">==</div><div class="eq-rhs">which company + which issue + which engagement form</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>大型投资机构持仓广泛，成功 engagement 最难的往往是内部资源约束。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">4. 投资语境</div><span class="tag tag-violet">Context</span></div>
+        <p class="small"><b>原文要点：</b>参与方法必须置于 fund manager 的投资方法中，active 和 passive 的优先排序方式会不同。</p>
+        <div class="quote-box"><b>中文解释：</b>主动投资者对个别公司价值风险更敏感；被动投资者持仓广，通常关注最大公司和最重大、可横向推进的议题。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Active manager</div><div class="eq-op">==</div><div class="eq-rhs">value-at-risk + company / issue prioritization + possible sale</div></div>
+          <div class="eq"><div class="eq-lhs">Passive investor</div><div class="eq-op">==</div><div class="eq-rhs">largest companies + top-down material issues + client emphasis</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>不要以为被动投资者不能参与；它只是通常用更议题化、规模化方式参与。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">5. 执行细节</div><span class="tag tag-teal">Practice</span></div>
+        <p class="small"><b>原文要点：</b>清楚目标帮助设定议程、找到正确公司代表，并通过 KPI / milestones 追踪交付。</p>
+        <div class="quote-box"><b>中文解释：</b>不同议题找不同人。ESG 运营问题找可持续/IR，战略问题找 CEO/CFO，治理问题找 chair 和公司秘书。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG operations</div><div class="eq-op">==</div><div class="eq-rhs">sustainability / IR → senior management → board</div></div>
+          <div class="eq"><div class="eq-lhs">Governance</div><div class="eq-op">==</div><div class="eq-rhs">chair + company secretary → SID / lead independent director</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>早期成功参与常见动作是 site visits 和深入了解公司文化，而不是上来找媒体或 AGM 发言。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">6. 促进因素和障碍</div><span class="tag tag-rose">Enablers</span></div>
+        <p class="small"><b>原文要点：</b>PRI 总结了关系、公司、投资者三类促进因素和障碍，包括双向对话、董事会接触、清晰目标、投资者准备和资源等。</p>
+        <div class="quote-box"><b>中文解释：</b>有效参与不是投资者单方“发要求”。公司愿不愿回应、投资者是否准备充分、双方是否理解语言文化，都会影响结果。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Enablers</div><div class="eq-op">==</div><div class="eq-rhs">two-way dialogue + honesty + board access + clear objectives + tracking tools</div></div>
+          <div class="eq"><div class="eq-lhs">Barriers</div><div class="eq-op">==</div><div class="eq-rhs">language/culture + lack of preparation + weak ESG team + unclear policy + low leverage</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>缺少投资者准备、问题太笼统、目标变化、关系弱，都会削弱 engagement 成功率。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="practice" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Practical Cases</div>
+        <h2>实务执行：把目标放进会议和资源安排</h2>
+      </div>
+      <div class="head-desc">这部分按实务场景组织，帮助你看到题眼时能反推正确做法。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">场景 1：问题还没摸清时</div><span class="tag tag-blue">Before goal</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">状态</div><div class="case-text">问题规模和公司暴露不清楚，投资者先问问题、了解情况。</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这还只是 conversation 或 information seeking，不是 engagement proper。</div></div>
+          <div class="case-row"><div class="case-lab">下一步</div><div class="case-text">形成 clear goal、milestones 和评价标准后，目标型 engagement 才真正开始。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">场景 2：气候或供应链议题怎么谈</div><span class="tag tag-green">Framing</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">错误谈法</div><div class="case-text">只说“你们应该重视 ESG”。</div></div>
+          <div class="case-row"><div class="case-lab">正确谈法</div><div class="case-text">把 climate risk 或 supply chain risk 放到 strategy、risk management 和 long-term financial performance 中讨论。</div></div>
+          <div class="case-row"><div class="case-lab">对象</div><div class="case-text">与 management team 和 board 沟通，说明改变符合公司长期利益。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">场景 3：资源不够时</div><span class="tag tag-amber">Resources</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">限制</div><div class="case-text">投资机构缺少时间、专业能力或足够影响力，无法对所有持仓深度参与。</div></div>
+          <div class="case-row"><div class="case-lab">选择 1</div><div class="case-text">内部增加 stewardship specialists，并让 portfolio managers 与 specialist team 协作。</div></div>
+          <div class="case-row"><div class="case-lab">选择 2</div><div class="case-text">使用 external collective vehicles、commercial stewardship operations 或 investor groups。</div></div>
+          <div class="case-row"><div class="case-lab">原则</div><div class="case-text">个人参与更能处理模糊或敏感问题；集体参与更能节省资源和增强影响力，二者需要平衡。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">场景 4：会议怎么开</div><span class="tag tag-violet">Meeting</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">地点</div><div class="case-text">可在公司总部或投资机构举行；访问公司办公室可显示投资者投入。</div></div>
+          <div class="case-row"><div class="case-lab">现场</div><div class="case-text">运营或供应商 site visit 能帮助投资者真正理解公司文化和运营。</div></div>
+          <div class="case-row"><div class="case-lab">方式</div><div class="case-text">通常一小时左右与一个人讨论一组问题；倾听往往和发言一样重要，甚至更重要。</div></div>
+          <div class="case-row"><div class="case-lab">语气</div><div class="case-text">应先私下、建设性地沟通，避免媒体关注让立场僵化。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">场景 5：该找公司谁</div><span class="tag tag-teal">Right person</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">ESG 运营</div><div class="case-text">通常找 sustainability 和/或 investor relations，再升级到 senior management 和 board。</div></div>
+          <div class="case-row"><div class="case-lab">战略/运营</div><div class="case-text">通常找 CEO 或 CFO，必要时找 non-executive directors。</div></div>
+          <div class="case-row"><div class="case-lab">治理</div><div class="case-text">通常从 chair 开始，company secretary 参与，并可寻求 senior independent director 或其他 non-executives。</div></div>
+          <div class="case-row"><div class="case-lab">投票事项</div><div class="case-text">通常先联系 company secretary；美国和欧洲部分市场可能从 investor relations 开始。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">场景 6：何时准备升级</div><span class="tag tag-rose">Escalation ready</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">正常路径</div><div class="case-text">先私下建设性对话，尊重公司具体情况，解释改变为什么符合公司利益。</div></div>
+          <div class="case-row"><div class="case-lab">风险</div><div class="case-text">如果公司文化、历史或员工因素阻碍改变，成功可能需要多阶段、多年推进。</div></div>
+          <div class="case-row"><div class="case-lab">升级</div><div class="case-text">当投资者信息未被认真听取时，需要准备 escalation tools。具体投票和升级阶梯会在模块 6 学。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mistakes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>易错点：目标、形式、资源别混</h2>
+      </div>
+      <div class="head-desc">模块 5 的题通常考“哪种形式更正式、哪个成功因素缺失、下一步应该先做什么”。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Engagement proper ==</b> clear goal set + progress measured。</div>
+          <div class="formula"><b>SF1-SF3 ==</b> objective + material issue + bespoke approach。</div>
+          <div class="formula"><b>SF4-SF6 ==</b> leadership + coalition scale + relationship / cultural awareness。</div>
+          <div class="formula"><b>Resource challenge ==</b> time + expertise + leverage。</div>
+          <div class="formula"><b>Prioritization ==</b> which company + which issue。</div>
+          <div class="formula"><b>Early success action ==</b> private dialogue + preparation + site visits + listening。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Conversation vs Engagement</b>没有 clear objective 时，只是了解情况，不是真正的 goal-based engagement。</div>
+          <div class="trap"><b>Generic letter vs Tailored letter</b>Generic 广泛群发；tailored 更针对公司和问题。</div>
+          <div class="trap"><b>Collaborative campaign vs Group meeting</b>Group meeting 更需要 formal approach 和明确目标。</div>
+          <div class="trap"><b>Collective engagement vs Concert party</b>Collective engagement 是正式联盟；concert party 是更强的正式协议和约定行动，监管风险更高。</div>
+          <div class="trap"><b>Active vs Passive resources</b>主动投资者更容易按价值风险排序；被动投资者常关注最大公司和 top-down material issues。</div>
+          <div class="trap"><b>Media interest vs Early engagement</b>媒体和 AGM 发言通常偏升级；早期更应私下了解、site visit、建设性对话。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">记忆线：先确定目标，再选形式；先排优先级，再用资源；先私下建设性沟通，再考虑升级。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖模块 5</h2>
+      </div>
+      <div class="head-desc">点击“看答案”自测。正式 Practice Problems 会放到最后的三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">Engagement proper 从什么时候真正开始？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">从 clear goal or objective 被设定后开始。目标不清前，只是 conversation 或 information seeking。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Investor Forum 提出的 6 个成功因素是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">SF1 目标 specific and targeted；SF2 目标战略/治理相关或重大；SF3 方法 bespoke；SF4 clear leadership 和适当关系、技能、知识；SF5 coalition scale meaningful；SF6 prior relationship 或 cultural awareness。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">哪一种 collaborative engagement 在选项中通常最需要更正式的 approach？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Group meetings with the company。相比 collaborative letter-writing campaigns 或 soliciting broader support，它更需要组织化、正式方法和清晰目标。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">成功 engagement 的最大资源挑战通常是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">是否有足够时间、专业能力和 leverage。大型资产管理机构持仓公司多，资源约束尤其明显。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">资源受限时，投资者需要做哪两类优先级判断？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">第一，哪个公司最需要 engagement；第二，与公司对话时哪些 engagement issues 应该优先。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">为什么投资者不应把所有可能担忧都向公司提出？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为会制造混乱，让公司不清楚投资者认为哪些问题最重要，从而削弱改变效果。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">早期成功 engagement 更可能采取什么行动？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">私下、建设性对话；充分准备；site visits 或 supplier visits；深入了解公司文化和历史。媒体关注或 AGM 发言通常属于升级阶段。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">ESG operational matters、business strategy、governance matters 分别通常找谁？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">ESG 运营事项找 sustainability / investor relations，并可升级到 senior management 和 board；业务战略或运营事项找 CEO/CFO；治理事项找 chair，常有 company secretary 参与。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const open = card.classList.toggle('show');
+    btn.textContent = open ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

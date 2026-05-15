@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 6：Carbon Pricing and Environmental Materiality</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%;min-width:0}
+h1{font-family:var(--serif);font-size:clamp(27px,4.8vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:730px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.compact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px;margin-top:10px}
+.compact-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--sh-sm)}
+.compact-item b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}
+.compact-item span{display:block;color:var(--sub);font-size:12.8px;line-height:1.6}
+.mini-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(245px,100%),1fr));gap:10px;margin-top:10px}
+.mini-cell{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:12px}
+.mini-cell h3{font-size:14px;margin-bottom:6px}
+.mini-cell p{font-size:12.8px;color:var(--sub);line-height:1.62;margin:0}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qchoices{font-size:12.8px;color:var(--sub);line-height:1.7;margin-top:6px;font-weight:500}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .pills{display:grid;grid-template-columns:1fr 1fr}
+  .pill{justify-content:center;text-align:center;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+  .nav{position:static;flex-wrap:wrap;overflow:visible}
+  .tab{flex:1 1 calc(50% - 6px);white-space:normal;text-align:center;min-height:40px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px;width:100%;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px;overflow-wrap:anywhere;word-break:break-word}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 6</span>
+        <span class="pill">3.1.5 / 3.1.6</span>
+        <span class="pill">Carbon Pricing & Materiality</span>
+      </div>
+      <h1>Carbon Pricing and Environmental Materiality</h1>
+      <p class="lead">本页把碳定价和环境重要性合在一条投资线里：先看碳税、ETS、shadow carbon pricing 和 offsetting 如何把排放变成成本；再看这些环境因素如何进入企业估值、项目融资、公共金融和资产管理。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Environmental materiality == 碳被定价 + 环境风险进入成本/收入/资本开支 + 项目和公共资金被筛选 + 资产管理人用数据、框架和参与行动重新配置资本</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">3.1.5 描述并解释 carbon pricing 方法；3.1.6 评估环境问题对投资机会、企业和项目融资、公共金融、资产管理的重大影响。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">77</div><div class="mini-lab">2023 年已实施或计划实施的碳定价倡议</div></div>
+        <div class="mini-stat"><div class="mini-num">23%</div><div class="mini-lab">这些倡议覆盖的全球 GHG 排放比例</div></div>
+      </div>
+      <div class="side-note">记忆抓手：碳定价回答“排放要付多少钱”；materiality 回答“这个钱会不会大到影响估值、信用和配置”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看主线：排放从外部性变成投资变量</h2>
+      </div>
+      <div class="head-desc">本模块的关键不是背工具名称，而是理解一条传导：碳价格和环境风险进入公司现金流，最后进入估值和资产配置。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Carbon Pricing + Environmental Materiality<br>外部性被定价，风险进入财务模型，资本再按风险和机会重新分配</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Carbon tax</div>
+          <p>政府设定固定价格。</p>
+          <p>优点是可预测，效果取决于税率、需求弹性和成本传导。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">ETS / cap-and-trade</div>
+          <p>政府设总量上限并发放配额。</p>
+          <p>配额稀缺产生价格信号，推动减排投资。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Shadow carbon price</div>
+          <p>企业或金融机构内部假设每吨碳成本。</p>
+          <p>用于项目、估值、资本开支和组合分析。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Offsetting</div>
+          <p>用一处减排或碳汇抵消另一处排放。</p>
+          <p>难点是额外性、未来性、双重计算和透明度。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Materiality</div>
+          <p>环境问题是否重大，取决于是否影响价值驱动因素。</p>
+          <p>包括收入、利润率、资本开支、风险和信用。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>1. 排放被定价</h3><p>碳税、ETS 或内部碳价把排放变成成本。</p></div>
+        <div class="flow-step"><h3>2. 成本进入决策</h3><p>企业比较继续排放、购买配额、缴税或投资减排。</p></div>
+        <div class="flow-step"><h3>3. 风险变重大</h3><p>政策、技术、消费者态度会改变现金流和估值变量。</p></div>
+        <div class="flow-step"><h3>4. 融资被筛选</h3><p>项目融资、公私合作和公共资金关注环境与社会风险。</p></div>
+        <div class="flow-step"><h3>5. 资产被重配</h3><p>资产管理人用排除、正面筛选、影响投资和参与行动回应。</p></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">Polluter Pays</span>
+        <h3>碳定价的底层原则</h3>
+        <p class="small">把排放的外部成本显性化，让排放者承担成本，从而形成减排激励。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Materiality</span>
+        <h3>重要性不是静态标签</h3>
+        <p class="small">市场、政策和消费者态度变化会改变环境因素的重要性，塑料污染就是 PDF 给出的典型例子。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">Investment Lens</span>
+        <h3>投资分析落点</h3>
+        <p class="small">环境因素最终要落到 forecasted financials、ratios、valuation variables、multiples、credit assessment 和 portfolio weights。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>覆盖清单：按 PDF 原文顺序排查</h2>
+      </div>
+      <div class="head-desc">这一页用于防漏。第 6 模块覆盖正文第 161-169 页，即 3.1.5 和 3.1.6。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">A</span> Carbon pricing and compliance markets</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">1</span><div class="text">碳定价被视为脱碳经济转型的关键方法，也常被称为 polluter pays principle。</div></div>
+        <div class="coverage-item"><span class="check">2</span><div class="text">最常见的碳定价方法是 ETS 和 carbon tax，大致对应国际贸易中的 quota 和 tariff。</div></div>
+        <div class="coverage-item"><span class="check">3</span><div class="text">Carbon taxation：政府为每吨碳排放设定固定价格，企业为排放缴税。</div></div>
+        <div class="coverage-item"><span class="check">4</span><div class="text">碳税优点是可预测；效果取决于税率、需求弹性、企业能否把成本转嫁给消费者。</div></div>
+        <div class="coverage-item"><span class="check">5</span><div class="text">为实现 Paris 目标，估计 2020 年代需要每吨 CO2 40-80 美元，到 2030 年约 50-100 美元；全球平均价格仅约 4.5 美元。</div></div>
+        <div class="coverage-item"><span class="check">6</span><div class="text">ETS 是法律基础上的 compliance market，设定排放总量上限并发行 permits/allowances。</div></div>
+        <div class="coverage-item"><span class="check">7</span><div class="text">Cap-and-trade 中，参与者要取得与年度核实排放相匹配的配额，并交回监管者履约。</div></div>
+        <div class="coverage-item"><span class="check">8</span><div class="text">排放上限逐年下降，配额稀缺推动价格上升，形成投资低碳替代技术的价格信号。</div></div>
+        <div class="coverage-item"><span class="check">9</span><div class="text">市场之间配额通常不可互通，除非通过政治决定或法律协议连接市场，如 Swiss ETS 和 EU ETS。</div></div>
+        <div class="coverage-item"><span class="check">10</span><div class="text">主要 ETS 包括 EU ETS、RGGI、California Cap-and-Trade、WCI、NZ ETS、KETS、China ETS、Tokyo 等。</div></div>
+        <div class="coverage-item"><span class="check">11</span><div class="text">英国早期碳定价和排放交易有助于煤电快速下降；EU ETS 2005 年设立，覆盖欧洲约一半经济。</div></div>
+        <div class="coverage-item"><span class="check">12</span><div class="text">2023 年已有或计划实施 77 项碳定价倡议，约一半碳税、一半 ETS，覆盖约 23% 全球 GHG 排放。</div></div>
+        <div class="coverage-item"><span class="check">13</span><div class="text">这些倡议约产生 1,000 亿美元收入，其中约一半用于绿色项目或补偿家庭和企业。</div></div>
+        <div class="coverage-item"><span class="check">14</span><div class="text">Shadow/internal carbon price 是每吨碳排放的理论或假设成本，用于项目、商业模式或投资分析。</div></div>
+        <div class="coverage-item"><span class="check">15</span><div class="text">BP 示例：使用 2030 年每吨 CO2e 100 美元假设评估未来气候监管对项目盈利性的影响。</div></div>
+        <div class="coverage-item"><span class="check">16</span><div class="text">Offsetting 指一处经济活动的减排可被视为补偿另一处 GHG 排放。</div></div>
+        <div class="coverage-item"><span class="check">17</span><div class="text">抵消的主要挑战：透明度和科学严谨性不均、反事实额外性、未来碳汇、跨辖区和跨期间核算、双重计算。</div></div>
+        <div class="coverage-item"><span class="check">18</span><div class="text">COP26 在 Paris Agreement Article 6 下推动更严格规则，包括避免 double counting 和限制可作为真实抵消的项目。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">B</span> Environmental materiality and finance</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">19</span><div class="text">重大环境问题是会对商业模式和价值驱动因素产生显著正面或负面影响的因素。</div></div>
+        <div class="coverage-item"><span class="check">20</span><div class="text">价值驱动因素包括 operating expenditure、capital expenditure、revenue growth、margins 和 risk。</div></div>
+        <div class="coverage-item"><span class="check">21</span><div class="text">Materiality 不是静态的，会随市场、政策和消费者态度变化而变化。</div></div>
+        <div class="coverage-item"><span class="check">22</span><div class="text">塑料污染和一次性塑料监管会影响未来石油需求；PepsiCo 通过可回收、可堆肥、可降解或可重复使用包装应对。</div></div>
+        <div class="coverage-item"><span class="check">23</span><div class="text">投资者应结合正面和负面环境影响，进行 research 和 materiality analysis。</div></div>
+        <div class="coverage-item"><span class="check">24</span><div class="text">分析对象包括公司、行业、地理位置和组合层面；方法结合 quantitative 和 qualitative data。</div></div>
+        <div class="coverage-item"><span class="check">25</span><div class="text">环境分析可能影响预测财务数据、比率、估值变量、估值倍数、信用评估和组合权重。</div></div>
+        <div class="coverage-item"><span class="check">26</span><div class="text">企业/项目层面：分析能源、水和废弃物使用，判断风险是否已经被市场定价。</div></div>
+        <div class="coverage-item"><span class="check">27</span><div class="text">Equator Principles 基于 IFC Performance Standards，是项目融资中评估和管理环境/社会风险的全球框架。</div></div>
+        <div class="coverage-item"><span class="check">28</span><div class="text">项目风险包括空气污染、污水、固体废弃物、危险物质、过度用能、过度用水、噪声、土地使用等。</div></div>
+        <div class="coverage-item"><span class="check">29</span><div class="text">公共金融：Helsinki Principles 鼓励把气候变化纳入宏观政策、财政规划、预算、公共投资管理和采购。</div></div>
+        <div class="coverage-item"><span class="check">30</span><div class="text">公共资金可通过专业银行、绿色基础设施基金、平台型工具支持绿色增长和发展中国家项目。</div></div>
+        <div class="coverage-item"><span class="check">31</span><div class="text">2021-2022 年全球气候金融流量中，公共和私人资金大体相当；公共资金主要来自国家 DFIs、国企、政府和多边 DFIs。</div></div>
+        <div class="coverage-item"><span class="check">32</span><div class="text">公共和私人资金合计约 90% 流向 mitigation，其余支持 adaptation 和其他努力。</div></div>
+        <div class="coverage-item"><span class="check">33</span><div class="text">资产管理人可通过直接投资、买债、投票、董事任免、管理层激励和 engagement 影响 ESG 因素。</div></div>
+        <div class="coverage-item"><span class="check">34</span><div class="text">资产管理策略包括 exclusions、positive screening、impact investing 和 active stewardship。</div></div>
+        <div class="coverage-item"><span class="check">35</span><div class="text">SASB/ISSB Materiality Map 覆盖 GHG emissions、air quality、energy、water/wastewater、waste/hazardous materials、ecological impacts。</div></div>
+        <div class="coverage-item"><span class="check">36</span><div class="text">投资者合作组织包括 UN PRI、Ceres、Asia Investor Group on Climate Change、Investor Group on Climate Change。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：从“碳价”推到“估值”</h2>
+      </div>
+      <div class="head-desc">每张卡都包括原文要点、中文解释、逻辑等式、投资影响或考点提醒。</div>
+    </div>
+
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Carbon pricing：把污染外部性变成价格</div><span class="tag tag-blue">Polluter Pays</span></div>
+        <div class="source-point"><b>原文要点：</b>碳定价在脱碳经济转型中具有基本作用，被视为应对气候变化最有效的方法之一，也称为 polluter pays principle。</div>
+        <p class="small"><b>中文解释：</b>过去排放的社会成本常常没有进入企业账本。碳定价的作用，就是让“排放”变成企业能看见、能比较、能优化的成本。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Carbon pricing</div><div class="eq-op">=</div><div class="eq-rhs">排放外部性 + 明确成本 + 减排激励</div></div>
+          <div class="eq"><div class="eq-lhs">投资题眼</div><div class="eq-op">→</div><div class="eq-rhs">高排放公司如果无法转嫁成本，利润率和估值可能承压。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>最常见方法是 ETS 和 carbon tax；ETS 更像 quota，碳税更像 tariff。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Carbon tax：价格固定，排放量不固定</div><span class="tag tag-green">Tax</span></div>
+        <div class="source-point"><b>原文要点：</b>碳税由政府为碳排放设定固定价格，排放者按每吨碳排放缴税。</div>
+        <p class="small"><b>中文解释：</b>碳税先回答“每吨碳多少钱”。企业知道单价后，会比较缴税成本与减排投资成本。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Carbon tax</div><div class="eq-op">=</div><div class="eq-rhs">固定碳价 × 排放量 → 企业排放成本</div></div>
+          <div class="eq"><div class="eq-lhs">有效性</div><div class="eq-op">=</div><div class="eq-rhs">税率高低 + 需求弹性 + 成本转嫁能力</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>价格可预测，有利于模型估算；但如果税率太低或需求缺乏弹性，减排激励可能不足。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. ETS：排放上限固定，价格由市场形成</div><span class="tag tag-violet">Cap-and-Trade</span></div>
+        <div class="source-point"><b>原文要点：</b>ETS 是法律基础上的 compliance market，监管者设定总排放上限并发行对应数量的 allowances 或 permits。</div>
+        <p class="small"><b>中文解释：</b>ETS 先回答“总共允许排多少”。企业需要买足或取得与实际排放匹配的配额，最后交回监管者。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ETS</div><div class="eq-op">=</div><div class="eq-rhs">总量上限 + 配额 + 交易 + 履约交回</div></div>
+          <div class="eq"><div class="eq-lhs">减排机制</div><div class="eq-op">→</div><div class="eq-rhs">cap 下降 → permits 稀缺 → 碳价上升 → 减排投资更划算</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>ETS 的关键不是“政府收税”，而是“配额稀缺形成价格信号”。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. ETS linking：市场不天然互通</div><span class="tag tag-amber">Market Link</span></div>
+        <div class="source-point"><b>原文要点：</b>不同 cap-and-trade 系统通常按国家法律建立，除非有法律协议，否则配额不能跨市场互通。</div>
+        <p class="small"><b>中文解释：</b>一张市场的碳配额不是全球通用券。只有政治决定或条约连接两个市场后，才可能跨辖区用于合规。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ETS linking</div><div class="eq-op">=</div><div class="eq-rhs">法律/政治协议 + 配额互认 + 更大减排机会池</div></div>
+          <div class="eq"><div class="eq-lhs">作用</div><div class="eq-op">→</div><div class="eq-rhs">规模经济 + 寻找更低成本减排机会</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Swiss ETS 和 EU ETS 是 PDF 给出的连接示例。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Shadow carbon pricing：内部先把未来成本算进去</div><span class="tag tag-teal">Internal Price</span></div>
+        <div class="source-point"><b>原文要点：</b>内部或影子碳价创造每吨碳排放的理论或假设成本，用于理解未来气候监管对项目、商业模式或投资盈利性的影响。</div>
+        <p class="small"><b>中文解释：</b>即使今天还没有正式碳税或 ETS，公司也可以先在内部模型里假设未来碳成本，避免项目投完后才发现不赚钱。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Shadow price</div><div class="eq-op">=</div><div class="eq-rhs">假设碳价 × 未来排放 → 项目盈利压力测试</div></div>
+          <div class="eq"><div class="eq-lhs">用途</div><div class="eq-op">→</div><div class="eq-rhs">揭示隐藏风险 + 调整估值/资本开支 + 激励低碳创新</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Practice Problem 明确说 shadow carbon pricing 不是隐藏真实成本，而是显性考虑碳成本和风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Carbon offsetting：抵消不是免费通行证</div><span class="tag tag-rose">Offset</span></div>
+        <div class="source-point"><b>原文要点：</b>Offsetting 是用经济中一处减排来补偿另一处 GHG 排放；净零情景中部分残余排放需要由自然或人工碳汇平衡。</div>
+        <p class="small"><b>中文解释：</b>抵消的难点在于“这项减排是不是因为购买抵消才发生”。如果本来就会发生，或者未来才可能发生，就不能简单当成现在已经抵消。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Good offset</div><div class="eq-op">=</div><div class="eq-rhs">真实减排 + 额外性 + 可核验 + 不双重计算</div></div>
+          <div class="eq"><div class="eq-lhs">风险点</div><div class="eq-op">=</div><div class="eq-rhs">would have happened anyway + not happened yet + double counting</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>公司过度依赖低质量抵消，可能产生漂绿风险和未来合规风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Materiality：环境因素是否足够影响价值</div><span class="tag tag-green">Materiality</span></div>
+        <div class="source-point"><b>原文要点：</b>重大环境问题可能对商业模式和价值驱动因素产生显著正面或负面影响，包括运营成本、资本开支、收入增长、利润率和风险。</div>
+        <p class="small"><b>中文解释：</b>不是所有环境议题对所有公司都同样重要。关键是它是否能改变公司赚钱、花钱、融资、被监管和被客户选择的方式。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Materiality</div><div class="eq-op">=</div><div class="eq-rhs">环境事件/政策/态度变化 → 价值驱动因素变化</div></div>
+          <div class="eq"><div class="eq-lhs">价值驱动</div><div class="eq-op">=</div><div class="eq-rhs">Opex + Capex + Revenue growth + Margins + Risk</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Materiality is not static。它会随着市场、政策和消费者态度变化。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">8. 投资分析：从环境数据到模型变量</div><span class="tag tag-blue">Investment Analysis</span></div>
+        <div class="source-point"><b>原文要点：</b>投资者基于定量和定性数据进行环境分析，可能调整预测财务数据、比率、估值模型变量、估值倍数、信用评估和组合权重。</div>
+        <p class="small"><b>中文解释：</b>环境分析不是写 ESG 评论，而是要落到模型里：收入怎么变、成本怎么变、折现率和估值倍数怎么变、信用风险怎么变。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Environmental analysis</div><div class="eq-op">→</div><div class="eq-rhs">forecast financials + ratios + valuation variables + credit + allocation</div></div>
+          <div class="eq"><div class="eq-lhs">分析维度</div><div class="eq-op">=</div><div class="eq-rhs">company + sector + geography + portfolio</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>如果忽视重要性，投资者可能暴露于政策、技术和消费者情绪变化，或错过投资机会。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">9. 企业/项目融资：先看能源、水、废弃物</div><span class="tag tag-amber">Project Finance</span></div>
+        <div class="source-point"><b>原文要点：</b>企业或项目层面，分析环境影响和重要性的起点是能源消耗、水利用和废弃物利用。</div>
+        <p class="small"><b>中文解释：</b>项目融资尤其重视项目所在地和运营方式，因为环境风险常常直接变成许可、罚款、停工、治理成本和声誉风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">项目环境分析</div><div class="eq-op">=</div><div class="eq-rhs">Energy + Water + Waste → 风险是否重大、是否已被定价</div></div>
+          <div class="eq"><div class="eq-lhs">判断顺序</div><div class="eq-op">→</div><div class="eq-rhs">识别风险 → 衡量成本/影响 → 同业比较 → 融资或估值调整</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>不要只看碳排放。水、废水、危险废弃物、土地和噪声也会形成重大环境风险。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">10. Equator Principles：项目融资的风控框架</div><span class="tag tag-violet">Equator</span></div>
+        <div class="source-point"><b>原文要点：</b>Equator Principles 基于 IFC Performance Standards，是金融机构在项目融资中判断、评估和管理环境与社会风险的全球风险管理框架。</div>
+        <p class="small"><b>中文解释：</b>项目融资不是只看现金流能不能还债，还要看项目会不会污染空气、水、土壤，是否破坏生态，是否带来社会和安置风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Equator Principles</div><div class="eq-op">=</div><div class="eq-rhs">IFC standards + environmental risk + social risk + project finance due diligence</div></div>
+          <div class="eq"><div class="eq-lhs">风险链</div><div class="eq-op">→</div><div class="eq-rhs">污染/资源过度使用/土地占用 → 法律、运营、信用和声誉风险</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>贷款人需要把环境风险转化为融资条件、契约、监控和退出判断。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">11. Public finance：政府资金也要纳入气候目标</div><span class="tag tag-teal">Public Finance</span></div>
+        <div class="source-point"><b>原文要点：</b>Helsinki Principles 鼓励把气候变化纳入宏观经济政策、财政规划、预算、公共投资管理和采购实践。</div>
+        <p class="small"><b>中文解释：</b>政府本身是大型采购者和投资者。公共资金如果继续流向高碳基础设施，会锁定未来排放；如果转向绿色项目，会撬动私人资本。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Public finance</div><div class="eq-op">=</div><div class="eq-rhs">财政预算 + 公共采购 + 发展金融 + 私人资本撬动</div></div>
+          <div class="eq"><div class="eq-lhs">Helsinki</div><div class="eq-op">→</div><div class="eq-rhs">macro policy + fiscal planning + budgeting + public investment + procurement</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Practice Problem 中，鼓励把气候纳入宏观和财政规划的是 Helsinki Principles。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">12. Asset management：资本的直接和间接影响</div><span class="tag tag-green">Stewardship</span></div>
+        <div class="source-point"><b>原文要点：</b>资产管理人作为资本的 steward，可通过直接融资、购买债券、投票、董事任免和 engagement 影响 ESG 因素。</div>
+        <p class="small"><b>中文解释：</b>资产管理不是只有“买/不买”。还包括持有后怎么投票、怎么与公司沟通、怎么推动管理层激励与可持续目标一致。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Asset manager tools</div><div class="eq-op">=</div><div class="eq-rhs">exclusion + positive screening + impact investing + engagement + voting</div></div>
+          <div class="eq"><div class="eq-lhs">现实限制</div><div class="eq-op">=</div><div class="eq-rhs">client mandates + index-tracking constraints + data gaps</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>同一行业公司环境风险不同，资产管理人需要标准化数据和框架下沉到证券层面。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">13. SASB/ISSB Materiality Map：按行业看什么重要</div><span class="tag tag-blue">Materiality Map</span></div>
+        <div class="source-point"><b>原文要点：</b>SASB 于 2011 年推出标准，后于 2022 年转入 ISSB。Materiality Map 识别和比较不同行业披露主题。</div>
+        <p class="small"><b>中文解释：</b>Materiality Map 的核心是“行业差异”。对矿业和交通，GHG 可能非常重要；对医疗和科技通信，重要性结构可能不同。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Materiality Map</div><div class="eq-op">=</div><div class="eq-rhs">行业 × 主题 → 哪些环境因素更可能重大</div></div>
+          <div class="eq"><div class="eq-lhs">环境主题</div><div class="eq-op">=</div><div class="eq-rhs">GHG + air quality + energy + water/wastewater + waste/hazardous + ecological impacts</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>不同框架对 materiality 的定义和披露指标不完全一致，ISSB 试图建立面向投资者的信息基线。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Tables</div>
+        <h2>案例框：把工具放回真实投资场景</h2>
+      </div>
+      <div class="head-desc">这里把 PDF 中的数据、示例和 Exhibit 19 压缩成可复习卡片。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Carbon tax vs ETS</div><span class="tag tag-blue">Core Pair</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Carbon tax</b><span>固定每吨碳价格，排放量由企业反应决定；优点是可预测。</span></div>
+            <div class="compact-item"><b>ETS</b><span>固定总排放上限，价格由配额市场形成；重点是 cap-and-trade。</span></div>
+          </div>
+          <div class="case-row" style="margin-top:10px"><div class="case-lab">题眼钩子</div><div class="case-text">fixed price = carbon tax；allowances/permits/cap = ETS。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Carbon pricing data points</div><span class="tag tag-green">Numbers</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">价格差距</div><div class="case-text">实现 Paris 目标估计需要 2020 年代每吨 CO2 40-80 美元，到 2030 年 50-100 美元；全球平均价格约 4.5 美元。</div></div>
+          <div class="case-row"><div class="case-lab">覆盖范围</div><div class="case-text">2023 年有 77 项已实施或计划实施的碳定价倡议，覆盖约 23% 全球 GHG 排放。</div></div>
+          <div class="case-row"><div class="case-lab">收入用途</div><div class="case-text">约产生 1,000 亿美元收入，其中约一半用于绿色项目或补偿家庭/企业。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">BP shadow carbon price</div><span class="tag tag-teal">Internal Price</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文示例</div><div class="case-text">BP 使用 2030 年每吨 CO2e 100 美元的价格假设，评估未来气候监管对项目、商业模式或投资盈利性的影响。</div></div>
+          <div class="case-row"><div class="case-lab">投资意义</div><div class="case-text">提前把未来碳成本放进模型，暴露隐藏风险，并影响估值和资本开支决策。</div></div>
+          <div class="case-row"><div class="case-lab">易错点</div><div class="case-text">Shadow carbon pricing 不是 conceal true cost，而是 explicitly consider carbon costs and risks。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Offsetting and Article 6</div><span class="tag tag-rose">Integrity</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">核心问题</div><div class="case-text">抵消市场既有自愿部分也有监管部分，透明度和科学严谨性不均。</div></div>
+          <div class="case-row"><div class="case-lab">反事实难点</div><div class="case-text">如果某项减排本来就会发生，或未来才会发生，就不能简单用来抵消当前排放。</div></div>
+          <div class="case-row"><div class="case-lab">COP26</div><div class="case-text">Article 6 取得进展：限制历史 credits、避免 double counting、限制可计入真实抵消的项目。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Plastic pollution materiality</div><span class="tag tag-amber">Dynamic</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文示例</div><div class="case-text">公众对塑料污染的关注和一次性塑料监管，会对未来石油需求形成 material impact。</div></div>
+          <div class="case-row"><div class="case-lab">企业响应</div><div class="case-text">PepsiCo 计划包装可回收、可堆肥、可降解或可重复使用，并提高再生材料使用比例。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">消费者态度 + 监管收紧 → 产品需求/包装成本/原料需求变化 → 估值变化。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Exhibit 19: project-level environmental risks</div><span class="tag tag-violet">Risks</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Air emissions</b><span>污染空气、土地和地表水。</span></div>
+            <div class="compact-item"><b>Liquid effluents</b><span>污水或处理不当导致地表水污染。</span></div>
+            <div class="compact-item"><b>Solid waste</b><span>管理不当导致土地、地下水和地表水污染。</span></div>
+            <div class="compact-item"><b>Hazardous substances</b><span>污染邻近土地和水体。</span></div>
+            <div class="compact-item"><b>Excessive energy/water use</b><span>耗竭当地能源或水资源，并带来污染残留。</span></div>
+            <div class="compact-item"><b>Noise / land use</b><span>影响人类健康、野生动物、土壤和生物多样性。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Public finance and Helsinki Principles</div><span class="tag tag-green">Public</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Helsinki</div><div class="case-text">把气候变化纳入宏观政策、财政规划、预算、公共投资管理和采购。</div></div>
+          <div class="case-row"><div class="case-lab">资金工具</div><div class="case-text">专业银行、绿色基础设施基金、TLFF 等平台可向可再生能源、可持续农业和减少森林砍伐项目提供资金。</div></div>
+          <div class="case-row"><div class="case-lab">资金流向</div><div class="case-text">公共和私人资金合计约 90% 流向 mitigation，剩余支持 adaptation 和其他努力。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Asset manager toolkit</div><span class="tag tag-blue">Capital Steward</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Exclusions</b><span>排除特定高风险行业或公司。</span></div>
+            <div class="compact-item"><b>Positive screening</b><span>优先选择环境表现更好或转型更可信的公司。</span></div>
+            <div class="compact-item"><b>Impact investing</b><span>直接投资能产生环境正面影响的项目或企业。</span></div>
+            <div class="compact-item"><b>Engagement and voting</b><span>通过投票、董事任免和公司沟通推动转型。</span></div>
+          </div>
+          <div class="case-row" style="margin-top:10px"><div class="case-lab">现实约束</div><div class="case-text">客户委托和指数跟踪基金可能限制资产管理人的选择空间。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Materiality Map and investor collaboration</div><span class="tag tag-teal">Frameworks</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">Materiality</div><div class="case-text">SASB/ISSB Materiality Map 关注 GHG、空气质量、能源、水/废水、废弃物/危险材料、生态影响。</div></div>
+          <div class="case-row"><div class="case-lab">行业差异</div><div class="case-text">GHG 对采掘、矿物加工、交通更常见重大；对医疗、科技/通信并非所有行业都同等重大。</div></div>
+          <div class="case-row"><div class="case-lab">合作组织</div><div class="case-text">UN PRI、Ceres、AIGCC、IGCC 等推动机构投资者在气候问题上合作。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：工具相似，但题眼不同</h2>
+      </div>
+      <div class="head-desc">本模块最常见错误是把“固定价格”和“固定总量”混起来，把“影子碳价”误解成隐藏成本。</div>
+    </div>
+    <div class="grid-2">
+      <div class="trap"><b>1. Carbon tax 和 ETS 不要混</b>Carbon tax 固定价格；ETS 固定排放总量并交易配额。</div>
+      <div class="trap"><b>2. ETS 不是自愿市场</b>PDF 说 ETS 是 compliance market，有区域、国家或次国家法律基础和履约要求。</div>
+      <div class="trap"><b>3. Permit 不是普通商品券</b>ETS 配额代表排放许可，企业要按年度核实排放交回配额。</div>
+      <div class="trap"><b>4. 市场配额不是天然互通</b>不同 ETS 的 permits 不可自动互换，除非有连接市场的政治或法律协议。</div>
+      <div class="trap"><b>5. Shadow carbon pricing 不是掩盖真实成本</b>它是为了显性考虑未来碳成本，用于项目、商业模式和投资盈利性分析。</div>
+      <div class="trap"><b>6. Offsetting 最大难点是质量</b>额外性、未来碳汇、双重计算和科学核验都会影响抵消可信度。</div>
+      <div class="trap"><b>7. Materiality 不是永恒固定</b>公众态度、政策和技术变化会让原本不显著的环境问题变得重大。</div>
+      <div class="trap"><b>8. 环境分析不只看定量</b>PDF 强调 quantitative 和 qualitative data 都要看，不能只用一个排放数字。</div>
+      <div class="trap"><b>9. 项目融资不只看还款现金流</b>Equator Principles 要把环境和社会风险纳入项目融资尽调。</div>
+      <div class="trap"><b>10. Asset management 不等于 divestment</b>排除只是工具之一，还包括 positive screening、impact investing、engagement 和 voting。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Recall</div>
+        <h2>考前压缩：用 12 条式子串起全页</h2>
+      </div>
+      <div class="head-desc">先看粗体词，尝试反推右侧完整含义。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>碳定价线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Carbon pricing</b> = polluter pays = 把排放外部性变成企业成本。</div>
+          <div class="formula"><b>Carbon tax</b> = 固定价格 × 排放量；优点可预测，效果看税率、弹性和转嫁。</div>
+          <div class="formula"><b>ETS</b> = cap + permits + trade + surrender；固定总量，价格市场形成。</div>
+          <div class="formula"><b>Declining cap</b> = 配额稀缺 → 碳价上升 → 减排投资更有吸引力。</div>
+          <div class="formula"><b>Shadow price</b> = 假设每吨碳成本 → 项目盈利性和资本开支压力测试。</div>
+          <div class="formula"><b>Offsetting</b> = 一处减排补偿另一处排放；好抵消必须真实、额外、可核验、不双算。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>重要性线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Materiality</b> = 环境因素影响 Opex、Capex、收入、利润率和风险。</div>
+          <div class="formula"><b>Investment analysis</b> = 定量+定性 → 调整财务预测、估值变量、倍数、信用和组合权重。</div>
+          <div class="formula"><b>Corporate/project finance</b> = Energy + Water + Waste → 风险识别、计量、定价。</div>
+          <div class="formula"><b>Equator Principles</b> = IFC 标准 + 项目融资 + 环境/社会风险管理。</div>
+          <div class="formula"><b>Public finance</b> = Helsinki Principles + 公共采购/预算/投资管理 + 绿色增长。</div>
+          <div class="formula"><b>Asset management</b> = exclusions + positive screening + impact investing + engagement/voting。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块边界：本页覆盖 3.1.5 和 3.1.6；下一模块将展开 3.1.7 的 environmental analysis approaches、carbon footprinting、natural capital 和 climate scenario analysis。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：看到题眼，反推知识点</h2>
+      </div>
+      <div class="head-desc">优先使用 PDF Practice Problems 中属于本模块的正式题，并补充少量反推题。</div>
+    </div>
+
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div>
+            <div class="qtext">Which of the following carbon pricing methods is used by companies to determine the impact of climate change on the profitability of a new project?</div>
+            <div class="qchoices">A. Carbon taxation<br>B. Shadow carbon pricing<br>C. Emission trading system (ETS)</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：内部或影子碳价是假设每吨碳排放成本，用来评估未来气候监管对项目、商业模式或投资盈利性的影响。<br><b>逻辑等式：</b>Shadow price = 假设碳价 × 排放量 → 项目盈利性压力测试。<br><b>题眼钩子：</b>profitability of a new project。<br><b>易错提醒：</b>Carbon tax 和 ETS 是外部政策工具；shadow price 是公司内部决策工具。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div>
+            <div class="qtext">In relation to ESG analysis, factors that cause investors to make adjustments to the credit assessment of a company include:</div>
+            <div class="qchoices">A. solely quantitative environmental factors.<br>B. the sector and geographic location of the company’s assets.<br>C. all environmental effects on the company, irrespective of their materiality.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：投资者应考虑定量和定性环境因素、公司、行业、资产地理位置，并评估重大财务影响。<br><b>逻辑等式：</b>Credit adjustment = material environmental factors + sector + geography + company specifics。<br><b>题眼钩子：</b>credit assessment + sector/geographic location。<br><b>易错提醒：</b>不是只看定量，也不是所有环境影响都调，关键是 material financial impacts。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div>
+            <div class="qtext">In relation to shadow carbon pricing, which of the following is incorrect?</div>
+            <div class="qchoices">A. Shadow carbon pricing is used to understand the potential impact of external prices on the profitability of a project.<br>B. Shadow carbon pricing is used to conceal the true cost of an entity’s carbon emissions.<br>C. Shadow carbon pricing is used to create a theoretical cost per ton of carbon emissions by establishing a business’s internal price on carbon.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：Shadow carbon pricing 的目的不是 conceal，而是 explicitly consider 碳排放成本和风险。<br><b>逻辑等式：</b>Shadow price = reveal hidden risk，不是 hide true cost。<br><b>题眼钩子：</b>incorrect + conceal。<br><b>易错提醒：</b>看到 conceal true cost，基本就是错项。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div>
+            <div class="qtext">Which initiative recommends that signatories incorporate climate change effects into macroeconomic policy and fiscal planning?</div>
+            <div class="qchoices">A. Helsinki Principles<br>B. Equator Principles<br>C. Climate Resilience Principles</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：Helsinki Principles 鼓励把气候变化纳入宏观经济政策、财政规划、预算、公共投资管理和采购实践。<br><b>逻辑等式：</b>Helsinki = macro policy + fiscal planning + budgeting + procurement。<br><b>题眼钩子：</b>macroeconomic policy and fiscal planning。<br><b>易错提醒：</b>Equator Principles 是项目融资环境/社会风险框架。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div>
+            <div class="qtext">A carbon pricing system that sets a jurisdictional emissions limit and creates permits that participants must surrender against verified emissions is best described as:</div>
+            <div class="qchoices">A. Carbon tax<br>B. Emissions trading system<br>C. Carbon offsetting</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：ETS 设置排放总量上限并发行配额，企业需要取得并交回与核实排放相匹配的 permits。<br><b>逻辑等式：</b>ETS = cap + permits + verified emissions + surrender。<br><b>题眼钩子：</b>jurisdictional limit / permits / surrender。<br><b>易错提醒：</b>Carbon tax 的题眼是 fixed price。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div>
+            <div class="qtext">Which statement best describes a key advantage of carbon taxation?</div>
+            <div class="qchoices">A. It fixes the quantity of emissions that can occur in a year.<br>B. It creates predictability by directly setting an explicit GHG emissions price.<br>C. It guarantees that carbon costs cannot be passed to consumers.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：碳税直接设定每吨排放价格，因此具有可预测性。<br><b>逻辑等式：</b>Carbon tax = fixed explicit price。<br><b>题眼钩子：</b>predictability / explicit price。<br><b>易错提醒：</b>固定排放数量是 ETS；成本能否转嫁取决于需求弹性和市场结构。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div>
+            <div class="qtext">Which of the following is a major challenge in carbon offsetting?</div>
+            <div class="qchoices">A. Determining whether claimed reductions would have happened anyway.<br>B. Ensuring all firms use the same statutory carbon tax rate.<br>C. Preventing cap-and-trade permits from being auctioned.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：Offsetting 的反事实问题很关键：如果减排本来就会发生，就不是真正额外的抵消。<br><b>逻辑等式：</b>Offset integrity = additionality + verification + no double counting。<br><b>题眼钩子：</b>would have happened anyway。<br><b>易错提醒：</b>选项 B 是碳税，选项 C 是 ETS。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div>
+            <div class="qtext">Material environmental issues are most directly defined by their impact on:</div>
+            <div class="qchoices">A. a company’s business model and value drivers.<br>B. whether a company has published any sustainability report.<br>C. the absolute number of environmental topics mentioned in the news.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：重大环境问题是会显著影响商业模式和价值驱动因素的因素，包括成本、收入、利润率、资本开支和风险。<br><b>逻辑等式：</b>Material issue = affects business model + value drivers。<br><b>题眼钩子：</b>business model and value drivers。<br><b>易错提醒：</b>新闻热度不等于投资重大性。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div>
+            <div class="qtext">At the company or project finance level, a useful starting point for environmental materiality analysis is:</div>
+            <div class="qchoices">A. energy, water, and waste use.<br>B. only the firm’s brand reputation score.<br>C. only the expected market return of the asset class.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：PDF 明确说，企业或项目层面的有用起点是分析能源、水和废弃物使用。<br><b>逻辑等式：</b>Project materiality start = energy + water + waste。<br><b>题眼钩子：</b>company or project level。<br><b>易错提醒：</b>项目融资要看具体运营和环境影响，不只看资产类别收益。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">10</div>
+          <div>
+            <div class="qtext">The Equator Principles are most closely associated with:</div>
+            <div class="qchoices">A. assessing and managing environmental and social risk in project finance.<br>B. setting a fixed global carbon tax.<br>C. classifying asset management products under Article 6, 8, or 9.</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：Equator Principles 基于 IFC Performance Standards，是金融机构在项目融资中评估和管理环境与社会风险的全球框架。<br><b>逻辑等式：</b>Equator Principles = project finance + E&S risk management。<br><b>题眼钩子：</b>project finance。<br><b>易错提醒：</b>Article 6/8/9 是 SFDR 产品分类。</div>
+      </article>
+    </div>
+  </section>
+
+  <div class="footer-note">资料依据：本页内容依据 ch03/esg-03.pdf 正文第 161-169 页及 Practice Problems 中相关题目整理；ch04 仅参考页面结构和交互风格。</div>
+</main>
+
+<script>
+const tabs=document.querySelectorAll('.tab');
+const panels=document.querySelectorAll('.panel');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const id=tab.dataset.tab;
+    tabs.forEach(t=>t.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel=document.getElementById(id);
+    if(panel){
+      panel.classList.add('active');
+      panel.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

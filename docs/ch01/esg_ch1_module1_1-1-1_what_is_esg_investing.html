@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Ch.1 Module 1 · 1.1.1 What Is ESG Investing</title>
+<style>
+:root{
+  --ink:#172033;--sub:#40516b;--muted:#6b7a90;--faint:#9aa8ba;
+  --bg:#eef3f8;--paper:#ffffff;--soft:#f8fbfd;--line:#dce6f0;--line2:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#111827;--dark2:#1f2937;
+  --r:8px;--sh-sm:0 2px 12px rgba(17,24,39,.06);--sh:0 14px 38px rgba(17,24,39,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular",Consolas,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.68;background:var(--bg);overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fbfd 0%,#eef3f8 44%,#e8eef5 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 76px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,50px);line-height:1.08;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(17,24,39,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark)}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.muted{color:var(--muted)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card,.map-board,.topic-card,.case-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.card{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{padding:22px;margin-bottom:16px;box-shadow:var(--sh)}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{padding:18px}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(92px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68;margin-top:10px}
+.scope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.scope-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.scope-card.env{border-top:5px solid var(--green)}
+.scope-card.soc{border-top:5px solid var(--blue)}
+.scope-card.gov{border-top:5px solid var(--violet)}
+.scope-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:4px 9px;font-size:12px;color:var(--sub);font-weight:800}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{border-bottom:1px solid var(--line2);padding:12px 13px;text-align:left;vertical-align:top;font-size:13px;line-height:1.62;color:var(--sub)}
+th{background:var(--soft);font-size:12px;color:var(--dark);text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:82px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.trap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.nowrap{white-space:nowrap}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .scope-grid{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 68px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini,.grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+  table{min-width:680px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 1</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">1.1.1</span>
+        <span class="pill">PDF p.1-4</span>
+      </div>
+      <h1>What Is ESG Investing?</h1>
+      <p class="lead">本模块先回答第 1 章最基础的问题：ESG 投资到底是什么、E/S/G 的范围怎么划、为什么它天然要求长期视角。这里不展开各类责任投资策略，具体类型放到模块 2。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG investing == 显式纳入 E/S/G 因素 + 投资决策 + 组合长期风险调整回报；Short-termism == 短期交易/短期施压 → 忽视长期价值与 ESG → 需要 active ownership 和 long-term focus 纠偏。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcome</div>
+      <div class="side-big">1.1.1 定义 ESG investment，并理解其在 responsible investment 光谱中的位置</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">E/S/G 三类因素</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">短期主义表现</div></div>
+      </div>
+      <div class="side-note">记忆抓手：ESG 不是慈善，也不是只排除坏公司。它的核心是把环境、社会和治理因素纳入投资判断，并服务于长期风险调整回报。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" type="button" data-tab="map">知识地图</button>
+    <button class="tab" type="button" data-tab="coverage">覆盖清单</button>
+    <button class="tab" type="button" data-tab="equations">逻辑等式</button>
+    <button class="tab" type="button" data-tab="scope">E/S/G 范围</button>
+    <button class="tab" type="button" data-tab="cases">案例易错</button>
+    <button class="tab" type="button" data-tab="compress">考前压缩</button>
+    <button class="tab" type="button" data-tab="quiz">自测题</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>一张图看懂：第 1 章从哪里开头</h2>
+      </div>
+      <div class="head-desc">按照“逻辑等式心象术”，先把题目拆成“ESG 是什么、范围是什么、时间视角是什么”，再把每条原文要点归回对应位置。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Introduction to ESG Investing<br>可持续背景下，把 E/S/G 纳入长期投资判断</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">背景</div>
+          <p>Sustainable investing 和 ESG factors 已成为投资管理的重要组成。</p>
+          <p>PRI、社会压力、监管压力、客户需求和财务证据推动主流化。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">总伞</div>
+          <p>Responsible investment 是总称。</p>
+          <p>投资者可在证券选择和组合构建中考虑 ESG 因素。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">核心定义</div>
+          <p>ESG investing 显式纳入 ESG 因素。</p>
+          <p>目标是组合的长期风险调整回报。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">范围边界</div>
+          <p>E/S/G 没有统一标准。</p>
+          <p>因素之间可能重叠，边界取决于框架和利益相关方。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">时间视角</div>
+          <p>短期主义追逐短期价格和短期财务结果。</p>
+          <p>长期主义更重视长期价值、耐心资本和 ESG 因素。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>可持续背景</h3><p>投资管理开始纳入可持续标准。</p></div>
+        <div class="flow-step"><h3>责任投资总伞</h3><p>ESG 投资属于 responsible investment。</p></div>
+        <div class="flow-step"><h3>显式纳入因素</h3><p>分析 E/S/G 对资产长期回报的影响。</p></div>
+        <div class="flow-step"><h3>识别范围</h3><p>用 E/S/G 主题和利益相关方确定分析边界。</p></div>
+        <div class="flow-step"><h3>长期判断</h3><p>避免短期主义忽视长期风险和价值创造。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">定义</span>
+        <h3>ESG 投资不是慈善</h3>
+        <p class="small">本章给 ESG investing 的核心定位是资产管理方法：把 ESG 因素放入投资决策，服务于长期风险调整回报。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">边界</span>
+        <h3>E/S/G 没有硬边框</h3>
+        <p class="small">同一议题可能横跨多类因素，例如动物和动物福祉可能同时属于环境与社会因素。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">考点</span>
+        <h3>SRD 反短期主义</h3>
+        <p class="small">EU Shareholder Rights Directive 要求投资者成为 active owners，并以更长期的视角行事。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">依据 `ch01/esg-01.pdf` 第 1-4 页整理，目标是先不漏点，再用逻辑等式压缩。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">开篇背景</span> Introduction to Sustainable Investing</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Sustainable investing 和 ESG factors 已成为 investment management 的组成部分。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset owners 和 investment managers 正在把 sustainability criteria 纳入投资分析和决策流程。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI 等 responsible investment 倡议推动了投资实践变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">社会、监管、客户压力，以及纳入 ESG 分析的直接财务收益证据，使 ESG integration 更主流。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">本章还会介绍 ESG 投资概念、责任投资方法、纳入 ESG 的收益、实践落地方式和关键倡议。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">1.1.1</span> What Is ESG Investing?</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG investing 属于 broader context of sustainability，也属于 responsible investment 这一组方法。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Responsible investment 是总伞，涵盖投资者在证券选择和组合构建中考虑 ESG 因素的不同方式。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG investing 关注 ESG issues 如何影响资产和证券的长期回报。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">其他 responsible investment approaches 还可能考虑非财务价值创造，或在投资策略中反映利益相关方价值观。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG investing 的正式含义：管理资产时，在投资决策中显式纳入 ESG 因素，并以组合长期风险调整回报为目标。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">范围</span> ESG Definition and Scope</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">E、S、G 包含哪些因素，目前没有 universal standard。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">E/S/G 因素可能重叠，动物和动物福祉就是 PDF 举的例子。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">因素如何划分，取决于定义者、所用 ESG framework 和相关 stakeholders。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stakeholders 包括没有其支持组织就难以存在的群体，也包括受公司影响的社区和监管者。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Environmental topics 包括 climate change、resource depletion、waste、pollution、deforestation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Social topics 包括 human rights、modern slavery、health and safety、working conditions、employee relations。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Governance topics 包括 bribery and corruption、executive pay、board diversity and structure、lobbying/donations、tax strategy。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">长期视角</span> Long-Termism and ESG Investing</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资行业利益相关方和金融监管者已经认识到短期主义的不足，并鼓励长期主义。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">短期主义表现 1：基于短期价格变动预期进行交易，而不是基于长期价值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">短期主义表现 2：投资者与被投公司互动时，优先追求近期财务结果，而不是长期价值创造。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">短期主义可能让公司不愿投入研发等需要多年和耐心资本的项目。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">短期主义可能促进泡沫、金融不稳定和总体经济表现不佳。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">短期投资策略倾向于忽略 ESG factors 这类通常更长期的因素。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">EU Shareholder Rights Directive 于 2020 年发布，要求投资者成为 active owners，并以更长期视角行事。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Knowledge Check：SRD 的目的最接近 counter short-termism。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="equations" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：先理解，再记忆</h2>
+      </div>
+      <div class="head-desc">每张卡都包含原文要点、中文解释、逻辑等式和投资影响或考点提醒。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. Sustainable investing 为什么变主流</div><span class="tag tag-blue">背景</span></div>
+        <p class="small"><b>原文要点：</b>可持续投资和 ESG 因素已经进入投资管理。资产所有者和管理人正在把 sustainability criteria 放进分析和决策流程，PRI、社会、监管、客户和财务证据共同推动 ESG integration。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">主流化</div><div class="eq-op">==</div><div class="eq-rhs">投资人实践 + PRI 倡议 + 社会/监管/客户压力 + 财务收益证据</div></div></div>
+        <div class="memory"><b>隐藏线：</b>ESG 不是突然出现的标签，而是“外部压力”和“投资内部收益证据”同时推动的结果。</div>
+        <div class="riskline">考点提醒：如果题目问为什么 ESG integration 变得 mainstream，不要只答监管，客户压力和财务收益证据也在 PDF 中。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Responsible investment 与 ESG investing</div><span class="tag tag-green">总伞关系</span></div>
+        <p class="small"><b>原文要点：</b>ESG investing 是 responsible investment 这一组方法的一部分。Responsible investment 是总伞，表示投资者考虑 ESG 因素的各种方式。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Responsible investment</div><div class="eq-op">==</div><div class="eq-rhs">投资者考虑 ESG 因素的各种方法总称</div></div>
+          <div class="eq"><div class="eq-lhs">ESG investing</div><div class="eq-op">==</div><div class="eq-rhs">总伞下偏重 ESG 对长期回报影响的一类方法</div></div>
+        </div>
+        <div class="memory"><b>隐藏线：</b>先有“责任投资”这把伞，再有 ESG 投资这把伞下的具体方法。</div>
+        <div class="riskline">考点提醒：不要把 ESG investing 直接等同于 impact investing、philanthropy 或 faith-based investment。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. ESG investing 的正式定义</div><span class="tag tag-violet">核心定义</span></div>
+        <p class="small"><b>原文要点：</b>ESG investing 是一种资产管理方法，投资者在投资决策中显式纳入 ESG 因素，并以投资组合长期风险调整回报为目标。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">ESG investing</div><div class="eq-op">==</div><div class="eq-rhs">explicitly incorporate ESG factors + investment decisions + long-term risk-adjusted return</div></div></div>
+        <div class="memory"><b>隐藏线：</b>定义里的三个词缺一不可：显式纳入、投资决策、长期风险调整回报。</div>
+        <div class="riskline">考点提醒：题目若说 ESG 投资只追求社会回报、只排除坏公司、或不考虑财务回报，通常不符合本章定义。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. E/S/G 范围为什么会变</div><span class="tag tag-teal">边界</span></div>
+        <p class="small"><b>原文要点：</b>E、S、G 没有统一标准，且可能相互重叠；具体划分取决于定义者、框架和利益相关方。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">ESG 范围</div><div class="eq-op">==</div><div class="eq-rhs">没有统一标准 + 因素可能重叠 + 框架/利益相关方决定边界</div></div></div>
+        <div class="memory"><b>隐藏线：</b>E/S/G 更像审计底稿里的分类索引，不是准则里的固定科目。分类服务于分析目的。</div>
+        <div class="riskline">投资影响：同一问题可从多个角度进入分析，例如动物福祉既可能影响环境评价，也可能影响社会声誉和客户关系。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Stakeholders 的边界</div><span class="tag tag-amber">利益相关方</span></div>
+        <p class="small"><b>原文要点：</b>Stakeholders 包括没有其支持组织就会难以存在的群体，也包括受公司影响的社区和监管者。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Stakeholders</div><div class="eq-op">==</div><div class="eq-rhs">组织存在所需支持者 + 受公司影响的社区 + 监管者</div></div></div>
+        <div class="memory"><b>隐藏线：</b>不要只盯股东。利益相关方是一圈能影响公司经营许可和社会许可的人。</div>
+        <div class="riskline">投资影响：社区、员工、客户、监管者的态度，可能转化为运营中断、罚款、声誉损失或资本成本变化。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. 短期主义如何伤害长期价值</div><span class="tag tag-rose">时间视角</span></div>
+        <p class="small"><b>原文要点：</b>短期主义包括基于短期价格波动交易，以及与被投公司互动时优先追求近期财务结果。这可能抑制研发等长期项目，促进泡沫、金融不稳定和经济表现不佳，并忽略 ESG 因素。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">Short-termism</div><div class="eq-op">==</div><div class="eq-rhs">短期交易 + 短期施压 → 少做长期项目 + 忽略 ESG + 系统不稳定</div></div></div>
+        <div class="memory"><b>隐藏线：</b>短期主义不是“快”，而是用眼前价格和眼前利润挤掉长期价值。</div>
+        <div class="riskline">考点提醒：SRD 的题眼是 active owners 和 long-term focus，对应 counter short-termism。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="scope" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">ESG Definition and Scope</div>
+        <h2>E/S/G 范围表：先分清大类，再记例子</h2>
+      </div>
+      <div class="head-desc">PDF 明确说没有统一标准，所以这里用“定义 + 例子 + 题眼”的方式整理，避免机械背名单。</div>
+    </div>
+    <div class="scope-grid">
+      <article class="scope-card env">
+        <div class="topic-top"><div class="topic-title">Environmental</div><span class="tag tag-green">自然世界</span></div>
+        <p class="small"><b>中文解释：</b>与自然世界相关，包括使用并影响可再生和不可再生资源，例如水、矿产、生态系统和生物多样性。</p>
+        <div class="scope-list">
+          <span class="chip">Climate change</span>
+          <span class="chip">Resource depletion</span>
+          <span class="chip">Waste</span>
+          <span class="chip">Pollution</span>
+          <span class="chip">Deforestation</span>
+        </div>
+      </article>
+      <article class="scope-card soc">
+        <div class="topic-top"><div class="topic-title">Social</div><span class="tag tag-blue">人的生活</span></div>
+        <p class="small"><b>中文解释：</b>影响人类生活，也包括人力资本管理、非人类动物、当地社区和客户等议题。</p>
+        <div class="scope-list">
+          <span class="chip">Human rights</span>
+          <span class="chip">Modern slavery</span>
+          <span class="chip">Health and safety</span>
+          <span class="chip">Working conditions</span>
+          <span class="chip">Employee relations</span>
+        </div>
+      </article>
+      <article class="scope-card gov">
+        <div class="topic-top"><div class="topic-title">Governance</div><span class="tag tag-violet">规则和权力</span></div>
+        <p class="small"><b>中文解释：</b>与国家、司法辖区、行业惯例以及更广泛利益相关方利益有关，核心是公司如何被治理、监督和约束。</p>
+        <div class="scope-list">
+          <span class="chip">Bribery and corruption</span>
+          <span class="chip">Executive pay</span>
+          <span class="chip">Board diversity</span>
+          <span class="chip">Lobbying and donations</span>
+          <span class="chip">Tax strategy</span>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>原文要点对照表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>项目</th>
+              <th>原文要点</th>
+              <th>中文理解</th>
+              <th>考点提醒</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>无统一标准</td>
+              <td>E、S、G 包含因素没有 universal standard。</td>
+              <td>分类取决于框架、定义者和利益相关方。</td>
+              <td>不要把某一框架当成唯一答案。</td>
+            </tr>
+            <tr>
+              <td>因素重叠</td>
+              <td>动物和动物福祉可能同时放在环境和社会因素中。</td>
+              <td>ESG 分类不是硬边界，目的是帮助分析。</td>
+              <td>题目说“可能重叠”通常是正确方向。</td>
+            </tr>
+            <tr>
+              <td>Stakeholders</td>
+              <td>包括组织存在所需的支持群体，也包括受影响社区和监管者。</td>
+              <td>比股东更宽，重点是对公司生存和经营许可有影响。</td>
+              <td>不要把 stakeholders 缩窄成 shareholders。</td>
+            </tr>
+            <tr>
+              <td>长期主义</td>
+              <td>行业和监管者认识到 short-termism 的不足，鼓励 long-termism。</td>
+              <td>ESG 因素通常具有更长期的影响，需要长期视角。</td>
+              <td>SRD = active ownership + long-term focus。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Traps</div>
+        <h2>案例框和易错点</h2>
+      </div>
+      <div class="head-desc">这里把 PDF 开头最容易出选择题的点做成“题眼”。后续三轮练习会继续引用这些题眼。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">PRI 推动投资实践变化</div><span class="tag tag-green">主流化</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">PRI 等 responsible investment proponents 影响了投资实践。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">ESG 不是单个公司的偏好，而是投资行业实践和倡议共同推动的方向。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">PRI 出现时，常与 responsible investment、best practice、signatories 和行业推动有关。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">动物福祉跨 E/S 边界</div><span class="tag tag-teal">范围重叠</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">Animals and animal well-being may be considered in both environmental and social factors.</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">环境关注自然和生态，社会关注人、社区和更广泛利益相关方，部分议题可跨类。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">题目若问 ESG scope 是否有固定全球标准，答案通常是否定。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">R&D 与 patient capital</div><span class="tag tag-amber">短期主义后果</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">短期主义可能让公司不愿做需要多年和耐心资本的项目，例如研发。</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">如果市场只奖励眼前利润，公司就可能牺牲长期创新和韧性。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">R&D、patient capital、long-term value creation 通常和 long-termism 站在一起。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">EU Shareholder Rights Directive</div><span class="tag tag-blue">Knowledge Check</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文</div><div class="case-text">SRD issued by the EU in 2020, requiring investors to be active owners and to act with a more long-term focus.</div></div>
+          <div class="case-row"><div class="case-lab">解释</div><div class="case-text">这项监管措施针对短期主义，不是为了减少 proxy 使用，也不是本节里的少数股东保护题。</div></div>
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">SRD = counter short-termism。</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>易错点</h3>
+      <div class="trap-grid">
+        <div class="trap"><b>ESG investing 不等于 philanthropy</b>本节定义强调长期风险调整回报。慈善和影响投资会在后续责任投资类型里比较。</div>
+        <div class="trap"><b>Responsible investment 比 ESG investing 更宽</b>ESG investing 是其中一类，其他方法还可能考虑非财务价值和利益相关方价值观。</div>
+        <div class="trap"><b>Stakeholders 不等于 shareholders</b>stakeholders 包括支持组织存在的群体、受影响社区和监管者。</div>
+        <div class="trap"><b>E/S/G 没有全球固定清单</b>PDF 明确说没有 universal standard，并且因素可能重叠。</div>
+        <div class="trap"><b>Short-termism 不只是高频交易</b>还包括投资者对被投公司施压，要求近期财务结果优先于长期价值创造。</div>
+        <div class="trap"><b>SRD 的答案是反短期主义</b>不是 reduce proxies，也不是本节所说的 minority shareholders protection。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩：一组总式背完模块 1</h2>
+      </div>
+      <div class="head-desc">先背总式，再用每个右侧短语反推原文细节。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>整页逻辑等式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>ESG mainstreaming</b> == PRI + 社会压力 + 监管压力 + 客户压力 + 财务收益证据。</div>
+          <div class="formula"><b>Responsible investment</b> == 考虑 ESG 因素的投资方法总伞。</div>
+          <div class="formula"><b>ESG investing</b> == 显式纳入 E/S/G + 投资决策 + 长期风险调整回报。</div>
+          <div class="formula"><b>ESG scope</b> == 没有统一标准 + 因素可能重叠 + 框架和 stakeholders 决定边界。</div>
+          <div class="formula"><b>Environmental</b> == 自然世界 + 可再生/不可再生资源。</div>
+          <div class="formula"><b>Social</b> == 人类生活 + 人力资本 + 动物/社区/客户。</div>
+          <div class="formula"><b>Governance</b> == 国家/辖区/行业惯例 + 更广泛利益相关方利益。</div>
+          <div class="formula"><b>Short-termism</b> == 短期价格交易 + 近期财务结果施压。</div>
+          <div class="formula"><b>Short-termism consequences</b> == 少做长期项目 + 泡沫/不稳定/经济低效 + 忽视 ESG。</div>
+          <div class="formula"><b>SRD</b> == active owners + long-term focus → counter short-termism。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>ESG investing vs responsible investment</b>前者是后者的一部分；后者是总伞。</div>
+          <div class="trap"><b>ESG return vs social return</b>ESG investing 仍看长期风险调整回报，不是只看社会回报。</div>
+          <div class="trap"><b>Stakeholders vs shareholders</b>利益相关方更宽，包括社区和监管者。</div>
+          <div class="trap"><b>Environmental vs Social</b>动物福祉这类问题可能跨界，不能机械分类。</div>
+          <div class="trap"><b>Long-termism vs immediate return</b>短期策略可能有短期回报，但会有长期不利后果。</div>
+          <div class="trap"><b>SRD vs proxies</b>SRD 在本节中的题眼是反短期主义和长期主动所有权。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">复习时可以这样反推：看到 “explicitly incorporate” 想 ESG investing 定义；看到 “active owners + long-term focus” 想 SRD；看到 “no universal standard” 想 ESG scope。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>自测题：只覆盖模块 1</h2>
+      </div>
+      <div class="head-desc">这些题用于检查你是否能“看到题眼 → 反推知识点”。正式三轮练习系统会在整章完成后统一制作。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">ESG investing 的定义里，最关键的三个组成是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>显式纳入 ESG factors、进入 investment decisions、目标是 long-term risk-adjusted return of a portfolio。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Responsible investment 与 ESG investing 是什么关系？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Responsible investment 是总伞，ESG investing 是其中一类，重点关注 ESG issues 对资产和证券长期回报的影响。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">PDF 为什么说 E/S/G 分类不能死背？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为没有 universal standard，因素可能重叠，划分取决于框架、定义者和利益相关方。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Stakeholders 和 shareholders 的区别是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Stakeholders 更宽，包括组织存在所需支持的群体，也包括受公司影响的社区和监管者；shareholders 只是股东。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">短期主义在本节中有哪两种典型表现？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>第一，基于短期价格波动预期交易；第二，与被投公司互动时优先追求近期财务结果，而不是长期价值创造。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">短期主义为什么可能损害长期价值？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>它可能让公司不愿投入研发等需要多年和耐心资本的项目，也可能促进泡沫、金融不稳定、经济表现不佳，并忽略 ESG factors。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">EU Shareholder Rights Directive 在本节的考点是什么？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>SRD 于 2020 年由 EU 发布，要求投资者成为 active owners，并以更长期视角行事，目的最接近 counter short-termism。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">把 “bribery and corruption、executive pay、tax strategy” 归入哪一类 ESG factors？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Governance factors。它们和公司治理、权力约束、规则执行和利益相关方信任有关。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">把 “human rights、modern slavery、working conditions” 归入哪一类 ESG factors？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Social factors。它们直接影响人的生活、人力资本和劳工条件。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">10</div><div class="qtext">把 “climate change、resource depletion、deforestation” 归入哪一类 ESG factors？</div><button class="qbtn" type="button">显示答案</button></div>
+        <div class="qanswer"><b>答案：</b>Environmental factors。它们与自然世界和资源使用相关。</div>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach((item) => item.classList.toggle('active', item === tab));
+    panels.forEach((panel) => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '显示答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESG Ch.9 · Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#edf2f7;--paper:#fff;--soft:#f8fafc;--bg:#eef3f8;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 14px 38px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,#f8fafc 0%,#eef3f8 54%,#e8eef5 100%);line-height:1.68;min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}a{color:inherit}.wrap{width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 78px;min-width:0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;margin-bottom:16px}
+.hero-main,.hero-side,.panel-card,.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);min-width:0;overflow:hidden}
+.hero-main{padding:28px 30px}.hero-side{padding:18px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.pill{display:inline-flex;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,54px);line-height:1.08;letter-spacing:0;margin:0 0 12px;color:var(--dark);word-break:break-word}
+.lead{font-size:15px;color:var(--sub);max-width:790px;margin:0;line-height:1.86}.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.76}.hero-eq b{color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.stat-num{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--dark);line-height:1}.stat-lab{font-size:12px;font-weight:850;color:var(--muted);margin-top:5px}
+.side-note{background:#0f172a;color:#dbeafe;border-radius:var(--r);padding:13px 14px;font-size:13px;line-height:1.72}.side-note b{color:#fff}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+.tab-title{font-size:12px;font-weight:950;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;padding:0 7px;white-space:nowrap}.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 12px;font-size:13px;font-weight:900;color:var(--muted);cursor:pointer;white-space:nowrap}.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff}
+.panel{display:none;min-width:0}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:950;letter-spacing:.10em;color:var(--muted);text-transform:uppercase;margin-bottom:7px}.panel-head h2{font-family:var(--serif);font-size:clamp(24px,3.1vw,36px);line-height:1.18;color:var(--dark);margin:0}.head-desc{max-width:700px;color:var(--muted);font-size:13.5px;margin-top:8px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}.pad{padding:18px}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:950;line-height:1.25;white-space:nowrap}.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:20px;overflow:hidden}.center-node{max-width:780px;margin:0 auto 16px;background:#ecfdf5;border:2px solid #047857;color:#064e3b;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.45}
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}.flow-card h3{font-size:13.5px;margin:0 0 6px;color:var(--dark)}.flow-card p{font-size:12.2px;color:var(--sub);line-height:1.58;margin:0}.flow-card a{text-decoration:none;color:inherit}
+.logic-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.logic-step{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:12px}.logic-step b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}.logic-step span{font-size:12.6px;color:var(--sub);line-height:1.58}
+.fact-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;border-left:5px solid var(--accent,var(--blue))}.fact-head{display:flex;gap:10px;align-items:center;margin-bottom:10px}.fact-num{width:36px;height:36px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--accent,var(--blue));color:#fff;font-family:var(--serif);font-size:20px;font-weight:950;flex:0 0 auto}.fact-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}.fact-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;border-top:1px solid var(--line2);padding-top:10px;margin-top:10px}.row-lab{font-size:11px;font-weight:950;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}.row-val{font-size:13.2px;color:var(--sub);line-height:1.75}.row-val b{color:var(--dark)}.eq{background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:11px 12px;font-size:13px;line-height:1.72}.eq b{color:#fff}
+.reading-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;min-width:0}.reading-icon{width:44px;height:44px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--blue-bg);border:1px solid var(--blue-bdr);color:var(--blue);font-family:var(--serif);font-size:24px;font-weight:950}.reading-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}.reading-desc{font-size:13.2px;color:var(--sub);line-height:1.72;margin:8px 0}.reading-url{font-size:12.2px;color:var(--muted);background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:8px 10px;line-height:1.55}
+.mini-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff}.mini-table th,.mini-table td{border-bottom:1px solid var(--line2);padding:10px;text-align:left;vertical-align:top;font-size:12.8px;line-height:1.6}.mini-table th{background:var(--soft);color:var(--dark);font-weight:950}.mini-table tr:last-child td{border-bottom:0}
+.compress-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}.compress-card h3{margin:0 0 10px;color:var(--dark);font-size:17px}.formula-list{display:grid;gap:9px}.formula{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 11px;font-size:13px;color:var(--sub);line-height:1.65}.formula b{color:var(--dark)}.trap{border-left:4px solid var(--rose);background:#fff7ed;padding:11px 12px;border-radius:0 var(--r) var(--r) 0;font-size:13px;color:var(--sub);line-height:1.65}.trap b{color:#9f1239}.footer-note{margin-top:18px;background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.72}
+.lead,.hero-eq,.side-note,.flow-card p,.logic-step span,.row-val,.eq,.reading-card,.reading-url,.formula,.trap,.mini-table th,.mini-table td{overflow-wrap:anywhere;word-break:break-word}.hero-eq,.side-note,.eq{max-width:100%}
+@media(max-width:1080px){.flow{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.grid-2,.grid-3{grid-template-columns:1fr}.logic-line{grid-template-columns:repeat(2,minmax(0,1fr))}.panel-head{display:block}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.wrap{padding:18px 12px 64px}.hero-main{padding:22px 18px}.pills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.pill{justify-content:center;text-align:center;white-space:normal}.lead{font-size:14px;line-height:1.78}.hero-eq,.side-note{font-size:12.8px;line-height:1.72}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow,.logic-line{grid-template-columns:1fr}.center-node{border-radius:var(--r)}.fact-row{grid-template-columns:1fr;gap:4px}h1{font-size:30px;line-height:1.12}.tab{padding:8px 10px}.mini-table{display:block;overflow-x:auto}.reading-card{grid-template-columns:1fr}.reading-icon{width:40px;height:40px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 9</span>
+        <span class="pill">Key Facts</span>
+        <span class="pill">Further Reading</span>
+        <span class="pill">Final Review</span>
+      </div>
+      <h1>Investment Mandates,<br>Portfolio Analytics,<br>Client Reporting</h1>
+      <p class="lead">本页汇总 PDF 第 9 章末尾的 8 条 Key Facts 和 2 条 Further Reading。目标不是新增知识，而是把整章复习模块压缩成一张可回忆、可反推、可考前快速扫读的总表。</p>
+      <div class="hero-eq"><b>整章总逻辑等式：</b>Chapter 9 == 客户 ESG 信念 → mandate 设计 → 经理筛选 → greenwashing 防线 → 客户差异化策略 → delivery 监督 → reporting 复核</div>
+    </div>
+    <aside class="hero-side">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">8</div><div class="stat-lab">Key Facts</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-lab">Further Reading</div></div>
+        <div class="stat"><div class="stat-num">7</div><div class="stat-lab">复习模块</div></div>
+        <div class="stat"><div class="stat-num">1</div><div class="stat-lab">整章总式</div></div>
+      </div>
+      <div class="side-note"><b>记忆入口：</b>第 9 章不是单讲 ESG 策略，而是讲资产所有者如何把 ESG 信念写进 mandate，并持续确认经理真的交付。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <span class="tab-title">CH.9 SUMMARY</span>
+    <button class="tab active" data-tab="map">总图</button>
+    <button class="tab" data-tab="facts">8 条事实</button>
+    <button class="tab" data-tab="reading">延伸阅读</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Chapter Map</div>
+        <h2>第 9 章一条线：从委托代理问题到持续问责</h2>
+      </div>
+      <div class="head-desc">这张图把 7 个复习模块和 Key Facts 串起来，方便最后复盘整章逻辑。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Asset Owner Accountability<br>把 ESG 信念变成 mandate，再用监督和报告验证交付</div>
+      <div class="flow">
+        <div class="flow-card"><a href="esg_ch9_module1_9-1-1.html"><h3>1 客户需求</h3><p>clarify needs、investment beliefs、agency problem、alignment。</p></a></div>
+        <div class="flow-card"><a href="esg_ch9_module2_9-1-2.html"><h3>2 Mandate 设计</h3><p>把 ESG screens、tilts、guidelines、policy 和 KPI 写进 mandate。</p></a></div>
+        <div class="flow-card"><a href="esg_ch9_module3_9-1-3.html"><h3>3 RFP 与筛选</h3><p>用 RFP、标准、资产类别路径检验经理能否实践。</p></a></div>
+        <div class="flow-card"><a href="esg_ch9_module4_9-1-4.html"><h3>4 Greenwashing</h3><p>识别误导、披露不实、监管和声誉后果。</p></a></div>
+        <div class="flow-card"><a href="esg_ch9_module5_9-1-5.html"><h3>5 客户类型</h3><p>不同客户 driver、time horizon、risk mindset 形成不同策略。</p></a></div>
+        <div class="flow-card"><a href="esg_ch9_module6_9-1-6.html"><h3>6 监督交付</h3><p>定期对话、长期焦点、hard cases、组合层面评估。</p></a></div>
+        <div class="flow-card"><a href="esg_ch9_module7_9-1-7.html"><h3>7 报告复核</h3><p>integrated reporting、attribution、PLSA、ICGN 和 outliers。</p></a></div>
+      </div>
+      <div class="logic-line">
+        <div class="logic-step"><b>起点：代理问题</b><span>客户把钱交给经理，信息和目标可能错位。</span></div>
+        <div class="logic-step"><b>工具：Mandate</b><span>把 ESG 信念、目标、限制和评估方式写清楚。</span></div>
+        <div class="logic-step"><b>过程：监督</b><span>用长期视角、困难持仓和组合证据检查交付。</span></div>
+        <div class="logic-step"><b>终点：报告</b><span>用 outcome、attribution 和 disclosure 验证经理是否一致执行。</span></div>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card pad"><span class="tag tag-blue">Key Facts 1-3</span><h3>先解决目标错位</h3><p class="row-val">Agency problem → time horizon alignment → long-term factors。</p></div>
+      <div class="card pad"><span class="tag tag-green">Key Facts 4-6</span><h3>再验证实践交付</h3><p class="row-val">ESG integration 因风格而异，所以要用 advisory tools 和 hard cases 检验。</p></div>
+      <div class="card pad"><span class="tag tag-amber">Key Facts 7-8</span><h3>最后看资源和客户差异</h3><p class="row-val">资源不足会限制效果；不同客户的 ESG expectations 会表现为不同策略。</p></div>
+    </div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>8 条 Key Facts：原文要点 + 中文解释 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条都依据 PDF 末尾 Key Facts 改写，保留原意，并压成可反推的等式。</div>
+    </div>
+    <div class="grid-2">
+      <article class="fact-card" style="--accent:var(--blue)">
+        <div class="fact-head"><div class="fact-num">1</div><div class="fact-title">投资链条也存在 agency problem</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">投资链条中的代理问题，类似公司与所有者之间的代理问题；这个问题也延伸到 ESG beliefs 的对齐。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">资产所有者委托基金经理投资，如果目标、时间跨度、ESG 信念不一致，就会出现“经理按自己的方式做”的风险。</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Agency problem</b> == delegated power + information gap + ESG belief mismatch</div></div>
+        <div class="fact-row"><div class="row-lab">考点提醒</div><div class="row-val">看到 agency / alignment / accountability，要回到“客户 ESG 信念如何传递给经理”。</div></div>
+      </article>
+
+      <article class="fact-card" style="--accent:var(--green)">
+        <div class="fact-head"><div class="fact-num">2</div><div class="fact-title">问责与对齐，很大程度靠时间跨度对齐</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">Accountability and alignment 可通过对齐 fund managers 与 clients 的 time horizons 实现，从而帮助经理履行 fiduciary duties。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">如果客户长期，经理却被短期业绩考核牵着走，ESG 风险和机会就容易被忽视。</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Accountability</b> == client horizon ∩ manager horizon → fiduciary delivery</div></div>
+        <div class="fact-row"><div class="row-lab">投资影响</div><div class="row-val">评价经理时不能只看短期回报，还要看是否围绕客户长期目标管理组合。</div></div>
+      </article>
+
+      <article class="fact-card" style="--accent:var(--amber)">
+        <div class="fact-head"><div class="fact-num">3</div><div class="fact-title">长期因素比短期业绩更能强化对齐</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">这种对齐可以通过关注 longer-term factors，而非 short-term performance assessment 来加强。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">短期波动不一定说明经理偏离 mandate；真正要看长期风险、风格、限制、治理和 ESG 整合是否持续一致。</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Long-term alignment</b> == longer-term factors ↑ + short-term performance obsession ↓</div></div>
+        <div class="fact-row"><div class="row-lab">考点提醒</div><div class="row-val">这条和 Brunel Accord 呼应：short-term underperformance 本身通常不是核心警报。</div></div>
+      </article>
+
+      <article class="fact-card" style="--accent:var(--violet)">
+        <div class="fact-head"><div class="fact-num">4</div><div class="fact-title">ESG integration 必须贴合经理原有投资风格</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">不同基金管理公司和不同 portfolio managers 的 ESG integration 会不同，并要适配既有 investment style and approach。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">没有唯一模板。价值型、成长型、量化、固定收益、私募等策略，都应以自己的投资逻辑整合 ESG。</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>ESG integration</b> == ESG factors × established investment style</div></div>
+        <div class="fact-row"><div class="row-lab">考点提醒</div><div class="row-val">RFP 和后续监督的关键不是“说得漂亮”，而是 ESG 是否融入该经理本来的投资流程。</div></div>
+      </article>
+
+      <article class="fact-card" style="--accent:var(--teal)">
+        <div class="fact-head"><div class="fact-num">5</div><div class="fact-title">咨询和归因工具最好用于“对话式检验”</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">越来越多 advisory services 可帮助客户评估经理的 ESG delivery，并估计组合 E、S、G 特征相关的 performance attribution；这些工具最好在与经理的对话中使用。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">外部评分和归因不是最终答案，而是提问入口：经理是否按预期风格在实践中交付？</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Advisory tools</b> == ESG delivery assessment + E/S/G attribution estimate → manager dialogue</div></div>
+        <div class="fact-row"><div class="row-lab">投资影响</div><div class="row-val">工具能帮助客户问出更具体的问题，但不能替代客户对经理投资逻辑的判断。</div></div>
+      </article>
+
+      <article class="fact-card" style="--accent:var(--rose)">
+        <div class="fact-head"><div class="fact-num">6</div><div class="fact-title">Hard cases 是 ESG integration 的压力测试</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">资产所有者会 challenge and debate 组合中的 hard cases，以了解 ESG integration 的有效性，以及组合如何反映这种整合。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">真正能看出经理水平的，往往不是最漂亮的案例，而是低 ESG 评分、争议行业、复杂治理或转型中的持仓。</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Hard case review</b> == integration stress test + portfolio consistency proof</div></div>
+        <div class="fact-row"><div class="row-lab">考点提醒</div><div class="row-val">看到“individual assets / outliers / hard cases”，反推：客户在测试 ESG 是否真实整合。</div></div>
+      </article>
+
+      <article class="fact-card" style="--accent:var(--blue)">
+        <div class="fact-head"><div class="fact-num">7</div><div class="fact-title">ESG 工作资源不足，会限制整合和参与效果</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">ESG resourcing 不足始终会限制 integration 与 engagement 在组合中的有效应用；collective engagement 是补强资源的一种方式。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">ESG 不是写政策就完事，需要研究、人手、数据、行业理解和持续 engagement。资源不足会导致覆盖不全、执行不深。</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>ESG effectiveness</b> == resources + process coverage；resource gap → collective engagement</div></div>
+        <div class="fact-row"><div class="row-lab">投资影响</div><div class="row-val">客户要问经理团队配置、研究能力、stewardship 资源，以及何时通过合作参与放大影响。</div></div>
+      </article>
+
+      <article class="fact-card" style="--accent:var(--green)">
+        <div class="fact-head"><div class="fact-num">8</div><div class="fact-title">客户 ESG 期望来源不同，最终策略也不同</div></div>
+        <div class="fact-row"><div class="row-lab">原文要点</div><div class="row-val">客户的 ESG expectations 有多种 drivers，因此会以不同形式表现出来。</div></div>
+        <div class="fact-row"><div class="row-lab">中文解释</div><div class="row-val">DB pension 可能强调 fiduciary duty；sovereign wealth fund 可能强调 reputational risk；foundation 可能强调使命一致；individual investor 可能强调个人伦理。</div></div>
+        <div class="fact-row"><div class="row-lab">逻辑等式</div><div class="row-val eq"><b>Client ESG expectations</b> == drivers → ESG strategy form</div></div>
+        <div class="fact-row"><div class="row-lab">考点提醒</div><div class="row-val">看到不同客户类型，先反推 driver，再选 exclusions、integration、impact、engagement、tilt 等策略。</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading</div>
+        <h2>延伸阅读：PDF 列了 2 份材料，分别支撑什么考点</h2>
+      </div>
+      <div class="head-desc">这里不是要求全文精读，而是知道它们分别支撑“投资者集体参与”和“长期低摩擦、为受益人服务”的主线。</div>
+    </div>
+    <div class="grid-2">
+      <div class="reading-card">
+        <div class="reading-icon">1</div>
+        <div>
+          <div class="reading-title">Investor Forum Review 2017</div>
+          <p class="reading-desc"><b>对应考点：</b>collective engagement、stewardship、资源补强。第 9 章 Key Fact 7 说 ESG 资源不足会限制有效性，而集体参与是补强资源的一种方式。</p>
+          <p class="reading-desc"><b>阅读目的：</b>理解投资者如何通过共同平台与公司对话，降低单个资产所有者资源有限带来的约束。</p>
+          <div class="reading-url">PDF 列示链接：investorforum.org.uk / Annual-review-2017.pdf</div>
+          <div class="eq" style="margin-top:10px"><b>逻辑等式：</b>Investor Forum == shared stewardship platform + collective voice + engagement capacity</div>
+        </div>
+      </div>
+      <div class="reading-card">
+        <div class="reading-icon">2</div>
+        <div>
+          <div class="reading-title">Paul Lee 2008 · Long-Term Low Friction</div>
+          <p class="reading-desc"><b>对应考点：</b>agency problem、beneficiaries、long-term horizon。第 9 章 Key Facts 1-3 都围绕“投资链条中的代理问题”和“时间跨度对齐”。</p>
+          <p class="reading-desc"><b>阅读目的：</b>理解投资框架为什么应服务最终受益人，而不是被中间代理人的短期激励牵引。</p>
+          <div class="reading-url">PDF 列示链接：thersa.org / rsa-paul-lee.pdf</div>
+          <div class="eq" style="margin-top:10px"><b>逻辑等式：</b>Long-Term Low Friction == beneficiary focus + long horizon + lower agency drag</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card pad" style="margin-top:14px">
+      <span class="tag tag-dark">How to use</span>
+      <h3>如果考试前只记用途</h3>
+      <table class="mini-table">
+        <thead><tr><th>阅读材料</th><th>一眼反推知识点</th><th>最可能关联的 Key Facts</th></tr></thead>
+        <tbody>
+          <tr><td>Investor Forum Review 2017</td><td>集体参与、投资者协作、补强 ESG/stewardship 资源。</td><td>Key Fact 7；也连接 Module 6 的 engagement 监督。</td></tr>
+          <tr><td>Long-Term Low Friction</td><td>长期、低摩擦、受益人优先、减少代理成本。</td><td>Key Facts 1-3；也连接 Module 1 的 agency problem 和 Module 6 的长期评价。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：用一组总式背完整章</h2>
+      </div>
+      <div class="head-desc">如果只能用 5 分钟复习第 9 章，优先背这页。</div>
+    </div>
+    <div class="grid-2">
+      <div class="compress-card">
+        <h3>8 条 Key Facts 压缩式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>1 代理问题</b> == 投资链条的目标错位 + ESG belief alignment。</div>
+          <div class="formula"><b>2 问责对齐</b> == 客户时间跨度 ∩ 经理时间跨度。</div>
+          <div class="formula"><b>3 长期因素</b> == 用长期视角压住短期业绩噪音。</div>
+          <div class="formula"><b>4 整合方式</b> == ESG × 既有投资风格。</div>
+          <div class="formula"><b>5 工具对话</b> == advisory services + E/S/G attribution → test delivery。</div>
+          <div class="formula"><b>6 困难持仓</b> == hard cases → integration stress test。</div>
+          <div class="formula"><b>7 资源约束</b> == ESG 效果受资源限制；collective engagement 可补强。</div>
+          <div class="formula"><b>8 客户差异</b> == 不同 drivers → 不同 ESG strategy forms。</div>
+        </div>
+      </div>
+      <div class="compress-card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Agency problem vs Greenwashing</b>前者是委托链条目标错位，后者是 ESG 表述误导。</div>
+          <div class="trap"><b>Time horizon vs Performance</b>短期业绩不是唯一评价，长期 ESG 风险和 mandate 一致性更关键。</div>
+          <div class="trap"><b>Advisory tool vs Final answer</b>工具是对话入口，不是替代经理解释和客户判断的最终结论。</div>
+          <div class="trap"><b>Hard cases vs Best cases</b>hard cases 用来压力测试，best cases 容易变成经理自选宣传。</div>
+          <div class="trap"><b>Resource shortage vs Bad faith</b>资源不足不一定是恶意，但会限制覆盖、深度和 engagement 效果。</div>
+          <div class="trap"><b>Client type vs One-size-fits-all</b>不同客户 driver 不同，不能把同一种 ESG 策略套给所有客户。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card pad" style="margin-top:14px">
+      <span class="tag tag-blue">整章反推路线</span>
+      <table class="mini-table">
+        <thead><tr><th>题眼</th><th>反推知识点</th><th>选项倾向</th></tr></thead>
+        <tbody>
+          <tr><td>agency / alignment / beliefs</td><td>客户 ESG 信念要写清并传递给经理。</td><td>选 clarify needs、investment beliefs、mandate alignment。</td></tr>
+          <tr><td>short-term underperformance</td><td>长期视角下不一定构成警报。</td><td>选长期一致性、风格和风险管理。</td></tr>
+          <tr><td>different manager styles</td><td>ESG integration 要贴合投资风格。</td><td>选 delivered in practice、style consistency。</td></tr>
+          <tr><td>MSCI / Sustainalytics / attribution</td><td>外部工具用于对话和挑战。</td><td>选 test manager delivery，不选盲信数据质量。</td></tr>
+          <tr><td>outliers / hard cases</td><td>客户测试 ESG 整合是否真实有效。</td><td>选 challenge individual assets、portfolio consistency。</td></tr>
+          <tr><td>collective engagement</td><td>补强 ESG/stewardship 资源。</td><td>选 resource constraints / pooled influence。</td></tr>
+          <tr><td>client driver</td><td>客户类型决定 ESG 策略形式。</td><td>先判断 fiduciary、reputation、mission、ethics。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer-note">第 9 章现在已经形成：7 个复习模块 + 1 个 Key Facts / Further Reading 汇总页。下一步就是制作第 9 章三轮练习系统。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

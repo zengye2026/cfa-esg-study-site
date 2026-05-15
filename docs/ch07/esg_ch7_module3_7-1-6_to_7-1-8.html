@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.7 Module 3 · 7.1.6-7.1.8 Valuation Considerations</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 48%,#eaf0f6 100%);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);min-width:0}
+.hero-main{padding:28px 30px;border-radius:var(--r)}
+.hero-side{padding:20px;border-radius:var(--r);display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere;word-break:break-word}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:0;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:18px;font-weight:900;color:var(--dark);line-height:1.48;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:0;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:650px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.trend-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.trend-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.trend-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.kv{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px;margin:9px 0}
+.kv-lab{font-size:12px;font-weight:950;color:var(--muted);line-height:1.55}
+.kv-text{font-size:13px;color:var(--sub);line-height:1.65;overflow-wrap:anywhere}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(86px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.warnline{border-left:4px solid var(--rose);background:var(--rose-bg);border-radius:var(--r);padding:10px 12px;color:#881337;font-size:13px;line-height:1.68}
+.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:0}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compare{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:table}
+.compare th,.compare td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+.compare th{background:var(--soft);color:var(--dark);font-weight:950}
+.compare tr:last-child td{border-bottom:0}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:10px}
+.metric{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--sh-sm)}
+.metric-num{font-family:var(--serif);font-size:27px;font-weight:950;line-height:1;color:var(--dark)}
+.metric-lab{font-size:12px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.trend-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.trend-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .kv{grid-template-columns:1fr;gap:3px}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .compare{display:block;overflow-x:auto}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:16.5px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 7</span>
+        <span class="pill">Module 3</span>
+        <span class="pill">7.1.6-7.1.8</span>
+        <span class="pill">Valuation Considerations</span>
+        <span class="pill">Discounted Cash Flow</span>
+      </div>
+      <h1>ESG Integration<br>in Valuation</h1>
+      <p class="lead">本页把第 7 章估值部分拆成一条“从 ESG 到模型”的主线：研究阶段识别重大 ESG 因素后，分析师要把它们放进财务预测、DCF 输入、折现率、终值增长率或估值倍数，同时避免对同一风险重复计算。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG 估值整合 == 重大 ESG 因素 → 现金流/增长/利润率/CAPEX/折现率/终值增长率/估值倍数 → 公允价值变化</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">7.1.6 解释 ESG 分析如何补充传统财务分析<br>7.1.7 分析 ESG 因素如何影响行业和公司表现<br>7.1.8 分析 ESG 因素如何影响证券估值</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">主要估值入口</div></div>
+        <div class="mini-stat"><div class="mini-num">150</div><div class="mini-lab">bps 折现率情景</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先判断 ESG 风险是公司特定，还是行业/市场层面；再决定是调现金流、增长率，还是折现率。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="inputs">DCF 输入</button>
+    <button class="tab" data-tab="rates">折现率</button>
+    <button class="tab" data-tab="scenarios">DCF 情景</button>
+    <button class="tab" data-tab="multiples">估值倍数</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看一张图：ESG 怎样进入估值模型</h2>
+      </div>
+      <div class="head-desc">按“逻辑等式心象术”，本模块的题目可以拆成“分析、估值、整合”：分析找到因素，估值找到入口，整合要求有依据且不重复。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG Valuation Integration<br>把非财务风险转成财务模型假设</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">现金流预测</div>
+          <p>法规、诉讼、碳税、罚款可能降低现金流。</p>
+          <p>ESG 机会可能提高收入增长。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">模型输入</div>
+          <p>收入、利润率、资本开支、税后可分配现金流。</p>
+          <p>可直接加入罚款或碳税金额。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">折现率/终值</div>
+          <p>折现率反映风险，终值增长率反映长期可持续增长。</p>
+          <p>两者都影响估值显著。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">风险层级</div>
+          <p>公司特定风险通常进增长率或现金流。</p>
+          <p>行业/市场风险可进增长率，也可进折现率。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">估值倍数</div>
+          <p>ESG 机会/管理强可给溢价。</p>
+          <p>ESG 风险大可给折价。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>识别重大因素</h3><p>来自前一模块的研究和重大性评估。</p></div>
+        <div class="flow-step"><h3>判断影响路径</h3><p>收入、成本、CAPEX、风险、长期增长。</p></div>
+        <div class="flow-step"><h3>选择估值入口</h3><p>现金流、折现率、终值增长率或倍数。</p></div>
+        <div class="flow-step"><h3>建情景和依据</h3><p>假设要有证据，不要过度乐观或悲观。</p></div>
+        <div class="flow-step"><h3>检查重复计算</h3><p>同一风险不要随意同时扣现金流又加折现率。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">7.1.6</span>
+        <h3>补充传统财务分析</h3>
+        <p class="small">ESG 分析不是替代财务模型，而是补充传统分析，把重大 ESG 风险和机会转成财务报表预测或估值输入。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">7.1.7</span>
+        <h3>影响行业和公司表现</h3>
+        <p class="small">行业/市场层面的 ESG 风险会影响一类公司的收入和波动性；公司特定 ESG 表现会影响单家公司成长、成本和竞争力。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">7.1.8</span>
+        <h3>影响证券估值</h3>
+        <p class="small">估值影响可以走 DCF，也可以走相对估值倍数。题目若问 upward/downward adjustment，要先判断 ESG 因素是利好还是利空。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-07.pdf` 第 397-402 页整理，确保 DCF、折现率、终值增长率、重复计算和倍数调整都覆盖到。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">7.1.6-7.1.8</span> ESG 与估值主线</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">在研究阶段和重大性评估后，投资者开始对发行人和其权益进行估值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">此时，重大 ESG 因素的影响会进入财务报表预测和/或其他估值输入，例如 multiples 和 discount rates。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">显著环境监管或诉讼风险可能损害未来现金流，降低 DCF 估值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 机会也可提升现金流，例如销售帮助客户降低用电量的产品，带来更高收入增长。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">调整可直接体现为具体金额，例如环境诉讼罚款 JPY5 billion，或风险调整后的碳税年度金额。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PDF 小节名为 Discounted Cash Flow Input Adjustments；除离散现金流外，分析师也可调整 discount rate 或 terminal growth assumption。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Discount rate 是未来现金流的机会成本，通常反映债权和股权投资者要求回报的加权平均，并反映投资风险。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">terminal growth rate 是离散预测期后公司现金流永久增长率，反映长期可持续增长前景。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">折现率和终值增长率都是不可观察输入，具有不确定性，应有充分支持，不能过度乐观或悲观。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">稳定成熟、发达市场公司可用中到高个位数折现率和低个位数终值增长率；新兴市场早期高成长科技公司可能同时有更高折现率和更高终值增长率。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">company-specific ESG risks 通常可反映在增长率或现金流，不通常放入折现率。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">行业或市场层面 ESG 风险可反映在增长率，也可反映在折现率。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">折现率更高，其他条件不变，内在价值更低；折现率更低，内在价值更高。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">折现率或终值增长率调整大小取决于 ESG 因素财务影响显著性、风险管理质量、公司商业模式/增长/风险特征下的合理范围，以及可比公司估值。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">分析师应谨慎避免 double counting，例如同一 ESG 风险既降低现金流又提高折现率。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">在行业或市场层面风险中，若预期现金流下降且不确定性上升，同时调整现金流和折现率可能合理；否则可能过度惩罚。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">油气公司 DCF 示例中，气候政策风险是重大行业层面风险，因其运营和产品碳密集。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">油气 DCF 可通过降低收入预测和提高折现率来反映政策支持可再生能源与电动交通替代、以及政策不确定性带来的现金流波动。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Base case 估值 EUR43,280 million；Lower-revenue scenario 估值 EUR35,510 million；Higher-discount-rate scenario 估值 EUR39,131 million。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Lower-revenue scenario 假设收入增长从 5% 降至 -1%，经营利润率下降，CAPEX/revenue 下降至维护水平，终值增长率为 -1%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Higher-discount-rate scenario 保持 base-case 现金流不变，但将折现率提高 150 bps 至 11.5%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">相对估值也可调整倍数，例如 forward P/E 15x，公司因 ESG 机会和风险管理强可被赋予 18x peer top-end multiple。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">员工流失率低、员工满意和敬业度高，可支持客户留存和收入增长，从而支持 P/E 溢价。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">相反，ESG 实践差或风险更高的公司可能只在低于同业平均的倍数下才值得投资。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inputs" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">DCF Input Adjustments</div>
+        <h2>DCF 输入：ESG 先进入现金流</h2>
+      </div>
+      <div class="head-desc">先问“ESG 因素怎么影响现金流”：收入、成本、税费、资本开支、罚款、碳税，都可以是入口。</div>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. 负面风险：现金流受损</div><span class="tag tag-rose">Downside</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">若公司面临重大环境监管或诉讼，未来现金流可能受损，投资者会把这些潜在成本放入现金流预测，降低 DCF 估值。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">这类似预计负债或未来成本进入预测模型：不是嘴上说风险大，而是把风险转成收入下降、成本增加或罚款金额。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">ESG 风险</div><div class="eq-op">==</div><div class="eq-rhs">监管/诉讼/碳税 → 未来现金流下降 → DCF 估值下降</div></div></div>
+        <div class="riskline">考点提醒：题目说 environmental litigation fine 或 carbon tax annual amount，通常是现金流预测调整。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. 正面机会：收入增长提升</div><span class="tag tag-green">Upside</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">若公司有 ESG 机会，例如销售能减少客户用电量的产品，可能通过更高收入增长提升未来现金流，进而提高权益价值。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">ESG 不是只扣分。真正有商业模式支持的 ESG 机会，可能提高销量、价格、客户留存或市场份额。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">ESG 机会</div><div class="eq-op">==</div><div class="eq-rhs">客户节能/可持续产品 → 收入增长更高 → DCF 权益价值上升</div></div></div>
+        <div class="riskline">考点提醒：看到 high employee engagement、customer retention、energy-saving products，通常是 sales growth 或 operating margins 的正向调整。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. 直接金额：罚款和碳税</div><span class="tag tag-amber">Specific Amount</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">调整可以更直接，例如估计 JPY5 billion 环境诉讼罚款，或把风险调整后的碳税预测为模型中每年的绝对金额。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">当影响可以金额化时，优先把它放进现金流，而不是笼统提高折现率。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">直接调整</div><div class="eq-op">==</div><div class="eq-rhs">罚款/碳税具体金额 → 年度现金流扣减 → 估值下降</div></div></div>
+        <div class="riskline">实务联想：这像把已识别事项纳入预测底稿，金额、期间和依据都要写清楚。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. 简化 DCF 中的 Cash Flow</div><span class="tag tag-blue">Definition</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">油气案例中，“cash flow” 表示可分配给投资者的税后金额，计算为 revenue 减去运营和再投资现金用途。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">教材示例是简化模型；实务中 DCF 应由完整三张财务报表模型支持，并由销量、价格、盈利能力等重大驱动因素模型支撑。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">案例现金流</div><div class="eq-op">==</div><div class="eq-rhs">收入 - 运营现金用途 - 再投资现金用途 - 税费后可分配金额</div></div></div>
+        <div class="riskline">考点提醒：不要把教材简化模型误认为实际 DCF 只需要一张表。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="rates" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Discount Rate and Terminal Growth</div>
+        <h2>折现率与终值增长率：风险层级决定放哪里</h2>
+      </div>
+      <div class="head-desc">这一部分最容易出题：公司特定风险通常别直接塞进折现率；行业/市场层面风险才更可能影响折现率。</div>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. Discount Rate 折现率</div><span class="tag tag-blue">Risk</span></div>
+        <p class="small"><b>原文要点：</b>折现率是未来现金流的机会成本，常常是债权和股权投资者要求回报的加权平均，一般反映投资风险。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">折现率</div><div class="eq-op">==</div><div class="eq-rhs">未来现金流机会成本 + 债权/股权要求回报 + 投资风险</div></div></div>
+        <div class="riskline">投资影响：折现率上升，其他条件不变，内在价值下降。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. Terminal Growth Rate 终值增长率</div><span class="tag tag-green">Long-term</span></div>
+        <p class="small"><b>原文要点：</b>终值增长率是离散预测期后现金流永久增长率，反映公司长期可持续增长前景。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">终值增长率</div><div class="eq-op">==</div><div class="eq-rhs">预测期后永久增长假设 + 长期可持续成长能力</div></div></div>
+        <div class="riskline">投资影响：终值增长率越高，其他条件不变，估值越高；但假设不能过度乐观。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. 公司特定风险</div><span class="tag tag-amber">Company-specific</span></div>
+        <p class="small"><b>原文要点：</b>公司特定 ESG 风险可合理反映在增长率，但通常不包括在折现率中。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">公司风险</div><div class="eq-op">==</div><div class="eq-rhs">单家公司问题 → 增长率/现金流调整为主 → 通常不调折现率</div></div></div>
+        <div class="warnline">易错提醒：不要看到 governance worsening 就机械调所有参数；要判断影响是公司特定还是行业/市场层面。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. 行业/市场层面风险</div><span class="tag tag-violet">Sector / Market</span></div>
+        <p class="small"><b>原文要点：</b>行业或市场层面 ESG 风险不仅可反映在增长率，也可反映在折现率。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">行业风险</div><div class="eq-op">==</div><div class="eq-rhs">整个行业现金流下降 + 不确定性上升 → 可调增长率，也可调折现率</div></div></div>
+        <div class="riskline">油气气候政策风险就是教材中的行业层面风险例子。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">5. 调整大小的三项判断</div><span class="tag tag-teal">Judgment</span></div>
+        <p class="small"><b>原文要点：</b>调整大小取决于 ESG 因素财务影响有多显著、风险管理得好坏，以及公司商业模式/增长/风险特征下合理的折现率和终值增长率范围。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">调整幅度</div><div class="eq-op">==</div><div class="eq-rhs">财务影响显著性 + 管理质量 + 同类公司合理范围/可比估值</div></div></div>
+        <div class="riskline">考点提醒：minor risks may not warrant adjustments；重大风险才可能需要更大调整。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">6. Double Counting 重复计算</div><span class="tag tag-rose">Trap</span></div>
+        <p class="small"><b>原文要点：</b>分析师应谨慎避免对同一 ESG 风险既降低现金流又提高折现率。只有在行业/市场风险导致预期现金流下降且不确定性也上升时，这样做才可能合理。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">重复计算风险</div><div class="eq-op">==</div><div class="eq-rhs">同一 ESG 风险同时扣现金流 + 加折现率 → 可能过度惩罚</div></div></div>
+        <div class="warnline">易错提醒：考题出现 same ESG risk、cash flows down、discount rate up，要马上检查是否 double counting。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>典型假设范围：不是公式，是判断背景</h3>
+      <div class="grid-2">
+        <div class="formula"><b>稳定成熟、发达市场公司</b>：可能使用中到高个位数折现率，以及低个位数终值增长率。</div>
+        <div class="formula"><b>早期高成长、新兴市场科技公司</b>：在模型期长度类似时，较高折现率和较高终值增长率都可能合理。</div>
+      </div>
+      <p class="small muted" style="margin-top:10px">这不是让你背固定数值，而是理解：折现率和终值增长率都必须和商业模式、成长、风险和可比公司估值相匹配。</p>
+    </div>
+  </section>
+
+  <section id="scenarios" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">DCF Scenario Analysis</div>
+        <h2>油气公司 DCF 情景：一个风险，两条进入模型的路</h2>
+      </div>
+      <div class="head-desc">教材例子不是考复杂 DCF 计算，而是考你会不会判断 ESG 风险如何进入收入、利润率、CAPEX、折现率和估值。</div>
+    </div>
+    <div class="card">
+      <h3>情景背景</h3>
+      <p class="small">投资者评估一家 oil and gas producer。由于其运营和产品 carbon-intensive，climate change policy risk 被识别为重大行业层面风险。投资者可能降低收入预测，因为政府政策补贴替代性可再生能源和电动交通；也可能提高折现率，以反映不可预测气候政策变化带来的行业现金流波动。</p>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">油气政策风险</div><div class="eq-op">==</div><div class="eq-rhs">可再生能源/电动交通替代 → 收入增长下降 + 现金流不确定性上升</div></div>
+      </div>
+    </div>
+    <div class="metric-row" style="margin-top:14px">
+      <div class="metric"><div class="metric-num">43,280</div><div class="metric-lab">Base case value, EUR million</div></div>
+      <div class="metric"><div class="metric-num">35,510</div><div class="metric-lab">Lower-revenue scenario, EUR million</div></div>
+      <div class="metric"><div class="metric-num">39,131</div><div class="metric-lab">Higher-discount-rate scenario, EUR million</div></div>
+      <div class="metric"><div class="metric-num">150</div><div class="metric-lab">bps discount-rate increase</div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>三种情景速查表</h3>
+      <table class="compare">
+        <thead>
+          <tr><th>情景</th><th>关键假设</th><th>估值结果</th><th>学习重点</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Base Case</td>
+            <td>收入增长 5%；经营利润率 35%；CAPEX/revenue 15%；折现率 10%；终值增长率 1%。</td>
+            <td>EUR43,280 million</td>
+            <td>调整前的基准，用于比较 ESG 情景影响。</td>
+          </tr>
+          <tr>
+            <td>Lower Revenue</td>
+            <td>收入增长率从 5% 逐步降至 -1%；经营利润率从 35% 降至 31%；CAPEX/revenue 从 15% 降至 11%；终值增长率 -1%。</td>
+            <td>EUR35,510 million</td>
+            <td>ESG 风险通过收入、利润率、CAPEX 和终值增长率进入现金流。</td>
+          </tr>
+          <tr>
+            <td>Higher Discount Rate</td>
+            <td>保持 base-case 现金流不变；折现率从 10% 提高到 11.5%。</td>
+            <td>EUR39,131 million</td>
+            <td>ESG 风险通过行业层面不确定性进入折现率；该估值比 Scenario 1 高约 EUR3.6 billion。</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">DCF 情景</div><div class="eq-op">==</div><div class="eq-rhs">Base case → 调现金流情景 → 调折现率情景 → 比较估值影响</div></div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Scenario 1 的隐藏逻辑</div><span class="tag tag-amber">Cash flow</span></div>
+        <p class="small">气候政策支持替代能源和电动交通，压低传统油气收入增长；固定成本使经营利润率也下降；公司可能把 CAPEX 降到维护水平，因此 CAPEX/revenue 也下降。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">收入情景</div><div class="eq-op">==</div><div class="eq-rhs">需求受压 → 收入增长下降 → 利润率下降 → 资本开支降至维护水平</div></div></div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Scenario 2 的隐藏逻辑</div><span class="tag tag-violet">Discount rate</span></div>
+        <p class="small">如果现金流本身不改，只提高折现率，表示分析师认为政策变化提高了行业未来现金流的不确定性。折现率上升会显著压低估值。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">折现率情景</div><div class="eq-op">==</div><div class="eq-rhs">现金流不变 + 风险溢价上升 → 折现率上升 → 估值下降</div></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="multiples" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Valuation Multiples</div>
+        <h2>估值倍数：ESG 也可以影响相对估值</h2>
+      </div>
+      <div class="head-desc">如果用相对估值，不一定建完整 DCF；ESG 机会和风险管理也可以体现在 P/E 等倍数的溢价或折价中。</div>
+    </div>
+    <div class="grid-2">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">P/E 溢价示例</div><span class="tag tag-green">Premium</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">公司 forward P/E 为 15x，同业近年区间为 12x 到 18x。若公司 ESG 机会和重大风险管理较好，投资者可认为其应对同业享有溢价。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">倍数溢价要有业务逻辑：不是因为“ESG 好”就加价，而是因为 ESG 表现支持更强收入增长、客户留存或风险管理。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">P/E 溢价</div><div class="eq-op">==</div><div class="eq-rhs">ESG 机会/风险管理强 → 增长和风险质量更好 → 较高合理倍数</div></div></div>
+        <div class="riskline">教材例子：投资者给 18x next year's EPS fair value，认为当前股价在相对估值下低估。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">员工因素如何支持倍数</div><span class="tag tag-blue">S Factor</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">公司员工流失率远低于同业，并在员工满意和敬业度独立调查中得分高。投资者认为这会转化为更好的客户留存和收入增长。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">这是 S 因素进入估值的典型链条：员工稳定不是“好看指标”，而是通过客户体验和收入质量影响估值。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">员工 ESG</div><div class="eq-op">==</div><div class="eq-rhs">低流失 + 高满意/敬业 → 客户留存更强 → 收入增长更好 → P/E 溢价</div></div></div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>溢价和折价一张表</h3>
+      <table class="compare">
+        <thead><tr><th>ESG 情况</th><th>估值处理</th><th>逻辑</th></tr></thead>
+        <tbody>
+          <tr><td>ESG 机会强，且重大 ESG 风险管理好</td><td>可给高于同业的倍数，例如靠近 18x。</td><td>更高成长、更强客户留存、更低风险。</td></tr>
+          <tr><td>ESG 实践差或风险更大</td><td>可能只在低于同业平均的倍数下投资。</td><td>用估值折价补偿更高风险。</td></tr>
+          <tr><td>ESG 高分已完全反映在价格中</td><td>不一定还有超额收益。</td><td>好公司也可能太贵。</td></tr>
+        </tbody>
+      </table>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">倍数调整</div><div class="eq-op">==</div><div class="eq-rhs">ESG 对增长/风险的影响 + 市场是否已反映 → 溢价或折价</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Examples and Cases</div>
+        <h2>案例区：把题眼落到估值入口</h2>
+      </div>
+      <div class="head-desc">训练看到 ESG 事实后，马上判断它应该进入现金流、折现率、终值增长率还是估值倍数。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">环境诉讼罚款 JPY5 billion</div><span class="tag tag-rose">Cash Flow</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">assessment of an environmental litigation fine of JPY5 billion</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是可以金额化的直接现金流调整，不是笼统调折现率。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">诉讼罚款 == 具体金额 → 现金流扣减 → DCF 估值下降。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">产品降低客户用电量</div><span class="tag tag-green">Revenue Growth</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">products that reduce customers' electricity usage</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是 ESG 机会，可通过更高 revenue growth 提升未来现金流。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">节能产品 == 客户价值提升 → 销售增长 → 权益价值上升。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">油气气候政策风险</div><span class="tag tag-violet">Sector Risk</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">carbon-intensive operations and products, climate change policy risk, sector-wide risk</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">可以调收入预测，也可以因行业现金流波动性上升而调折现率。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">行业政策风险 == 需求受压 + 不确定性上升 → 现金流/折现率双入口。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">同一风险重复计算</div><span class="tag tag-rose">Double Count</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">reducing projected cash flows and increasing discount rate for the same ESG risk factor</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">要警惕 double counting。除非既降低预期现金流，又提高现金流不确定性，否则可能过度惩罚。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">同一风险双调 == 可能合理，但必须证明“金额下降 + 波动上升”。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">员工满意度和 P/E 溢价</div><span class="tag tag-blue">Multiple</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">low employee turnover, high employee satisfaction and engagement</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">可支持 superior customer retention and revenue growth，进而支持 P/E premium。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">员工质量 == 客户留存 + 收入增长 → 更高合理 P/E。</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">ESG 风险高但估值便宜</div><span class="tag tag-amber">Discount</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">poor ESG practices or greater risks at a multiple lower than peer average</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">风险高不代表绝对不能投；可能需要更低倍数来补偿风险。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">高 ESG 风险 == 要求估值折价 → 风险补偿后再判断。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩版：一屏背完整模块</h2>
+      </div>
+      <div class="head-desc">先背“调哪里”，再背“为什么不能重复调”。这页能反推出大部分估值题。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>ESG 估值整合</b> == 重大 ESG 因素 → 财务预测/估值输入调整 → 估值变化。</div>
+          <div class="formula"><b>负面 ESG 风险</b> == 监管/诉讼/碳税 → 现金流下降 → DCF 价值下降。</div>
+          <div class="formula"><b>正面 ESG 机会</b> == 节能/可持续产品或员工优势 → 收入增长/客户留存提升 → 价值上升。</div>
+          <div class="formula"><b>Discount rate</b> == 未来现金流机会成本 + 债权/股权要求回报 + 投资风险。</div>
+          <div class="formula"><b>Terminal growth</b> == 预测期后永久增长率 + 长期可持续增长前景。</div>
+          <div class="formula"><b>公司特定风险</b> == 增长率/现金流调整为主，通常不进折现率。</div>
+          <div class="formula"><b>行业/市场风险</b> == 增长率和折现率都可能受影响。</div>
+          <div class="formula"><b>Double counting</b> == 同一 ESG 风险同时扣现金流又加折现率，除非能证明预期下降且不确定性上升。</div>
+          <div class="formula"><b>Oil & gas DCF</b> == Base EUR43,280m → Lower revenue EUR35,510m → Higher discount rate EUR39,131m。</div>
+          <div class="formula"><b>P/E multiple</b> == ESG 对增长/风险的影响 + 市场是否已反映 → 溢价或折价。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 8 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>现金流 vs 折现率</b>可金额化的罚款、碳税、成本，优先进入现金流；系统性不确定性才更像折现率。</div>
+          <div class="trap"><b>公司特定 vs 行业/市场</b>公司特定 ESG 风险通常不调折现率；行业/市场风险可调折现率。</div>
+          <div class="trap"><b>高折现率方向</b>折现率越高，内在价值越低；不要反向。</div>
+          <div class="trap"><b>终值增长率方向</b>终值增长率越高，价值越高；但要有长期可持续依据。</div>
+          <div class="trap"><b>Scenario 1 vs Scenario 2</b>Scenario 1 是现金流/增长/利润率/CAPEX 变化；Scenario 2 是现金流不变、折现率升 150 bps。</div>
+          <div class="trap"><b>Double counting</b>同一风险不能随便又扣现金流又加折现率，否则可能过度惩罚。</div>
+          <div class="trap"><b>ESG 好不等于一定买</b>如果估值已经反映，仍可能缺乏超额收益。</div>
+          <div class="trap"><b>ESG 差不等于绝对不能投</b>风险高的公司可能在足够低的倍数下才有投资吸引力。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">复习顺序建议：先背“ESG 因素 → 现金流/折现率/倍数”，再背油气三情景数值，最后用 double counting 检查所有估值题。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quick Check</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">这些题用于检查模块 3 是否真的理解。整章三轮练习系统会在后面统一制作。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">ESG 因素进入 DCF 的最直接入口有哪些？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>收入、成本、利润率、资本开支、现金流、罚款、碳税，也可影响折现率和终值增长率。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">公司销售能降低客户用电量的产品，最可能如何影响 DCF？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>作为 ESG 机会，提高收入增长和未来现金流，从而提高权益价值。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">公司特定 ESG 风险通常应放入折现率吗？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：通常不。</b>公司特定风险更合理地反映在增长率或现金流中；行业/市场层面风险才更可能影响折现率。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">折现率提高，对内在价值的方向性影响是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>其他条件不变，折现率提高会降低内在价值。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">什么情况下“降低现金流 + 提高折现率”不一定是重复计算？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>当这是行业或市场层面风险，且分析师判断预期现金流下降，同时围绕预期值的不确定性也上升时，可能合理。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">油气 DCF 案例中，Base case、Lower revenue、Higher discount rate 的估值分别是多少？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>Base case EUR43,280 million；Lower-revenue scenario EUR35,510 million；Higher-discount-rate scenario EUR39,131 million。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Higher-discount-rate scenario 中，折现率从多少调到多少？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>从 10% 提高到 11.5%，即提高 150 bps，现金流假设保持 base case 不变。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">员工流失率低、员工满意度高，为什么可能支持 P/E 溢价？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为它可能转化为更好的客户留存和收入增长，从而支持更高的合理估值倍数。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>反推自测</h3>
+      <div class="grid-auto">
+        <details>
+          <summary>看到 “JPY5 billion environmental litigation fine” 反推什么？</summary>
+          <div class="detail-body">反推具体现金流调整：把罚款金额直接纳入 DCF 现金流，而不是笼统提高折现率。</div>
+        </details>
+        <details>
+          <summary>看到 “sector-wide volatility in future cash flows” 反推什么？</summary>
+          <div class="detail-body">反推行业层面风险可影响折现率，油气气候政策风险就是教材例子。</div>
+        </details>
+        <details>
+          <summary>看到 “P/E 15x, peer range 12x-18x, fair value 18x” 反推什么？</summary>
+          <div class="detail-body">反推 ESG 机会或重大风险管理较好，可支持相对估值倍数溢价。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

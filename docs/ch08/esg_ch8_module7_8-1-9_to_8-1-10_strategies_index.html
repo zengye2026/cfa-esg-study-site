@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.8 Module 7 · 8.1.9-8.1.10 Strategies and Index Portfolios</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 42%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0;max-width:100%}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.7vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.46;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:480px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden;max-width:100%}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word}
+p{margin:0 0 10px}.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px;max-width:100%}
+.center-node{max-width:780px;margin:0 auto 18px;background:#f5f3ff;border:2px solid #6d28d9;color:#3b0764;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch:nth-child(3){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(6){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px;overflow-wrap:anywhere}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0;position:relative}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;max-width:100%;overflow:hidden}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(100px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm)}
+table{border-collapse:collapse;width:100%;min-width:900px}
+th,td{border-bottom:1px solid var(--line2);padding:10px 12px;text-align:left;vertical-align:top;font-size:13px;line-height:1.55;color:var(--sub)}
+th{color:var(--dark);font-weight:950;background:var(--soft)}tr:last-child td{border-bottom:0}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;max-width:100%}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35;overflow-wrap:anywhere;word-break:break-word}
+.case-body{padding:14px 16px}.case-row{display:grid;grid-template-columns:112px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere;word-break:break-word}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68;overflow-wrap:anywhere;word-break:break-word}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58;overflow-wrap:anywhere;word-break:break-word}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:1080px){.branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}.flowline{grid-template-columns:1fr 1fr}.flow-step:not(:last-child)::after{display:none}
+  .grid-2,.grid-3,.compress{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}.hero-main{padding:22px 18px}.hero-side{padding:16px}.side-big{font-size:17px;line-height:1.5}
+  .branch-grid,.flowline{grid-template-columns:1fr}.map-board{padding:16px}.center-node{border-radius:var(--r);padding:12px 14px}
+  .eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}.case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}.qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}.pill{font-size:11.5px;padding:5px 9px}.lead,.hero-eq{font-size:14px}table{min-width:780px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 8</span>
+        <span class="pill">Module 7</span>
+        <span class="pill">8.1.9-8.1.10</span>
+        <span class="pill">Strategies · Index Portfolios</span>
+      </div>
+      <h1>ESG Strategies and<br>Index-Based Portfolios</h1>
+      <p class="lead">本页覆盖第 8 章 16-18 节：full ESG integration、exclusionary screening、positive alignment/best in class、thematic investing、impact investing、active ownership，以及 index-based ESG portfolios 如何依靠数据集、规则、优化和 stewardship 管理组合。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG 策略选择 == 投资目标 + 证据方式 + 组合约束 + 风险代价；指数型 ESG 组合 == 低成本规则复制 + ESG 数据集解释权 + tracking error 管理 + stewardship 深度限制。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">8.1.9 evaluate ESG strategy types<br>8.1.10 manage index-based ESG portfolios</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">ESG 策略类型</div></div>
+        <div class="mini-stat"><div class="mini-num">3</div><div class="mini-lab">指数管理抓手</div></div>
+        <div class="mini-stat"><div class="mini-num">16%</div><div class="mini-lab">美国股市指数型持有例示</div></div>
+        <div class="mini-stat"><div class="mini-num">TE</div><div class="mini-lab">偏离成本主线</div></div>
+      </div>
+      <div class="side-note">记忆抓手：主动策略问“我想改变什么”，指数策略问“我愿意偏离 benchmark 多少”。这两个问题能把本模块串起来。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="matrix">策略矩阵</button>
+    <button class="tab" data-tab="integration">Full Integration</button>
+    <button class="tab" data-tab="exclusion">Exclusion</button>
+    <button class="tab" data-tab="bestclass">Best in Class</button>
+    <button class="tab" data-tab="themeimpact">Theme & Impact</button>
+    <button class="tab" data-tab="ownership">Active Ownership</button>
+    <button class="tab" data-tab="index">Index Portfolios</button>
+    <button class="tab" data-tab="datasets">Datasets</button>
+    <button class="tab" data-tab="case">养老金案例</button>
+    <button class="tab" data-tab="compress">压缩背诵</button>
+    <button class="tab" data-tab="quiz">自测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>模块 7 的一根线：策略先分“想做什么”，指数再问“怎么低成本实现”</h2>
+      </div>
+      <div class="head-desc">第 8 章最后部分把前面所有工具收束为投资策略选择和指数型组合管理。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG strategy choice == objective × implementation × evidence × portfolio risk</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">Full ESG integration</div>
+          <p>把 material ESG factors 系统、明确地嵌入投资分析、决策、组合管理和估值。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Exclusionary screening</div>
+          <p>用伦理或规范标准排除行业/公司，简单但可能带来 tracking error、active share 和因子偏离。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Best in class</div>
+          <p>在行业同业中选 ESG 表现更好的 top decile/quintile/quartile。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Thematic & Impact</div>
+          <p>主题投资围绕 water、clean energy 等主题；影响力投资强调正面、可衡量的社会环境影响。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Active ownership</div>
+          <p>用所有权和投票权影响公司行为，逻辑上与单纯 divestment 相反。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Index-based ESG</div>
+          <p>规则化、低成本，但高度依赖 ESG 数据集和方法论，并受 tracking error 与 stewardship 深度限制。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>Objective</h3><p>风险缓释、正向选择、主题暴露、影响力或公司改变。</p></div>
+        <div class="flow-step"><h3>Tool</h3><p>整合、排除、同业择优、主题、impact、engagement、指数。</p></div>
+        <div class="flow-step"><h3>Evidence</h3><p>流程文件、持仓暴露、KPI、SDG 报告、投票和 engagement 记录。</p></div>
+        <div class="flow-step"><h3>Risk</h3><p>集中度、sector bias、tracking error、评级分歧、数据短历史。</p></div>
+        <div class="flow-step"><h3>Explain</h3><p>向资产所有者解释策略为什么成立，以及代价在哪里。</p></div>
+      </div>
+    </div>
+    <div class="footer-note">本模块不要死背名称。用“目的 → 工具 → 证据 → 风险”四步，任何策略都能反推。</div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>覆盖清单：PDF 第 16-18 节</h2>
+      </div>
+      <div class="head-desc">这张清单是防遗漏用的，后续 Key Facts 页会再做全章总表。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">8.1.9</span> ESG strategy types</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG integration 是 material ESG factors 被 systematic and explicit inclusion 到 investment analysis and decisions。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Full ESG integration 不只风险缓释，还识别 losers and winners 的风险与机会。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Full integration 建立 financial + ESG analysis 与 management engagement 的 circular process，最终进入 estimated valuation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Full integration 通常少受 rule-based constraints 约束，外部 ESG rating 用于 inform/complement，不直接驱动选股。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Full integration 的挑战：proprietary research 不像高组合 ESG 分数或低碳暴露那样一眼可见，需要更多证据展示。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Exclusionary screening 是最早且最简单的 responsible investment 方法，源于 SRI、伦理或规范标准。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Exclusions 从传统 controversial arms/munitions 扩展到 tobacco、thermal coal、oil sands、unconventional oil and gas。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Exclusion 的程度会影响 tracking error、active share 和 unintended factor exposure。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Positive alignment/best in class 按 ESG methodology 选择行业同业中表现较好的 top decile/quintile/quartile。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Best in class 的关键挑战是 ESG rating methodologies 多样且缺乏 convergence，透明度和一致性会被检验。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Thematic investing 聚焦 clean energy、water、demographic change、health care 等可持续主题。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Thematic investing 集中度高，可能牺牲分散化，sectoral bias 会驱动 factor exposure、relative performance 和 tracking error。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Impact investing 强调 intention、positive measurable socio-environmental impacts 和 financial returns。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Listed securities 中使用 SDGs 更难证明 additionality 和 intentionality，报告粒度通常不如 unlisted impact portfolios。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Active ownership 通过所有权和投票权影响公司行为，可用 direct engagement、collaborative engagement、proxy voting。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">8.1.10</span> Index-based ESG portfolios</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Index-based assets 占全球 AUM 比例在上一十年已翻倍；美国 index-based ETFs and mutual funds 持有美国股票市值约 16%。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Index-based strategies 依赖 rule-based approaches，因此成本低；ESG 数据成本可能让 ESG 指数策略费用略高于一般被动策略，但仍低于主动 ESG。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">资产所有者可绕过主动 ESG 策略，直接投资或自建 ESG index-based strategies，例如 CalSTRS、Taiwan Bureau of Labour Funds、GPIF。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG index approaches 从 exclusion-oriented 扩展到 fossil fuels 低暴露、carbon cap、single-factor ESG smart beta/beta plus。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者愿意因 ESG 或行业/证券排除偏离核心指数的程度，决定 tracking error differential。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Index-based ESG construction 高度依赖 established datasets，但 ESG 数据短历史、可比性弱、区域覆盖不足、披露自愿、标准分歧。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">排除 tobacco/fossil fuels 等成熟 value-oriented 行业，会自然重配到 technology、health care 等其他行业。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Index-based strategies 可 proxy voting，但除非有成熟 stewardship team，engagement 通常较浅。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="matrix" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Strategy Matrix</div>
+        <h2>六类 ESG 策略速查表</h2>
+      </div>
+      <div class="head-desc">这张表用于考前快速判断题干说的是哪一种策略。</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>策略</th>
+            <th>核心目标</th>
+            <th>典型做法</th>
+            <th>主要风险/限制</th>
+            <th>逻辑等式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Full ESG integration</td>
+            <td>把 ESG 风险和机会纳入选股、估值和组合管理。</td>
+            <td>内部 ESG 研究 + 财务分析 + 公司 engagement + 估值调整。</td>
+            <td>过程不容易被外部一眼看懂，需要文件、案例、engagement 记录支持。</td>
+            <td>Integration == ESG + financial analysis → valuation。</td>
+          </tr>
+          <tr>
+            <td>Exclusionary screening</td>
+            <td>用伦理/规范偏好排除特定暴露。</td>
+            <td>排除 tobacco、gambling、weapons、thermal coal、oil sands 等。</td>
+            <td>提高 tracking error、active share，可能产生 unintended factor exposure。</td>
+            <td>Exclusion == values/norms → remove exposure。</td>
+          </tr>
+          <tr>
+            <td>Positive alignment / Best in class</td>
+            <td>选择同业内 ESG 表现更好的公司。</td>
+            <td>按 ESG 评级投 top decile、quintile 或 quartile。</td>
+            <td>评级方法不一致，透明度和一致性要求高，改进空间可能较少。</td>
+            <td>Best in class == same sector → higher ESG performers。</td>
+          </tr>
+          <tr>
+            <td>Thematic investing</td>
+            <td>围绕可持续主题构建组合。</td>
+            <td>clean energy、water、demographic change、health care；可主动量化或 ETF。</td>
+            <td>主题集中，sector bias 影响 factor exposure、波动和 tracking error。</td>
+            <td>Theme == sustainability topic → concentrated portfolio。</td>
+          </tr>
+          <tr>
+            <td>Impact investing</td>
+            <td>追求正面、可衡量社会环境影响，同时考虑财务回报。</td>
+            <td>low-cost housing、waste/water infrastructure、SDG 对齐报告。</td>
+            <td>SDG 方法差异大；上市证券中 additionality 和 intentionality 较难证明。</td>
+            <td>Impact == intention + measurable impact + returns。</td>
+          </tr>
+          <tr>
+            <td>Active ownership</td>
+            <td>通过所有权影响被投公司行为。</td>
+            <td>direct engagement、collaborative engagement、proxy voting。</td>
+            <td>学术证据相对有限，长期 engagement 效果难量化。</td>
+            <td>Ownership == rights + position → behavior change。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="integration" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Full ESG Integration</div>
+        <h2>完整 ESG 整合：不是打勾，而是进入估值</h2>
+      </div>
+      <div class="head-desc">本策略的关键是 systematic、explicit、materiality、valuation。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Definition</span><div class="topic-title">ESG integration 的基础定义</div></div></div>
+        <p class="small">PRI 将 ESG integration 定义为把 material ESG factors 系统、明确地纳入 investment analysis and investment decisions。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG integration</div><div class="eq-op">==</div><div class="eq-rhs">systematic + explicit + material ESG factors → analysis and decisions</div></div>
+          <div class="eq"><div class="eq-lhs">作用</div><div class="eq-op">==</div><div class="eq-rhs">identify + assess + quantify ESG risks, sensitivities and shocks</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>它不是临时想起来看一下 ESG，而是和财务、估值、因子暴露一样进入投资流程。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Circular Process</span><div class="topic-title">Full integration 的闭环</div></div></div>
+        <p class="small">Full ESG integration 把财务分析、ESG 分析和对公司管理层的 iterative engagement 连成循环，最后把影响纳入 estimated valuation。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Full integration</div><div class="eq-op">==</div><div class="eq-rhs">financial analysis + ESG analysis + engagement → estimated valuation</div></div>
+          <div class="eq"><div class="eq-lhs">Materiality</div><div class="eq-op">==</div><div class="eq-rhs">different investment horizons → risks + opportunities</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>full integration 超过 risk mitigation，它同时识别 losers and winners 的风险与机会。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Evidence Burden</span><div class="topic-title">为什么它更难“展示给投资者看”</div></div></div>
+        <p class="small">完整整合依赖深度、常常是 proprietary 的 ESG research，因此未必有高 blended ESG score 或低 carbon exposure 这种直观外观。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Full integration challenge</div><div class="eq-op">==</div><div class="eq-rhs">deep proprietary research - simple ESG optics</div></div>
+        </div>
+        <div class="memory"><b>需要提供证据：</b>内部/外部研究资源、流程文件、engagement 记录、SDG 主题暴露、resource/water/energy 等正向 impact metrics、投资案例。</div>
+      </article>
+    </div>
+    <div class="case-card" style="margin-top:14px">
+      <div class="case-head"><div class="case-name">低 blended ESG score 怎么解释？</div><span class="tag tag-amber">低分不等于没整合</span></div>
+      <div class="case-body">
+        <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">如果 full integration 策略呈现低 blended ESG score 或高于平均的 carbon exposure，投资团队要准备解释其逻辑。</div></div>
+        <div class="case-row"><div class="case-lab">解释路径</div><div class="case-text">可说明市场误判了公司 ESG profile，或低估了公司改善速度；用 proprietary ESG data 和 management engagement 支撑。</div></div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Low ESG score</div><div class="eq-op">==</div><div class="eq-rhs">not automatic failure; explain mischaracterization + improvement path + engagement evidence</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exclusion" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exclusionary Screening</div>
+        <h2>排除筛选：最简单，也最容易带来组合偏离</h2>
+      </div>
+      <div class="head-desc">它的优点是清晰，代价是可能改变投资宇宙、行业和因子暴露。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">起源与范围</div><span class="tag tag-rose">SRI Roots</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">Exclusionary screening 是 responsible investment 中最早、最简单的方法，源于 SRI，用伦理或规范框架排除特定行业暴露。</div></div>
+          <div class="case-row"><div class="case-lab">传统范围</div><div class="case-text">sin stocks 通常包括 tobacco、pornography、gambling、weapons 等公司发行人。</div></div>
+          <div class="case-row"><div class="case-lab">扩展范围</div><div class="case-text">从 controversial arms and munitions 扩展到 tobacco、thermal coal、oil sands、unconventional oil and gas。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Exclusion</div><div class="eq-op">==</div><div class="eq-rhs">ethical/normative preference → remove sectors/issuers</div></div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">组合管理代价</div><span class="tag tag-amber">TE / Active Share</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">风险</div><div class="case-text">排除程度可能显著影响 tracking error、active share，并带来 unintended factor exposure。</div></div>
+          <div class="case-row"><div class="case-lab">管理人偏好</div><div class="case-text">资产管理人面对多样且可能冲突的投资者偏好，通常倾向保持尽可能不受约束的 investment universe。</div></div>
+          <div class="case-row"><div class="case-lab">另类投资</div><div class="case-text">Hedge funds 往往偏好不受约束的投资宇宙，以便在 long 和 short 两边寻找 alpha。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">More exclusions</div><div class="eq-op">==</div><div class="eq-rhs">narrower universe → higher TE/active share + unintended factor exposure</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>短卖争议</h3>
+        <p class="small">PDF 提到，hedge fund 可能对原本在排除清单上的股票做空；常见理论理由是，shorting 可能提高这些公司的 capital cost。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Short excluded stocks</div><div class="eq-op">==</div><div class="eq-rhs">express negative view + potentially raise cost of capital</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>投资影响</h3>
+        <p class="small">资产所有者可以指定排除规则；资产管理人若服务多个投资者，通常更难默认采用统一排除清单。</p>
+        <div class="riskline"><b>易错：</b>排除筛选的“清晰”不等于“无成本”；考试常把 tracking error、factor exposure 放进选项。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bestclass" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Positive Alignment</div>
+        <h2>Best in class：不是排除最差，而是同业择优</h2>
+      </div>
+      <div class="head-desc">关键词：top decile / quintile / quartile、relative to industry peers、transparency and consistency。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Inverse</span><div class="topic-title">排除筛选的反面</div></div></div>
+        <p class="small">Positive alignment or best in class 用给定 ESG rating methodology 识别相对行业同业 ESG 表现更好的公司。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Best in class</div><div class="eq-op">==</div><div class="eq-rhs">given ESG methodology + better ESG performance vs industry peers</div></div>
+          <div class="eq"><div class="eq-lhs">Portfolio expression</div><div class="eq-op">==</div><div class="eq-rhs">top decile/quintile/quartile by ESG criteria</div></div>
+        </div>
+        <div class="memory"><b>中文解释：</b>不是“行业干净才买”，而是在每个行业里找相对更好的公司。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Methodology</span><div class="topic-title">方法一致性很关键</div></div></div>
+        <p class="small">排名方法的一致性和组合对高排名公司的 position-weighted exposure，是这类策略的重要基础。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Best-in-class quality</div><div class="eq-op">==</div><div class="eq-rhs">consistent ranking methodology + weighted exposure to high-ranked companies</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>不同 ESG 评级方法缺乏 convergence，基金管理人的高分可能在投资者或平台方法下变成低分。</div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Constraints</span><div class="topic-title">得分约束减少自由度</div></div></div>
+        <p class="small">由于评级/得分约束，best-in-class 策略通常较少投资于低分但 ESG momentum 改善的公司，也较难通过 active ownership 展示 incremental gains。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Best-in-class downside</div><div class="eq-op">==</div><div class="eq-rhs">score constraint → less latitude for proprietary low-score improvement cases</div></div>
+          <div class="eq"><div class="eq-lhs">Criticism</div><div class="eq-op">==</div><div class="eq-rhs">diminishing ESG returns + limited active ownership gains</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="themeimpact" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Thematic and Impact</div>
+        <h2>主题投资与影响力投资：一个围绕主题，一个证明影响</h2>
+      </div>
+      <div class="head-desc">两者都可能使用 SDGs，但考点不同：主题看集中度，impact 看意图、可衡量和 additionality。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Thematic investing</div><span class="tag tag-violet">Theme Exposure</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">围绕 sustainability-aligned themes 构建组合，可用 fundamental、active quant 或 ETF/passive vehicles 表达。</div></div>
+          <div class="case-row"><div class="case-lab">常见主题</div><div class="case-text">clean energy、water、demographic change、health care；SDGs 可帮助跨主题配置以提高分散化。</div></div>
+          <div class="case-row"><div class="case-lab">主要风险</div><div class="case-text">单一主题集中会牺牲分散化；sectoral bias 驱动 factor exposure、relative performance 和 tracking error。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Thematic investing</div><div class="eq-op">==</div><div class="eq-rhs">sustainability theme → concentrated exposure → sector/factor/TE risk</div></div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Impact investing</div><span class="tag tag-green">Measurable Impact</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">投资意图是产生 positive、measurable socio-environmental impacts，同时不牺牲财务回报。</div></div>
+          <div class="case-row"><div class="case-lab">应用例子</div><div class="case-text">low-cost community housing、critical waste and water infrastructure；foundation/endowment 的 mission investments 甚至可接受 sub-market concessional returns。</div></div>
+          <div class="case-row"><div class="case-lab">报告重点</div><div class="case-text">由于社会经济目标与财务回报并列甚至优先，必须建立并复核 reporting frameworks。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Impact investing</div><div class="eq-op">==</div><div class="eq-rhs">intention + positive measurable impact + financial return discipline</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="topic-grid" style="margin-top:14px">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-rose">Clean Energy</span><div class="topic-title">清洁能源主题为什么波动更大</div></div></div>
+        <p class="small">历史上 clean energy funds 波动较大，原因包括 regulatory incentives/subsidies 变化、资本流入流出形成 scarcity premium、现金流状况较弱。它常是 pro-cyclical growth sector，资本开支和经济周期收缩时表现较弱。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Clean energy volatility</div><div class="eq-op">==</div><div class="eq-rhs">subsidy risk + scarcity premium + poor cash flow + pro-cyclical growth</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Water</span><div class="topic-title">水主题为什么更稳定</div></div></div>
+        <p class="small">Water funds 通常有更稳定的监管前景、强现金流和现金转换，常被用作 inflation hedge；但经济扩张、资金转向 growth 时可能跑输。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Water theme</div><div class="eq-op">==</div><div class="eq-rhs">stable regulation + strong cash flow + inflation hedge; may underperform in growth rotations</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">SDG Reporting</span><div class="topic-title">上市组合的 SDG 报告限制</div></div></div>
+        <p class="small">上市证券中 SDG 报告可展示基金相对 benchmark exposure、overall/sectoral/thematic contribution、证券层面表现和数据提供商分类方法，但通常不用于证明收益因果归因，也不增加定量风险暴露。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Listed SDG report</div><div class="eq-op">==</div><div class="eq-rhs">exposure transparency, not return attribution or risk factor</div></div>
+          <div class="eq"><div class="eq-lhs">Key challenge</div><div class="eq-op">==</div><div class="eq-rhs">additionality + intentionality harder to evidence in listed equities</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="ownership" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Active Ownership</div>
+        <h2>主动所有权：不卖掉，而是推动改变</h2>
+      </div>
+      <div class="head-desc">它和 negative screening 的逻辑相反：不是单纯 divestment，而是集合并引导投资者偏好去推动改变。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-teal">Definition</span><div class="topic-title">用所有权影响公司行为</div></div></div>
+        <p class="small">Active ownership 使用所有权的权利和位置来影响被投公司的活动或行为，目标是推动公司治理和管理方式的正向改变。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Active ownership</div><div class="eq-op">==</div><div class="eq-rhs">ownership rights + ownership position → influence investee behavior</div></div>
+          <div class="eq"><div class="eq-lhs">Opposite logic</div><div class="eq-op">==</div><div class="eq-rhs">not divestment alone; use investor voice to drive change</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Three Tools</span><div class="topic-title">三种实施方式</div></div></div>
+        <p class="small">可直接与公司管理层 engagement；也可 collaborative engagement，投资者共同推动变化、提交 shareholder proposals and resolutions；还可使用 proxy voting strategy。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Active ownership tools</div><div class="eq-op">==</div><div class="eq-rhs">direct engagement + collaborative engagement/proposals/resolutions + proxy voting</div></div>
+          <div class="eq"><div class="eq-lhs">Voting agenda</div><div class="eq-op">==</div><div class="eq-rhs">greater disclosure + transparency + ESG awareness</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Investment Thesis</span><div class="topic-title">价值重估逻辑</div></div></div>
+        <p class="small">低估值或债务困境公司往往 ESG 指标较差。若 engagement 改善公司 ESG 表现，理论上可带来 equity value re-rating 或 credit spreads 收窄。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Engagement alpha thesis</div><div class="eq-op">==</div><div class="eq-rhs">ESG improvement → equity re-rating or tighter credit spreads</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>PDF 同时提醒，active ownership 的学术支持相对有限，长期 engagement 效果数据不多。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="index" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Index-Based Portfolios</div>
+        <h2>指数型 ESG 组合：低成本规则化，但不是“免费 ESG”</h2>
+      </div>
+      <div class="head-desc">指数型组合的主线是：规则、成本、数据、偏离和 stewardship。</div>
+    </div>
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-blue">Rule-based</span><div class="topic-title">为什么指数策略成本较低</div></div></div>
+        <p class="small">Index-based strategies 依靠 rule-based approaches，不像主动管理那样高度 discretionary，因此成本较低。ESG 数据仍处较新阶段，数据成本可能让 ESG 指数策略费用略高于普通指数策略，但仍明显低于主动 ESG 基金。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Index ESG cost</div><div class="eq-op">==</div><div class="eq-rhs">rule-based lower cost + ESG data cost premium - active ESG fees</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-green">Asset Owners</span><div class="topic-title">资产所有者直接使用 ESG 指数</div></div></div>
+        <p class="small">PDF 举例：CalSTRS 使用 MSCI ACWI Low-Carbon Target Index；Taiwan Bureau of Labour Funds 选择 FTSE4Good TIP Taiwan ESG Index；GPIF 使用多个 ESG-dedicated indexes。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Owner index use</div><div class="eq-op">==</div><div class="eq-rhs">circumvent active ESG managers + lower cost + higher efficiency</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Evolution</span><div class="topic-title">从复制指数到 ESG smart beta</div></div></div>
+        <p class="small">指数 ESG 方法从早期 exclusion-oriented 发展到 fossil fuel 最小暴露、carbon cap，再到 single-factor ESG strategies、smart beta 和 beta plus。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Index ESG evolution</div><div class="eq-op">==</div><div class="eq-rhs">replication → exclusions → carbon cap/minimize fossil fuels → ESG smart beta/beta plus</div></div>
+          <div class="eq"><div class="eq-lhs">Tracking error</div><div class="eq-op">==</div><div class="eq-rhs">willingness to deviate from core index based on ESG/sector/security criteria</div></div>
+        </div>
+      </article>
+    </div>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>Single-factor ESG smart beta</h3>
+        <p class="small">Single-factor ESG strategies 可以让投资者将指数权重倾向某个 style factor，同时筛选 ESG 指标更好的公司。例如 MSCI Factor ESG Target Indexes 目标 value、low volatility 等传统风格因子，同时增加高 MSCI ESG 评级公司权重。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG smart beta</div><div class="eq-op">==</div><div class="eq-rhs">style factor tilt + ESG screen/weighting</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Stewardship 限制</h3>
+        <p class="small">指数策略可以 proxy voting，但由于策略本身规则化、持仓广，除非有成熟 stewardship team，否则对组合公司的 engagement 往往较浅，难达到主动 ESG 策略那种持续、聚焦的互动。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Index stewardship</div><div class="eq-op">==</div><div class="eq-rhs">proxy voting possible + focused engagement limited without stewardship team</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="datasets" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Established Datasets</div>
+        <h2>ESG 数据集：指数策略的地基，也是不确定性的来源</h2>
+      </div>
+      <div class="head-desc">传统因子数据历史长，ESG 数据历史短、口径不一，这是本节的核心对比。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">传统因子数据</div><span class="tag tag-blue">Long History</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">传统量化模型通常有学术理论和历史回测支持，美国金融市场可用百年以上数据分析 value、growth 等因子。</div></div>
+          <div class="case-row"><div class="case-lab">例子</div><div class="case-text">Value 的细节会争议，但 price-to-book、free cash flow multiples 等基本识别指标较有共识。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Traditional factor</div><div class="eq-op">==</div><div class="eq-rhs">academic theory + long history + backtest support</div></div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">ESG 数据集</div><span class="tag tag-rose">Short / Divergent</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">ESG datasets 缺乏历史、可比性和区域广度；最广泛的数据集也多只有十多年数据。</div></div>
+          <div class="case-row"><div class="case-lab">原因</div><div class="case-text">ESG disclosure 常是自愿披露，报告标准仍有分歧，第三方数据集背后有各自 selection methodology。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">ESG dataset risk</div><div class="eq-op">==</div><div class="eq-rhs">short history + weak comparability + regional gaps + voluntary disclosure + standard divergence</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="topic-grid" style="margin-top:14px">
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-amber">Opaque Methodology</span><div class="topic-title">方法论差异会混淆市场</div></div></div>
+        <p class="small">ESG index-based strategy 通常基于第三方 ESG 数据集，而第三方数据集有自己的选择方法。数据集多样性推动创新，也可能让市场面对不同且不透明的 ESG 整合方法时更困惑。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">ESG index method</div><div class="eq-op">==</div><div class="eq-rhs">third-party dataset + interpretive methodology → innovation and confusion</div></div>
+        </div>
+      </article>
+      <article class="topic-card">
+        <div class="topic-top"><div><span class="tag tag-violet">Sector Reweight</span><div class="topic-title">排除行业会自然重配</div></div></div>
+        <p class="small">减少或消除某些行业暴露，会自然把权重分配给剩余行业和成分股。Tobacco、fossil fuels 通常更成熟、更 value-oriented，排除后可能自然倾向 technology、health care 等行业。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Sector exclusion</div><div class="eq-op">==</div><div class="eq-rhs">remove mature/value sectors → reweight to remaining sectors like tech/health care</div></div>
+        </div>
+        <div class="riskline"><b>考点提醒：</b>这类 tracking error 不同于主动经理用个股集中度打败 benchmark，而是 wholesale exclusion 造成的行业和因子结构改变。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="case" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exercise Case</div>
+        <h2>英国 DC 养老金案例：费用上限下怎么做 ESG</h2>
+      </div>
+      <div class="head-desc">PDF 练习不是给标准答案，而是训练“限制条件 → 可行策略”的判断。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">限制条件</div><span class="tag tag-rose">75 bps fee cap</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">情境</div><div class="case-text">大型英国养老金计划重新评估 pension strategy，希望更好整合 ESG investing。</div></div>
+          <div class="case-row"><div class="case-lab">限制</div><div class="case-text">UK defined contribution plans 的 annual manager fees capped at 75 bps，覆盖 management、performance、administration costs。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">费用上限通常太低，难吸引 alternative active fund managers 或 real estate、hedge funds、infrastructure 等另类管理人。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">Fee cap problem</div><div class="eq-op">==</div><div class="eq-rhs">75 bps all-in fee → active/alternative ESG strategies less suitable</div></div>
+          </div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">可行方向</div><span class="tag tag-green">Low-cost ESG</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">策略判断</div><div class="case-text">更可能采用低成本、规则化、可规模化的 ESG analytics 和 index-based approaches，而不是费用高、资源密集的另类主动策略。</div></div>
+          <div class="case-row"><div class="case-lab">风控嵌入</div><div class="case-text">可将 carbon exposure、ESG ratings、sector exposure、tracking error、climate risk analytics 嵌入整体风险管理。</div></div>
+          <div class="case-row"><div class="case-lab">管理人评估</div><div class="case-text">通过 manager ESG capability review、流程文件、engagement/stewardship 记录和投票政策理解管理人能力。</div></div>
+          <div class="equations">
+            <div class="eq"><div class="eq-lhs">DC ESG route</div><div class="eq-op">==</div><div class="eq-rhs">low-cost index analytics + manager review + stewardship expectations</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="footer-note">案例的答题思路：先抓费用上限，再排除高成本策略；然后把 ESG 风险管理、管理人能力评估和 stewardship 目标作为可执行路线。</div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组等式背模块 7</h2>
+      </div>
+      <div class="head-desc">本模块知识点多，压缩时按“六策略 + 指数四风险”记。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Full ESG integration ==</b> systematic ESG + financial analysis + engagement → valuation。</div>
+          <div class="formula"><b>Full integration evidence ==</b> research resources + process documentation + engagement records + SDG exposure + impact metrics + case studies。</div>
+          <div class="formula"><b>Exclusionary screening ==</b> ethical/normative criteria → remove sectors/issuers; cost = TE + active share + factor exposure。</div>
+          <div class="formula"><b>Best in class ==</b> industry peer group + top ESG decile/quintile/quartile + methodology consistency。</div>
+          <div class="formula"><b>Thematic investing ==</b> sustainable theme + concentrated exposure + sector/factor/tracking-error risk。</div>
+          <div class="formula"><b>Impact investing ==</b> intention + positive measurable socio-environmental impact + reporting framework。</div>
+          <div class="formula"><b>Active ownership ==</b> ownership/voting rights + engagement/proposals/proxy voting → corporate behavior change。</div>
+          <div class="formula"><b>Index-based ESG ==</b> rule-based low cost + ESG dataset + tracking error decision + stewardship constraint。</div>
+          <div class="formula"><b>ESG dataset risk ==</b> short history + weak comparability + regional gaps + voluntary disclosure + standard divergence。</div>
+          <div class="formula"><b>Sector exclusion in index ==</b> remove mature/value sectors → reweight to tech/health care + changed factor exposure。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>易错区分</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Full integration</b>不是 ESG 打分最高，而是 ESG 是否进入估值和组合管理。</div>
+          <div class="trap"><b>低 ESG 组合分数</b>不自动说明 full integration 失败；关键是能否解释市场误判和 engagement 逻辑。</div>
+          <div class="trap"><b>Exclusion</b>简单清晰，但会带来 tracking error、active share 和 unintended factor exposure。</div>
+          <div class="trap"><b>Best in class</b>不是排除整个“脏行业”，而是在行业内部选相对更好者。</div>
+          <div class="trap"><b>Thematic</b>不是天然分散；单一 clean energy 主题反而可能高波动、高周期性。</div>
+          <div class="trap"><b>Impact</b>在上市证券中最难证明 additionality 和 intentionality。</div>
+          <div class="trap"><b>Index ESG</b>成本低但依赖数据口径，排除行业会改变因子和行业暴露。</div>
+          <div class="trap"><b>Index stewardship</b>能投票不等于能深度 engagement，除非有成熟 stewardship team。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块 7 的一根线：主动策略看“我用什么方式表达 ESG 目标”，指数策略看“我用什么规则和数据表达 ESG 目标，并愿意承担多少 tracking error”。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Check</div>
+        <h2>小测区：只覆盖模块 7</h2>
+      </div>
+      <div class="head-desc">正式 Practice Problems 会在全章完成后统一进入三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">Full ESG integration 与一般 ESG incorporation 的关键区别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Full ESG integration 是系统、完整地把财务和 ESG 分析嵌入投资决策和组合管理，并通过 engagement 将影响纳入估值；一般 ESG incorporation 可能只是程度较弱、较不正式的 ESG 分析。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">为什么 full ESG integration 可能需要更多解释材料？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为它依赖深度且常为专有的 ESG 研究，未必能通过高 blended ESG score 或低碳暴露直观看出来，因此需要研究资源、流程文件、engagement 记录、影响指标和案例支持。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">Exclusionary screening 的组合管理代价有哪些？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">可能提高 tracking error 和 active share，并带来 unintended factor exposure；排除越广，投资宇宙越窄，偏离越明显。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">Best in class 策略最依赖什么？主要挑战是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">依赖一致的 ESG ranking methodology 和对高排名公司的组合加权暴露；主要挑战是 ESG 评级方法多样、缺乏 convergence，因此透明度和一致性很关键。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">Clean energy thematic funds 为什么可能比 water funds 更波动？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Clean energy 受补贴等监管激励变化、资本流入流出的 scarcity premium、较弱现金流影响，且往往是顺周期 growth sector；water 通常监管更稳定、现金流更强，常被当作通胀对冲。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Impact investing 在上市股票中使用 SDGs 时，最大的证明难点是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">较难证明 additionality 和 intentionality；上市组合的 SDG 报告更多是展示 exposure 和透明度，不是证明投资收益的因果归因，也不作为定量风险暴露。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Active ownership 的三种常见实施方式是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Direct engagement with management；collaborative engagement，包括 shareholder proposals and resolutions；以及 proxy voting strategy。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">Index-based ESG strategies 的核心优势和核心限制分别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">优势是 rule-based、低成本、易规模化；限制是高度依赖 ESG datasets 和方法论，可能带来 tracking error、sector/factor reweighting，并且 stewardship/engagement 深度有限。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">09</div><div class="qtext">为什么排除 tobacco 和 fossil fuels 可能改变指数的因子暴露？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">这些行业通常更成熟、更 value-oriented；排除后权重会自然转向剩余行业，例如 technology 和 health care，从而改变行业和因子结构。</div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

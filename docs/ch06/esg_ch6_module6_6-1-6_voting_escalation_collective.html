@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.6 Module 6 · 6.1.6 Voting, Escalation and Collective Engagement</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);min-width:0}
+.hero-main{padding:28px 30px}.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:780px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.card.dark .small{color:#cbd5e1}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:720px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere;word-break:break-word}
+.branch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--teal-bg);border-color:var(--teal-bdr)}
+.branch:nth-child(6){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-section{margin-bottom:18px}.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.concept-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.concept-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.concept-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.quote-box{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.7;margin:10px 0}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(96px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:10px}
+.ladder-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:13px;min-width:0}
+.ladder-num{width:28px;height:28px;border-radius:999px;background:var(--dark);color:#fff;font-weight:950;font-size:12px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.ladder-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px}
+.ladder-text{font-size:12.8px;color:var(--sub);line-height:1.6;margin:0}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.concept-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.concept-title,.case-name,.qtext,.formula,.trap,.ladder-title{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:1080px){
+  .branch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .flowline{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow-step:not(:last-child)::after{display:none}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:25px;line-height:1.13}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 6</span>
+        <span class="pill">Module 6</span>
+        <span class="pill">6.1.6</span>
+        <span class="pill">Voting · Escalation · Collective</span>
+      </div>
+      <h1>Voting, Escalation and Collective Engagement</h1>
+      <p class="lead">本页覆盖第 6 章 6.1.6：proxy voting、主要升级技术、集体参与和 ESG investment forums。重点是判断“普通对话、投票信号、升级动作、集体行动”之间的边界。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Stewardship tools == voting signal + engagement dialogue + escalation ladder + collective influence；Voting == necessary but not sufficient；Escalation == when normal dialogue is not enough。</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Module Focus</div>
+      <div class="side-big">投票是工具，不是全部；升级是阶梯，不是第一步；集体参与有力量，也有监管边界。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">7</div><div class="mini-lab">升级动作</div></div>
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">主要代理投票机构</div></div>
+        <div class="mini-stat"><div class="mini-num">6</div><div class="mini-lab">逻辑卡片</div></div>
+        <div class="mini-stat"><div class="mini-num">8</div><div class="mini-lab">自测题</div></div>
+      </div>
+      <div class="side-note"><b>考点提醒：</b>HK escalation list 的前 3 项常被很多 engagement professionals 看作 normal dialogue，后 4 项才更明显是 escalation。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="logic">逻辑等式</button>
+    <button class="tab" data-tab="ladder">升级阶梯</button>
+    <button class="tab" data-tab="cases">案例与平台</button>
+    <button class="tab" data-tab="mistakes">易错点</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Knowledge Map</div>
+        <h2>工具地图：从投票到集体影响</h2>
+      </div>
+      <div class="head-desc">本节用“投票、解释、升级、协作、退出”五步记忆。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Voting and Escalation<br>当普通对话不足时，投资者逐步提高影响力和公开程度</div>
+      <div class="branch-grid">
+        <div class="branch"><div class="branch-title">1 Voting</div><p>有投票权就应审慎使用。</p><p>必要但不充分。</p></div>
+        <div class="branch"><div class="branch-title">2 Proxy voting</div><p>投资者通常不亲自参会。</p><p>委托 proxy 代为投票。</p></div>
+        <div class="branch"><div class="branch-title">3 Vote alignment</div><p>投票要与投资逻辑和 stewardship agenda 对齐。</p><p>不同议题对应不同决议。</p></div>
+        <div class="branch"><div class="branch-title">4 Escalation</div><p>当信息未被认真听取时提高力度。</p><p>从私下到公开、从沟通到决议。</p></div>
+        <div class="branch"><div class="branch-title">5 Divestment</div><p>只有伴随沟通时才算 engagement 工具。</p><p>公开排除可影响其他公司。</p></div>
+        <div class="branch"><div class="branch-title">6 Collective</div><p>汇聚资源和持股影响力。</p><p>注意 acting in concert 风险。</p></div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>正常对话</h3><p>会议、顾问、董事会沟通。</p></div>
+        <div class="flow-step"><h3>投票表达</h3><p>对报告、董事、审计、薪酬等投票。</p></div>
+        <div class="flow-step"><h3>公开升级</h3><p>公开声明、AGM 发言、股东提案。</p></div>
+        <div class="flow-step"><h3>集体施压</h3><p>与其他投资者协作、加入平台。</p></div>
+        <div class="flow-step"><h3>退出或暂停</h3><p>正式信件、排除清单、divestment。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">投票线</span>
+        <h3>投票可见，但表达很窄</h3>
+        <p class="small">投票通常只是赞成、反对或弃权。若不解释理由，公司可能无法理解投资者真正意图。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">升级线</span>
+        <h3>升级要看必要性和力度</h3>
+        <p class="small">不是所有 engagement 都要升级。若要升级，可以逐步上台阶，也可以因紧急情况跳过几级。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">协作线</span>
+        <h3>集体参与放大影响力</h3>
+        <p class="small">集体参与能节省资源、统一信息、增加权重，但需要避免 consensus failure 和监管风险。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-06.pdf` 第 359-367 页整理，覆盖 6.1.6 的投票、升级和集体参与。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">Voting</span> 投票和 proxy voting</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Stewardship codes 强调 stewardship 超越 voting；投票是必要但不充分的 stewardship 元素。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">有投票权的投资者有义务以 good sense and due care 行使投票权。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">上市公司股东通常在 AGMs 和 EGMs 投票，投票权通常按持股比例分配。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">普通决议通常超过半数支持即可通过，部分 special resolutions 可能需要 75% 支持。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Abstention 是主动决定，不只是缺席投票；在投资者尚无固定观点但不想背书时有用。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投票常被称为 proxy voting，因为投资者很少亲自参加会议，通常委托 proxy 代为投票。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投票归属于股份的法律所有者，机构投资者参加会议和投票通常需要正式文件。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">全球主要 proxy firms 包括 ISS 和 Glass Lewis；ISS 市占率超过 80%，Glass Lewis 占大部分剩余市场。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Vote Alignment</span> 投票如何对应议题</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Voting decision 应与投资 thesis 和 stewardship agenda 对齐。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">担心资本结构和财务可行性时，应关注 dividends、share buybacks、share issuance、进一步债务空间等投票。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">担心董事会有效性或多样性时，应反映在 director reelections，尤其是 nominations committee 成员相关投票。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">担心审计独立性或有效性时，应考虑 auditor reappointment、auditor pay、audit committee 成员重任。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">薪酬问题可通过年度薪酬批准、前瞻性薪酬政策、新薪酬计划和薪酬委员会成员任命反映。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">财务或可持续报告问题可反映在 approving report and accounts 的投票中。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">气候相关财务假设若未纳入或未披露，投资者可能反对报告账目、审计师或相关董事。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">AGM 亲自参会虽少见，但可获得董事会动态、正式提问和非正式交流的洞察。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">Escalation</span> 升级工具</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投票反对 report and accounts、director discharge、individual directors 等常被视为升级工具。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">HK Principles 列出 7 类 escalatory actions，其中前 3 项常被视为 normal dialogue tools，后 4 项更明显是 escalation。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">更明显的升级包括与其他投资者协作、会前公开声明、提交决议并在会议发言、要求召开股东大会或提议更换董事。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">其他升级方式包括正式写信给 chair、与监管/债权人/客户/供应商/员工/NGO 等利益相关方对话。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">部分市场可正式要求 special audit；也可通过媒体公开、诉讼、法律救济或仲裁升级。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Divestment 或 exclusion 只有在伴随对公司沟通时，才构成 engagement 的一部分。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Escalation 是 raising the stakes 的阶梯，可逐级上升，也可因紧急情况跳级。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">升级工具不可滥用，例如诉讼成本高、占用人员时间，应谨慎使用。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">Shareholder Resolutions and Divestment</span> 股东提案与退出</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">提出 shareholder resolution 是一种 public engagement，也是多数司法辖区的股东权利。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">当地法律常限制可提议的决议性质，以及提案人必须代表的持股规模和持股期间。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">美国股东提案常见，通常在 AGM 材料发布后进入公开领域；SEC 对是否可排除提案作出判断。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">在美国，提出股东提案可触发私下 engagement，若结果足够满意，投资者可能撤回提案。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Divestment 可作为 escalation，但必须通过正式流程让公司知道其接近投资者可能卖出的临界点。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Norwegian Government Pension Fund Global 的公开排除流程是有影响力的 divestment 示例。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">NBIM 公开 exclusion list 和个别排除决定，这既影响目标公司，也可能影响其他投资者。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-teal">Collective Engagement</span> 集体参与和平台</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Collective engagement 可以强力提升影响力，让公司更难忽视投资者观点。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">集体参与通常是最节省资源的方法，能汇聚有限资源，也减少公司收到的混杂信息。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">挑战包括协调不同投资者、保持一致信息、达成共识、处理利益冲突和竞争。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">监管风险包括 acting in concert、anti-competitive behavior、market abuse 或可能被要求发起 takeover bid。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Asset owner organizations 可支持成员 stewardship，例如 ACGA、AMEC、Assogestioni、ACSI、CII、Eumedion。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Climate Action 100+ 目标是高排放公司，通常指定 lead engager 和支持投资者小组。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PRI Collaboration Platform 常由单个投资者提出议题，邀请其他 PRI 成员参与，并由小型工作组领导 engagement。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">UK Investor Forum 的框架被视为降低 acting in concert、market abuse 和 insider trading 限制风险的重要机制。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="logic" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equations</div>
+        <h2>逻辑等式卡片：工具和边界</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+
+    <div class="concept-grid">
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">1. Voting 是必要但不充分</div><span class="tag tag-blue">Voting</span></div>
+        <p class="small"><b>原文要点：</b>Stewardship extends far beyond voting，但有投票权时，投资者必须审慎行使。</p>
+        <div class="quote-box"><b>中文解释：</b>投票像盖章表态，能公开表达立场，但不能代替长期、细致、双向的 engagement。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Voting</div><div class="eq-op">==</div><div class="eq-rhs">必要权利 + 公开信号 + 二元表达</div></div>
+          <div class="eq"><div class="eq-lhs">Good stewardship</div><div class="eq-op">></div><div class="eq-rhs">voting alone；还需要 dialogue、monitoring、escalation 和 reporting</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干问 stewardship 是否只等于投票，答案是否定。投票是必要工具，但不能充分代表 stewardship。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">2. 投票与议题匹配</div><span class="tag tag-green">Alignment</span></div>
+        <p class="small"><b>原文要点：</b>Voting decisions 应与 investment thesis 和 stewardship agenda 对齐，不同担忧通过不同决议表达。</p>
+        <div class="quote-box"><b>中文解释：</b>公司财务吃紧时，最直接的投票点不是审计师，而是股息、回购、发股、借债等现金和资本结构事项。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Financial viability concern</div><div class="eq-op">==</div><div class="eq-rhs">dividends + buybacks + share issuance + debt capacity votes</div></div>
+          <div class="eq"><div class="eq-lhs">Audit concern</div><div class="eq-op">==</div><div class="eq-rhs">auditor reappointment + auditor pay + audit committee members</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Practice Problems 会考：担心 financial viability，最可能反映在 dividends 投票上。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">3. Escalation 是阶梯</div><span class="tag tag-amber">Ladder</span></div>
+        <p class="small"><b>原文要点：</b>Escalation 是一组额外步骤，用于在 engagement 中提高 stakes。可以逐步上升，也可因紧急情况跳级。</p>
+        <div class="quote-box"><b>中文解释：</b>升级不是一开始就开炮。多数有效 engagement 先私下沟通；当公司不听或变化紧迫，才逐步公开、协作、提案或诉讼。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Escalation</div><div class="eq-op">==</div><div class="eq-rhs">raise stakes + reinforce message + seek change</div></div>
+          <div class="eq"><div class="eq-lhs">Normal vs Escalated</div><div class="eq-op">==</div><div class="eq-rhs">extra meetings/advisers/board talks vs public statements/resolutions/requisition</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Holding additional meetings with management 属于 normal dialogue，不是最典型的 escalation。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">4. Divestment 的条件</div><span class="tag tag-rose">Exit</span></div>
+        <p class="small"><b>原文要点：</b>Divestment 可被视为 escalation，但只有通过正式流程并向公司沟通时，才作为 engagement 工具发挥作用。</p>
+        <div class="quote-box"><b>中文解释：</b>安静卖出只是投资决策；告诉公司“你再不改变，我们可能卖出或排除”，才有影响和信号价值。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Divestment as engagement</div><div class="eq-op">==</div><div class="eq-rhs">formal process + company awareness + communication + public influence</div></div>
+          <div class="eq"><div class="eq-lhs">Silent sale</div><div class="eq-op">≠</div><div class="eq-rhs">engagement；只是退出投资</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>NBIM 公开 exclusion list 是典型例子：公开本身也是影响目标公司和同业的信号。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">5. Collective engagement</div><span class="tag tag-teal">Collective</span></div>
+        <p class="small"><b>原文要点：</b>Collective engagement 可提高影响力并节约资源，但需要协调一致，并注意监管限制。</p>
+        <div class="quote-box"><b>中文解释：</b>一个小股东讲话可能声音弱，多个投资者合起来更有分量；但合得太紧，又可能被监管认为是在共同行动控制公司。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Collective benefit</div><div class="eq-op">==</div><div class="eq-rhs">pooled resources + greater influence + clearer message + investor education</div></div>
+          <div class="eq"><div class="eq-lhs">Collective risk</div><div class="eq-op">==</div><div class="eq-rhs">consensus difficulty + conflicts + competition + acting in concert</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>题干如果问 investor coalition 的挑战，常见答案是 consensus difficulty 和 conflicts，不是找不到任何组织支持。</div>
+      </article>
+
+      <article class="concept-card">
+        <div class="concept-top"><div class="concept-title">6. Forums and platforms</div><span class="tag tag-violet">Forums</span></div>
+        <p class="small"><b>原文要点：</b>投资者可通过 asset owner organizations、climate coalitions、PRI Collaboration Platform、Investor Forum 等开展或支持集体参与。</p>
+        <div class="quote-box"><b>中文解释：</b>这些平台像“组织化的参与基础设施”，帮助投资者集中议题、分配 lead engager、降低协作成本和监管风险。</div>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">CA100+</div><div class="eq-op">==</div><div class="eq-rhs">high-emitting companies + lead engager + climate benchmark</div></div>
+          <div class="eq"><div class="eq-lhs">PRI Platform</div><div class="eq-op">==</div><div class="eq-rhs">member-proposed issue + invitation + small working group-led engagement</div></div>
+        </div>
+        <div class="memory"><b>投资影响/考点：</b>Investor Forum 的正式框架常被视为缓解 acting in concert、market abuse 和 insider trading 限制的机制。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="ladder" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Escalation Ladder</div>
+        <h2>升级阶梯：哪些只是普通对话，哪些是真升级</h2>
+      </div>
+      <div class="head-desc">这页按 Hong Kong SAR Principles 的 7 项动作整理，并标出考试容易混的边界。</div>
+    </div>
+
+    <div class="ladder">
+      <div class="ladder-step"><div class="ladder-num">1</div><div class="ladder-title">Additional management meetings</div><p class="ladder-text">与管理层开额外会议专门讨论担忧。很多专业人士仍视为 normal dialogue。</p></div>
+      <div class="ladder-step"><div class="ladder-num">2</div><div class="ladder-title">Concerns through advisers</div><p class="ladder-text">通过公司顾问表达担忧。Practice Problems 里被视为 normal engagement dialogue。</p></div>
+      <div class="ladder-step"><div class="ladder-num">3</div><div class="ladder-title">Meet chair or board</div><p class="ladder-text">与主席或其他董事会成员会面。仍可能属于常规工具。</p></div>
+      <div class="ladder-step"><div class="ladder-num">4</div><div class="ladder-title">Collaborate with investors</div><p class="ladder-text">与其他投资者就具体议题协作。更明显进入升级区域。</p></div>
+      <div class="ladder-step"><div class="ladder-num">5</div><div class="ladder-title">Public statement</div><p class="ladder-text">在 general meeting 前公开声明。公开化会提高压力，也可能固化双方立场。</p></div>
+      <div class="ladder-step"><div class="ladder-num">6</div><div class="ladder-title">Submit resolutions and speak</div><p class="ladder-text">提交股东决议并在会议发言。典型公开参与和升级工具。</p></div>
+      <div class="ladder-step"><div class="ladder-num">7</div><div class="ladder-title">Requisition meeting / board change</div><p class="ladder-text">要求召开股东大会，部分情况下提议改变董事会成员。属于更强升级。</p></div>
+    </div>
+
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>额外升级方式</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Formal letter：</b>向 chair 正式写信列明担忧，通常私下，但可能在不满升级时泄露或公开。</div>
+          <div class="formula"><b>Stakeholder dialogue：</b>与监管、银行、债权人、客户、供应商、员工、NGO 等沟通。</div>
+          <div class="formula"><b>Special audit：</b>部分国家股东可要求特别审计，例如德国。</div>
+          <div class="formula"><b>Legal route：</b>通过诉讼、法律救济或仲裁寻求治理改善或损害赔偿。</div>
+          <div class="formula"><b>Exclusion / divestment：</b>正式列入排除清单或退出，但要伴随沟通才是 engagement 工具。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>使用原则</h3>
+        <div class="formula-list">
+          <div class="trap"><b>不一定要升级</b>很多 engagement objectives 可以不升级完成。</div>
+          <div class="trap"><b>可慢可快</b>为了维持长期关系，投资者可能慢慢推进；若变化紧迫，也可跳过几级。</div>
+          <div class="trap"><b>可以暂停</b>若资源有限且短期看不到进展，投资者可暂停或正式撤回一段时间。</div>
+          <div class="trap"><b>不可滥用</b>诉讼和公开媒体行动应谨慎，因为成本高且可能削弱未来影响力。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Platforms</div>
+        <h2>案例与平台：退出、集体行动和组织化参与</h2>
+      </div>
+      <div class="head-desc">这些案例帮助你把“工具名称”落到实际路径上。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">NBIM exclusion list：退出也能形成信号</div><span class="tag tag-rose">Divestment</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">机制</div><div class="case-text">Norwegian Government Pension Fund Global 由独立 ethics council 建议是否因业务活动或行为规范违规排除公司。</div></div>
+          <div class="case-row"><div class="case-lab">例子</div><div class="case-text">近年可因不可接受的碳排放水平以及公司未来改变意愿和能力而建议 divestment。</div></div>
+          <div class="case-row"><div class="case-lab">影响</div><div class="case-text">NBIM 公开完整排除清单和个别排除决定，既影响目标公司，也可能影响其他投资者。</div></div>
+          <div class="case-row"><div class="case-lab">总式</div><div class="case-text">Divestment as escalation == 正式流程 + 公开信号 + 公司知晓 + 同业影响。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Collective engagement：为什么有力</div><span class="tag tag-green">Collective</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">影响力</div><div class="case-text">把多个投资者持股和 AUM 聚合，公司更难忽视投资者观点。</div></div>
+          <div class="case-row"><div class="case-lab">效率</div><div class="case-text">汇聚有限资源，投资者可共享知识，公司也少接收互相冲突的信息。</div></div>
+          <div class="case-row"><div class="case-lab">挑战</div><div class="case-text">协调不同投资者、达成问题和解决方案共识、处理利益冲突和竞争。</div></div>
+          <div class="case-row"><div class="case-lab">监管</div><div class="case-text">要避免 acting in concert、market abuse 和 insider trading 相关风险。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Climate Action 100+：高排放公司气候参与</div><span class="tag tag-teal">CA100+</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">对象</div><div class="case-text">针对最主要的高污染或高排放公司。</div></div>
+          <div class="case-row"><div class="case-lab">机制</div><div class="case-text">通常指定一个 lead engager，并由若干机构支持；理论上有共同 agenda，但 lead engager 会按公司情况调整。</div></div>
+          <div class="case-row"><div class="case-lab">基准</div><div class="case-text">官方 benchmark 将公司气候方法与 Paris Agreement 目标比较，包括 2050 或更早净零目标、短中长期目标、资本开支路径等。</div></div>
+          <div class="case-row"><div class="case-lab">提醒</div><div class="case-text">集体框架不保证所有公司都同样进展，lead engager 的质量影响很大。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">PRI Collaboration Platform：从议题到工作组</div><span class="tag tag-violet">PRI</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">方式</div><div class="case-text">通常由一个投资者提出议题，邀请其他 PRI 成员参与 proposed engagement。</div></div>
+          <div class="case-row"><div class="case-lab">组织</div><div class="case-text">engagement 通常由小型投资者 working group 领导。</div></div>
+          <div class="case-row"><div class="case-lab">案例</div><div class="case-text">Brazilian pig iron supply chain 案例围绕 slave labor 和 rainforest charcoal，最终 Nucor 与 Domini 达成协议并改善供应商要求。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑</div><div class="case-text">平台作用 == 发现议题 + 邀请参与者 + 分配领导 + 组织持续参与。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Stewardship overlay providers：商业化集体服务</div><span class="tag tag-blue">Overlay</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">服务</div><div class="case-text">商业服务商可代表客户开展 voting advice 和 direct engagement，不一定替客户管理资金。</div></div>
+          <div class="case-row"><div class="case-lab">例子</div><div class="case-text">Columbia Threadneedle REO、Federated Hermes EOS、Robeco、Sustainalytics 等。</div></div>
+          <div class="case-row"><div class="case-lab">价值</div><div class="case-text">通过聚合客户影响力提高对公司管理层和董事会的可见度和分量。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Investor Forum：降低协作风险的框架</div><span class="tag tag-amber">Forum</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">背景</div><div class="case-text">UK Investor Forum 成立于 2014 年，被其他市场视为可参考模型。</div></div>
+          <div class="case-row"><div class="case-lab">框架</div><div class="case-text">Forum 有详细 collective engagement framework，帮助成员避免触犯 acting in concert 和 market abuse 规则。</div></div>
+          <div class="case-row"><div class="case-lab">意义</div><div class="case-text">正式结构被看作缓解公共公司控制规则、市场滥用和内幕交易限制的重要机制。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mistakes" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Mistakes</div>
+        <h2>易错点：投票、正常对话、升级和集体行动别混</h2>
+      </div>
+      <div class="head-desc">模块 6 的题很喜欢问“哪一个最可能是普通对话/哪一个最不像升级/哪一个投票最相关”。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Voting ==</b> necessary tool + visible signal + not sufficient stewardship。</div>
+          <div class="formula"><b>Proxy voting ==</b> investor appoints proxy + legal owner paperwork + proxy firm support。</div>
+          <div class="formula"><b>Financial viability concern ==</b> dividends / buybacks / issuance / debt votes。</div>
+          <div class="formula"><b>Escalation ==</b> extra pressure when normal dialogue is insufficient。</div>
+          <div class="formula"><b>Divestment as engagement ==</b> formal warning / communication + possible exclusion。</div>
+          <div class="formula"><b>Collective engagement ==</b> pooled influence + resource efficiency + regulatory care。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Voting vs Stewardship</b>投票是 stewardship 的一部分，不是全部。</div>
+          <div class="trap"><b>Abstain vs No vote</b>Abstention 是主动决定，不是没投票。</div>
+          <div class="trap"><b>Financial viability vs Audit</b>财务可行性担忧优先看 dividends 等现金/资本结构投票；审计担忧才看 auditor 和 audit committee。</div>
+          <div class="trap"><b>Normal dialogue vs Escalation</b>额外管理层会议、通过顾问表达担忧、见 chair/board 常仍属普通工具。</div>
+          <div class="trap"><b>Divestment vs Engagement</b>静默卖出不是 engagement；伴随沟通和正式流程才有 engagement 意义。</div>
+          <div class="trap"><b>Collective benefit vs Regulatory risk</b>集体参与能增强影响力，但必须避免 acting in concert 和 market abuse。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">记忆线：题干问“least likely escalation”优先找普通对话项；题干问“normal engagement dialogue”优先找通过公司顾问表达担忧；题干问“financial viability”优先找 dividends。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>小测区：只覆盖模块 6</h2>
+      </div>
+      <div class="head-desc">点击“看答案”自测。正式 Practice Problems 会放到最后的三轮练习系统。</div>
+    </div>
+    <div class="quiz-list">
+      <div class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">为什么说 voting 是 necessary but not sufficient？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">因为有投票权时投资者应审慎行使，但 stewardship 还包括 dialogue、monitoring、engagement、escalation 和 reporting。投票只是其中一个可见工具。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">Abstention 为什么不是简单缺席投票？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">Abstention 是主动决定。投资者可能还没有固定观点，但也不想通过赞成票背书某项行动，因此选择弃权。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">担心公司 financial viability 时，最相关的投票通常是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">通常是 dividends、share buybacks、share issuance、进一步债务空间等事项。正式题中若只给 dividends、auditor pay、director reappointment，最相关是 dividends。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">哪一项更像 normal engagement dialogue：请求召开股东大会、会前公开声明，还是通过公司顾问表达担忧？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">通过公司顾问表达担忧。请求召开股东大会和会前公开声明属于更明显的升级。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">HK escalation list 中哪几项更明显是 escalation？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">与其他投资者协作、会前公开声明、提交决议并在股东大会发言、要求召开股东大会并在某些情况下提议改变董事会成员。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">Divestment 什么时候才可以算 engagement 或 escalation 工具？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">当它通过正式流程进行，并且公司知道投资者因为相关担忧接近卖出或排除时。若只是静默卖出，就只是投资决策。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">Collective engagement 的主要好处和主要风险分别是什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">好处是汇聚资源、增强影响力、统一信息、帮助投资者学习；风险是难以达成共识、利益冲突、竞争，以及 acting in concert / market abuse 等监管问题。</div>
+      </div>
+      <div class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">Investor Forum 的 collective engagement framework 主要解决什么问题？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer">主要帮助成员开展集体参与时避免触犯 acting in concert、market abuse 和 insider trading 等规则，是降低协作监管风险的机制。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    const open = card.classList.toggle('show');
+    btn.textContent = open ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

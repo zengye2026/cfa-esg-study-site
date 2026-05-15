@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.5 · Key Facts & Further Reading</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--r:8px;
+  --sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:30px 16px 84px;overflow:hidden}
+.hero{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);border-radius:var(--r);padding:28px 30px;margin-bottom:18px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,52px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:900px;margin:0;line-height:1.84;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere}
+.hero-eq b{color:#fff}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;overflow-wrap:anywhere}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;margin:0;overflow-wrap:anywhere}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:760px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42;overflow-wrap:anywhere}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.flow-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;min-width:0}
+.flow-card h3{font-size:13px;margin:0 0 6px}.flow-card p{font-size:12px;color:var(--sub);line-height:1.55;margin:0}
+.facts-grid{display:flex;flex-direction:column;gap:10px}
+.fact-card{display:grid;grid-template-columns:54px minmax(0,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;box-shadow:var(--sh-sm);overflow:hidden}
+.fact-num{display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:950;background:var(--accent,#1d4ed8)}
+.fact-body{padding:15px 17px}.fact-title{font-size:15px;font-weight:950;color:var(--dark);margin-bottom:5px}.fact-text{font-size:13.7px;color:var(--sub);line-height:1.72;margin:0}.fact-text b{color:var(--dark)}
+.f1{--accent:var(--blue);background:var(--blue-bg);border-color:var(--blue-bdr)}
+.f2{--accent:var(--teal);background:var(--teal-bg);border-color:var(--teal-bdr)}
+.f3{--accent:var(--green);background:var(--green-bg);border-color:var(--green-bdr)}
+.f4{--accent:var(--violet);background:var(--violet-bg);border-color:var(--violet-bdr)}
+.f5{--accent:var(--amber);background:var(--amber-bg);border-color:var(--amber-bdr)}
+.f6{--accent:var(--rose);background:var(--rose-bg);border-color:var(--rose-bdr)}
+.equations{display:flex;flex-direction:column;gap:8px}.eq{display:grid;grid-template-columns:minmax(88px,.32fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark);line-height:1.45}.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.reading-section{margin-bottom:18px}.reading-section h3{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.reading-list{display:flex;flex-direction:column;gap:12px}.reading-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:17px 18px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px}
+.reading-icon{width:34px;height:34px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid var(--line);font-weight:950;color:var(--dark)}
+.reading-title{font-size:14.5px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:5px}
+.reading-desc{font-size:13.2px;color:var(--sub);line-height:1.68;margin:0 0 8px}
+.reading-url{font-size:12px;color:var(--blue);font-weight:850;overflow-wrap:anywhere}
+.formula-list{display:flex;flex-direction:column;gap:8px}.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+@media(max-width:980px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.head-desc{text-align:left}.panel-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.wrap{padding:18px 12px 70px}.hero{padding:22px 18px}.flow{grid-template-columns:1fr}.fact-card{grid-template-columns:44px minmax(0,1fr)}.eq{grid-template-columns:1fr;gap:4px}.eq-op{text-align:left}h1{font-size:28px;line-height:1.12}.hero-title-line{display:block}.lead,.hero-eq{font-size:14px}.center-node{border-radius:var(--r);padding:12px 14px}.reading-card{grid-template-columns:32px minmax(0,1fr);padding:14px}.reading-icon{width:30px;height:30px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="pills">
+      <span class="pill">Chapter 5</span>
+      <span class="pill">Key Facts</span>
+      <span class="pill">Further Reading</span>
+      <span class="pill">Governance Factors</span>
+    </div>
+    <h1><span class="hero-title-line">Key Facts &</span> <span class="hero-title-line">Further Reading</span></h1>
+    <p class="lead">这一页是第 5 章的收口页：把全章 12 条 Key Facts 压缩成“治理框架、董事会、市场结构、审计、投资应用”五条主线，并把 Further Reading 变成可复习的阅读地图。</p>
+    <div class="hero-eq"><b>整章总逻辑等式：</b>Governance Factors == law/culture framework + people/process/accountability + alignment/committees + board quality + market model + audit assurance + investment impact</div>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">总图</button>
+    <button class="tab" data-tab="facts">12条事实</button>
+    <button class="tab" data-tab="reading">延伸阅读</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Chapter Map</div>
+        <h2>第 5 章一条线：治理把“谁决策”变成“价值是否可靠”</h2>
+      </div>
+      <div class="head-desc">这张图把 7 个复习模块和 12 条 Key Facts 串起来，方便最后复盘整章。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Governance Factors<br>公司由谁管理、如何监督、利益是否对齐，最终影响风险、信任和估值</div>
+      <div class="flow">
+        <div class="flow-card"><h3>1 治理框架</h3><p>公司治理受法律和文化塑造，正式代码通常不具强制性。</p></div>
+        <div class="flow-card"><h3>2 人与流程</h3><p>治理真正落在 people、information、processes 和 accountability。</p></div>
+        <div class="flow-card"><h3>3 问责和对齐</h3><p>监督管理层，同时让长期价值创造反映到薪酬和激励中。</p></div>
+        <div class="flow-card"><h3>4 董事会质量</h3><p>技能、经验、文化、多元视角和独立思考决定监督质量。</p></div>
+        <div class="flow-card"><h3>5 市场模型</h3><p>单层、双层、美国、法国、日本等制度差异没有天然优劣。</p></div>
+        <div class="flow-card"><h3>6 审计与投资</h3><p>审计提供保证但非绝对保证；增强报告和治理质量进入投资分析。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">记忆线</span>
+        <h3>先制度，再人</h3>
+        <p class="small">制度提供框架，但治理质量最终来自人如何互动、董事会如何提问、信息是否可用、责任是否落实。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">风险线</span>
+        <h3>失败常有固定剧本</h3>
+        <p class="small">过度并购、野心膨胀、自信过头、董事会挑战不足，常常一起出现在治理失败案例里。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">投资线</span>
+        <h3>治理进入估值</h3>
+        <p class="small">治理可作为投资门槛、管理质量判断、风险溢价、折现率、估值倍数和投后沟通议题。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="facts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Key Facts</div>
+        <h2>12 条 Key Facts：原文要点 + 中文解释 + 逻辑等式</h2>
+      </div>
+      <div class="head-desc">每条都保留 PDF 原意，并压成可回忆、可反推题目的等式。</div>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card f1"><div class="fact-num">1</div><div class="fact-body"><div class="fact-title">公司治理是管理和监督公司的过程</div><p class="fact-text"><b>原文要点：</b>公司治理由当地法律和文化塑造，几乎所有国家都有正式但通常非强制的治理代码。<br><b>中文解释：</b>治理不是全球统一模板，而是本地制度和市场期望下的管理监督框架。<br><b>逻辑等式：</b>Corporate governance == managed + overseen + local law/culture + formal non-binding code。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">2</div><div class="fact-body"><div class="fact-title">治理最终落到人和互动</div><p class="fact-text"><b>原文要点：</b>在正式框架内，治理取决于人以及他们如何互动；他们需要信息，并且要能让相关人员对决策负责。<br><b>中文解释：</b>规则只是外壳，真正发挥作用的是信息流、讨论方式和问责机制。<br><b>逻辑等式：</b>Effective governance == people interaction + information + accountability。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">3</div><div class="fact-body"><div class="fact-title">问责来自充分监督</div><p class="fact-text"><b>原文要点：</b>Accountability 体现为对管理层足够监督，使管理层被鼓励、推动和挑战，以实现企业长期利益。<br><b>中文解释：</b>董事会不是替管理层经营，而是让管理层不能无人追问地经营。<br><b>逻辑等式：</b>Accountability == oversight + encourage + press + challenge + long-term business good。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">4</div><div class="fact-body"><div class="fact-title">Alignment 与 accountability 并列为治理核心</div><p class="fact-text"><b>原文要点：</b>Alignment 在薪酬领域最明显，目标是让管理层利益与长期股东利益一致，使长期价值创造反映在个人薪酬中。<br><b>中文解释：</b>问责解决“谁被追问”，对齐解决“为谁创造价值”。<br><b>逻辑等式：</b>Alignment == long-term shareholder interest + management incentives + compensation link。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">5</div><div class="fact-body"><div class="fact-title">三大委员会支撑问责和对齐</div><p class="fact-text"><b>原文要点：</b>为实现 accountability 和 alignment，董事会通常设立三个独立且有效的委员会：提名、审计、薪酬。<br><b>中文解释：</b>提名管“谁上桌”，审计管“信息是否可信”，薪酬管“激励是否对齐”。<br><b>逻辑等式：</b>Board committees == nominations + audit + remuneration。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">6</div><div class="fact-body"><div class="fact-title">治理规则通常由丑闻推动演化</div><p class="fact-text"><b>原文要点：</b>治理代码、指南及其法律基础通常因单个公司丑闻而改变；英国 Cadbury Code 是全球首个治理代码，并成为许多其他代码的模型。<br><b>中文解释：</b>治理规则常是“出事之后补制度”。<br><b>逻辑等式：</b>Governance reform == corporate scandal -> public pressure -> code/law update。</p></div></div>
+      <div class="fact-card f1"><div class="fact-num">7</div><div class="fact-body"><div class="fact-title">重大丑闻常有相似画像</div><p class="fact-text"><b>原文要点：</b>丑闻经常包含过度、并购式增长和野心，叠加过度自信的管理层，以及很少提出挑战的董事会。<br><b>中文解释：</b>危险组合是“想得太大、冲得太快、没人认真拦”。<br><b>逻辑等式：</b>Governance scandal == acquisitive ambition + overconfident management + low-challenge board。</p></div></div>
+      <div class="fact-card f2"><div class="fact-num">8</div><div class="fact-body"><div class="fact-title">有效董事会需要技能、经验和文化</div><p class="fact-text"><b>原文要点：</b>有效董事会需要成员技能和经验组合，也需要董事会文化，使不同视角带来 diversity of thought；独立很重要，尤其是独立思考，但知识和专业也重要。<br><b>中文解释：</b>只独立但不懂业务不够，只懂业务但不敢挑战也不够。<br><b>逻辑等式：</b>Effective board == skills + experience + culture + diversity of thought + independence of mind + expertise。</p></div></div>
+      <div class="fact-card f3"><div class="fact-num">9</div><div class="fact-body"><div class="fact-title">好董事会塑造伦理和长期文化</div><p class="fact-text"><b>原文要点：</b>好董事会确保公司以伦理和适当方式经营，并拥有有利于所有利益相关方长期价值创造的企业文化。<br><b>中文解释：</b>治理不仅看结构，还看公司日常行为和文化是否支持长期价值。<br><b>逻辑等式：</b>Good board == ethical conduct + appropriate operations + culture for long-term value。</p></div></div>
+      <div class="fact-card f4"><div class="fact-num">10</div><div class="fact-body"><div class="fact-title">主要市场董事会结构不同</div><p class="fact-text"><b>原文要点：</b>双层董事会常见于德国、荷兰、斯堪的纳维亚和中国；单层董事会常见于美国、英国、日本、法国和多数其他市场。美国和法国通常只有一名执行董事且常兼 chair/CEO；日本单层董事会执行董事占主导，非执行董事较少。<br><b>中文解释：</b>市场模型要记“结构差异 + 本国特色”，不要判断某种结构天然更优。<br><b>逻辑等式：</b>Market models == two-tier markets + single-tier markets + local chair/CEO/executive patterns。</p></div></div>
+      <div class="fact-card f5"><div class="fact-num">11</div><div class="fact-body"><div class="fact-title">审计聚焦财务报表保证</div><p class="fact-text"><b>原文要点：</b>审计重点关注并保证财务报表；但对随财务报表发布的其他材料，只承担有限阅读和披露不一致的要求。<br><b>中文解释：</b>不要把财报审计意见误读为整份年报所有叙述都被同等保证。<br><b>逻辑等式：</b>Audit scope == financial statement assurance + limited read of other materials + inconsistency disclosure。</p></div></div>
+      <div class="fact-card f6"><div class="fact-num">12</div><div class="fact-body"><div class="fact-title">增强审计报告提供更多投资线索</div><p class="fact-text"><b>原文要点：</b>新的增强审计报告能让投资者更了解审计师工作，也可能了解被审计公司的控制和报告质量。<br><b>中文解释：</b>投资者不应只看审计意见是否保留，还要看 scope、materiality 和 key audit matters。<br><b>逻辑等式：</b>Enhanced auditor report == auditor work insight + control quality insight + reporting quality insight。</p></div></div>
+    </div>
+  </section>
+
+  <section id="reading" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Further Reading</div>
+        <h2>延伸阅读：16 项材料按用途归组</h2>
+      </div>
+      <div class="head-desc">这里不是要求全部精读，而是知道它们分别支持哪类治理考点。</div>
+    </div>
+
+    <div class="reading-section">
+      <h3><span class="tag tag-blue">A. 治理原则和投资者政策</span></h3>
+      <div class="reading-list">
+        <div class="reading-card"><div class="reading-icon">1</div><div><div class="reading-title">Armour, Barra, Breen, et al. 2019 · Open Letter: Commonsense Principles 2.0</div><p class="reading-desc">用于理解美国市场中由企业和投资者共同推动的市场化治理原则，补充“美国无全国公司治理代码”的背景。</p><div class="reading-url">governanceprinciples.org</div></div></div>
+        <div class="reading-card"><div class="reading-icon">2</div><div><div class="reading-title">Council of Institutional Investors 2018 · Corporate Governance Policies</div><p class="reading-desc">用于复习机构投资者对一股一票、董事会问责、薪酬和股东权利的政策立场。</p><div class="reading-url">cii.org</div></div></div>
+        <div class="reading-card"><div class="reading-icon">3</div><div><div class="reading-title">International Corporate Governance Network 2021 · ICGN Global Governance Principles</div><p class="reading-desc">用于建立全球最佳实践框架，和模块 3 的独立性、董事会有效性、股东权利相互印证。</p><div class="reading-url">icgn.org</div></div></div>
+        <div class="reading-card"><div class="reading-icon">4</div><div><div class="reading-title">Investor Stewardship Group 2019 · Corporate Governance Principles for US Listed Companies</div><p class="reading-desc">用于理解美国市场没有正式治理代码时，投资者如何用原则框架推动上市公司治理。</p><div class="reading-url">isgframework.org</div></div></div>
+      </div>
+    </div>
+
+    <div class="reading-section">
+      <h3><span class="tag tag-rose">B. 丑闻案例和治理失败</span></h3>
+      <div class="reading-list">
+        <div class="reading-card"><div class="reading-icon">5</div><div><div class="reading-title">Bhasin 2013 · Corporate Accounting Scandal at Satyam</div><p class="reading-desc">用于复习印度 Satyam 案例：关联交易、审计失败、创始人控制和财务造假。</p><div class="reading-url">researchgate.net</div></div></div>
+        <div class="reading-card"><div class="reading-icon">6</div><div><div class="reading-title">Carreyrou 2019 · Bad Blood: Secrets and Lies in a Silicon Valley Startup</div><p class="reading-desc">用于理解 Theranos 的董事会技能错配、创始人支配和私营企业治理风险。</p><div class="reading-url">Pan Macmillan</div></div></div>
+        <div class="reading-card"><div class="reading-icon">7</div><div><div class="reading-title">107th Congress 2002 · The Role of the Financial Institutions in Enron's Collapse</div><p class="reading-desc">用于理解 Enron 不只是公司内部问题，也涉及金融机构、结构设计和外部守门人角色。</p><div class="reading-url">govinfo.gov</div></div></div>
+        <div class="reading-card"><div class="reading-icon">8</div><div><div class="reading-title">de Jong, DeJong, Mertens, Roosenboom 2005 · Royal Ahold</div><p class="reading-desc">用于复习 Ahold 案例：欧洲治理标准强化、会计丑闻和跨国经营监督不足。</p><div class="reading-url">tilburguniversity.edu</div></div></div>
+        <div class="reading-card"><div class="reading-icon">9</div><div><div class="reading-title">Ferrarini and Giudici 2005 · Parmalat Case</div><p class="reading-desc">用于复习 Parmalat 案例：审计轮换、债务和现金虚假陈述、私人执法在金融丑闻中的作用。</p><div class="reading-url">ecgi.global</div></div></div>
+        <div class="reading-card"><div class="reading-icon">10</div><div><div class="reading-title">Jacobs and Kalbers 2019 · Volkswagen Diesel Emissions Scandal</div><p class="reading-desc">用于连接治理、问责、法律顾问、审计师和可持续性叙述之间的断裂。</p><div class="reading-url">cpajournal.com</div></div></div>
+        <div class="reading-card"><div class="reading-icon">11</div><div><div class="reading-title">Krahnen, Langenbucher, Leuz, Pelizzon 2020 · Wirecard Scandal</div><p class="reading-desc">用于复习 Wirecard 中多道防线失效：董事会、审计、监管、媒体和投资者质疑如何被忽视。</p><div class="reading-url">promarket.org</div></div></div>
+        <div class="reading-card"><div class="reading-icon">12</div><div><div class="reading-title">Nguyen 2011 · Factors Causing Enron's Collapse</div><p class="reading-desc">用于从公司文化和治理结构角度复盘 Enron 崩溃原因。</p><div class="reading-url">Corporate Ownership & Control</div></div></div>
+        <div class="reading-card"><div class="reading-icon">13</div><div><div class="reading-title">Prusa 2016 · Corporate Scandal in Japan and the Case Study of Olympus</div><p class="reading-desc">用于复习 Olympus 案例：日本企业文化、损失隐藏、吹哨人和董事会监督问题。</p><div class="reading-url">japanesestudies.org.uk</div></div></div>
+        <div class="reading-card"><div class="reading-icon">14</div><div><div class="reading-title">Woodford 2012 · Inside the Olympus Scandal</div><p class="reading-desc">用于从 CEO 吹哨人的第一视角理解 Olympus 案例，补充董事会文化和信息披露风险。</p><div class="reading-url">Portfolio/Penguin</div></div></div>
+      </div>
+    </div>
+
+    <div class="reading-section">
+      <h3><span class="tag tag-green">C. 审计、监管和事后反思</span></h3>
+      <div class="reading-list">
+        <div class="reading-card"><div class="reading-icon">15</div><div><div class="reading-title">Peters 2022 · Wirecard Scandal Spurs European Commission Consult</div><p class="reading-desc">用于理解 Wirecard 后欧洲对公司报告质量和可靠性改革的监管反思。</p><div class="reading-url">CFA Institute Market Integrity Insights</div></div></div>
+        <div class="reading-card"><div class="reading-icon">16</div><div><div class="reading-title">Senate Permanent Subcommittee on Investigations 2002 · The Role of the Board of Directors in Enron's Collapse</div><p class="reading-desc">用于聚焦董事会在 Enron 崩溃中的监督失败，尤其是关联交易和审计委员会责任。</p><div class="reading-url">govinfo.gov</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Exam Compression</div>
+        <h2>考前压缩：一组总式背完整章</h2>
+      </div>
+      <div class="head-desc">如果只能用 5 分钟复习第 5 章，先背这一页。</div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>整章逻辑等式</h3>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">5.1.1</div><div class="eq-op">==</div><div class="eq-rhs">治理框架演化：法律文化 + people/processes + accountability/alignment + 股东权利。</div></div>
+          <div class="eq"><div class="eq-lhs">5.1.2</div><div class="eq-op">==</div><div class="eq-rhs">有效治理特征：董事会结构 + DEI + 独立性 + 薪酬 + 报告 + 资本配置 + 伦理。</div></div>
+          <div class="eq"><div class="eq-lhs">5.1.3</div><div class="eq-op">==</div><div class="eq-rhs">市场模型差异：single-tier / two-tier + 所有权结构 + 本地法律文化。</div></div>
+          <div class="eq"><div class="eq-lhs">5.1.4</div><div class="eq-op">==</div><div class="eq-rhs">审计功能：独立视角 + assurance not guarantee + sampling + enhanced reports + internal audit。</div></div>
+          <div class="eq"><div class="eq-lhs">5.1.5-5.1.6</div><div class="eq-op">==</div><div class="eq-rhs">投资应用：治理质量进入风险、估值、管理质量、投票和 engagement。</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>Accountability vs Alignment</b>Accountability 是监督和追问管理层；Alignment 是让管理层利益与长期股东利益一致。</div>
+          <div class="trap"><b>Independence vs Expertise</b>独立思考重要，但知识和专业同样重要；不能只看是否独立。</div>
+          <div class="trap"><b>Single-tier vs Two-tier</b>双层常见于德国、荷兰、斯堪的纳维亚、中国；单层常见于美国、英国、日本、法国和多数市场。</div>
+          <div class="trap"><b>Audit assurance vs Guarantee</b>审计提供财报保证，不保证每个数字绝对正确，也不保证没有舞弊。</div>
+          <div class="trap"><b>Enhanced reports</b>重点是 scope、materiality、key audit matters；skepticism 是态度，不是三要素之一。</div>
+          <div class="trap"><b>Sovereign G</b>主权债看国家治理、制度、法治和商业环境，不看公司董事会独立性。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">资料依据：ch05/esg-05.pdf 中 Key Facts: Governance Factors 和 Further Reading: Governance Factors。本页用于第 5 章收口复习，未使用其他章节知识点。</div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    const active = document.getElementById(target);
+    if (active) active.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

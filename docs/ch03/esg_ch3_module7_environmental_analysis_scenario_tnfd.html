@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 第 3 章模块 7：Environmental Analysis, Scenario Analysis and TNFD</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#fff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"Cascadia Code","SFMono-Regular","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:var(--bg);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-word}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 44%,#eaf0f6 100%)}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:var(--sh);min-width:0;border-radius:var(--r)}
+.hero-main{padding:28px 30px}
+.hero-side{padding:20px;display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:normal;max-width:100%;min-width:0}
+h1{font-family:var(--serif);font-size:clamp(27px,4.8vw,50px);line-height:1.06;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:800px;margin:0;line-height:1.86}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:25px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:470px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap;margin-bottom:9px}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:760px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.text{font-size:13px;color:var(--sub);line-height:1.58}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.topic-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.topic-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.topic-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.source-point{background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;font-size:13px;color:var(--sub);line-height:1.66;margin-bottom:9px}
+.source-point b{color:var(--dark)}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(84px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66}
+.compact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:10px;margin-top:10px}
+.compact-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--sh-sm)}
+.compact-item b{display:block;color:var(--dark);font-size:13.5px;margin-bottom:4px}
+.compact-item span{display:block;color:var(--sub);font-size:12.8px;line-height:1.6}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub)}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qchoices{font-size:12.8px;color:var(--sub);line-height:1.7;margin-top:6px;font-weight:500}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.topic-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.topic-title,.case-name,.qtext,.formula,.trap,.lead,.hero-eq,.side-big,.source-point,.small,.eq-rhs,.case-text{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .pills{display:grid;grid-template-columns:1fr 1fr}
+  .pill{justify-content:center;text-align:center;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+  .nav{position:static;flex-wrap:wrap;overflow:visible}
+  .tab{flex:1 1 calc(50% - 6px);white-space:normal;text-align:center;min-height:40px}
+  .side-mini{grid-template-columns:1fr 1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:22px;line-height:1.16}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px;width:100%;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+  .pill{font-size:11px;padding:5px 8px}
+  .lead,.hero-eq{font-size:14px;overflow-wrap:anywhere;word-break:break-word}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 3</span>
+        <span class="pill">Module 7</span>
+        <span class="pill">3.1.7 / 3.1.8 / 3.1.9</span>
+        <span class="pill">Environmental Analysis & TNFD</span>
+      </div>
+      <h1>Environmental Analysis, Scenario Analysis and TNFD</h1>
+      <p class="lead">本页把第 3 章的“怎么分析环境风险”串起来：从公司、行业、国家和市场层面的环境分析，到 carbon footprinting、WACI、temperature alignment、natural capital、scenario analysis，再到 TNFD 的自然相关风险框架。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>Environmental analysis == 先定分析层级 + 再量化排放/自然资本 + 用情景看未来韧性 + 用 TNFD 看自然依赖和影响 + 最后把风险和机会传导到财务表现</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">3.1.7 识别环境分析方法；3.1.8 解释 climate scenario analysis 的作用；3.1.9 描述 biodiversity、valuation、risk management、nature-related risks 的关键方法。</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">9</div><div class="mini-lab">Temperature alignment 的关键设计判断</div></div>
+        <div class="mini-stat"><div class="mini-num">LEAP</div><div class="mini-lab">TNFD 的 locate-evaluate-assess-prepare 框架</div></div>
+      </div>
+      <div class="side-note">记忆抓手：碳分析回答“排了多少、效率如何、路径是否对齐”；自然分析回答“企业依赖什么自然服务，又对自然造成什么影响”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="concepts">逻辑卡片</button>
+    <button class="tab" data-tab="cases">案例框</button>
+    <button class="tab" data-tab="traps">易错点</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>先看主线：从测量到情景，再到自然风险</h2>
+      </div>
+      <div class="head-desc">本模块是一套分析流程：先知道在哪里看风险，再决定用什么指标，最后用情景和 TNFD 把未来不确定性纳入投资判断。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">Environmental Analysis + Scenario Analysis + TNFD<br>层级定位、指标测量、未来情景、自然依赖和财务传导，合起来才是完整分析</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">分析层级</div>
+          <p>公司/项目、行业、国家、市场。</p>
+          <p>同一个风险在不同层级的财务含义不同。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">碳指标</div>
+          <p>Scope 1/2/3、total carbon emissions、WACI。</p>
+          <p>适合比较和追踪，但不等于完整气候风险。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">前瞻路径</div>
+          <p>net-zero targets、SBTi、PCAF、TPI、temperature alignment。</p>
+          <p>判断公司和组合是否走在低碳路径上。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">Scenario analysis</div>
+          <p>用多个未来状态测试韧性。</p>
+          <p>看 financial impact 和 alignment。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">TNFD</div>
+          <p>识别自然依赖、影响、风险和机会。</p>
+          <p>LEAP：locate、evaluate、assess、prepare。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>1. 定层级</h3><p>公司、项目、行业、国家、市场。</p></div>
+        <div class="flow-step"><h3>2. 测排放</h3><p>Scope、carbon footprint、WACI。</p></div>
+        <div class="flow-step"><h3>3. 看路径</h3><p>目标质量、排放轨迹、温度对齐。</p></div>
+        <div class="flow-step"><h3>4. 做情景</h3><p>不同未来下收入、成本、资产和 capex 怎么变。</p></div>
+        <div class="flow-step"><h3>5. 看自然</h3><p>依赖、影响、五大自然变化驱动因素和 LEAP。</p></div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">Core Logic</span>
+        <h3>风险不是一个数</h3>
+        <p class="small">PDF 提醒，高排放不一定等于高气候风险。煤电和煤钢排放相近，但替代技术、政策重点和未来利润路径可能完全不同。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">Forward Looking</span>
+        <h3>不能只看历史足迹</h3>
+        <p class="small">Carbon footprinting 有用，但偏静态。投资者还要看目标可信度、排放轨迹、temperature alignment 和 scenario resilience。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">Nature Lens</span>
+        <h3>自然风险和气候风险交织</h3>
+        <p class="small">生物多样性损失已被中央银行视为系统性风险来源。TNFD 把自然依赖、影响、风险和机会接到财务传导链上。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>覆盖清单：按 PDF 顺序排查</h2>
+      </div>
+      <div class="head-desc">本页覆盖 ch03 PDF 第 170-188 页，清洁技术和金融建模案例留到模块 8。</div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">A</span> Environmental analysis levels and carbon metrics</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">1</span><div class="text">环境风险分析没有唯一通用标准，要结合第三方研究、数据、框架和投资者自身判断。</div></div>
+        <div class="coverage-item"><span class="check">2</span><div class="text">主要方法包括 carbon footprinting and emission accounting、natural capital approach、climate scenario analysis。</div></div>
+        <div class="coverage-item"><span class="check">3</span><div class="text">分析层级包括 company/project、sector、country、market。</div></div>
+        <div class="coverage-item"><span class="check">4</span><div class="text">公司/项目层面会影响利润表和资产负债表指标，如水资源稀缺地区经营风险更高。</div></div>
+        <div class="coverage-item"><span class="check">5</span><div class="text">Carbon risk premium 指投资者因高碳风险要求更高补偿，但证据和行业适用性并不简单一致。</div></div>
+        <div class="coverage-item"><span class="check">6</span><div class="text">Sector level：化工、能源、钢铁、水泥、采掘、食品饮料、交通等更易暴露于环境风险。</div></div>
+        <div class="coverage-item"><span class="check">7</span><div class="text">Country level：环境监管、排放目标、执法、披露透明度、自然灾害脆弱性会影响公司和主权信用。</div></div>
+        <div class="coverage-item"><span class="check">8</span><div class="text">Market level：物理风险和转型风险可能产生系统性影响，传统分散化和套保可能有限。</div></div>
+        <div class="coverage-item"><span class="check">9</span><div class="text">Carbon footprinting 可用于与全球基准比较、识别减排重点、追踪减排进度。</div></div>
+        <div class="coverage-item"><span class="check">10</span><div class="text">Scope 1 是直接排放；Scope 2 是购买电力等能源相关间接排放；Scope 3 是供应商和客户等价值链间接排放。</div></div>
+        <div class="coverage-item"><span class="check">11</span><div class="text">Carbon footprinting 的挑战包括未上市资产披露不足、Scope 3 缺失、double counting、估算方法差异、忽视物理风险。</div></div>
+        <div class="coverage-item"><span class="check">12</span><div class="text">Total carbon emissions 是绝对指标；WACI 是排放强度指标，更便于比较不同规模发行人。</div></div>
+        <div class="coverage-item"><span class="check">13</span><div class="text">高排放不等于高风险的完美代理，关键还要看替代技术可得性、政策重点和未来盈利路径。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">B</span> Targets, trajectories, temperature alignment and natural capital</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">14</span><div class="text">Net-zero targets 差异很大：绝对/相对目标、覆盖 Scope 1/2/3、时间范围、是否依赖 offsets。</div></div>
+        <div class="coverage-item"><span class="check">15</span><div class="text">SBTi 为企业目标强度提供独立认证；PCAF 为金融机构核算贷款和投资的 financed emissions 提供方法。</div></div>
+        <div class="coverage-item"><span class="check">16</span><div class="text">Transition Plan Taskforce 提供稳健可信的转型计划披露良好实践。</div></div>
+        <div class="coverage-item"><span class="check">17</span><div class="text">Emission trajectories 用于评估达到 net-zero 等目标所需减排路径，并与公司承诺、政策或资产路径比较。</div></div>
+        <div class="coverage-item"><span class="check">18</span><div class="text">Transition Pathway Initiative 是资产所有者主导的工具，用于评估公司低碳转型准备程度。</div></div>
+        <div class="coverage-item"><span class="check">19</span><div class="text">Temperature alignment 比较公司、行业或组合与全球温度基准的气候画像。</div></div>
+        <div class="coverage-item"><span class="check">20</span><div class="text">Alignment 方法有三步九项设计判断：建 benchmark、评估 counterparty alignment、聚合到 portfolio level。</div></div>
+        <div class="coverage-item"><span class="check">21</span><div class="text">免费工具包括 CDP/WWF temperature rating、PACTA、ESG for Investors climate portfolio optimizer。</div></div>
+        <div class="coverage-item"><span class="check">22</span><div class="text">Green capex、绿色收入和 R&D 可用于观察商业模式转型方向。</div></div>
+        <div class="coverage-item"><span class="check">23</span><div class="text">Shell 案例：2050 净零目标，2030 绝对排放较 2016 降 50%，2025 前 100-150 亿美元投资等。</div></div>
+        <div class="coverage-item"><span class="check">24</span><div class="text">Natural capital approach 帮助企业识别、计量、估值和排序其对生物多样性和生态系统的 impacts 与 dependencies。</div></div>
+        <div class="coverage-item"><span class="check">25</span><div class="text">Natural Capital Protocol 为服装、食品饮料、林产品等行业提供指引，并包含 biodiversity guidance。</div></div>
+        <div class="coverage-item"><span class="check">26</span><div class="text">自然资源风险工具包括 IBAT、ENCA、CERES Aqua Gauge、WWF Water Risk Filter、WRI Aqueduct。</div></div>
+      </div>
+    </div>
+
+    <div class="coverage-section">
+      <h3><span class="tag tag-violet">C</span> Climate scenario analysis and TNFD</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><span class="check">27</span><div class="text">Scenario analysis 是前瞻评估方法，用多个未来状态测试组织、行业、国家或组合的表现。</div></div>
+        <div class="coverage-item"><span class="check">28</span><div class="text">IIGCC 将 scenario analysis 目标分为 financial impact 和 alignment。</div></div>
+        <div class="coverage-item"><span class="check">29</span><div class="text">TCFD 六步：governance、materiality、range of scenarios、business impacts、responses、document and disclose。</div></div>
+        <div class="coverage-item"><span class="check">30</span><div class="text">情景输入包括折现率、碳价、能源需求/结构、宏观变量、气候模型和数据集、分析期限等。</div></div>
+        <div class="coverage-item"><span class="check">31</span><div class="text">情景输出关注 earnings、margins、dividends、revenues、costs、asset values、future capex 和 investments。</div></div>
+        <div class="coverage-item"><span class="check">32</span><div class="text">CSRD 增强披露、扩大覆盖、要求 ESRS 和 assurance，并可能延伸至价值链。</div></div>
+        <div class="coverage-item"><span class="check">33</span><div class="text">自然和气候交织，生物多样性损失被视为和气候变化并列的系统性风险来源。</div></div>
+        <div class="coverage-item"><span class="check">34</span><div class="text">Dasgupta Review：1992-2014 年人均 produced capital 翻倍，人均 human capital 增约 13%，人均 natural capital 下降近 40%。</div></div>
+        <div class="coverage-item"><span class="check">35</span><div class="text">EUDR 要求相关 EU 进出口主体证明 cattle、cocoa、coffee、oil palm、rubber、soya、wood 等不关联森林砍伐或退化。</div></div>
+        <div class="coverage-item"><span class="check">36</span><div class="text">TNFD 于 2021 年设立，最终版本于 2023 年 9 月发布，建立自然相关评估和披露框架。</div></div>
+        <div class="coverage-item"><span class="check">37</span><div class="text">TNFD 四个 realms：land、ocean、freshwater、atmosphere。</div></div>
+        <div class="coverage-item"><span class="check">38</span><div class="text">Nature-related risk 来源包括 dependencies、impacts、physical risk、transition risk、systemic risk，并通过宏观/微观渠道传导到财务报表。</div></div>
+        <div class="coverage-item"><span class="check">39</span><div class="text">五大 nature change drivers：climate change、land/freshwater/ocean use change、resource use/replenishment、pollution/removal、invasive alien species。</div></div>
+        <div class="coverage-item"><span class="check">40</span><div class="text">TNFD LEAP：locate、evaluate、assess、prepare，帮助企业定位自然接口、评估依赖和影响、评估重大风险机会并准备披露。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concepts" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Logic Equation Cards</div>
+        <h2>逻辑等式卡片：把分析方法变成反推路径</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”组织。</div>
+    </div>
+
+    <div class="topic-grid">
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">1. 环境分析四层级</div><span class="tag tag-blue">Levels</span></div>
+        <div class="source-point"><b>原文要点：</b>环境风险评估可在 company/project、sector、country、market 层面进行，并与社会和治理评估结合。</div>
+        <p class="small"><b>中文解释：</b>同一个环境风险，在公司层面可能是成本，在行业层面是风险溢价，在国家层面是主权信用，在市场层面可能是系统性冲击。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Environmental analysis</div><div class="eq-op">=</div><div class="eq-rhs">Company/project + Sector + Country + Market</div></div>
+          <div class="eq"><div class="eq-lhs">投资落点</div><div class="eq-op">→</div><div class="eq-rhs">估值倍数、成本假设、信用利差、战略资产配置。</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>不要只停留在公司层面，国家监管、披露质量和自然灾害脆弱性也能影响投资判断。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">2. Carbon risk premium</div><span class="tag tag-rose">Premium</span></div>
+        <div class="source-point"><b>原文要点：</b>Carbon risk premium 指投资者因高碳公司风险要求更高补偿；不同研究和行业显示的关系并不完全一致。</div>
+        <p class="small"><b>中文解释：</b>高碳资产可能因为被更多投资者回避而提供超额回报，也可能因为现金流永久受损而持续低迷。关键是先明确投资信念。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Carbon risk premium</div><div class="eq-op">=</div><div class="eq-rhs">高碳风险感知 + 更高补偿要求</div></div>
+          <div class="eq"><div class="eq-lhs">两种解释</div><div class="eq-op">=</div><div class="eq-rhs">被冷落后的超额收益机会 / 现金流被政策技术消费者永久压低</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>结论不能从煤矿简单套到油气或钢铁，技术替代、流动性和政策压力都不同。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">3. Scope 1/2/3：排放边界</div><span class="tag tag-green">GHG Protocol</span></div>
+        <div class="source-point"><b>原文要点：</b>Scope 1 是组织控制或拥有来源的直接排放；Scope 2 是购买电力等能源相关间接排放；Scope 3 是活动产生的其他间接排放，包括供应商和客户。</div>
+        <p class="small"><b>中文解释：</b>Scope 的本质是“排放发生在公司边界内、能源购买里，还是价值链上下游”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scope 1</div><div class="eq-op">=</div><div class="eq-rhs">自己拥有/控制的排放源</div></div>
+          <div class="eq"><div class="eq-lhs">Scope 2</div><div class="eq-op">=</div><div class="eq-rhs">购买电力、蒸汽、供热和制冷的间接排放</div></div>
+          <div class="eq"><div class="eq-lhs">Scope 3</div><div class="eq-op">=</div><div class="eq-rhs">供应商 + 客户 + 上下游价值链间接排放</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Purchased electricity 是 Scope 2；purchased goods and services 是 Scope 3。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">4. Carbon footprinting：有用但偏静态</div><span class="tag tag-blue">Footprint</span></div>
+        <div class="source-point"><b>原文要点：</b>Carbon footprinting 可比较基准、识别减排重点和追踪进度，但作为风险指标有局限。</div>
+        <p class="small"><b>中文解释：</b>它像给组合拍一张排放照片，能看出当前排放量和强度，但不一定能看出未来技术替代、政策变化和物理风险。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Footprinting</div><div class="eq-op">=</div><div class="eq-rhs">排放测量 + 基准比较 + 减排重点 + 进度追踪</div></div>
+          <div class="eq"><div class="eq-lhs">局限</div><div class="eq-op">=</div><div class="eq-rhs">披露缺口 + Scope 3 缺失 + double counting + 方法差异 + 忽视 physical risk</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>高排放不是高风险的完美代理，投资者必须看商业模式和替代技术。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">5. Total emissions 与 WACI</div><span class="tag tag-teal">Metrics</span></div>
+        <div class="source-point"><b>原文要点：</b>Carbon footprinting 可以用绝对或相对指标。TCFD 建议资产所有者和管理人披露 weighted average carbon intensity。</div>
+        <p class="small"><b>中文解释：</b>Total emissions 看“组合归属的总排放”；WACI 看“组合持有公司的收入排放强度加权平均”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Total carbon</div><div class="eq-op">=</div><div class="eq-rhs">投资价值 / 发行人市值 × 发行人 Scope 1+2 排放</div></div>
+          <div class="eq"><div class="eq-lhs">WACI</div><div class="eq-op">=</div><div class="eq-rhs">组合权重 × 发行人 Scope 1+2 排放 / 收入</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>Total 是 absolute，WACI 是 intensity；分母选择会影响可比性。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">6. Net-zero 和 science-based targets</div><span class="tag tag-green">Targets</span></div>
+        <div class="source-point"><b>原文要点：</b>企业净零目标差异很大，可能是绝对或相对，覆盖范围、气体类型、时间框架、是否使用 offsets 都不同。SBTi 提供目标强度认证。</div>
+        <p class="small"><b>中文解释：</b>“有净零目标”不等于“目标可信”。投资者要拆开看目标边界、时间表、Scope 3、抵消依赖和第三方认证。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Target quality</div><div class="eq-op">=</div><div class="eq-rhs">absolute/relative + Scope coverage + timeframe + gases + offsets + verification</div></div>
+          <div class="eq"><div class="eq-lhs">SBTi/PCAF</div><div class="eq-op">→</div><div class="eq-rhs">企业目标认证 / 金融机构贷款和投资 financed emissions 方法</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>边界窄、过度依赖 offsets、缺少中期目标的净零承诺，可信度较弱。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">7. Emission trajectories 与 temperature alignment</div><span class="tag tag-amber">Alignment</span></div>
+        <div class="source-point"><b>原文要点：</b>Emission trajectories 比较达到目标所需减排路径；temperature alignment 将公司、行业或组合与全球温度基准比较。</div>
+        <p class="small"><b>中文解释：</b>排放轨迹回答“路径够不够快”；温度对齐回答“如果全世界都像这个公司或组合一样减排，地球大概走向多少度”。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Trajectory</div><div class="eq-op">=</div><div class="eq-rhs">当前排放 → 目标排放 → 所需年度下降路径</div></div>
+          <div class="eq"><div class="eq-lhs">Temperature alignment</div><div class="eq-op">=</div><div class="eq-rhs">公司/组合气候画像 vs 全球温度预算</div></div>
+        </div>
+        <div class="memory"><b>易错提醒：</b>温度对齐方法差异很大，可能输出 aligned/not aligned、分数、错配比例或温度数字。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">8. Green capex, revenues and R&D</div><span class="tag tag-blue">Business Direction</span></div>
+        <div class="source-point"><b>原文要点：</b>另一种方法是观察企业绿色资本开支、绿色收入和 R&D，以判断商业模式转型方向。</div>
+        <p class="small"><b>中文解释：</b>排放数据看过去和现在，绿色 capex/收入/R&D 更像看企业未来在往哪里投、哪里赚钱、技术路线是否认真。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Transition evidence</div><div class="eq-op">=</div><div class="eq-rhs">green capex + green revenue + low-carbon R&D</div></div>
+          <div class="eq"><div class="eq-lhs">谨慎点</div><div class="eq-op">=</div><div class="eq-rhs">专利数量不必然等于战略承诺</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>EU Taxonomy 的 green capex 有助于比较同类公司和监控转型绩效。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">9. Natural capital approach</div><span class="tag tag-green">Natural Capital</span></div>
+        <div class="source-point"><b>原文要点：</b>Natural capital 帮助企业识别、计量、估值和排序其对生物多样性和生态系统的 impacts 与 dependencies。</div>
+        <p class="small"><b>中文解释：</b>企业不只是“影响自然”，也“依赖自然”。水、土壤、授粉、生态韧性等服务一旦受损，企业成本和收入都会受影响。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Natural capital</div><div class="eq-op">=</div><div class="eq-rhs">自然资产存量 → 生态系统服务 → 企业和社会收益</div></div>
+          <div class="eq"><div class="eq-lhs">分析动作</div><div class="eq-op">=</div><div class="eq-rhs">identify + measure + value + prioritize impacts/dependencies</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>自然资本不是“能出售的自然资源总额”，而是 geology、soil、air、water、living things 等自然资产存量。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">10. Climate scenario analysis</div><span class="tag tag-violet">Scenario</span></div>
+        <div class="source-point"><b>原文要点：</b>Scenario analysis 是前瞻评估气候相关风险和机会的方法，用多个未来状态测试组织、行业、国家或组合可能表现。</div>
+        <p class="small"><b>中文解释：</b>它不是预测唯一未来，而是问：如果 2°C 以下转型、延迟转型、或物理风险更高，公司战略和财务还能不能扛住。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Scenario analysis</div><div class="eq-op">=</div><div class="eq-rhs">多个未来状态 + 关键驱动因素 + 财务和战略韧性测试</div></div>
+          <div class="eq"><div class="eq-lhs">两大目标</div><div class="eq-op">=</div><div class="eq-rhs">Financial impact + Alignment</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>情景结果可用于评估风险定价、组合对齐、资本开支和管理层应对方案。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">11. TCFD scenario 六步法</div><span class="tag tag-teal">Six Steps</span></div>
+        <div class="source-point"><b>原文要点：</b>TCFD 提供了应用 scenario analysis 的六步流程：治理、重要性、情景范围、业务影响、应对方案、记录和披露。</div>
+        <p class="small"><b>中文解释：</b>这六步像一个审计程序：先有治理责任，再识别重大暴露，设计情景，测算影响，形成应对，最后留下过程和披露证据。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">TCFD scenario</div><div class="eq-op">=</div><div class="eq-rhs">Governance → Materiality → Scenarios → Impacts → Responses → Disclosure</div></div>
+          <div class="eq"><div class="eq-lhs">输入输出</div><div class="eq-op">=</div><div class="eq-rhs">assumptions/models/horizon → earnings/margins/revenues/costs/assets/capex</div></div>
+        </div>
+        <div class="memory"><b>考点提醒：</b>情景分析结果高度依赖输入假设，如 discount rate、carbon pricing、energy mix、macroeconomic variables。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">12. TNFD：把自然风险接到财务风险</div><span class="tag tag-green">TNFD</span></div>
+        <div class="source-point"><b>原文要点：</b>TNFD 于 2021 年设立，最终版本于 2023 年 9 月发布，目标是发展自然相关数据评估和披露框架。</div>
+        <p class="small"><b>中文解释：</b>TCFD 聚焦气候，TNFD 聚焦自然。自然相关依赖和影响会通过供应链、盈利、资产价值、商品价格、需求变化和金融稳定传导。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">TNFD risk</div><div class="eq-op">=</div><div class="eq-rhs">Dependencies + Impacts → Physical + Transition + Systemic risks</div></div>
+          <div class="eq"><div class="eq-lhs">Realms</div><div class="eq-op">=</div><div class="eq-rhs">Land + Ocean + Freshwater + Atmosphere</div></div>
+        </div>
+        <div class="memory"><b>投资影响：</b>自然风险可传导至 income statement、balance sheet、cashflow、credit、liquidity、operational risk。</div>
+      </article>
+
+      <article class="topic-card">
+        <div class="topic-top"><div class="topic-title">13. Five drivers and LEAP</div><span class="tag tag-amber">Nature Method</span></div>
+        <div class="source-point"><b>原文要点：</b>TNFD 认为自然变化有五大驱动因素，并提出 LEAP 框架帮助组织定位自然接口、评估依赖影响、评估风险机会并准备披露。</div>
+        <p class="small"><b>中文解释：</b>LEAP 是自然风险分析的动作顺序：先找到企业和自然在哪里接触，再看依赖和影响，最后评估重大风险机会并准备响应。</p>
+        <div class="equations">
+          <div class="eq"><div class="eq-lhs">Drivers</div><div class="eq-op">=</div><div class="eq-rhs">Climate + Land/Ocean/Freshwater use + Resource use + Pollution + Invasive species</div></div>
+          <div class="eq"><div class="eq-lhs">LEAP</div><div class="eq-op">=</div><div class="eq-rhs">Locate → Evaluate → Assess → Prepare</div></div>
+        </div>
+        <div class="memory"><b>题眼钩子：</b>看到 locate/evaluate/assess/prepare，就反推 TNFD 的自然相关风险评估。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Cases and Frameworks</div>
+        <h2>案例框：把方法放回投资场景</h2>
+      </div>
+      <div class="head-desc">这些是 PDF 中的工具、示例、图表和案例压缩，重点看它们分别回答什么问题。</div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Carbon footprinting limitations</div><span class="tag tag-blue">Limits</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Disclosure gaps</b><span>未上市或私有资产披露不足。</span></div>
+            <div class="compact-item"><b>Scope 3 missing</b><span>价值链排放常被漏掉。</span></div>
+            <div class="compact-item"><b>Double counting</b><span>矿商 Scope 3 可能是钢企 Scope 1。</span></div>
+            <div class="compact-item"><b>Static measure</b><span>容易忽视物理风险和未来技术替代。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Coal power vs coal steel</div><span class="tag tag-amber">Risk Proxy</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">原文要点</div><div class="case-text">煤电厂和煤钢厂排放水平可能相近，但清洁替代方案成熟度不同，因此政策重点和未来盈利曲线可能完全不同。</div></div>
+          <div class="case-row"><div class="case-lab">投资含义</div><div class="case-text">高排放不是高风险的完美代理，必须叠加行业技术路径和替代品经济性。</div></div>
+          <div class="case-row"><div class="case-lab">逻辑等式</div><div class="case-text">Climate risk ≠ emissions only；risk = emissions + abatement feasibility + policy pressure + market alternatives。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Temperature alignment tools</div><span class="tag tag-teal">Tools</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>CDP/WWF</b><span>被 SBTi 认可为金融机构目标设定的一种方法。</span></div>
+            <div class="compact-item"><b>PACTA</b><span>由 2° Investing Initiative 开发，可分析上市证券和私人组合。</span></div>
+            <div class="compact-item"><b>Climate optimizer</b><span>以 risk、return、climate impact 的 3D 框架建模温度。</span></div>
+          </div>
+          <div class="case-row" style="margin-top:10px"><div class="case-lab">易错点</div><div class="case-text">温度数字看起来直观，但不同方法的输入、情景、输出和聚合方式差异很大。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Shell transition evidence</div><span class="tag tag-green">Company Example</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">目标</div><div class="case-text">Shell 设定 2050 年成为净零排放能源业务的目标，覆盖 Scope 1/2 以及控制范围之外的 Scope 3。</div></div>
+          <div class="case-row"><div class="case-lab">中期点</div><div class="case-text">2030 年绝对排放较 2016 年降 50%；2025 年前投资 100-150 亿美元；减少 routine flaring；甲烷强度低于 0.2%。</div></div>
+          <div class="case-row"><div class="case-lab">投资含义</div><div class="case-text">中期目标和资本开支能提高公司问责性，比单一 2050 口号更有分析价值。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Natural resource risk tools</div><span class="tag tag-blue">Tools</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>IBAT</b><span>全球生物多样性数据库，含关键生物多样性区域和保护区。</span></div>
+            <div class="compact-item"><b>ENCA</b><span>英国 DEFRA 开发的自然资本政策工具和指引。</span></div>
+            <div class="compact-item"><b>CERES Aqua Gauge</b><span>面向投资者、贷款人和政策制定者的水风险工具。</span></div>
+            <div class="compact-item"><b>WWF Water Risk Filter / WRI Aqueduct</b><span>用于识别和评估水资源风险。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">TCFD scenario six steps</div><span class="tag tag-violet">Process</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>1 Governance</b><span>把情景分析纳入战略规划和风险管理。</span></div>
+            <div class="compact-item"><b>2 Materiality</b><span>评估当前和预期气候风险暴露是否重大。</span></div>
+            <div class="compact-item"><b>3 Scenarios</b><span>识别并定义适合自身暴露的情景范围。</span></div>
+            <div class="compact-item"><b>4 Impacts</b><span>评估战略和财务影响，识别关键敏感性。</span></div>
+            <div class="compact-item"><b>5 Responses</b><span>识别可执行的管理响应和计划调整。</span></div>
+            <div class="compact-item"><b>6 Disclose</b><span>记录流程并披露关键输入、假设、方法、输出和响应。</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">EUDR valuation impacts</div><span class="tag tag-rose">Deforestation</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">覆盖商品</div><div class="case-text">cattle、cocoa、coffee、oil palm、rubber、soya、wood 及许多衍生品。</div></div>
+          <div class="case-row"><div class="case-lab">估值影响</div><div class="case-text">合规成本、EU 市场准入、声誉风险、投资吸引力。</div></div>
+          <div class="case-row"><div class="case-lab">数据点</div><div class="case-text">欧委会影响评估估计企业年度合规相关成本约 1.70 亿至 25 亿美元。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">TNFD risk transmission</div><span class="tag tag-green">Finance Link</span></div>
+        <div class="case-body">
+          <div class="compact-list">
+            <div class="compact-item"><b>Physical risk</b><span>acute 或 chronic 的自然变化冲击。</span></div>
+            <div class="compact-item"><b>Transition risk</b><span>policy/legal、market、technology、reputation。</span></div>
+            <div class="compact-item"><b>Systemic risk</b><span>生态系统崩溃、聚合风险、金融稳定风险。</span></div>
+            <div class="compact-item"><b>Opportunities</b><span>resource efficiency、markets、financing、resilience、reputation。</span></div>
+          </div>
+          <div class="case-row" style="margin-top:10px"><div class="case-lab">财务传导</div><div class="case-text">自然依赖和影响可通过需求、原材料价格、盈利、资产价值、供应链中断和诉讼传导到财务报表。</div></div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">Aviva deforestation risk assessment</div><span class="tag tag-amber">Case Study</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">方法</div><div class="case-text">Aviva 以 ENCORE 为基础，结合 SBTN Sectoral Materiality Tool 和多套 biodiversity 数据集，按资产类别评估森林砍伐风险。</div></div>
+          <div class="case-row"><div class="case-lab">公司投资</div><div class="case-text">26% 公司持仓价值进入相关数据集；暴露部分中 38% 风险管理弱，43% 中等，19% 强。</div></div>
+          <div class="case-row"><div class="case-lab">资产类别</div><div class="case-text">还分别评估 sovereign debt、real assets、company loans 和 infrastructure，并按数据可得性使用代理指标。</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="traps" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Common Traps</div>
+        <h2>易错点：不要把方法当万能答案</h2>
+      </div>
+      <div class="head-desc">这一模块的陷阱是“指标看起来精确，但边界和假设不同，含义就不同”。</div>
+    </div>
+    <div class="grid-2">
+      <div class="trap"><b>1. 高排放不自动等于高风险</b>还要看替代技术、政策重点、市场需求和成本传导。煤电和煤钢就是典型对比。</div>
+      <div class="trap"><b>2. Carbon footprinting 不等于完整气候分析</b>它偏历史和静态，可能漏 Scope 3、双重计算，也不能充分捕捉物理风险。</div>
+      <div class="trap"><b>3. Total emissions 和 WACI 不要混</b>Total 是绝对归属排放，WACI 是按组合权重加权的收入排放强度。</div>
+      <div class="trap"><b>4. Scope 2 和 Scope 3 容易错</b>购买电力是 Scope 2；购买商品和服务、客户使用产品等通常属于 Scope 3。</div>
+      <div class="trap"><b>5. 净零目标要拆边界</b>看是否覆盖 Scope 3、是否是绝对减排、时间表是否明确、是否过度依赖 offsets。</div>
+      <div class="trap"><b>6. Temperature alignment 不是统一口径</b>不同工具会用不同输入和输出，温度数字不一定可直接比较。</div>
+      <div class="trap"><b>7. Scenario analysis 不是预测</b>它是用多个未来状态测试韧性，不是给出一个确定未来。</div>
+      <div class="trap"><b>8. TCFD scenario 六步不要只背名称</b>核心是从 governance 到 disclosure，形成可复核的战略和财务影响分析。</div>
+      <div class="trap"><b>9. Natural capital 不是只看可出售资源</b>它强调自然资产存量及其产生的生态系统服务。</div>
+      <div class="trap"><b>10. TNFD 不是 TCFD 的改名</b>TNFD 专注自然相关依赖、影响、风险和机会；LEAP 是核心评估流程。</div>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Compressed Recall</div>
+        <h2>考前压缩：用 14 条式子快速回忆</h2>
+      </div>
+      <div class="head-desc">建议遮住解释，只看粗体词反推完整内容。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>碳与情景线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Environmental analysis levels</b> = company/project + sector + country + market。</div>
+          <div class="formula"><b>Scope 1/2/3</b> = 自有直接排放 / 购买能源间接排放 / 上下游价值链间接排放。</div>
+          <div class="formula"><b>Carbon footprinting</b> = benchmark comparison + reduction priorities + progress tracking。</div>
+          <div class="formula"><b>Footprinting limits</b> = disclosure gaps + Scope 3 missing + double counting + method differences + physical risk ignored。</div>
+          <div class="formula"><b>Total carbon vs WACI</b> = 绝对归属排放 vs 按组合权重加权的收入排放强度。</div>
+          <div class="formula"><b>Target quality</b> = absolute/relative + scope + timeframe + gases + offsets + verification。</div>
+          <div class="formula"><b>Temperature alignment</b> = 公司/组合路径 vs 全球温度预算，方法差异很大。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>自然与 TNFD 线</h3>
+        <div class="formula-list">
+          <div class="formula"><b>Natural capital</b> = natural assets stock → ecosystem services → business/society benefits。</div>
+          <div class="formula"><b>Natural Capital Protocol</b> = identify + measure + value + prioritize impacts/dependencies。</div>
+          <div class="formula"><b>Scenario analysis</b> = future states + key drivers + financial/strategic resilience。</div>
+          <div class="formula"><b>TCFD six steps</b> = Governance → Materiality → Scenarios → Impacts → Responses → Disclosure。</div>
+          <div class="formula"><b>TNFD realms</b> = land + ocean + freshwater + atmosphere。</div>
+          <div class="formula"><b>Five drivers</b> = climate + land/ocean/freshwater use + resource use + pollution + invasive species。</div>
+          <div class="formula"><b>LEAP</b> = Locate → Evaluate → Assess → Prepare。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">模块边界：本页聚焦 3.1.7、3.1.8、3.1.9。下一模块将进入 3.1.10 及后续机会部分，包括 financial modeling、ratio analysis、risk assessment、green products 和 clean technology opportunities。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Self Test</div>
+        <h2>自测题：看到题眼，反推知识点</h2>
+      </div>
+      <div class="head-desc">包含本模块对应的正式题考点，并补充分析方法反推题。</div>
+    </div>
+
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">1</div>
+          <div>
+            <div class="qtext">Which emission source is Scope 3 under the GHG Protocol?</div>
+            <div class="qchoices">A. Company facilities<br>B. Purchased electricity<br>C. Purchased goods and services</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：C。</b>中文解析：Scope 3 是供应商和客户等价值链间接排放，purchased goods and services 属于上游 Scope 3。<br><b>逻辑等式：</b>Scope 3 = upstream + downstream indirect emissions。<br><b>题眼钩子：</b>purchased goods and services。<br><b>易错提醒：</b>Purchased electricity 是 Scope 2。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">2</div>
+          <div>
+            <div class="qtext">Natural capital is best described as:</div>
+            <div class="qchoices">A. Natural resources that can be sold for profit<br>B. The stock of natural assets, including geology, soil, air, water, and living things<br>C. The total monetary benefits directly dependent on nature</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：Natural capital 是自然资产存量，人类从中获得生态系统服务。<br><b>逻辑等式：</b>Natural capital = stock of natural assets → ecosystem services。<br><b>题眼钩子：</b>stock of natural assets。<br><b>易错提醒：</b>不是只包括可出售资源，也不是只等于货币利益。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">3</div>
+          <div>
+            <div class="qtext">Which situation is most likely an indirect impact on biodiversity resources?</div>
+            <div class="qchoices">A. Surface water used for irrigation<br>B. A road built for a forestry operation that stimulates migration and new development<br>C. Noise and light disturbing local species at a processing site</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：道路本身服务于林业运输，但它可能引发人员迁入和道路沿线商业开发，间接影响生物多样性。<br><b>逻辑等式：</b>Indirect impact = business activity → secondary development → biodiversity pressure。<br><b>题眼钩子：</b>migration / new commercial development。<br><b>易错提醒：</b>用水和噪声光照是直接影响。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">4</div>
+          <div>
+            <div class="qtext">Weighted average carbon intensity is primarily useful because it:</div>
+            <div class="qchoices">A. shows an emissions intensity measure that improves comparability across issuers of different sizes<br>B. guarantees that Scope 3 emissions are fully captured<br>C. measures only physical climate risks</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：WACI 将排放按收入等指标缩放，再按组合权重加总，便于比较不同规模公司。<br><b>逻辑等式：</b>WACI = portfolio weight × emissions intensity。<br><b>题眼钩子：</b>intensity / comparability。<br><b>易错提醒：</b>它通常使用 Scope 1+2，不保证完整捕捉 Scope 3，也不是物理风险指标。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">5</div>
+          <div>
+            <div class="qtext">Which is a major limitation of carbon footprinting as a risk measure?</div>
+            <div class="qchoices">A. It is always too forward-looking<br>B. It may ignore Scope 3 emissions and physical climate risks<br>C. It cannot aggregate emissions across portfolios</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：PDF 明确列出 Scope 3 很少纳入、double counting、估算方法差异、忽视物理风险等挑战。<br><b>逻辑等式：</b>Footprint limits = backward-looking + Scope 3 gaps + physical risk ignored。<br><b>题眼钩子：</b>limitation / Scope 3 / physical risks。<br><b>易错提醒：</b>能聚合排放正是它的优点之一。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">6</div>
+          <div>
+            <div class="qtext">Climate scenario analysis is best described as:</div>
+            <div class="qchoices">A. a single forecast of the most likely future<br>B. a forward-looking assessment of performance under various future states<br>C. a backward-looking carbon footprint calculation</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：B。</b>中文解析：Scenario analysis 评估组织、行业、国家或组合在多个未来状态下如何表现，用于理解驱动因素和可能结果。<br><b>逻辑等式：</b>Scenario analysis = multiple future states + drivers + outcomes。<br><b>题眼钩子：</b>various future states。<br><b>易错提醒：</b>它不是单一预测，也不是历史排放核算。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">7</div>
+          <div>
+            <div class="qtext">Under the IIGCC framing, the two objectives of climate scenario analysis are:</div>
+            <div class="qchoices">A. financial impact and alignment<br>B. biodiversity and water stress<br>C. audit assurance and tax compliance</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：IIGCC 将 scenario analysis 的目标概括为 financial impact 和 alignment。<br><b>逻辑等式：</b>Scenario objectives = price risks/opportunities + align portfolio with 2°C or lower future。<br><b>题眼钩子：</b>IIGCC / two objectives。<br><b>易错提醒：</b>水风险和生物多样性是重要议题，但不是这里的两项分类。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">8</div>
+          <div>
+            <div class="qtext">The TNFD LEAP framework stands for:</div>
+            <div class="qchoices">A. Locate, Evaluate, Assess, Prepare<br>B. List, Estimate, Audit, Publish<br>C. Legal, Environmental, Accounting, Portfolio</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：LEAP 帮助公司和金融机构定位与自然的接口，评价依赖和影响，评估重大风险和机会，并准备响应和披露。<br><b>逻辑等式：</b>LEAP = Locate → Evaluate → Assess → Prepare。<br><b>题眼钩子：</b>TNFD + LEAP。<br><b>易错提醒：</b>Prepare 不只是发布报告，还包括战略、指标、风险管理和资源配置响应。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">9</div>
+          <div>
+            <div class="qtext">Which set lists the four TNFD realms?</div>
+            <div class="qchoices">A. Land, ocean, freshwater, atmosphere<br>B. Governance, strategy, risk management, metrics<br>C. Energy, transport, buildings, agriculture</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：TNFD 以 land、ocean、freshwater、atmosphere 四个 realms 作为理解自然依赖和影响的入口。<br><b>逻辑等式：</b>TNFD realms = Land + Ocean + Freshwater + Atmosphere。<br><b>题眼钩子：</b>realms。<br><b>易错提醒：</b>选项 B 是 TCFD 核心披露结构，不是 TNFD realms。</div>
+      </article>
+
+      <article class="qcard">
+        <div class="qtop">
+          <div class="qno">10</div>
+          <div>
+            <div class="qtext">Which is one of TNFD’s five main drivers of nature change?</div>
+            <div class="qchoices">A. Invasive alien species introduction or removal<br>B. Weighted average carbon intensity<br>C. Article 8 product classification</div>
+          </div>
+          <button class="qbtn" type="button">看答案</button>
+        </div>
+        <div class="qanswer"><b>答案：A。</b>中文解析：TNFD 五大自然变化驱动因素包括 climate change、land/freshwater/ocean use change、resource use/replenishment、pollution/removal、invasive alien species。<br><b>逻辑等式：</b>Nature drivers = climate + use change + resource use + pollution + invasive species。<br><b>题眼钩子：</b>invasive alien species。<br><b>易错提醒：</b>WACI 是碳强度指标；Article 8 是 SFDR 产品分类。</div>
+      </article>
+    </div>
+  </section>
+
+  <div class="footer-note">资料依据：本页内容依据 ch03/esg-03.pdf 第 170-188 页及本章 Practice Problems 中相关题目整理；ch04 仅参考页面结构和交互风格。</div>
+</main>
+
+<script>
+const tabs=document.querySelectorAll('.tab');
+const panels=document.querySelectorAll('.panel');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const id=tab.dataset.tab;
+    tabs.forEach(t=>t.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel=document.getElementById(id);
+    if(panel){
+      panel.classList.add('active');
+      panel.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent=card.classList.contains('show')?'收起答案':'看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>

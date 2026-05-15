@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ESG Ch.7 Module 1 · 7.1.1-7.1.2 ESG Integration Approaches</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--faint:#94a3b8;
+  --line:#dbe3ee;--line2:#eef2f7;--paper:#ffffff;--soft:#f8fafc;--bg:#edf2f7;
+  --blue:#1d4ed8;--blue-bg:#eff6ff;--blue-bdr:#bfdbfe;
+  --green:#047857;--green-bg:#ecfdf5;--green-bdr:#a7f3d0;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-bdr:#fde68a;
+  --rose:#be123c;--rose-bg:#fff1f2;--rose-bdr:#fecdd3;
+  --violet:#6d28d9;--violet-bg:#f5f3ff;--violet-bdr:#ddd6fe;
+  --teal:#0f766e;--teal-bg:#f0fdfa;--teal-bdr:#99f6e4;
+  --dark:#0f172a;--dark2:#1e293b;
+  --r:8px;--sh-sm:0 2px 10px rgba(15,23,42,.06);--sh:0 12px 36px rgba(15,23,42,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --serif:"Iowan Old Style","Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --mono:"SFMono-Regular","Cascadia Code","Menlo","Consolas",monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.66;background:linear-gradient(180deg,#f8fafc 0%,#edf2f7 48%,#eaf0f6 100%);min-height:100vh;overflow-x:hidden;overflow-wrap:anywhere}
+button{font-family:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:28px 16px 86px;overflow:hidden}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:stretch;margin-bottom:18px}
+.hero-main,.hero-side{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--sh);min-width:0}
+.hero-main{padding:28px 30px;border-radius:var(--r)}
+.hero-side{padding:20px;border-radius:var(--r);display:flex;flex-direction:column;gap:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:850;color:var(--muted);box-shadow:var(--sh-sm);white-space:nowrap}
+h1{font-family:var(--serif);font-size:clamp(29px,4.8vw,52px);line-height:1.05;letter-spacing:0;margin:0 0 13px;color:var(--dark);overflow-wrap:anywhere;word-break:break-word}
+.lead{font-size:15.5px;color:var(--sub);max-width:790px;margin:0;line-height:1.86;overflow-wrap:anywhere}
+.hero-eq{margin-top:18px;background:var(--dark);color:#dbeafe;border-radius:var(--r);padding:15px 16px;font-size:13.5px;line-height:1.78;overflow-wrap:anywhere;word-break:break-word}
+.hero-eq b{color:#fff}
+.side-label{font-size:11px;text-transform:uppercase;letter-spacing:0;font-weight:950;color:var(--muted)}
+.side-big{font-family:var(--serif);font-size:19px;font-weight:900;color:var(--dark);line-height:1.45;overflow-wrap:anywhere;word-break:break-word}
+.side-note{font-size:13px;color:#14532d;background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;line-height:1.7}
+.side-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini-stat{background:var(--soft);border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;min-width:0}
+.mini-num{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1;color:var(--dark)}
+.mini-lab{font-size:11.5px;color:var(--muted);font-weight:850;margin-top:5px;line-height:1.35}
+.nav{position:sticky;top:10px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:7px;margin:16px 0 24px}
+.tab{border:0;background:transparent;border-radius:var(--r);padding:9px 13px;color:var(--muted);font-size:13px;font-weight:900;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.tab:hover{background:var(--line2);color:var(--ink)}
+.tab.active{background:var(--dark);color:#fff;box-shadow:0 8px 22px rgba(15,23,42,.22)}
+.panel{display:none;scroll-margin-top:82px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}
+.eyebrow{font-size:11px;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:0;margin-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(23px,4vw,36px);line-height:1.13;letter-spacing:0;margin:0;color:var(--dark);overflow-wrap:anywhere}
+.head-desc{font-size:13.5px;color:var(--muted);max-width:460px;text-align:right;line-height:1.68}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0;overflow:hidden}
+.card.dark{background:var(--dark);border-color:var(--dark);color:#e2e8f0}
+h3{font-size:16px;line-height:1.35;color:var(--dark);margin:0 0 9px;font-weight:950;letter-spacing:0;overflow-wrap:anywhere}
+.card.dark h3{color:#fff}
+p{margin:0 0 10px}
+.small{font-size:13.5px;color:var(--sub);line-height:1.76;overflow-wrap:anywhere}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:950;line-height:1.2;white-space:nowrap}
+.tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr)}
+.tag-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr)}
+.tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.tag-rose{background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bdr)}
+.tag-violet{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bdr)}
+.tag-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bdr)}
+.tag-dark{background:var(--dark);color:#fff;border:1px solid var(--dark)}
+.map-board{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px;margin-bottom:16px}
+.center-node{max-width:620px;margin:0 auto 18px;background:#ffedd5;border:2px solid #c2410c;color:#7c2d12;border-radius:999px;text-align:center;padding:13px 18px;font-weight:950;line-height:1.42}
+.branch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.branch{border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0;background:var(--soft)}
+.branch:nth-child(1){background:var(--blue-bg);border-color:var(--blue-bdr)}
+.branch:nth-child(2){background:var(--green-bg);border-color:var(--green-bdr)}
+.branch:nth-child(3){background:var(--violet-bg);border-color:var(--violet-bdr)}
+.branch:nth-child(4){background:var(--amber-bg);border-color:var(--amber-bdr)}
+.branch:nth-child(5){background:var(--rose-bg);border-color:var(--rose-bdr)}
+.branch-title{font-size:14px;font-weight:950;color:var(--dark);line-height:1.35;margin-bottom:9px}
+.branch p{font-size:12.6px;color:var(--sub);line-height:1.58;margin:0 0 7px;overflow-wrap:anywhere}
+.flowline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.flow-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;position:relative;min-width:0}
+.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--muted)}
+.flow-step h3{font-size:13.5px;margin:0 0 5px}
+.flow-step p{font-size:12.3px;color:var(--sub);line-height:1.55;margin:0}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:10px}
+.coverage-section{margin-bottom:18px}
+.coverage-section h3{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.coverage-item{display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;box-shadow:var(--sh-sm);min-width:0}
+.coverage-item .check{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--green-bg);border:1px solid var(--green-bdr);color:var(--green);font-weight:950;font-size:12px}
+.coverage-item .text{font-size:13px;color:var(--sub);line-height:1.58;overflow-wrap:anywhere}
+.trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:14px}
+.trend-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);padding:18px;min-width:0}
+.trend-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:9px}
+.trend-title{font-size:17px;font-weight:950;color:var(--dark);line-height:1.35}
+.kv{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;margin:9px 0}
+.kv-lab{font-size:12px;font-weight:950;color:var(--muted);line-height:1.55}
+.kv-text{font-size:13px;color:var(--sub);line-height:1.65;overflow-wrap:anywhere}
+.equations{display:flex;flex-direction:column;gap:7px;margin:11px 0}
+.eq{display:grid;grid-template-columns:minmax(78px,.34fr) 26px minmax(0,1fr);gap:8px;align-items:start;background:var(--soft);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;min-width:0}
+.eq-lhs{font-size:13px;font-weight:950;color:var(--dark2);line-height:1.45;overflow-wrap:anywhere}
+.eq-op{font-family:var(--mono);font-weight:950;color:var(--faint);font-size:14px;line-height:1.45;text-align:center}
+.eq-rhs{font-size:13px;color:var(--sub);line-height:1.55;overflow-wrap:anywhere}
+.memory{background:var(--green-bg);border:1px solid var(--green-bdr);border-radius:var(--r);padding:11px 12px;font-size:13px;color:#14532d;line-height:1.7}
+.memory b{color:#064e3b}
+.riskline{border-left:4px solid var(--amber);background:var(--amber-bg);border-radius:var(--r);padding:10px 12px;color:#78350f;font-size:13px;line-height:1.68}
+.warnline{border-left:4px solid var(--rose);background:var(--rose-bg);border-radius:var(--r);padding:10px 12px;color:#881337;font-size:13px;line-height:1.68}
+.source{font-size:12px;color:var(--muted);line-height:1.55;margin-top:10px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.case-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.case-head{padding:14px 16px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case-name{font-size:15px;font-weight:950;color:var(--dark);line-height:1.35}
+.case-body{padding:14px 16px}
+.case-row{display:grid;grid-template-columns:78px minmax(0,1fr);gap:9px;margin-bottom:9px}
+.case-lab{font-size:12px;font-weight:950;color:var(--muted);text-transform:uppercase;letter-spacing:0}
+.case-text{font-size:13px;color:var(--sub);line-height:1.66;overflow-wrap:anywhere}
+.compress{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formula-list{display:flex;flex-direction:column;gap:8px}
+.formula{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:11px 12px;font-size:13.2px;line-height:1.62;color:var(--sub);overflow-wrap:anywhere}
+.formula b{color:var(--dark)}
+.trap{background:var(--rose-bg);border:1px solid var(--rose-bdr);border-radius:var(--r);padding:12px 13px;font-size:13px;color:#881337;line-height:1.68}
+.trap b{display:block;color:#7f1d1d;margin-bottom:4px}
+.quiz-list{display:flex;flex-direction:column;gap:9px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
+.qtop{padding:13px 14px;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:start}
+.qno{width:28px;height:28px;border-radius:var(--r);background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:12px}
+.qtext{font-size:13.5px;color:var(--dark);font-weight:850;line-height:1.58}
+.qbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:950;color:var(--muted);cursor:pointer;white-space:nowrap}
+.qbtn:hover{background:var(--line2);color:var(--ink)}
+.qanswer{display:none;border-top:1px solid var(--line2);background:var(--green-bg);padding:12px 14px;font-size:13px;color:#14532d;line-height:1.68}
+.qcard.show .qanswer{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm)}
+summary{cursor:pointer;list-style:none;padding:12px 14px;font-size:13.5px;font-weight:950;color:var(--dark);display:flex;justify-content:space-between;gap:10px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-weight:700}
+details[open] summary::after{content:"-"}
+details .detail-body{padding:0 14px 13px;border-top:1px solid var(--line2);font-size:13px;color:var(--sub);line-height:1.75}
+.footer-note{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.68}
+.hero-main,.hero-side,.map-board,.card,.trend-card,.case-card,.center-node,.formula,.trap{max-width:100%}
+.center-node,.branch-title,.trend-title,.case-name,.qtext,.formula,.trap{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .branch-grid,.flowline{grid-template-columns:1fr 1fr}
+  .flow-step:not(:last-child)::after{display:none}
+  .compress{grid-template-columns:1fr}
+  .head-desc{text-align:left}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+  .wrap{padding:18px 12px 70px}
+  .hero-main{padding:22px 18px}
+  .hero-side{padding:16px}
+  .side-mini{grid-template-columns:1fr}
+  .grid-2,.grid-3,.branch-grid,.flowline{grid-template-columns:1fr}
+  .map-board{padding:16px}
+  .eq{grid-template-columns:1fr;gap:4px}
+  .eq-op{text-align:left}
+  .kv{grid-template-columns:1fr;gap:3px}
+  .case-row{grid-template-columns:1fr;gap:3px}
+  .qtop{grid-template-columns:28px minmax(0,1fr)}
+  .qbtn{grid-column:2;justify-self:start}
+  h1{font-size:24px;line-height:1.12}
+  .side-big{font-size:17px;line-height:1.5}
+  .center-node{border-radius:var(--r);padding:12px 14px}
+  .pill{font-size:11.5px;padding:5px 9px}
+  .lead,.hero-eq{font-size:14px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="pills">
+        <span class="pill">Chapter 7</span>
+        <span class="pill">Module 1</span>
+        <span class="pill">7.1.1-7.1.2</span>
+        <span class="pill">ESG Analysis and Integration</span>
+      </div>
+      <h1>The Different Approaches<br>to ESG Integration</h1>
+      <p class="lead">本页把第 7 章开头两项学习目标拆成一条主线：ESG 整合不是单独加一个“ESG 分数”，而是把定性判断、定量数据、AI 工具、评分卡和披露框架放进投资流程，并持续处理数据质量、主观性、可比性和组织成本等挑战。</p>
+      <div class="hero-eq"><b>总逻辑等式：</b>ESG integration == 定性判断 + 定量数据 + AI/算法 + 混合工具 + 合理依据 - 披露/主观/文化/成本/收益争议</div>
+    </div>
+    <aside class="hero-side">
+      <div class="side-label">Learning Outcomes</div>
+      <div class="side-big">7.1.1 描述 ESG 分析进入投资流程的定性与定量方法<br>7.1.2 描述 ESG 整合进入投资机构流程时的挑战</div>
+      <div class="side-mini">
+        <div class="mini-stat"><div class="mini-num">2</div><div class="mini-lab">核心方法：定性与定量</div></div>
+        <div class="mini-stat"><div class="mini-num">4</div><div class="mini-lab">常用工具：红旗、问卷、专家、观察名单</div></div>
+      </div>
+      <div class="side-note">记忆抓手：先问“信息是文字判断还是数字处理”，再问“它如何进入模型或决策”，最后问“这个依据是否可靠、可比、可解释”。</div>
+    </aside>
+  </section>
+
+  <nav class="nav" aria-label="页面导航">
+    <button class="tab active" data-tab="map">知识地图</button>
+    <button class="tab" data-tab="coverage">覆盖清单</button>
+    <button class="tab" data-tab="approaches">方法卡片</button>
+    <button class="tab" data-tab="tools">工具与 ISSB</button>
+    <button class="tab" data-tab="challenges">挑战批评</button>
+    <button class="tab" data-tab="cases">案例</button>
+    <button class="tab" data-tab="compress">考前压缩</button>
+    <button class="tab" data-tab="quiz">小测</button>
+  </nav>
+
+  <section id="map" class="panel active">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Memory Map</div>
+        <h2>第一屏先看一张图：ESG 怎样进入投资流程</h2>
+      </div>
+      <div class="head-desc">按“逻辑等式心象术”，本节题目可以拆成“方法”和“挑战”两半：方法负责把信息放进决策，挑战负责检验信息是否能被信任。</div>
+    </div>
+    <div class="map-board">
+      <div class="center-node">ESG Integration<br>把 ESG 信息转化为投资判断</div>
+      <div class="branch-grid">
+        <div class="branch">
+          <div class="branch-title">定性分析</div>
+          <p>看披露质量、承诺可信度、薪酬绑定、公司文化、产品社会影响。</p>
+          <p>重点是“文字判断”和“管理层可信度”。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">定量分析</div>
+          <p>看指标、分数、权重、同业比较、组合权重、指数倾斜、主题匹配。</p>
+          <p>重点是“数字处理”，但仍需要判断。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">AI 与算法</div>
+          <p>线上事件、卫星图像、Scope 3 估计、海量数据分析。</p>
+          <p>重点是效率，但不能跳过重大性和数据质量。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">混合工具</div>
+          <p>Scorecard、模型输入调整、红旗、问卷、访谈、专家、观察名单。</p>
+          <p>重点是把判断落到流程。</p>
+        </div>
+        <div class="branch">
+          <div class="branch-title">整合挑战</div>
+          <p>披露不足、不可比、未审计、主观性、评级低相关、文化差异、成本和收益争议。</p>
+          <p>重点是不能盲信数据。</p>
+        </div>
+      </div>
+      <div class="flowline">
+        <div class="flow-step"><h3>收集 ESG 信息</h3><p>公司披露、第三方数据、新闻、访谈、专家。</p></div>
+        <div class="flow-step"><h3>判断重大性</h3><p>筛掉噪音，识别与投资相关的风险和机会。</p></div>
+        <div class="flow-step"><h3>转成评分或假设</h3><p>形成 scorecard、因子、权重或模型调整。</p></div>
+        <div class="flow-step"><h3>进入投资决策</h3><p>影响选股、资产配置、仓位、估值或排除。</p></div>
+        <div class="flow-step"><h3>检验局限</h3><p>看依据是否充分、可比、可审计、可解释。</p></div>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="tag tag-blue">7.1.1</span>
+        <h3>本节不是二选一</h3>
+        <p class="small">PDF 明确说，定性和定量之间界限模糊，没有一种“最适合所有策略”的方法。考试看到“single best approach”要警惕。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-green">隐藏线</span>
+        <h3>数字也需要判断</h3>
+        <p class="small">QESG 看似客观，但选择什么数据、怎么定重大性、给多少权重、选哪个同业参照，都是判断。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">7.1.2</span>
+        <h3>挑战不是反对 ESG</h3>
+        <p class="small">挑战的本质是“如何让 ESG 分析有合理依据”。不能因为数据多就直接用，也不能因为数据不完美就完全不用。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Coverage Checklist</div>
+        <h2>逐条覆盖清单</h2>
+      </div>
+      <div class="head-desc">对照 `esg-07.pdf` 第 386-391 页整理。这里先保证不漏，再用后面的卡片理解。</div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-blue">7.1.1</span> ESG 整合方法</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 分析可以是定性，也可以是定量，二者边界模糊，没有适合所有投资策略的唯一最佳方法。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">定性分析主要以文字形式形成观察和结论，例如披露质量、承诺可信度、薪酬政策、公司文化、产品和服务影响。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">披露质量可看是否使用广泛接受的报告框架，例如 SASB/ISSB；也可看 ESG 报告是否经过审计。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">定量 ESG 分析使用数字，但仍涉及判断，包括数据选择、重大性、权重和同业参照。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">定量例子包括：碳排放、员工流失率、独立董事比例、董事会和管理层多样性等指标。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 数据可汇总为 ESG 分数，并作为资产配置或证券选择模型中的一个因子。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 分数可用于组合仓位调整，但 ESG 因素与财务表现之间的关系仍可能存在争议。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">指数策略可向特定 ESG 因素倾斜，例如 gender-tilted indexes。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">主题基金可用重大机会地图或 ESG 数据权重，评估与气候、性别等主题的匹配。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">AI 和机器学习可用于线上事件监测、卫星图像解读、Scope 3 数据缺口估计。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">大量 ESG 数据本身也是挑战；投资者必须先定义重大性，并在使用前评价数据质量和相关性。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">PDF 还提到 regenerative AI 可通过分析海量数据，为复杂问题提供解决方案和洞察，从而改善企业 ESG 表现。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">混合方法包括 scorecard，把定性判断转为数字评分；也包括根据 ESG 风险调整收入、利润率、资本开支、折现率和估值倍数。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">无论采取哪种方法，分析调整都应有合理依据，优于任意或无支持的调整。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-green">Tools</span> ESG 分析工具</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Red flag indicators：高 ESG 风险证券被标记，进一步调查或排除。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Company questionnaires and management interviews：向公司询问缺失的管理信息或重大 ESG 数据。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Checks with outside experts：访谈行业专家、客户、供应商、监管者等外部利益相关方。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">Watch lists：对高 ESG 风险或高 ESG 机会的证券持续跟踪，例如碳密集公司与碳税政策变化。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">这些工具可以由投资经理内部人员完成，也可从外部分析师、ESG 专家或第三方数据库购买。</div></div>
+      </div>
+    </div>
+    <div class="coverage-section">
+      <h3><span class="tag tag-amber">7.1.2</span> ESG 整合挑战与批评</h3>
+      <div class="coverage-grid">
+        <div class="coverage-item"><div class="check">✓</div><div class="text">主要挑战包括发行人 ESG 披露、ESG 分析和决策的主观性、投资机构内部文化和偏见。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">许多投资者认为公司 ESG 披露不足：缺失、不完整、不可比或未经审计；公司管理层则可能认为披露要求范围过广且多方要求冲突。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">投资者和管理层可能对重大性阈值以及应披露内容存在分歧。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">目前尚无完整 ESG 披露的统一共识，且很可能随资产类别而变化；不过证券交易所和监管机构要求 ESG 披露的范围正在扩大。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">教材提到一项研究识别出 35 个已有 ESG 披露强制要求的国家和地区，包括 Australia、China、South Africa 和 United Kingdom。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ISSB 于 2021 年由 IFRS Foundation 设立，目标是形成全球可比的可持续披露基线。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ISSB 早期标准基于 TCFD、CDSB、SASB、IIRC 等材料；IFRS S1 和 IFRS S2 于 2023 年完成。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">可比性困难还来自第三方 ESG 评级低相关、供应商方法差异，以及文化和地区规范差异。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">部分投资经理可能因成本或复杂度，不把 ESG 分析整合进投资流程。</div></div>
+        <div class="coverage-item"><div class="check">✓</div><div class="text">ESG 整合常见批评：纳入表现差公司、标准主观、数据质量问题、回报收益证据受质疑。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approaches" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">7.1.1 Approaches</div>
+        <h2>方法卡片：从“怎么看”到“怎么放进投资流程”</h2>
+      </div>
+      <div class="head-desc">每张卡都按“原文要点、中文解释、逻辑等式、投资影响/考点提醒”整理。</div>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. Qualitative ESG Analysis 定性分析</div><span class="tag tag-blue">Words</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">定性 ESG 分析通常以文字形式形成观察和结论，例如看披露质量、承诺可信度、薪酬绑定、公司文化和产品社会影响。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">定性分析像审计访谈和管理层评价：不是只看数字，而是判断“这家公司说的、做的、治理文化是否可信”。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">定性 ESG</div><div class="eq-op">==</div><div class="eq-rhs">披露质量 + 承诺可信度 + 薪酬激励 + tone at the top + 产品社会影响</div></div></div>
+        <div class="riskline">投资影响/考点：看到 credibility、culture、tone at the top、commitment、board-level committee，优先联想到定性分析。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. Quantitative ESG Analysis 定量分析</div><span class="tag tag-green">Numbers</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">QESG 使用数字，例如碳排放、员工流失率、独立董事比例、董事会和管理层多样性；也可汇总为 ESG 分数并进入模型。大型数据集可能覆盖数千家公司和大量数据点，并通过 API 高效处理。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">定量不是“完全客观”。选择哪个指标、给多大权重、和谁比较，本身仍是专业判断。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">定量 ESG</div><div class="eq-op">==</div><div class="eq-rhs">指标数据 → 评分/因子/权重 → 资产配置、选券、仓位或指数倾斜</div></div></div>
+        <div class="riskline">投资影响/考点：看到 metrics、scores、position sizing、factor model、tilt、peer comparison，优先联想到定量分析。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. QESG in Systematic Strategies 系统策略中的 QESG</div><span class="tag tag-violet">Model</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">QESG 可使用复杂数学模型、数据分析、AI 和算法，常见于系统化投资和指数策略；基本面集中持仓也会混合使用定性和定量，例如 GPIF 和指数提供商曾创建 gender-tilted versions of broad market indexes。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">系统策略像“批量筛查”：处理大量证券和数据点。基本面策略像“单家公司深挖”：数字和判断都要用。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">系统 QESG</div><div class="eq-op">==</div><div class="eq-rhs">大数据集 + 因子模型 + API/算法 + 定期权重调整</div></div></div>
+        <div class="riskline">投资影响/考点：不要把 QESG 误解为只适合单家公司访谈，它更常用于大样本、指数和系统化策略。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. Artificial Intelligence and Algorithms 人工智能与算法</div><span class="tag tag-teal">Efficiency</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">AI 可快速分析线上事件、解读卫星图像、评估碳足迹和自然环境影响，也可帮助估计发行人披露中的 Scope 3 缺口。PDF 还提到 regenerative AI 可通过海量数据分析提供解决方案和洞察。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">AI 是放大器：它能更快找到线索，但不能代替分析师判断重大性、数据质量和与投资的相关性。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">AI/算法</div><div class="eq-op">==</div><div class="eq-rhs">海量数据 → 快速识别事件/图像/缺口 → 仍需重大性和质量检验</div></div></div>
+        <div class="riskline">投资影响/考点：看到 satellite imagery、online incidents、Scope 3 estimates，多半考 AI 在 ESG 数据处理中的作用。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">5. Hybrid Approach 混合方法</div><span class="tag tag-amber">Bridge</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">投资者常用定性和定量结合。Scorecard 可把定性判断变成数字分数；模型输入也可根据 ESG 风险调整。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">混合方法是本章最重要的桥：先判断问题，再把判断转成评分、收入假设、利润率、资本开支、折现率或估值倍数。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">混合分析</div><div class="eq-op">==</div><div class="eq-rhs">文字判断 → 分数/假设 → 估值模型或投资流程</div></div></div>
+        <div class="riskline">投资影响/考点：看到 scorecard、1 to 5 rating、financial model inputs，就是“定性转定量”。</div>
+      </article>
+
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">6. Reasonable Basis 合理依据</div><span class="tag tag-rose">Discipline</span></div>
+        <div class="kv"><div class="kv-lab">原文要点</div><div class="kv-text">不论采用哪种方法，基于合理依据进行分析调整，优于任意或没有支持的调整。</div></div>
+        <div class="kv"><div class="kv-lab">中文解释</div><div class="kv-text">这句话很像审计底稿原则：结论可以有判断，但判断要有证据链，不能拍脑袋。</div></div>
+        <div class="equations"><div class="eq"><div class="eq-lhs">合理调整</div><div class="eq-op">==</div><div class="eq-rhs">重大 ESG 因素 + 可解释证据 + 一致模型处理</div></div></div>
+        <div class="riskline">投资影响/考点：考试若出现 arbitrary、unsupported adjustment，通常是不好的做法。</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="tools" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Tools and ISSB</div>
+        <h2>工具与披露框架：把 ESG 信息变得可追踪</h2>
+      </div>
+      <div class="head-desc">这一部分最像实务工作：先建工具收集证据，再用披露标准提高一致性和可比性。</div>
+    </div>
+    <div class="grid-2">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Red Flag Indicators 红旗指标</div><span class="tag tag-rose">Investigate</span></div>
+        <p class="small"><b>原文要点：</b>高 ESG 风险证券会被标记，进一步调查或排除。例如董事会缺乏多数独立性，可直接排除，也可继续看是否有补偿性因素。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">红旗</div><div class="eq-op">==</div><div class="eq-rhs">异常风险信号 → 进一步调查 / 排除 / 寻找补偿因素</div></div></div>
+        <div class="riskline">考点提醒：red flag 是“工具”，不是 ESG 因子倾斜本身。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Questionnaires and Interviews 问卷与访谈</div><span class="tag tag-blue">Ask</span></div>
+        <p class="small"><b>原文要点：</b>当管理信息或重大 ESG 信息不足时，投资者可向公司索取具体数据，也可在公司会议中讨论重大 ESG 问题。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">问卷访谈</div><div class="eq-op">==</div><div class="eq-rhs">信息不足 → 询问公司 → 补齐重大 ESG 数据和管理解释</div></div></div>
+        <div class="riskline">实务联想：类似客户访谈和补资料清单，目标是补足判断证据。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Outside Experts 外部专家核查</div><span class="tag tag-green">Corroborate</span></div>
+        <p class="small"><b>原文要点：</b>投资者可访谈行业思想领袖、客户、供应商、监管者等利益相关方，并用专家网络、调查或第三方来源补充。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">外部核查</div><div class="eq-op">==</div><div class="eq-rhs">公司说法 + 专家/客户/供应商/监管者 → 交叉验证</div></div></div>
+        <div class="riskline">考点提醒：外部专家不是替代公司披露，而是补强和交叉验证。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">Watch Lists 观察名单</div><span class="tag tag-amber">Monitor</span></div>
+        <p class="small"><b>原文要点：</b>高 ESG 风险证券可加入观察名单持续监控；高 ESG 机会证券也可加入名单等待投资时点。例如高碳公司跟踪碳税政策变化。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">观察名单</div><div class="eq-op">==</div><div class="eq-rhs">已识别风险/机会 → 跟踪事件和价格 → 等待行动点</div></div></div>
+        <div class="riskline">投资影响：观察名单把 ESG 分析从一次性判断变成持续监控。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>ISSB：披露标准为什么重要</h3>
+      <div class="grid-auto">
+        <div class="formula"><b>定位</b>：ISSB 是 IFRS Foundation 于 2021 年设立的 IASB 姊妹委员会，目标是形成全球可持续披露基线，服务经济和投资决策。</div>
+        <div class="formula"><b>来源</b>：ISSB 标准吸收 TCFD、CDSB、SASB、IIRC 等材料；CDSB、SASB、IIRC 已并入 IFRS Foundation。</div>
+        <div class="formula"><b>IFRS S1</b>：一般要求，聚焦可持续相关风险和机会的重大信息，并强调财务报表与可持续披露之间的一致和连接。</div>
+        <div class="formula"><b>IFRS S2</b>：气候相关披露，涵盖物理风险、转型风险、气候机会、转型计划、气候韧性及 Scope 1、2、3 排放。</div>
+      </div>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">ISSB</div><div class="eq-op">==</div><div class="eq-rhs">统一披露语言 → 减少标准碎片化 → 提高投资者使用 ESG 信息的可比性</div></div>
+      </div>
+      <p class="small muted">考点提醒：ISSB 有潜力减少 “alphabet soup”。在 ISSB 标准替代 SASB Standards 前，发行人和投资者仍被鼓励继续使用 SASB Standards；要像 IFRS Accounting Standards 一样被广泛采用，还需要各司法辖区的证券监管和法律支持。</p>
+    </div>
+  </section>
+
+  <section id="challenges" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">7.1.2 Challenges</div>
+        <h2>挑战与批评：不是不用 ESG，而是不能盲用 ESG</h2>
+      </div>
+      <div class="head-desc">这一节最常考“为什么 ESG 整合困难”。用一条线背：披露难、判断难、比较难、落地难、收益证明难。</div>
+    </div>
+    <div class="trend-grid">
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">1. Disclosure Problems 披露问题</div><span class="tag tag-rose">Data</span></div>
+        <p class="small"><b>原文要点：</b>公司 ESG 披露可能缺失、不完整、不可比或未经审计；投资者和管理层对重大性阈值和应披露内容可能意见不一致。管理层也可能认为 ESG 数据范围太广，且投资者、监管者等多方要求相互冲突。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">披露难</div><div class="eq-op">==</div><div class="eq-rhs">缺失 + 不完整 + 不可比 + 未审计 + 重大性分歧 + 多方要求冲突</div></div></div>
+        <div class="warnline">易错提醒：公司没披露某项 ESG 数据，不一定等于风险管理差；但它会提高分析难度。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">2. No Full Consensus 尚无完整共识</div><span class="tag tag-amber">Framework</span></div>
+        <p class="small"><b>原文要点：</b>什么构成完整 ESG 披露尚无统一共识，而且可能因资产类别不同而变化。ESG 报告框架仍比财务报告框架年轻，但强制 ESG 披露要求正在更多市场出现。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">标准难</div><div class="eq-op">==</div><div class="eq-rhs">披露框架仍在发展 + 资产类别差异 + 监管扩展 + 全球标准化努力</div></div></div>
+        <div class="riskline">考点提醒：EFRAG 和 ISSB 是区域和全球层面推动披露标准化的重要努力。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">3. Comparability and Culture 可比性与文化差异</div><span class="tag tag-violet">Context</span></div>
+        <p class="small"><b>原文要点：</b>不同报告框架、第三方 ESG 评级低相关、供应商方法差异，以及地区文化规范差异都会影响可比性。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">可比性难</div><div class="eq-op">==</div><div class="eq-rhs">框架不同 + 评级方法不同 + 文化/地区预期不同</div></div></div>
+        <div class="riskline">投资影响：同一个治理或劳工问题，放在不同国家可能有不同背景，不能机械套用。</div>
+      </article>
+      <article class="trend-card">
+        <div class="trend-top"><div class="trend-title">4. Cost and Complexity 成本与复杂度</div><span class="tag tag-teal">Process</span></div>
+        <p class="small"><b>原文要点：</b>虽然 ESG 整合影响力扩大，但并非所有投资经理都接受；有些机构会因成本或复杂度选择不整合。</p>
+        <div class="equations"><div class="eq"><div class="eq-lhs">落地难</div><div class="eq-op">==</div><div class="eq-rhs">数据多 + 流程复杂 + 人员文化偏见 + 成本压力</div></div></div>
+        <div class="riskline">考点提醒：ESG integration 是投资流程设计问题，不只是买一个数据库。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>四类常见批评</h3>
+      <div class="grid-2">
+        <div class="formula"><b>Too inclusive</b>：ESG 基金可能仍持有被视为表现差的公司；若目标是排除，应采用排除策略，而不是把 ESG 整合当排除。</div>
+        <div class="formula"><b>Subjective criteria</b>：ESG 因子选择可能主观，甚至反映意识形态或政治观点；资产所有者应选择与自身标准一致的管理人。</div>
+        <div class="formula"><b>Quality of data</b>：数据往往来自公司自身，可能未经审计，验证、比较和标准化有难度；可用多来源交叉验证缓解。</div>
+        <div class="formula"><b>Skepticism of return benefits</b>：有人质疑 ESG 与财务回报证据不充分，原因包括考察期短、行业轮动、拥挤交易和归因困难。</div>
+      </div>
+      <div class="equations">
+        <div class="eq"><div class="eq-lhs">ESG 批评</div><div class="eq-op">==</div><div class="eq-rhs">纳入范围争议 + 标准主观 + 数据质量 + 回报归因不确定</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Examples</div>
+        <h2>案例框：把抽象方法落到题眼</h2>
+      </div>
+      <div class="head-desc">这些案例来自本节 PDF 的例子和表述，作用是帮你看到题眼后反推知识点。</div>
+    </div>
+    <div class="case-grid">
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">管理层净零承诺可信度</div><span class="tag tag-blue">Qualitative</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">credibility of management's net-zero commitments</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是定性分析，因为核心是判断承诺是否可信，而不是直接计算一个指标。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">净零可信度 == 承诺 + 投资 + 政策 + 董事会监督 + 执行记录</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">碳排放和员工流失率</div><span class="tag tag-green">Quantitative</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">reported carbon emissions, employee turnover, independent board members</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是定量分析，因为信息以数字指标进入同业比较、评分或模型。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">指标数据 == 衡量对象 + 同业参照 + 权重 + 重大性判断</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">卫星图像评估环境影响</div><span class="tag tag-teal">AI</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">satellite imagery, carbon footprint, deforestation, green bond proceeds</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是 AI/机器学习在 QESG 中提高数据处理效率的例子。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">卫星图像 == 外部观测数据 → 环境事实线索 → ESG 风险或用途核查</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">董事会缺乏多数独立性</div><span class="tag tag-rose">Red Flag</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">board lacking majority independence</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是红旗指标。投资者可直接排除，也可继续看是否有特殊技能或经验等补偿因素。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">红旗指标 == 先标记风险 → 再决定排除或进一步调查</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">社交媒体对儿童和社会的影响</div><span class="tag tag-blue">Qualitative</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">negative impacts of social media on child development and society</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是产品和服务的广泛社会影响，通常更依赖定性判断，但对投资者仍可能高度相关。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">产品社会影响 == 商业模式 + 用户伤害/收益 + 监管和声誉风险</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">高碳公司与碳税政策</div><span class="tag tag-amber">Watch List</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">carbon-intense company, changing policies on carbon taxes</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是观察名单的典型例子：风险已识别，但还要持续跟踪政策和价格变化。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">观察名单 == 已识别 ESG 暴露 + 外部事件监控 + 投资时点判断</div></div>
+        </div>
+      </article>
+      <article class="case-card">
+        <div class="case-head"><div class="case-name">日本独立董事比例差异</div><span class="tag tag-violet">Culture</span></div>
+        <div class="case-body">
+          <div class="case-row"><div class="case-lab">题眼</div><div class="case-text">cultural and regional differences, independent directors</div></div>
+          <div class="case-row"><div class="case-lab">判断</div><div class="case-text">这是可比性挑战。地区治理规范不同，不能把一个市场的标准不加背景地套到另一个市场。</div></div>
+          <div class="case-row"><div class="case-lab">等式</div><div class="case-text">跨国比较 == 指标本身 + 当地法规 + 市场文化 + 投资者预期</div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="compress" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Five-Minute Review</div>
+        <h2>考前压缩版：一屏背完整模块</h2>
+      </div>
+      <div class="head-desc">先背公式，再看易错点。公式不是关键词堆砌，而是帮助你反推原文细节。</div>
+    </div>
+    <div class="compress">
+      <div class="card">
+        <h3>逻辑等式总表</h3>
+        <div class="formula-list">
+          <div class="formula"><b>ESG integration</b> == 把 ESG 风险/机会纳入投资流程，没有单一最佳方法。</div>
+          <div class="formula"><b>Qualitative ESG</b> == 披露质量 + 承诺可信度 + 薪酬绑定 + 公司文化 + 产品社会影响。</div>
+          <div class="formula"><b>Quantitative ESG</b> == 指标/数据 + 重大性 + 权重 + 同业参照 → 模型、仓位、指数或主题。</div>
+          <div class="formula"><b>AI in ESG</b> == 线上事件 + 卫星图像 + 数据缺口估计 → 高效处理，但仍要检验质量。</div>
+          <div class="formula"><b>Hybrid approach</b> == 定性判断 → scorecard/模型假设 → 投资决策。</div>
+          <div class="formula"><b>Tools</b> == 红旗 + 公司问卷访谈 + 外部专家核查 + 观察名单。</div>
+          <div class="formula"><b>ISSB</b> == IFRS Foundation 的可持续披露基线 → S1 一般要求 + S2 气候披露。</div>
+          <div class="formula"><b>Integration challenges</b> == 披露不足 + 主观性 + 文化偏见 + 评级低相关 + 成本复杂。</div>
+          <div class="formula"><b>Criticism</b> == 太包容 + 标准主观 + 数据质量 + 回报证据争议。</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>最容易混的 6 组</h3>
+        <div class="formula-list">
+          <div class="trap"><b>定量不等于无判断</b>QESG 虽然用数字，但数据选择、重大性、权重和同业选择都需要判断。</div>
+          <div class="trap"><b>ESG integration 不等于 exclusionary strategy</b>如果目标是排除“bad actors”，应该用排除策略；ESG 整合可能仍持有这些公司。</div>
+          <div class="trap"><b>Scorecard 是桥，不是原始事实</b>它把定性判断转成数字评分，方便进入模型或比较。</div>
+          <div class="trap"><b>Red flag 不是最终结论</b>红旗可能导致排除，也可能引发进一步调查和补偿因素分析。</div>
+          <div class="trap"><b>ISSB 是披露基线，不是投资评级机构</b>它提供披露标准，帮助投资者获得更一致的信息。</div>
+          <div class="trap"><b>低相关既有坏处也有争论空间</b>评级差异会降低一致信号，但高相关也可能带来群体思维。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">建议复习顺序：先背“方法一条线”，再背“挑战一条线”。看到题目里的 words/credibility/culture 就想定性；看到 metrics/scores/tilts/position sizing 就想定量；看到 unsupported/arbitrary 就判为不佳做法。</div>
+  </section>
+
+  <section id="quiz" class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="eyebrow">Quick Check</div>
+        <h2>小测区：只覆盖本模块</h2>
+      </div>
+      <div class="head-desc">这里是 Module 1 的自测题。正式三轮练习系统等整章完成后再统一制作。</div>
+    </div>
+    <div class="quiz-list">
+      <article class="qcard">
+        <div class="qtop"><div class="qno">01</div><div class="qtext">判断管理层净零承诺是否可信，属于定性还是定量 ESG 分析？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：定性分析。</b>题眼是 credibility 和 management commitment，重点是判断承诺、政策和执行是否可信。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">02</div><div class="qtext">分析碳排放、员工流失率、独立董事比例，并与同业比较，属于哪类方法？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：定量 ESG 分析。</b>这些是可量化指标，可进入评分、因子、权重或组合仓位判断。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">03</div><div class="qtext">为什么说 QESG 仍然需要 discretion and judgment？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为要判断选择哪些数据、哪些因素重大、权重如何设定、同业参照如何选取。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">04</div><div class="qtext">把公司治理质量按 1 到 5 分评分，是哪种混合工具？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：Scorecard。</b>它把定性判断转成定量分数，便于比较和进入估值或投资流程。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">05</div><div class="qtext">一家高碳公司被持续跟踪碳税政策变化，这属于 red flag 还是 watch list？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：Watch list。</b>题眼是持续监控政策和事件，等待风险变化或投资时点。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">06</div><div class="qtext">ISSB 的 IFRS S1 和 IFRS S2 分别侧重什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>S1 是可持续相关财务信息的一般披露要求；S2 是气候相关披露，涵盖物理风险、转型风险、气候机会和 Scope 1、2、3 排放等。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">07</div><div class="qtext">ESG 整合常见批评中的 “too inclusive” 指什么？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>ESG 基金可能仍持有一些被视为 ESG 表现差的公司，因此有人认为它与传统策略差异不够清楚。</div>
+      </article>
+      <article class="qcard">
+        <div class="qtop"><div class="qno">08</div><div class="qtext">为什么 ESG 披露问题会影响投资分析？</div><button class="qbtn" type="button">看答案</button></div>
+        <div class="qanswer"><b>答案：</b>因为披露可能缺失、不完整、不可比或未经审计，投资者还可能与管理层对重大性和披露范围看法不同。</div>
+      </article>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>反推自测</h3>
+      <div class="grid-auto">
+        <details>
+          <summary>看到 “online incidents, child labor, corruption” 反推什么？</summary>
+          <div class="detail-body">反推 AI/算法在 ESG 中的使用：通过大量线上来源快速识别和量化公司 ESG 事件与风险。</div>
+        </details>
+        <details>
+          <summary>看到 “arbitrary or unsupported adjustments” 反推什么？</summary>
+          <div class="detail-body">反推“合理依据”原则：模型调整应有可解释依据，任意或无支持调整是不佳做法。</div>
+        </details>
+        <details>
+          <summary>看到 “low correlation among ESG ratings” 反推什么？</summary>
+          <div class="detail-body">反推可比性挑战：不同供应商目标和方法不同，ESG 评级不像主要信用评级那样高度一致。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const tabs = Array.from(document.querySelectorAll('.tab'));
+const panels = Array.from(document.querySelectorAll('.panel'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+    document.querySelector('.nav').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+document.querySelectorAll('.qbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.qcard');
+    card.classList.toggle('show');
+    btn.textContent = card.classList.contains('show') ? '收起答案' : '看答案';
+  });
+});
+</script>
+
+<style id="esg-site-nav-style">
+.esg-site-nav{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;font-family:Arial,"Microsoft YaHei",sans-serif}
+.esg-site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:999px;background:#111827;color:#fff;text-decoration:none;font-size:13px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.esg-site-nav a:nth-child(2){background:#2563eb}
+@media (max-width:640px){.esg-site-nav{left:12px;right:12px;bottom:12px}.esg-site-nav a{flex:1;padding:10px 8px;font-size:12px}}
+</style>
+<div class="esg-site-nav" data-esg-site-nav><a href="../index.html">返回主页</a><a href="index.html">本章目录</a></div>
+
+</body>
+</html>
