@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>&#31532;&#20843;&#31456; ESG&#25972;&#21512;&#25237;&#36164;&#32452;&#21512;&#26500;&#24314;&#19982;&#31649;&#29702;&#65372;&#24605;&#32500;&#23548;&#22270;</title>
+  <style>
+    :root {
+      --canvas: #f5f8fc;
+      --surface: #ffffff;
+      --surface-soft: #edf5ff;
+      --ink: #182435;
+      --muted: #58677a;
+      --quiet: #7b8794;
+      --line: #d7e1ea;
+      --line-strong: #a9bfd4;
+      --teal: #0f6cbd;
+      --teal-ink: #0b4f8a;
+      --teal-soft: #ebf3fc;
+      --blue: #0f6cbd;
+      --blue-soft: #ebf3fc;
+      --gold: #b56b14;
+      --gold-soft: #fff0d6;
+      --danger: #b33b32;
+      --mark: #d9ecff;
+      --shadow: 0 18px 44px rgba(25, 38, 52, .10);
+      --radius: 8px;
+      --rail: 292px;
+      --aside: 254px;
+      --content: 760px;
+      --font-ui: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      --font-serif: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: var(--font-ui);
+      letter-spacing: 0;
+    }
+
+    button, input { font: inherit; }
+
+    button {
+      border: 0;
+      color: inherit;
+    }
+
+    .reader-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: var(--rail) minmax(0, 1fr) var(--aside);
+    }
+
+    .left-rail,
+    .right-rail {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      background: rgba(255, 255, 255, .88);
+      backdrop-filter: blur(18px);
+    }
+
+    .left-rail {
+      border-right: 1px solid var(--line);
+      padding: 20px 16px;
+    }
+
+    .right-rail {
+      border-left: 1px solid var(--line);
+      padding: 20px 16px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 7px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand-kicker,
+    .kicker {
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .brand-title {
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.22;
+    }
+
+    .brand-sub {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .search-box {
+      display: grid;
+      gap: 10px;
+      padding: 16px 0 14px;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      outline: none;
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .search-box input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(15,108,189,.16);
+    }
+
+    .search-actions,
+    .topic-actions,
+    .pager {
+      display: grid;
+      gap: 8px;
+    }
+
+    .search-actions {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .soft-button,
+    .primary-button,
+    .ghost-button {
+      min-height: 38px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .soft-button {
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .soft-button:hover {
+      border-color: var(--teal);
+      color: var(--teal-ink);
+      background: var(--teal-soft);
+    }
+
+    .primary-button {
+      background: var(--teal);
+      color: white;
+      font-weight: 800;
+    }
+
+    .primary-button:hover { background: var(--teal-ink); }
+
+    .ghost-button {
+      background: transparent;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .ghost-button:hover { color: var(--teal-ink); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat {
+      padding: 12px;
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--teal-ink);
+      font-size: 24px;
+      line-height: 1;
+      font-family: var(--font-ui);
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .topic-list {
+      display: grid;
+      gap: 5px;
+      padding-top: 14px;
+    }
+
+    .topic-tab {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 8px;
+      align-items: start;
+      padding: 9px 8px;
+      border-radius: var(--radius);
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .topic-tab:hover { background: var(--blue-soft); }
+
+    .topic-tab.active {
+      background: var(--teal);
+      color: white;
+    }
+
+    .topic-no {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.6;
+    }
+
+    .topic-tab.active .topic-no { color: #ffd38a; }
+
+    .topic-name {
+      font-size: 14px;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .main-stage {
+      min-width: 0;
+      padding: 26px clamp(24px, 4vw, 54px) 60px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0 18px;
+      background: linear-gradient(180deg, var(--canvas) 72%, rgba(245, 248, 252, 0));
+    }
+
+    .crumb {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .progress-wrap {
+      width: min(260px, 34vw);
+      height: 8px;
+      border-radius: 999px;
+      background: #e2e8ee;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--blue));
+      transition: width .24s ease;
+    }
+
+    .article {
+      max-width: var(--content);
+      margin: 0 auto;
+    }
+
+    .topic-head {
+      display: grid;
+      gap: 14px;
+      margin: 22px 0 20px;
+      padding-bottom: 22px;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .topic-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .topic-meta span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .topic-summary {
+      max-width: 680px;
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .section-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    details.section-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset;
+    }
+
+    details.section-card[open] {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow);
+    }
+
+    summary.section-title {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) 26px;
+      gap: 12px;
+      align-items: center;
+      min-height: 64px;
+      padding: 12px 16px;
+    }
+
+    summary.section-title::-webkit-details-marker { display: none; }
+
+    .section-no {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .section-heading {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .toggle-icon {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--surface-soft);
+      color: var(--teal-ink);
+      font-weight: 900;
+    }
+
+    details[open] > summary .toggle-icon { background: var(--teal); color: white; }
+    details[open] > summary .toggle-icon::before { content: "−"; }
+    .toggle-icon::before { content: "+"; }
+
+    .points {
+      margin: 0;
+      padding: 2px 26px 20px 76px;
+      color: #26323e;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 2.02;
+    }
+
+    .points li {
+      margin: 10px 0;
+      padding-left: 3px;
+    }
+
+    .points li::marker { color: var(--teal); }
+
+    mark {
+      background: var(--mark);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    .side-panel {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 14px;
+    }
+
+    .panel-title {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .section-mini-list {
+      display: grid;
+      gap: 6px;
+    }
+
+    .mini-link {
+      width: 100%;
+      padding: 8px;
+      border-radius: 7px;
+      background: transparent;
+      text-align: left;
+      color: var(--muted);
+      cursor: pointer;
+      line-height: 1.4;
+      font-size: 13px;
+    }
+
+    .mini-link:hover {
+      background: var(--surface-soft);
+      color: var(--ink);
+    }
+
+    .pager {
+      grid-template-columns: 1fr;
+    }
+
+    .result-pane {
+      max-width: var(--content);
+      margin: 20px auto 0;
+      display: none;
+    }
+
+    .result-pane.show { display: block; }
+
+    .result-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--teal);
+    }
+
+    .result-head h1 { font-size: clamp(28px, 4vw, 46px); }
+
+    .result-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .result-item {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 13px 14px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .result-item:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow);
+    }
+
+    .result-topic {
+      color: var(--teal-ink);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .result-section {
+      margin-top: 5px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .result-point {
+      margin-top: 7px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .empty {
+      padding: 22px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: var(--surface);
+    }
+
+    @media (max-width: 1180px) {
+      :root {
+        --rail: 276px;
+        --content: 720px;
+      }
+      .reader-shell { grid-template-columns: var(--rail) minmax(0, 1fr); }
+      .right-rail { display: none; }
+      .article, .result-pane { max-width: 820px; }
+      .points { font-size: 18px; line-height: 2; }
+    }
+
+    @media (max-width: 820px) {
+      .reader-shell { grid-template-columns: 1fr; }
+      .left-rail {
+        position: relative;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .topic-list {
+        max-height: 260px;
+        overflow: auto;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 6px;
+        background: var(--surface);
+      }
+      .main-stage { padding: 18px 16px 48px; }
+      .topbar { position: relative; }
+      .progress-wrap { width: 120px; }
+      h1 { font-size: clamp(30px, 8vw, 42px); line-height: 1.12; }
+      .topic-summary { font-size: 17px; line-height: 1.9; }
+      summary.section-title { grid-template-columns: 36px minmax(0, 1fr) 24px; padding: 10px 12px; }
+      .section-no { width: 32px; height: 32px; }
+      .section-heading { font-size: 16px; }
+      .points { padding: 2px 18px 20px 48px; font-size: 17px; line-height: 2; }
+      .points li { margin: 9px 0; }
+    }
+
+    @media (min-width: 821px) and (max-width: 1100px) {
+      .main-stage { padding: 24px 28px 56px; }
+      .topic-head { margin-top: 12px; }
+      .left-rail { padding: 18px 14px; }
+      .topic-name { font-size: 13px; }
+    }
+  </style>
+<style id="unified-fluent-blue">
+
+:root{
+  --canvas:#f5f8fc;
+  --surface:#ffffff;
+  --surface-soft:#edf5ff;
+  --ink:#182435;
+  --muted:#58677a;
+  --quiet:#7b8794;
+  --line:#d7e1ea;
+  --line-strong:#a9bfd4;
+  --teal:#0f6cbd;
+  --teal-ink:#0b4f8a;
+  --teal-soft:#ebf3fc;
+  --blue:#0f6cbd;
+  --blue-soft:#ebf3fc;
+  --mark:#d9ecff;
+  --shadow:0 18px 44px rgba(15,42,80,.10);
+}
+body{background:#f5f8fc;color:#182435;}
+.left-rail,.right-rail{background:rgba(255,255,255,.92);}
+.brand-title,h1{color:#102033;}
+.brand-kicker,.kicker,.result-topic{color:#0f6cbd;}
+.topic-head,.result-head{border-bottom-color:#0f6cbd;}
+.primary-button,.topic-tab.active,details[open] > summary .toggle-icon{background:#0f6cbd;color:#fff;}
+.primary-button:hover{background:#115ea3;}
+.soft-button:hover,.topic-tab:hover{border-color:#b4d6fa;background:#ebf3fc;color:#0b4f8a;}
+.search-box input:focus{border-color:#0f6cbd;box-shadow:0 0 0 3px rgba(15,108,189,.16);}
+.stat strong,.topic-no{color:#0b4f8a;}
+details.section-card[open]{border-color:#b4d6fa;box-shadow:var(--shadow);}
+mark{background:var(--mark);color:#0b4f8a;}
+.site-return-link a:hover{border-color:#b4d6fa;color:#0f6cbd;}
+
+</style></head>
+<body>
+<div class="site-return-link" style="position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;"><style>.site-return-link a{display:inline-flex;align-items:center;min-height:38px;padding:0 12px;border:1px solid rgba(209,213,219,.9);border-radius:999px;background:rgba(255,255,255,.94);color:#111827;text-decoration:none;font:700 13px/1.2 'Microsoft YaHei',Arial,sans-serif;box-shadow:0 8px 22px rgba(15,23,42,.12);backdrop-filter:blur(8px)}.site-return-link a:hover{border-color:#0f6cbd;color:#0f6cbd}@media(max-width:640px){.site-return-link{right:10px;bottom:10px}.site-return-link a{min-height:34px;padding:0 10px;font-size:12px}}</style><a href="../index.html">&#36820;&#22238;&#20027;&#39029;</a><a href="index.html">&#26412;&#31456;&#30446;&#24405;</a></div>
+  <div class="reader-shell">
+    <aside class="left-rail">
+      <div class="brand">
+        <div class="brand-kicker">&#24605;&#32500;&#23548;&#22270;</div>
+        <div class="brand-title">第八章</div>
+        <div class="brand-sub">ESG整合投资组合构建与管理</div>
+      </div>
+
+      <div class="search-box">
+        <input id="searchInput" type="search" placeholder="搜索中文考点" aria-label="搜索中文考点">
+        <div class="search-actions">
+          <button class="soft-button" id="clearSearch" type="button">清空</button>
+          <button class="soft-button" id="openSearch" type="button">看结果</button>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong id="majorTotal">18</strong><span>主题</span></div>
+        <div class="stat"><strong id="sectionTotal">99</strong><span>考点</span></div>
+      </div>
+
+      <nav class="topic-list" id="topicList" aria-label="主题目录"></nav>
+    </aside>
+
+    <main class="main-stage">
+      <div class="topbar">
+        <div class="crumb" id="crumb">第八章</div>
+        <div class="progress-wrap" aria-label="阅读进度"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
+
+      <article class="article" id="article"></article>
+      <section class="result-pane" id="resultPane"></section>
+    </main>
+
+    <aside class="right-rail">
+      <div class="side-panel">
+        <div class="panel">
+          <p class="panel-title">本主题考点</p>
+          <div class="section-mini-list" id="miniList"></div>
+        </div>
+        <div class="panel">
+          <p class="panel-title">阅读操作</p>
+          <div class="topic-actions">
+            <button class="primary-button" id="openCurrent" type="button">展开本主题</button>
+            <button class="soft-button" id="closeCurrent" type="button">收起本主题</button>
+          </div>
+        </div>
+        <div class="panel">
+          <p class="panel-title">主题切换</p>
+          <div class="pager">
+            <button class="soft-button" id="prevTopic" type="button">‹ 上一主题</button>
+            <button class="soft-button" id="nextTopic" type="button">下一主题 ›</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script id="treeData" type="application/json">{"chapter": "第八章 ESG整合投资组合构建与管理", "majors": [{"title": "一、综合投资组合的构建与管理", "sections": [{"title": "1. 本章定位", "points": ["本章讨论的是投资流程更高层级的ESG整合。", "前面章节偏重单个证券层面，本章转向资产配置、组合构建和组合管理。", "重点是如何把ESG风险和机会放进组合层面的决策。"]}, {"title": "2. 本章主线", "points": ["如何把ESG风险嵌入全球资产配置模型。", "如何在不同资产类别和策略类型中应用ESG方法。", "如何用量化方法理解组合中的ESG风险暴露和收益表现。", "如何区分主动管理和指数化ESG策略。"]}, {"title": "3. 重要边界", "points": ["本章主要从风险评估角度讨论ESG投资。", "不重点讨论伦理、价值观或信仰驱动的投资偏好。"]}]}, {"title": "二、ESG整合：战略资产配置模型", "sections": [{"title": "1. 战略资产配置为什么重要", "points": ["资产配置是组合管理中的关键决策。", "ESG因素会影响长期收益、风险、相关性和情景假设。", "气候转型风险和物理风险是战略资产配置中较常见的ESG切入点。"]}, {"title": "2. 均值方差优化", "points": ["目标是在给定收益下控制风险，或在给定风险下追求更高收益。", "需要使用资产类别的长期预期收益、风险和相关性。", "局限是对基础假设高度敏感，且过度依赖历史数据。", "ESG因素可能改变未来假设，因此不能只看历史表现。"]}, {"title": "3. 因子风险配置", "points": ["可将ESG相关因素纳入风险因子框架。", "例如气候变化、监管变化、碳价格、治理质量等。", "作用是帮助识别传统风险模型之外的风险来源。"]}, {"title": "4. 全面组合分析", "points": ["从整体组合角度看风险预算、资产类别和投资目标。", "可以把ESG情景分析与定量模型、专业判断结合。", "适合识别气候转型中的潜在赢家和输家。"]}, {"title": "5. 动态资产配置", "points": ["根据风险承受能力、投资期限和市场环境变化进行调整。", "ESG相关假设发生变化时，也可能触发组合再平衡。"]}, {"title": "6. 负债驱动投资", "points": ["目标是让资产组合更好匹配负债现金流和负债价值变化。", "ESG因素可能影响通胀、长期利率、资产质量和负债假设。"]}, {"title": "7. 制度转换模型", "points": ["关注政策、监管或市场结构突然变化带来的环境切换。", "适合分析能源转型、气候政策变化等长期但可能突发的风险。"]}, {"title": "8. 不同资产类别的气候考量", "points": ["股票：受宏观增长、行业结构、气候冲击和转型风险影响。", "固定收益：受利率、财政政策、发行人信用质量和债务期限影响。", "另类投资：风险收益特征差异较大，气候风险可能集中、隐蔽且难评估。"]}]}, {"title": "三、ESG整合：资产管理机构选择", "sections": [{"title": "1. 尽职调查重点", "points": ["是否有正式ESG政策。", "是否加入负责任投资相关倡议。", "是否有专门人员和委员会负责。", "ESG如何进入投资流程。", "是否开展所有权管理和尽责管理。", "是否具备客户报告能力。"]}, {"title": "2. 评估对象", "points": ["既要看管理人公司层面的制度和资源。", "也要看基金或策略层面的实际投资流程。", "不能只看宣传材料或标签。"]}, {"title": "3. 另类管理人的特殊性", "points": ["不同另类策略对ESG的适用程度不同。", "机构规模、资源能力、策略周期和工具类型都会影响ESG整合效果。"]}]}, {"title": "四、ESG整合方法：投资组合层面的框架", "sections": [{"title": "1. 投资组合层面整合的目标", "points": ["把自上而下的组合分析和自下而上的ESG分析结合。", "形成更完整的ESG暴露和风险图景。"]}, {"title": "2. 应嵌入的位置", "points": ["最高层级的资产配置决策。", "投资组合暴露。", "风险管理措施。", "绩效归因。"]}, {"title": "3. 不同资产类别差异", "points": ["不同资产类别和投资策略的ESG整合进展差异明显。", "管理人的ESG整合能力，可能领先于市场上可持续主题产品的丰富程度。"]}]}, {"title": "五、ESG整合方法：分析师、组合经理、内部研究和外部研究", "sections": [{"title": "1. ESG政策", "points": ["管理人应正式说明ESG投资方法和整合程度。", "ESG政策应覆盖相关资产类别和投资策略。"]}, {"title": "2. 分析师角色", "points": ["分析师提供证券层面的估值、信用、风险、催化因素和盈利判断。", "ESG因素应作为投资建议的一部分，而不是单独附加说明。"]}, {"title": "3. 组合经理角色", "points": ["组合经理要判断单个证券建议如何影响整体组合。", "重点包括组合风险、相关性、事件冲击、行业暴露和整体风险收益。"]}, {"title": "4. 从微观到宏观的连续框架", "points": ["单个证券层面的ESG重要性分析。", "单个组合层面的风险和暴露分析。", "混合资产策略中的ESG风险表达。"]}, {"title": "5. 外部研究来源", "points": ["卖方研究、学术研究、投资顾问、第三方数据商、基金分销平台、资产所有者和管理人白皮书、投资者倡议、非政府组织、政府机构、中央银行和多边机构。"]}, {"title": "6. 内外部研究结合", "points": ["外部研究提供标准化信息。", "内部研究体现投资机构自己的判断。", "不能过度依赖单一第三方数据商。"]}, {"title": "7. 组合分析平台", "points": ["可用于展示组合中高、中、低ESG评分公司的权重。", "可用于展示组合环境暴露、碳暴露和争议风险。", "平台结果需要结合内部判断解释。"]}, {"title": "8. 碳强度和主权债务排放", "points": ["组合碳强度常用于衡量投资组合的排放暴露。", "主权债务也可以估算归属排放。", "数据口径、范围和供应链排放仍存在难点。"]}]}, {"title": "六、ESG整合方法：ESG投资中的量化研究进展", "sections": [{"title": "1. 研究重点", "points": ["量化研究关注ESG风险属性和组合层面的表现归因。", "个案研究有用，但不能替代组合层面的归因检验。"]}, {"title": "2. ESG是否是独立因子", "points": ["一些数据商的ESG评分可能与规模、质量、价值、动量等传统因子相关。", "如果相关性很高，ESG未必能作为独立因子解释收益。"]}, {"title": "3. 大公司偏差", "points": ["大公司通常披露更充分，更容易获得较高ESG评分。", "这可能导致ESG评分存在规模偏差。"]}, {"title": "4. 质量因子重叠", "points": ["治理较好的公司往往也可能体现较高质量特征。", "因此ESG评分可能与质量因子重叠。"]}]}, {"title": "七、ESG整合的演变：排除性偏好及其应用", "sections": [{"title": "1. 筛选方法的演变", "points": ["筛选是较早、较直接的ESG投资方法。", "过去排除和撤资较常见，现在参与和沟通的重要性上升。"]}, {"title": "2. 四类排除", "points": ["通用排除：基于广泛共识或国际规范。", "行为相关排除：基于公司或国家的具体行为。", "信仰相关排除：基于宗教或价值观。", "特殊排除：基于特定投资者的独特要求。"]}, {"title": "3. 通用排除", "points": ["通常涉及国际社会较有共识的领域。", "例子包括严重损害公共健康或违反国际规范的行业或行为。"]}, {"title": "4. 行为相关排除", "points": ["通常针对公司或国家的具体违规或争议行为。", "例如劳工违规、严重违反国际原则、主权治理失败等。"]}, {"title": "5. 信仰相关排除", "points": ["通常按宗教或价值观排除赌博、酒精、成人娱乐等相关收入。"]}, {"title": "6. 特殊排除", "points": ["不一定有全球共识，但对特定资产所有者很重要。", "可能由法律、章程或特定价值观决定。"]}, {"title": "7. 排除对组合的影响", "points": ["会缩小可投资范围。", "可能提高集中度、主动份额和跟踪误差。", "可能影响预期收益、碳强度、收益率和防御性特征。"]}, {"title": "8. 指数和基准方法", "points": ["ESG指数可以覆盖股票、固定收益、主权债券、绿色债券、气候主题和房地产等。", "优点是规则清晰、成本较低、便于被动投资。", "局限是方法不统一、透明度有限、历史记录较短、绩效测量困难。"]}]}, {"title": "八、投资组合内及跨资产类别的ESG方法：固定收益与另类投资", "sections": [{"title": "1. 跨资产类别方法差异", "points": ["股票通常有投票权，尽责管理渠道更直接。", "债券投资人没有投票权，更多通过债务资本成本、契约条款和沟通发挥影响。", "主权债、地方债、结构化产品的筛选和倾斜空间通常更有限。"]}, {"title": "2. 固定收益中的ESG整合", "points": ["投资级信用、新兴市场债和买入持有策略的ESG整合程度相对较高。", "政府债和高收益信用的整合程度相对较低。", "原因包括数据稀缺、评级覆盖不足和发行人信息有限。"]}, {"title": "3. 企业债券", "points": ["发行人层面的基本ESG风险指标，关注借款人如何管理重大ESG风险。", "债券层面的投资ESG评分，关注具体债券特征下ESG风险是否具有投资重要性。", "两者结合有助于理解信用组合中的ESG风险。"]}, {"title": "4. 主题和标签债券", "points": ["新型债券用于为社会和环境目标融资，同时追求财务回报。", "可分为资金用途型债券和目标挂钩型债券。"]}, {"title": "5. 可持续债券类型", "points": ["绿色债券：资助对环境有明确好处的项目。", "社会债券：资助基本服务、基础设施和社会项目，服务不足人群和社区。", "可持续发展债券：同时产生社会或环境正面影响。", "可持续发展挂钩债券：债券条款与发行人可持续目标完成情况挂钩。", "转型债券：帮助高排放行业为向低碳转型融资。", "可持续发展目标挂钩债券：与特定可持续发展目标挂钩。", "蓝色债券：资助海洋和水域相关正面项目。"]}, {"title": "6. 标签债券投资注意事项", "points": ["需要关注是否存在绿色溢价。", "需要评估期限结构、行业分布、标准框架和客户可持续投资目标的一致性。"]}]}, {"title": "九、ESG筛选案例", "sections": [{"title": "1. 排除能源行业", "points": ["能源行业在不同股票和债券指数中的权重不同。", "一刀切排除能源行业，会引入跟踪误差。", "组合经理需要理解排除对股票、投资级债券和高收益债券组合的影响。"]}, {"title": "2. 信用评级与ESG评分", "points": ["ESG评分可补充信用评级。", "不同ESG数据商的方法不同，结果可能存在差异。", "社会和治理因素与信用质量的关系往往更明显。"]}, {"title": "3. 主权排除", "points": ["按国家自由程度或治理标准排除主权债，可能带来重大跟踪误差。", "如果进一步排除相关发行人，基准可比性会下降。"]}, {"title": "4. 主权ESG工具", "points": ["可使用主权金融稳定评分、世界银行主权数据、国际货币基金组织气候指标等工具。", "主权ESG分析关注国家资产负债表、治理、气候机会和气候风险。"]}, {"title": "5. 主权案例", "points": ["教材用案例说明如何把主权ESG因素纳入国家信用和收益率判断。", "ESG较弱可能导致投资者要求更高收益率补偿风险。"]}]}, {"title": "十、上市股权和私募股权中的ESG筛选", "sections": [{"title": "1. 多空对冲基金股票策略", "points": ["对冲基金使用杠杆和对冲策略管理净风险并追求超额收益。", "多头可配置ESG表现较好或碳效率较高的公司。", "空头可做空ESG表现较差的公司。", "做空低ESG评分公司可能提高组合ESG暴露，并降低部分风险暴露。"]}, {"title": "2. 衍生品与净零投资组合", "points": ["金融风险可以净额处理，但碳风险如何净额处理尚无统一标准。", "投资者和对冲基金经理对衍生品、空头在净零策略中的作用仍有分歧。", "构建净零组合时，需要考虑投资范围、行业权重、风险收益变化和排放范围。"]}, {"title": "3. 科学碳目标与主要指数", "points": ["不同国家指数中符合科学碳目标的公司比例不同。", "欧洲市场通常因行业结构更有利而表现较好。", "能源依赖较高的市场构建净零组合更困难。"]}, {"title": "4. 私募股权和私募债务", "points": ["私募市场缺少公开透明度、成熟报告标准、监管压力和公开市场压力。", "非财务报告不足会影响相对排名和评分比较。", "新监管要求有助于提升披露范围，但对小型私营公司也可能形成负担。"]}, {"title": "5. 私募投资的机会", "points": ["早期公司可能更容易调整运营和战略，使其符合ESG目标。", "早期投资者和重要股东、债权人有动力建立关键绩效指标。", "普通合伙人可以建立组合层面的ESG指标，向有限合伙人沟通组合契合度。"]}, {"title": "6. 私募筛选的局限", "points": ["私募投资者没有上市股权那样丰富的指数和基准。", "同业比较、组合优化和数据可比性更困难。", "可能需要用更小的投资范围或可比公司作为补充基准。"]}]}, {"title": "十一、实物资产：房地产与基础设施中的ESG筛选", "sections": [{"title": "1. 实物资产特点", "points": ["实物资产包括房地产和基础设施。", "投资者往往是多数所有者或直接拥有资产。", "所有权强，意味着对ESG数据定义、应用和报告有更大控制力。"]}, {"title": "2. 组合层面风险", "points": ["实物资产组合也需要分析底层资产之间的相关性。", "不能只看单个项目的ESG表现。"]}, {"title": "3. 房地产可持续性基准", "points": ["可提供同业信息、组合关键指标、环境数据、管理政策披露、风险机会、减排目标和数据验证。", "但依赖企业、基金和资产参与评估。"]}, {"title": "4. 数据不足时的处理", "points": ["如果组合中大量资产没有参加评估，组合经理需要补充自有ESG评分。"]}, {"title": "5. 气候和社会因素", "points": ["海平面上升、海岸侵蚀和洪水可能影响房地产价值和保险成本。", "住宅策略也可能纳入可负担住房、社区影响和社会分层等因素。"]}]}, {"title": "十二、在投资组合中整合ESG筛选以管理风险和创造收益", "sections": [{"title": "1. 两个维度", "points": ["风险缓解。", "创造超额收益。"]}, {"title": "2. ESG风险管理", "points": ["风险缓解是识别并降低组合对ESG风险的暴露。", "ESG尾部风险通常具有长期性，可能导致资产风险状况发生大幅变化。"]}, {"title": "3. 风险例子", "points": ["海滨房地产可能面临海岸退缩风险。", "欧洲公用事业组合可能面临碳价波动和低碳转型风险。"]}, {"title": "4. 绩效判断要谨慎", "points": ["将ESG整合与投资收益联系起来，需要可靠的测量方法。", "ESG绩效归因仍处于发展早期。", "固定收益中，久期、国家收益率、收益率曲线和利差等因素本身已经复杂。"]}, {"title": "5. 创造收益", "points": ["投资者越来越愿意把ESG分析用于寻找超额收益。", "但应通过组合层面的归因分析验证，而不是只靠个案说明。"]}]}, {"title": "十三、嵌入ESG因素的量化方法", "sections": [{"title": "1. 从筛选到模型嵌入", "points": ["简单方法是用筛选提高或降低某类ESG暴露。", "更复杂的方法是把ESG因素直接嵌入算法模型，驱动证券选择。"]}, {"title": "2. 多因子框架", "points": ["ESG因素可以像价值、动量、质量等因子一样进入多因子策略。", "加入ESG因素后，股票排序和组合权重可能变化。"]}, {"title": "3. 覆盖缺口", "points": ["某些资产没有ESG评分，特别是高收益债、小发行人、新发行债或非上市债务。", "需要在向投资人报告时说明覆盖缺口。"]}, {"title": "4. 处理覆盖缺口的方法", "points": ["将有评分部分按比例放大到整体组合。", "使用概率推断方法估计未覆盖部分。", "当缺口过大时，需要审慎判断是否会扭曲真实ESG暴露。"]}]}, {"title": "十四、将ESG筛选应用于上市公司、非上市公司和集合投资基金", "sections": [{"title": "1. 三类筛选方法", "points": ["负面筛选：回避表现最差者。", "正面筛选：投资相对同业表现较好的对象。", "规范筛选：用国际认可的最低商业实践标准进行筛选。"]}, {"title": "2. 负面筛选对象", "points": ["行业。", "地区。", "单个发行人。", "商业活动和实践。", "产品和服务。", "特定证券类型。"]}, {"title": "3. 实施筛选六步骤", "points": ["明确客户优先事项。", "公开清晰筛选标准。", "引入监督机制。", "调整投资流程。", "复核组合影响。", "监控、报告和审计。"]}, {"title": "4. 绝对标准筛选", "points": ["会自动让某些行业或部门得分较低。", "有助于识别高排放公司或高风险行业。", "可用于做碳价冲击等敏感性分析。"]}, {"title": "5. 相对同业筛选", "points": ["在同一行业或同一组别中比较。", "有助于保持组合分散度。", "但可能让高排放行业中的“相对较好者”仍进入组合。"]}, {"title": "6. 集合投资基金筛选", "points": ["基金名称含可持续或ESG，不代表真正完成ESG整合。", "应检查持仓、投资政策、筛选方法、风险收益和第三方评级。"]}, {"title": "7. 非上市公司和基金", "points": ["非上市市场也可使用筛选原则。", "主要难点是数据可得性、质量和可比性较差。"]}]}, {"title": "十五、管理ESG整合投资组合的风险与回报动态", "sections": [{"title": "1. 基本判断", "points": ["ESG整合不应被简单看成损害风险收益。", "ESG可以被理解为可能改善风险收益特征的一个因素。"]}, {"title": "2. 组合优化", "points": ["投资者可以通过约束条件优化组合ESG结果。", "约束条件可以是绝对标准，也可以相对基准设置。"]}, {"title": "3. 与排除筛选的区别", "points": ["排除筛选是对具体证券作固定排除。", "组合优化是根据证券ESG特征，在组合整体层面求解目标。"]}, {"title": "4. 碳约束", "points": ["环境数据较标准化，较容易用于组合优化。", "碳约束越严格，组合与原最优组合的重合度可能越低。"]}, {"title": "5. 跟踪误差权衡", "points": ["提高ESG评分和降低碳排放，可能带来更高跟踪误差。", "投资者需要在ESG目标和偏离基准之间权衡。"]}]}, {"title": "十六、全面ESG整合、排除筛选和正向契合", "sections": [{"title": "1. ESG整合定义", "points": ["ESG整合是系统、明确地将重大ESG因素纳入投资分析和投资决策。", "它适用于多数资产类别和策略。"]}, {"title": "2. 全面ESG整合", "points": ["不只关注风险缓解，也关注赢家和输家的机会识别。", "将财务分析和ESG分析全面嵌入投资决策和组合管理。", "强调投资分析、估值和与公司管理层沟通之间的循环过程。"]}, {"title": "3. 全面ESG整合的特点", "points": ["通常不是机械打勾。", "第三方评分只作为补充，不直接决定证券选择。", "更依赖内部研究和主动参与。", "组合可能更集中，持仓信念更强。"]}, {"title": "4. 全面ESG整合的挑战", "points": ["不一定有高组合ESG评分或低碳暴露这类直观结果。", "需要更多证据说明研究资源、整合流程、参与活动、主题暴露、影响指标和案例。"]}, {"title": "5. 排除筛选", "points": ["是责任投资中最古老、最简单的方法之一。", "从价值观筛选发展为更复杂的ESG标准筛选。", "排除程度会影响跟踪误差、主动份额和非预期因子暴露。"]}, {"title": "6. 正向契合和同类最佳", "points": ["选择相对同业ESG表现更好的公司。", "通常投资于按特定ESG标准排名靠前的公司。", "关键在于评分方法一致，以及组合对高排名公司的权重暴露。"]}]}, {"title": "十七、ESG策略、目标、投资考虑和风险：主题投资与影响力投资", "sections": [{"title": "1. 主题投资", "points": ["围绕可持续相关主题构建投资组合。", "常见主题包括清洁能源、水资源、人口变化和健康医疗。"]}, {"title": "2. 主题投资风险", "points": ["单一主题可能牺牲分散化。", "行业偏向会影响组合因子暴露、相对表现和跟踪误差。", "投资者需要理解波动性和风险水平。"]}, {"title": "3. 清洁能源主题", "points": ["可能受监管激励、资本流动和现金流特征影响。", "通常更偏顺周期成长属性。"]}, {"title": "4. 水资源主题", "points": ["监管前景和现金流通常更稳定。", "但仍需关注估值、商业模式和长期回报。"]}, {"title": "5. 影响力投资", "points": ["目标是在不牺牲财务回报的前提下，产生正面且可衡量的社会或环境影响。", "投资者对财务回报的要求可能不同。"]}, {"title": "6. 影响力投资报告", "points": ["需要建立和复核影响报告框架。", "可围绕可持续发展目标展示基金暴露、主题贡献、绩效指标和底层证券贡献。"]}, {"title": "7. 积极所有权", "points": ["使用所有权权利和地位影响被投公司活动或行为。", "方法包括直接沟通、联合参与、提交股东议案和代理投票。", "目标包括提高披露、改善透明度和增强ESG意识。"]}]}, {"title": "十八、基于指数的投资组合和成熟数据集中的ESG整合", "sections": [{"title": "1. 指数化转变", "points": ["从主动策略转向指数化策略，改变了资产管理规模和结构。", "指数化策略依赖规则，成本通常较低。", "ESG指数化策略因数据成本和方法复杂，费用可能高于普通指数策略，但通常低于主动ESG基金。"]}, {"title": "2. 指数化ESG策略的发展", "points": ["从复制传统指数，发展到排除型、低碳型、化石燃料限制型和风格因子结合型策略。", "投资者愿意偏离核心指数的程度，决定跟踪误差大小。"]}, {"title": "3. 成熟数据集", "points": ["指数化策略依赖既有数据集构建。", "传统风格因子通常有较长历史数据支持。", "ESG数据的自愿披露、口径差异和覆盖不足会影响指数构建质量。"]}, {"title": "4. 跟踪误差和组合偏离", "points": ["排除化石燃料等行业可能显著改变组合分散度和因子暴露。", "组合优化可以缓解部分影响，但不能消除所有偏离。"]}, {"title": "5. 指数化策略中的积极参与", "points": ["指数化策略可以投票，但主动参与能力受到策略性质限制。", "如果没有成熟的尽责管理团队，指数化策略的参与可能较浅。"]}, {"title": "6. 研究局限", "points": ["指数化ESG组合管理发展很快。", "但关于绩效影响和权衡的学术研究仍相对有限。"]}]}]}</script>
+  <script>
+    const data = JSON.parse(document.getElementById('treeData').textContent);
+    const state = { current: 0, keyword: '', searchMode: false };
+
+    const topicList = document.getElementById('topicList');
+    const article = document.getElementById('article');
+    const miniList = document.getElementById('miniList');
+    const resultPane = document.getElementById('resultPane');
+    const searchInput = document.getElementById('searchInput');
+    const progressBar = document.getElementById('progressBar');
+    const crumb = document.getElementById('crumb');
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function normalize(value) {
+      return String(value).toLowerCase().trim();
+    }
+
+    function highlight(text) {
+      const safe = escapeHtml(text);
+      const keyword = state.keyword;
+      if (!keyword) return safe;
+      const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return safe.replace(new RegExp(escaped, 'gi'), match => `<mark>${match}</mark>`);
+    }
+
+    function sectionText(section) {
+      return normalize(section.title + ' ' + section.points.join(' '));
+    }
+
+    function topicText(topic) {
+      return normalize(topic.title + ' ' + topic.sections.map(section => section.title + ' ' + section.points.join(' ')).join(' '));
+    }
+
+    function displayTopicTitle(title) {
+      return String(title).replace(/^[一二三四五六七八九十]+、\s*/, '');
+    }
+
+    function displaySectionTitle(title) {
+      return String(title).replace(/^\d+\s*[.．、]\s*/, '');
+    }
+
+    function renderNav() {
+      topicList.innerHTML = '';
+      data.majors.forEach((topic, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'topic-tab' + (index === state.current && !state.searchMode ? ' active' : '');
+        button.innerHTML = `<span class="topic-no">${index + 1}</span><span class="topic-name">${escapeHtml(topic.title)}</span>`;
+        button.addEventListener('click', () => {
+          state.current = index;
+          state.searchMode = false;
+          render();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        topicList.appendChild(button);
+      });
+    }
+
+    function renderArticle() {
+      const topic = data.majors[state.current];
+      const total = data.majors.length;
+      const progress = ((state.current + 1) / total) * 100;
+      progressBar.style.width = `${progress}%`;
+      crumb.textContent = `第八章 / 主题 ${state.current + 1} / ${total}`;
+
+      const firstPoint = topic.sections[0]?.points[0] || '本主题内容来自教材核对版。';
+      article.innerHTML = `
+        <header class="topic-head">
+          <div class="topic-meta"><span>主题 ${state.current + 1}</span><span>${topic.sections.length} 个考点</span></div>
+          <h1>${highlight(displayTopicTitle(topic.title))}</h1>
+          <div class="topic-summary">${highlight(firstPoint)}</div>
+        </header>
+        <div class="section-stack" id="sectionStack"></div>
+      `;
+
+      const stack = document.getElementById('sectionStack');
+      topic.sections.forEach((section, index) => {
+        const details = document.createElement('details');
+        details.className = 'section-card';
+        details.id = `section-${index + 1}`;
+        if (index === 0) details.open = true;
+        details.innerHTML = `
+          <summary class="section-title">
+            <span class="section-no">${index + 1}</span>
+            <span class="section-heading">${highlight(displaySectionTitle(section.title))}</span>
+            <span class="toggle-icon" aria-hidden="true"></span>
+          </summary>
+          <ul class="points">
+            ${section.points.map(point => `<li>${highlight(point)}</li>`).join('')}
+          </ul>
+        `;
+        stack.appendChild(details);
+      });
+    }
+
+    function renderMiniList() {
+      const topic = data.majors[state.current];
+      miniList.innerHTML = '';
+      topic.sections.forEach((section, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'mini-link';
+        button.textContent = `${index + 1}. ${displaySectionTitle(section.title)}`;
+        button.addEventListener('click', () => {
+          const target = document.getElementById(`section-${index + 1}`);
+          if (target) {
+            target.open = true;
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+        miniList.appendChild(button);
+      });
+    }
+
+    function collectResults() {
+      const keyword = normalize(state.keyword);
+      if (!keyword) return [];
+      const results = [];
+      data.majors.forEach((topic, topicIndex) => {
+        topic.sections.forEach((section, sectionIndex) => {
+          const point = section.points.find(item => normalize(item).includes(keyword));
+          if (normalize(topic.title).includes(keyword) || sectionText(section).includes(keyword)) {
+            results.push({ topic, topicIndex, section, sectionIndex, point: point || section.points[0] || '' });
+          }
+        });
+      });
+      return results;
+    }
+
+    function renderResults() {
+      const results = collectResults();
+      article.style.display = 'none';
+      resultPane.classList.add('show');
+      progressBar.style.width = '100%';
+      crumb.textContent = `搜索 / ${state.keyword}`;
+
+      if (results.length === 0) {
+        resultPane.innerHTML = `
+          <div class="result-head"><h1>没有找到</h1><button class="soft-button" type="button" id="backToRead">返回阅读</button></div>
+          <div class="empty">可以换一个关键词，例如“筛选”“碳”“指数”“组合”。</div>
+        `;
+      } else {
+        resultPane.innerHTML = `
+          <div class="result-head"><h1>搜索结果</h1><button class="soft-button" type="button" id="backToRead">返回阅读</button></div>
+          <div class="result-list">
+            ${results.map((item, i) => `
+              <button class="result-item" type="button" data-topic="${item.topicIndex}" data-section="${item.sectionIndex}">
+                <div class="result-topic">${highlight(item.topic.title)}</div>
+                <div class="result-section">${highlight(displaySectionTitle(item.section.title))}</div>
+                <div class="result-point">${highlight(item.point)}</div>
+              </button>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      document.getElementById('backToRead').addEventListener('click', () => {
+        state.searchMode = false;
+        render();
+      });
+
+      resultPane.querySelectorAll('.result-item').forEach(item => {
+        item.addEventListener('click', () => {
+          state.current = Number(item.dataset.topic);
+          const sectionIndex = Number(item.dataset.section);
+          state.searchMode = false;
+          render();
+          setTimeout(() => {
+            const section = document.getElementById(`section-${sectionIndex + 1}`);
+            if (section) {
+              section.open = true;
+              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 30);
+        });
+      });
+    }
+
+    function render() {
+      renderNav();
+      if (state.searchMode) {
+        renderResults();
+      } else {
+        article.style.display = '';
+        resultPane.classList.remove('show');
+        resultPane.innerHTML = '';
+        renderArticle();
+        renderMiniList();
+      }
+      document.getElementById('majorTotal').textContent = data.majors.length;
+      document.getElementById('sectionTotal').textContent = data.majors.reduce((sum, topic) => sum + topic.sections.length, 0);
+    }
+
+    function setCurrentSections(open) {
+      document.querySelectorAll('.section-card').forEach(item => { item.open = open; });
+    }
+
+    function moveTopic(delta) {
+      state.current = Math.max(0, Math.min(data.majors.length - 1, state.current + delta));
+      state.searchMode = false;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    searchInput.addEventListener('input', () => {
+      state.keyword = searchInput.value.trim();
+      if (!state.keyword) {
+        state.searchMode = false;
+        render();
+      }
+    });
+
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && state.keyword) {
+        state.searchMode = true;
+        render();
+      }
+    });
+
+    document.getElementById('openSearch').addEventListener('click', () => {
+      state.keyword = searchInput.value.trim();
+      if (state.keyword) {
+        state.searchMode = true;
+        render();
+      }
+    });
+
+    document.getElementById('clearSearch').addEventListener('click', () => {
+      searchInput.value = '';
+      state.keyword = '';
+      state.searchMode = false;
+      render();
+      searchInput.focus();
+    });
+
+    document.getElementById('openCurrent').addEventListener('click', () => setCurrentSections(true));
+    document.getElementById('closeCurrent').addEventListener('click', () => setCurrentSections(false));
+    document.getElementById('prevTopic').addEventListener('click', () => moveTopic(-1));
+    document.getElementById('nextTopic').addEventListener('click', () => moveTopic(1));
+
+    render();
+  </script>
+</body>
+</html>
