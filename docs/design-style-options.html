@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>综合题库设计方案样板</title>
+<style>
+:root{
+  --page:#f4f7fb;
+  --ink:#111827;
+  --muted:#667085;
+  --line:#d7dee8;
+  --blue:#2563eb;
+  --blue-50:#eff6ff;
+  --green:#138a4b;
+  --green-50:#ecfdf3;
+  --red:#c83244;
+  --red-50:#fff1f3;
+  --amber:#a15c07;
+  --amber-50:#fff8e6;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 16px 64px}
+.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+h1{margin:0;font-size:32px;letter-spacing:0;line-height:1.15}
+.intro{margin:8px 0 0;color:var(--muted);font-size:15px}
+.home{display:inline-flex;text-decoration:none;color:#1d4ed8;background:#fff;border:1px solid #dbe3ef;border-radius:8px;padding:9px 12px;font-weight:800}
+.chooser{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 24px}
+.choose-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.choose-card strong{display:block;font-size:16px}
+.choose-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.style{margin:18px 0 34px}
+.style-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:10px}
+.style-head h2{margin:0;font-size:22px;letter-spacing:0}
+.style-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.sample{display:grid;gap:14px}
+.stats,.tabs,.meta,.actions,.answer-head,.hooks{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.search{min-width:min(360px,100%);flex:1}
+.stem{font-size:18px;font-weight:750;margin:14px 0 12px;line-height:1.45}
+.stem-zh{margin:0 0 12px;color:#344054;font-weight:650}
+.options{display:grid;gap:9px}
+.option{display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:flex-start}
+.option .letter{font-weight:900}
+.option .zh{display:block;margin-top:3px;color:#667085;font-size:14px}
+.answer{overflow:hidden}
+.answer-body{display:grid;gap:12px}
+.block h3{font-size:13px;margin:0 0 5px;color:#667085;letter-spacing:0}
+.block p{margin:0}
+.pair{display:grid;gap:8px}
+.pair .zh{border-top:1px dashed rgba(120,132,150,.35);padding-top:8px;color:#344054}
+.logic{display:inline-block;font-weight:850}
+
+/* Style A: Carbon Exam Blue */
+.a{--a-blue:#0f62fe;--a-ink:#161616;--a-muted:#525252;--a-line:#d9d9d9;--a-surface:#ffffff;--a-band:#f4f4f4}
+.a .frame{background:#fff;border:1px solid var(--a-line)}
+.a .panel,.a .qcard{background:var(--a-surface);border:1px solid var(--a-line);border-radius:4px;padding:16px;box-shadow:none}
+.a .stat{background:#fff;border:1px solid var(--a-line);border-radius:2px;padding:10px 12px;min-width:82px;font-weight:700}
+.a .stat strong{display:block;font-size:24px;color:var(--a-ink)}
+.a .stat span{display:block;font-size:12px;color:var(--a-muted)}
+.a .pill,.a .btn,.a .search{border:1px solid var(--a-line);border-radius:2px;background:#fff;color:var(--a-ink);padding:8px 10px;font-weight:650}
+.a .btn.active{background:var(--a-blue);border-color:var(--a-blue);color:#fff}
+.a .qno{background:var(--a-blue);border-color:var(--a-blue);color:#fff}
+.a .chapter{background:#edf5ff;border-color:#b8d3ff;color:#0043ce}
+.a .topic{background:#fff7d6;border-color:#f1c21b;color:#5d3b00}
+.a .option{border:1px solid var(--a-line);border-radius:2px;padding:10px;background:#fff}
+.a .option.correct{border-left:4px solid #24a148;background:#f3fcf6}
+.a .option.wrong{border-left:4px solid #da1e28;background:#fff5f5}
+.a .answer{border:1px solid var(--a-line);border-radius:2px;background:#fff}
+.a .answer-head{padding:10px 12px;border-bottom:1px solid var(--a-line);background:#f4f4f4}
+.a .answer-head.correct{background:#defbe6}.a .answer-head.wrong{background:#fff1f1}
+.a .answer-body{padding:12px}
+.a .result-ok{background:#24a148;color:#fff;border-color:#24a148}.a .result-bad{background:#da1e28;color:#fff;border-color:#da1e28}
+.a .hook,.a .ai{border:1px solid #b8d3ff;background:#edf5ff;color:#0043ce;border-radius:2px;padding:3px 7px;font-size:12px;font-weight:800}
+
+/* Style B: Mintlify Study Blue */
+.b{--b-blue:#3772cf;--b-sky:#eef7ff;--b-ink:#0a0a0a;--b-line:#e5e7eb;--b-green:#00a77e;--b-red:#d45656}
+.b .panel,.b .qcard{background:rgba(255,255,255,.94);border:1px solid var(--b-line);border-radius:14px;padding:16px;box-shadow:0 10px 28px rgba(15,23,42,.06)}
+.b .style-surface{background:linear-gradient(180deg,#f3f9ff 0%,#fff 42%,#f8fbff 100%);border:1px solid #dbeafe;border-radius:18px;padding:14px}
+.b .stat{background:#fff;border:1px solid var(--b-line);border-radius:12px;padding:10px 12px;min-width:82px;font-weight:800}
+.b .stat strong{display:block;font-size:25px}
+.b .stat span{display:block;color:#667085;font-size:12px}
+.b .pill,.b .btn,.b .search{border:1px solid var(--b-line);border-radius:999px;background:#fff;color:#344054;padding:8px 12px;font-weight:750}
+.b .btn.active{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+.b .qno{background:#edf4ff;border-color:#bcd7ff;color:#1454b8}
+.b .chapter{background:#f1f8ff;border-color:#cfe7ff;color:#2563eb}
+.b .topic{background:#fff5d8;border-color:#f4c95d;color:#7a4700}
+.b .option{border:1px solid var(--b-line);border-radius:12px;padding:11px;background:#fff}
+.b .option.correct{border-color:#7cebc9;background:#edfff9;box-shadow:inset 4px 0 0 var(--b-green)}
+.b .option.wrong{border-color:#f2a8a8;background:#fff5f5;box-shadow:inset 4px 0 0 var(--b-red)}
+.b .answer{border:1px solid var(--b-line);border-radius:14px;background:#fff}
+.b .answer-head{padding:11px 13px;border-bottom:1px solid var(--b-line);background:#fafafa}
+.b .answer-head.correct{background:#eafff8}.b .answer-head.wrong{background:#fff2f2}
+.b .answer-body{padding:13px}
+.b .result-ok{background:#dffcf4;color:#08785d;border-color:#8cebd1}.b .result-bad{background:#ffe5e5;color:#b43333;border-color:#f2a8a8}
+.b .hook,.b .ai{border:1px solid #d2e4ff;background:#f3f8ff;color:#2761b8;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800}
+
+/* Style C: Coinbase Minimal Blue */
+.c{--c-blue:#0052ff;--c-ink:#050f2c;--c-muted:#5b6475;--c-line:#d9e2f2;--c-band:#f6f8fb}
+.c .panel,.c .qcard{background:#fff;border:1px solid var(--c-line);border-radius:10px;padding:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.c .stat{background:#fff;border:1px solid var(--c-line);border-radius:10px;padding:10px 12px;min-width:82px;font-weight:850}
+.c .stat strong{display:block;font-size:25px;color:var(--c-ink)}
+.c .stat span{display:block;color:var(--c-muted);font-size:12px}
+.c .pill,.c .btn,.c .search{border:1px solid var(--c-line);border-radius:10px;background:#fff;color:var(--c-ink);padding:8px 12px;font-weight:750}
+.c .btn.active{background:var(--c-blue);border-color:var(--c-blue);color:#fff}
+.c .qno{background:#eef4ff;border-color:#b9d0ff;color:#0042c8}
+.c .chapter{background:#f5f8ff;border-color:#d3e1ff;color:#245edb}
+.c .topic{background:#fff8e5;border-color:#e7bd4e;color:#6d4300}
+.c .option{border:1px solid var(--c-line);border-radius:10px;padding:11px;background:#fff}
+.c .option.correct{border-color:#34c77b;background:#f0fff7}
+.c .option.wrong{border-color:#ee6b7b;background:#fff4f5}
+.c .answer{border:1px solid var(--c-line);border-radius:10px;background:#fff}
+.c .answer-head{padding:11px 13px;border-bottom:1px solid var(--c-line);background:#f6f8fb}
+.c .answer-head.correct{background:#eafaf1}.c .answer-head.wrong{background:#fff0f2}
+.c .answer-body{padding:13px}
+.c .result-ok{background:#0f9f5f;color:#fff;border-color:#0f9f5f}.c .result-bad{background:#d83f55;color:#fff;border-color:#d83f55}
+.c .hook,.c .ai{border:1px solid #d6e3ff;background:#f5f8ff;color:#0042c8;border-radius:8px;padding:3px 8px;font-size:12px;font-weight:800}
+
+.sample-frame{display:grid;gap:12px}
+.panel{display:grid;gap:10px}
+.btn,.pill,.search{font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center}
+.pill{display:inline-flex;align-items:center}
+.result-ok,.result-bad{font-weight:900}
+.answer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:900px){.chooser{grid-template-columns:1fr}.answer-grid{grid-template-columns:1fr}.top{display:block}.home{margin-top:12px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="top">
+    <div>
+      <h1>综合题库设计方案样板</h1>
+      <p class="intro">这不是正式题库页面，只用于选择视觉方向。三套方案都覆盖统计、筛选、题卡、选项、答题反馈和解析区。</p>
+    </div>
+    <a class="home" href="./question-bank.html">返回综合题库</a>
+  </section>
+
+  <section class="chooser">
+    <div class="choose-card"><strong>A. Carbon 考试蓝</strong><p>最克制、最专业，像考试系统和企业软件。我的首选。</p></div>
+    <div class="choose-card"><strong>B. Mintlify 学习蓝</strong><p>更柔和，更像学习文档和知识库，亲和但不幼稚。</p></div>
+    <div class="choose-card"><strong>C. Coinbase 金融蓝</strong><p>金融产品感更强，干净、可信、按钮和状态更明确。</p></div>
+  </section>
+
+  <section class="style a">
+    <div class="style-head"><div><h2>A. Carbon 考试蓝</h2><p>白底、细线、少量蓝色，重点是稳定和阅读效率。</p></div></div>
+    <div class="sample-frame">
+      <div class="panel">
+        <div class="stats">
+          <div class="stat"><strong>834</strong><span>总题</span></div><div class="stat"><strong>258</strong><span>教材</span></div><div class="stat"><strong>376</strong><span>P300</span></div><div class="stat"><strong>200</strong><span>官方</span></div><div class="stat"><strong>42</strong><span>已做</span></div><div class="stat"><strong>8</strong><span>错题</span></div>
+        </div>
+        <div class="tabs"><span class="btn active">全部</span><span class="btn">教材</span><span class="btn">P300</span><span class="btn">官方</span><span class="btn">Ch.1</span><span class="btn">Ch.7</span><span class="search">搜索题干、知识点、解析</span></div>
+      </div>
+      <article class="qcard">
+        <div class="meta"><span class="pill qno">官方 M1-Q1</span><span class="pill chapter">Ch.8</span><span class="pill topic">Exclusionary Screening</span></div>
+        <p class="stem">Asset managers are most likely to use exclusionary screening to:</p>
+        <div class="options">
+          <div class="option"><span class="letter">A.</span><span>identify best-in-class investments.</span></div>
+          <div class="option wrong"><span class="letter">B.</span><span>lower a portfolio's tracking error compared to a non-ESG benchmark.<span class="zh">相对于非 ESG 基准降低组合跟踪误差。</span></span></div>
+          <div class="option correct"><span class="letter">C.</span><span>impose a set of values aligned with an ethical or normative framework.<span class="zh">落实一套符合伦理或规范框架的价值观。</span></span></div>
+        </div>
+        <div class="answer">
+          <div class="answer-head wrong"><span class="pill result-bad">回答错误</span><span class="pill">正确答案：C</span><span class="pill">你的选择：B</span></div>
+          <div class="answer-body">
+            <div class="block"><h3>解析 <span class="ai">AI解析·中置信</span></h3><div class="pair"><p>Exclusionary screening removes issuers based on values, ethics, norms, or conventions.</p><p class="zh">排除性筛选是按照价值观、伦理、规范或公约，把某些公司、行业或发行人排除在可投资范围之外。</p></div></div>
+            <div class="block"><h3>英文题眼</h3><div class="hooks"><span class="hook">exclusionary screening</span><span class="hook">ethical</span><span class="hook">normative framework</span></div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="style b">
+    <div class="style-head"><div><h2>B. Mintlify 学习蓝</h2><p>更温和，适合长时间刷题和看解析，卡片更轻松。</p></div></div>
+    <div class="style-surface sample-frame">
+      <div class="panel">
+        <div class="stats">
+          <div class="stat"><strong>834</strong><span>总题</span></div><div class="stat"><strong>258</strong><span>教材</span></div><div class="stat"><strong>376</strong><span>P300</span></div><div class="stat"><strong>200</strong><span>官方</span></div><div class="stat"><strong>42</strong><span>已做</span></div><div class="stat"><strong>8</strong><span>错题</span></div>
+        </div>
+        <div class="tabs"><span class="btn active">全部</span><span class="btn">教材</span><span class="btn">P300</span><span class="btn">官方</span><span class="btn">Ch.1</span><span class="btn">Ch.7</span><span class="search">搜索题干、知识点、解析</span></div>
+      </div>
+      <article class="qcard">
+        <div class="meta"><span class="pill qno">P300 Q1</span><span class="pill chapter">Ch.1</span><span class="pill topic">Impact Investing</span></div>
+        <p class="stem">What is the feature of impact investing?</p>
+        <p class="stem-zh">影响力投资的特征是什么？</p>
+        <div class="options">
+          <div class="option wrong"><span class="letter">A.</span><span>Focus on generating social and environmental impact only<span class="zh">只关注产生社会和环境影响</span></span></div>
+          <div class="option"><span class="letter">B.</span><span>Focus on generating financial returns</span></div>
+          <div class="option correct"><span class="letter">C.</span><span>Both<span class="zh">两者都是</span></span></div>
+        </div>
+        <div class="answer">
+          <div class="answer-head correct"><span class="pill result-ok">回答正确</span><span class="pill">正确答案：C</span></div>
+          <div class="answer-body">
+            <div class="block"><h3>解析</h3><div class="pair"><p>Impact investing has the intent to generate positive, measurable social or environmental impact alongside a financial return.</p><p class="zh">影响力投资是在取得财务回报的同时，产生正面且可衡量的社会或环境影响。</p></div></div>
+            <div class="block"><h3>出处</h3><p>P300 PDF P21</p></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="style c">
+    <div class="style-head"><div><h2>C. Coinbase 金融蓝</h2><p>更像金融产品，干净、坚实、按钮状态明确。</p></div></div>
+    <div class="sample-frame">
+      <div class="panel">
+        <div class="stats">
+          <div class="stat"><strong>834</strong><span>总题</span></div><div class="stat"><strong>258</strong><span>教材</span></div><div class="stat"><strong>376</strong><span>P300</span></div><div class="stat"><strong>200</strong><span>官方</span></div><div class="stat"><strong>42</strong><span>已做</span></div><div class="stat"><strong>8</strong><span>错题</span></div>
+        </div>
+        <div class="tabs"><span class="btn active">全部</span><span class="btn">教材</span><span class="btn">P300</span><span class="btn">官方</span><span class="btn">Ch.1</span><span class="btn">Ch.7</span><span class="search">搜索题干、知识点、解析</span></div>
+      </div>
+      <article class="qcard">
+        <div class="meta"><span class="pill qno">教材 Q3</span><span class="pill chapter">Ch.1</span><span class="pill topic">Financial Materiality</span></div>
+        <p class="stem">ESG integration can have a material financial impact on a company leading to:</p>
+        <div class="options">
+          <div class="option"><span class="letter">A.</span><span>increased exposure to fines and litigation.</span></div>
+          <div class="option correct"><span class="letter">B.</span><span>reduced risk of fines and litigation.<span class="zh">降低罚款和诉讼风险。</span></span></div>
+          <div class="option wrong"><span class="letter">C.</span><span>lower stakeholder engagement.</span></div>
+        </div>
+        <div class="answer">
+          <div class="answer-head correct"><span class="pill result-ok">回答正确</span><span class="pill">正确答案：B</span><span class="pill">你的选择：B</span></div>
+          <div class="answer-body">
+            <div class="block"><h3>解析</h3><div class="pair"><p>Effective ESG integration can reduce material financial risks, including fines, litigation, and regulatory exposure.</p><p class="zh">有效的 ESG 整合可以降低重大财务风险，包括罚款、诉讼和监管风险。</p></div></div>
+            <div class="block"><h3>逻辑等式</h3><p class="logic">ESG integration → lower material risk → financial impact</p></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+</body>
+</html>

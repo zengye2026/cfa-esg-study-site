@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>练习与模考模式样板</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--line:#d8e0ea;--soft:#f5f7fb;--paper:#fff;
+  --blue:#1d4ed8;--green:#047857;--amber:#b45309;--rose:#be123c;--dark:#111827;
+  --blue-bg:#eff6ff;--green-bg:#f0fdf4;--amber-bg:#fffbeb;--rose-bg:#fff1f2;
+  --shadow:0 8px 22px rgba(15,23,42,.06);
+  --sans:Arial,"Microsoft YaHei","PingFang SC",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);background:var(--soft);color:var(--ink);line-height:1.62}
+button,input,select{font-family:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 88px}
+.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0;letter-spacing:0}
+h2{margin:0 0 10px;font-size:22px}
+.home{display:inline-flex;text-decoration:none;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:8px;padding:9px 12px;font-weight:850}
+.tabs,.stats{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0 14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-weight:900}
+.stat small{display:block;color:var(--muted);font-weight:650;margin-top:2px}
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(245,247,251,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:12px;display:grid;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 11px;font-weight:850;font-size:13px;color:var(--sub);cursor:pointer;line-height:1.2}
+.btn:hover{border-color:#9fb0c4}
+.btn.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.good{color:var(--green);border-color:#bbf7d0}
+.btn.warn{color:var(--rose);border-color:#fecdd3}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.search,.select{border:1px solid var(--line);background:#fff;border-radius:8px;padding:9px 10px;font-weight:750;color:var(--sub)}
+.search{min-width:min(340px,100%);flex:1}
+.countline{font-size:13px;color:var(--muted);font-weight:750}
+.copy-status{font-size:13px;color:var(--green);font-weight:850}
+.grid{display:grid;gap:12px}
+.qcard,.result-card{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:16px;scroll-margin-top:128px}
+.qcard.correct{border-color:#86efac}.qcard.wrong{border-color:#fda4af}.qcard.flagged{border-color:#f59e0b}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:850;color:var(--sub)}
+.qno{background:var(--dark);border-color:var(--dark);color:#fff}
+.source-textbook{border-color:#bfdbfe;color:#1d4ed8;background:var(--blue-bg)}
+.source-p300{border-color:#bbf7d0;color:#047857;background:var(--green-bg)}
+.source-official{border-color:#c7d2fe;color:#3730a3;background:#eef2ff}
+.mode-warn{border-color:#fde68a;color:#92400e;background:var(--amber-bg)}
+.stem{font-size:17px;font-weight:900;line-height:1.5;margin:0 0 12px;color:var(--ink);white-space:pre-wrap}
+.stem-zh{margin:8px 0 0;color:#334155;background:#f8fafc;border-left:4px solid #93c5fd;padding:8px 10px;border-radius:0 8px 8px 0;font-weight:750}
+.options{display:grid;gap:8px;margin:12px 0}
+.opt{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;padding:10px 12px;font-size:15px;line-height:1.5;cursor:pointer;display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:start}
+.opt b{color:var(--blue)}
+.opt:hover{border-color:#93c5fd}
+.opt.selected{border-color:var(--blue);background:var(--blue-bg)}
+.opt.answer{border-color:#86efac;background:var(--green-bg)}
+.opt.bad{border-color:#fda4af;background:var(--rose-bg)}
+.opt-text{display:grid;gap:4px}
+.opt-zh{color:#475569;font-size:14px;border-top:1px dashed #dbe4ef;padding-top:4px;margin-top:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.answerbox{border:1px solid var(--line);border-radius:8px;background:#fbfdff;margin-top:12px;overflow:hidden}
+.answer-head{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:900}
+.answer-body{display:grid;gap:10px;padding:12px;background:#fff}
+.block{border-top:1px solid #edf2f7;padding-top:10px}
+.block:first-child{border-top:0;padding-top:0}
+.block h3{font-size:13px;margin:0 0 6px;color:var(--muted);letter-spacing:0}
+.block p{margin:0;white-space:pre-wrap}
+.pair{display:grid;gap:8px}
+.pair .en{color:#111827;font-weight:750}
+.pair .zh{color:#334155;border-top:1px dashed #d8e0ea;padding-top:8px}
+.hook-list,.navgrid{display:flex;gap:6px;flex-wrap:wrap}
+.hook{display:inline-flex;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;line-height:1.25}
+.logic{display:inline-block;border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3;border-radius:8px;padding:7px 9px;font-weight:900}
+.navbtn{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:#fff;font-weight:900;color:var(--sub);cursor:pointer}
+.navbtn.current{background:var(--dark);color:#fff;border-color:var(--dark)}
+.navbtn.answered{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
+.navbtn.uncertain{border-color:#f59e0b;background:#fffbeb;color:#92400e}
+.timer{font-size:20px;font-weight:950;color:var(--ink)}
+.score{font-size:42px;line-height:1;font-weight:950;margin:6px 0;color:var(--ink)}
+.review-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}
+.review-card{border:2px solid var(--line);background:#fff;border-radius:8px;padding:11px;text-align:left;cursor:pointer;color:var(--sub);font-weight:900}
+.review-card strong{display:block;font-size:24px;line-height:1;color:var(--ink)}
+.review-card small{display:block;color:var(--muted);margin-top:2px}
+.review-card.active{border-color:var(--dark);box-shadow:inset 0 0 0 2px var(--dark)}
+.review-card.active::after{content:"当前查看";display:inline-flex;margin-top:8px;border-radius:999px;background:var(--dark);color:#fff;padding:2px 8px;font-size:12px;font-weight:900}
+.review-card.warn{border-color:#fde68a;background:#fffbeb}
+.review-card.bad{border-color:#fecdd3;background:#fff1f2}
+.review-card.good{border-color:#bbf7d0;background:#f0fdf4}
+.table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;margin-top:10px}
+.table th,.table td{border:1px solid var(--line);padding:8px;text-align:left}
+.table th{background:#f8fafc;color:#334155}
+.status-good{color:var(--green);font-weight:900}.status-mid{color:var(--amber);font-weight:900}.status-low{color:var(--rose);font-weight:900}
+.hide{display:none}
+.footerbar{position:fixed;right:16px;bottom:16px;display:flex;gap:8px}
+.float{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 13px;box-shadow:var(--shadow);font-weight:900;color:var(--sub);cursor:pointer;text-decoration:none}
+@media(max-width:720px){
+  .wrap{padding:16px 10px 78px}.qcard,.result-card{padding:13px}.stem{font-size:16px}.opt{font-size:14px;grid-template-columns:28px 1fr}
+  .footerbar{right:10px;bottom:10px}.toolbar{position:static}.score{font-size:34px}.review-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="topline">
+      <h1>练习与模考模式样板</h1>
+      <a class="home" href="index.html">返回主页</a>
+    </div>
+    <div class="tabs">
+      <button class="btn active" id="practiceTab">练习模式</button>
+      <button class="btn" id="examTab">模考模式</button>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section class="toolbar">
+    <div class="panel" id="practiceBar">
+      <div class="row" id="sourceTabs"></div>
+      <div class="row" id="chapterTabs"></div>
+      <div class="row">
+        <input class="search" id="search" placeholder="搜索英文题干、中文、题眼">
+        <button class="btn active" data-filter="all">全部</button>
+        <button class="btn" data-filter="todo">未做</button>
+        <button class="btn" data-filter="wrong">错题</button>
+        <button class="btn" data-filter="flagged">收藏</button>
+        <button class="btn primary" id="shufflePractice">乱序</button>
+        <button class="btn primary" id="copyPracticeWrong">复制错题</button>
+        <button class="btn warn" id="resetPractice">清空练习记录</button>
+      </div>
+      <div class="row"><span class="countline" id="practiceCount"></span><span class="copy-status" id="copyStatus"></span></div>
+    </div>
+    <div class="panel hide" id="examBar">
+      <div class="row">
+        <select class="select" id="examType">
+          <option value="official">官方 Mock 样板</option>
+          <option value="p300">P300 模考样板</option>
+          <option value="textbook">教材模考样板</option>
+          <option value="mixed">混合模考样板</option>
+        </select>
+        <span class="timer" id="timer">14:00</span>
+        <button class="btn primary" id="startExam">开始 / 重新开始</button>
+        <button class="btn warn" id="submitExam">提交模考</button>
+        <span class="countline" id="examCount"></span>
+      </div>
+      <div class="navgrid" id="examNav"></div>
+    </div>
+  </section>
+
+  <main class="grid" id="questionGrid"></main>
+</div>
+<div class="footerbar">
+  <button class="float" id="toTop">回到顶部</button>
+  <a class="float" href="index.html">返回主页</a>
+</div>
+
+<script src="question-bank-data.js"></script>
+<script>
+const CHAPTER_NAMES = {
+  1: "Introduction", 2: "ESG Market", 3: "Environmental", 4: "Social", 5: "Governance",
+  6: "Engagement", 7: "Analysis / Valuation", 8: "Portfolio", 9: "Mandates / Reporting",
+};
+const TARGET_WEIGHTS = { 1: 6, 2: 3, 3: 13, 4: 10, 5: 11, 6: 9, 7: 24, 8: 17, 9: 7 };
+const SAMPLE_SECONDS = 14 * 60;
+const PRACTICE_KEY = "study_modes_sample_practice_v1";
+const EXAM_KEY = "study_modes_sample_exam_v1";
+
+const OFFICIAL_SAMPLE = [
+  qOfficial(1, 8, "C", "Asset managers are most likely to use exclusionary screening to:", "资产管理人最可能使用排除性筛选来做什么？",
+    ["identify best-in-class investments.", "lower a portfolio's tracking error compared to a non-ESG benchmark.", "impose a set of values aligned with an ethical or normative framework."],
+    ["识别同类最佳投资。", "相对于非 ESG 基准降低组合跟踪误差。", "落实一套符合伦理或规范框架的价值观。"],
+    "Exclusionary screening removes companies, sectors, or issuers from the investable universe based on values, ethics, norms, or conventions.",
+    "排除性筛选是按照价值观、伦理、规范或公约，把某些公司、行业或发行人排除在可投资范围之外。",
+    ["exclusionary screening", "ethical", "normative framework"], "看到 exclusionary screening，先反推“排除不符合价值观、伦理或规范的对象”。", "Exclusionary screening = values / norms -> exclude", "best-in-class 是同类优选；tracking error 不是核心目的。"),
+  qOfficial(2, 6, "A", "The Climate Action 100+ (CA 100+) collaborative engagement:", "Climate Action 100+（CA 100+）这种协作参与的特点是什么？",
+    ["targets the most polluting companies.", "has yet to attract many major institutional investors.", "forbids any engagement to be led by a single investor."],
+    ["针对污染最严重的公司。", "尚未吸引许多大型机构投资者。", "禁止任何参与活动由单一投资者牵头。"],
+    "CA 100+ is a collaborative investor initiative focused on major greenhouse gas emitters.",
+    "CA 100+ 是投资者协作倡议，重点面向温室气体排放较高的大型公司。",
+    ["Climate Action 100+", "collaborative engagement", "most polluting companies"], "看到 CA 100+，想到投资者联合推动高排放公司改善气候治理。", "CA 100+ = collaborative engagement -> major emitters", "不要被 has yet to attract 迷惑。"),
+  qOfficial(3, 8, "C", "Which of the following strategic asset allocation model(s) is highly sensitive to baseline assumptions?", "以下哪种战略资产配置模型对基础假设高度敏感？",
+    ["Mean-variance optimization (MVO) only", "Liability driven asset allocation (LDI) only", "Both mean-variance optimization (MVO) and liability driven asset allocation (LDI)"],
+    ["只有均值方差优化（MVO）。", "只有负债驱动资产配置（LDI）。", "MVO 和 LDI 都是。"],
+    "Both MVO and LDI depend heavily on input assumptions.",
+    "MVO 和 LDI 都高度依赖输入假设。",
+    ["baseline assumptions", "MVO", "LDI"], "题干问 model(s)，不要只选一个模型。", "MVO / LDI = model output depends on assumptions", "注意 Both。"),
+  qOfficial(4, 8, "B", "Which of the following is most consistent with a discretionary portfolio management approach to ESG integration?", "以下哪项最符合 ESG 整合中的主动裁量型组合管理方法？",
+    ["Investment strategies use a custom index, typically with exclusion criteria", "Bottom-up financial analysis is performed along with the consideration of ESG factors", "Portfolios comprise a much larger number of securities compared to portfolios using quantitative strategies"],
+    ["使用定制指数，通常带有排除标准。", "在考虑 ESG 因素的同时进行自下而上的财务分析。", "相比量化策略，组合包含更多证券。"],
+    "A discretionary ESG approach relies on portfolio manager judgment and fundamental bottom-up analysis.",
+    "裁量型 ESG 方法依赖基金经理判断和基本面自下而上分析。",
+    ["discretionary", "bottom-up", "ESG integration"], "看到 discretionary，反推主动判断、基本面、自下而上。", "Discretionary ESG = manager judgment + bottom-up analysis", "custom index 更像规则型或指数化方法。"),
+  qOfficial(5, 7, "C", "With respect to ESG reporting, smaller companies face:", "关于 ESG 报告，小公司面临什么情况？",
+    ["fewer resource constraints than larger companies.", "the same resource constraints as larger companies.", "more resource constraints than larger companies."],
+    ["比大公司面临更少的资源约束。", "与大公司面临相同的资源约束。", "比大公司面临更多的资源约束。"],
+    "Smaller companies generally have fewer staff, systems, and budgets for ESG data collection and reporting.",
+    "小公司通常在人员、系统、预算和 ESG 数据收集能力方面更弱。",
+    ["ESG reporting", "smaller companies", "resource constraints"], "看到 smaller companies + reporting，想到资源少、披露能力弱。", "Smaller company = fewer resources -> more reporting constraints", "小公司业务简单不等于报告更容易。"),
+  qOfficial(6, 8, "C", "A coal-fired utility has no climate change adaptation strategy. Which party would be most severely impacted by a transition to a low-carbon economy?", "燃煤公用事业公司没有气候适应策略，低碳转型时哪一方受影响最重？",
+    ["Creditors", "Bondholders", "Equity shareholders"],
+    ["债权人。", "债券持有人。", "股东。"],
+    "Equity shareholders are residual claimants, so losses in firm value are likely to hit them most severely.",
+    "股东是剩余索取人，公司价值受损通常最先、最直接体现在股东权益上。",
+    ["coal-fired utility", "low-carbon economy", "equity shareholders"], "高碳公司 + 低碳转型 + most severely，优先看股东。", "Transition risk hurts firm value -> equity bears residual loss", "债权人也有风险，但股东承担剩余风险更高。"),
+  qOfficial(7, 7, "B", "Environmental regulation hurts competitors but has no impact on the company. In DCF, this is best reflected by:", "环境监管伤害竞争对手但不影响本公司，DCF 中最适合怎么反映？",
+    ["increase the discount rate.", "increase projected cash flows.", "decrease the terminal growth rate."],
+    ["提高折现率。", "提高预计现金流。", "降低终值增长率。"],
+    "If regulation hurts competitors but not the company, the company may gain market share or pricing power.",
+    "如果监管打击竞争对手但不影响本公司，本公司可能获得市场份额或定价优势。",
+    ["competitors", "no impact", "DCF", "projected cash flows"], "竞争对手受损而本公司不受损 = 本公司相对受益，现金流更高。", "Competitors hurt + company unaffected -> cash flows up", "increase discount rate 表示风险上升，不符合题干。"),
+  qOfficial(8, 2, "C", "An environmental objective of the EU Taxonomy Regulation is the transition to:", "EU Taxonomy Regulation 的一个环境目标是向什么转型？",
+    ["net zero.", "renewable energy.", "a circular economy."],
+    ["净零。", "可再生能源。", "循环经济。"],
+    "One of the EU Taxonomy environmental objectives is the transition to a circular economy.",
+    "EU Taxonomy 的环境目标之一是向循环经济转型。",
+    ["EU Taxonomy", "environmental objective", "circular economy"], "看到 EU Taxonomy 的 environmental objective，要记住 circular economy。", "EU Taxonomy objective -> circular economy", "net zero 和 renewable energy 很像，但不是本题措辞。"),
+  qOfficial(9, 8, "A", "Exclusions supported by global norms are best described as:", "由全球规范支持的排除最适合描述为什么？",
+    ["universal exclusions.", "idiosyncratic exclusions.", "conduct-related exclusions."],
+    ["普遍排除。", "个别化排除。", "行为相关排除。"],
+    "Universal exclusions are based on widely accepted global norms or standards.",
+    "普遍排除通常基于广泛接受的全球规范或标准。",
+    ["global norms", "universal exclusions"], "看到 global norms，反推 universal exclusions。", "Global norms -> universal exclusions", "conduct-related 更偏公司行为。"),
+  qOfficial(10, 4, "B", "Analyzing which social factors are material from an investment point of view should start at the:", "从投资角度分析哪些社会因素重大，应从哪个层面开始？",
+    ["country level.", "industry level.", "company level."],
+    ["国家层面。", "行业层面。", "公司层面。"],
+    "Material social factors often vary by industry, so analysis should start at the industry level.",
+    "社会因素重大性往往因行业而异，所以通常先从行业层面判断。",
+    ["social factors", "material", "industry level"], "social factors + material + investment，先从 industry level 找重大性。", "Social materiality differs by industry -> start at industry level", "company level 是后续细化，不是起点。")
+];
+
+function qOfficial(n, chapter, answer, stem, stemZh, options, optionZh, explanationEn, explanationZh, keywordEn, reverseZh, logic, trap) {
+  return {
+    id: `OFFICIAL-MOCK1-Q${String(n).padStart(3, "0")}`,
+    localId: n,
+    chapter,
+    source: "official",
+    sourceLabel: "官方题",
+    answer,
+    hasAnswer: true,
+    stem,
+    stemZh,
+    options: options.map((text, i) => ({ letter: "ABC"[i], text, zh: optionZh[i] })),
+    explanationEn,
+    explanationZh,
+    keywordEn,
+    reverseZh,
+    logic,
+    trap,
+  };
+}
+
+const BANK_QUESTIONS = (window.ESG_QUESTION_BANK?.questions || []).map(normalizeQuestion);
+const ALL_QUESTIONS = [...BANK_QUESTIONS, ...OFFICIAL_SAMPLE].filter((q) => q.answer && q.options?.length === 3);
+let mode = "practice";
+let currentSource = "all";
+let currentChapter = "all";
+let currentFilter = "all";
+let query = "";
+let visibleLimit = 50;
+let practiceOrder = ALL_QUESTIONS.map((q) => q.id);
+let practiceState = load(PRACTICE_KEY);
+let examState = defaultExamState();
+let timerId = null;
+
+function normalizeQuestion(q) {
+  const source = q.source === "textbook" ? "textbook" : "p300";
+  return {
+    ...q,
+    source,
+    sourceLabel: source === "textbook" ? "教材题" : "P300",
+    hasAnswer: true,
+    keywordEn: q.keywordEn || [],
+    explanationEn: q.explanationEn || "",
+    explanationZh: q.explanationZh || "",
+    reverseZh: q.reverseZh || "",
+    logic: q.logic || "",
+    trap: q.trap || "",
+  };
+}
+function load(key) {
+  try { return JSON.parse(localStorage.getItem(key) || "{}"); }
+  catch (e) { return {}; }
+}
+function save(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+function defaultExamState() {
+  return { started: false, submitted: false, type: "official", index: 0, remaining: SAMPLE_SECONDS, order: [], answers: {}, uncertain: {} };
+}
+function esc(v) {
+  return String(v ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;" })[c]);
+}
+function keywordList(value) {
+  return Array.isArray(value) ? value.map(String).filter(Boolean) : String(value || "").split(/[,;|]+|->/).map((x) => x.trim()).filter(Boolean);
+}
+function sourceLabel(source) {
+  return source === "textbook" ? "教材题" : source === "p300" ? "P300" : "官方题";
+}
+function sourceClass(source) {
+  return source === "textbook" ? "source-textbook" : source === "p300" ? "source-p300" : "source-official";
+}
+function shuffle(list) {
+  return [...list].map((x) => [Math.random(), x]).sort((a,b) => a[0] - b[0]).map((x) => x[1]);
+}
+function qState(id) {
+  practiceState[id] = practiceState[id] || {};
+  return practiceState[id];
+}
+function isDone(q) { return !!qState(q.id).revealed; }
+function isWrong(q) {
+  return !!qState(q.id).wrong;
+}
+function practiceQuestions() {
+  const byId = new Map(ALL_QUESTIONS.map((q) => [q.id, q]));
+  return practiceOrder.map((id) => byId.get(id)).filter(Boolean).filter((q) => {
+    const s = qState(q.id);
+    if (currentSource !== "all" && q.source !== currentSource) return false;
+    if (currentChapter !== "all" && q.chapter !== currentChapter) return false;
+    if (currentFilter === "todo" && isDone(q)) return false;
+    if (currentFilter === "wrong" && !isWrong(q)) return false;
+    if (currentFilter === "flagged" && !s.flagged) return false;
+    if (query) {
+      const hay = [
+        q.stem, q.stemZh, q.sourceLabel, q.chapter, q.explanationEn, q.explanationZh,
+        q.reverseZh, q.trap, keywordList(q.keywordEn).join(" "),
+        q.options.map((o) => `${o.text} ${o.zh}`).join(" "),
+      ].join(" ").toLowerCase();
+      if (!hay.includes(query.toLowerCase())) return false;
+    }
+    return true;
+  });
+}
+function choosePractice(id, letter) {
+  const s = qState(id);
+  if (s.revealed) return;
+  s.choice = letter;
+  s.revealed = true;
+  if (letter !== ALL_QUESTIONS.find((q) => q.id === id)?.answer) s.wrong = true;
+  save(PRACTICE_KEY, practiceState);
+  renderAll();
+}
+function clearPracticeOne(id) {
+  const keep = { flagged: !!qState(id).flagged, wrong: !!qState(id).wrong };
+  practiceState[id] = keep;
+  save(PRACTICE_KEY, practiceState);
+  renderAll();
+}
+function clearGlobalWrong(id) {
+  qState(id).wrong = false;
+  save(PRACTICE_KEY, practiceState);
+  renderAll();
+}
+function togglePracticeFlag(id) {
+  qState(id).flagged = !qState(id).flagged;
+  save(PRACTICE_KEY, practiceState);
+  renderAll();
+}
+function optionClass(choice, answer, letter, revealed) {
+  const cls = ["opt"];
+  if (choice === letter) cls.push("selected");
+  if (revealed && letter === answer) cls.push("answer");
+  if (revealed && choice === letter && choice !== answer) cls.push("bad");
+  return cls.join(" ");
+}
+function answerDetailHtml(q, choice, correct) {
+  return `
+    <div class="answerbox">
+      <div class="answer-head">
+        <span class="chip ${correct ? sourceClass(q.source) : "mode-warn"}">${correct ? "回答正确" : "回答错误"}</span>
+        <span class="chip">正确答案：${esc(q.answer)}</span>
+        ${choice ? `<span class="chip">你的选择：${esc(choice)}</span>` : `<span class="chip">未作答</span>`}
+      </div>
+      <div class="answer-body">
+        <div class="block"><h3>题干对照</h3><p class="en">${esc(q.stem)}</p>${q.stemZh ? `<p class="stem-zh">${esc(q.stemZh)}</p>` : ""}</div>
+        <div class="block"><h3>选项对照</h3><div class="options">${q.options.map((o) => `
+          <div class="opt ${o.letter === q.answer ? "answer" : ""}">
+            <b>${esc(o.letter)}</b>
+            <span class="opt-text"><span>${esc(o.text)}</span>${o.zh ? `<span class="opt-zh">${esc(o.zh)}</span>` : ""}</span>
+          </div>`).join("")}</div></div>
+        <div class="block"><h3>解析</h3><div class="pair">${q.explanationEn ? `<p class="en">${esc(q.explanationEn)}</p>` : ""}${q.explanationZh ? `<p class="zh">${esc(q.explanationZh)}</p>` : ""}</div></div>
+        ${keywordList(q.keywordEn).length ? `<div class="block"><h3>英文题眼</h3><div class="hook-list">${keywordList(q.keywordEn).map((x) => `<span class="hook">${esc(x)}</span>`).join("")}</div></div>` : ""}
+        ${q.reverseZh ? `<div class="block"><h3>中文反推</h3><p>${esc(q.reverseZh)}</p></div>` : ""}
+        ${q.logic ? `<div class="block"><h3>逻辑等式</h3><span class="logic">${esc(q.logic)}</span></div>` : ""}
+        ${q.trap ? `<div class="block"><h3>易错提醒</h3><p>${esc(q.trap)}</p></div>` : ""}
+      </div>
+    </div>`;
+}
+function renderPracticeQuestion(q) {
+  const s = qState(q.id);
+  const revealed = !!s.revealed;
+  const correct = revealed && s.choice === q.answer;
+  const classes = ["qcard"];
+  if (revealed) classes.push(correct ? "correct" : "wrong");
+  if (s.flagged) classes.push("flagged");
+  return `<section class="${classes.join(" ")}" id="${esc(q.id)}">
+    <div class="meta">
+      <span class="chip qno">${esc(sourceLabel(q.source))} Q${esc(q.localId)}</span>
+      <span class="chip ${sourceClass(q.source)}">${esc(q.sourceLabel || sourceLabel(q.source))}</span>
+      <span class="chip">Chapter ${q.chapter} ${esc(CHAPTER_NAMES[q.chapter])}</span>
+      ${s.wrong ? `<span class="chip mode-warn">全局错题</span>` : ""}
+      ${s.flagged ? `<span class="chip mode-warn">收藏</span>` : ""}
+    </div>
+    <p class="stem">${esc(q.stem)}</p>
+    <div class="options">${q.options.map((o) => `
+      <button class="${optionClass(s.choice, q.answer, o.letter, revealed)}" onclick="choosePractice('${q.id}','${o.letter}')">
+        <b>${esc(o.letter)}</b><span class="opt-text"><span>${esc(o.text)}</span></span>
+      </button>`).join("")}</div>
+    ${revealed ? answerDetailHtml(q, s.choice, correct) : ""}
+    <div class="actions">
+      <button class="btn" onclick="togglePracticeFlag('${q.id}')">${s.flagged ? "取消收藏" : "收藏"}</button>
+      ${s.wrong ? `<button class="btn" onclick="clearGlobalWrong('${q.id}')">移出错题</button>` : ""}
+      <button class="btn" onclick="clearPracticeOne('${q.id}')">重做本题</button>
+    </div>
+  </section>`;
+}
+function renderTabs() {
+  document.getElementById("sourceTabs").innerHTML = [
+    ["all", "全部来源"], ["textbook", "教材题"], ["p300", "P300"], ["official", "官方题"],
+  ].map(([key, label]) => `<button class="btn ${currentSource === key ? "active" : ""}" onclick="setSource('${key}')">${label}</button>`).join("");
+  document.getElementById("chapterTabs").innerHTML = [
+    `<button class="btn ${currentChapter === "all" ? "active" : ""}" onclick="setChapter('all')">全部章节</button>`,
+    ...Array.from({ length: 9 }, (_, i) => i + 1).map((ch) =>
+      `<button class="btn ${currentChapter === ch ? "active" : ""}" onclick="setChapter(${ch})">Ch.${ch}</button>`
+    ),
+  ].join("");
+}
+function setSource(source) { currentSource = source; visibleLimit = 50; renderAll(); }
+function setChapter(ch) { currentChapter = ch; visibleLimit = 50; renderAll(); }
+function renderPractice() {
+  document.getElementById("practiceBar").classList.remove("hide");
+  document.getElementById("examBar").classList.add("hide");
+  renderTabs();
+  const list = practiceQuestions();
+  const shown = list.slice(0, visibleLimit);
+  const done = ALL_QUESTIONS.filter(isDone).length;
+  const wrong = ALL_QUESTIONS.filter(isWrong).length;
+  const flagged = ALL_QUESTIONS.filter((q) => qState(q.id).flagged).length;
+  document.getElementById("stats").innerHTML = [
+    `<div class="stat">${ALL_QUESTIONS.length}<small>样板题池</small></div>`,
+    `<div class="stat">${done}<small>已做</small></div>`,
+    `<div class="stat">${wrong}<small>全局错题</small></div>`,
+    `<div class="stat">${flagged}<small>收藏</small></div>`,
+  ].join("");
+  document.getElementById("practiceCount").textContent = `当前符合条件 ${list.length} 题，已显示 ${shown.length} 题。错题和收藏是长期状态；不确定只在模考中出现。`;
+  document.getElementById("questionGrid").innerHTML = shown.length ? shown.map(renderPracticeQuestion).join("") : `<section class="result-card">没有符合条件的题目</section>`;
+  document.querySelectorAll("[data-filter]").forEach((btn) => btn.classList.toggle("active", btn.dataset.filter === currentFilter));
+}
+function formatWrong(q) {
+  const s = qState(q.id);
+  return [
+    `${sourceLabel(q.source)} Q${q.localId} | Chapter ${q.chapter}`,
+    `题干：${q.stem}`,
+    `中文题干：${q.stemZh || ""}`,
+    `你的答案：${s.choice || "未做"}`,
+    `正确答案：${q.answer}`,
+    `解析：${q.explanationEn || ""}`,
+    `中文解析：${q.explanationZh || ""}`,
+    `英文题眼：${keywordList(q.keywordEn).join(" / ")}`,
+    `中文反推：${q.reverseZh || ""}`,
+    `易错提醒：${q.trap || ""}`,
+  ].join("\n");
+}
+function buildPracticeWrongText() {
+  const wrong = ALL_QUESTIONS.filter(isWrong);
+  if (!wrong.length) return `全局错题记录\n生成时间：${new Date().toLocaleString()}\n\n暂无错题。`;
+  return ["全局错题记录", `生成时间：${new Date().toLocaleString()}`, `错题数量：${wrong.length}`, "", wrong.map(formatWrong).join("\n\n---\n\n")].join("\n");
+}
+async function copyText(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+    else {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.left = "-9999px";
+      document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+    }
+    setCopyStatus("已复制");
+  } catch (e) { setCopyStatus("复制失败，请手动选择文本"); }
+}
+function setCopyStatus(message) {
+  const el = document.getElementById("copyStatus");
+  el.textContent = message;
+  clearTimeout(setCopyStatus.timer);
+  setCopyStatus.timer = setTimeout(() => { el.textContent = ""; }, 2600);
+}
+
+function poolForType(type) {
+  if (type === "official") return OFFICIAL_SAMPLE;
+  if (type === "p300") return BANK_QUESTIONS.filter((q) => q.source === "p300");
+  if (type === "textbook") return BANK_QUESTIONS.filter((q) => q.source === "textbook");
+  return ALL_QUESTIONS;
+}
+function chapterQuotas(total) {
+  const raw = Object.entries(TARGET_WEIGHTS).map(([ch, w]) => ({ ch: Number(ch), exact: total * w / 100 }));
+  const quotas = Object.fromEntries(raw.map((x) => [x.ch, Math.floor(x.exact)]));
+  let used = Object.values(quotas).reduce((a,b) => a + b, 0);
+  raw.sort((a,b) => (b.exact - Math.floor(b.exact)) - (a.exact - Math.floor(a.exact)));
+  for (const x of raw) {
+    if (used >= total) break;
+    quotas[x.ch]++; used++;
+  }
+  return quotas;
+}
+function drawExamQuestions(type) {
+  const pool = poolForType(type);
+  if (type === "official") return shuffle(pool).slice(0, 10);
+  const quotas = chapterQuotas(10);
+  const selected = [];
+  const used = new Set();
+  for (let ch = 1; ch <= 9; ch++) {
+    const candidates = shuffle(pool.filter((q) => q.chapter === ch));
+    for (const q of candidates.slice(0, quotas[ch] || 0)) {
+      selected.push(q); used.add(q.id);
+    }
+  }
+  if (selected.length < 10) {
+    for (const q of shuffle(pool.filter((q) => !used.has(q.id)))) {
+      selected.push(q);
+      if (selected.length >= 10) break;
+    }
+  }
+  return shuffle(selected.slice(0, 10));
+}
+function startExam() {
+  if (!confirm("开始样板模考会清空本次模考记录。确定开始吗？")) return;
+  const type = document.getElementById("examType").value;
+  const questions = drawExamQuestions(type);
+  examState = { started: true, submitted: false, type, index: 0, remaining: SAMPLE_SECONDS, order: questions.map((q) => q.id), answers: {}, uncertain: {} };
+  save(EXAM_KEY, examState);
+  tickTimer();
+  renderAll();
+}
+function currentExamQuestions() {
+  const map = new Map(ALL_QUESTIONS.map((q) => [q.id, q]));
+  return (examState.order || []).map((id) => map.get(id)).filter(Boolean);
+}
+function tickTimer() {
+  clearInterval(timerId);
+  if (mode !== "exam" || !examState.started || examState.submitted) return;
+  timerId = setInterval(() => {
+    examState.remaining = Math.max(0, examState.remaining - 1);
+    save(EXAM_KEY, examState);
+    updateTimer();
+    if (examState.remaining === 0) submitExam(false);
+  }, 1000);
+}
+function updateTimer() {
+  const m = Math.floor((examState.remaining || SAMPLE_SECONDS) / 60);
+  const s = (examState.remaining || SAMPLE_SECONDS) % 60;
+  document.getElementById("timer").textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+function chooseExam(letter) {
+  if (!examState.started || examState.submitted) return;
+  const q = currentExamQuestions()[examState.index];
+  examState.answers[q.id] = letter;
+  save(EXAM_KEY, examState);
+  renderAll();
+}
+function gotoExam(index) {
+  const qs = currentExamQuestions();
+  examState.index = Math.max(0, Math.min(qs.length - 1, index));
+  save(EXAM_KEY, examState);
+  renderAll();
+}
+function moveExam(delta) { gotoExam(examState.index + delta); }
+function toggleExamUncertain() {
+  const q = currentExamQuestions()[examState.index];
+  examState.uncertain[q.id] = !examState.uncertain[q.id];
+  save(EXAM_KEY, examState);
+  renderAll();
+}
+function submitExam(ask = true) {
+  if (!examState.started || examState.submitted) return;
+  const qs = currentExamQuestions();
+  const unanswered = qs.filter((q) => !examState.answers[q.id]).length;
+  if (ask && !confirm(`还有 ${unanswered} 题未作答，确定提交吗？`)) return;
+  qs.forEach((q) => {
+    if (examState.answers[q.id] !== q.answer) qState(q.id).wrong = true;
+  });
+  save(PRACTICE_KEY, practiceState);
+  examState.submitted = true;
+  save(EXAM_KEY, examState);
+  clearInterval(timerId);
+  renderAll();
+}
+function renderExamNav() {
+  const qs = currentExamQuestions();
+  document.getElementById("examNav").innerHTML = qs.map((q, i) => {
+    const cls = ["navbtn"];
+    if (i === examState.index) cls.push("current");
+    if (examState.answers[q.id]) cls.push("answered");
+    if (examState.uncertain[q.id]) cls.push("uncertain");
+    return `<button class="${cls.join(" ")}" onclick="gotoExam(${i})">${i + 1}</button>`;
+  }).join("");
+}
+function renderExamQuestion() {
+  const qs = currentExamQuestions();
+  if (!examState.started || !qs.length) {
+    return `<section class="result-card"><h2>模考模式样板</h2>
+      <p>样板按 10 题 / 14 分钟演示。正式版会按 100 题 / 140 分钟设置。</p>
+      <p>除官方 Mock 外，P300、教材、混合模考会按目标章节比例抽题，并全部乱序。</p>
+      <button class="btn primary" onclick="startExam()">开始样板模考</button></section>`;
+  }
+  if (examState.submitted) return renderExamResult();
+  const q = qs[examState.index];
+  const choice = examState.answers[q.id];
+  return `<section class="qcard">
+    <div class="meta"><span class="chip qno">${sourceLabel(q.source)} Q${esc(q.localId)}</span><span class="chip ${sourceClass(q.source)}">${sourceLabel(q.source)}</span><span class="chip">Chapter ${q.chapter}</span>${examState.uncertain[q.id] ? `<span class="chip mode-warn">不确定</span>` : ""}</div>
+    <p class="stem">${esc(q.stem)}</p>
+    <div class="options">${q.options.map((o) => `<button class="${optionClass(choice, q.answer, o.letter, false)}" onclick="chooseExam('${o.letter}')"><b>${esc(o.letter)}</b><span class="opt-text"><span>${esc(o.text)}</span></span></button>`).join("")}</div>
+    <div class="actions"><button class="btn" onclick="moveExam(-1)" ${examState.index === 0 ? "disabled" : ""}>上一题</button><button class="btn" onclick="moveExam(1)" ${examState.index === qs.length - 1 ? "disabled" : ""}>下一题</button><button class="btn" onclick="toggleExamUncertain()">${examState.uncertain[q.id] ? "取消不确定" : "标记不确定"}</button></div>
+  </section>`;
+}
+function groupStats(qs, keyFn) {
+  const result = {};
+  for (const q of qs) {
+    const key = keyFn(q);
+    result[key] = result[key] || { total: 0, correct: 0 };
+    result[key].total++;
+    if (examState.answers[q.id] === q.answer) result[key].correct++;
+  }
+  return result;
+}
+function statusHtml(rate) {
+  if (rate >= 70) return `<span class="status-good">较稳</span>`;
+  if (rate >= 60) return `<span class="status-mid">需要巩固</span>`;
+  return `<span class="status-low">优先补</span>`;
+}
+function statsRows(stats, labelFn) {
+  return Object.keys(stats).sort((a,b) => Number(a) - Number(b)).map((key) => {
+    const x = stats[key]; const r = Math.round(x.correct / x.total * 100);
+    return `<tr><td>${labelFn(key)}</td><td>${x.total}</td><td>${x.correct}</td><td>${r}%</td><td>${statusHtml(r)}</td></tr>`;
+  }).join("");
+}
+function renderExamResult() {
+  const qs = currentExamQuestions();
+  const correct = qs.filter((q) => examState.answers[q.id] === q.answer).length;
+  const rate = Math.round(correct / qs.length * 100);
+  const wrong = qs.filter((q) => examState.answers[q.id] !== q.answer);
+  const uncertain = qs.filter((q) => examState.uncertain[q.id]);
+  const both = qs.filter((q) => examState.uncertain[q.id] && examState.answers[q.id] !== q.answer);
+  const reviewSet = examReviewFilter === "wrong" ? wrong : examReviewFilter === "uncertain" ? uncertain : examReviewFilter === "both" ? both : qs;
+  const chapterRows = statsRows(groupStats(qs, (q) => q.chapter), (ch) => `Ch.${ch} ${CHAPTER_NAMES[ch]}`);
+  const sourceRows = statsRows(groupStats(qs, (q) => q.source), sourceLabel);
+  return `<section class="result-card"><h2>模考结果</h2>
+    <div class="score">${correct}/${qs.length} · ${rate}%</div>
+    <p>${rate >= 70 ? "达到 70% 目标线。" : rate >= 60 ? "60%-69%，需要继续巩固。" : "低于 60%，建议优先复盘错题章节。"}</p>
+    <table class="table"><thead><tr><th>章节</th><th>题数</th><th>正确</th><th>正确率</th><th>状态</th></tr></thead><tbody>${chapterRows}</tbody></table>
+    <table class="table"><thead><tr><th>来源</th><th>题数</th><th>正确</th><th>正确率</th><th>状态</th></tr></thead><tbody>${sourceRows}</tbody></table>
+    <div class="review-cards">
+      ${reviewCard("all", "全部解析", qs.length, "good")}
+      ${reviewCard("wrong", "本次错题", wrong.length, "bad")}
+      ${reviewCard("uncertain", "本次不确定", uncertain.length, "warn")}
+      ${reviewCard("both", "错题且不确定", both.length, "bad")}
+    </div>
+    <p class="countline">当前显示：${reviewTitle()} ${reviewSet.length} 题</p>
+  </section>${reviewSet.length ? reviewSet.map((q) => renderReviewQuestion(q)).join("") : `<section class="result-card">当前分类下没有题目。</section>`}`;
+}
+let examReviewFilter = "all";
+function setExamReview(filter) { examReviewFilter = filter; renderAll(); }
+function reviewCard(filter, label, count, tone) {
+  return `<button class="review-card ${tone || ""} ${examReviewFilter === filter ? "active" : ""}" onclick="setExamReview('${filter}')"><strong>${count}</strong><small>${label}</small></button>`;
+}
+function reviewTitle() {
+  return {
+    all: "全部解析",
+    wrong: "本次错题",
+    uncertain: "本次不确定",
+    both: "错题且不确定",
+  }[examReviewFilter] || "全部解析";
+}
+function renderReviewQuestion(q) {
+  const choice = examState.answers[q.id] || "";
+  const correct = choice === q.answer;
+  const s = qState(q.id);
+  return `<section class="qcard ${correct ? "correct" : "wrong"}"><div class="meta"><span class="chip qno">${sourceLabel(q.source)} Q${esc(q.localId)}</span><span class="chip">Chapter ${q.chapter}</span><span class="chip ${correct ? sourceClass(q.source) : "mode-warn"}">${correct ? "本次正确" : "本次错误"}</span>${examState.uncertain[q.id] ? `<span class="chip mode-warn">本次不确定</span>` : ""}${s.wrong ? `<span class="chip mode-warn">已入全局错题</span>` : ""}${s.flagged ? `<span class="chip mode-warn">已收藏</span>` : ""}</div><p class="stem">${esc(q.stem)}</p>${answerDetailHtml(q, choice, correct)}<div class="actions"><button class="btn" onclick="togglePracticeFlag('${q.id}')">${s.flagged ? "取消收藏" : "收藏"}</button>${s.wrong ? `<button class="btn" onclick="clearGlobalWrong('${q.id}')">移出全局错题</button>` : ""}</div></section>`;
+}
+function renderExam() {
+  document.getElementById("practiceBar").classList.add("hide");
+  document.getElementById("examBar").classList.remove("hide");
+  const qs = currentExamQuestions();
+  const answered = qs.filter((q) => examState.answers[q.id]).length;
+  const uncertain = qs.filter((q) => examState.uncertain[q.id]).length;
+  document.getElementById("stats").innerHTML = [`<div class="stat">${qs.length || 10}<small>模考题数</small></div>`,`<div class="stat">${answered}<small>已答</small></div>`,`<div class="stat">${uncertain}<small>不确定</small></div>`].join("");
+  document.getElementById("examCount").textContent = examState.submitted ? "已提交，可查看总分、章节正确率和题源正确率" : (examState.started ? `第 ${examState.index + 1}/${qs.length} 题，全部乱序` : "请选择模考类型后开始");
+  updateTimer();
+  renderExamNav();
+  document.getElementById("questionGrid").innerHTML = renderExamQuestion();
+  tickTimer();
+}
+function setMode(next) {
+  mode = next;
+  document.getElementById("practiceTab").classList.toggle("active", mode === "practice");
+  document.getElementById("examTab").classList.toggle("active", mode === "exam");
+  clearInterval(timerId);
+  renderAll();
+}
+function renderAll() {
+  if (mode === "practice") renderPractice();
+  else renderExam();
+}
+
+document.getElementById("practiceTab").addEventListener("click", () => setMode("practice"));
+document.getElementById("examTab").addEventListener("click", () => setMode("exam"));
+document.getElementById("search").addEventListener("input", (e) => { query = e.target.value.trim(); visibleLimit = 50; renderAll(); });
+document.querySelectorAll("[data-filter]").forEach((btn) => btn.addEventListener("click", () => { currentFilter = btn.dataset.filter; visibleLimit = 50; renderAll(); }));
+document.getElementById("shufflePractice").addEventListener("click", () => { practiceOrder = shuffle(practiceOrder); renderAll(); });
+document.getElementById("copyPracticeWrong").addEventListener("click", () => copyText(buildPracticeWrongText()));
+document.getElementById("resetPractice").addEventListener("click", () => { if (confirm("确定清空练习记录吗？")) { practiceState = {}; save(PRACTICE_KEY, practiceState); renderAll(); } });
+document.getElementById("startExam").addEventListener("click", startExam);
+document.getElementById("submitExam").addEventListener("click", () => submitExam(true));
+document.getElementById("examType").addEventListener("change", () => { examState = defaultExamState(); save(EXAM_KEY, examState); renderAll(); });
+document.getElementById("toTop").addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG Design Polish Sample</title>
+<style>
+:root{
+  --bg:#f5f5f5;
+  --surface:#ffffff;
+  --surface-soft:#fafafa;
+  --text:#242424;
+  --muted:#616161;
+  --line:#d1d1d1;
+  --line-soft:#e0e0e0;
+  --blue:#0f6cbd;
+  --blue-hover:#115ea3;
+  --blue-soft:#ebf3fc;
+  --teal:#0f7b7b;
+  --teal-soft:#e4f8f8;
+  --indigo:#5b5fc7;
+  --indigo-soft:#f7f0ff;
+  --gold:#8a5a00;
+  --gold-soft:#fff4ce;
+  --green:#107c10;
+  --green-soft:#f1faf1;
+  --green-line:#9fd89f;
+  --red:#c42b1c;
+  --red-soft:#fff4f4;
+  --red-line:#eeacb2;
+  --shadow:0 1px 2px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(180deg,#f8fbff 0,#f5f5f5 260px);
+  letter-spacing:0;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.page{max-width:1240px;margin:0 auto;padding:28px 24px 56px}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:22px;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:26px;
+  padding:0 10px;
+  border:1px solid #b4d6fa;
+  border-radius:999px;
+  color:var(--blue);
+  background:var(--blue-soft);
+  font-size:13px;
+  font-weight:700;
+}
+h1{
+  margin:12px 0 8px;
+  font-size:48px;
+  line-height:1.05;
+  font-weight:760;
+}
+.lead{margin:0;color:#424242;font-size:17px;line-height:1.7}
+.top-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.btn{
+  min-height:42px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--surface);
+  color:var(--text);
+  padding:0 16px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 1px 1px rgba(0,0,0,.04);
+  transition:background .15s ease,border-color .15s ease,transform .15s ease,box-shadow .15s ease;
+}
+.btn:hover{background:#f8f8f8;border-color:#bdbdbd;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.primary:hover{background:var(--blue-hover);border-color:var(--blue-hover)}
+.btn.danger{color:var(--red);border-color:var(--red-line);background:#fff}
+.btn.success{color:var(--green);border-color:var(--green-line);background:#fff}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(104px,1fr));
+  gap:12px;
+  margin:22px 0 16px;
+}
+.stat{
+  position:relative;
+  min-height:86px;
+  padding:16px 16px 12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:0 1px 2px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+.stat:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:4px;
+  background:var(--tone,var(--blue));
+}
+.stat strong{display:block;font-size:31px;line-height:1;font-weight:760}
+.stat small{display:block;margin-top:10px;color:var(--muted);font-weight:700}
+.stat.textbook{--tone:#2563eb}
+.stat.p300{--tone:var(--teal)}
+.stat.official{--tone:var(--indigo)}
+.stat.done{--tone:#64748b}
+.stat.wrong{--tone:var(--red)}
+.stat.fav{--tone:var(--gold)}
+.toolbar{
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+  padding:18px;
+  margin:18px 0 18px;
+}
+.segmented,.filters{display:flex;gap:10px;flex-wrap:wrap}
+.segmented{margin-bottom:12px}
+.tab,.filter{
+  min-height:40px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--surface);
+  padding:0 14px;
+  color:#323130;
+  font-weight:700;
+}
+.tab.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.filter.textbook{background:var(--blue-soft);border-color:#b4d6fa;color:#174ea6}
+.filter.p300{background:var(--teal-soft);border-color:#9bd9db;color:#006c70}
+.filter.official{background:var(--indigo-soft);border-color:#d8b7ff;color:#6b3f99}
+.filter.wrong{background:var(--red-soft);border-color:var(--red-line);color:var(--red)}
+.filter.fav{background:var(--gold-soft);border-color:#f5d56a;color:var(--gold)}
+.search-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;margin-top:12px}
+.search{
+  width:100%;
+  min-height:44px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+  padding:0 14px;
+  color:var(--text);
+}
+.meta-line{margin-top:12px;color:var(--muted);font-weight:700}
+.question-list{display:grid;gap:16px}
+.question{
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:0 1px 2px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+.q-main{padding:18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:0 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  color:#424242;
+  font-size:13px;
+  font-weight:750;
+}
+.chip.source-textbook{background:var(--blue-soft);border-color:#b4d6fa;color:#174ea6}
+.chip.source-p300{background:var(--teal-soft);border-color:#9bd9db;color:#006c70}
+.chip.source-official{background:var(--indigo-soft);border-color:#d8b7ff;color:#6b3f99}
+.chip.chapter{background:#fff;border-color:#c7d2fe;color:#3730a3}
+.chip.topic{background:var(--gold-soft);border-color:#f5d56a;color:var(--gold)}
+.chip.wrong{background:var(--red-soft);border-color:var(--red-line);color:var(--red)}
+.stem{font-size:20px;line-height:1.45;font-weight:760;margin:0 0 14px}
+.stem-zh{
+  margin:-4px 0 16px;
+  color:#424242;
+  line-height:1.6;
+  padding-left:12px;
+  border-left:3px solid #b4d6fa;
+}
+.options{display:grid;gap:10px}
+.option{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  align-items:start;
+  gap:10px;
+  min-height:52px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+  padding:13px 14px;
+}
+.option .letter{font-weight:800;color:var(--blue)}
+.option.correct{
+  border-color:var(--green-line);
+  background:var(--green-soft);
+  box-shadow:inset 4px 0 0 var(--green);
+}
+.option.wrong{
+  border-color:var(--red-line);
+  background:var(--red-soft);
+  box-shadow:inset 4px 0 0 var(--red);
+}
+.q-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.answer{
+  border-top:1px solid var(--line);
+  background:var(--surface-soft);
+}
+.answer-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 18px;
+  border-bottom:1px solid var(--line-soft);
+}
+.result{
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  padding:0 10px;
+  border-radius:6px;
+  font-weight:800;
+}
+.result.ok{background:var(--green-soft);color:var(--green);border:1px solid var(--green-line)}
+.result.bad{background:var(--red-soft);color:var(--red);border:1px solid var(--red-line)}
+.answer-body{display:grid;gap:14px;padding:16px 18px 18px}
+.block{border-top:1px solid var(--line-soft);padding-top:14px}
+.block:first-child{border-top:0;padding-top:0}
+.block h3{margin:0 0 8px;font-size:15px}
+.block p{margin:0;color:#323130;line-height:1.65}
+.key{color:var(--blue);font-weight:850}
+.key-red{color:var(--red);font-weight:850}
+.key-gold{color:var(--gold);font-weight:850}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini-board{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:8px;
+  margin-top:14px;
+}
+.bubble{
+  min-height:34px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  color:#424242;
+  font-weight:800;
+}
+.bubble.done{background:var(--green-soft);border-color:var(--green-line);color:var(--green)}
+.bubble.bad{background:var(--red-soft);border-color:var(--red-line);color:var(--red)}
+.bubble.unsure{background:var(--gold-soft);border-color:#f5d56a;color:var(--gold)}
+@media (max-width:900px){
+  .page{padding:22px 14px 44px}
+  .topbar{display:block}
+  .top-actions{justify-content:flex-start;margin-top:16px}
+  h1{font-size:38px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .search-row{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .mini-board{grid-template-columns:repeat(5,1fr)}
+}
+@media (max-width:520px){
+  h1{font-size:36px}
+  .lead{font-size:16px}
+  .stats{grid-template-columns:1fr}
+  .stat{min-height:78px}
+  .stem{font-size:18px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="topbar">
+    <div>
+      <span class="eyebrow">Fluent 2 学习工具样板</span>
+      <h1>综合题库</h1>
+      <p class="lead">先按章节练习掌握基础，再用混合题库和模考做最后查漏补缺。</p>
+    </div>
+    <div class="top-actions">
+      <a class="btn" href="index.html">返回主页</a>
+      <a class="btn primary" href="question-bank.html">进入题库</a>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><strong>834</strong><small>总题</small></div>
+    <div class="stat textbook"><strong>258</strong><small>教材</small></div>
+    <div class="stat p300"><strong>376</strong><small>P300</small></div>
+    <div class="stat official"><strong>200</strong><small>官方</small></div>
+    <div class="stat done"><strong>42</strong><small>已做</small></div>
+    <div class="stat wrong"><strong>8</strong><small>错题</small></div>
+    <div class="stat fav"><strong>6</strong><small>收藏</small></div>
+  </section>
+
+  <section class="toolbar">
+    <div class="segmented">
+      <button class="tab active">练习模式</button>
+      <button class="tab">模考模式</button>
+    </div>
+    <div class="filters">
+      <button class="filter textbook">教材</button>
+      <button class="filter p300">P300</button>
+      <button class="filter official">官方</button>
+      <button class="filter">Ch.1</button>
+      <button class="filter wrong">错题</button>
+      <button class="filter fav">收藏</button>
+    </div>
+    <div class="search-row">
+      <input class="search" value="" placeholder="搜索题干、知识点、解析、P300页码">
+      <button class="btn primary">随机顺序</button>
+      <button class="btn">复制错题</button>
+    </div>
+    <div class="meta-line">当前符合条件 834 题，已显示 60 题</div>
+  </section>
+
+  <section class="question-list">
+    <article class="question">
+      <div class="q-main">
+        <div class="chips">
+          <span class="chip source-textbook">教材 Q1</span>
+          <span class="chip chapter">Ch.1</span>
+          <span class="chip topic">Short-termism</span>
+        </div>
+        <h2 class="stem">Which of the following investment approaches is most likely to be at risk of short-termism?</h2>
+        <p class="stem-zh">以下哪一种投资方法最可能面临短期主义风险？</p>
+        <div class="options">
+          <div class="option"><span class="letter">A.</span><span>ESG investing<br>ESG 投资</span></div>
+          <div class="option"><span class="letter">B.</span><span>Impact investing<br>影响力投资</span></div>
+          <div class="option correct"><span class="letter">C.</span><span>Conventional investing<br>传统投资</span></div>
+        </div>
+        <div class="q-actions">
+          <button class="btn">收藏</button>
+          <button class="btn">重做本题</button>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="answer-head">
+          <span class="result ok">回答正确</span>
+          <strong>正确答案：C</strong>
+        </div>
+        <div class="answer-body">
+          <div class="block">
+            <h3>解析</h3>
+            <p>C is correct. Conventional financial investing is subject to <span class="key">short-termism</span>, where investors trade based on short-term price movements rather than long-term value.</p>
+            <p>C 正确。传统金融投资更容易受<span class="key">短期主义</span>影响，投资者更关注短期价格波动，而不是长期价值创造。</p>
+          </div>
+          <div class="two-col">
+            <div class="block">
+              <h3>英文题眼</h3>
+              <p><span class="key">risk of short-termism</span> 指向 conventional investing。</p>
+            </div>
+            <div class="block">
+              <h3>中文反推</h3>
+              <p>看到<span class="key">短期主义风险</span>，优先排除 ESG 和 impact investing。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="question">
+      <div class="q-main">
+        <div class="chips">
+          <span class="chip source-p300">P300 Q35</span>
+          <span class="chip chapter">Ch.2</span>
+          <span class="chip topic">Asset classes</span>
+          <span class="chip wrong">错题本</span>
+        </div>
+        <h2 class="stem">Which asset class had the highest allocation in global ESG investing in 2018?</h2>
+        <p class="stem-zh">2018 年全球 ESG 投资中，哪类资产配置占比最高？</p>
+        <div class="options">
+          <div class="option wrong"><span class="letter">A.</span><span>Real estate<br>房地产</span></div>
+          <div class="option correct"><span class="letter">B.</span><span>Public equity<br>上市股票</span></div>
+          <div class="option"><span class="letter">C.</span><span>Private equity / venture capital<br>私募股权 / 风险投资</span></div>
+        </div>
+        <div class="q-actions">
+          <button class="btn">收藏</button>
+          <button class="btn">重做本题</button>
+          <button class="btn success">已掌握</button>
+        </div>
+      </div>
+      <div class="answer">
+        <div class="answer-head">
+          <span class="result bad">回答错误</span>
+          <strong>正确答案：B</strong>
+        </div>
+        <div class="answer-body">
+          <div class="block">
+            <h3>解析</h3>
+            <p>Listed equity has the highest allocation of asset classes, followed by fixed income. Real estate has a much lower allocation.</p>
+            <p>上市股票在 ESG 投资资产类别中占比最高，其次是固定收益。房地产占比较低。</p>
+          </div>
+          <div class="two-col">
+            <div class="block">
+              <h3>中文反推</h3>
+              <p>问<span class="key">资产类别最高占比</span>，优先想到<span class="key">上市股票</span>，不是房地产。</p>
+            </div>
+            <div class="block">
+              <h3>易错提醒</h3>
+              <p><span class="key-red">Real estate</span> 和 <span class="key-red">Private equity / VC</span> 占比都低，容易被题目中的熟悉名词带偏。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="question">
+      <div class="q-main">
+        <div class="chips">
+          <span class="chip source-official">官方 M1-Q56</span>
+          <span class="chip chapter">Ch.8</span>
+          <span class="chip topic">Green bonds</span>
+        </div>
+        <h2 class="stem">Mock mode keeps the page quieter and hides learning tags while answering.</h2>
+        <p class="stem-zh">模考时界面应更安静，作答过程中不显示学习标签，提交后再复盘。</p>
+        <div class="mini-board" aria-label="mock progress">
+          <span class="bubble done">1</span><span class="bubble done">2</span><span class="bubble bad">3</span><span class="bubble">4</span><span class="bubble unsure">5</span>
+          <span class="bubble">6</span><span class="bubble">7</span><span class="bubble">8</span><span class="bubble">9</span><span class="bubble">10</span>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+</body>
+</html>

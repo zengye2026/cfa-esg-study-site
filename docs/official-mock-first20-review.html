@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>官方 Mock 前 20 题复查</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #64748b;
+      --line: #dbe4ef;
+      --soft: #f7fafc;
+      --accent: #2563eb;
+      --ok: #15803d;
+      --warn: #b45309;
+      --bad: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: #eef3f8;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 18px 52px;
+    }
+    .top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .home {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+    .metric span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .notice {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #334155;
+      padding: 12px 14px;
+      margin: 18px 0;
+      font-weight: 700;
+    }
+    .notice strong {
+      color: #0f172a;
+    }
+    .question {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px;
+      margin: 14px 0;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 2px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--soft);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .tag.answer {
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+      color: var(--ok);
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+    .zh-stem {
+      margin: 0 0 12px;
+      color: #475569;
+      font-weight: 700;
+    }
+    .options {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .option {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fff;
+    }
+    .option.correct {
+      border-color: #86efac;
+      background: #f0fdf4;
+    }
+    .letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      margin-right: 8px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      font-weight: 800;
+    }
+    .option.correct .letter {
+      background: #22c55e;
+      color: #fff;
+    }
+    .opt-en {
+      font-weight: 700;
+    }
+    .opt-zh {
+      margin: 5px 0 0 36px;
+      color: #475569;
+    }
+    .block {
+      border-top: 1px solid var(--line);
+      padding-top: 13px;
+      margin-top: 13px;
+    }
+    .block h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      color: #0f172a;
+      letter-spacing: 0;
+    }
+    .block-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .block-title h3 {
+      margin: 0;
+    }
+    .explain-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #c7d2fe;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .explain-tag.medium {
+      border-color: #fde68a;
+      background: #fffbeb;
+      color: #92400e;
+    }
+    .explain-tag.reference {
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .block p {
+      margin: 6px 0;
+    }
+    .en {
+      color: #1f2937;
+    }
+    .zh {
+      color: #334155;
+    }
+    .hooks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 7px;
+    }
+    .hook {
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 3px 9px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .logic {
+      color: #365314;
+      font-weight: 800;
+    }
+    .trap {
+      color: var(--bad);
+      font-weight: 700;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .hide { display: none; }
+    @media (max-width: 760px) {
+      .top { display: block; }
+      .home { margin-top: 12px; }
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="top">
+      <div>
+        <h1>官方 Mock 前 20 题复查</h1>
+        <p class="sub">用于确认官方题进入正式题库前的解析口径。当前只展示 Mock 1 的前 20 题。</p>
+      </div>
+      <a class="home" href="./index.html">返回主页</a>
+    </section>
+
+    <section class="summary" id="summary"></section>
+
+    <section class="notice">
+      <strong>复查提醒：</strong>官方 Mock 原文件只有答案，没有官方详细解析；本页解析为学习辅助，解析标题旁会标注可信度。
+    </section>
+
+    <section id="list"></section>
+  </main>
+
+  <script src="./official-mock-data.js"></script>
+  <script>
+    const questions = (window.OFFICIAL_MOCK_BANK?.questions || []).slice(0, 20);
+    function esc(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[ch]));
+    }
+
+    function renderSummary() {
+      const chapters = [...new Set(questions.map((q) => q.chapter))].length;
+      const enhanced = questions.filter((q) => q.stemZh && q.explanationZh && q.keywordEn?.length).length;
+      const answered = questions.filter((q) => q.answer).length;
+      document.getElementById("summary").innerHTML = `
+        <div class="metric"><strong>${questions.length}</strong><span>复查题数</span></div>
+        <div class="metric"><strong>${chapters}</strong><span>涉及章节</span></div>
+        <div class="metric"><strong>${enhanced}</strong><span>已补学习字段</span></div>
+        <div class="metric"><strong>${answered}</strong><span>已识别答案</span></div>
+      `;
+    }
+
+    function optionHtml(q) {
+      return (q.options || []).map((opt) => `
+        <div class="option ${opt.letter === q.answer ? "correct" : ""}">
+          <div><span class="letter">${esc(opt.letter)}</span><span class="opt-en">${esc(opt.text)}</span></div>
+          ${opt.zh ? `<p class="opt-zh">${esc(opt.zh)}</p>` : ""}
+        </div>
+      `).join("");
+    }
+
+    function explanationTags(q) {
+      const tags = [];
+      if (q.referenceMatch) tags.push(`<span class="explain-tag reference">相似题参考</span>`);
+      if (q.classificationConfidence === "中") tags.push(`<span class="explain-tag medium">AI解析·中置信</span>`);
+      else tags.push(`<span class="explain-tag">AI解析·高置信</span>`);
+      return tags.join("");
+    }
+
+    function questionHtml(q) {
+      return `
+        <article class="question" data-confidence="${esc(q.classificationConfidence)}">
+          <div class="meta">
+            <span class="tag">${esc(q.officialId)}</span>
+            <span class="tag">Ch.${esc(q.chapter)}</span>
+            <span class="tag answer">答案 ${esc(q.answer)}</span>
+          </div>
+          <h2>${esc(q.stem)}</h2>
+          ${q.stemZh ? `<p class="zh-stem">${esc(q.stemZh)}</p>` : ""}
+          <div class="options">${optionHtml(q)}</div>
+          <div class="block">
+            <div class="block-title"><h3>解析</h3>${explanationTags(q)}</div>
+            <p class="en">${esc(q.explanationEn || "")}</p>
+            <p class="zh">${esc(q.explanationZh || "")}</p>
+          </div>
+          <div class="block">
+            <h3>英文题眼</h3>
+            <div class="hooks">${(q.keywordEn || []).map((kw) => `<span class="hook">${esc(kw)}</span>`).join("")}</div>
+          </div>
+          <div class="block">
+            <h3>中文反推</h3>
+            <p>${esc(q.reverseZh || "")}</p>
+          </div>
+          <div class="block">
+            <h3>逻辑等式</h3>
+            <p class="logic">${esc(q.logic || "")}</p>
+          </div>
+          <div class="block">
+            <h3>易错提醒</h3>
+            <p class="trap">${esc(q.trap || "")}</p>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderList() {
+      document.getElementById("list").innerHTML = questions.map(questionHtml).join("");
+    }
+
+    renderSummary();
+    renderList();
+  </script>
+</body>
+</html>

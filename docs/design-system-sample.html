@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESG 题库设计系统样板</title>
+<style>
+:root{
+  --page:#f5f7fb;
+  --surface:#ffffff;
+  --surface-2:#f2f5f9;
+  --ink:#111827;
+  --muted:#475467;
+  --subtle:#667085;
+  --line:#d9e1ec;
+  --line-strong:#aeb8c7;
+  --blue:#0f62fe;
+  --blue-deep:#0043ce;
+  --blue-soft:#eef5ff;
+  --blue-line:#b8d3ff;
+  --textbook-bg:#eef5ff;
+  --textbook-ink:#0043ce;
+  --textbook-line:#b8d3ff;
+  --p300-bg:#eaf8ff;
+  --p300-ink:#03658c;
+  --p300-line:#a6dff3;
+  --official-bg:#f0f2ff;
+  --official-ink:#3730a3;
+  --official-line:#c4cbff;
+  --chapter-bg:#f3f7fc;
+  --chapter-ink:#344054;
+  --chapter-line:#d5deea;
+  --knowledge-bg:#fff7df;
+  --knowledge-ink:#7a4b00;
+  --knowledge-line:#f4c95d;
+  --ok-bg:#ecfdf3;
+  --ok-ink:#087443;
+  --ok-line:#75d99b;
+  --bad-bg:#fff1f3;
+  --bad-ink:#b42336;
+  --bad-line:#f4a2ad;
+  --warn-bg:#fff7df;
+  --warn-ink:#7a4b00;
+  --warn-line:#f4c95d;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 20px rgba(16,24,40,.04);
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family:var(--font);
+  line-height:1.6;
+}
+button,input{font-family:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 72px}
+.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:16px}
+h1{margin:0;font-size:32px;line-height:1.15;letter-spacing:0;font-weight:760}
+.lead{margin:8px 0 0;color:var(--muted);font-size:15px}
+.home{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:8px 12px;
+  text-decoration:none;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  color:var(--blue-deep);
+  font-weight:760;
+}
+.toolbar{
+  position:sticky;
+  top:0;
+  z-index:5;
+  padding:10px 0 12px;
+  background:rgba(245,247,251,.94);
+  backdrop-filter:blur(10px);
+}
+.panel{
+  display:grid;
+  gap:12px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+.stats,.row,.meta,.actions,.result-bar,.hooks{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.stat{
+  min-width:78px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+}
+.stat strong{display:block;font-size:28px;line-height:1;font-weight:820;letter-spacing:0}
+.stat span{display:block;margin-top:5px;font-size:13px;font-weight:760;color:var(--subtle)}
+.stat.textbook{background:var(--textbook-bg);border-color:var(--textbook-line);color:var(--textbook-ink)}
+.stat.p300{background:var(--p300-bg);border-color:var(--p300-line);color:var(--p300-ink)}
+.stat.official{background:var(--official-bg);border-color:var(--official-line);color:var(--official-ink)}
+.stat.done{background:var(--blue-soft);border-color:var(--blue-line);color:var(--blue-deep)}
+.stat.wrong{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad-ink)}
+.stat.bookmark{background:var(--knowledge-bg);border-color:var(--knowledge-line);color:var(--knowledge-ink)}
+.stat.textbook span,.stat.p300 span,.stat.official span,.stat.done span,.stat.wrong span,.stat.bookmark span{color:inherit;opacity:.82}
+.btn,.search{
+  min-height:38px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+  color:var(--muted);
+  padding:8px 12px;
+  font-size:13px;
+  font-weight:760;
+}
+.btn{cursor:pointer}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.textbook{background:var(--textbook-bg);border-color:var(--textbook-line);color:var(--textbook-ink)}
+.btn.p300{background:var(--p300-bg);border-color:var(--p300-line);color:var(--p300-ink)}
+.btn.official{background:var(--official-bg);border-color:var(--official-line);color:var(--official-ink)}
+.btn.chapter{background:var(--chapter-bg);border-color:var(--chapter-line);color:var(--chapter-ink)}
+.btn.state-wrong{color:var(--bad-ink);border-color:var(--bad-line);background:var(--bad-bg)}
+.btn.state-bookmark{color:var(--knowledge-ink);border-color:var(--knowledge-line);background:var(--knowledge-bg)}
+.btn:hover{border-color:var(--line-strong)}
+.search{flex:1;min-width:min(360px,100%);font-weight:600;color:var(--subtle)}
+.countline{font-size:13px;color:var(--subtle);font-weight:700}
+.grid{display:grid;gap:14px;margin-top:14px}
+.qcard{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+.qcard.correct{border-color:var(--ok-line);box-shadow:0 0 0 1px rgba(117,217,155,.35),var(--shadow)}
+.qcard.wrong{border-color:var(--bad-line);box-shadow:0 0 0 1px rgba(244,162,173,.35),var(--shadow)}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:4px 8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+}
+.qno.textbook{background:var(--textbook-bg);border-color:var(--textbook-line);color:var(--textbook-ink)}
+.qno.p300{background:var(--p300-bg);border-color:var(--p300-line);color:var(--p300-ink)}
+.qno.official{background:var(--official-bg);border-color:var(--official-line);color:var(--official-ink)}
+.chapter-chip{background:var(--chapter-bg);border-color:var(--chapter-line);color:var(--chapter-ink)}
+.topic-chip{background:var(--knowledge-bg);border-color:var(--knowledge-line);color:var(--knowledge-ink)}
+.stem{margin:14px 0 12px;font-size:18px;font-weight:760;line-height:1.5;color:var(--ink)}
+.stem-zh{
+  margin:-2px 0 12px;
+  padding:9px 11px;
+  border-left:3px solid var(--blue);
+  background:#f8fbff;
+  color:#344054;
+  border-radius:0 8px 8px 0;
+  font-weight:650;
+}
+.options{display:grid;gap:9px;margin:12px 0}
+.opt{
+  display:grid;
+  grid-template-columns:32px 1fr;
+  gap:8px;
+  width:100%;
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+  padding:11px 12px;
+  font-size:15.5px;
+  line-height:1.55;
+}
+.letter{font-weight:860;color:var(--blue-deep)}
+.opt:hover{border-color:var(--blue-line);background:#fbfdff}
+.opt.selected{border-color:var(--blue);background:var(--blue-soft)}
+.opt.correct{border-color:var(--ok-line);background:var(--ok-bg);box-shadow:inset 4px 0 0 var(--ok-line)}
+.opt.wrong{border-color:var(--bad-line);background:var(--bad-bg);box-shadow:inset 4px 0 0 var(--bad-line)}
+.opt-zh{display:block;margin-top:4px;padding-top:4px;border-top:1px dashed rgba(102,112,133,.28);color:var(--subtle);font-size:14px}
+.answerbox{
+  margin-top:14px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  background:#fff;
+}
+.answer-head{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+  padding:11px 13px;
+  border-bottom:1px solid var(--line);
+  background:var(--surface-2);
+}
+.answer-head.correct{background:linear-gradient(90deg,#e6f9ee 0%,#f4fff8 100%);border-bottom-color:var(--ok-line)}
+.answer-head.wrong{background:linear-gradient(90deg,#ffe8ec 0%,#fff6f7 100%);border-bottom-color:var(--bad-line)}
+.result-ok{background:var(--ok-bg);border-color:var(--ok-line);color:var(--ok-ink)}
+.result-bad{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad-ink)}
+.result-ok::before{content:"✓";margin-right:5px;font-weight:900}
+.result-bad::before{content:"×";margin-right:5px;font-weight:900}
+.answer-body{display:grid;gap:12px;padding:14px}
+.block{border-top:1px solid #edf1f6;padding-top:12px}
+.block:first-child{border-top:0;padding-top:0}
+.block-title{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.block h3{margin:0;font-size:13px;color:var(--subtle);letter-spacing:0;font-weight:820}
+.block p{margin:0}
+.pair{display:grid;gap:8px}
+.pair .en{font-weight:680;color:#1f2937}
+.pair .zh{border-top:1px dashed rgba(102,112,133,.32);padding-top:8px;color:#344054}
+.ai-tag{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn-ink)}
+.hook{background:var(--blue-soft);border-color:var(--blue-line);color:var(--blue-deep)}
+.logic{
+  display:inline-block;
+  padding:7px 9px;
+  border:1px solid var(--blue-line);
+  border-radius:8px;
+  background:#f7fbff;
+  color:var(--blue-deep);
+  font-weight:820;
+}
+.warning{color:var(--bad-ink);font-weight:720}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.note{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:8px;
+  padding:14px;
+  color:var(--muted);
+}
+.note strong{color:var(--ink)}
+@media(max-width:760px){
+  .wrap{padding:16px 10px 64px}
+  .topline{display:block}
+  .home{margin-top:12px}
+  .toolbar{position:static}
+  .qcard{padding:14px}
+  .stem{font-size:16.5px}
+  .split{grid-template-columns:1fr}
+  .stat{min-width:72px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="topline">
+    <div>
+      <h1>ESG 题库设计系统样板</h1>
+      <p class="lead">一套正式候选风格：克制的考试蓝、金融产品的可信感、文档型解析阅读体验。</p>
+    </div>
+    <a class="home" href="./question-bank.html">返回综合题库</a>
+  </header>
+
+  <section class="toolbar">
+    <div class="panel">
+      <div class="stats">
+        <div class="stat"><strong>834</strong><span>总题</span></div>
+        <div class="stat textbook"><strong>258</strong><span>教材</span></div>
+        <div class="stat p300"><strong>376</strong><span>P300</span></div>
+        <div class="stat official"><strong>200</strong><span>官方</span></div>
+        <div class="stat done"><strong>42</strong><span>已做</span></div>
+        <div class="stat wrong"><strong>8</strong><span>错题</span></div>
+        <div class="stat bookmark"><strong>6</strong><span>收藏</span></div>
+      </div>
+      <div class="row">
+        <button class="btn active">全部</button>
+        <button class="btn textbook">教材</button>
+        <button class="btn p300">P300</button>
+        <button class="btn official">官方</button>
+        <button class="btn chapter">Ch.1</button>
+        <button class="btn chapter">Ch.7</button>
+        <button class="btn state-wrong">错题</button>
+        <button class="btn state-bookmark">收藏</button>
+      </div>
+      <div class="row">
+        <input class="search" value="搜索题干、知识点、解析、P300页码" readonly>
+        <button class="btn primary">随机顺序</button>
+        <button class="btn">复制错题</button>
+      </div>
+      <div class="countline">当前符合条件 834 题，已显示 60 题</div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <article class="qcard wrong">
+      <div class="meta">
+        <span class="chip qno official">官方 M1-Q1</span>
+        <span class="chip chapter-chip">Ch.8</span>
+        <span class="chip topic-chip">Exclusionary Screening</span>
+        <span class="chip ai-tag">AI解析·中置信</span>
+      </div>
+      <p class="stem">Asset managers are most likely to use exclusionary screening to:</p>
+      <p class="stem-zh">资产管理人最可能使用排除性筛选来做什么？</p>
+      <div class="options">
+        <div class="opt"><span class="letter">A.</span><span>identify best-in-class investments.<span class="opt-zh">识别同类最佳投资。</span></span></div>
+        <div class="opt selected wrong"><span class="letter">B.</span><span>lower a portfolio's tracking error compared to a non-ESG benchmark.<span class="opt-zh">相对于非 ESG 基准降低组合跟踪误差。</span></span></div>
+        <div class="opt correct"><span class="letter">C.</span><span>impose a set of values aligned with an ethical or normative framework.<span class="opt-zh">落实一套符合伦理或规范框架的价值观。</span></span></div>
+      </div>
+      <div class="actions">
+        <button class="btn state-bookmark">收藏</button>
+        <button class="btn">重做本题</button>
+      </div>
+      <div class="answerbox">
+        <div class="answer-head wrong">
+          <span class="chip result-bad">回答错误</span>
+          <span class="chip">正确答案：C</span>
+          <span class="chip">你的选择：B</span>
+        </div>
+        <div class="answer-body">
+          <div class="block">
+            <div class="block-title"><h3>解析</h3><span class="chip ai-tag">AI解析·中置信</span></div>
+            <div class="pair">
+              <p class="en">Exclusionary screening removes companies, sectors, or issuers from the investable universe based on values, ethics, norms, or conventions.</p>
+              <p class="zh">排除性筛选是按照价值观、伦理、规范或公约，把某些公司、行业或发行人排除在可投资范围之外。它不是同类优选，也不是主要为了降低跟踪误差。</p>
+            </div>
+          </div>
+          <div class="block">
+            <h3>英文题眼</h3>
+            <div class="hooks"><span class="chip hook">exclusionary screening</span><span class="chip hook">ethical</span><span class="chip hook">normative framework</span></div>
+          </div>
+          <div class="block"><h3>中文反推</h3><p>看到 exclusionary screening，先反推“排除不符合价值观、伦理或规范的对象”。</p></div>
+          <div class="block"><h3>逻辑等式</h3><p class="logic">Exclusionary screening = values / norms → exclude</p></div>
+          <div class="block"><h3>易错提醒</h3><p class="warning">best-in-class 是同类优选；tracking error 是组合偏离基准的程度，不是排除性筛选的核心。</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="qcard correct">
+      <div class="meta">
+        <span class="chip qno p300">P300 Q1</span>
+        <span class="chip chapter-chip">Ch.1</span>
+        <span class="chip topic-chip">Impact Investing</span>
+      </div>
+      <p class="stem">What is the feature of impact investing?</p>
+      <p class="stem-zh">影响力投资的特征是什么？</p>
+      <div class="options">
+        <div class="opt"><span class="letter">A.</span><span>Focus on generating social and environmental impact only<span class="opt-zh">只关注产生社会和环境影响</span></span></div>
+        <div class="opt"><span class="letter">B.</span><span>Focus on generating financial returns<span class="opt-zh">关注产生财务回报</span></span></div>
+        <div class="opt selected correct"><span class="letter">C.</span><span>Both<span class="opt-zh">两者都是</span></span></div>
+      </div>
+      <div class="answerbox">
+        <div class="answer-head correct">
+          <span class="chip result-ok">回答正确</span>
+          <span class="chip">正确答案：C</span>
+          <span class="chip">你的选择：C</span>
+        </div>
+        <div class="answer-body">
+          <div class="block">
+            <div class="block-title"><h3>解析</h3></div>
+            <div class="pair">
+              <p class="en">Impact investing refers to investments made with the specific intent of generating positive, measurable social or environmental impact alongside a financial return.</p>
+              <p class="zh">影响力投资是在取得财务回报的同时，产生正面且可衡量的社会或环境影响。它与慈善的区别在于仍然追求财务回报。</p>
+            </div>
+          </div>
+          <div class="block"><h3>出处</h3><p>P300 PDF P21</p></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="split">
+      <div class="note"><strong>设计重点：</strong>题卡顶部只保留来源题号、章节、知识点。AI 解析标签只在官方题出现，不和普通标签混杂。</div>
+      <div class="note"><strong>状态反馈：</strong>答错时错误选项用红色左线，正确答案仍用绿色左线；整张卡只轻微提示，不大面积染色。</div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

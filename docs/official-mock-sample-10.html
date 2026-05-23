@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>官方 Mock 模式样板</title>
+<style>
+:root{
+  --ink:#111827;--sub:#334155;--muted:#64748b;--line:#d8e0ea;--soft:#f5f7fb;--paper:#fff;
+  --blue:#1d4ed8;--green:#047857;--amber:#b45309;--rose:#be123c;--dark:#111827;
+  --blue-bg:#eff6ff;--green-bg:#f0fdf4;--amber-bg:#fffbeb;--rose-bg:#fff1f2;
+  --shadow:0 8px 22px rgba(15,23,42,.06);
+  --sans:Arial,"Microsoft YaHei","PingFang SC",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);background:var(--soft);color:var(--ink);line-height:1.62}
+button{font-family:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 16px 88px}
+.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0;letter-spacing:0}
+.home{display:inline-flex;text-decoration:none;align-items:center;justify-content:center;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:8px;padding:9px 12px;font-weight:850}
+.tabs,.stats{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0 14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-weight:900}
+.stat small{display:block;color:var(--muted);font-weight:650;margin-top:2px}
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(245,247,251,.96);backdrop-filter:blur(8px);padding:10px 0 12px;margin-bottom:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:12px;display:grid;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 11px;font-weight:850;font-size:13px;color:var(--sub);cursor:pointer;line-height:1.2}
+.btn:hover{border-color:#9fb0c4}
+.btn.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.good{color:var(--green);border-color:#bbf7d0}
+.btn.warn{color:var(--rose);border-color:#fecdd3}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.countline{font-size:13px;color:var(--muted);font-weight:750}
+.copy-status{font-size:13px;color:var(--green);font-weight:850}
+.grid{display:grid;gap:12px}
+.qcard,.result-card{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:16px;scroll-margin-top:128px}
+.qcard.correct{border-color:#86efac}.qcard.wrong{border-color:#fda4af}.qcard.flagged{border-color:#f59e0b}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:850;color:var(--sub)}
+.qno{background:var(--dark);border-color:var(--dark);color:#fff}
+.source-mock{border-color:#c7d2fe;color:#3730a3;background:#eef2ff}
+.mode-auto{border-color:#bbf7d0;color:#047857;background:var(--green-bg)}
+.mode-warn{border-color:#fde68a;color:#92400e;background:var(--amber-bg)}
+.stem{font-size:17px;font-weight:900;line-height:1.5;margin:0 0 12px;color:var(--ink);white-space:pre-wrap}
+.stem-zh{margin:8px 0 0;color:#334155;background:#f8fafc;border-left:4px solid #93c5fd;padding:8px 10px;border-radius:0 8px 8px 0;font-weight:750}
+.options{display:grid;gap:8px;margin:12px 0}
+.opt{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;padding:10px 12px;font-size:15px;line-height:1.5;cursor:pointer;display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:start}
+.opt b{color:var(--blue)}
+.opt:hover{border-color:#93c5fd}
+.opt.selected{border-color:var(--blue);background:var(--blue-bg)}
+.opt.answer{border-color:#86efac;background:var(--green-bg)}
+.opt.bad{border-color:#fda4af;background:var(--rose-bg)}
+.opt-text{display:grid;gap:4px}
+.opt-zh{color:#475569;font-size:14px;border-top:1px dashed #dbe4ef;padding-top:4px;margin-top:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.answerbox{border:1px solid var(--line);border-radius:8px;background:#fbfdff;margin-top:12px;overflow:hidden}
+.answer-head{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);font-weight:900}
+.answer-body{display:grid;gap:10px;padding:12px;background:#fff}
+.block{border-top:1px solid #edf2f7;padding-top:10px}
+.block:first-child{border-top:0;padding-top:0}
+.block h3{font-size:13px;margin:0 0 6px;color:var(--muted);letter-spacing:0}
+.block p{margin:0;white-space:pre-wrap}
+.pair{display:grid;gap:8px}
+.pair .en{color:#111827;font-weight:750}
+.pair .zh{color:#334155;border-top:1px dashed #d8e0ea;padding-top:8px}
+.hook-list,.navgrid{display:flex;gap:6px;flex-wrap:wrap}
+.hook{display:inline-flex;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;line-height:1.25}
+.logic{display:inline-block;border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3;border-radius:8px;padding:7px 9px;font-weight:900}
+.navbtn{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:#fff;font-weight:900;color:var(--sub);cursor:pointer}
+.navbtn.current{background:var(--dark);color:#fff;border-color:var(--dark)}
+.navbtn.answered{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
+.navbtn.flagged{border-color:#f59e0b;background:#fffbeb;color:#92400e}
+.timer{font-size:20px;font-weight:950;color:var(--ink)}
+.score{font-size:42px;line-height:1;font-weight:950;margin:6px 0;color:var(--ink)}
+.table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;margin-top:10px}
+.table th,.table td{border:1px solid var(--line);padding:8px;text-align:left}
+.table th{background:#f8fafc;color:#334155}
+.status-good{color:var(--green);font-weight:900}.status-mid{color:var(--amber);font-weight:900}.status-low{color:var(--rose);font-weight:900}
+.footerbar{position:fixed;right:16px;bottom:16px;display:flex;gap:8px}
+.float{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 13px;box-shadow:var(--shadow);font-weight:900;color:var(--sub);cursor:pointer;text-decoration:none}
+.hide{display:none}
+@media(max-width:720px){
+  .wrap{padding:16px 10px 78px}.qcard,.result-card{padding:13px}.stem{font-size:16px}.opt{font-size:14px;grid-template-columns:28px 1fr}
+  .footerbar{right:10px;bottom:10px}.toolbar{position:static}.score{font-size:34px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="topline">
+      <h1>官方 Mock 模式样板</h1>
+      <a class="home" href="index.html">返回主页</a>
+    </div>
+    <div class="tabs">
+      <button class="btn active" id="practiceTab">练习模式</button>
+      <button class="btn" id="examTab">模考模式</button>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section class="toolbar">
+    <div class="panel" id="practiceBar">
+      <div class="row">
+        <button class="btn primary" id="copyPracticeWrong">复制错题</button>
+        <button class="btn warn" id="resetPractice">清空练习记录</button>
+        <span class="countline" id="practiceCount"></span>
+        <span class="copy-status" id="copyStatus"></span>
+      </div>
+    </div>
+    <div class="panel hide" id="examBar">
+      <div class="row">
+        <span class="timer" id="timer">14:00</span>
+        <button class="btn primary" id="startExam">开始 / 重新开始</button>
+        <button class="btn warn" id="submitExam">提交模考</button>
+        <span class="countline" id="examCount"></span>
+      </div>
+      <div class="navgrid" id="examNav"></div>
+    </div>
+  </section>
+
+  <main class="grid" id="questionGrid"></main>
+</div>
+<div class="footerbar">
+  <button class="float" id="toTop">回到顶部</button>
+  <a class="float" href="index.html">返回主页</a>
+</div>
+
+<script>
+const CHAPTER_NAMES = {
+  1: "Introduction",
+  2: "ESG Market",
+  3: "Environmental",
+  4: "Social",
+  5: "Governance",
+  6: "Engagement",
+  7: "Analysis / Valuation",
+  8: "Portfolio",
+  9: "Mandates / Reporting",
+};
+const QUESTIONS = [
+  {
+    id: "OFFICIAL-MOCK1-Q001",
+    localId: 1,
+    chapter: 8,
+    sourceLabel: "官方 Mock 1",
+    answer: "C",
+    stem: "Asset managers are most likely to use exclusionary screening to:",
+    stemZh: "资产管理人最可能使用排除性筛选来做什么？",
+    options: [
+      { letter: "A", text: "identify best-in-class investments.", zh: "识别同类最佳投资。" },
+      { letter: "B", text: "lower a portfolio's tracking error compared to a non-ESG benchmark.", zh: "相对于非 ESG 基准降低组合跟踪误差。" },
+      { letter: "C", text: "impose a set of values aligned with an ethical or normative framework.", zh: "落实一套符合伦理或规范框架的价值观。" }
+    ],
+    explanationEn: "Exclusionary screening removes companies, sectors, or issuers from the investable universe based on values, ethics, norms, or conventions. It is not a best-in-class approach, and it is not mainly designed to reduce tracking error.",
+    explanationZh: "排除性筛选是按照价值观、伦理、规范或公约，把某些公司、行业或发行人排除在可投资范围之外。它不是同类优选，也不是主要为了降低跟踪误差。",
+    keywordEn: ["exclusionary screening", "ethical", "normative framework"],
+    reverseZh: "看到 exclusionary screening，先反推“排除不符合价值观、伦理或规范的对象”。",
+    logic: "Exclusionary screening = values / norms -> exclude",
+    trap: "best-in-class 是同类优选；tracking error 是组合偏离基准的程度，不是排除性筛选的核心。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q002",
+    localId: 2,
+    chapter: 6,
+    sourceLabel: "官方 Mock 1",
+    answer: "A",
+    stem: "The Climate Action 100+ (CA 100+) collaborative engagement:",
+    stemZh: "Climate Action 100+（CA 100+）这种协作参与的特点是什么？",
+    options: [
+      { letter: "A", text: "targets the most polluting companies.", zh: "针对污染最严重的公司。" },
+      { letter: "B", text: "has yet to attract many major institutional investors.", zh: "尚未吸引许多大型机构投资者。" },
+      { letter: "C", text: "forbids any engagement to be led by a single investor.", zh: "禁止任何参与活动由单一投资者牵头。" }
+    ],
+    explanationEn: "CA 100+ is a collaborative investor initiative focused on major greenhouse gas emitters. It has attracted many institutional investors and does not mean that every engagement must avoid a lead investor.",
+    explanationZh: "CA 100+ 是投资者协作倡议，重点面向温室气体排放较高的大型公司。它已经吸引很多机构投资者，也不是说每次参与都不能由某个投资者牵头。",
+    keywordEn: ["Climate Action 100+", "collaborative engagement", "most polluting companies"],
+    reverseZh: "看到 CA 100+，优先想到“投资者联合推动高排放公司改善气候治理”。",
+    logic: "CA 100+ = collaborative engagement -> major emitters",
+    trap: "不要被 has yet to attract 迷惑，CA 100+ 的特点恰恰是大型机构参与度高。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q003",
+    localId: 3,
+    chapter: 8,
+    sourceLabel: "官方 Mock 1",
+    answer: "C",
+    stem: "Which of the following strategic asset allocation model(s) is highly sensitive to baseline assumptions?",
+    stemZh: "以下哪种战略资产配置模型对基础假设高度敏感？",
+    options: [
+      { letter: "A", text: "Mean-variance optimization (MVO) only", zh: "只有均值方差优化（MVO）。" },
+      { letter: "B", text: "Liability driven asset allocation (LDI) only", zh: "只有负债驱动资产配置（LDI）。" },
+      { letter: "C", text: "Both mean-variance optimization (MVO) and liability driven asset allocation (LDI)", zh: "均值方差优化（MVO）和负债驱动资产配置（LDI）都是。" }
+    ],
+    explanationEn: "Both MVO and LDI depend heavily on input assumptions. Small changes in expected returns, risk, correlations, liabilities, or discount-rate assumptions can materially change the allocation output.",
+    explanationZh: "MVO 和 LDI 都高度依赖输入假设。预期收益、风险、相关性、负债或折现率等假设稍有变化，都可能明显改变资产配置结果。",
+    keywordEn: ["strategic asset allocation", "baseline assumptions", "MVO", "LDI"],
+    reverseZh: "题干问 highly sensitive to baseline assumptions，不要只选一个模型；MVO 和 LDI 都吃假设。",
+    logic: "MVO / LDI = model output depends on assumptions",
+    trap: "只看到 MVO 就选 A 会漏掉 LDI；题目问 model(s)，要注意 Both。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q004",
+    localId: 4,
+    chapter: 8,
+    sourceLabel: "官方 Mock 1",
+    answer: "B",
+    stem: "Which of the following is most consistent with a discretionary portfolio management approach to ESG integration?",
+    stemZh: "以下哪项最符合 ESG 整合中的主动裁量型组合管理方法？",
+    options: [
+      { letter: "A", text: "Investment strategies use a custom index, typically with exclusion criteria", zh: "投资策略使用定制指数，通常带有排除标准。" },
+      { letter: "B", text: "Bottom-up financial analysis is performed along with the consideration of ESG factors", zh: "在考虑 ESG 因素的同时进行自下而上的财务分析。" },
+      { letter: "C", text: "Portfolios comprise a much larger number of securities compared to portfolios using quantitative strategies", zh: "相比量化策略，组合包含更多证券。" }
+    ],
+    explanationEn: "A discretionary ESG approach relies on portfolio manager judgment and fundamental bottom-up analysis, with ESG factors considered alongside financial analysis.",
+    explanationZh: "裁量型 ESG 方法依赖基金经理判断和基本面自下而上分析，把 ESG 因素和财务分析一起考虑。",
+    keywordEn: ["discretionary", "bottom-up", "ESG integration"],
+    reverseZh: "看到 discretionary，优先反推“主动判断、基本面、自下而上”。",
+    logic: "Discretionary ESG = manager judgment + bottom-up analysis",
+    trap: "custom index 更像指数化或规则型方法；大量证券更像量化或宽基组合，不是裁量型的题眼。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q005",
+    localId: 5,
+    chapter: 7,
+    sourceLabel: "官方 Mock 1",
+    answer: "C",
+    stem: "With respect to ESG reporting, smaller companies face:",
+    stemZh: "关于 ESG 报告，小公司面临什么情况？",
+    options: [
+      { letter: "A", text: "fewer resource constraints than larger companies.", zh: "比大公司面临更少的资源约束。" },
+      { letter: "B", text: "the same resource constraints as larger companies.", zh: "与大公司面临相同的资源约束。" },
+      { letter: "C", text: "more resource constraints than larger companies.", zh: "比大公司面临更多的资源约束。" }
+    ],
+    explanationEn: "Smaller companies generally have fewer staff, systems, and budgets for ESG data collection and reporting. They therefore face greater resource constraints than larger companies.",
+    explanationZh: "小公司通常在人员、系统、预算和 ESG 数据收集能力方面更弱，因此在 ESG 报告上面临更多资源约束。",
+    keywordEn: ["ESG reporting", "smaller companies", "resource constraints"],
+    reverseZh: "看到 smaller companies + reporting，优先想到“资源少、披露能力弱”。",
+    logic: "Smaller company = fewer resources -> more reporting constraints",
+    trap: "不要把“小公司业务简单”误解成报告更容易；考试关注的是资源和披露能力。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q006",
+    localId: 6,
+    chapter: 8,
+    sourceLabel: "官方 Mock 1",
+    answer: "C",
+    stem: "A coal-fired utility has no climate change adaptation strategy. Which of the following parties would be most severely impacted by a transition to a low-carbon economy?",
+    stemZh: "一家燃煤公用事业公司没有气候变化适应策略。向低碳经济转型时，哪一方最可能受到最严重影响？",
+    options: [
+      { letter: "A", text: "Creditors", zh: "债权人。" },
+      { letter: "B", text: "Bondholders", zh: "债券持有人。" },
+      { letter: "C", text: "Equity shareholders", zh: "股东。" }
+    ],
+    explanationEn: "Equity shareholders are residual claimants. If a coal-fired utility is poorly prepared for the low-carbon transition, losses in firm value are likely to hit equity holders most severely before fixed claims are affected.",
+    explanationZh: "股东是剩余索取人。燃煤公用事业公司如果没有低碳转型应对策略，公司价值受损通常最先、最直接体现在股东权益上，严重程度高于固定收益债权。",
+    keywordEn: ["coal-fired utility", "transition to a low-carbon economy", "equity shareholders"],
+    reverseZh: "看到 coal-fired + low-carbon transition，先判断转型风险；问谁最严重，优先看股东这个剩余索取人。",
+    logic: "Transition risk hurts firm value -> equity bears residual loss",
+    trap: "creditors 和 bondholders 也有风险，但题目问 most severely impacted，股东承担剩余风险更高。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q007",
+    localId: 7,
+    chapter: 7,
+    sourceLabel: "官方 Mock 1",
+    answer: "B",
+    stem: "The introduction of environmental regulation has significant negative effects on a company's competitors but no impact on the company. The most appropriate way to reflect this in a discounted cash flow analysis of the company is to:",
+    stemZh: "新的环境监管对某公司竞争对手有重大负面影响，但对该公司没有影响。在该公司的 DCF 分析中，最合适的反映方式是什么？",
+    options: [
+      { letter: "A", text: "increase the discount rate.", zh: "提高折现率。" },
+      { letter: "B", text: "increase projected cash flows.", zh: "提高预计现金流。" },
+      { letter: "C", text: "decrease the terminal growth rate.", zh: "降低终值增长率。" }
+    ],
+    explanationEn: "If regulation hurts competitors but not the company, the company may gain market share or pricing power. In a DCF model, this advantage is best reflected through higher projected cash flows rather than a higher discount rate.",
+    explanationZh: "如果监管打击竞争对手但不影响本公司，本公司可能获得市场份额或定价优势。在 DCF 中，这种优势最适合通过提高预计现金流来体现，而不是提高折现率。",
+    keywordEn: ["competitors", "no impact on the company", "DCF", "projected cash flows"],
+    reverseZh: "监管伤害竞争对手但不伤害本公司 = 本公司相对受益，DCF 里反映为现金流更高。",
+    logic: "Competitors hurt + company unaffected -> competitive advantage -> cash flows up",
+    trap: "increase discount rate 表示风险上升；本题对公司没有直接负面影响，所以不能选 A。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q008",
+    localId: 8,
+    chapter: 2,
+    sourceLabel: "官方 Mock 1",
+    answer: "C",
+    stem: "An environmental objective of the EU Taxonomy Regulation is the transition to:",
+    stemZh: "EU Taxonomy Regulation 的一个环境目标是向什么转型？",
+    options: [
+      { letter: "A", text: "net zero.", zh: "净零。" },
+      { letter: "B", text: "renewable energy.", zh: "可再生能源。" },
+      { letter: "C", text: "a circular economy.", zh: "循环经济。" }
+    ],
+    explanationEn: "One of the EU Taxonomy environmental objectives is the transition to a circular economy. Net zero and renewable energy are related climate concepts, but the wording of this objective is circular economy.",
+    explanationZh: "EU Taxonomy 的环境目标之一是向循环经济转型。净零和可再生能源都是相关概念，但本题对应的正式表述是 circular economy。",
+    keywordEn: ["EU Taxonomy Regulation", "environmental objective", "circular economy"],
+    reverseZh: "看到 EU Taxonomy 的 environmental objective，要记住其中包括 circular economy。",
+    logic: "EU Taxonomy objective -> transition to a circular economy",
+    trap: "net zero 和 renewable energy 很像正确答案，但这里考的是法规目标的具体措辞。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q009",
+    localId: 9,
+    chapter: 8,
+    sourceLabel: "官方 Mock 1",
+    answer: "A",
+    stem: "Exclusions supported by global norms are best described as:",
+    stemZh: "由全球规范支持的排除最适合描述为什么？",
+    options: [
+      { letter: "A", text: "universal exclusions.", zh: "普遍排除。" },
+      { letter: "B", text: "idiosyncratic exclusions.", zh: "个别化排除。" },
+      { letter: "C", text: "conduct-related exclusions.", zh: "行为相关排除。" }
+    ],
+    explanationEn: "Universal exclusions are based on widely accepted global norms or standards. Idiosyncratic exclusions are more investor-specific, while conduct-related exclusions focus on company behavior.",
+    explanationZh: "普遍排除通常基于广泛接受的全球规范或标准。个别化排除更偏投资者自身偏好，行为相关排除则聚焦公司的具体行为。",
+    keywordEn: ["global norms", "universal exclusions"],
+    reverseZh: "看到 global norms，优先反推 universal exclusions。",
+    logic: "Global norms -> universal exclusions",
+    trap: "conduct-related exclusions 看起来也和规范有关，但题干强调 global norms，答案更偏 universal。"
+  },
+  {
+    id: "OFFICIAL-MOCK1-Q010",
+    localId: 10,
+    chapter: 4,
+    sourceLabel: "官方 Mock 1",
+    answer: "B",
+    stem: "Analyzing which social factors are material from an investment point of view should start at the:",
+    stemZh: "从投资角度分析哪些社会因素具有重大性，应从哪个层面开始？",
+    options: [
+      { letter: "A", text: "country level.", zh: "国家层面。" },
+      { letter: "B", text: "industry level.", zh: "行业层面。" },
+      { letter: "C", text: "company level.", zh: "公司层面。" }
+    ],
+    explanationEn: "Material social factors often vary by industry. From an investment perspective, the analysis should start at the industry level before moving to company-specific circumstances.",
+    explanationZh: "具有重大性的社会因素往往因行业而异。从投资角度分析时，通常先从行业层面判断，再进一步看具体公司情况。",
+    keywordEn: ["social factors", "material", "investment point of view", "industry level"],
+    reverseZh: "看到 material social factors + investment point of view，先从 industry level 找重大性。",
+    logic: "Social materiality differs by industry -> start at industry level",
+    trap: "company level 是后续细化，不是起点；country level 更偏宏观或主权分析。"
+  }
+];
+
+const PRACTICE_KEY = "official_mock_sample_practice_v2";
+const EXAM_KEY = "official_mock_sample_exam_v2";
+const SAMPLE_SECONDS = 14 * 60;
+let mode = "practice";
+let practiceState = load(PRACTICE_KEY);
+let examState = defaultExamState();
+let timerId = null;
+
+function defaultExamState() {
+  return { started: false, submitted: false, index: 0, remaining: SAMPLE_SECONDS, answers: {}, flagged: {} };
+}
+function load(key) {
+  try { return JSON.parse(localStorage.getItem(key) || "{}"); }
+  catch (e) { return {}; }
+}
+function save(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+function esc(v) {
+  return String(v ?? "").replace(/[&<>'"]/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+  })[c]);
+}
+function keywordList(value) {
+  return Array.isArray(value) ? value : String(value || "").split(/[,;|]+/).map((x) => x.trim()).filter(Boolean);
+}
+function practiceQState(id) {
+  practiceState[id] = practiceState[id] || {};
+  return practiceState[id];
+}
+function isPracticeDone(q) {
+  return !!practiceQState(q.id).revealed;
+}
+function isPracticeWrong(q) {
+  const s = practiceQState(q.id);
+  return !!(s.revealed && s.choice !== q.answer);
+}
+function choosePractice(id, letter) {
+  const s = practiceQState(id);
+  if (s.revealed) return;
+  s.choice = letter;
+  s.revealed = true;
+  save(PRACTICE_KEY, practiceState);
+  renderAll();
+}
+function clearPracticeOne(id) {
+  practiceState[id] = {};
+  save(PRACTICE_KEY, practiceState);
+  renderAll();
+}
+function optionClass(choice, answer, optionLetter, revealed) {
+  const cls = ["opt"];
+  if (choice === optionLetter) cls.push("selected");
+  if (revealed && optionLetter === answer) cls.push("answer");
+  if (revealed && choice === optionLetter && choice !== answer) cls.push("bad");
+  return cls.join(" ");
+}
+function answerDetailHtml(q, choice, correct) {
+  return `
+    <div class="answerbox">
+      <div class="answer-head">
+        <span class="chip ${correct ? "mode-auto" : "mode-warn"}">${correct ? "回答正确" : "回答错误"}</span>
+        <span class="chip">正确答案：${esc(q.answer)}</span>
+        ${choice ? `<span class="chip">你的选择：${esc(choice)}</span>` : `<span class="chip">未作答</span>`}
+      </div>
+      <div class="answer-body">
+        <div class="block">
+          <h3>题干对照</h3>
+          <p class="en">${esc(q.stem)}</p>
+          <p class="stem-zh">${esc(q.stemZh)}</p>
+        </div>
+        <div class="block">
+          <h3>选项对照</h3>
+          <div class="options">${q.options.map((o) => `
+            <div class="opt ${o.letter === q.answer ? "answer" : ""}">
+              <b>${esc(o.letter)}</b>
+              <span class="opt-text"><span>${esc(o.text)}</span><span class="opt-zh">${esc(o.zh)}</span></span>
+            </div>`).join("")}</div>
+        </div>
+        <div class="block">
+          <h3>解析</h3>
+          <div class="pair">
+            <p class="en">${esc(q.explanationEn)}</p>
+            <p class="zh">${esc(q.explanationZh)}</p>
+          </div>
+        </div>
+        <div class="block">
+          <h3>英文题眼</h3>
+          <div class="hook-list">${keywordList(q.keywordEn).map((x) => `<span class="hook">${esc(x)}</span>`).join("")}</div>
+        </div>
+        <div class="block"><h3>中文反推</h3><p>${esc(q.reverseZh)}</p></div>
+        <div class="block"><h3>逻辑等式</h3><span class="logic">${esc(q.logic)}</span></div>
+        <div class="block"><h3>易错提醒</h3><p>${esc(q.trap)}</p></div>
+      </div>
+    </div>`;
+}
+function renderPracticeQuestion(q) {
+  const s = practiceQState(q.id);
+  const revealed = !!s.revealed;
+  const correct = revealed && s.choice === q.answer;
+  const classes = ["qcard"];
+  if (revealed) classes.push(correct ? "correct" : "wrong");
+  return `
+    <section class="${classes.join(" ")}" id="${esc(q.id)}">
+      <div class="meta">
+        <span class="chip qno">Mock 1 Q${String(q.localId).padStart(3, "0")}</span>
+        <span class="chip source-mock">${esc(q.sourceLabel)}</span>
+        <span class="chip">Chapter ${q.chapter} ${esc(CHAPTER_NAMES[q.chapter])}</span>
+      </div>
+      <p class="stem">${esc(q.stem)}</p>
+      <div class="options">${q.options.map((o) => `
+        <button class="${optionClass(s.choice, q.answer, o.letter, revealed)}" onclick="choosePractice('${q.id}','${o.letter}')">
+          <b>${esc(o.letter)}</b>
+          <span class="opt-text"><span>${esc(o.text)}</span></span>
+        </button>`).join("")}</div>
+      ${revealed ? answerDetailHtml(q, s.choice, correct) : ""}
+      <div class="actions"><button class="btn" onclick="clearPracticeOne('${q.id}')">重做本题</button></div>
+    </section>`;
+}
+function renderPractice() {
+  document.getElementById("practiceBar").classList.remove("hide");
+  document.getElementById("examBar").classList.add("hide");
+  const done = QUESTIONS.filter(isPracticeDone).length;
+  const wrong = QUESTIONS.filter(isPracticeWrong).length;
+  document.getElementById("stats").innerHTML = [
+    `<div class="stat">${QUESTIONS.length}<small>样板题数</small></div>`,
+    `<div class="stat">${done}<small>已做</small></div>`,
+    `<div class="stat">${wrong}<small>错题</small></div>`
+  ].join("");
+  document.getElementById("practiceCount").textContent = `练习模式：答题前只显示英文，点击选项后显示中文和解析`;
+  document.getElementById("questionGrid").innerHTML = QUESTIONS.map(renderPracticeQuestion).join("");
+}
+function formatWrong(q) {
+  const s = practiceQState(q.id);
+  return [
+    `官方 Mock 1 Q${q.localId} | Chapter ${q.chapter} ${CHAPTER_NAMES[q.chapter]}`,
+    `题干：${q.stem}`,
+    `中文题干：${q.stemZh}`,
+    `你的答案：${s.choice || "未做"}`,
+    `正确答案：${q.answer}`,
+    `解析：${q.explanationEn}`,
+    `中文解析：${q.explanationZh}`,
+    `英文题眼：${keywordList(q.keywordEn).join(" / ")}`,
+    `中文反推：${q.reverseZh}`,
+    `易错提醒：${q.trap}`
+  ].join("\n");
+}
+function buildPracticeWrongText() {
+  const wrong = QUESTIONS.filter(isPracticeWrong);
+  if (!wrong.length) return `官方 Mock 1 前 10 题练习错题记录\n生成时间：${new Date().toLocaleString()}\n\n暂无错题。`;
+  return [
+    "官方 Mock 1 前 10 题练习错题记录",
+    `生成时间：${new Date().toLocaleString()}`,
+    `错题数量：${wrong.length}`,
+    "",
+    wrong.map(formatWrong).join("\n\n---\n\n")
+  ].join("\n");
+}
+async function copyText(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopyStatus("已复制");
+  } catch (e) {
+    setCopyStatus("复制失败，请手动选择文本");
+  }
+}
+function setCopyStatus(message) {
+  const el = document.getElementById("copyStatus");
+  el.textContent = message;
+  clearTimeout(setCopyStatus.timer);
+  setCopyStatus.timer = setTimeout(() => { el.textContent = ""; }, 2600);
+}
+
+function startExam() {
+  if (!confirm("开始样板模考会清空本次模考记录。确定开始吗？")) return;
+  examState = defaultExamState();
+  examState.started = true;
+  save(EXAM_KEY, examState);
+  tickTimer();
+  renderAll();
+}
+function tickTimer() {
+  clearInterval(timerId);
+  if (mode !== "exam" || !examState.started || examState.submitted) return;
+  timerId = setInterval(() => {
+    examState.remaining = Math.max(0, examState.remaining - 1);
+    save(EXAM_KEY, examState);
+    updateTimer();
+    if (examState.remaining === 0) submitExam(false);
+  }, 1000);
+}
+function updateTimer() {
+  const m = Math.floor(examState.remaining / 60);
+  const s = examState.remaining % 60;
+  document.getElementById("timer").textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+function chooseExam(letter) {
+  if (!examState.started || examState.submitted) return;
+  const q = QUESTIONS[examState.index];
+  examState.answers[q.id] = letter;
+  save(EXAM_KEY, examState);
+  renderAll();
+}
+function gotoExam(index) {
+  examState.index = Math.max(0, Math.min(QUESTIONS.length - 1, index));
+  save(EXAM_KEY, examState);
+  renderAll();
+}
+function moveExam(delta) {
+  gotoExam(examState.index + delta);
+}
+function toggleExamFlag() {
+  const q = QUESTIONS[examState.index];
+  examState.flagged[q.id] = !examState.flagged[q.id];
+  save(EXAM_KEY, examState);
+  renderAll();
+}
+function submitExam(ask = true) {
+  if (!examState.started || examState.submitted) return;
+  const unanswered = QUESTIONS.filter((q) => !examState.answers[q.id]).length;
+  if (ask && !confirm(`还有 ${unanswered} 题未作答，确定提交吗？`)) return;
+  examState.submitted = true;
+  save(EXAM_KEY, examState);
+  clearInterval(timerId);
+  renderAll();
+}
+function renderExamNav() {
+  document.getElementById("examNav").innerHTML = QUESTIONS.map((q, i) => {
+    const cls = ["navbtn"];
+    if (i === examState.index) cls.push("current");
+    if (examState.answers[q.id]) cls.push("answered");
+    if (examState.flagged[q.id]) cls.push("flagged");
+    return `<button class="${cls.join(" ")}" onclick="gotoExam(${i})">${i + 1}</button>`;
+  }).join("");
+}
+function renderExamQuestion() {
+  if (!examState.started) {
+    return `<section class="result-card">
+      <h2>模考模式样板</h2>
+      <p>样板按 10 题 / 14 分钟演示。正式版会按 100 题 / 140 分钟设置。</p>
+      <p>模考中只显示英文题干和英文选项，不显示中文、解析、题眼。提交后再统一显示总分、章节正确率和逐题解析。</p>
+      <button class="btn primary" onclick="startExam()">开始样板模考</button>
+    </section>`;
+  }
+  if (examState.submitted) return renderExamResult();
+  const q = QUESTIONS[examState.index];
+  const choice = examState.answers[q.id];
+  return `<section class="qcard">
+    <div class="meta">
+      <span class="chip qno">Mock 1 Q${String(q.localId).padStart(3, "0")}</span>
+      <span class="chip source-mock">模考中</span>
+      <span class="chip">Chapter ${q.chapter}</span>
+      ${examState.flagged[q.id] ? `<span class="chip mode-warn">已标记</span>` : ""}
+    </div>
+    <p class="stem">${esc(q.stem)}</p>
+    <div class="options">${q.options.map((o) => `
+      <button class="${optionClass(choice, q.answer, o.letter, false)}" onclick="chooseExam('${o.letter}')">
+        <b>${esc(o.letter)}</b>
+        <span class="opt-text"><span>${esc(o.text)}</span></span>
+      </button>`).join("")}</div>
+    <div class="actions">
+      <button class="btn" onclick="moveExam(-1)" ${examState.index === 0 ? "disabled" : ""}>上一题</button>
+      <button class="btn" onclick="moveExam(1)" ${examState.index === QUESTIONS.length - 1 ? "disabled" : ""}>下一题</button>
+      <button class="btn" onclick="toggleExamFlag()">${examState.flagged[q.id] ? "取消标记" : "标记不确定"}</button>
+    </div>
+  </section>`;
+}
+function examStatsByChapter() {
+  const result = {};
+  for (const q of QUESTIONS) {
+    result[q.chapter] = result[q.chapter] || { total: 0, correct: 0 };
+    result[q.chapter].total++;
+    if (examState.answers[q.id] === q.answer) result[q.chapter].correct++;
+  }
+  return result;
+}
+function statusHtml(rate) {
+  if (rate >= 70) return `<span class="status-good">较稳</span>`;
+  if (rate >= 60) return `<span class="status-mid">需要巩固</span>`;
+  return `<span class="status-low">优先补</span>`;
+}
+function renderExamResult() {
+  const correct = QUESTIONS.filter((q) => examState.answers[q.id] === q.answer).length;
+  const rate = Math.round(correct / QUESTIONS.length * 100);
+  const byCh = examStatsByChapter();
+  const rows = Object.keys(byCh).sort((a,b) => Number(a)-Number(b)).map((ch) => {
+    const x = byCh[ch];
+    const r = Math.round(x.correct / x.total * 100);
+    return `<tr><td>Ch.${ch} ${esc(CHAPTER_NAMES[ch])}</td><td>${x.total}</td><td>${x.correct}</td><td>${r}%</td><td>${statusHtml(r)}</td></tr>`;
+  }).join("");
+  const review = QUESTIONS.map((q) => {
+    const choice = examState.answers[q.id] || "";
+    const correctOne = choice === q.answer;
+    return `<section class="qcard ${correctOne ? "correct" : "wrong"}">
+      <div class="meta">
+        <span class="chip qno">Mock 1 Q${String(q.localId).padStart(3, "0")}</span>
+        <span class="chip">Chapter ${q.chapter}</span>
+        <span class="chip ${correctOne ? "mode-auto" : "mode-warn"}">${correctOne ? "正确" : "错误"}</span>
+      </div>
+      <p class="stem">${esc(q.stem)}</p>
+      ${answerDetailHtml(q, choice, correctOne)}
+    </section>`;
+  }).join("");
+  return `<section class="result-card">
+    <h2>模考结果</h2>
+    <div class="score">${correct}/${QUESTIONS.length} · ${rate}%</div>
+    <p>${rate >= 70 ? "样板结果达到 70% 目标线。" : rate >= 60 ? "样板结果在 60%-69%，需要继续巩固。" : "样板结果低于 60%，建议优先复盘错题章节。"}</p>
+    <table class="table">
+      <thead><tr><th>章节</th><th>题数</th><th>正确</th><th>正确率</th><th>状态</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </section>
+  ${review}`;
+}
+function renderExam() {
+  document.getElementById("practiceBar").classList.add("hide");
+  document.getElementById("examBar").classList.remove("hide");
+  const answered = QUESTIONS.filter((q) => examState.answers[q.id]).length;
+  const flagged = QUESTIONS.filter((q) => examState.flagged[q.id]).length;
+  document.getElementById("stats").innerHTML = [
+    `<div class="stat">${QUESTIONS.length}<small>样板题数</small></div>`,
+    `<div class="stat">${answered}<small>已答</small></div>`,
+    `<div class="stat">${flagged}<small>标记</small></div>`
+  ].join("");
+  document.getElementById("examCount").textContent = examState.submitted ? "已提交，可查看总分和章节正确率" : `第 ${examState.index + 1}/${QUESTIONS.length} 题`;
+  updateTimer();
+  renderExamNav();
+  document.getElementById("questionGrid").innerHTML = renderExamQuestion();
+  tickTimer();
+}
+function setMode(next) {
+  mode = next;
+  document.getElementById("practiceTab").classList.toggle("active", mode === "practice");
+  document.getElementById("examTab").classList.toggle("active", mode === "exam");
+  clearInterval(timerId);
+  renderAll();
+}
+function renderAll() {
+  if (mode === "practice") renderPractice();
+  else renderExam();
+}
+document.getElementById("practiceTab").addEventListener("click", () => setMode("practice"));
+document.getElementById("examTab").addEventListener("click", () => setMode("exam"));
+document.getElementById("copyPracticeWrong").addEventListener("click", () => copyText(buildPracticeWrongText()));
+document.getElementById("resetPractice").addEventListener("click", () => {
+  if (confirm("确定清空练习记录吗？")) {
+    practiceState = {};
+    save(PRACTICE_KEY, practiceState);
+    renderAll();
+  }
+});
+document.getElementById("startExam").addEventListener("click", startExam);
+document.getElementById("submitExam").addEventListener("click", () => submitExam(true));
+document.getElementById("toTop").addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
+renderAll();
+</script>
+</body>
+</html>
