@@ -8,13 +8,14 @@
     .sort((a, b) => Number(a.localId) - Number(b.localId));
   const byLocal = new Map(questions.map((q) => [Number(q.localId), q]));
   const storageKey = `esg_chapter_practice_v2_ch${chapter}`;
+  const stableStorageKey = `esg_chapter_practice_latest_ch${chapter}`;
   const colors = ["#0f6cbd", "#0f7b7b", "#5b5fc7", "#8a5a00", "#c42b1c", "#8764b8"];
   let mode = "group";
   let groupIndex = 0;
   let visibleLimit = 60;
   let randomOrder = shuffle(questions.map((q) => q.id));
   let redoState = {};
-  let state = loadState();
+  let state = loadBestState();
 
   const chapterTitles = {
     1: "Introduction to ESG Investing",
@@ -29,6 +30,7 @@
   };
 
   const groups = normalizeGroups(cfg.groups || []);
+  mergeBankStateIntoChapter();
   migrateState();
   injectStyle();
   renderApp();
@@ -67,8 +69,94 @@
       return {};
     }
   }
+  function loadBestState() {
+    const current = loadState();
+    let best = current;
+    let bestScore = Object.keys(current).length;
+    [stableStorageKey, `esg_chapter_practice_v1_ch${chapter}`].forEach((key) => {
+      try {
+        const value = JSON.parse(localStorage.getItem(key) || "null") || {};
+        const score = Object.keys(value).length;
+        if (score > bestScore) {
+          best = value;
+          bestScore = score;
+        }
+      } catch (e) {}
+    });
+    return best;
+  }
+  function newerTime(a, b) {
+    if (!a) return b;
+    if (!b) return a;
+    return String(a) > String(b) ? a : b;
+  }
+  function mergeQuestionState(base = {}, extra = {}) {
+    const out = { ...base };
+    if (extra.flagged) out.flagged = true;
+    if (extra.everWrong) out.everWrong = true;
+    if (extra.mastered) out.mastered = true;
+    if (extra.everWrong && !extra.mastered) out.mastered = false;
+    if (extra.revealed && !out.revealed) {
+      out.revealed = true;
+      if (extra.choice) out.choice = extra.choice;
+      if (extra.grade) out.grade = extra.grade;
+    }
+    if (!out.choice && extra.choice) out.choice = extra.choice;
+    if (!out.grade && extra.grade) out.grade = extra.grade;
+    if (extra.wrongCount) out.wrongCount = Math.max(out.wrongCount || 0, extra.wrongCount || 0);
+    out.lastWrongAt = newerTime(out.lastWrongAt, extra.lastWrongAt);
+    out.masteredAt = newerTime(out.masteredAt, extra.masteredAt);
+    return out;
+  }
+  function loadBestObject(keys) {
+    let best = {};
+    let bestScore = 0;
+    keys.forEach((key) => {
+      try {
+        const value = JSON.parse(localStorage.getItem(key) || "null") || {};
+        const score = Object.keys(value).length;
+        if (score > bestScore) {
+          best = value;
+          bestScore = score;
+        }
+      } catch (e) {}
+    });
+    return best;
+  }
+  function mergeBankStateIntoChapter() {
+    const bankState = loadBestObject(["esg_question_bank_state_v3", "esg_question_bank_state_latest", "esg_question_bank_state_v2", "esg_question_bank_state_v1"]);
+    let changed = false;
+    questions.forEach((q) => {
+      if (!bankState[q.id]) return;
+      const before = JSON.stringify(state[q.id] || {});
+      state[q.id] = mergeQuestionState(state[q.id] || {}, bankState[q.id] || {});
+      if (JSON.stringify(state[q.id] || {}) !== before) changed = true;
+    });
+    if (changed) saveState();
+  }
+  function syncStateToBank() {
+    const keys = ["esg_question_bank_state_v3", "esg_question_bank_state_latest"];
+    const bankState = loadBestObject(keys);
+    questions.forEach((q) => {
+      if (!state[q.id]) return;
+      bankState[q.id] = mergeQuestionState(bankState[q.id] || {}, state[q.id] || {});
+    });
+    keys.forEach((key) => {
+      try {
+        localStorage.setItem(key, JSON.stringify(bankState));
+      } catch (e) {
+        console.warn("Study record could not be saved:", e);
+      }
+    });
+  }
   function saveState() {
-    localStorage.setItem(storageKey, JSON.stringify(state));
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+      localStorage.setItem(stableStorageKey, JSON.stringify(state));
+      syncStateToBank();
+    } catch (e) {
+      console.warn("Study record could not be saved:", e);
+    }
   }
   function qState(id) {
     state[id] = state[id] || {};
@@ -134,7 +222,7 @@
     const style = document.createElement("style");
     style.textContent = `
       :root{--ink:#242424;--muted:#424242;--soft:#616161;--bg:#f5f5f5;--card:#fff;--line:#d1d1d1;--line2:#e0e0e0;--blue:#0f6cbd;--blue-hover:#115ea3;--blue-soft:#ebf3fc;--ok:#107c10;--ok-bg:#f1faf1;--ok-line:#9fd89f;--bad:#c42b1c;--bad-bg:#fff5f5;--bad-line:#f1bbbc;--warn:#8a5a00;--warn-bg:#fff4ce;--warn-line:#f1c21b;--purple:#5b5fc7;--shadow2:0 1px 2px rgba(0,0,0,.12);--shadow4:0 2px 8px rgba(0,0,0,.14)}
-      *{box-sizing:border-box}body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62}.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 82px}.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}h1{font-size:clamp(34px,5vw,62px);line-height:1.05;margin:0;font-weight:700;letter-spacing:0;color:#111827}.lead{margin:10px 0 0;color:var(--muted);font-size:16px}.home-links{display:flex;gap:8px;flex-wrap:wrap}.home-links a,.btn{min-height:40px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--muted);padding:9px 13px;font-size:14px;font-weight:650;text-decoration:none;cursor:pointer}.home-links a:hover,.btn:hover{background:var(--blue-soft);border-color:#b4d6fa;color:var(--blue-hover)}.btn.primary,.mode-tab.active{background:var(--blue);border-color:var(--blue);color:#fff}.btn.warn{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad)}.btn.bookmark{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn)}.btn.ok{background:var(--ok-bg);border-color:var(--ok-line);color:var(--ok)}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.stat{min-width:82px;background:#fff;border:1px solid var(--line2);border-radius:8px;padding:12px 14px;box-shadow:var(--shadow2);position:relative;overflow:hidden}.stat::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--blue)}.stat.wrong::before{background:var(--bad)}.stat.flagged::before{background:var(--warn)}.stat strong{display:block;font-size:28px;line-height:1;font-weight:700}.stat small{display:block;margin-top:7px;color:var(--soft);font-size:13px;font-weight:650}.panel{background:#fff;border:1px solid var(--line2);border-radius:8px;box-shadow:var(--shadow2);padding:14px;margin-bottom:14px}.modebar,.row,.meta,.actions,.hooks{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.modebar{margin:12px 0 14px}.mode-tab{border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--muted);padding:10px 13px;font-size:14px;font-weight:700;cursor:pointer}.group-tabs{display:flex;gap:8px;flex-wrap:wrap}.group-tab{border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer}.group-tab.active{color:#fff;border-color:transparent}.hint{margin-top:10px;background:var(--blue-soft);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 12px;color:var(--muted);font-size:14px}.countline,.copy-status{color:var(--soft);font-size:13px;font-weight:650}.copy-status{color:var(--ok)}.grid{display:grid;gap:14px}.qcard{background:#fff;border:1px solid var(--line2);border-radius:8px;box-shadow:var(--shadow4);padding:18px;position:relative;overflow:hidden}.qcard.correct{border-color:var(--ok-line);background:linear-gradient(90deg,rgba(16,124,16,.08),#fff 18%)}.qcard.correct::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--ok)}.qcard.wrong{border-color:var(--bad-line);background:linear-gradient(90deg,rgba(196,43,28,.08),#fff 18%)}.qcard.wrong::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--bad)}.qcard.flagged{box-shadow:0 0 0 1px rgba(138,90,0,.18),var(--shadow4)}.chip{display:inline-flex;align-items:center;min-height:26px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:650;color:var(--muted)}.qno{background:var(--blue-soft);border-color:#b4d6fa;color:var(--blue)}.knowledge{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn)}.wrong-chip{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad)}.stem{font-size:18px;font-weight:650;line-height:1.5;margin:14px 0 12px;color:var(--ink);white-space:pre-wrap}.stem-zh{margin:-2px 0 12px;color:var(--muted);background:var(--blue-soft);border-left:3px solid var(--blue);padding:10px 12px;border-radius:0 8px 8px 0}.options{display:grid;gap:9px;margin:12px 0}.opt{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;padding:11px 12px;font-size:15.5px;line-height:1.55;cursor:pointer;display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:start}.opt b{color:var(--blue)}.opt:hover{border-color:var(--blue);background:#f8fbff}.opt.selected{border-color:var(--blue);background:var(--blue-soft)}.opt.answer{border-color:var(--ok-line);background:var(--ok-bg);box-shadow:inset 4px 0 0 var(--ok)}.opt.bad{border-color:var(--bad-line);background:var(--bad-bg);box-shadow:inset 4px 0 0 var(--bad)}.opt-text{display:grid;gap:4px}.opt-zh{color:var(--soft);font-size:14px;border-top:1px dashed var(--line);padding-top:4px;margin-top:2px}.answerbox{border:1px solid var(--line2);border-radius:8px;background:#fff;margin-top:14px;overflow:hidden}.answer-head{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:11px 13px;border-bottom:1px solid var(--line2);font-weight:650;background:#fafafa}.answer-head.answer-correct{background:var(--ok-bg);border-bottom-color:var(--ok-line)}.answer-head.answer-wrong{background:var(--bad-bg);border-bottom-color:var(--bad-line)}.result-correct{border-color:var(--ok-line);color:var(--ok)}.result-wrong{border-color:var(--bad-line);color:var(--bad)}.answer-body{display:grid;gap:12px;padding:14px}.block{border-top:1px solid var(--line2);padding-top:12px}.block:first-child{border-top:0;padding-top:0}.block h3{font-size:13px;margin:0 0 6px;color:var(--soft);font-weight:650}.block p{margin:0;white-space:pre-wrap}.pair{display:grid;gap:8px}.pair .en{color:var(--ink);font-weight:500}.pair .zh{color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}.hook{display:inline-flex;border:1px solid #b4d6fa;background:var(--blue-soft);color:var(--blue);border-radius:999px;padding:4px 8px;font-size:12px;font-weight:650}.logic{background:#fafafa;border:1px solid var(--line2);border-radius:8px;padding:10px 12px;color:var(--muted)}.empty{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:24px;text-align:center;color:var(--muted)}.loadrow{text-align:center;margin-top:16px}.float{position:fixed;right:16px;bottom:16px;z-index:20;border:1px solid var(--line);border-radius:999px;background:#fff;padding:10px 13px;box-shadow:var(--shadow4);font-weight:700;color:var(--muted);cursor:pointer}@media(max-width:720px){.wrap{padding:18px 10px 76px}h1{font-size:38px}.qcard{padding:14px}.stem{font-size:16.5px}.opt{font-size:14px;grid-template-columns:28px 1fr}.home-links{width:100%}.home-links a{flex:1;text-align:center}.modebar{display:grid;grid-template-columns:1fr 1fr}.mode-tab{min-height:42px}.float{right:10px;bottom:10px}}
+      *{box-sizing:border-box}body{margin:0;font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.62}.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 82px}.topline{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}h1{font-size:clamp(34px,5vw,62px);line-height:1.05;margin:0;font-weight:700;letter-spacing:0;color:#111827}.lead{margin:10px 0 0;color:var(--muted);font-size:16px}.home-links{display:flex;gap:8px;flex-wrap:wrap}.home-links a,.btn{min-height:40px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--muted);padding:9px 13px;font-size:14px;font-weight:650;text-decoration:none;cursor:pointer}.home-links a:hover,.btn:hover{background:var(--blue-soft);border-color:#b4d6fa;color:var(--blue-hover)}.btn.primary,.mode-tab.active{background:var(--blue);border-color:var(--blue);color:#fff}.btn.warn{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad)}.btn.bookmark{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn)}.btn.ok{background:var(--ok-bg);border-color:var(--ok-line);color:var(--ok)}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.stat{min-width:82px;background:#fff;border:1px solid var(--line2);border-radius:8px;padding:12px 14px;box-shadow:var(--shadow2);position:relative;overflow:hidden}.stat::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--blue)}.stat.wrong::before{background:var(--bad)}.stat.flagged::before{background:var(--warn)}.stat strong{display:block;font-size:28px;line-height:1;font-weight:700}.stat small{display:block;margin-top:7px;color:var(--soft);font-size:13px;font-weight:650}.panel{background:#fff;border:1px solid var(--line2);border-radius:8px;box-shadow:var(--shadow2);padding:14px;margin-bottom:14px}.modebar,.row,.meta,.actions,.hooks{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.modebar{margin:12px 0 14px}.mode-tab{border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--muted);padding:10px 13px;font-size:14px;font-weight:700;cursor:pointer}.group-tabs{display:flex;gap:8px;flex-wrap:wrap}.group-tab{border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer}.group-tab.active{color:#fff;border-color:transparent}.hint{margin-top:10px;background:var(--blue-soft);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 12px;color:var(--muted);font-size:14px}.countline,.copy-status{color:var(--soft);font-size:13px;font-weight:650}.copy-status{color:var(--ok)}.grid{display:grid;gap:14px}.qcard{background:#fff;border:1px solid var(--line2);border-radius:8px;box-shadow:var(--shadow4);padding:18px;position:relative;overflow:hidden}.qcard.correct{border-color:var(--ok-line);background:linear-gradient(90deg,rgba(16,124,16,.08),#fff 18%)}.qcard.correct::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--ok)}.qcard.wrong{border-color:var(--bad-line);background:linear-gradient(90deg,rgba(196,43,28,.08),#fff 18%)}.qcard.wrong::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--bad)}.qcard.flagged{box-shadow:0 0 0 1px rgba(138,90,0,.18),var(--shadow4)}.chip{display:inline-flex;align-items:center;min-height:26px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:650;color:var(--muted)}.qno{background:var(--blue-soft);border-color:#b4d6fa;color:var(--blue)}.knowledge{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn)}.wrong-chip{background:var(--bad-bg);border-color:var(--bad-line);color:var(--bad)}.stem{font-size:18px;font-weight:650;line-height:1.5;margin:14px 0 12px;color:var(--ink);white-space:pre-wrap}.stem-zh{margin:-2px 0 12px;color:var(--muted);background:var(--blue-soft);border-left:3px solid var(--blue);padding:10px 12px;border-radius:0 8px 8px 0}.options{display:grid;gap:9px;margin:12px 0}.opt{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;padding:11px 12px;font-size:15.5px;line-height:1.55;cursor:pointer;display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:start}.opt b{color:var(--blue)}.opt:hover{border-color:var(--blue);background:#f8fbff}.opt.selected{border-color:var(--blue);background:var(--blue-soft)}.opt.answer{border-color:var(--ok-line);background:var(--ok-bg);box-shadow:inset 4px 0 0 var(--ok)}.opt.bad{border-color:var(--bad-line);background:var(--bad-bg);box-shadow:inset 4px 0 0 var(--bad)}.opt-text{display:grid;gap:4px}.opt-zh{color:var(--soft);font-size:14px;border-top:1px dashed var(--line);padding-top:4px;margin-top:2px}.answerbox{border:1px solid var(--line2);border-radius:8px;background:#fff;margin-top:14px;overflow:hidden}.answer-head{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:11px 13px;border-bottom:1px solid var(--line2);font-weight:650;background:#fafafa}.answer-head.answer-correct{background:var(--ok-bg);border-bottom-color:var(--ok-line)}.answer-head.answer-wrong{background:var(--bad-bg);border-bottom-color:var(--bad-line)}.result-correct{border-color:var(--ok-line);color:var(--ok)}.result-wrong{border-color:var(--bad-line);color:var(--bad)}.answer-body{display:grid;gap:12px;padding:14px}.block{border-top:1px solid var(--line2);padding-top:12px}.block:first-child{border-top:0;padding-top:0}.block h3{font-size:13px;margin:0 0 6px;color:var(--soft);font-weight:650}.block p{margin:0;white-space:pre-wrap}.pair{display:grid;gap:8px}.pair .en{color:var(--ink);font-weight:500}.pair .zh{color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}.hook{display:inline-flex;border:1px solid #b4d6fa;background:var(--blue-soft);color:var(--blue);border-radius:999px;padding:4px 8px;font-size:12px;font-weight:650}.logic{background:#fafafa;border:1px solid var(--line2);border-radius:8px;padding:10px 12px;color:var(--muted)}.empty{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:24px;text-align:center;color:var(--muted)}.loadrow{text-align:center;margin-top:16px}.float{position:fixed;right:16px;bottom:16px;z-index:20;border:1px solid var(--line);border-radius:999px;background:#fff;padding:10px 13px;box-shadow:var(--shadow4);font-weight:700;color:var(--muted);cursor:pointer}.hide{display:none!important}@media(max-width:720px){.wrap{padding:18px 10px 76px}h1{font-size:38px}.qcard{padding:14px}.stem{font-size:16.5px}.opt{font-size:14px;grid-template-columns:28px 1fr}.home-links{width:100%}.home-links a{flex:1;text-align:center}.modebar{display:grid;grid-template-columns:1fr 1fr}.mode-tab{min-height:42px}.float{right:10px;bottom:10px}}
     `;
     document.head.appendChild(style);
   }
@@ -167,6 +255,9 @@
           <div class="row">
             <button class="btn primary" id="shuffleBtn">重新随机</button>
             <button class="btn" id="copyWrongBtn">复制错题</button>
+            <button class="btn" id="backupRecordsBtn">备份记录</button>
+            <button class="btn" id="restoreRecordsBtn">恢复记录</button>
+            <input class="hide" id="recordFileInput" type="file" accept=".json,application/json">
             <button class="btn warn" id="clearAnswersBtn">清空作答</button>
             <span class="countline" id="countLine"></span>
             <span class="copy-status" id="copyStatus"></span>
@@ -199,6 +290,12 @@
       renderAll();
     });
     document.getElementById("copyWrongBtn").addEventListener("click", () => copyText(buildWrongText()));
+    document.getElementById("backupRecordsBtn").addEventListener("click", backupRecords);
+    document.getElementById("restoreRecordsBtn").addEventListener("click", () => document.getElementById("recordFileInput").click());
+    document.getElementById("recordFileInput").addEventListener("change", (e) => {
+      restoreRecordsFromFile(e.target.files && e.target.files[0]);
+      e.target.value = "";
+    });
     document.getElementById("clearAnswersBtn").addEventListener("click", clearAnswers);
     document.getElementById("loadMoreBtn").addEventListener("click", () => {
       visibleLimit += 60;
@@ -448,6 +545,60 @@
     el.textContent = message;
     clearTimeout(setCopyStatus.timer);
     setCopyStatus.timer = setTimeout(() => { el.textContent = ""; }, 2600);
+  }
+
+  function isStudyRecordKey(key) {
+    return /^esg_question_bank_|^esg_chapter_practice_/.test(key || "");
+  }
+  function collectRecordBackup() {
+    const data = {};
+    for (let i = 0; i < localStorage.length; i += 1) {
+      const key = localStorage.key(i);
+      if (isStudyRecordKey(key)) data[key] = localStorage.getItem(key);
+    }
+    return {
+      type: "cfa-esg-study-records",
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      href: location.href,
+      data,
+    };
+  }
+  function backupRecords() {
+    const backup = collectRecordBackup();
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+    a.href = url;
+    a.download = `cfa-esg-study-records-${day}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    setCopyStatus("学习记录备份已生成");
+  }
+  function restoreRecordsFromFile(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const backup = JSON.parse(String(reader.result || "{}"));
+        const data = backup && backup.data;
+        if (!data || typeof data !== "object") throw new Error("Invalid backup");
+        let restored = 0;
+        Object.entries(data).forEach(([key, value]) => {
+          if (!isStudyRecordKey(key) || typeof value !== "string") return;
+          localStorage.setItem(key, value);
+          restored += 1;
+        });
+        alert(`学习记录已恢复：${restored} 组。页面将刷新。`);
+        location.reload();
+      } catch (e) {
+        alert("恢复失败：请选择从本题库导出的学习记录备份文件。");
+      }
+    };
+    reader.readAsText(file, "utf-8");
   }
 
   window.ChapterPractice = { choose, clearOne, toggleFlag, markMastered };

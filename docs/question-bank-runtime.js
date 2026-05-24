@@ -1,8 +1,11 @@
 const BANK = window.ESG_QUESTION_BANK;
 const QUESTIONS = BANK.questions;
 const PRACTICE_KEY = "esg_question_bank_state_v3";
+const PRACTICE_STABLE_KEY = "esg_question_bank_state_latest";
 const MOCK_STATE_KEY = "esg_question_bank_mock_current_v1";
+const MOCK_STATE_STABLE_KEY = "esg_question_bank_mock_current_latest";
 const MOCK_RECORDS_KEY = "esg_question_bank_mock_records_v1";
+const MOCK_RECORDS_STABLE_KEY = "esg_question_bank_mock_records_latest";
 const MOCK_SECONDS = 140 * 60;
 const TARGET_COUNTS = { 1: 6, 2: 3, 3: 13, 4: 10, 5: 11, 6: 9, 7: 24, 8: 17, 9: 7 };
 
@@ -13,12 +16,13 @@ let currentFilter = "all";
 let query = "";
 let visibleLimit = 60;
 let order = QUESTIONS.map((q) => q.id);
-let practiceState = load(PRACTICE_KEY, {});
-let mockState = load(MOCK_STATE_KEY, freshMockState());
-let mockRecords = load(MOCK_RECORDS_KEY, []);
+let practiceState = loadBest([PRACTICE_KEY, PRACTICE_STABLE_KEY, "esg_question_bank_state_v2", "esg_question_bank_state_v1"], {});
+let mockState = loadBest([MOCK_STATE_KEY, MOCK_STATE_STABLE_KEY], freshMockState());
+let mockRecords = loadBest([MOCK_RECORDS_KEY, MOCK_RECORDS_STABLE_KEY], []);
 let mockReviewFilter = "all";
 let redoState = {};
 let timerId = null;
+mergeChapterPracticeIntoBank();
 migratePracticeState();
 
 function load(key, fallback) {
@@ -28,17 +32,100 @@ function load(key, fallback) {
     return fallback;
   }
 }
+function scoreSavedValue(value) {
+  if (Array.isArray(value)) return value.length;
+  if (value && typeof value === "object") return Object.keys(value).length;
+  return value ? 1 : 0;
+}
+function loadBest(keys, fallback) {
+  let best = fallback;
+  let bestScore = scoreSavedValue(fallback);
+  keys.forEach((key) => {
+    const value = load(key, null);
+    const score = scoreSavedValue(value);
+    if (score > bestScore) {
+      best = value;
+      bestScore = score;
+    }
+  });
+  return best;
+}
+function newerTime(a, b) {
+  if (!a) return b;
+  if (!b) return a;
+  return String(a) > String(b) ? a : b;
+}
+function mergeQuestionState(base = {}, extra = {}) {
+  const out = { ...base };
+  if (extra.flagged) out.flagged = true;
+  if (extra.everWrong) out.everWrong = true;
+  if (extra.mastered) out.mastered = true;
+  if (extra.everWrong && !extra.mastered) out.mastered = false;
+  if (extra.revealed && !out.revealed) {
+    out.revealed = true;
+    if (extra.choice) out.choice = extra.choice;
+    if (extra.grade) out.grade = extra.grade;
+  }
+  if (!out.choice && extra.choice) out.choice = extra.choice;
+  if (!out.grade && extra.grade) out.grade = extra.grade;
+  if (extra.wrongCount) out.wrongCount = Math.max(out.wrongCount || 0, extra.wrongCount || 0);
+  out.lastWrongAt = newerTime(out.lastWrongAt, extra.lastWrongAt);
+  out.masteredAt = newerTime(out.masteredAt, extra.masteredAt);
+  return out;
+}
+function mergeChapterPracticeIntoBank() {
+  let changed = false;
+  for (let chapter = 1; chapter <= 9; chapter += 1) {
+    [
+      `esg_chapter_practice_v2_ch${chapter}`,
+      `esg_chapter_practice_latest_ch${chapter}`,
+      `esg_chapter_practice_v1_ch${chapter}`,
+    ].forEach((key) => {
+      const chapterState = load(key, {});
+      Object.entries(chapterState || {}).forEach(([id, value]) => {
+        const before = JSON.stringify(practiceState[id] || {});
+        practiceState[id] = mergeQuestionState(practiceState[id] || {}, value || {});
+        if (JSON.stringify(practiceState[id] || {}) !== before) changed = true;
+      });
+    });
+  }
+  if (changed) savePractice();
+}
+function syncTextbookPracticeToChapter() {
+  const byChapter = {};
+  QUESTIONS.forEach((q) => {
+    if (q.source !== "textbook" || !practiceState[q.id]) return;
+    byChapter[q.chapter] = byChapter[q.chapter] || {};
+    byChapter[q.chapter][q.id] = practiceState[q.id];
+  });
+  Object.entries(byChapter).forEach(([chapter, entries]) => {
+    const keys = [`esg_chapter_practice_v2_ch${chapter}`, `esg_chapter_practice_latest_ch${chapter}`];
+    const chapterState = loadBest(keys, {});
+    Object.entries(entries).forEach(([id, value]) => {
+      chapterState[id] = mergeQuestionState(chapterState[id] || {}, value || {});
+    });
+    saveMany(keys, chapterState);
+  });
+}
 function save(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.warn("Study record could not be saved:", e);
+  }
+}
+function saveMany(keys, value) {
+  keys.forEach((key) => save(key, value));
 }
 function savePractice() {
-  save(PRACTICE_KEY, practiceState);
+  saveMany([PRACTICE_KEY, PRACTICE_STABLE_KEY], practiceState);
+  syncTextbookPracticeToChapter();
 }
 function saveMock() {
-  save(MOCK_STATE_KEY, mockState);
+  saveMany([MOCK_STATE_KEY, MOCK_STATE_STABLE_KEY], mockState);
 }
 function saveRecords() {
-  save(MOCK_RECORDS_KEY, mockRecords);
+  saveMany([MOCK_RECORDS_KEY, MOCK_RECORDS_STABLE_KEY], mockRecords);
 }
 function esc(v) {
   return String(v ?? "").replace(/[&<>'"]/g, (c) => ({
@@ -340,6 +427,60 @@ function setCopyStatus(message) {
   el.textContent = message;
   clearTimeout(setCopyStatus.timer);
   setCopyStatus.timer = setTimeout(() => { el.textContent = ""; }, 2600);
+}
+
+function isStudyRecordKey(key) {
+  return /^esg_question_bank_|^esg_chapter_practice_/.test(key || "");
+}
+function collectRecordBackup() {
+  const data = {};
+  for (let i = 0; i < localStorage.length; i += 1) {
+    const key = localStorage.key(i);
+    if (isStudyRecordKey(key)) data[key] = localStorage.getItem(key);
+  }
+  return {
+    type: "cfa-esg-study-records",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    href: location.href,
+    data,
+  };
+}
+function backupRecords() {
+  const backup = collectRecordBackup();
+  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  a.href = url;
+  a.download = `cfa-esg-study-records-${day}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  setCopyStatus("学习记录备份已生成");
+}
+function restoreRecordsFromFile(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const backup = JSON.parse(String(reader.result || "{}"));
+      const data = backup && backup.data;
+      if (!data || typeof data !== "object") throw new Error("Invalid backup");
+      let restored = 0;
+      Object.entries(data).forEach(([key, value]) => {
+        if (!isStudyRecordKey(key) || typeof value !== "string") return;
+        localStorage.setItem(key, value);
+        restored += 1;
+      });
+      alert(`学习记录已恢复：${restored} 组。页面将刷新。`);
+      location.reload();
+    } catch (e) {
+      alert("恢复失败：请选择从本题库导出的学习记录备份文件。");
+    }
+  };
+  reader.readAsText(file, "utf-8");
 }
 
 function answerBoxHtml(q, s, correct) {
@@ -669,6 +810,12 @@ document.getElementById("shuffle").addEventListener("click", () => {
   renderAll();
 });
 document.getElementById("copyWrong").addEventListener("click", () => copyText(buildWrongText()));
+document.getElementById("backupRecords").addEventListener("click", backupRecords);
+document.getElementById("restoreRecords").addEventListener("click", () => document.getElementById("recordFileInput").click());
+document.getElementById("recordFileInput").addEventListener("change", (e) => {
+  restoreRecordsFromFile(e.target.files && e.target.files[0]);
+  e.target.value = "";
+});
 document.getElementById("reset").addEventListener("click", () => {
   if (confirm("确定清空作答记录吗？收藏、错题本和已掌握标记会保留。")) {
     const kept = {};

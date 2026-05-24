@@ -84,6 +84,9 @@ h1{font-size:clamp(32px,5vw,52px);line-height:1.08;margin:0;letter-spacing:0;fon
           <button class="btn bookmark" data-filter="flagged">收藏</button>
           <button class="btn primary" id="shuffle">随机顺序</button>
           <button class="btn" id="copyWrong">复制错题</button>
+          <button class="btn" id="backupRecords">备份记录</button>
+          <button class="btn" id="restoreRecords">恢复记录</button>
+          <input class="hide" id="recordFileInput" type="file" accept=".json,application/json">
           <button class="btn warn" id="reset">清空作答</button>
         </div>
         <div class="row"><span class="countline" id="countLine"></span><span class="copy-status" id="copyStatus"></span></div>
